@@ -1,0 +1,93 @@
+{
+    "@@locale": "en",
+    "newGameAction": "New Game",
+    "@newGameAction": {
+        "type": "text",
+        "context": "menu",
+        "description": "Label of a control that starts a new game."
+    },
+    "newGameWithLayoutAction": "New Game with Layout...",
+    "@newGameWithLayoutAction": {
+        "type": "text",
+        "context": "menu",
+        "description": "Label of a control that shows layout options then starts a new game."
+    },
+    "restartGameAction": "Restart Current Game",
+    "@restartGameAction": {
+        "type": "text",
+        "context": "menu",
+        "description": "Label of a control that restarts the current game."
+    },
+    "statisticsAction": "Statistics",
+    "@statisticsAction": {
+        "type": "text",
+        "context": "menu",
+        "description": "Label of a control that navigates to the 'Statistics' page."
+    },
+    "exitAction": "Exit",
+    "@exitAction": {
+        "type": "text",
+        "context": "menu",
+        "description": "Label of a control that exits the application."
+    },
+    "returnAction": "Return to Game",
+    "@returnAction": {
+        "type": "text",
+        "context": "menu",
+        "description": "Label of a control that closes menu and returns to the game page."
+    },
+    "drawTooltip": "Draw",
+    "@drawTooltip": {
+        "type": "text",
+        "context": "home",
+        "description": "Tooltip of a control that draws a card from the stock."
+    },
+    "undoTooltip": "Undo",
+    "@undoTooltip": {
+        "type": "text",
+        "context": "home",
+        "description": "Tooltip of a control that undoes the last action."
+    },
+    "menuTooltip": "Menu",
+    "@menuTooltip": {
+        "type": "text",
+        "context": "home",
+        "description": "Tooltip of a control that opens the game drawer."
+    },
+    "settingsTooltip": "Settings",
+    "@settingsTooltip": {
+        "type": "text",
+        "context": "menu",
+        "description": "Tooltip of a control that navigates to the 'Settings' page."
+    },
+    "infoTooltip": "Help & About",
+    "@infoTooltip": {
+        "type": "text",
+        "context": "menu",
+        "description": "Tooltip of a control that navigates to the 'Help & About' page."
+    },
+    "homeTooltip": "Return to Game",
+    "@homeTooltip": {
+        "type": "text",
+        "context": "sub-pages",
+        "description": "Tooltip of a control that navigates to the 'Help & About' page."
+    },
+    "settingsTitle": "Settings",
+    "@settingsTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of the 'Settings' page."
+    },
+    "multiStateSwitchDefaultLabel": "Multi-state switch",
+    "@multiStateSwitchDefaultLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Default semantic label of a multi-state switch."
+    },
+    "themeModeControl": "Theme Mode",
+    "@themeModeControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets application theme mode."
+    }
+}

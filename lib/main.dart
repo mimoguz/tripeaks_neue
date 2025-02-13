@@ -1,0 +1,74 @@
+import 'package:tripeaks_neue/pages/home_page/home_page.dart';
+import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  final session = Session.fresh();
+  runApp(
+    MultiProvider(
+      providers: [Provider<Session>(create: (_) => session), Provider<Settings>(create: (_) => Settings())],
+      builder: (context, _) => MainApp(),
+    ),
+  );
+}
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final settings = Provider.of<Settings>(context);
+    return Observer(
+      builder:
+          (context) => MaterialApp(
+            localizationsDelegates: [AppLocalizations.delegate],
+            supportedLocales: [Locale("en")],
+            themeMode: settings.themeMode,
+            // theme: Green(_defaultTextTheme).light(),
+            // darkTheme: Green(_defaultTextTheme).dark(),
+            theme: _defaultLight,
+            darkTheme: _defaultDark,
+            home: HomePage(),
+          ),
+    );
+  }
+
+  static const _defaultTextTheme = TextTheme(
+    titleLarge: TextStyle(
+      fontFamily: "Outfit",
+      fontSize: 20,
+      fontVariations: [FontVariation("wght", 300)],
+      letterSpacing: 0.5,
+    ),
+  );
+
+  static final _tooltipTheme = TooltipThemeData(waitDuration: Durations.long4, preferBelow: false);
+
+  static final _defaultLight = ThemeData(
+    useMaterial3: true,
+    textTheme: _defaultTextTheme,
+    tooltipTheme: _tooltipTheme,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.blueAccent,
+      tertiary: Colors.red.shade500,
+      tertiaryContainer: Colors.red.shade600,
+    ),
+  );
+
+  static final _defaultDark = ThemeData(
+    useMaterial3: true,
+    textTheme: _defaultTextTheme,
+    brightness: Brightness.dark,
+    tooltipTheme: _tooltipTheme,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: Colors.blueAccent,
+      tertiary: Colors.red.shade300,
+      tertiaryContainer: Colors.red.shade600, // Color(0xff932e2e),
+      brightness: Brightness.dark,
+    ),
+  );
+}
