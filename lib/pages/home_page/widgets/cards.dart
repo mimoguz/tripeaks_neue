@@ -312,9 +312,9 @@ final class SuitImageSm extends StatelessWidget {
 }
 
 final class TileShadow extends StatelessWidget {
-  const TileShadow({super.key, this.center = Alignment.topRight});
+  const TileShadow({super.key, this.centre = Alignment.topRight});
 
-  final Alignment center;
+  final Alignment centre;
 
   @override
   Widget build(BuildContext context) {
@@ -327,7 +327,7 @@ final class TileShadow extends StatelessWidget {
         gradient: RadialGradient(
           colors: <Color>[colours.tertiaryContainer.withAlpha(80), Colors.transparent],
           stops: [0.0, 1.0],
-          center: center,
+          center: centre,
           radius: 1.0,
         ),
       ),

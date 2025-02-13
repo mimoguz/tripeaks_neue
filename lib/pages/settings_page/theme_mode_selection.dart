@@ -4,7 +4,7 @@ import 'package:tripeaks_neue/pages/settings_page/multi_state_switch.dart';
 import 'package:tripeaks_neue/pages/shared/item_container.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 

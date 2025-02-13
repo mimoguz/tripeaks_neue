@@ -29,7 +29,7 @@ class LandscapeStock extends StatelessWidget {
                       t: game.stock.length > 1 ? (index / game.stock.length) * 0.4 + 0.6 : 1.0,
                       showInactive: showValues,
                     ),
-                    if (index < game.stock.length - 1) const TileShadow(),
+                    if (index < game.stock.length - 1) const TileShadow(centre: _shadowOrigin),
                   ],
                 ),
             ],
@@ -38,6 +38,8 @@ class LandscapeStock extends StatelessWidget {
       },
     );
   }
+
+  static const _shadowOrigin = Alignment(1.0, -0.5);
 }
 
 class PortraitStock extends StatelessWidget {
@@ -65,7 +67,7 @@ class PortraitStock extends StatelessWidget {
                       t: game.stock.length > 1 ? (index / game.stock.length) * 0.4 + 0.6 : 1.0,
                       showInactive: showValues,
                     ),
-                    if (index < game.stock.length - 1) const TileShadow(center: Alignment.bottomLeft),
+                    if (index < game.stock.length - 1) const TileShadow(centre: _shadowOrigin),
                   ],
                 ),
             ],
@@ -74,6 +76,8 @@ class PortraitStock extends StatelessWidget {
       },
     );
   }
+
+  static const _shadowOrigin = Alignment(1.0, 0.5);
 }
 
 class LandscapeStackLayout extends StatelessWidget {

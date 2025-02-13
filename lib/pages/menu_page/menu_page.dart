@@ -5,7 +5,7 @@ import 'package:tripeaks_neue/pages/menu_page/list_button.dart';
 import 'package:tripeaks_neue/pages/menu_page/page_title.dart';
 import 'package:tripeaks_neue/pages/shared/item_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 
 final class MenuPage extends StatelessWidget {
   const MenuPage({super.key});

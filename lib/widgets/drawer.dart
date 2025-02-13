@@ -1,7 +1,7 @@
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/peaks.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 
 class HomePageDrawer extends StatelessWidget {
   const HomePageDrawer({super.key});

@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 
 class MultiStateSwitch extends StatelessWidget {
   const MultiStateSwitch({
@@ -47,10 +47,7 @@ class MultiStateSwitch extends StatelessWidget {
                     width: sectionWidth,
                     height: sectionHeight,
                     child: Ink(
-                      decoration: BoxDecoration(
-                        color: colours.primary,
-                        borderRadius: _roundedBorder,
-                      ),
+                      decoration: BoxDecoration(color: colours.primary, borderRadius: _roundedBorder),
                     ),
                   ),
                 ),
@@ -64,15 +61,16 @@ class MultiStateSwitch extends StatelessWidget {
                         child: InkWell(
                           borderRadius: _roundedBorder,
                           child: IconTheme(
-                              data: IconThemeData(
-                                color: selected == index ? colours.onPrimary : colours.onSurfaceVariant,
-                              ),
-                              child: Center(child: icon)),
+                            data: IconThemeData(
+                              color: selected == index ? colours.onPrimary : colours.onSurfaceVariant,
+                            ),
+                            child: Center(child: icon),
+                          ),
                           onTap: () => onChange(index),
                         ),
-                      )
+                      ),
                   ],
-                )
+                ),
               ],
             ),
           ),
