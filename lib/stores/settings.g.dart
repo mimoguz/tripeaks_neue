@@ -25,10 +25,40 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
+  late final _$decorAtom = Atom(name: '_Settings.decor', context: context);
+
+  @override
+  Decor get decor {
+    _$decorAtom.reportRead();
+    return super.decor;
+  }
+
+  @override
+  set decor(Decor value) {
+    _$decorAtom.reportWrite(value, super.decor, () {
+      super.decor = value;
+    });
+  }
+
+  late final _$_SettingsActionController =
+      ActionController(name: '_Settings', context: context);
+
+  @override
+  void setDecor(Decor value) {
+    final _$actionInfo =
+        _$_SettingsActionController.startAction(name: '_Settings.setDecor');
+    try {
+      return super.setDecor(value);
+    } finally {
+      _$_SettingsActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-themeMode: ${themeMode}
+themeMode: ${themeMode},
+decor: ${decor}
     ''';
   }
 }

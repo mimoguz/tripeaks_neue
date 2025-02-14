@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/peaks.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:flutter/material.dart';
@@ -210,13 +212,26 @@ class CardBack extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(c.commonRadius - 2.0)),
-      child: Icon(
-        Peaks.backCheckered,
-        size: c.cardSize,
-        color: _foreground, // Theme.of(context).colorScheme.surface.withAlpha(38),
+      child: Observer(
+        builder: (context) {
+          // TODO: Hoist this up, like showInactive param
+          final icon = _decorIcon(Provider.of<Settings>(context).decor);
+          return Icon(
+            icon,
+            size: c.cardSize,
+            color: _foreground, // Theme.of(context).colorScheme.surface.withAlpha(38),
+          );
+        },
       ),
     );
   }
+
+  IconData _decorIcon(Decor decor) => switch (decor) {
+    Decor.checkered => Peaks.backCheckered,
+    Decor.crosshatch => Peaks.backCrossHatch,
+    Decor.neue => Peaks.backNeue,
+    Decor.ohRain => Peaks.backOhRain,
+  };
 
   static const _foreground = Color(0x30ffffff);
 }

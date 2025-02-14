@@ -1,9 +1,8 @@
-import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 
 class LandscapeStock extends StatelessWidget {
   const LandscapeStock(this.game, {super.key, required this.scale, required this.showValues});

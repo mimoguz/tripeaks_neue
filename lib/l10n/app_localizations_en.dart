@@ -51,11 +51,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get multiStateSwitchDefaultLabel => 'Multi-state switch';
 
   @override
-  String get themeModeControl => 'Theme Mode';
+  String get themeModeControl => 'Theme mode';
 
   @override
   String get showAllControl => 'Show values of closed cards';
 
   @override
   String get startEmptyControl => 'Start with an empty discard pile';
+
+  @override
+  String get decorControl => 'Card back decoration';
 }

@@ -180,7 +180,7 @@ abstract class AppLocalizations {
   /// Label of a control that sets application theme mode.
   ///
   /// In en, this message translates to:
-  /// **'Theme Mode'**
+  /// **'Theme mode'**
   String get themeModeControl;
 
   /// Label of a control that sets if the values of closed cards should be shown.
@@ -194,6 +194,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start with an empty discard pile'**
   String get startEmptyControl;
+
+  /// Label of a control that sets the decoration that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card back decoration'**
+  String get decorControl;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

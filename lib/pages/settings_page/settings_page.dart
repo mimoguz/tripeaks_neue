@@ -19,6 +19,7 @@ class SettingsPage extends StatelessWidget {
         SetThemeModeIntent: SetThemeModeAction(),
         SetShowAllIntent: SetShowAllAction(),
         SetStartEmptyIntent: SetStartEmptyAction(),
+        SetDecorIntent: SetDecorAction(),
       },
       child: Builder(
         builder: (context) {
@@ -61,9 +62,9 @@ class SettingsItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList.list(
       children: const <Widget>[
-        ListItemContainer(child: ThemeModeSetting()),
-        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: ShowAllSetting())),
+        ListItemContainer(child: ShowAllSetting()),
         Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: StartEmptySetting())),
+        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: ThemeModeSetting())),
         Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: DecorSetting())),
       ],
     );

@@ -1,5 +1,6 @@
 import 'package:tripeaks_neue/stores/data/pin.dart';
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 
 final class TakeIntent extends Intent {
   const TakeIntent(this.pin);
@@ -67,4 +68,10 @@ final class SetStartEmptyIntent extends Intent {
   const SetStartEmptyIntent(this.value);
 
   final bool value;
+}
+
+final class SetDecorIntent extends Intent {
+  const SetDecorIntent(this.value);
+
+  final Decor value;
 }

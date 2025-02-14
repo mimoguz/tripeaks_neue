@@ -84,7 +84,7 @@
         "context": "settings",
         "description": "Default semantic label of a multi-state switch."
     },
-    "themeModeControl": "Theme Mode",
+    "themeModeControl": "Theme mode",
     "@themeModeControl": {
         "type": "text",
         "context": "settings",
@@ -101,5 +101,11 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
+    },
+    "decorControl": "Card back decoration",
+    "@decorControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets the decoration that is used on the back of the cards."
     }
 }

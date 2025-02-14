@@ -144,6 +144,17 @@ final class SetStartEmptyAction extends ContextAction<SetStartEmptyIntent> {
   }
 }
 
+final class SetDecorAction extends ContextAction<SetDecorIntent> {
+  @override
+  void invoke(SetDecorIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final settings = Provider.of<Settings>(context, listen: false);
+    settings.decor = intent.value;
+  }
+}
+
 void _closeDrawer(BuildContext context) {
   final scaffold = Scaffold.of(context);
   if (scaffold.isDrawerOpen) {
