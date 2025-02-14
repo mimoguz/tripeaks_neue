@@ -13,7 +13,7 @@ class SettingTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return ListItemContainer(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+        padding: const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

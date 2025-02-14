@@ -8,8 +8,21 @@ import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class DecorSetting extends StatelessWidget {
+class DecorSetting extends StatefulWidget {
   const DecorSetting({super.key});
+
+  @override
+  State<DecorSetting> createState() => _DecorSettingState();
+}
+
+class _DecorSettingState extends State<DecorSetting> {
+  final CarouselController _controller = CarouselController();
+
+  @override
+  dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,60 +35,121 @@ class DecorSetting extends StatelessWidget {
           builder:
               (context, constraints) => ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: c.cardSize, maxWidth: c.cardSize * 3.5),
-                child: CarouselView(
-                  itemExtent: c.cardSize,
+                child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  shape: const RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-                  backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
-                  onTap: (i) => Actions.handler(context, SetDecorIntent(Decor.values[i]))?.call(),
-                  children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
+                  primary: false,
+                  itemCount: Decor.values.length,
+                  itemBuilder: (context, index) => CarouselItem(decor: Decor.values[index]),
+                  separatorBuilder: (context, index) => const SizedBox(width: 8.0),
                 ),
               ),
+          // child: CarouselView(
+          //   controller: _controller,
+          //   itemExtent: c.cardSize,
+          //   scrollDirection: Axis.horizontal,
+          //   shape: const RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+          //   backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+          //   onTap: (i) => Actions.handler(context, SetDecorIntent(Decor.values[i]))?.call(),
+          //   children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
+          // ),
         ),
       ),
     );
   }
 }
 
-class CarouselItem extends StatelessWidget {
+class CarouselItem extends StatefulWidget {
   const CarouselItem({super.key, required this.decor});
 
   final Decor decor;
 
   @override
+  State<CarouselItem> createState() => _CarouselItemState();
+}
+
+class _CarouselItemState extends State<CarouselItem> {
+  final FocusNode _focus = FocusNode();
+  Color? _fill;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _focus.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
-
-    return SizedBox(
-      width: c.cardSize,
-      height: c.cardSize,
-      child: Observer(
-        builder: (context) {
-          return Stack(
-            children: [
-              Icon(_decorIcon, size: c.cardSize, color: Colors.white30),
-              Positioned(
-                left: 8.0,
-                top: 6.0,
-                child: AnimatedSwitcher(
-                  duration: Durations.medium2,
-                  child:
-                      (decor == settings.decor)
-                          ? Icon(key: ValueKey(true), Icons.radio_button_checked, color: Colors.white)
-                          : Icon(key: ValueKey(false), Icons.radio_button_off, color: Colors.white),
-                ),
-              ),
-            ],
-          );
-        },
+    _fill = _focus.hasFocus ? Theme.of(context).colorScheme.tertiaryContainer : Colors.blueGrey;
+    return Material(
+      color: _fill,
+      borderRadius: c.commonBorderRadius,
+      clipBehavior: Clip.antiAlias,
+      child: SizedBox(
+        width: c.cardSize,
+        height: c.cardSize,
+        child: InkWell(
+          borderRadius: c.commonBorderRadius,
+          onTap: _onTap,
+          focusNode: _focus,
+          child: Observer(
+            builder: (context) {
+              return Stack(
+                children: [
+                  Icon(_decorIcon, size: c.cardSize, color: Colors.white30),
+                  Positioned(
+                    left: 8.0,
+                    top: 6.0,
+                    child: AnimatedSwitcher(
+                      duration: Durations.medium2,
+                      child:
+                          (widget.decor == settings.decor)
+                              ? Icon(
+                                key: ValueKey((widget.decor, true)),
+                                Icons.radio_button_checked,
+                                color: Colors.white,
+                              )
+                              : Icon(
+                                key: ValueKey((widget.decor, false)),
+                                Icons.radio_button_off,
+                                color: Colors.white,
+                              ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
       ),
     );
   }
 
-  IconData get _decorIcon => switch (decor) {
+  IconData get _decorIcon => switch (widget.decor) {
     Decor.checkered => Peaks.backCheckered,
     Decor.crosshatch => Peaks.backCrossHatch,
     Decor.neue => Peaks.backNeue,
     Decor.ohRain => Peaks.backOhRain,
   };
+
+  void _onFocusChange() {
+    setState(() {
+      _fill =
+          _focus.hasFocus
+              ? Theme.of(context).colorScheme.tertiaryContainer
+              : Theme.of(context).colorScheme.secondaryContainer;
+    });
+  }
+
+  void _onTap() {
+    Actions.handler(context, SetDecorIntent(widget.decor))?.call();
+    _focus.requestFocus();
+  }
 }

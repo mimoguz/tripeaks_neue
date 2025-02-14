@@ -22,8 +22,9 @@ class HomePage extends StatelessWidget {
           child: HomePageDrawer(),
         ),
         body: Builder(
-          builder:
-              (context) => size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage(),
+          builder: (context) {
+            return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
+          },
         ),
       ),
     );

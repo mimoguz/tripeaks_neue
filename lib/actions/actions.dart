@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/menu_page/menu_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -71,10 +72,10 @@ final class NavigateToMenuAction extends ContextAction<NavigateToMenuIntent> {
     }
     final navigator = Navigator.of(context);
     if (intent.replace) {
-      navigator.pushReplacement(createRoute(() => MenuPage()));
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => MenuPage()));
     } else {
       _closeDrawer(context);
-      navigator.push(createRoute(() => MenuPage()));
+      navigator.push(MaterialPageRoute(builder: (_) => MenuPage()));
     }
   }
 }
@@ -87,10 +88,10 @@ final class NavigateToHomeAction extends ContextAction<NavigateToHomeIntent> {
     }
     final navigator = Navigator.of(context);
     if (intent.replace) {
-      navigator.pushReplacement(createRoute(() => HomePage()));
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => HomePage()));
     } else {
       _closeDrawer(context);
-      navigator.push(createRoute(() => HomePage()));
+      navigator.push(MaterialPageRoute(builder: (_) => HomePage()));
     }
   }
 }
@@ -103,10 +104,10 @@ final class NavigateToSettingsAction extends ContextAction<NavigateToSettingsInt
     }
     final navigator = Navigator.of(context);
     if (intent.replace) {
-      navigator.pushReplacement(createRoute(() => SettingsPage()));
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => SettingsPage()));
     } else {
       _closeDrawer(context);
-      navigator.push(createRoute(() => SettingsPage()));
+      navigator.push(MaterialPageRoute(builder: (_) => SettingsPage()));
     }
   }
 }

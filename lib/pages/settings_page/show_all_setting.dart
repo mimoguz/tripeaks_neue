@@ -1,7 +1,6 @@
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/settings_page/multi_state_switch.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
-import 'package:tripeaks_neue/pages/shared/item_container.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';

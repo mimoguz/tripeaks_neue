@@ -55,6 +55,12 @@ class MainApp extends StatelessWidget {
     useMaterial3: true,
     textTheme: _defaultTextTheme,
     tooltipTheme: _tooltipTheme,
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
+        TargetPlatform.values,
+        value: (_) => const FadeForwardsPageTransitionsBuilder(),
+      ),
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.blueAccent,
       tertiary: Colors.red.shade500,
@@ -67,6 +73,12 @@ class MainApp extends StatelessWidget {
     textTheme: _defaultTextTheme,
     brightness: Brightness.dark,
     tooltipTheme: _tooltipTheme,
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
+        TargetPlatform.values,
+        value: (_) => const FadeForwardsPageTransitionsBuilder(),
+      ),
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.blueAccent,
       tertiary: Colors.red.shade300,

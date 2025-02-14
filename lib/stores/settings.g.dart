@@ -40,20 +40,6 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
-  late final _$_SettingsActionController =
-      ActionController(name: '_Settings', context: context);
-
-  @override
-  void setDecor(Decor value) {
-    final _$actionInfo =
-        _$_SettingsActionController.startAction(name: '_Settings.setDecor');
-    try {
-      return super.setDecor(value);
-    } finally {
-      _$_SettingsActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''

@@ -15,9 +15,6 @@ abstract class _Settings with Store {
 
   @observable
   Decor decor;
-
-  @action
-  void setDecor(Decor value) => decor = value;
 }
 
 /// Users of this enum, when they need an ordinal value, should consider using the 'value' property

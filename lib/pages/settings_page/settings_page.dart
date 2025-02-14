@@ -48,9 +48,15 @@ final class SettingsPageBody extends StatelessWidget {
                 shrinkWrap: true,
                 slivers: [
                   SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: GameItems()),
-                  SectionHeader(title: "Next Game"),
+                  SliverPadding(
+                    padding: EdgeInsets.only(top: 32.0),
+                    sliver: SectionHeader(title: "Next Game"),
+                  ),
                   SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: NextGameItems()),
-                  SectionHeader(title: "Interface"),
+                  SliverPadding(
+                    padding: EdgeInsets.only(top: 32.0),
+                    sliver: SectionHeader(title: "Interface"),
+                  ),
                   SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: UiItems()),
                 ],
               ),

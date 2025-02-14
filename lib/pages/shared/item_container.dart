@@ -7,11 +7,6 @@ class ListItemContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 440.0),
-        child: child,
-      ),
-    );
+    return Center(child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 550.0), child: child));
   }
 }

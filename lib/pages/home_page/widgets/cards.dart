@@ -93,7 +93,7 @@ final class ActiveCard extends StatelessWidget {
               final t = tile.lastError?.millisecondsSinceEpoch ?? 0;
               return TweenAnimationBuilder(
                 key: ValueKey(t),
-                duration: t == 0 ? Duration.zero : Durations.medium3,
+                duration: t == 0 ? Duration.zero : Durations.medium4,
                 tween: Tween(begin: 0.0, end: 1.0),
                 builder:
                     (context, animation, child) =>
@@ -299,7 +299,7 @@ final class SuitImage extends StatelessWidget {
   }
 
   IconData get _icon => switch (cardValue.suit) {
-    Suit.clubs => Peaks.hearts,
+    Suit.clubs => Peaks.clubs,
     Suit.diamonds => Peaks.diamonds,
     Suit.hearts => Peaks.hearts,
     Suit.spades => Peaks.spades,
@@ -319,7 +319,7 @@ final class SuitImageSm extends StatelessWidget {
   }
 
   IconData get _icon => switch (cardValue.suit) {
-    Suit.clubs => Peaks.heartsSm,
+    Suit.clubs => Peaks.clubsSm,
     Suit.diamonds => Peaks.diamondsSm,
     Suit.hearts => Peaks.heartsSm,
     Suit.spades => Peaks.spadesSm,
