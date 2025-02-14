@@ -13,12 +13,16 @@ class Peaks {
   static const diamondsSm = IconData(0xe90e, fontFamily: _family);
   static const draw = IconData(0xe90b, fontFamily: _family);
   static const draw16 = IconData(0xe904, fontFamily: _family);
+  static const emptyDiscardOff20 = IconData(0xe917, fontFamily: _family);
+  static const emptyDiscardOn20 = IconData(0xe918, fontFamily: _family);
   static const hearts = IconData(0xe900, fontFamily: _family);
   static const heartsSm = IconData(0xe90d, fontFamily: _family);
   static const menu = IconData(0xe908, fontFamily: _family);
   static const menu16 = IconData(0xe907, fontFamily: _family);
   static const newGame = IconData(0xe906, fontFamily: _family);
   static const pickAndPlay = IconData(0xe905, fontFamily: _family);
+  static const showAllOff20 = IconData(0xe91a, fontFamily: _family);
+  static const showAllOn20 = IconData(0xe919, fontFamily: _family);
   static const spades = IconData(0xe902, fontFamily: _family);
   static const spadesSm = IconData(0xe910, fontFamily: _family);
   static const themeModeAuto = IconData(0xe911, fontFamily: _family);

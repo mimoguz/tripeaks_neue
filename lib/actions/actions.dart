@@ -1,11 +1,9 @@
-import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/menu_page/menu_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/util/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

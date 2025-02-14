@@ -1,4 +1,5 @@
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/assets/peaks.dart';
 import 'package:tripeaks_neue/pages/settings_page/multi_state_switch.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -21,7 +22,7 @@ class ShowAllSetting extends StatelessWidget {
           return MultiStateSwitch(
             selected: session.showAll ? 1 : 0,
             onChange: (index) => Actions.handler(context, SetShowAllIntent(index == 1))?.call(),
-            optionIcons: <Widget>[Icon(Icons.visibility_off, size: 20), Icon(Icons.visibility, size: 20)],
+            optionIcons: <Widget>[Icon(Peaks.showAllOff20, size: 20), Icon(Peaks.showAllOn20, size: 20)],
           );
         },
       ),

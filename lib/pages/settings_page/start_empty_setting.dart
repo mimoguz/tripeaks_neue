@@ -23,8 +23,8 @@ class StartEmptySetting extends StatelessWidget {
             selected: session.startEmpty ? 1 : 0,
             onChange: (index) => Actions.handler(context, SetStartEmptyIntent(index == 1))?.call(),
             optionIcons: <Widget>[
-              Icon(Icons.check_box_outline_blank, size: 20),
-              Icon(Peaks.heartsSm, size: 20),
+              Icon(Peaks.emptyDiscardOff20, size: 20),
+              Icon(Peaks.emptyDiscardOn20, size: 20),
             ],
           );
         },

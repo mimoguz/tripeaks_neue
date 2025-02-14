@@ -60,13 +60,13 @@ class MultiStateSwitch extends StatelessWidget {
                         height: sectionHeight,
                         child: InkWell(
                           borderRadius: _roundedBorder,
+                          onTap: index != selected ? () => onChange(index) : null,
                           child: IconTheme(
                             data: IconThemeData(
                               color: selected == index ? colours.onPrimary : colours.onSurfaceVariant,
                             ),
                             child: Center(child: icon),
                           ),
-                          onTap: () => onChange(index),
                         ),
                       ),
                   ],
