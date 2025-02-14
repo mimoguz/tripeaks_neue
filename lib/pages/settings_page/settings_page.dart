@@ -1,5 +1,6 @@
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
@@ -63,6 +64,7 @@ class SettingsItems extends StatelessWidget {
         ListItemContainer(child: ThemeModeSetting()),
         Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: ShowAllSetting())),
         Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: StartEmptySetting())),
+        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: DecorSetting())),
       ],
     );
   }
