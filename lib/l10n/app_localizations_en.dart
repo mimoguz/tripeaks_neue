@@ -61,4 +61,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get decorControl => 'Card back decoration';
+
+  @override
+  String get showAllOffLabel => 'Hidden';
+
+  @override
+  String get showAllOnLabel => 'Visible';
+
+  @override
+  String get startEmptyOffLabel => 'Start with a card';
+
+  @override
+  String get startEmptyOnLabel => 'Start empty';
+
+  @override
+  String get systemThemeModeLabel => 'System';
+
+  @override
+  String get lightThemeModeLabel => 'Light';
+
+  @override
+  String get darkThemeModeLabel => 'Dark';
 }

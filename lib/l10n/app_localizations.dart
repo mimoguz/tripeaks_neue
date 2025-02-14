@@ -200,6 +200,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Card back decoration'**
   String get decorControl;
+
+  /// Value label of showAll control when it is off.
+  ///
+  /// In en, this message translates to:
+  /// **'Hidden'**
+  String get showAllOffLabel;
+
+  /// Value label of showAll control when it is on.
+  ///
+  /// In en, this message translates to:
+  /// **'Visible'**
+  String get showAllOnLabel;
+
+  /// Value label of startEmpty control when it is off.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with a card'**
+  String get startEmptyOffLabel;
+
+  /// Value label of startEmpty control when it is on.
+  ///
+  /// In en, this message translates to:
+  /// **'Start empty'**
+  String get startEmptyOnLabel;
+
+  /// Value label of themeMode control when it is set to system.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get systemThemeModeLabel;
+
+  /// Value label of themeMode control when it is set to light.
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get lightThemeModeLabel;
+
+  /// Value label of themeMode control when it is set to dark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get darkThemeModeLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -29,7 +29,9 @@ class StartEmptySetting extends StatelessWidget {
           );
         },
       ),
-      value: Observer(builder: (context) => Text(session.startEmpty.toString())),
+      value: Observer(builder: (context) => Text(_valueLabel(session.startEmpty, s))),
     );
   }
+
+  String _valueLabel(bool value, AppLocalizations s) => value ? s.startEmptyOnLabel : s.startEmptyOffLabel;
 }

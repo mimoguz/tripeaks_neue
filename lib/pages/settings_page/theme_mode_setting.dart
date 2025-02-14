@@ -31,7 +31,13 @@ class ThemeModeSetting extends StatelessWidget {
           );
         },
       ),
-      value: Observer(builder: (context) => Text(settings.themeMode.name)),
+      value: Observer(builder: (context) => Text(_valueLabel(settings.themeMode, s))),
     );
   }
+
+  String _valueLabel(ThemeMode value, AppLocalizations s) => switch (value) {
+    ThemeMode.system => s.systemThemeModeLabel,
+    ThemeMode.light => s.lightThemeModeLabel,
+    ThemeMode.dark => s.darkThemeModeLabel,
+  };
 }

@@ -107,5 +107,47 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets the decoration that is used on the back of the cards."
+    },
+    "showAllOffLabel": "Hidden",
+    "@showAllOffLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of showAll control when it is off."
+    },
+    "showAllOnLabel": "Visible",
+    "@showAllOnLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of showAll control when it is on."
+    },
+    "startEmptyOffLabel": "Start with a card",
+    "@startEmptyOffLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of startEmpty control when it is off."
+    },
+    "startEmptyOnLabel": "Start empty",
+    "@startEmptyOnLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of startEmpty control when it is on."
+    },
+    "systemThemeModeLabel": "System",
+    "@systemThemeModeLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of themeMode control when it is set to system."
+    },
+    "lightThemeModeLabel": "Light",
+    "@lightThemeModeLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of themeMode control when it is set to light."
+    },
+    "darkThemeModeLabel": "Dark",
+    "@darkThemeModeLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of themeMode control when it is set to dark."
     }
 }

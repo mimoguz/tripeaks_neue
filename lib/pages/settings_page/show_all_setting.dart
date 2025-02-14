@@ -26,7 +26,9 @@ class ShowAllSetting extends StatelessWidget {
           );
         },
       ),
-      value: Observer(builder: (context) => Text(session.showAll.toString())),
+      value: Observer(builder: (context) => Text(_valueLabel(session.showAll, s))),
     );
   }
+
+  String _valueLabel(bool value, AppLocalizations s) => value ? s.showAllOnLabel : s.showAllOffLabel;
 }

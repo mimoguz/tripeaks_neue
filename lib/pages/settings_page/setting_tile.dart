@@ -19,16 +19,16 @@ class SettingTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 8.0,
           children: [
-            DefaultTextStyle(style: textTheme.titleSmall!, child: title),
+            DefaultTextStyle(style: textTheme.titleMedium!, child: title),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 8.0,
+              spacing: 12.0,
               children: [
                 control,
                 if (value != null)
                   DefaultTextStyle(
-                    style: textTheme.labelSmall!.copyWith(color: Theme.of(context).colorScheme.primary),
+                    style: textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.primary),
                     child: value!,
                   ),
               ],
