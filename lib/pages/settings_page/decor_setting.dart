@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -18,22 +20,25 @@ class DecorSetting extends StatelessWidget {
       title: Text(s.showAllControl),
       control: Observer(
         builder: (context) {
-          return Row(
-            children: [
-              SizedBox(
-                width: c.cardSize * 2,
-                height: c.cardSize,
-                child: CarouselView(
-                  itemExtent: c.cardSize,
-                  children: const <Widget>[
-                    Icon(Peaks.backCheckered, size: c.cardSize),
-                    Icon(Peaks.backCrossHatch, size: c.cardSize),
-                    Icon(Peaks.backNeue, size: c.cardSize),
-                    Icon(Peaks.backOhRain, size: c.cardSize),
-                  ],
-                ),
-              ),
-            ],
+          return Expanded(
+            child: LayoutBuilder(
+              builder:
+                  (context, constraints) => ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: c.cardSize, maxWidth: c.cardSize * 3.5),
+                    child: CarouselView(
+                      itemExtent: c.cardSize,
+                      scrollDirection: Axis.horizontal,
+                      shape: const RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+                      backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+                      children: const <Widget>[
+                        Icon(Peaks.backCheckered, size: c.cardSize, color: Colors.white30),
+                        Icon(Peaks.backCrossHatch, size: c.cardSize, color: Colors.white30),
+                        Icon(Peaks.backNeue, size: c.cardSize, color: Colors.white30),
+                        Icon(Peaks.backOhRain, size: c.cardSize, color: Colors.white30),
+                      ],
+                    ),
+                  ),
+            ),
           );
         },
       ),

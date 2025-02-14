@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
@@ -32,6 +34,7 @@ class MainApp extends StatelessWidget {
             // darkTheme: Green(_defaultTextTheme).dark(),
             theme: _defaultLight,
             darkTheme: _defaultDark,
+            scrollBehavior: const MyCustomScrollBehavior(),
             home: HomePage(),
           ),
     );
@@ -71,4 +74,16 @@ class MainApp extends StatelessWidget {
       brightness: Brightness.dark,
     ),
   );
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  const MyCustomScrollBehavior();
+
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    // etc.
+  };
 }
