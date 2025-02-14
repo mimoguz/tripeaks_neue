@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/peaks.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/fireworks.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
@@ -178,7 +179,7 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
             builder:
                 (context) =>
                     game.discard.isEmpty
-                        ? SizedBox(width: c.cardSize, height: c.cardSize)
+                        ? CardPlaceHolder(scale: scale)
                         : FittedBox(
                           child: TileCard(
                             game.discard.last

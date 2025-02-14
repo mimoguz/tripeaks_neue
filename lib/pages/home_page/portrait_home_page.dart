@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/peaks.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
@@ -184,7 +185,7 @@ class PortraitHomePageRightArea extends StatelessWidget {
             builder:
                 (context) =>
                     game.discard.isEmpty
-                        ? SizedBox(width: c.cardSize, height: c.cardSize)
+                        ? CardPlaceHolder(scale: scale)
                         : FittedBox(
                           child: TileCard(
                             game.discard.last

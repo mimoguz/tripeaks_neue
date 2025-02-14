@@ -1,3 +1,4 @@
+import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;

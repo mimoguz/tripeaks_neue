@@ -61,8 +61,8 @@ class SettingsItems extends StatelessWidget {
     return SliverList.list(
       children: const <Widget>[
         ListItemContainer(child: ThemeModeSetting()),
-        Padding(padding: EdgeInsets.only(top: 16.0), child: ListItemContainer(child: ShowAllSetting())),
-        Padding(padding: EdgeInsets.only(top: 16.0), child: ListItemContainer(child: StartEmptySetting())),
+        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: ShowAllSetting())),
+        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: StartEmptySetting())),
       ],
     );
   }
