@@ -13,13 +13,13 @@ class SettingTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return ListItemContainer(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 8.0,
           children: [
-            DefaultTextStyle(style: textTheme.titleMedium!, child: title),
+            DefaultTextStyle(style: textTheme.titleSmall!, child: title),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,

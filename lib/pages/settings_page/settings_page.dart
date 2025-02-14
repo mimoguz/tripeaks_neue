@@ -1,6 +1,7 @@
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/section_header.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
@@ -45,7 +46,13 @@ final class SettingsPageBody extends StatelessWidget {
             child: const Center(
               child: CustomScrollView(
                 shrinkWrap: true,
-                slivers: [SliverPadding(padding: EdgeInsets.all(12.0), sliver: SettingsItems())],
+                slivers: [
+                  SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: GameItems()),
+                  SectionHeader(title: "Next Game"),
+                  SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: NextGameItems()),
+                  SectionHeader(title: "Interface"),
+                  SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: UiItems()),
+                ],
               ),
             ),
           ),
@@ -55,17 +62,33 @@ final class SettingsPageBody extends StatelessWidget {
   }
 }
 
-class SettingsItems extends StatelessWidget {
-  const SettingsItems({super.key});
+class GameItems extends StatelessWidget {
+  const GameItems({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList.list(children: const <Widget>[ListItemContainer(child: ShowAllSetting())]);
+  }
+}
+
+class NextGameItems extends StatelessWidget {
+  const NextGameItems({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList.list(children: const <Widget>[ListItemContainer(child: StartEmptySetting())]);
+  }
+}
+
+class UiItems extends StatelessWidget {
+  const UiItems({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SliverList.list(
       children: const <Widget>[
-        ListItemContainer(child: ShowAllSetting()),
-        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: StartEmptySetting())),
-        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: ThemeModeSetting())),
-        Padding(padding: EdgeInsets.only(top: 24.0), child: ListItemContainer(child: DecorSetting())),
+        ListItemContainer(child: ThemeModeSetting()),
+        ListItemContainer(child: DecorSetting()),
       ],
     );
   }
