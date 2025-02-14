@@ -62,3 +62,9 @@ final class SetShowAllIntent extends Intent {
 
   final bool value;
 }
+
+final class SetStartEmptyIntent extends Intent {
+  const SetStartEmptyIntent(this.value);
+
+  final bool value;
+}

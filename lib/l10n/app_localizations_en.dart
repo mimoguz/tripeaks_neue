@@ -52,4 +52,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get themeModeControl => 'Theme Mode';
+
+  @override
+  String get showAllControl => 'Show values of closed cards';
+
+  @override
+  String get startEmptyControl => 'Start with an empty discard pile';
 }

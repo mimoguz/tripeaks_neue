@@ -89,5 +89,17 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets application theme mode."
+    },
+    "showAllControl": "Show values of closed cards",
+    "@showAllControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets if the values of closed cards should be shown."
+    },
+    "startEmptyControl": "Start with an empty discard pile",
+    "@startEmptyControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
     }
 }

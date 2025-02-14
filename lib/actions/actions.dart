@@ -133,6 +133,17 @@ final class SetShowAllAction extends ContextAction<SetShowAllIntent> {
   }
 }
 
+final class SetStartEmptyAction extends ContextAction<SetStartEmptyIntent> {
+  @override
+  void invoke(SetStartEmptyIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final session = Provider.of<Session>(context, listen: false);
+    session.startEmpty = intent.value;
+  }
+}
+
 void _closeDrawer(BuildContext context) {
   final scaffold = Scaffold.of(context);
   if (scaffold.isDrawerOpen) {

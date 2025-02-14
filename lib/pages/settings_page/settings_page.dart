@@ -1,7 +1,8 @@
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/pages/settings_page/show_all_selection.dart';
-import 'package:tripeaks_neue/pages/settings_page/theme_mode_selection.dart';
+import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/pages/shared/item_container.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
@@ -16,6 +17,7 @@ class SettingsPage extends StatelessWidget {
       actions: <Type, Action<Intent>>{
         SetThemeModeIntent: SetThemeModeAction(),
         SetShowAllIntent: SetShowAllAction(),
+        SetStartEmptyIntent: SetStartEmptyAction(),
       },
       child: Builder(
         builder: (context) {
@@ -58,8 +60,9 @@ class SettingsItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList.list(
       children: const <Widget>[
-        ListItemContainer(child: ThemeModeSelection()),
-        Padding(padding: EdgeInsets.only(top: 16.0), child: ListItemContainer(child: ShowAllSelection())),
+        ListItemContainer(child: ThemeModeSetting()),
+        Padding(padding: EdgeInsets.only(top: 16.0), child: ListItemContainer(child: ShowAllSetting())),
+        Padding(padding: EdgeInsets.only(top: 16.0), child: ListItemContainer(child: StartEmptySetting())),
       ],
     );
   }

@@ -182,6 +182,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Theme Mode'**
   String get themeModeControl;
+
+  /// Label of a control that sets if the values of closed cards should be shown.
+  ///
+  /// In en, this message translates to:
+  /// **'Show values of closed cards'**
+  String get showAllControl;
+
+  /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with an empty discard pile'**
+  String get startEmptyControl;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
