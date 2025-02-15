@@ -25,7 +25,7 @@ class Game extends _Game with _$Game {
 
   factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false}) {
     assert(deck.length == 52);
-    final lo = layout ?? baseGameLayout;
+    final lo = layout ?? threePeaksLayout;
     final board =
         lo.pins.map((pin) {
           final tile = Tile(pin: pin, card: deck.removeLast());

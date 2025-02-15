@@ -1,12 +1,13 @@
-import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/peaks.dart';
-import 'package:tripeaks_neue/pages/settings_page/multi_state_switch.dart';
-import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
-import 'package:tripeaks_neue/stores/session.dart';
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/settings_page/dropdown_item_container.dart';
+import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
+import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class ShowAllSetting extends StatelessWidget {
   const ShowAllSetting({super.key});
@@ -15,23 +16,24 @@ class ShowAllSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
     final s = AppLocalizations.of(context)!;
-    return SettingTile(
+    return HorizontalSettingTile(
       title: Text(s.showAllControl),
       control: Observer(
         builder: (context) {
-          return MultiStateSwitch(
-            selected: session.showAll ? 1 : 0,
-            onChange: (index) => Actions.handler(context, SetShowAllIntent(index == 1))?.call(),
-            optionIcons: <Widget>[
-              Icon(CustomIcons.showAllOff20, size: 20),
-              Icon(CustomIcons.showAllOn20, size: 20),
+          return DropdownButton<bool>(
+            value: session.showAll,
+            elevation: 0,
+            dropdownColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+            borderRadius: c.commonBorderRadius,
+            underline: SizedBox(),
+            items: [
+              DropdownMenuItem(value: false, child: DropDownItemContainer(text: s.showAllOffLabel)),
+              DropdownMenuItem(value: true, child: DropDownItemContainer(text: s.showAllOnLabel)),
             ],
+            onChanged: (value) => Actions.handler(context, SetShowAllIntent(value!))?.call(),
           );
         },
       ),
-      value: Observer(builder: (context) => Text(_valueLabel(session.showAll, s))),
     );
   }
-
-  String _valueLabel(bool value, AppLocalizations s) => value ? s.showAllOnLabel : s.showAllOffLabel;
 }

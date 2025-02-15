@@ -38,7 +38,7 @@ final class Layout {
   final Peaks tag;
 }
 
-final baseGameLayout = Layout(
+final threePeaksLayout = Layout(
   width: 20,
   height: 5,
   cardCount: 28,
@@ -132,7 +132,7 @@ final baseGameLayout = Layout(
     List<int>.unmodifiable([]), //       index: 26
     List<int>.unmodifiable([]), //       index: 27
   ]),
-  tag: Peaks.baseGame,
+  tag: Peaks.threePeaks,
 );
 
 final diamondsLayout = Layout(
@@ -234,11 +234,12 @@ final diamondsLayout = Layout(
   ]),
 );
 
-enum Peaks { baseGame, diamonds }
+enum Peaks { threePeaks, diamonds, valley }
 
 extension PeaksExt on Peaks {
   Layout get implementation => switch (this) {
-    Peaks.baseGame => baseGameLayout,
+    Peaks.threePeaks => threePeaksLayout,
     Peaks.diamonds => diamondsLayout,
+    Peaks.valley => threePeaksLayout,
   };
 }

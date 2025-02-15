@@ -54,10 +54,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeModeControl => 'Theme mode';
 
   @override
-  String get showAllControl => 'Show values of closed cards';
+  String get showAllControl => 'Values of closed cards';
 
   @override
-  String get startEmptyControl => 'Start with an empty discard pile';
+  String get startEmptyControl => 'Discard pile at start';
 
   @override
   String get decorControl => 'Card back decoration';
@@ -69,10 +69,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showAllOnLabel => 'Visible';
 
   @override
-  String get startEmptyOffLabel => 'Start with a card';
+  String get startEmptyOffLabel => 'Has one card';
 
   @override
-  String get startEmptyOnLabel => 'Start empty';
+  String get startEmptyOnLabel => 'Empty';
 
   @override
   String get systemThemeModeLabel => 'System';

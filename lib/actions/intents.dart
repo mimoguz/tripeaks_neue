@@ -1,3 +1,4 @@
+import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
@@ -74,4 +75,10 @@ final class SetDecorIntent extends Intent {
   const SetDecorIntent(this.value);
 
   final Decor value;
+}
+
+final class SetLayoutIntent extends Intent {
+  const SetLayoutIntent(this.value);
+
+  final Peaks value;
 }

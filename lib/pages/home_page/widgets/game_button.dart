@@ -37,7 +37,10 @@ class CircleGameButton extends StatelessWidget {
               child: Ink(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(100.0)),
-                  border: Border.all(color: colours.outlineVariant, width: 2.0),
+                  border: Border.all(
+                    color: onPressed == null ? colours.outlineVariant : colours.outline,
+                    width: 2.0,
+                  ),
                 ),
                 child: InkWell(
                   onTap: onPressed,

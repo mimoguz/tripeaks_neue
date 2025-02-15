@@ -10,7 +10,7 @@ class Session extends _Session with _$Session {
   Session(super.game, super.layout, {super.startEmpty, super.showAll});
 
   factory Session.fresh() {
-    final layout = Peaks.diamonds;
+    final layout = Peaks.threePeaks;
     final startEmpty = false;
     final game = _Session._makeRandomGame(layout, startEmpty);
     return Session(game, layout, startEmpty: startEmpty);

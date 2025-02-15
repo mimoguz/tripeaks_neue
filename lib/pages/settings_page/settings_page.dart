@@ -1,13 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
-import 'package:tripeaks_neue/pages/settings_page/section_header.dart';
+import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/pages/shared/item_container.dart';
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -21,6 +21,7 @@ class SettingsPage extends StatelessWidget {
         SetShowAllIntent: SetShowAllAction(),
         SetStartEmptyIntent: SetStartEmptyAction(),
         SetDecorIntent: SetDecorAction(),
+        SetLayoutIntent: SetLayoutAction(),
       },
       child: Builder(
         builder: (context) {
@@ -44,20 +45,21 @@ final class SettingsPageBody extends StatelessWidget {
           child: Container(
             color: Theme.of(context).colorScheme.surfaceContainerLow,
             child: const Center(
-              child: CustomScrollView(
-                shrinkWrap: true,
-                slivers: [
-                  SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: GameItems()),
-                  SliverPadding(
-                    padding: EdgeInsets.only(top: 32.0),
-                    sliver: SectionHeader(title: "Next Game"),
+              child: Column(
+                children: [
+                  CustomScrollView(
+                    shrinkWrap: true,
+                    slivers: [
+                      SliverPadding(padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0), sliver: GameItems()),
+
+                      SliverPadding(
+                        padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                        sliver: NextGameItems(),
+                      ),
+
+                      SliverPadding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), sliver: UiItems()),
+                    ],
                   ),
-                  SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: NextGameItems()),
-                  SliverPadding(
-                    padding: EdgeInsets.only(top: 32.0),
-                    sliver: SectionHeader(title: "Interface"),
-                  ),
-                  SliverPadding(padding: EdgeInsets.symmetric(horizontal: 12.0), sliver: UiItems()),
                 ],
               ),
             ),
@@ -73,7 +75,7 @@ class GameItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.list(children: const <Widget>[ListItemContainer(child: ShowAllSetting())]);
+    return const SliverToBoxAdapter(child: SettingsGroupCard(children: [ShowAllSetting()]));
   }
 }
 
@@ -82,7 +84,9 @@ class NextGameItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.list(children: const <Widget>[ListItemContainer(child: StartEmptySetting())]);
+    return const SliverToBoxAdapter(
+      child: SettingsGroupCard(title: "Next Game", children: [StartEmptySetting(), LayoutSetting()]),
+    );
   }
 }
 
@@ -91,11 +95,48 @@ class UiItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.list(
-      children: const <Widget>[
-        ListItemContainer(child: ThemeModeSetting()),
-        ListItemContainer(child: DecorSetting()),
-      ],
+    return const SliverToBoxAdapter(
+      child: SettingsGroupCard(title: "Interface", children: [ThemeModeSetting(), Divider(), DecorSetting()]),
+    );
+  }
+}
+
+class SettingsGroupCard extends StatelessWidget {
+  const SettingsGroupCard({super.key, this.title, required this.children});
+
+  final List<Widget> children;
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    return ListItemContainer(
+      child: Card(
+        color: colours.surfaceContainer,
+        surfaceTintColor: colours.surfaceTint,
+        elevation: 1.0,
+        shadowColor: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+          child: Column(
+            spacing: 8.0,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (title != null)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: Text(
+                    title!,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.outline),
+                  ),
+                ),
+              for (final child in children) child,
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

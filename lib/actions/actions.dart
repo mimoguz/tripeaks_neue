@@ -154,6 +154,17 @@ final class SetDecorAction extends ContextAction<SetDecorIntent> {
   }
 }
 
+final class SetLayoutAction extends ContextAction<SetLayoutIntent> {
+  @override
+  void invoke(SetLayoutIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final session = Provider.of<Session>(context, listen: false);
+    session.layout = intent.value;
+  }
+}
+
 void _closeDrawer(BuildContext context) {
   final scaffold = Scaffold.of(context);
   if (scaffold.isDrawerOpen) {

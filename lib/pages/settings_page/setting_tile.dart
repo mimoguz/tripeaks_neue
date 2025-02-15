@@ -1,40 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/shared/item_container.dart';
 
-class SettingTile extends StatelessWidget {
-  const SettingTile({super.key, required this.title, required this.control, this.value});
+class HorizontalSettingTile extends StatelessWidget {
+  const HorizontalSettingTile({super.key, required this.title, required this.control});
 
   final Widget title;
   final Widget control;
-  final Widget? value;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return ListItemContainer(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8.0,
-          children: [
-            DefaultTextStyle(style: textTheme.titleMedium!, child: title),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 12.0,
-              children: [
-                control,
-                if (value != null)
-                  DefaultTextStyle(
-                    style: textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.primary),
-                    child: value!,
-                  ),
-              ],
-            ),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 8.0,
+        children: [DefaultTextStyle(style: textTheme.bodyMedium!, child: Flexible(child: title)), control],
+      ),
+    );
+  }
+}
+
+class VerticalSettingTile extends StatelessWidget {
+  const VerticalSettingTile({super.key, required this.title, required this.control});
+
+  final Widget title;
+  final Widget control;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return ListItemContainer(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 8.0,
+        children: [
+          Row(children: [DefaultTextStyle(style: textTheme.bodyMedium!, child: title)]),
+          Row(children: [control]),
+        ],
       ),
     );
   }

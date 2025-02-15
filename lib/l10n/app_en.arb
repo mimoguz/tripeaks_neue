@@ -90,13 +90,13 @@
         "context": "settings",
         "description": "Label of a control that sets application theme mode."
     },
-    "showAllControl": "Show values of closed cards",
+    "showAllControl": "Values of closed cards",
     "@showAllControl": {
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets if the values of closed cards should be shown."
     },
-    "startEmptyControl": "Start with an empty discard pile",
+    "startEmptyControl": "Discard pile at start",
     "@startEmptyControl": {
         "type": "text",
         "context": "settings",
@@ -120,13 +120,13 @@
         "context": "settings",
         "description": "Value label of showAll control when it is on."
     },
-    "startEmptyOffLabel": "Start with a card",
+    "startEmptyOffLabel": "Has one card",
     "@startEmptyOffLabel": {
         "type": "text",
         "context": "settings",
         "description": "Value label of startEmpty control when it is off."
     },
-    "startEmptyOnLabel": "Start empty",
+    "startEmptyOnLabel": "Empty",
     "@startEmptyOnLabel": {
         "type": "text",
         "context": "settings",

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/assets/peaks.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class CardPlaceHolder extends StatelessWidget {

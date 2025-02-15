@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/peaks.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/tile.dart';

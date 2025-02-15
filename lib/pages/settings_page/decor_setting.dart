@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/peaks.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
@@ -28,30 +28,16 @@ class _DecorSettingState extends State<DecorSetting> {
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
 
-    return SettingTile(
+    return VerticalSettingTile(
       title: Text(s.decorControl),
       control: Expanded(
         child: LayoutBuilder(
           builder:
-              (context, constraints) => ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: c.cardSize, maxWidth: c.cardSize * 3.5),
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  primary: false,
-                  itemCount: Decor.values.length,
-                  itemBuilder: (context, index) => CarouselItem(decor: Decor.values[index]),
-                  separatorBuilder: (context, index) => const SizedBox(width: 8.0),
-                ),
+              (context, constraints) => Wrap(
+                spacing: 12.0,
+                runSpacing: 12.0,
+                children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
               ),
-          // child: CarouselView(
-          //   controller: _controller,
-          //   itemExtent: c.cardSize,
-          //   scrollDirection: Axis.horizontal,
-          //   shape: const RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-          //   backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
-          //   onTap: (i) => Actions.handler(context, SetDecorIntent(Decor.values[i]))?.call(),
-          //   children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
-          // ),
         ),
       ),
     );
@@ -87,7 +73,8 @@ class _CarouselItemState extends State<CarouselItem> {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
-    _fill = _focus.hasFocus ? Theme.of(context).colorScheme.tertiaryContainer : Colors.blueGrey;
+    final colours = Theme.of(context).colorScheme;
+    _fill = _focus.hasFocus ? colours.tertiaryContainer : colours.onSecondaryFixed;
     return Material(
       color: _fill,
       borderRadius: c.commonBorderRadius,

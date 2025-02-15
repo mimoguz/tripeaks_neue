@@ -1,6 +1,6 @@
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/peaks.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/pages/menu_page/list_button.dart';
 import 'package:tripeaks_neue/pages/menu_page/page_title.dart';
 import 'package:tripeaks_neue/pages/shared/item_container.dart';
