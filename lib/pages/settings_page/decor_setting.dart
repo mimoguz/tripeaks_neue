@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
@@ -90,7 +89,7 @@ class _CarouselItemState extends State<CarouselItem> {
             builder: (context) {
               return Stack(
                 children: [
-                  Icon(_decorIcon, size: c.cardSize, color: Colors.white30),
+                  Icon(widget.decor.icon, size: c.cardSize, color: Colors.white30),
                   Positioned(
                     left: 8.0,
                     top: 6.0,
@@ -118,13 +117,6 @@ class _CarouselItemState extends State<CarouselItem> {
       ),
     );
   }
-
-  IconData get _decorIcon => switch (widget.decor) {
-    Decor.checkered => CustomIcons.backCheckered,
-    Decor.crosshatch => CustomIcons.backCrossHatch,
-    Decor.neue => CustomIcons.backNeue,
-    Decor.ohRain => CustomIcons.backOhRain,
-  };
 
   void _onFocusChange() {
     setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 
 part 'settings.g.dart';
 
@@ -24,7 +25,8 @@ enum Decor {
   checkered(100),
   crosshatch(200),
   ohRain(300),
-  neue(400);
+  neue(400),
+  solar(500);
 
   final int value;
 
@@ -32,4 +34,14 @@ enum Decor {
 
   static Decor? fromValue(int value) =>
       values.firstWhere((it) => it.value == value, orElse: () => values.first);
+}
+
+extension DecorExt on Decor {
+  IconData get icon => switch (this) {
+    Decor.checkered => CustomIcons.backCheckered,
+    Decor.crosshatch => CustomIcons.backCrossHatch,
+    Decor.neue => CustomIcons.backNeue,
+    Decor.ohRain => CustomIcons.backOhRain,
+    Decor.solar => CustomIcons.backSolar,
+  };
 }

@@ -215,9 +215,9 @@ class CardBack extends StatelessWidget {
       child: Observer(
         builder: (context) {
           // TODO: Hoist this up, like showInactive param
-          final icon = _decorIcon(Provider.of<Settings>(context).decor);
+          final decor = Provider.of<Settings>(context).decor;
           return Icon(
-            icon,
+            decor.icon,
             size: c.cardSize,
             color: _foreground, // Theme.of(context).colorScheme.surface.withAlpha(38),
           );
@@ -225,13 +225,6 @@ class CardBack extends StatelessWidget {
       ),
     );
   }
-
-  IconData _decorIcon(Decor decor) => switch (decor) {
-    Decor.checkered => CustomIcons.backCheckered,
-    Decor.crosshatch => CustomIcons.backCrossHatch,
-    Decor.neue => CustomIcons.backNeue,
-    Decor.ohRain => CustomIcons.backOhRain,
-  };
 
   static const _foreground = Color(0x30ffffff);
 }
