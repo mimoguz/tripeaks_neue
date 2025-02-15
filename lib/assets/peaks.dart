@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class Peaks {
-  const Peaks._();
+class CustomIcons {
+  const CustomIcons._();
 
   static const backCheckered = IconData(0xe915, fontFamily: _family);
   static const backCrossHatch = IconData(0xe90c, fontFamily: _family);

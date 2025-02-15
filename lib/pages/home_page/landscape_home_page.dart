@@ -156,8 +156,8 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
       children: [
         CircleGameButton(
           scale: scale,
-          icon: Peaks.menu,
-          smallIcon: Peaks.menu16,
+          icon: CustomIcons.menu,
+          smallIcon: CustomIcons.menu16,
           tooltip: s.menuTooltip,
           onPressed: () => Scaffold.of(context).openDrawer(),
           // onPressed: () => Navigator.of(context).push(createRoute(() => const MenuPage())),
@@ -166,8 +166,8 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
           builder:
               (context) => CircleGameButton(
                 scale: scale,
-                icon: Peaks.undo,
-                smallIcon: Peaks.undo16,
+                icon: CustomIcons.undo,
+                smallIcon: CustomIcons.undo16,
                 tooltip: s.undoTooltip,
                 onPressed: Actions.handler(context, const RollbackIntent()),
               ),
@@ -197,8 +197,8 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
           builder:
               (context) => GameButton.narrow(
                 scale: scale,
-                icon: Peaks.draw,
-                smallIcon: Peaks.draw16,
+                icon: CustomIcons.draw,
+                smallIcon: CustomIcons.draw16,
                 tooltip: s.drawTooltip,
                 onPressed: Actions.handler(context, const DrawIntent()),
               ),

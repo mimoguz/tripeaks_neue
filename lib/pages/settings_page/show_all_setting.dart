@@ -22,7 +22,10 @@ class ShowAllSetting extends StatelessWidget {
           return MultiStateSwitch(
             selected: session.showAll ? 1 : 0,
             onChange: (index) => Actions.handler(context, SetShowAllIntent(index == 1))?.call(),
-            optionIcons: <Widget>[Icon(Peaks.showAllOff20, size: 20), Icon(Peaks.showAllOn20, size: 20)],
+            optionIcons: <Widget>[
+              Icon(CustomIcons.showAllOff20, size: 20),
+              Icon(CustomIcons.showAllOn20, size: 20),
+            ],
           );
         },
       ),

@@ -57,7 +57,7 @@ class HomePageDrawer extends StatelessWidget {
                 ListTile(
                   style: ListTileStyle.drawer,
                   iconColor: iconColour,
-                  leading: const Icon(Peaks.newGame),
+                  leading: const Icon(CustomIcons.newGame),
                   title: Text(s.newGameAction),
                   shape: StadiumBorder(),
                   visualDensity: VisualDensity.comfortable,
@@ -66,7 +66,7 @@ class HomePageDrawer extends StatelessWidget {
                 ListTile(
                   style: ListTileStyle.drawer,
                   iconColor: iconColour,
-                  leading: const Icon(Peaks.pickAndPlay),
+                  leading: const Icon(CustomIcons.pickAndPlay),
                   title: Text(s.newGameWithLayoutAction),
                   shape: StadiumBorder(),
                   visualDensity: VisualDensity.comfortable,

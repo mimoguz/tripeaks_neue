@@ -133,10 +133,10 @@ class _CarouselItemState extends State<CarouselItem> {
   }
 
   IconData get _decorIcon => switch (widget.decor) {
-    Decor.checkered => Peaks.backCheckered,
-    Decor.crosshatch => Peaks.backCrossHatch,
-    Decor.neue => Peaks.backNeue,
-    Decor.ohRain => Peaks.backOhRain,
+    Decor.checkered => CustomIcons.backCheckered,
+    Decor.crosshatch => CustomIcons.backCrossHatch,
+    Decor.neue => CustomIcons.backNeue,
+    Decor.ohRain => CustomIcons.backOhRain,
   };
 
   void _onFocusChange() {

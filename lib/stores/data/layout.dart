@@ -135,10 +135,110 @@ final baseGameLayout = Layout(
   tag: Peaks.baseGame,
 );
 
-enum Peaks { baseGame }
+final diamondsLayout = Layout(
+  cardCount: 27,
+  width: 18,
+  height: 7,
+  tag: Peaks.diamonds,
+  pins: List<Pin>.unmodifiable([
+    // Row 1
+    Pin(index: 0, mainAxis: 0, crossAxis: 2, z: 2, startsOpen: false),
+    Pin(index: 1, mainAxis: 0, crossAxis: 8, z: 2, startsOpen: false),
+    Pin(index: 2, mainAxis: 0, crossAxis: 14, z: 2, startsOpen: false),
+    // Row 5
+    Pin(index: 3, mainAxis: 4, crossAxis: 2, z: 2, startsOpen: false),
+    Pin(index: 4, mainAxis: 4, crossAxis: 8, z: 2, startsOpen: false),
+    Pin(index: 5, mainAxis: 4, crossAxis: 14, z: 2, startsOpen: false),
+    // Row 2
+    Pin(index: 6, mainAxis: 1, crossAxis: 1, z: 1, startsOpen: false),
+    Pin(index: 7, mainAxis: 1, crossAxis: 3, z: 1, startsOpen: false),
+    Pin(index: 8, mainAxis: 1, crossAxis: 7, z: 1, startsOpen: false),
+    Pin(index: 9, mainAxis: 1, crossAxis: 9, z: 1, startsOpen: false),
+    Pin(index: 10, mainAxis: 1, crossAxis: 13, z: 1, startsOpen: false),
+    Pin(index: 11, mainAxis: 1, crossAxis: 15, z: 1, startsOpen: false),
+    // Row 4
+    Pin(index: 12, mainAxis: 3, crossAxis: 1, z: 1, startsOpen: false),
+    Pin(index: 13, mainAxis: 3, crossAxis: 3, z: 1, startsOpen: false),
+    Pin(index: 14, mainAxis: 3, crossAxis: 7, z: 1, startsOpen: false),
+    Pin(index: 15, mainAxis: 3, crossAxis: 9, z: 1, startsOpen: false),
+    Pin(index: 16, mainAxis: 3, crossAxis: 13, z: 1, startsOpen: false),
+    Pin(index: 17, mainAxis: 3, crossAxis: 15, z: 1, startsOpen: false),
+    // Row 3
+    Pin(index: 18, mainAxis: 2, crossAxis: 0, z: 0, startsOpen: true),
+    Pin(index: 19, mainAxis: 2, crossAxis: 2, z: 0, startsOpen: true),
+    Pin(index: 20, mainAxis: 2, crossAxis: 4, z: 0, startsOpen: true),
+    Pin(index: 21, mainAxis: 2, crossAxis: 6, z: 0, startsOpen: true),
+    Pin(index: 22, mainAxis: 2, crossAxis: 8, z: 0, startsOpen: true),
+    Pin(index: 23, mainAxis: 2, crossAxis: 10, z: 0, startsOpen: true),
+    Pin(index: 24, mainAxis: 2, crossAxis: 12, z: 0, startsOpen: true),
+    Pin(index: 25, mainAxis: 2, crossAxis: 14, z: 0, startsOpen: true),
+    Pin(index: 26, mainAxis: 2, crossAxis: 16, z: 0, startsOpen: true),
+  ]),
+  below: List<List<int>>.unmodifiable([
+    List<int>.unmodifiable([]), // index: 0
+    List<int>.unmodifiable([]), // index: 1
+    List<int>.unmodifiable([]), // index: 2
+    List<int>.unmodifiable([]), // index: 3
+    List<int>.unmodifiable([]), // index: 4
+    List<int>.unmodifiable([]), // index: 5
+    List<int>.unmodifiable([0]), // index: 6
+    List<int>.unmodifiable([0]), // index: 7
+    List<int>.unmodifiable([1]), // index: 8
+    List<int>.unmodifiable([1]), // index: 9
+    List<int>.unmodifiable([2]), // index: 10
+    List<int>.unmodifiable([2]), // index: 11
+    List<int>.unmodifiable([3]), // index: 12
+    List<int>.unmodifiable([3]), // index: 13
+    List<int>.unmodifiable([4]), // index: 14
+    List<int>.unmodifiable([4]), // index: 15
+    List<int>.unmodifiable([5]), // index: 16
+    List<int>.unmodifiable([5]), // index: 17
+    List<int>.unmodifiable([6, 12]), // index: 18
+    List<int>.unmodifiable([6, 7, 12, 13]), // index: 19
+    List<int>.unmodifiable([7, 13]), // index: 20
+    List<int>.unmodifiable([8, 14]), // index: 21
+    List<int>.unmodifiable([8, 9, 14, 15]), // index: 22
+    List<int>.unmodifiable([9, 15]), // index: 23
+    List<int>.unmodifiable([10, 16]), // index: 24
+    List<int>.unmodifiable([10, 11, 16, 17]), // index: 25
+    List<int>.unmodifiable([11, 17]), // index: 26
+  ]),
+  above: List<List<int>>.unmodifiable([
+    List<int>.unmodifiable([6, 7]), // index: 0
+    List<int>.unmodifiable([8, 9]), // index: 1
+    List<int>.unmodifiable([10, 11]), // index: 2
+    List<int>.unmodifiable([12, 13]), // index: 3
+    List<int>.unmodifiable([14, 15]), // index: 4
+    List<int>.unmodifiable([16, 17]), // index: 5
+    List<int>.unmodifiable([18, 19]), // index: 6
+    List<int>.unmodifiable([19, 20]), // index: 7
+    List<int>.unmodifiable([21, 22]), // index: 8
+    List<int>.unmodifiable([22, 23]), // index: 9
+    List<int>.unmodifiable([24, 25]), // index: 10
+    List<int>.unmodifiable([25, 26]), // index: 11
+    List<int>.unmodifiable([18, 19]), // index: 12
+    List<int>.unmodifiable([19, 20]), // index: 13
+    List<int>.unmodifiable([21, 22]), // index: 14
+    List<int>.unmodifiable([22, 23]), // index: 15
+    List<int>.unmodifiable([24, 25]), // index: 16
+    List<int>.unmodifiable([25, 26]), // index: 17
+    List<int>.unmodifiable([]), // index: 18
+    List<int>.unmodifiable([]), // index: 19
+    List<int>.unmodifiable([]), // index: 20
+    List<int>.unmodifiable([]), // index: 21
+    List<int>.unmodifiable([]), // index: 22
+    List<int>.unmodifiable([]), // index: 23
+    List<int>.unmodifiable([]), // index: 24
+    List<int>.unmodifiable([]), // index: 25
+    List<int>.unmodifiable([]), // index: 26
+  ]),
+);
+
+enum Peaks { baseGame, diamonds }
 
 extension PeaksExt on Peaks {
-  Layout get layout => switch (this) {
+  Layout get implementation => switch (this) {
     Peaks.baseGame => baseGameLayout,
+    Peaks.diamonds => diamondsLayout,
   };
 }

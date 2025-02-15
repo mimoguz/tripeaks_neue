@@ -24,9 +24,9 @@ class ThemeModeSetting extends StatelessWidget {
             onChange:
                 (index) => Actions.handler(context, SetThemeModeIntent(ThemeMode.values[index]))?.call(),
             optionIcons: <Widget>[
-              Icon(Peaks.themeModeAuto, size: 20),
-              Icon(Peaks.themeModeLight, size: 20),
-              Icon(Peaks.themeModeDark, size: 20),
+              Icon(CustomIcons.themeModeAuto, size: 20),
+              Icon(CustomIcons.themeModeLight, size: 20),
+              Icon(CustomIcons.themeModeDark, size: 20),
             ],
           );
         },

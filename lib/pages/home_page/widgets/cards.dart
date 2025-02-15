@@ -227,10 +227,10 @@ class CardBack extends StatelessWidget {
   }
 
   IconData _decorIcon(Decor decor) => switch (decor) {
-    Decor.checkered => Peaks.backCheckered,
-    Decor.crosshatch => Peaks.backCrossHatch,
-    Decor.neue => Peaks.backNeue,
-    Decor.ohRain => Peaks.backOhRain,
+    Decor.checkered => CustomIcons.backCheckered,
+    Decor.crosshatch => CustomIcons.backCrossHatch,
+    Decor.neue => CustomIcons.backNeue,
+    Decor.ohRain => CustomIcons.backOhRain,
   };
 
   static const _foreground = Color(0x30ffffff);
@@ -299,10 +299,10 @@ final class SuitImage extends StatelessWidget {
   }
 
   IconData get _icon => switch (cardValue.suit) {
-    Suit.clubs => Peaks.clubs,
-    Suit.diamonds => Peaks.diamonds,
-    Suit.hearts => Peaks.hearts,
-    Suit.spades => Peaks.spades,
+    Suit.clubs => CustomIcons.clubs,
+    Suit.diamonds => CustomIcons.diamonds,
+    Suit.hearts => CustomIcons.hearts,
+    Suit.spades => CustomIcons.spades,
   };
 }
 
@@ -319,10 +319,10 @@ final class SuitImageSm extends StatelessWidget {
   }
 
   IconData get _icon => switch (cardValue.suit) {
-    Suit.clubs => Peaks.clubsSm,
-    Suit.diamonds => Peaks.diamondsSm,
-    Suit.hearts => Peaks.heartsSm,
-    Suit.spades => Peaks.spadesSm,
+    Suit.clubs => CustomIcons.clubsSm,
+    Suit.diamonds => CustomIcons.diamondsSm,
+    Suit.hearts => CustomIcons.heartsSm,
+    Suit.spades => CustomIcons.spadesSm,
   };
 }
 

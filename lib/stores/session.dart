@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/game.dart';
@@ -11,7 +10,7 @@ class Session extends _Session with _$Session {
   Session(super.game, super.layout, {super.startEmpty, super.showAll});
 
   factory Session.fresh() {
-    final layout = Peaks.baseGame;
+    final layout = Peaks.diamonds;
     final startEmpty = false;
     final game = _Session._makeRandomGame(layout, startEmpty);
     return Session(game, layout, startEmpty: startEmpty);
@@ -44,9 +43,7 @@ abstract class _Session with Store {
   }
 
   static Game _makeRandomGame(Peaks layout, bool startEmpty) {
-    final layoutObj = switch (layout) {
-      Peaks.baseGame => baseGameLayout,
-    };
+    final layoutObj = layout.implementation;
 
     Game make() {
       final deck = getDeck()..shuffle();

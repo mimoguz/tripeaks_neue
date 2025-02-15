@@ -100,6 +100,7 @@ final class PortraitHomePageBoard extends StatelessWidget {
       child: Observer(
         builder:
             (context) => Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 game.isCleared
                     ? Fireworks(
@@ -162,8 +163,8 @@ class PortraitHomePageRightArea extends StatelessWidget {
       children: [
         CircleGameButton(
           scale: scale,
-          icon: Peaks.menu,
-          smallIcon: Peaks.menu16,
+          icon: CustomIcons.menu,
+          smallIcon: CustomIcons.menu16,
           tooltip: s.menuTooltip,
           onPressed: () => Scaffold.of(context).openDrawer(),
           // onPressed: () => Navigator.of(context).push(createRoute(() => const MenuPage())),
@@ -172,8 +173,8 @@ class PortraitHomePageRightArea extends StatelessWidget {
           builder:
               (context) => CircleGameButton(
                 scale: scale,
-                icon: Peaks.undo,
-                smallIcon: Peaks.undo16,
+                icon: CustomIcons.undo,
+                smallIcon: CustomIcons.undo16,
                 tooltip: s.undoTooltip,
                 onPressed: Actions.handler(context, const RollbackIntent()),
               ),
@@ -203,8 +204,8 @@ class PortraitHomePageRightArea extends StatelessWidget {
           builder:
               (context) => GameButton.wide(
                 scale: scale,
-                icon: Peaks.draw,
-                smallIcon: Peaks.draw16,
+                icon: CustomIcons.draw,
+                smallIcon: CustomIcons.draw16,
                 tooltip: s.drawTooltip,
                 onPressed: Actions.handler(context, const DrawIntent()),
               ),
