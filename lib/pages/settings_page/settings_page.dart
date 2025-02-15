@@ -92,7 +92,7 @@ class NextGameItems extends StatelessWidget {
     return const SliverToBoxAdapter(
       child: SettingsGroupCard(
         title: "Next Game",
-        children: [StartEmptySetting(), Divider(), LayoutSetting()],
+        children: [LayoutSetting(), Divider(), StartEmptySetting()],
       ),
     );
   }
