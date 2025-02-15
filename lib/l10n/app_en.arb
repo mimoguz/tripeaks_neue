@@ -149,5 +149,41 @@
         "type": "text",
         "context": "settings",
         "description": "Value label of themeMode control when it is set to dark."
+    },
+    "layoutControl": "Board layout",
+    "@layoutControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets game layout theme mode."
+    },
+    "threePeaksLayoutLabel": "Three peaks",
+    "@threePeaksLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'threePeaks'."
+    },
+    "diamondsLayoutLabel": "Diamonds",
+    "@diamondsLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'diamonds'."
+    },
+    "valleyLayoutLabel": "Valley",
+    "@valleyLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'valley'."
+    },
+    "interfaceSettingGroupTitle": "Interface",
+    "@interfaceSettingGroupTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of the settings group that contains ui related settings."
+    },
+    "nextGameeSettingGroupTitle": "Next Game",
+    "@nextGameeSettingGroupTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of the settings group that contains settings which will be used starting from next new game."
     }
 }

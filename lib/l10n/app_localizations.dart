@@ -242,6 +242,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark'**
   String get darkThemeModeLabel;
+
+  /// Label of a control that sets game layout theme mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Board layout'**
+  String get layoutControl;
+
+  /// Value label of layout selection control when it is set to 'threePeaks'.
+  ///
+  /// In en, this message translates to:
+  /// **'Three peaks'**
+  String get threePeaksLayoutLabel;
+
+  /// Value label of layout selection control when it is set to 'diamonds'.
+  ///
+  /// In en, this message translates to:
+  /// **'Diamonds'**
+  String get diamondsLayoutLabel;
+
+  /// Value label of layout selection control when it is set to 'valley'.
+  ///
+  /// In en, this message translates to:
+  /// **'Valley'**
+  String get valleyLayoutLabel;
+
+  /// Title of the settings group that contains ui related settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Interface'**
+  String get interfaceSettingGroupTitle;
+
+  /// Title of the settings group that contains settings which will be used starting from next new game.
+  ///
+  /// In en, this message translates to:
+  /// **'Next Game'**
+  String get nextGameeSettingGroupTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

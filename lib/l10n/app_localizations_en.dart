@@ -82,4 +82,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get darkThemeModeLabel => 'Dark';
+
+  @override
+  String get layoutControl => 'Board layout';
+
+  @override
+  String get threePeaksLayoutLabel => 'Three peaks';
+
+  @override
+  String get diamondsLayoutLabel => 'Diamonds';
+
+  @override
+  String get valleyLayoutLabel => 'Valley';
+
+  @override
+  String get interfaceSettingGroupTitle => 'Interface';
+
+  @override
+  String get nextGameeSettingGroupTitle => 'Next Game';
 }

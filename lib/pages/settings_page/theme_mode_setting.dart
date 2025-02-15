@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/settings_page/dropdown_item_container.dart';
+import 'package:tripeaks_neue/pages/settings_page/my_dropdown_button.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class ThemeModeSetting extends StatelessWidget {
   const ThemeModeSetting({super.key});
@@ -21,15 +19,11 @@ class ThemeModeSetting extends StatelessWidget {
       control: Observer(
         builder: (context) {
           return SizedBox(
-            child: DropdownButton<ThemeMode>(
+            child: MyDropdownButton<ThemeMode>(
               value: settings.themeMode,
-              elevation: 0,
-              dropdownColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-              borderRadius: c.commonBorderRadius,
-              underline: SizedBox(),
               items: [
                 for (final mode in ThemeMode.values)
-                  DropdownMenuItem(value: mode, child: DropDownItemContainer(text: _valueLabel(mode, s))),
+                  DropdownMenuItem(value: mode, child: DropdownItemText(text: _valueLabel(mode, s))),
               ],
               onChanged: (value) => Actions.handler(context, SetThemeModeIntent(value!))?.call(),
             ),

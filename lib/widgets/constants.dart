@@ -15,4 +15,4 @@ const double inactiveRankSize = 24.0;
 const double inactiveSuitSize = 20.0;
 const double requiredWidth = 1280;
 const double requiredHeight = 720;
-const double dropdownItemWidth = 140;
+const double dropdownItemWidth = 120;

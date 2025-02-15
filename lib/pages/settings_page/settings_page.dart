@@ -47,18 +47,23 @@ final class SettingsPageBody extends StatelessWidget {
             child: const Center(
               child: Column(
                 children: [
-                  CustomScrollView(
-                    shrinkWrap: true,
-                    slivers: [
-                      SliverPadding(padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0), sliver: GameItems()),
+                  Flexible(
+                    child: CustomScrollView(
+                      shrinkWrap: true,
+                      slivers: [
+                        SliverPadding(
+                          padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
+                          sliver: GameItems(),
+                        ),
 
-                      SliverPadding(
-                        padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-                        sliver: NextGameItems(),
-                      ),
+                        SliverPadding(
+                          padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                          sliver: NextGameItems(),
+                        ),
 
-                      SliverPadding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), sliver: UiItems()),
-                    ],
+                        SliverPadding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), sliver: UiItems()),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -85,7 +90,10 @@ class NextGameItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SliverToBoxAdapter(
-      child: SettingsGroupCard(title: "Next Game", children: [StartEmptySetting(), LayoutSetting()]),
+      child: SettingsGroupCard(
+        title: "Next Game",
+        children: [StartEmptySetting(), Divider(), LayoutSetting()],
+      ),
     );
   }
 }
@@ -112,10 +120,10 @@ class SettingsGroupCard extends StatelessWidget {
     final colours = Theme.of(context).colorScheme;
     return ListItemContainer(
       child: Card(
-        color: colours.surfaceContainer,
-        surfaceTintColor: colours.surfaceTint,
-        elevation: 1.0,
-        shadowColor: Colors.transparent,
+        color: colours.surface,
+        // surfaceTintColor: colours.surfaceTint,
+        // elevation: 2.0,
+        // shadowColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
           child: Column(
@@ -127,9 +135,10 @@ class SettingsGroupCard extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 12.0),
                   child: Text(
                     title!,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.outline),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: Theme.of(context).colorScheme.outline,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               for (final child in children) child,
