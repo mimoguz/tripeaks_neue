@@ -50,4 +50,20 @@ abstract class _Tile with Store {
       _isVisible = true;
     }
   }
+
+  /// This is a hack for the delayed board animation
+  @action
+  void hide() {
+    if (_isVisible) {
+      _isVisible = false;
+    }
+  }
+
+  /// This is a hack for the delayed board animation
+  @action
+  void show() {
+    if (!_isVisible) {
+      _isVisible = true;
+    }
+  }
 }

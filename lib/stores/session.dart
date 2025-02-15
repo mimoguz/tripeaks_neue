@@ -37,7 +37,7 @@ abstract class _Session with Store {
   void newGame() {
     final next = _makeRandomGame(layout, startEmpty);
     for (final tile in next.board) {
-      tile.take();
+      tile.hide();
     }
     _game = next;
     _setupBoard();
@@ -65,7 +65,7 @@ abstract class _Session with Store {
 
   void _setupBoard() async {
     for (final tile in _game.board) {
-      tile.put();
+      tile.show();
       await Future.delayed(_boardAnimDelay);
     }
   }

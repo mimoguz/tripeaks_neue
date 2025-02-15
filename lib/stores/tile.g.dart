@@ -106,6 +106,28 @@ mixin _$Tile on _Tile, Store {
   }
 
   @override
+  void hide() {
+    final _$actionInfo =
+        _$_TileActionController.startAction(name: '_Tile.hide');
+    try {
+      return super.hide();
+    } finally {
+      _$_TileActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void show() {
+    final _$actionInfo =
+        _$_TileActionController.startAction(name: '_Tile.show');
+    try {
+      return super.show();
+    } finally {
+      _$_TileActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 lastError: ${lastError}
