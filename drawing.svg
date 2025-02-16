@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="5.6568542"
-     inkscape:cx="1836.975"
-     inkscape:cy="49.674252"
+     inkscape:zoom="4"
+     inkscape:cx="1839.625"
+     inkscape:cy="65.750001"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -426,7 +426,11 @@
        height="90"
        id="page17"
        margin="0"
-       bleed="0" />
+       bleed="0"
+       inkscape:label="tropy"
+       inkscape:export-filename="images/4.0x/tropy.png"
+       inkscape:export-xdpi="384"
+       inkscape:export-ydpi="384" />
     <sodipodi:guide
        position="1855,5"
        orientation="1,0"
@@ -1651,7 +1655,7 @@
        inkscape:rounded="0"
        inkscape:randomized="0"
        d="M 1834,42 1832.6848,37.315219 1828,36 1832.6848,34.684781 1834,30 1835.3152,34.684781 1840,36 l -4.6848,1.315219 z"
-       transform="translate(-13.684781,5.684781)" />
+       transform="translate(-12.411106,6.1615243)" />
     <path
        sodipodi:type="star"
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:2.56149;paint-order:markers fill stroke"
