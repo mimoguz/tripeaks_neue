@@ -1,5 +1,4 @@
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
-import 'package:tripeaks_neue/pages/menu_page/menu_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -59,22 +58,6 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
     session.newGame();
-  }
-}
-
-final class NavigateToMenuAction extends ContextAction<NavigateToMenuIntent> {
-  @override
-  void invoke(NavigateToMenuIntent intent, [BuildContext? context]) {
-    if (context == null) {
-      return;
-    }
-    final navigator = Navigator.of(context);
-    if (intent.replace) {
-      navigator.pushReplacement(MaterialPageRoute(builder: (_) => MenuPage()));
-    } else {
-      _closeDrawer(context);
-      navigator.push(MaterialPageRoute(builder: (_) => MenuPage()));
-    }
   }
 }
 

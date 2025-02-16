@@ -267,6 +267,18 @@ abstract class AppLocalizations {
   /// **'Valley'**
   String get valleyLayoutLabel;
 
+  /// Value label of layout selection control when it is set to 'theatre'.
+  ///
+  /// In en, this message translates to:
+  /// **'Theatre'**
+  String get theatreLayoutLabel;
+
+  /// Value label of layout selection control when it is set to 'upDown'.
+  ///
+  /// In en, this message translates to:
+  /// **'Up & down'**
+  String get upDownLayoutLabel;
+
   /// Title of the settings group that contains ui related settings.
   ///
   /// In en, this message translates to:

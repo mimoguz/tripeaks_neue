@@ -35,12 +35,6 @@ final class NavigateToHomeIntent extends Intent {
   final bool replace;
 }
 
-final class NavigateToMenuIntent extends Intent {
-  const NavigateToMenuIntent({this.replace = false});
-
-  final bool replace;
-}
-
 final class NavigateToStatisticsIntent extends Intent {
   const NavigateToStatisticsIntent({this.replace = false});
 

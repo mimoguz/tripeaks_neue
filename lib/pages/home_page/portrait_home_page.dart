@@ -4,11 +4,13 @@ import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
+import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/pages/home_page/widgets/fireworks.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
@@ -25,9 +27,11 @@ class PortraitHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final scale = _scale(MediaQuery.sizeOf(context));
     final session = Provider.of<Session>(context);
+    final settings = Provider.of<Settings>(context);
     return Observer(
       builder: (context) {
         final game = session.game;
+        final back = BackOptions(showValue: session.showAll, decor: settings.decor.icon);
         return Actions(
           actions: <Type, Action<Intent>>{
             TakeIntent: TakeAction(game),
@@ -45,24 +49,8 @@ class PortraitHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     spacing: 24.0 * scale,
                     children: [
-                      Observer(
-                        builder: (context) {
-                          return PortraitHomePageBoard(
-                            game: game,
-                            scale: scale,
-                            showInactive: session.showAll,
-                          );
-                        },
-                      ),
-                      Observer(
-                        builder: (context) {
-                          return PortraitHomePageRightArea(
-                            game: game,
-                            scale: scale,
-                            showInactive: session.showAll,
-                          );
-                        },
-                      ),
+                      PortraitHomePageBoard(game: game, scale: scale, back: back),
+                      PortraitHomePageRightArea(game: game, scale: scale, back: back),
                       PortraitHomePageCounter(game: game, scale: scale),
                     ],
                   ),
@@ -83,16 +71,11 @@ class PortraitHomePage extends StatelessWidget {
 }
 
 final class PortraitHomePageBoard extends StatelessWidget {
-  const PortraitHomePageBoard({
-    super.key,
-    required this.game,
-    required this.scale,
-    required this.showInactive,
-  });
+  const PortraitHomePageBoard({super.key, required this.game, required this.scale, required this.back});
 
   final Game game;
   final double scale;
-  final bool showInactive;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +92,7 @@ final class PortraitHomePageBoard extends StatelessWidget {
                       duration: Durations.long4,
                       id: game.started.millisecondsSinceEpoch,
                     )
-                    : PortraitBoard(game: game, scale: scale, showInactive: showInactive),
+                    : PortraitBoard(game: game, scale: scale, back: back),
               ],
             ),
       ),
@@ -142,16 +125,11 @@ class PortraitHomePageCounter extends StatelessWidget {
 }
 
 class PortraitHomePageRightArea extends StatelessWidget {
-  const PortraitHomePageRightArea({
-    super.key,
-    required this.game,
-    required this.scale,
-    required this.showInactive,
-  });
+  const PortraitHomePageRightArea({super.key, required this.game, required this.scale, required this.back});
 
   final Game game;
   final double scale;
-  final bool showInactive;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -192,14 +170,14 @@ class PortraitHomePageRightArea extends StatelessWidget {
                             game.discard.last
                               ..open()
                               ..put(),
-                            showInactive: showInactive,
+                            back: back,
                             orientation: Orientation.portrait,
                           ),
                         ),
           ),
         ),
         Spacer(),
-        PortraitStock(game, scale: scale, showValues: showInactive),
+        PortraitStock(game, scale: scale, back: back),
         Observer(
           builder:
               (context) => GameButton.wide(

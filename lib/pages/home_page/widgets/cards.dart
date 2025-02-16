@@ -1,19 +1,18 @@
 import 'dart:math';
 
-import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/stores/data/card_value.dart';
-import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/stores/tile.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/stores/data/back_options.dart';
+import 'package:tripeaks_neue/stores/data/card_value.dart';
+import 'package:tripeaks_neue/stores/tile.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 final class TileCard extends StatelessWidget {
   const TileCard(
     this.tile, {
-    required this.showInactive,
+    required this.back,
     super.key,
     this.t = 0.5,
     this.orientation = Orientation.portrait,
@@ -21,7 +20,7 @@ final class TileCard extends StatelessWidget {
 
   final Tile tile;
   final double t;
-  final bool showInactive;
+  final BackOptions back;
   final Orientation orientation;
 
   @override
@@ -48,7 +47,7 @@ final class TileCard extends StatelessWidget {
                     tile.card,
                     t: (tile.pin.z < 0 ? t : (1.0 / (tile.pin.z + 1)) * 0.6 + 0.4),
                     key: childKey,
-                    showFace: showInactive,
+                    options: back,
                   ),
         );
       },
@@ -129,11 +128,11 @@ final class ActiveCardFace extends StatelessWidget {
 }
 
 final class InactiveCard extends StatelessWidget {
-  const InactiveCard(this.cardValue, {super.key, this.t = 0.5, this.showFace = false});
+  const InactiveCard(this.cardValue, {super.key, required this.options, this.t = 0.5});
 
   final double t;
   final CardValue cardValue;
-  final bool showFace;
+  final BackOptions options;
 
   @override
   Widget build(BuildContext context) {
@@ -144,25 +143,20 @@ final class InactiveCard extends StatelessWidget {
         theme.colorScheme.surface.withValues(alpha: 1.0 - t),
         colours.tertiaryContainer,
       ),
-      // color: Color.lerp(
-      //   colours.surfaceContainerHigh,
-      //   colours.secondaryContainer,
-      //   t,
-      // ),
       borderRadius: c.commonBorderRadius,
       child: SizedBox(
         width: c.cardSize,
         height: c.cardSize,
         child:
-            showFace
+            options.showValue
                 ? Stack(
                   children: [
-                    CardBack(t: t),
+                    CardBack(t: t, decor: options.decor),
                     Align(alignment: Alignment.topLeft, child: HorizontalSmallFace(cardValue)),
                     Align(alignment: Alignment.bottomLeft, child: HorizontalSmallFaceAlt(cardValue)),
                   ],
                 )
-                : CardBack(t: t),
+                : CardBack(t: t, decor: options.decor),
         // : SizedBox(),
       ),
     );
@@ -204,24 +198,19 @@ final class HorizontalSmallFaceAlt extends StatelessWidget {
 }
 
 class CardBack extends StatelessWidget {
-  const CardBack({super.key, this.t = 1.0});
+  const CardBack({super.key, required this.decor, this.t = 1.0});
 
   final double t;
+  final IconData decor;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(c.commonRadius - 2.0)),
-      child: Observer(
-        builder: (context) {
-          // TODO: Hoist this up, like showInactive param
-          final decor = Provider.of<Settings>(context).decor;
-          return Icon(
-            decor.icon,
-            size: c.cardSize,
-            color: _foreground, // Theme.of(context).colorScheme.surface.withAlpha(38),
-          );
-        },
+      child: Icon(
+        decor,
+        size: c.cardSize,
+        color: _foreground, // Theme.of(context).colorScheme.surface.withAlpha(38),
       ),
     );
   }

@@ -10,8 +10,10 @@ import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/fireworks.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
+import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
@@ -25,9 +27,11 @@ class LandscapeHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final scale = _scale(MediaQuery.sizeOf(context));
     final session = Provider.of<Session>(context);
+    final settings = Provider.of<Settings>(context);
     return Observer(
       builder: (context) {
         final game = session.game;
+        final back = BackOptions(showValue: session.showAll, decor: settings.decor.icon);
         return Actions(
           actions: <Type, Action<Intent>>{
             TakeIntent: TakeAction(game),
@@ -45,25 +49,9 @@ class LandscapeHomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     spacing: 24.0 * scale,
                     children: [
-                      Observer(
-                        builder: (context) {
-                          return LandscapeHomePageBoard(
-                            game: game,
-                            scale: scale,
-                            showInactive: session.showAll,
-                          );
-                        },
-                      ),
+                      LandscapeHomePageBoard(game: game, scale: scale, back: back),
                       LandscapeHomePageCounter(game: game, scale: scale),
-                      Observer(
-                        builder: (context) {
-                          return LandscapeHomePageBottomArea(
-                            game: game,
-                            scale: scale,
-                            showInactive: session.showAll,
-                          );
-                        },
-                      ),
+                      LandscapeHomePageBottomArea(game: game, scale: scale, back: back),
                     ],
                   ),
                 ),
@@ -83,16 +71,11 @@ class LandscapeHomePage extends StatelessWidget {
 }
 
 final class LandscapeHomePageBoard extends StatelessWidget {
-  const LandscapeHomePageBoard({
-    super.key,
-    required this.game,
-    required this.scale,
-    required this.showInactive,
-  });
+  const LandscapeHomePageBoard({super.key, required this.game, required this.scale, required this.back});
 
   final Game game;
   final double scale;
-  final bool showInactive;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +91,7 @@ final class LandscapeHomePageBoard extends StatelessWidget {
                         duration: Durations.long4,
                         id: game.started.millisecondsSinceEpoch,
                       )
-                      : LandscapeBoard(game: game, scale: scale, showInactive: showInactive),
+                      : LandscapeBoard(game: game, scale: scale, back: back),
             ),
       ),
     );
@@ -136,16 +119,11 @@ class LandscapeHomePageCounter extends StatelessWidget {
 }
 
 class LandscapeHomePageBottomArea extends StatelessWidget {
-  const LandscapeHomePageBottomArea({
-    super.key,
-    required this.game,
-    required this.scale,
-    required this.showInactive,
-  });
+  const LandscapeHomePageBottomArea({super.key, required this.game, required this.scale, required this.back});
 
   final Game game;
   final double scale;
-  final bool showInactive;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -185,14 +163,14 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
                             game.discard.last
                               ..open()
                               ..put(),
-                            showInactive: false,
+                            back: back,
                             orientation: Orientation.landscape,
                           ),
                         ),
           ),
         ),
         Spacer(),
-        LandscapeStock(game, scale: scale, showValues: showInactive),
+        LandscapeStock(game, scale: scale, back: back),
         Observer(
           builder:
               (context) => GameButton.narrow(

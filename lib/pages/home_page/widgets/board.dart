@@ -1,14 +1,15 @@
+import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:flutter/material.dart';
 
 class LandscapeBoard extends StatelessWidget {
-  const LandscapeBoard({super.key, required this.game, required this.showInactive, required this.scale});
+  const LandscapeBoard({super.key, required this.game, required this.back, required this.scale});
 
   final Game game;
   final double scale;
-  final bool showInactive;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class LandscapeBoard extends StatelessWidget {
                 Positioned(
                   left: tile.pin.crossAxis * quarter,
                   top: tile.pin.mainAxis * rowShift,
-                  child: TileCard(tile, showInactive: showInactive, orientation: Orientation.landscape),
+                  child: TileCard(tile, back: back, orientation: Orientation.landscape),
                 ),
             ],
           ),
@@ -42,11 +43,11 @@ class LandscapeBoard extends StatelessWidget {
 }
 
 class PortraitBoard extends StatelessWidget {
-  const PortraitBoard({super.key, required this.game, required this.showInactive, required this.scale});
+  const PortraitBoard({super.key, required this.game, required this.back, required this.scale});
 
   final Game game;
   final double scale;
-  final bool showInactive;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class PortraitBoard extends StatelessWidget {
                     Positioned(
                       top: tile.pin.crossAxis * quarter,
                       left: tile.pin.mainAxis * quarter,
-                      child: TileCard(tile, showInactive: showInactive, orientation: Orientation.portrait),
+                      child: TileCard(tile, back: back, orientation: Orientation.portrait),
                     ),
                 ],
               ),

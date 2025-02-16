@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/settings_page/my_dropdown_button.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -15,19 +14,26 @@ class LayoutSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
     final s = AppLocalizations.of(context)!;
-    return HorizontalSettingTile(
+    final radioTextStyle = TextStyle(fontSize: 14.0);
+    return VerticalSettingTile(
       title: Text(s.layoutControl),
       control: Observer(
         builder: (context) {
-          return SizedBox(
-            child: MyDropdownButton<Peaks>(
-              value: session.layout,
-              items: [
-                for (final layout in Peaks.values)
-                  DropdownMenuItem(value: layout, child: DropdownItemText(text: _valueLabel(layout, s))),
-              ],
-              onChanged: (value) => Actions.handler(context, SetLayoutIntent(value!))?.call(),
-            ),
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final layout in Peaks.values)
+                ListTile(
+                  selected: layout == session.layout,
+                  leading: Radio<Peaks>(
+                    value: layout,
+                    groupValue: session.layout,
+                    onChanged: (value) => Actions.handler(context, SetLayoutIntent(value!))?.call(),
+                  ),
+                  title: Text(_valueLabel(layout, s), style: radioTextStyle),
+                  onTap: () => Actions.handler(context, SetLayoutIntent(layout))?.call(),
+                ),
+            ],
           );
         },
       ),
@@ -38,5 +44,6 @@ class LayoutSetting extends StatelessWidget {
     Peaks.threePeaks => s.threePeaksLayoutLabel,
     Peaks.diamonds => s.diamondsLayoutLabel,
     Peaks.valley => s.valleyLayoutLabel,
+    Peaks.upDown => s.upDownLayoutLabel,
   };
 }

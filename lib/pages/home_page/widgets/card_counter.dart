@@ -39,7 +39,7 @@ class CardCounter extends StatelessWidget {
                         top: 0.0,
                         left: (count - 1) * segmentWidth + left,
                         duration: Durations.medium3,
-                        curve: Curves.easeInOut,
+                        curve: Curves.easeInOutCirc,
                         child: CounterSegment(width: segmentWidth),
                       ),
                   ],
@@ -47,7 +47,7 @@ class CardCounter extends StatelessWidget {
               );
             },
           ),
-        )
+        ),
       ],
     );
   }

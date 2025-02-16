@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
+import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class LandscapeStock extends StatelessWidget {
-  const LandscapeStock(this.game, {super.key, required this.scale, required this.showValues});
+  const LandscapeStock(this.game, {super.key, required this.scale, required this.back});
 
   final Game game;
   final double scale;
-  final bool showValues;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class LandscapeStock extends StatelessWidget {
                     TileCard(
                       tile,
                       t: game.stock.length > 1 ? (index / game.stock.length) * 0.4 + 0.6 : 1.0,
-                      showInactive: showValues,
+                      back: back,
                     ),
                     if (index < game.stock.length - 1) const TileShadow(centre: _shadowOrigin),
                   ],
@@ -43,11 +44,11 @@ class LandscapeStock extends StatelessWidget {
 }
 
 class PortraitStock extends StatelessWidget {
-  const PortraitStock(this.game, {super.key, required this.scale, required this.showValues});
+  const PortraitStock(this.game, {super.key, required this.scale, required this.back});
 
   final Game game;
   final double scale;
-  final bool showValues;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class PortraitStock extends StatelessWidget {
                     TileCard(
                       tile,
                       t: game.stock.length > 1 ? (index / game.stock.length) * 0.4 + 0.6 : 1.0,
-                      showInactive: showValues,
+                      back: back,
                     ),
                     if (index < game.stock.length - 1) const TileShadow(centre: _shadowOrigin),
                   ],

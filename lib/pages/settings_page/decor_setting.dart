@@ -29,15 +29,13 @@ class _DecorSettingState extends State<DecorSetting> {
 
     return VerticalSettingTile(
       title: Text(s.decorControl),
-      control: Expanded(
-        child: LayoutBuilder(
-          builder:
-              (context, constraints) => Wrap(
-                spacing: 12.0,
-                runSpacing: 12.0,
-                children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
-              ),
-        ),
+      control: LayoutBuilder(
+        builder:
+            (context, constraints) => Wrap(
+              spacing: 12.0,
+              runSpacing: 12.0,
+              children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
+            ),
       ),
     );
   }

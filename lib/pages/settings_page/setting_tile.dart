@@ -37,7 +37,7 @@ class VerticalSettingTile extends StatelessWidget {
         spacing: 8.0,
         children: [
           Row(children: [DefaultTextStyle(style: textTheme.bodyMedium!, child: title)]),
-          Row(children: [control]),
+          Row(children: [Flexible(child: control)]),
         ],
       ),
     );

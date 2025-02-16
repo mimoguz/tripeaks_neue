@@ -174,6 +174,18 @@
         "context": "settings",
         "description": "Value label of layout selection control when it is set to 'valley'."
     },
+    "theatreLayoutLabel": "Theatre",
+    "@theatreLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'theatre'."
+    },
+    "upDownLayoutLabel": "Up & down",
+    "@upDownLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'upDown'."
+    },
     "interfaceSettingGroupTitle": "Interface",
     "@interfaceSettingGroupTitle": {
         "type": "text",

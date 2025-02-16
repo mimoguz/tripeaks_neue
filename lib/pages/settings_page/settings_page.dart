@@ -26,7 +26,13 @@ class SettingsPage extends StatelessWidget {
       child: Builder(
         builder: (context) {
           return SafeArea(
-            child: Scaffold(appBar: AppBar(title: Text(s.settingsTitle)), body: const SettingsPageBody()),
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(s.settingsTitle),
+                backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+              ),
+              body: const SettingsPageBody(),
+            ),
           );
         },
       ),

@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/settings_page/my_dropdown_button.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 
@@ -14,19 +13,26 @@ class ThemeModeSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
     final s = AppLocalizations.of(context)!;
-    return HorizontalSettingTile(
+    final radioTextStyle = TextStyle(fontSize: 14.0);
+    return VerticalSettingTile(
       title: Text(s.themeModeControl),
       control: Observer(
         builder: (context) {
-          return SizedBox(
-            child: MyDropdownButton<ThemeMode>(
-              value: settings.themeMode,
-              items: [
-                for (final mode in ThemeMode.values)
-                  DropdownMenuItem(value: mode, child: DropdownItemText(text: _valueLabel(mode, s))),
-              ],
-              onChanged: (value) => Actions.handler(context, SetThemeModeIntent(value!))?.call(),
-            ),
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final mode in ThemeMode.values)
+                ListTile(
+                  selected: mode == settings.themeMode,
+                  leading: Radio<ThemeMode>(
+                    value: mode,
+                    groupValue: settings.themeMode,
+                    onChanged: (value) => Actions.handler(context, SetThemeModeIntent(value!))?.call(),
+                  ),
+                  title: Text(_valueLabel(mode, s), style: radioTextStyle),
+                  onTap: () => Actions.handler(context, SetThemeModeIntent(mode))?.call(),
+                ),
+            ],
           );
         },
       ),
