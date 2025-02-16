@@ -31,7 +31,7 @@ flutter:
   # generate: true
 
   assets:
-    - images/title.png
+    - images/tropy.png
 
   fonts:
     - family: Peaks-Neue

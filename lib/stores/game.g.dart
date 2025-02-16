@@ -97,6 +97,23 @@ mixin _$Game on _Game, Store {
     });
   }
 
+  late final _$_chainAtom = Atom(name: '_Game._chain', context: context);
+
+  int get chain {
+    _$_chainAtom.reportRead();
+    return super._chain;
+  }
+
+  @override
+  int get _chain => chain;
+
+  @override
+  set _chain(int value) {
+    _$_chainAtom.reportWrite(value, super._chain, () {
+      super._chain = value;
+    });
+  }
+
   late final _$_GameActionController =
       ActionController(name: '_Game', context: context);
 

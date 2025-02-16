@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 
 class Fireworks extends StatefulWidget {
   const Fireworks({
@@ -8,6 +10,7 @@ class Fireworks extends StatefulWidget {
     required this.color,
     required this.duration,
     required this.id,
+    required this.score,
     this.maxRadius = 16.0,
     this.maxDistance = 200,
     this.trailThickness = 2.0,
@@ -19,6 +22,7 @@ class Fireworks extends StatefulWidget {
   final double maxDistance;
   final double trailThickness;
   final int id;
+  final int score;
   final int particleCount;
   final Duration duration;
 
@@ -33,10 +37,7 @@ class _FireworksState extends State<Fireworks> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
     _controller.addListener(_animate);
     _controller.forward();
   }
@@ -66,31 +67,62 @@ class _FireworksState extends State<Fireworks> with SingleTickerProviderStateMix
           Center(
             child: AnimatedSwitcher(
               duration: widget.duration,
-              transitionBuilder: (child, animation) => ScaleTransition(
-                scale: animation,
-                child: child,
-              ),
-              child: Icon(
-                key: ValueKey(widget.id + 1),
-                Icons.stars,
-                size: 48.0,
-                color: Theme.of(context).colorScheme.outlineVariant,
-              ),
-            ),
-          ),
-          Center(
-            child: CustomPaint(
-              painter: _FireworkPainter(
-                t: _t,
-                color: widget.color,
-                maxRadius: widget.maxRadius,
-                maxDistance: widget.maxDistance,
-                trailThickness: widget.trailThickness,
-                particleCount: widget.particleCount,
-              ),
+              transitionBuilder:
+                  (child, animation) => SlideTransition(
+                    position: Tween<Offset>(begin: Offset(0, 1), end: Offset.zero).animate(animation),
+                    child: FadeTransition(opacity: animation, child: child),
+                  ),
+              child: ClearedCard(key: ValueKey(widget.id), score: widget.score),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ClearedCard extends StatelessWidget {
+  const ClearedCard({super.key, required this.score});
+
+  final int score;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = AppLocalizations.of(context)!;
+    return Card.filled(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 300),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 16.0,
+            children: [
+              Image.asset("images/tropy.png", width: 90, height: 90),
+              Text("Cleared!", style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  Icon(Icons.stars, size: 24.0, color: Theme.of(context).colorScheme.tertiary),
+                  Text("$score", style: Theme.of(context).textTheme.labelMedium),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: Actions.handler(context, const NewGameIntent()),
+                    child: Text(s.newGameButtonLabel),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -104,9 +136,10 @@ class _FireworkPainter extends CustomPainter {
     required this.maxDistance,
     required this.trailThickness,
     required this.particleCount,
-  }) : _paint = Paint()
-          ..color = color
-          ..strokeWidth = trailThickness;
+  }) : _paint =
+           Paint()
+             ..color = color
+             ..strokeWidth = trailThickness;
 
   final double t;
   final double maxRadius;

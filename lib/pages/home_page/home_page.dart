@@ -12,19 +12,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return SafeArea(
-      child: Scaffold(
-        drawerScrimColor: Colors.transparent,
-        drawer: Actions(
-          actions: <Type, Action<Intent>>{
-            NewGameIntent: NewGameAction(),
-            NavigateToSettingsIntent: NavigateToSettingsAction(),
-            NewGameWithLayoutIntent: NewGameWithLayoutAction(),
-          },
-          child: HomePageDrawer(),
-        ),
-        body: Builder(
+      child: Actions(
+        actions: <Type, Action<Intent>>{
+          NewGameIntent: NewGameAction(),
+          NavigateToSettingsIntent: NavigateToSettingsAction(),
+          NewGameWithLayoutIntent: NewGameWithLayoutAction(),
+        },
+        child: Builder(
           builder: (context) {
-            return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
+            return Scaffold(
+              drawerScrimColor: Colors.transparent,
+              drawer: HomePageDrawer(),
+              body: Builder(
+                builder: (context) {
+                  return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
+                },
+              ),
+            );
           },
         ),
       ),

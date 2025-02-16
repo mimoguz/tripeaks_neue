@@ -21,6 +21,7 @@ class Game extends _Game with _$Game {
     required super.isEnded,
     required super.score,
     required super.remaining,
+    required super.chain,
   });
 
   factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false}) {
@@ -43,7 +44,7 @@ class Game extends _Game with _$Game {
       board: ObservableList.of(board),
       stock: ObservableList.of(stock),
       discard: ObservableList.of(discard),
-      history: ObservableList<Pin>(),
+      history: ObservableList<Event>(),
       started: DateTime.now(),
       startsEmpty: startsEmpty,
       isCleared: false,
@@ -51,6 +52,7 @@ class Game extends _Game with _$Game {
       isEnded: isStalled,
       score: 0,
       remaining: lo.cardCount,
+      chain: 0,
     );
   }
 
@@ -75,11 +77,13 @@ abstract class _Game with Store {
     required bool isEnded,
     required int score,
     required int remaining,
+    required int chain,
   }) : _isCleared = isCleared,
        _isStalled = isStalled,
        _isEnded = isEnded,
        _score = score,
-       _remaining = remaining;
+       _remaining = remaining,
+       _chain = chain;
 
   final Layout layout;
 
@@ -89,7 +93,7 @@ abstract class _Game with Store {
 
   ObservableList<Tile> discard;
 
-  ObservableList<Pin> history;
+  ObservableList<Event> history;
 
   bool startsEmpty;
 
@@ -114,6 +118,9 @@ abstract class _Game with Store {
   @readonly
   int _remaining;
 
+  @readonly
+  int _chain;
+
   @action
   void take(Pin pin) {
     final tile = board[pin.index];
@@ -129,11 +136,14 @@ abstract class _Game with Store {
     _openBelow(pin);
 
     _remaining--;
-    history.add(pin);
+    _chain++;
+    history.add(Event(pin, 0));
 
     if (_remaining == 0) {
       _isCleared = true;
       _isEnded = true;
+      // Clearing the game obviously ends a chain, so you get a score
+      _score += _chain * _chain + layout.cardCount;
       justCleared = true;
     }
   }
@@ -144,12 +154,17 @@ abstract class _Game with Store {
       return;
     }
 
+    // You only get a score when a chain is completed
+    final chainScore = _chain * _chain;
+    _score += chainScore;
+    _chain = 0;
+    history.add(Event(Pin.unpin, chainScore));
+
     discard.add(
       stock.removeLast()
         ..open()
         ..put(),
     );
-    history.add(Pin.unpin);
 
     if (stock.isEmpty) {
       final top = discard.last.card;
@@ -172,16 +187,20 @@ abstract class _Game with Store {
     _isStalled = false;
     justStalled = false;
 
-    final pin = history.removeLast();
+    final event = history.removeLast();
     final card = discard.removeLast().card;
 
-    if (pin.index >= 0) {
-      board[pin.index].put();
+    _score -= event.score;
+
+    if (event.pin.index >= 0) {
+      board[event.pin.index].put();
       _remaining++;
-      _closeBelow(pin);
+      _chain--;
+      _closeBelow(event.pin);
       return;
     }
 
+    _chain = 0;
     stock.add(
       Tile(card: card, pin: Pin.unpin)
         ..put()
@@ -209,4 +228,11 @@ abstract class _Game with Store {
         ..close();
     }
   }
+}
+
+final class Event {
+  Event(this.pin, this.score);
+
+  final Pin pin;
+  final int score;
 }

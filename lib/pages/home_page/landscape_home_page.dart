@@ -90,6 +90,7 @@ final class LandscapeHomePageBoard extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary,
                         duration: Durations.long4,
                         id: game.started.millisecondsSinceEpoch,
+                        score: game.score,
                       )
                       : LandscapeBoard(game: game, scale: scale, back: back),
             ),
