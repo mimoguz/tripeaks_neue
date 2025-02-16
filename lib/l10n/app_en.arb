@@ -197,5 +197,42 @@
         "type": "text",
         "context": "settings",
         "description": "Title of the settings group that contains settings which will be used starting from next new game."
+    },
+    "selectLayoutDialogTitle": "Select Layout",
+    "@selectLayoutDialogTitle": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Title of the dialog that will open when 'New Game with Layout...' action is called."
+    }
+    ,
+    "additionalOptions": "Additional Options",
+    "@additionalOptions": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Title of the additional options section of the dialog."
+    },
+    "startsEmptyCheckboxLabel": "Start with an empty discard pile",
+    "@startsEmptyCheckboxLabel": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Label of the checkbox that sets if the discard pile should be empty at the beginning of the game."
+    },
+    "showAllCheckboxLabel": "Show values of closed cards",
+    "@showAllCheckboxLabel": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Label of the checkbox that sets if the values of closed cards should be shown."
+    },
+    "cancelButtonLabel": "Cancel",
+    "@cancelButtonLabel": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Label of the cancel button of the dialog."
+    },
+    "newGameButtonLabel": "New Game",
+    "@newGameButtonLabel": {
+        "type": "text",
+        "context": "selectLayoutDialog",
+        "description": "Label of the new game button of the dialog."
     }
 }

@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
           actions: <Type, Action<Intent>>{
             NewGameIntent: NewGameAction(),
             NavigateToSettingsIntent: NavigateToSettingsAction(),
+            NewGameWithLayoutIntent: NewGameWithLayoutAction(),
           },
           child: HomePageDrawer(),
         ),

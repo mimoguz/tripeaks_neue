@@ -290,6 +290,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next Game'**
   String get nextGameeSettingGroupTitle;
+
+  /// Title of the dialog that will open when 'New Game with Layout...' action is called.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Layout'**
+  String get selectLayoutDialogTitle;
+
+  /// Title of the additional options section of the dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional Options'**
+  String get additionalOptions;
+
+  /// Label of the checkbox that sets if the discard pile should be empty at the beginning of the game.
+  ///
+  /// In en, this message translates to:
+  /// **'Start with an empty discard pile'**
+  String get startsEmptyCheckboxLabel;
+
+  /// Label of the checkbox that sets if the values of closed cards should be shown.
+  ///
+  /// In en, this message translates to:
+  /// **'Show values of closed cards'**
+  String get showAllCheckboxLabel;
+
+  /// Label of the cancel button of the dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButtonLabel;
+
+  /// Label of the new game button of the dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'New Game'**
+  String get newGameButtonLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

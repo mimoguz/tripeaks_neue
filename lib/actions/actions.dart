@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 
 import 'intents.dart';
 
@@ -90,6 +91,22 @@ final class NavigateToSettingsAction extends ContextAction<NavigateToSettingsInt
       _closeDrawer(context);
       navigator.push(MaterialPageRoute(builder: (_) => SettingsPage()));
     }
+  }
+}
+
+final class NewGameWithLayoutAction extends ContextAction<NewGameWithLayoutIntent> {
+  @override
+  void invoke(NewGameWithLayoutIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    _closeDrawer(context);
+    showAdaptiveDialog(
+      context: context,
+      builder: (_) => SelectLayoutDialog(),
+      barrierDismissible: true,
+      barrierColor: Colors.transparent,
+    );
   }
 }
 

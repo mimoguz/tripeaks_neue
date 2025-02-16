@@ -106,4 +106,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nextGameeSettingGroupTitle => 'Next Game';
+
+  @override
+  String get selectLayoutDialogTitle => 'Select Layout';
+
+  @override
+  String get additionalOptions => 'Additional Options';
+
+  @override
+  String get startsEmptyCheckboxLabel => 'Start with an empty discard pile';
+
+  @override
+  String get showAllCheckboxLabel => 'Show values of closed cards';
+
+  @override
+  String get cancelButtonLabel => 'Cancel';
+
+  @override
+  String get newGameButtonLabel => 'New Game';
 }

@@ -70,7 +70,7 @@ class HomePageDrawer extends StatelessWidget {
                   title: Text(s.newGameWithLayoutAction),
                   shape: StadiumBorder(),
                   visualDensity: VisualDensity.comfortable,
-                  onTap: () {},
+                  onTap: Actions.handler(context, const NewGameWithLayoutIntent()),
                 ),
                 ListTile(
                   style: ListTileStyle.drawer,
