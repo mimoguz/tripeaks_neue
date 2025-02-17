@@ -96,10 +96,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get valleyLayoutLabel => 'Valley';
 
   @override
-  String get theatreLayoutLabel => 'Theatre';
-
-  @override
-  String get upDownLayoutLabel => 'Up & down';
+  String get upDownLayoutLabel => 'Opposing directions';
 
   @override
   String get interfaceSettingGroupTitle => 'Interface';

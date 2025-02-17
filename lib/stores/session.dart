@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/game.dart';
@@ -39,7 +42,7 @@ abstract class _Session with Store {
       tile.hide();
     }
     _game = next;
-    _setupBoard();
+    _setupBoard(next);
   }
 
   static Game _makeRandomGame(Peaks layout, bool startEmpty) {
@@ -60,12 +63,12 @@ abstract class _Session with Store {
     return make();
   }
 
-  void _setupBoard() async {
+  void _setupBoard(Game next) async {
     for (final tile in _game.board) {
       tile.show();
-      await Future.delayed(_boardAnimDelay);
+      await Future.delayed(_addAnimDelay);
     }
   }
 
-  static const Duration _boardAnimDelay = Duration(milliseconds: 16);
+  static const Duration _addAnimDelay = Duration(milliseconds: 16);
 }

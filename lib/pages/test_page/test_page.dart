@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/fireworks.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
@@ -17,7 +17,7 @@ class _TestPageState extends State<TestPage> {
       body: Center(
         child: Column(
           children: [
-            Fireworks(color: Colors.amber, duration: Durations.long4, id: _id, score: 100),
+            ClearedCardAnimated(id: _id, score: 100, show: true),
             FilledButton(onPressed: () => setState(() => _id++), child: Text("Set id")),
           ],
         ),

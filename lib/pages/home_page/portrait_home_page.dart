@@ -1,24 +1,24 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/pages/home_page/widgets/fireworks.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
 
 class PortraitHomePage extends StatelessWidget {
   const PortraitHomePage({super.key});
@@ -82,18 +82,21 @@ final class PortraitHomePageBoard extends StatelessWidget {
     return Expanded(
       child: Observer(
         builder:
-            (context) => Row(
+            (context) => Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                game.isCleared
-                    ? Fireworks(
-                      key: ValueKey(game.started.millisecondsSinceEpoch),
-                      color: Theme.of(context).colorScheme.primary,
-                      duration: Durations.long4,
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    PortraitBoard(game: game, scale: scale, back: back),
+                    ClearedCardAnimated(
                       id: game.started.millisecondsSinceEpoch,
                       score: game.score,
-                    )
-                    : PortraitBoard(game: game, scale: scale, back: back),
+                      show: game.isCleared,
+                    ),
+                  ],
+                ),
               ],
             ),
       ),

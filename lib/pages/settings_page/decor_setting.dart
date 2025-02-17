@@ -31,10 +31,15 @@ class _DecorSettingState extends State<DecorSetting> {
       title: Text(s.decorControl),
       control: LayoutBuilder(
         builder:
-            (context, constraints) => Wrap(
-              spacing: 12.0,
-              runSpacing: 12.0,
-              children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
+            (context, constraints) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Center(
+                child: Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
+                ),
+              ),
             ),
       ),
     );

@@ -55,30 +55,26 @@ class PortraitBoard extends StatelessWidget {
     final quarter = cellSize / 2.0;
     final width = quarter * game.layout.height;
     final height = quarter * game.layout.width;
-    return Row(
-      children: [
-        SizedBox(
-          width: width * scale,
-          height: height * scale,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: SizedBox(
-              width: width,
-              height: height,
-              child: Stack(
-                children: [
-                  for (final tile in game.board)
-                    Positioned(
-                      top: tile.pin.crossAxis * quarter,
-                      left: tile.pin.mainAxis * quarter,
-                      child: TileCard(tile, back: back, orientation: Orientation.portrait),
-                    ),
-                ],
-              ),
-            ),
+    return SizedBox(
+      width: width * scale,
+      height: height * scale,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: SizedBox(
+          width: width,
+          height: height,
+          child: Stack(
+            children: [
+              for (final tile in game.board)
+                Positioned(
+                  top: tile.pin.crossAxis * quarter,
+                  left: tile.pin.mainAxis * quarter,
+                  child: TileCard(tile, back: back, orientation: Orientation.portrait),
+                ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 }

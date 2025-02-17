@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
-import 'package:tripeaks_neue/pages/test_page/test_page.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +35,7 @@ class MainApp extends StatelessWidget {
             theme: _defaultLight,
             darkTheme: _defaultDark,
             scrollBehavior: const MyCustomScrollBehavior(),
-            home: TestPage(), //HomePage(),
+            home: HomePage(), // TestPage(),
           ),
     );
   }

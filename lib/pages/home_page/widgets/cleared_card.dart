@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
+
+class ClearedCardAnimated extends StatelessWidget {
+  const ClearedCardAnimated({super.key, required this.score, required this.id, required this.show});
+
+  final int score;
+  final int id;
+  final bool show;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: Durations.medium1,
+      transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
+      child: show ? ClearedCard(key: ValueKey(id), score: score) : SizedBox(key: const ValueKey(-1)),
+    );
+  }
+}
+
+final class ClearedCard extends StatelessWidget {
+  const ClearedCard({super.key, required this.score});
+
+  final int score;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = AppLocalizations.of(context)!;
+    return Card.filled(
+      color: Theme.of(context).colorScheme.surfaceContainer,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 240),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 14.0,
+            children: [
+              Image.asset("images/tropy.png", width: 90, height: 90),
+              Text("Cleared!", style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  Icon(Icons.stars, size: 24.0, color: Theme.of(context).colorScheme.tertiary),
+                  Text("$score", style: Theme.of(context).textTheme.labelMedium),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: Actions.handler(context, const NewGameIntent()),
+                    child: Text(s.newGameButtonLabel),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

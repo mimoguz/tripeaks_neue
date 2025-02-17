@@ -26,7 +26,8 @@ enum Decor {
   crosshatch(200),
   ohRain(300),
   neue(400),
-  solar(500);
+  sevenMiles(500),
+  solar(600);
 
   final int value;
 
@@ -42,6 +43,7 @@ extension DecorExt on Decor {
     Decor.crosshatch => CustomIcons.backCrossHatch,
     Decor.neue => CustomIcons.backNeue,
     Decor.ohRain => CustomIcons.backOhRain,
+    Decor.sevenMiles => CustomIcons.backSevenMiles,
     Decor.solar => CustomIcons.backSolar,
   };
 }

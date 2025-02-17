@@ -7,7 +7,7 @@ import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/fireworks.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
@@ -82,17 +82,22 @@ final class LandscapeHomePageBoard extends StatelessWidget {
     return Expanded(
       child: Observer(
         builder:
-            (context) => Center(
-              child:
-                  game.isCleared
-                      ? Fireworks(
-                        key: ValueKey(game.started.millisecondsSinceEpoch),
-                        color: Theme.of(context).colorScheme.primary,
-                        duration: Durations.long4,
-                        id: game.started.millisecondsSinceEpoch,
-                        score: game.score,
-                      )
-                      : LandscapeBoard(game: game, scale: scale, back: back),
+            (context) => Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    LandscapeBoard(game: game, scale: scale, back: back),
+                    ClearedCardAnimated(
+                      id: game.started.millisecondsSinceEpoch,
+                      score: game.score,
+                      show: game.isCleared,
+                    ),
+                  ],
+                ),
+              ],
             ),
       ),
     );
