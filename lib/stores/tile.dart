@@ -66,4 +66,8 @@ abstract class _Tile with Store {
       _isVisible = true;
     }
   }
+
+  Tile clone() {
+    return Tile(card: card, pin: pin);
+  }
 }

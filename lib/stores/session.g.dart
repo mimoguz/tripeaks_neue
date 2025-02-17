@@ -87,6 +87,17 @@ mixin _$Session on _Session, Store {
   }
 
   @override
+  void restart() {
+    final _$actionInfo =
+        _$_SessionActionController.startAction(name: '_Session.restart');
+    try {
+      return super.restart();
+    } finally {
+      _$_SessionActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 layout: ${layout},

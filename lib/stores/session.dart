@@ -42,6 +42,16 @@ abstract class _Session with Store {
     _setupBoard(next);
   }
 
+  @action
+  void restart() {
+    final next = _game.rebuid();
+    for (final tile in next.board) {
+      tile.hide();
+    }
+    _game = next;
+    _setupBoard(next);
+  }
+
   static Game _makeRandomGame(Peaks layout, bool startEmpty) {
     final layoutObj = layout.implementation;
 

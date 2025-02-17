@@ -62,6 +62,20 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
   }
 }
 
+final class RestartAction extends ContextAction<RestartIntent> {
+  RestartAction();
+
+  @override
+  void invoke(RestartIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    _closeDrawer(context);
+    final session = Provider.of<Session>(context, listen: false);
+    session.restart();
+  }
+}
+
 final class NavigateToHomeAction extends ContextAction<NavigateToHomeIntent> {
   @override
   void invoke(NavigateToHomeIntent intent, [BuildContext? context]) {

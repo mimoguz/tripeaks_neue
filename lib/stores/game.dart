@@ -37,7 +37,7 @@ class Game extends _Game with _$Game {
         }).toList();
     final discard = startsEmpty ? <Tile>[] : <Tile>[Tile(card: deck.removeLast(), pin: Pin.unpin)];
     final stock = deck.map((card) => Tile(card: card, pin: Pin.unpin)).toList();
-    final isStalled = !_checkMoves(board: board, stock: stock, discard: discard);
+    final isStalled = !_Game._checkMoves(board: board, stock: stock, discard: discard);
 
     return Game._(
       layout: lo,
@@ -55,12 +55,6 @@ class Game extends _Game with _$Game {
       chain: 0,
     );
   }
-
-  static bool _checkMoves({
-    required List<Tile> board,
-    required List<Tile> stock,
-    required List<Tile> discard,
-  }) => true;
 }
 
 abstract class _Game with Store {
@@ -208,6 +202,45 @@ abstract class _Game with Store {
     );
   }
 
+  Game rebuid() {
+    final reBoard =
+        board.map((it) {
+          final reTile = it.clone();
+          if (reTile.pin.startsOpen) {
+            reTile.open();
+          }
+          return reTile;
+        }).toList();
+    final reStock = stock.map((it) => it.clone()).toList();
+    final reDiscard = discard.map((it) => it.clone()).toList();
+    for (final event in history.reversed) {
+      final reTile = reDiscard.removeLast();
+      if (event.pin.index <= 0) {
+        reStock.add(
+          reTile
+            ..put()
+            ..close(),
+        );
+      }
+    }
+    final isStalled = !_checkMoves(board: reBoard, stock: reStock, discard: reDiscard);
+    return Game._(
+      layout: layout,
+      board: ObservableList.of(reBoard),
+      stock: ObservableList.of(reStock),
+      discard: ObservableList.of(reDiscard),
+      history: ObservableList<Event>(),
+      started: DateTime.now(),
+      startsEmpty: startsEmpty,
+      isCleared: false,
+      isStalled: isStalled,
+      isEnded: false,
+      score: 0,
+      remaining: layout.cardCount,
+      chain: 0,
+    );
+  }
+
   void _openBelow(Pin pin) {
     final below = layout.below[pin.index];
     for (final i in below) {
@@ -228,6 +261,13 @@ abstract class _Game with Store {
         ..close();
     }
   }
+
+  // TODO: Implement this
+  static bool _checkMoves({
+    required List<Tile> board,
+    required List<Tile> stock,
+    required List<Tile> discard,
+  }) => true;
 }
 
 final class Event {

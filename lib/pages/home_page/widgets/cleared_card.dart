@@ -44,10 +44,16 @@ final class ClearedCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 8,
+                spacing: 2,
                 children: [
                   Icon(Icons.stars, size: 24.0, color: Theme.of(context).colorScheme.tertiary),
-                  Text("$score", style: Theme.of(context).textTheme.labelMedium),
+                  Text(
+                    "$score",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.tertiary,
+                      fontVariations: [FontVariation("wght", 600)],
+                    ),
+                  ),
                 ],
               ),
               Row(
