@@ -1,7 +1,6 @@
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 
-// TODO: Per-layout statistics on separate tabs, most favourite layout, sort by score then date
 final class PlayerStatistics {
   PlayerStatistics.empty()
     : overallStatistics = Statistics.empty(),
@@ -63,7 +62,13 @@ final class Statistics {
     final updatedBestGames = List<SingleGameStatistics>.unmodifiable(
       (bestGames.toList()
             ..add(game)
-            ..sort((a, b) => b.score.compareTo(a.score)))
+            ..sort((a, b) {
+              final scoreOrder = b.score.compareTo(a.score);
+              if (scoreOrder != 0) {
+                return scoreOrder;
+              }
+              return b.ended.compareTo(a.ended);
+            }))
           .take(10),
     );
 

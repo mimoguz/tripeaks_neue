@@ -127,9 +127,6 @@ class SettingsGroupCard extends StatelessWidget {
     return ListItemContainer(
       child: Card(
         color: colours.surface,
-        // surfaceTintColor: colours.surfaceTint,
-        // elevation: 2.0,
-        // shadowColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
           child: Column(

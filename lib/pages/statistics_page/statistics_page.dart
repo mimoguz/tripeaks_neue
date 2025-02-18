@@ -21,14 +21,19 @@ class StatisticsPage extends StatelessWidget {
           return Observer(
             builder: (context) {
               final statistics = session.statistics;
-              final perLayoutStats = statistics.perLayoutStatistics.entries.toList();
+              final perLayoutStats =
+                  statistics.perLayoutStatistics.entries.toList()
+                    ..sort((a, b) => a.key.index.compareTo(b.key.index));
               return DefaultTabController(
                 initialIndex: 0,
                 length: perLayoutStats.length + 1,
                 child: Scaffold(
                   appBar: AppBar(
                     title: Text("Player Statistics"),
+                    backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
                     bottom: TabBar(
+                      isScrollable: true,
+                      dividerColor: Colors.transparent,
                       tabs: <Widget>[
                         Tab(text: "Overall"),
                         for (final layout in perLayoutStats) Tab(text: _valueLabel(layout.key, s)),
@@ -38,7 +43,7 @@ class StatisticsPage extends StatelessWidget {
                   body: TabBarView(
                     children: <Widget>[
                       StatisticsTabBody(statistics.overallStatistics),
-                      for (final layout in perLayoutStats) StatisticsTabBody(layout.value),
+                      for (final layout in perLayoutStats) StatisticsTabBody(layout.value, showLayout: false),
                     ],
                   ),
                 ),
@@ -52,9 +57,10 @@ class StatisticsPage extends StatelessWidget {
 }
 
 class StatisticsTabBody extends StatelessWidget {
-  const StatisticsTabBody(this.statistics, {super.key});
+  const StatisticsTabBody(this.statistics, {super.key, this.showLayout = true});
 
   final Statistics statistics;
+  final bool showLayout;
 
   @override
   Widget build(BuildContext context) {
@@ -67,19 +73,31 @@ class StatisticsTabBody extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  BasicStatistics(statistics),
-                  if (statistics.lastGame != null) StatGroupTitle(title: "Last Game"),
-                  if (statistics.lastGame != null)
-                    StatGroup(child: GameEntry(place: -1, game: statistics.lastGame!)),
-                  StatGroupTitle(title: "Best Games"),
-                  StatGroup(
-                    child: Column(
-                      children: [
-                        for (final (index, game) in statistics.bestGames.indexed)
-                          GameEntry(place: index + 1, game: game),
-                      ],
-                    ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
+                    child: BasicStatistics(statistics),
                   ),
+                  if (statistics.lastGame != null)
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                      child: StatGroup(
+                        title: "Last Game",
+                        child: GameEntry(place: -1, game: statistics.lastGame!, showLayout: showLayout),
+                      ),
+                    ),
+                  if (statistics.bestGames.isNotEmpty)
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
+                      child: StatGroup(
+                        title: "Best Games",
+                        child: Column(
+                          children: [
+                            for (final (index, game) in statistics.bestGames.indexed)
+                              GameEntry(place: index + 1, game: game, showLayout: showLayout),
+                          ],
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -90,29 +108,44 @@ class StatisticsTabBody extends StatelessWidget {
   }
 }
 
-final class StatGroupTitle extends StatelessWidget {
-  const StatGroupTitle({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListItemContainer(child: Text(title));
-  }
-}
-
 class StatGroup extends StatelessWidget {
-  const StatGroup({super.key, required this.child});
+  const StatGroup({super.key, required this.child, this.title});
 
   final Widget child;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return ListItemContainer(
-      child: Card(
-        color: Theme.of(context).colorScheme.surface,
-        child: Padding(padding: const EdgeInsets.all(8.0), child: child),
-      ),
+      child:
+          title == null
+              ? Card(
+                color: Theme.of(context).colorScheme.surface,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+                  child: child,
+                ),
+              )
+              : Card(
+                color: Theme.of(context).colorScheme.surface,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+                  child: Column(
+                    spacing: 12.0,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title!,
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                          color: Theme.of(context).colorScheme.outline,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      child,
+                    ],
+                  ),
+                ),
+              ),
     );
   }
 }
@@ -124,16 +157,23 @@ final class BasicStatistics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final trailingStyle = Theme.of(context).textTheme.titleMedium;
     return StatGroup(
       child: Column(
         children: [
-          ListTile(title: Text("Total played"), trailing: Text(statistics.totalGames.toString())),
+          ListTile(
+            title: Text("Total played"),
+            trailing: Text(statistics.totalGames.toString(), style: trailingStyle),
+          ),
           const Divider(),
-          ListTile(title: Text("Total cleared"), trailing: Text(statistics.cleared.toString())),
+          ListTile(
+            title: Text("Total cleared"),
+            trailing: Text(statistics.cleared.toString(), style: trailingStyle),
+          ),
           const Divider(),
           ListTile(
             title: Text("Best score"),
-            trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString()),
+            trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
           ),
         ],
       ),
@@ -142,22 +182,43 @@ final class BasicStatistics extends StatelessWidget {
 }
 
 final class GameEntry extends StatelessWidget {
-  const GameEntry({super.key, required this.place, required this.game});
+  const GameEntry({super.key, required this.place, required this.game, this.showLayout = true});
 
   final int place;
   final SingleGameStatistics game;
+  final bool showLayout;
 
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
     return ListTile(
-      leading: place > 0 ? Text((place).toString()) : null,
+      leading:
+          place > 0
+              ? Text(
+                (place).toString(),
+                style: TextStyle(
+                  color: theme.colorScheme.outline,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              )
+              : null,
       title: Text(game.ended.toIso8601String()),
       subtitle: Row(
+        textBaseline: TextBaseline.alphabetic,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
         spacing: 12.0,
-        children: [Text(_valueLabel(game.layout, s)), if (game.isCleared) Text("Cleared")],
+        children: [if (showLayout) Text(_valueLabel(game.layout, s)), StatusChip(game)],
       ),
-      trailing: Text(game.score.toString()),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 4,
+        children: [
+          Text(game.score.toString(), style: theme.textTheme.titleMedium),
+          Icon(Icons.star, size: 16, color: theme.colorScheme.secondary),
+        ],
+      ),
     );
   }
 }
@@ -168,3 +229,23 @@ String _valueLabel(Peaks value, AppLocalizations s) => switch (value) {
   Peaks.valley => s.valleyLayoutLabel,
   Peaks.upDown => s.upDownLayoutLabel,
 };
+
+class StatusChip extends StatelessWidget {
+  const StatusChip(this.game, {super.key});
+
+  final SingleGameStatistics game;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    final fill = game.isCleared ? colours.primary : colours.errorContainer;
+    final text = game.isCleared ? colours.onPrimary : colours.onErrorContainer;
+    return Container(
+      decoration: BoxDecoration(color: fill, borderRadius: const BorderRadius.all(Radius.circular(100.0))),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 1.0),
+        child: Text(game.isCleared ? "Cleared" : "Not cleared", style: TextStyle(fontSize: 12, color: text)),
+      ),
+    );
+  }
+}
