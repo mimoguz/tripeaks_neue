@@ -176,7 +176,7 @@ abstract class _Game with Store {
 
     if (stock.isEmpty) {
       final top = discard.last.card;
-      final hasMoves = board.any((tile) => tile.card.checkAdjacent(top));
+      final hasMoves = board.any((tile) => tile.isVisible && tile.isOpen && tile.card.checkAdjacent(top));
       _isStalled = !hasMoves;
       _isEnded = _isStalled;
       if (_isStalled) {
