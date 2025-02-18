@@ -1,5 +1,6 @@
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 
+// TODO: Per-layout statistics on separate tabs, most favourite layout
 final class PlayerStatistics {
   PlayerStatistics({
     required this.totalGames,
