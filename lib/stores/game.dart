@@ -91,10 +91,6 @@ abstract class _Game with Store {
 
   bool startsEmpty;
 
-  bool justCleared = false;
-
-  bool justStalled = false;
-
   final DateTime started;
 
   @readonly
@@ -139,7 +135,6 @@ abstract class _Game with Store {
       final chainScore = _chain * _chain + layout.cardCount;
       _score += chainScore;
       history.add(Event(pin, chainScore));
-      justCleared = true;
       return;
     }
 
@@ -179,9 +174,6 @@ abstract class _Game with Store {
       final hasMoves = board.any((tile) => tile.isVisible && tile.isOpen && tile.card.checkAdjacent(top));
       _isStalled = !hasMoves;
       _isEnded = _isStalled;
-      if (_isStalled) {
-        justStalled = true;
-      }
     }
   }
 
@@ -193,7 +185,6 @@ abstract class _Game with Store {
 
     _isEnded = false;
     _isStalled = false;
-    justStalled = false;
 
     final event = history.removeLast();
     final card = discard.removeLast().card;

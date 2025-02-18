@@ -45,7 +45,7 @@ final class StalledCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset("images/empty.png", width: 90, height: 90),
-                const SizedBox(height: 14),
+                const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -53,6 +53,7 @@ final class StalledCard extends StatelessWidget {
                       child: Text(
                         "Unfortunately, you ran out of moves. How do you want to proceed?",
                         softWrap: true,
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],

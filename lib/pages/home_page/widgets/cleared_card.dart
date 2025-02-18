@@ -27,8 +27,8 @@ final class ClearedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
-    return Card.filled(
-      color: Theme.of(context).colorScheme.surfaceContainer,
+    return Container(
+      color: Theme.of(context).colorScheme.surfaceContainerLow,
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 240),
         child: Padding(
@@ -36,7 +36,7 @@ final class ClearedCard extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            spacing: 14.0,
+            spacing: 16.0,
             children: [
               Image.asset("images/tropy.png", width: 90, height: 90),
               Text("Cleared!", style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
@@ -56,14 +56,10 @@ final class ClearedCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: Actions.handler(context, const NewGameIntent()),
-                    child: Text(s.newGameButtonLabel),
-                  ),
-                ],
+              const Divider(),
+              TextButton(
+                onPressed: Actions.handler(context, const NewGameIntent()),
+                child: Text(s.newGameButtonLabel),
               ),
             ],
           ),
