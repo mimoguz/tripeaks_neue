@@ -15,12 +15,7 @@ class Session extends _Session with _$Session {
     final layout = Peaks.threePeaks;
     final startEmpty = false;
     final game = _Session._makeRandomGame(layout, startEmpty);
-    return Session(
-      game,
-      layout,
-      startEmpty: startEmpty,
-      statistics: PlayerStatistics(totalGames: 0, cleared: 0, lastGame: null, best: <SingleGameStatistics>[]),
-    );
+    return Session(game, layout, startEmpty: startEmpty, statistics: PlayerStatistics.empty());
   }
 }
 
