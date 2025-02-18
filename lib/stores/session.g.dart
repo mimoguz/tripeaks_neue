@@ -72,6 +72,24 @@ mixin _$Session on _Session, Store {
     });
   }
 
+  late final _$_statisticsAtom =
+      Atom(name: '_Session._statistics', context: context);
+
+  PlayerStatistics get statistics {
+    _$_statisticsAtom.reportRead();
+    return super._statistics;
+  }
+
+  @override
+  PlayerStatistics get _statistics => statistics;
+
+  @override
+  set _statistics(PlayerStatistics value) {
+    _$_statisticsAtom.reportWrite(value, super._statistics, () {
+      super._statistics = value;
+    });
+  }
+
   late final _$_SessionActionController =
       ActionController(name: '_Session', context: context);
 

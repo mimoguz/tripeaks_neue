@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
+import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 
 import 'intents.dart';
@@ -104,6 +105,22 @@ final class NavigateToSettingsAction extends ContextAction<NavigateToSettingsInt
     } else {
       _closeDrawer(context);
       navigator.push(MaterialPageRoute(builder: (_) => SettingsPage()));
+    }
+  }
+}
+
+final class NavigateToStatisticsAction extends ContextAction<NavigateToStatisticsIntent> {
+  @override
+  void invoke(NavigateToStatisticsIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final navigator = Navigator.of(context);
+    if (intent.replace) {
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => StatisticsPage()));
+    } else {
+      _closeDrawer(context);
+      navigator.push(MaterialPageRoute(builder: (_) => StatisticsPage()));
     }
   }
 }

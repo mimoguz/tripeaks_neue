@@ -89,7 +89,7 @@ class HomePageDrawer extends StatelessWidget {
                   title: Text(s.statisticsAction),
                   visualDensity: VisualDensity.comfortable,
                   shape: StadiumBorder(),
-                  onTap: () {},
+                  onTap: Actions.handler(context, const NavigateToStatisticsIntent()),
                 ),
                 Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
                 ListTile(
