@@ -14,7 +14,7 @@ class ClearedCardAnimated extends StatelessWidget {
     return AnimatedSwitcher(
       duration: Durations.medium1,
       transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
-      child: show ? ClearedCard(key: ValueKey(id), score: score) : SizedBox(key: const ValueKey(-1)),
+      child: show ? ClearedCard(key: ValueKey(id), score: score) : SizedBox(),
     );
   }
 }

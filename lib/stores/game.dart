@@ -131,15 +131,29 @@ abstract class _Game with Store {
 
     _remaining--;
     _chain++;
-    history.add(Event(pin, 0));
 
     if (_remaining == 0) {
       _isCleared = true;
       _isEnded = true;
       // Clearing the game obviously ends a chain, so you get a score
-      _score += _chain * _chain + layout.cardCount;
+      final chainScore = _chain * _chain + layout.cardCount;
+      _score += chainScore;
+      history.add(Event(pin, chainScore));
       justCleared = true;
+      return;
     }
+
+    if (stock.isEmpty && !_checkMoves(board: board, stock: stock, discard: discard)) {
+      final chainScore = _chain * _chain + layout.cardCount;
+      history.add(Event(pin, chainScore));
+      _score += chainScore;
+      _isEnded = true;
+      _isCleared = false;
+      _isStalled = true;
+      return;
+    }
+
+    history.add(Event(pin, 0));
   }
 
   @action
@@ -262,12 +276,31 @@ abstract class _Game with Store {
     }
   }
 
-  // TODO: Implement this
   static bool _checkMoves({
     required List<Tile> board,
     required List<Tile> stock,
     required List<Tile> discard,
-  }) => true;
+  }) {
+    bool check(Tile ref) {
+      if (discard.isNotEmpty && discard.last.card.checkAdjacent(ref.card)) {
+        return true;
+      }
+      for (final tile in stock) {
+        if (tile.card.checkAdjacent(ref.card)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    for (final tile in board) {
+      if (tile.isVisible && tile.isOpen && check(tile)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 final class Event {

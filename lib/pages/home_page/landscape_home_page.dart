@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/stalled_card.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
@@ -94,6 +95,11 @@ final class LandscapeHomePageBoard extends StatelessWidget {
                       id: game.started.millisecondsSinceEpoch,
                       score: game.score,
                       show: game.isCleared,
+                    ),
+                    StalledCardAnimated(
+                      score: game.score,
+                      id: game.started.millisecondsSinceEpoch + 1,
+                      show: game.isStalled,
                     ),
                   ],
                 ),

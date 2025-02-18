@@ -32,6 +32,7 @@ flutter:
 
   assets:
     - images/tropy.png
+    - images/empty.png
 
   fonts:
     - family: Peaks-Neue
