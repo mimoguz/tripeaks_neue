@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/list_item.dart';
 
 class SelectLayoutDialog extends StatefulWidget {
   const SelectLayoutDialog({super.key});
@@ -35,7 +36,6 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
   @override
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
-    final radioTextStyle = Theme.of(context).textTheme.bodyMedium;
     final s = AppLocalizations.of(context)!;
 
     _showAll ??= session.showAll;
@@ -50,29 +50,29 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (final layout in Peaks.values)
-              ListTile(
-                selected: layout == _layout,
+              MyListTile(
                 leading: Radio<Peaks>(
                   value: layout,
                   groupValue: _layout,
                   onChanged: (value) => setState(() => _layout = value!),
                 ),
-                title: Text(_valueLabel(layout, s), style: radioTextStyle),
+                title: Text(_valueLabel(layout, s)),
                 onTap: () => setState(() => _layout = layout),
               ),
-            Divider(),
+            const Divider(),
+            const SizedBox(height: 8.0),
             Text(s.additionalOptions, style: Theme.of(context).textTheme.titleSmall),
-            ListTile(
+            MyListTile(
               leading: Checkbox(value: _showAll, onChanged: (value) => setState(() => _showAll = value!)),
-              title: Text(s.showAllCheckboxLabel, style: radioTextStyle),
+              title: Text(s.showAllCheckboxLabel),
               onTap: () => setState(() => _showAll = !_showAll!),
             ),
-            ListTile(
+            MyListTile(
               leading: Checkbox(
                 value: _startEmpty,
                 onChanged: (value) => setState(() => _startEmpty = value!),
               ),
-              title: Text(s.startsEmptyCheckboxLabel, style: radioTextStyle),
+              title: Text(s.startsEmptyCheckboxLabel),
               onTap: () => setState(() => _startEmpty = !_startEmpty!),
             ),
           ],

@@ -15,7 +15,7 @@ final class MyListTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
