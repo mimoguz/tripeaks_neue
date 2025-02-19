@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/list_item.dart';
 
 class StartEmptySetting extends StatelessWidget {
   const StartEmptySetting({super.key});
@@ -21,8 +22,7 @@ class StartEmptySetting extends StatelessWidget {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ListTile(
-                selected: !session.startEmpty,
+              MyListTile(
                 leading: Radio<bool>(
                   value: false,
                   groupValue: session.startEmpty,
@@ -31,8 +31,7 @@ class StartEmptySetting extends StatelessWidget {
                 title: Text(s.startEmptyOffLabel, style: radioTextStyle),
                 onTap: () => Actions.handler(context, SetStartEmptyIntent(false))?.call(),
               ),
-              ListTile(
-                selected: session.startEmpty,
+              MyListTile(
                 leading: Radio<bool>(
                   value: true,
                   groupValue: session.startEmpty,

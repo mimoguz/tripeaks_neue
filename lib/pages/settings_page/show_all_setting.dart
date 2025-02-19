@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/list_item.dart';
 
 class ShowAllSetting extends StatelessWidget {
   const ShowAllSetting({super.key});
@@ -13,7 +14,6 @@ class ShowAllSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
     final s = AppLocalizations.of(context)!;
-    final radioTextStyle = TextStyle(fontSize: 14.0);
     return VerticalSettingTile(
       title: Text(s.showAllControl),
       control: Observer(
@@ -21,24 +21,22 @@ class ShowAllSetting extends StatelessWidget {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ListTile(
-                selected: !session.showAll,
+              MyListTile(
                 leading: Radio<bool>(
                   value: false,
                   groupValue: session.showAll,
                   onChanged: (value) => Actions.handler(context, SetShowAllIntent(value!))?.call(),
                 ),
-                title: Text(s.showAllOffLabel, style: radioTextStyle),
+                title: Text(s.showAllOffLabel),
                 onTap: () => Actions.handler(context, SetShowAllIntent(false))?.call(),
               ),
-              ListTile(
-                selected: session.showAll,
+              MyListTile(
                 leading: Radio<bool>(
                   value: true,
                   groupValue: session.showAll,
                   onChanged: (value) => Actions.handler(context, SetShowAllIntent(value!))?.call(),
                 ),
-                title: Text(s.showAllOnLabel, style: radioTextStyle),
+                title: Text(s.showAllOnLabel),
                 onTap: () => Actions.handler(context, SetShowAllIntent(true))?.call(),
               ),
             ],

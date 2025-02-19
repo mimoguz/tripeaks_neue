@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/shared/item_container.dart';
+import 'package:tripeaks_neue/widgets/item_container.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/list_item.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({super.key});
@@ -131,7 +133,7 @@ class StatGroup extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
                   child: Column(
-                    spacing: 12.0,
+                    spacing: 4.0,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -157,21 +159,20 @@ final class BasicStatistics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final trailingStyle = Theme.of(context).textTheme.titleMedium;
+    final trailingStyle = Theme.of(context).textTheme.bodyMedium;
     return StatGroup(
+      title: "Summary",
       child: Column(
         children: [
-          ListTile(
+          MyListTile(
             title: Text("Total played"),
             trailing: Text(statistics.totalGames.toString(), style: trailingStyle),
           ),
-          const Divider(),
-          ListTile(
+          MyListTile(
             title: Text("Total cleared"),
             trailing: Text(statistics.cleared.toString(), style: trailingStyle),
           ),
-          const Divider(),
-          ListTile(
+          MyListTile(
             title: Text("Best score"),
             trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
           ),
@@ -192,7 +193,7 @@ final class GameEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    return ListTile(
+    return MyListTile(
       leading:
           place > 0
               ? Text(
@@ -204,7 +205,7 @@ final class GameEntry extends StatelessWidget {
                 ),
               )
               : null,
-      title: Text(game.ended.toIso8601String()),
+      title: Text(_dateFormat.format(game.ended)),
       subtitle: Row(
         textBaseline: TextBaseline.alphabetic,
         crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -221,6 +222,8 @@ final class GameEntry extends StatelessWidget {
       ),
     );
   }
+
+  static final _dateFormat = DateFormat("d MMMM y, HH:mm");
 }
 
 String _valueLabel(Peaks value, AppLocalizations s) => switch (value) {

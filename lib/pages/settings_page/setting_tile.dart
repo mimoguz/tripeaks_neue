@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/pages/shared/item_container.dart';
+import 'package:tripeaks_neue/widgets/item_container.dart';
 
 class HorizontalSettingTile extends StatelessWidget {
   const HorizontalSettingTile({super.key, required this.title, required this.control});
@@ -34,7 +34,7 @@ class VerticalSettingTile extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 8.0,
+        spacing: 4.0,
         children: [
           Row(children: [DefaultTextStyle(style: textTheme.bodyMedium!, child: title)]),
           Row(children: [Flexible(child: control)]),

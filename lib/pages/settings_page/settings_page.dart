@@ -7,7 +7,7 @@ import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
-import 'package:tripeaks_neue/pages/shared/item_container.dart';
+import 'package:tripeaks_neue/widgets/item_container.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -130,7 +130,7 @@ class SettingsGroupCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
           child: Column(
-            spacing: 8.0,
+            spacing: 4.0,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (title != null)

@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/list_item.dart';
 
 class LayoutSetting extends StatelessWidget {
   const LayoutSetting({super.key});
@@ -23,8 +24,7 @@ class LayoutSetting extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               for (final layout in Peaks.values)
-                ListTile(
-                  selected: layout == session.layout,
+                MyListTile(
                   leading: Radio<Peaks>(
                     value: layout,
                     groupValue: session.layout,
