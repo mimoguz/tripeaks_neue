@@ -37,6 +37,7 @@ class StatisticsPage extends StatelessWidget {
                     backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
                     bottom: TabBar(
                       isScrollable: true,
+                      tabAlignment: TabAlignment.center,
                       dividerColor: Colors.transparent,
                       tabs: <Widget>[
                         Tab(text: "Overall"),
@@ -68,7 +69,6 @@ class StatisticsTabBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final last = statistics.bestGames.length - 1;
     final colours = Theme.of(context).colorScheme;
     return Container(
       color: colours.surfaceContainerLow,
@@ -95,19 +95,11 @@ class StatisticsTabBody extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
                       child: StatGroup(
-                        title: "Best Games",
+                        title: "Highest Scored Games",
                         child: Column(
                           children: [
                             for (final (index, game) in statistics.bestGames.indexed)
-                              index == last
-                                  ? GameEntry(place: index + 1, game: game, showLayout: showLayout)
-                                  : Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      GameEntry(place: index + 1, game: game, showLayout: showLayout),
-                                      Divider(height: 8.0, thickness: 2.0, color: colours.surfaceContainer),
-                                    ],
-                                  ),
+                              GameEntry(place: index + 1, game: game, showLayout: showLayout),
                           ],
                         ),
                       ),
@@ -220,7 +212,7 @@ final class GameEntry extends StatelessWidget {
         spacing: 4,
         children: [
           Text(game.score.toString(), style: theme.textTheme.titleMedium),
-          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.secondary),
+          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.outline),
         ],
       ),
     );
@@ -263,26 +255,6 @@ final class Order extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    return SizedBox(
-      width: 28.0,
-      height: 28.0,
-      child: Stack(
-        children: [
-          Icon(CustomIcons.numberBorder28, color: colours.onSurfaceVariant, size: 28),
-          Center(
-            child: Text(
-              value.toString(),
-              style: TextStyle(
-                fontFamily: "Outfit",
-                fontSize: 14.0,
-                color: colours.surface,
-                fontVariations: [FontVariation("wght", 500)],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+    return Text(value.toString(), style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600));
   }
 }

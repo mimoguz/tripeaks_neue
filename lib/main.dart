@@ -40,20 +40,10 @@ class MainApp extends StatelessWidget {
     );
   }
 
-  static const _defaultTextTheme = TextTheme(
-    titleLarge: TextStyle(
-      fontFamily: "Outfit",
-      fontSize: 20,
-      fontVariations: [FontVariation("wght", 300)],
-      letterSpacing: 0.5,
-    ),
-  );
-
   static final _tooltipTheme = TooltipThemeData(waitDuration: Durations.long4, preferBelow: false);
 
   static final _defaultLight = ThemeData(
     useMaterial3: true,
-    textTheme: _defaultTextTheme,
     tooltipTheme: _tooltipTheme,
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
@@ -70,7 +60,6 @@ class MainApp extends StatelessWidget {
 
   static final _defaultDark = ThemeData(
     useMaterial3: true,
-    textTheme: _defaultTextTheme,
     brightness: Brightness.dark,
     tooltipTheme: _tooltipTheme,
     pageTransitionsTheme: PageTransitionsTheme(

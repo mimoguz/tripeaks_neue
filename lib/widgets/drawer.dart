@@ -24,14 +24,21 @@ class HomePageDrawer extends StatelessWidget {
             title: RichText(
               text: TextSpan(
                 text: "TriPeaks",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: TextStyle(
+                  fontFamily: "Outfit",
+                  fontSize: 18,
+                  color: colours.onSurfaceVariant,
+                  fontVariations: [FontVariation("wght", 400)],
+                ),
                 children: [
                   TextSpan(
                     text: " NEUE",
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontVariations: [FontVariation("wght", 200)],
+                    style: TextStyle(
+                      fontFamily: "Outfit",
+                      fontSize: 18,
                       letterSpacing: 4.0,
-                      color: colours.outlineVariant,
+                      color: colours.outline,
+                      fontVariations: [FontVariation("wght", 200)],
                     ),
                   ),
                 ],
