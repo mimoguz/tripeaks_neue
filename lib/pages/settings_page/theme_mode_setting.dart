@@ -26,6 +26,7 @@ class ThemeModeSetting extends StatelessWidget {
                 MyListTile(
                   leading: Radio<ThemeMode>(
                     value: mode,
+                    visualDensity: VisualDensity.compact,
                     groupValue: settings.themeMode,
                     onChanged: (value) => Actions.handler(context, SetThemeModeIntent(value!))?.call(),
                   ),

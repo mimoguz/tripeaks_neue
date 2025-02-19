@@ -28,6 +28,7 @@ class LayoutSetting extends StatelessWidget {
                   leading: Radio<Peaks>(
                     value: layout,
                     groupValue: session.layout,
+                    visualDensity: VisualDensity.compact,
                     onChanged: (value) => Actions.handler(context, SetLayoutIntent(value!))?.call(),
                   ),
                   title: Text(_valueLabel(layout, s), style: radioTextStyle),

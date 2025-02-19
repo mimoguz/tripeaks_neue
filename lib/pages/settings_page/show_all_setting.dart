@@ -25,6 +25,7 @@ class ShowAllSetting extends StatelessWidget {
                 leading: Radio<bool>(
                   value: false,
                   groupValue: session.showAll,
+                  visualDensity: VisualDensity.compact,
                   onChanged: (value) => Actions.handler(context, SetShowAllIntent(value!))?.call(),
                 ),
                 title: Text(s.showAllOffLabel),
@@ -34,6 +35,7 @@ class ShowAllSetting extends StatelessWidget {
                 leading: Radio<bool>(
                   value: true,
                   groupValue: session.showAll,
+                  visualDensity: VisualDensity.compact,
                   onChanged: (value) => Actions.handler(context, SetShowAllIntent(value!))?.call(),
                 ),
                 title: Text(s.showAllOnLabel),

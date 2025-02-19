@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
@@ -66,8 +68,10 @@ class StatisticsTabBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final last = statistics.bestGames.length - 1;
+    final colours = Theme.of(context).colorScheme;
     return Container(
-      color: Theme.of(context).colorScheme.surfaceContainerLow,
+      color: colours.surfaceContainerLow,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -95,7 +99,15 @@ class StatisticsTabBody extends StatelessWidget {
                         child: Column(
                           children: [
                             for (final (index, game) in statistics.bestGames.indexed)
-                              GameEntry(place: index + 1, game: game, showLayout: showLayout),
+                              index == last
+                                  ? GameEntry(place: index + 1, game: game, showLayout: showLayout)
+                                  : Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      GameEntry(place: index + 1, game: game, showLayout: showLayout),
+                                      Divider(height: 8.0, thickness: 2.0, color: colours.surfaceContainer),
+                                    ],
+                                  ),
                           ],
                         ),
                       ),
@@ -110,7 +122,7 @@ class StatisticsTabBody extends StatelessWidget {
   }
 }
 
-class StatGroup extends StatelessWidget {
+final class StatGroup extends StatelessWidget {
   const StatGroup({super.key, required this.child, this.title});
 
   final Widget child;
@@ -194,17 +206,7 @@ final class GameEntry extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     return MyListTile(
-      leading:
-          place > 0
-              ? Text(
-                (place).toString(),
-                style: TextStyle(
-                  color: theme.colorScheme.outline,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              )
-              : null,
+      leading: place > 0 ? Order(place) : null,
       title: Text(_dateFormat.format(game.ended)),
       subtitle: Row(
         textBaseline: TextBaseline.alphabetic,
@@ -214,10 +216,11 @@ final class GameEntry extends StatelessWidget {
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 4,
         children: [
           Text(game.score.toString(), style: theme.textTheme.titleMedium),
-          Icon(Icons.star, size: 16, color: theme.colorScheme.secondary),
+          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.secondary),
         ],
       ),
     );
@@ -248,6 +251,37 @@ class StatusChip extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 1.0),
         child: Text(game.isCleared ? "Cleared" : "Not cleared", style: TextStyle(fontSize: 12, color: text)),
+      ),
+    );
+  }
+}
+
+final class Order extends StatelessWidget {
+  const Order(this.value, {super.key});
+
+  final int value;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    return SizedBox(
+      width: 28.0,
+      height: 28.0,
+      child: Stack(
+        children: [
+          Icon(CustomIcons.numberBorder28, color: colours.onSurfaceVariant, size: 28),
+          Center(
+            child: Text(
+              value.toString(),
+              style: TextStyle(
+                fontFamily: "Outfit",
+                fontSize: 14.0,
+                color: colours.surface,
+                fontVariations: [FontVariation("wght", 500)],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

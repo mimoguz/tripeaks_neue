@@ -26,6 +26,7 @@ class StartEmptySetting extends StatelessWidget {
                 leading: Radio<bool>(
                   value: false,
                   groupValue: session.startEmpty,
+                  visualDensity: VisualDensity.compact,
                   onChanged: (value) => Actions.handler(context, SetStartEmptyIntent(value!))?.call(),
                 ),
                 title: Text(s.startEmptyOffLabel, style: radioTextStyle),
@@ -35,6 +36,7 @@ class StartEmptySetting extends StatelessWidget {
                 leading: Radio<bool>(
                   value: true,
                   groupValue: session.startEmpty,
+                  visualDensity: VisualDensity.compact,
                   onChanged: (value) => Actions.handler(context, SetStartEmptyIntent(value!))?.call(),
                 ),
                 title: Text(s.startEmptyOnLabel, style: radioTextStyle),

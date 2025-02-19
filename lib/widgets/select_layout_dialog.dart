@@ -54,6 +54,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
                 leading: Radio<Peaks>(
                   value: layout,
                   groupValue: _layout,
+                  visualDensity: VisualDensity.compact,
                   onChanged: (value) => setState(() => _layout = value!),
                 ),
                 title: Text(_valueLabel(layout, s)),
@@ -63,13 +64,18 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             const SizedBox(height: 8.0),
             Text(s.additionalOptions, style: Theme.of(context).textTheme.titleSmall),
             MyListTile(
-              leading: Checkbox(value: _showAll, onChanged: (value) => setState(() => _showAll = value!)),
+              leading: Checkbox(
+                value: _showAll,
+                visualDensity: VisualDensity.compact,
+                onChanged: (value) => setState(() => _showAll = value!),
+              ),
               title: Text(s.showAllCheckboxLabel),
               onTap: () => setState(() => _showAll = !_showAll!),
             ),
             MyListTile(
               leading: Checkbox(
                 value: _startEmpty,
+                visualDensity: VisualDensity.compact,
                 onChanged: (value) => setState(() => _startEmpty = value!),
               ),
               title: Text(s.startsEmptyCheckboxLabel),
