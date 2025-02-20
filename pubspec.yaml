@@ -13,7 +13,9 @@ dependencies:
     sdk: flutter
   flutter_mobx: ^2.3.0
   intl: any
+  logger: ^2.5.0
   mobx: ^2.5.0
+  path_provider: ^2.1.5
   provider: ^6.1.2
 
   # cupertino_icons: ^1.0.8

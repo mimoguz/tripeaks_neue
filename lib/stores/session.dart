@@ -4,6 +4,7 @@ import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:mobx/mobx.dart';
+import 'package:tripeaks_neue/util/io.dart';
 
 part "session.g.dart";
 
@@ -16,6 +17,41 @@ class Session extends _Session with _$Session {
     final startEmpty = false;
     final game = _Session._makeRandomGame(layout, startEmpty);
     return Session(game, layout, startEmpty: startEmpty, statistics: PlayerStatistics.empty());
+  }
+
+  static Future<Session> read() async {
+    final sessionData = await IO.read("session", _SessionData.fromJsonObject) ?? _SessionData.fresh();
+    final game =
+        await IO.read("game", Game.fromJsonObject) ??
+        _Session._makeRandomGame(sessionData.layout, sessionData.startEmpty);
+    // TODO: Load statistics
+    final statistics = PlayerStatistics.empty();
+    return Session(
+      game,
+      sessionData.layout,
+      startEmpty: sessionData.startEmpty,
+      showAll: sessionData.showAll,
+      statistics: statistics,
+    );
+  }
+
+  Future<void> write() async {
+    await IO.write("session", _SessionData.of(this).toJsonObject());
+    await IO.write("game", _game.toJsonObject());
+    // TODO: Save statistics
+  }
+
+  Future<void> writeOptions() async {
+    await IO.write("session", _SessionData.of(this).toJsonObject());
+  }
+
+  Future<void> writeGame() async {
+    await IO.write("game", _game.toJsonObject());
+  }
+
+  Future<void> writeStatistics() async {
+    // TODO: Save statistics
+    return;
   }
 }
 
@@ -117,4 +153,28 @@ abstract class _Session with Store {
   }
 
   static const Duration _addAnimDelay = Duration(milliseconds: 16);
+}
+
+final class _SessionData {
+  _SessionData({required this.layout, required this.startEmpty, required this.showAll});
+
+  final Peaks layout;
+  final bool startEmpty;
+  final bool showAll;
+
+  _SessionData.fresh() : this(layout: Peaks.threePeaks, startEmpty: false, showAll: false);
+
+  _SessionData.fromJsonObject(Map<String, dynamic> jsonObject)
+    : layout = Peaks.values[jsonObject["layout"]],
+      startEmpty = jsonObject["startEmpty"],
+      showAll = jsonObject["showAll"];
+
+  _SessionData.of(Session session)
+    : this(layout: session.layout, startEmpty: session.startEmpty, showAll: session.showAll);
+
+  Map<String, dynamic> toJsonObject() => <String, dynamic>{
+    "layout": layout.index,
+    "startEmpty": startEmpty,
+    "showAll": showAll,
+  };
 }

@@ -58,12 +58,12 @@ class Game extends _Game with _$Game {
     );
   }
 
-  String toJson() {
+  Map<String, dynamic> toJsonObject() {
     final boardJson = board.map((it) => it.toJsonObject()).toList();
     final stockJson = stock.map((it) => it.toJsonObject()).toList();
     final discardJson = discard.map((it) => it.toJsonObject()).toList();
     final historyJson = history.map((it) => it.toJsonObject()).toList();
-    return json.encode(<String, dynamic>{
+    return <String, dynamic>{
       "layout": layout.tag.index,
       "board": boardJson,
       "stock": stockJson,
@@ -77,11 +77,10 @@ class Game extends _Game with _$Game {
       "chain": chain,
       "remaining": remaining,
       "started": started.toIso8601String(),
-    });
+    };
   }
 
-  factory Game.fromJson(String source) {
-    final jsonObject = json.decode(source);
+  factory Game.fromJsonObject(Map<String, dynamic> jsonObject) {
     final layout = Peaks.values[jsonObject["layout"] as int].implementation;
     final board = (jsonObject["board"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
     final stock = (jsonObject["stock"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
