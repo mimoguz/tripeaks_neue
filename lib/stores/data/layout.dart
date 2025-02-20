@@ -338,7 +338,7 @@ final Layout valleyLayout = Layout(
 );
 
 final upDownLayout = Layout(
-  cardCount: 31,
+  cardCount: 30,
   width: 18,
   height: 6,
   tag: Peaks.upDown,
@@ -368,12 +368,11 @@ final upDownLayout = Layout(
     Pin(index: 22, mainAxis: 4, crossAxis: 4, z: 0, startsOpen: true),
     Pin(index: 23, mainAxis: 4, crossAxis: 6, z: 0, startsOpen: true),
     Pin(index: 24, mainAxis: 4, crossAxis: 8, z: 0, startsOpen: true),
-    Pin(index: 25, mainAxis: 2, crossAxis: 8, z: 0, startsOpen: true),
-    Pin(index: 26, mainAxis: 0, crossAxis: 8, z: 0, startsOpen: true),
-    Pin(index: 27, mainAxis: 0, crossAxis: 10, z: 0, startsOpen: true),
-    Pin(index: 28, mainAxis: 0, crossAxis: 12, z: 0, startsOpen: true),
-    Pin(index: 29, mainAxis: 0, crossAxis: 14, z: 0, startsOpen: true),
-    Pin(index: 30, mainAxis: 0, crossAxis: 16, z: 0, startsOpen: true),
+    Pin(index: 25, mainAxis: 0, crossAxis: 8, z: 0, startsOpen: true),
+    Pin(index: 26, mainAxis: 0, crossAxis: 10, z: 0, startsOpen: true),
+    Pin(index: 27, mainAxis: 0, crossAxis: 12, z: 0, startsOpen: true),
+    Pin(index: 28, mainAxis: 0, crossAxis: 14, z: 0, startsOpen: true),
+    Pin(index: 29, mainAxis: 0, crossAxis: 16, z: 0, startsOpen: true),
   ]),
   above: List.unmodifiable([
     List<int>.unmodifiable([2, 3]), //       index: 0
@@ -391,11 +390,11 @@ final upDownLayout = Layout(
     List<int>.unmodifiable([20, 21]), //     index: 12
     List<int>.unmodifiable([21, 22]), //     index: 13
     List<int>.unmodifiable([22, 23]), //     index: 14
-    List<int>.unmodifiable([23, 24, 25]), // index: 15
-    List<int>.unmodifiable([25, 26, 27]), // index: 16
-    List<int>.unmodifiable([27, 28]), //     index: 17
-    List<int>.unmodifiable([28, 29]), //     index: 18
-    List<int>.unmodifiable([29, 30]), //     index: 19
+    List<int>.unmodifiable([23, 24]), // index: 15
+    List<int>.unmodifiable([25, 26]), // index: 16
+    List<int>.unmodifiable([26, 27]), //     index: 17
+    List<int>.unmodifiable([27, 28]), //     index: 18
+    List<int>.unmodifiable([28, 29]), //     index: 19
     List<int>.unmodifiable([]), //           index: 20
     List<int>.unmodifiable([]), //           index: 21
     List<int>.unmodifiable([]), //           index: 22
@@ -434,7 +433,6 @@ final upDownLayout = Layout(
     List<int>.unmodifiable([13, 14]), // index: 22
     List<int>.unmodifiable([14, 15]), // index: 23
     List<int>.unmodifiable([15]), //     index: 24
-    List<int>.unmodifiable([15, 16]), // index: 25
     List<int>.unmodifiable([16]), //     index: 26
     List<int>.unmodifiable([16, 17]), // index: 27
     List<int>.unmodifiable([17, 18]), // index: 28
