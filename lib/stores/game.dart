@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
@@ -53,6 +55,53 @@ class Game extends _Game with _$Game {
       score: 0,
       remaining: lo.cardCount,
       chain: 0,
+    );
+  }
+
+  String toJson() {
+    final boardJson = board.map((it) => it.toJsonObject()).toList();
+    final stockJson = stock.map((it) => it.toJsonObject()).toList();
+    final discardJson = discard.map((it) => it.toJsonObject()).toList();
+    final historyJson = history.map((it) => it.toJsonObject()).toList();
+    return json.encode(<String, dynamic>{
+      "layout": layout.tag.index,
+      "board": boardJson,
+      "stock": stockJson,
+      "discard": discardJson,
+      "history": historyJson,
+      "startsEmpty": startsEmpty,
+      "isCleared": isCleared,
+      "isStalled": isStalled,
+      "isEnded": isEnded,
+      "score": score,
+      "chain": chain,
+      "remaining": remaining,
+      "started": started.toIso8601String(),
+    });
+  }
+
+  factory Game.fromJson(String source) {
+    final jsonObject = json.decode(source);
+    final layout = Peaks.values[jsonObject["layout"] as int].implementation;
+    final board = (jsonObject["board"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
+    final stock = (jsonObject["stock"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
+    final discard = (jsonObject["discard"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
+    final history = (jsonObject["history"] as List<dynamic>).map((it) => Event.fromJsonObject(it, layout));
+    final started = DateTime.parse(jsonObject["started"]);
+    return Game._(
+      layout: layout,
+      board: ObservableList.of(board),
+      stock: ObservableList.of(stock),
+      discard: ObservableList.of(discard),
+      history: ObservableList.of(history),
+      started: started,
+      startsEmpty: jsonObject["startsEmpty"] as bool,
+      isCleared: jsonObject["isCleared"] as bool,
+      isStalled: jsonObject["isStalled"] as bool,
+      isEnded: jsonObject["isEnded"] as bool,
+      score: jsonObject["score"] as int,
+      remaining: jsonObject["remaining"] as int,
+      chain: jsonObject["chain"] as int,
     );
   }
 }
@@ -207,7 +256,7 @@ abstract class _Game with Store {
     );
   }
 
-  Game rebuid() {
+  Game rebuild() {
     final reBoard =
         board.map((it) {
           final reTile = it.clone();
@@ -299,4 +348,12 @@ final class Event {
 
   final Pin pin;
   final int score;
+
+  Map<String, dynamic> toJsonObject() => <String, dynamic>{"pin": pin.index, "score": score};
+
+  factory Event.fromJsonObject(Map<String, dynamic> jsonObject, Layout layout) {
+    final pin = layout.pins[jsonObject["pin"] as int];
+    final score = jsonObject["score"] as int;
+    return Event(pin, score);
+  }
 }

@@ -18,14 +18,12 @@ enum Rank {
   const Rank._(this.character);
 
   bool checkAdjacent(Rank other) =>
-      (index - other.index).abs() == 1 ||
-      this == ace && other == two ||
-      this == two && other == ace;
+      (index - other.index).abs() == 1 || this == ace && other == two || this == two && other == ace;
 
   (Rank previous, Rank next) get neighbours => (
-        this == two ? ace : values[index - 1],
-        values[(index + 1) % 13],
-      );
+    this == two ? ace : values[index - 1],
+    values[(index + 1) % 13],
+  );
 }
 
 enum Suit {
@@ -46,13 +44,17 @@ final class CardValue {
   final Suit suit;
 
   @override
-  bool operator ==(Object other) =>
-      other is CardValue && rank == other.rank && suit == other.suit;
+  bool operator ==(Object other) => other is CardValue && rank == other.rank && suit == other.suit;
 
   @override
   int get hashCode => (suit.index << 16) & rank.index;
 
   bool checkAdjacent(CardValue other) => rank.checkAdjacent(other.rank);
+
+  Map<String, dynamic> toJsonObject() => <String, dynamic>{"rank": rank.index, "suit": suit.index};
+
+  factory CardValue.fromJsonObject(Map<String, dynamic> jsonObject) =>
+      CardValue(rank: Rank.values[jsonObject["rank"] as int], suit: Suit.values[jsonObject["suit"] as int]);
 }
 
 List<CardValue> getDeck() {

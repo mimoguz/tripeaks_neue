@@ -73,7 +73,7 @@ abstract class _Session with Store {
 
   @action
   void restart() {
-    final next = _game.rebuid();
+    final next = _game.rebuild();
     for (final tile in next.board) {
       tile.hide();
     }

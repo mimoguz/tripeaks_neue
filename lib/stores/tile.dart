@@ -1,4 +1,5 @@
 import "package:tripeaks_neue/stores/data/card_value.dart";
+import "package:tripeaks_neue/stores/data/layout.dart";
 import "package:tripeaks_neue/stores/data/pin.dart";
 import "package:mobx/mobx.dart";
 
@@ -6,6 +7,26 @@ part "tile.g.dart";
 
 class Tile extends _Tile with _$Tile {
   Tile({required super.card, required super.pin});
+
+  Map<String, dynamic> toJsonObject() => <String, dynamic>{
+    "card": card.toJsonObject(),
+    "pin": pin.index,
+    "isOpen": _isOpen,
+    "isVisible": _isVisible,
+  };
+
+  factory Tile.fromJsonObject(Map<String, dynamic> jsonObject, Layout layout) {
+    final card = CardValue.fromJsonObject(jsonObject["card"] as Map<String, dynamic>);
+    final pin = layout.pins[jsonObject["pin"] as int];
+    final tile = Tile(card: card, pin: pin);
+    if (jsonObject["isVisible"] as bool) {
+      tile.put();
+    }
+    if (jsonObject["isOpen"] as bool) {
+      tile.open();
+    }
+    return tile;
+  }
 }
 
 abstract class _Tile with Store {
