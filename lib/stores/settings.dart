@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/util/io.dart';
+import 'package:tripeaks_neue/util/json_object.dart';
 
 part 'settings.g.dart';
 
 class Settings extends _Settings with _$Settings {
   Settings() : super._(ThemeMode.system, Decor.values.first);
+
+  Settings.fromJsonObject(JsonObject jsonObject)
+    : super._(
+        ThemeMode.values[jsonObject.read<int>("themeMode")],
+        Decor.values[jsonObject.read<int>("decor")],
+      );
+
+  static Future<Settings> read() async =>
+      await IO.read("settings", (it) => Settings.fromJsonObject(it)) ?? Settings();
+
+  JsonObject toJsonObject() => {"themeMode": themeMode.index, "decor": decor.index};
+
+  Future<void> write() async => await IO.write("settings", toJsonObject());
 }
 
 abstract class _Settings with Store {

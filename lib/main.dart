@@ -10,18 +10,20 @@ import 'package:provider/provider.dart';
 
 void main() async {
   final session = await Session.read();
+  final settings = await Settings.read();
   runApp(
     MultiProvider(
-      providers: [Provider<Session>(create: (_) => session), Provider<Settings>(create: (_) => Settings())],
-      builder: (context, _) => MainApp(session),
+      providers: [Provider<Session>(create: (_) => session), Provider<Settings>(create: (_) => settings)],
+      builder: (context, _) => MainApp(session, settings),
     ),
   );
 }
 
 class MainApp extends StatefulWidget {
-  const MainApp(this.session, {super.key});
+  const MainApp(this.session, this.settings, {super.key});
 
   final Session session;
+  final Settings settings;
 
   @override
   State<MainApp> createState() => _MainAppState();
@@ -98,13 +100,13 @@ class _MainAppState extends State<MainApp> {
   void _onPause() => _onPauseAsync();
 
   Future<void> _onPauseAsync() async {
-    // await widget.session.writeGame();
     await widget.session.write();
+    await widget.settings.write();
   }
 
   Future<AppExitResponse> _onExitRequested() async {
-    // await widget.session.writeGame();
     await widget.session.write();
+    await widget.settings.write();
     return AppExitResponse.exit;
   }
 }

@@ -29,6 +29,10 @@ final class RestartIntent extends Intent {
   const RestartIntent();
 }
 
+final class ExitIntent extends Intent {
+  const ExitIntent();
+}
+
 final class NavigateToHomeIntent extends Intent {
   const NavigateToHomeIntent({this.replace = false});
 

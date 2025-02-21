@@ -10,7 +10,9 @@ part "session.g.dart";
 
 // ignore: library_private_types_in_public_api
 class Session extends _Session with _$Session {
-  Session(super.game, super.layout, {super.startEmpty, super.showAll, required super.statistics});
+  Session(super.game, super.layout, {super.startEmpty, super.showAll, required super.statistics}) {
+    whenCleared = when((_) => game.isCleared, () => writeStatistics());
+  }
 
   factory Session.fresh() {
     final layout = Peaks.threePeaks;
@@ -39,19 +41,6 @@ class Session extends _Session with _$Session {
     await IO.write("session", _SessionData.of(this).toJsonObject());
     await IO.write("game", _game.toJsonObject());
     await IO.write("statistics", _statistics.toJsonObject());
-  }
-
-  Future<void> writeOptions() async {
-    await IO.write("session", _SessionData.of(this).toJsonObject());
-  }
-
-  Future<void> writeGame() async {
-    await IO.write("game", _game.toJsonObject());
-  }
-
-  Future<void> writeStatistics() async {
-    await IO.write("statistics", _statistics.toJsonObject());
-    return;
   }
 }
 
@@ -99,10 +88,10 @@ abstract class _Session with Store {
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
     }
 
-    whenCleared = when(
-      (_) => next.isCleared,
-      () => _statistics = _statistics.withGame(SingleGameStatistics.of(next)),
-    );
+    whenCleared = when((_) => next.isCleared, () {
+      _statistics = _statistics.withGame(SingleGameStatistics.of(next));
+      writeStatistics();
+    });
     _game = next;
     _setupBoard(next);
   }
@@ -118,13 +107,18 @@ abstract class _Session with Store {
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
     }
 
-    whenCleared = when(
-      (_) => next.isCleared,
-      () => _statistics = _statistics.withGame(SingleGameStatistics.of(next)),
-    );
+    whenCleared = when((_) => next.isCleared, () {
+      _statistics = _statistics.withGame(SingleGameStatistics.of(next));
+      writeStatistics();
+    });
 
     _game = next;
     _setupBoard(next);
+  }
+
+  Future<void> writeStatistics() async {
+    await IO.write("statistics", _statistics.toJsonObject());
+    return;
   }
 
   static Game _makeRandomGame(Peaks layout, bool startEmpty) {

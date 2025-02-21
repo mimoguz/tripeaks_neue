@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -138,6 +141,21 @@ final class NewGameWithLayoutAction extends ContextAction<NewGameWithLayoutInten
       barrierDismissible: true,
       barrierColor: Colors.transparent,
     );
+  }
+}
+
+final class ExitAction extends ContextAction<ExitIntent> {
+  @override
+  Future<void> invoke(ExitIntent intent, [BuildContext? context]) async {
+    final session = Provider.of<Session>(context!, listen: false);
+    final settings = Provider.of<Settings>(context, listen: false);
+    await session.write();
+    await settings.write();
+    if (Platform.isIOS || Platform.isWindows) {
+      exit(0);
+    } else {
+      SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    }
   }
 }
 

@@ -14,7 +14,7 @@ class IO {
       _logger.d("Write $key to ${file.absolute.path}");
       return true;
     } catch (e) {
-      _logger.e("Could not save $key.\n$e");
+      _logger.e("Could not save $key.\n$e\n${e is Error ? e.stackTrace : null}");
       return false;
     }
   }
@@ -26,7 +26,7 @@ class IO {
       _logger.d("Read $key from ${file.absolute.path}");
       return reader(json.decode(jsonText));
     } catch (e) {
-      _logger.e("Could not read $key.\n$e");
+      _logger.e("Could not read $key.\n$e\n${e is Error ? e.stackTrace : null}");
       return null;
     }
   }

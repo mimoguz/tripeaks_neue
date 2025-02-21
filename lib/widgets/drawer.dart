@@ -106,7 +106,7 @@ class HomePageDrawer extends StatelessWidget {
                   title: Text(s.exitAction),
                   shape: StadiumBorder(),
                   visualDensity: VisualDensity.comfortable,
-                  onTap: () {},
+                  onTap: Actions.handler(context, const ExitIntent()),
                 ),
               ],
             ),
