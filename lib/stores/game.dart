@@ -1,4 +1,3 @@
-
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
@@ -160,13 +159,13 @@ abstract class _Game with Store {
   int _chain;
 
   @action
-  void take(Pin pin) {
+  bool take(Pin pin) {
     final tile = board[pin.index];
     final canTake = tile.isVisible && (discard.isEmpty || discard.last.card.checkAdjacent(tile.card));
 
     if (!canTake) {
       tile.lastError = DateTime.now();
-      return;
+      return false;
     }
 
     board[pin.index].take();
@@ -183,7 +182,7 @@ abstract class _Game with Store {
       final chainScore = _chain * _chain + layout.cardCount;
       _score += chainScore;
       history.add(Event(pin, chainScore));
-      return;
+      return true;
     }
 
     if (stock.isEmpty && !_checkMoves(board: board, stock: stock, discard: discard)) {
@@ -193,10 +192,11 @@ abstract class _Game with Store {
       _isEnded = true;
       _isCleared = false;
       _isStalled = true;
-      return;
+      return true;
     }
 
     history.add(Event(pin, 0));
+    return true;
   }
 
   @action

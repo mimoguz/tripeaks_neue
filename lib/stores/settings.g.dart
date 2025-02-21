@@ -40,6 +40,55 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
+  late final _$_soundOnAtom =
+      Atom(name: '_Settings._soundOn', context: context);
+
+  bool get soundOn {
+    _$_soundOnAtom.reportRead();
+    return super._soundOn;
+  }
+
+  @override
+  bool get _soundOn => soundOn;
+
+  @override
+  set _soundOn(bool value) {
+    _$_soundOnAtom.reportWrite(value, super._soundOn, () {
+      super._soundOn = value;
+    });
+  }
+
+  late final _$_soundsAtom = Atom(name: '_Settings._sounds', context: context);
+
+  SoundEffects get sounds {
+    _$_soundsAtom.reportRead();
+    return super._sounds;
+  }
+
+  @override
+  SoundEffects get _sounds => sounds;
+
+  @override
+  set _sounds(SoundEffects value) {
+    _$_soundsAtom.reportWrite(value, super._sounds, () {
+      super._sounds = value;
+    });
+  }
+
+  late final _$_SettingsActionController =
+      ActionController(name: '_Settings', context: context);
+
+  @override
+  void setSoundOn(bool value) {
+    final _$actionInfo =
+        _$_SettingsActionController.startAction(name: '_Settings.setSoundOn');
+    try {
+      return super.setSoundOn(value);
+    } finally {
+      _$_SettingsActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

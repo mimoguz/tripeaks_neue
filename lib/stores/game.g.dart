@@ -118,7 +118,7 @@ mixin _$Game on _Game, Store {
       ActionController(name: '_Game', context: context);
 
   @override
-  void take(Pin pin) {
+  bool take(Pin pin) {
     final _$actionInfo =
         _$_GameActionController.startAction(name: '_Game.take');
     try {

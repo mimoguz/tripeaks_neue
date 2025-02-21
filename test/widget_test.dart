@@ -9,11 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:tripeaks_neue/main.dart';
+import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MainApp());
+    await tester.pumpWidget(MainApp(Session.fresh(), Settings()));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

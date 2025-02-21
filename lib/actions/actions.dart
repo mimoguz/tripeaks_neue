@@ -9,25 +9,33 @@ import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 
 import 'intents.dart';
 
 final class TakeAction extends Action<TakeIntent> {
-  TakeAction(this.game);
+  TakeAction(this.game, this.sounds);
 
   final Game game;
+  final SoundEffects sounds;
 
   @override
   void invoke(TakeIntent intent) {
-    game.take(intent.pin);
+    final took = game.take(intent.pin);
+    if (took) {
+      sounds.playTake();
+    } else {
+      sounds.playError();
+    }
   }
 }
 
 final class DrawAction extends Action<DrawIntent> {
-  DrawAction(this.game);
+  DrawAction(this.game, this.sounds);
 
   final Game game;
+  final SoundEffects sounds;
 
   @override
   bool get isActionEnabled => game.stock.isNotEmpty && !game.isEnded;
@@ -35,13 +43,15 @@ final class DrawAction extends Action<DrawIntent> {
   @override
   void invoke(DrawIntent intent) {
     game.draw();
+    sounds.playDraw();
   }
 }
 
 final class RollbackAction extends Action<RollbackIntent> {
-  RollbackAction(this.game);
+  RollbackAction(this.game, this.sounds);
 
   final Game game;
+  final SoundEffects sounds;
 
   @override
   bool get isActionEnabled => game.history.isNotEmpty && !game.isCleared;
@@ -49,6 +59,7 @@ final class RollbackAction extends Action<RollbackIntent> {
   @override
   void invoke(RollbackIntent intent) {
     game.rollback();
+    sounds.playRollback();
   }
 }
 
@@ -62,6 +73,8 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
     }
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
+    final settings = Provider.of<Settings>(context, listen: false);
+    settings.sounds.playStart();
     session.newGame();
   }
 }
@@ -76,6 +89,8 @@ final class RestartAction extends ContextAction<RestartIntent> {
     }
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
+    final settings = Provider.of<Settings>(context, listen: false);
+    settings.sounds.playStart();
     session.restart();
   }
 }

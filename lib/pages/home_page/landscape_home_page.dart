@@ -35,9 +35,9 @@ class LandscapeHomePage extends StatelessWidget {
         final back = BackOptions(showValue: session.showAll, decor: settings.decor.icon);
         return Actions(
           actions: <Type, Action<Intent>>{
-            TakeIntent: TakeAction(game),
-            DrawIntent: DrawAction(game),
-            RollbackIntent: RollbackAction(game),
+            TakeIntent: TakeAction(game, settings.sounds),
+            DrawIntent: DrawAction(game, settings.sounds),
+            RollbackIntent: RollbackAction(game, settings.sounds),
           },
           child: Builder(
             builder: (context) {

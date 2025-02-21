@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/list_item.dart';
 
 class SelectLayoutDialog extends StatefulWidget {
@@ -36,6 +37,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
   @override
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
+    final settings = Provider.of<Settings>(context);
     final s = AppLocalizations.of(context)!;
 
     _showAll ??= session.showAll;
@@ -95,6 +97,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             session.showAll = _showAll!;
             session.startEmpty = _startEmpty!;
             session.layout = _layout!;
+            settings.sounds.playStart();
             session.newGame();
             Navigator.pop(context);
           },

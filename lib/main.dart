@@ -36,6 +36,7 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     _listener = AppLifecycleListener(onPause: _onPause, onExitRequested: _onExitRequested);
+    widget.settings.sounds.load();
   }
 
   @override
