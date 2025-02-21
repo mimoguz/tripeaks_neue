@@ -195,6 +195,12 @@ abstract class AppLocalizations {
   /// **'Discard pile at start'**
   String get startEmptyControl;
 
+  /// Label of a control that sets sound mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound'**
+  String get soundControl;
+
   /// Label of a control that sets the decoration that is used on the back of the cards.
   ///
   /// In en, this message translates to:
@@ -243,6 +249,18 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get darkThemeModeLabel;
 
+  /// Value label of sound control when it is set to on.
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get soundOnLabel;
+
+  /// Value label of sound control when it is set to off.
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get soundMutedLabel;
+
   /// Label of a control that sets game layout theme mode.
   ///
   /// In en, this message translates to:
@@ -283,7 +301,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Next Game'**
-  String get nextGameeSettingGroupTitle;
+  String get nextGameSettingGroupTitle;
 
   /// Title of the dialog that will open when 'New Game with Layout...' action is called.
   ///
@@ -320,6 +338,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'New Game'**
   String get newGameButtonLabel;
+
+  /// Title of the 'Player Statistics' page.
+  ///
+  /// In en, this message translates to:
+  /// **'Player Statistics'**
+  String get statisticsPageTitle;
+
+  /// Title of the general statistics tab.
+  ///
+  /// In en, this message translates to:
+  /// **'Overall'**
+  String get overallStatisticsTitle;
+
+  /// Title of the last game statistics group.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Game'**
+  String get lastGameStatistics;
+
+  /// Title of the best games statistics group.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest Scores'**
+  String get bestGamesStatistics;
+
+  /// Title of the general statistics group (overal & per each layout).
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get statisticsSummary;
+
+  /// Label of the total games played statistic.
+  ///
+  /// In en, this message translates to:
+  /// **'Total played'**
+  String get totalPlayedLabel;
+
+  /// Label of the total games cleared statistic.
+  ///
+  /// In en, this message translates to:
+  /// **'Total cleared'**
+  String get totalClearedLabel;
+
+  /// Label of the best score statistic.
+  ///
+  /// In en, this message translates to:
+  /// **'Total cleared'**
+  String get bestScoreLabel;
+
+  /// Value label for the game result chip if the game was cleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared'**
+  String get gameClearedLabel;
+
+  /// Value label for the game result chip if the game wasn't cleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Not cleared'**
+  String get gameNotClearedLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

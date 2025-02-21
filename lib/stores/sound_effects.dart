@@ -140,8 +140,8 @@ final class SoundOn implements SoundEffects {
   static const String _draw = "608431__plasterbrain__shiny-coin-pickup.mp3";
   static const String _rollback = "50559__broumbroum__sf3-sfx-menu-select-l.mp3";
   static const String _error = "423169__plasterbrain__pc-game-ui-error.mp3";
-  static const String _win = "138410__cameronmusic__item-collect-2.mp3";
+  static const String _win = "656394__nikos34__select-2.mp3";
   static const String _gameOver = "138490__justinvoke__powerdown-2.mp3";
-  static const String _start = "656394__nikos34__select-2.mp3";
+  static const String _start = "138410__cameronmusic__item-collect-2.mp3";
   static const List<String> _sounds = [_take, _draw, _rollback, _error, _win, _gameOver, _start];
 }

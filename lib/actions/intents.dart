@@ -69,6 +69,12 @@ final class SetStartEmptyIntent extends Intent {
   final bool value;
 }
 
+final class SetSoundModeIntent extends Intent {
+  const SetSoundModeIntent(this.value);
+
+  final bool value;
+}
+
 final class SetDecorIntent extends Intent {
   const SetDecorIntent(this.value);
 

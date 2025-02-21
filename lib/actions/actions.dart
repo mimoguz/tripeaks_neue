@@ -218,6 +218,17 @@ final class SetDecorAction extends ContextAction<SetDecorIntent> {
   }
 }
 
+final class SetSoundModeAction extends ContextAction<SetSoundModeIntent> {
+  @override
+  void invoke(SetSoundModeIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final settings = Provider.of<Settings>(context, listen: false);
+    settings.setSoundOn(intent.value);
+  }
+}
+
 final class SetLayoutAction extends ContextAction<SetLayoutIntent> {
   @override
   void invoke(SetLayoutIntent intent, [BuildContext? context]) {

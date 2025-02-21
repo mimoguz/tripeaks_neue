@@ -32,14 +32,14 @@ class StatisticsPage extends StatelessWidget {
                 length: perLayoutStats.length + 1,
                 child: Scaffold(
                   appBar: AppBar(
-                    title: Text("Player Statistics"),
+                    title: Text(s.statisticsPageTitle),
                     backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
                     bottom: TabBar(
                       isScrollable: true,
                       tabAlignment: TabAlignment.center,
                       dividerColor: Colors.transparent,
                       tabs: <Widget>[
-                        Tab(text: "Overall"),
+                        Tab(text: s.overallStatisticsTitle),
                         for (final layout in perLayoutStats) Tab(text: _valueLabel(layout.key, s)),
                       ],
                     ),
@@ -69,6 +69,7 @@ class StatisticsTabBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
+    final s = AppLocalizations.of(context)!;
     return Container(
       color: colours.surfaceContainerLow,
       child: Column(
@@ -86,7 +87,7 @@ class StatisticsTabBody extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                       child: StatGroup(
-                        title: "Last Game",
+                        title: s.lastGameStatistics,
                         child: GameEntry(place: -1, game: statistics.lastGame!, showLayout: showLayout),
                       ),
                     ),
@@ -94,7 +95,7 @@ class StatisticsTabBody extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
                       child: StatGroup(
-                        title: "Highest Scored Games",
+                        title: s.bestGamesStatistics,
                         child: Column(
                           children: [
                             for (final (index, game) in statistics.bestGames.indexed)
@@ -163,20 +164,21 @@ final class BasicStatistics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final trailingStyle = Theme.of(context).textTheme.bodyMedium;
+    final s = AppLocalizations.of(context)!;
     return StatGroup(
-      title: "Summary",
+      title: s.statisticsSummary,
       child: Column(
         children: [
           MyListTile(
-            title: Text("Total played"),
+            title: Text(s.totalPlayedLabel),
             trailing: Text(statistics.totalGames.toString(), style: trailingStyle),
           ),
           MyListTile(
-            title: Text("Total cleared"),
+            title: Text(s.totalClearedLabel),
             trailing: Text(statistics.cleared.toString(), style: trailingStyle),
           ),
           MyListTile(
-            title: Text("Best score"),
+            title: Text(s.bestScoreLabel),
             trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
           ),
         ],
@@ -237,11 +239,15 @@ class StatusChip extends StatelessWidget {
     final colours = Theme.of(context).colorScheme;
     final fill = game.isCleared ? colours.primary : colours.errorContainer;
     final text = game.isCleared ? colours.onPrimary : colours.onErrorContainer;
+    final s = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(color: fill, borderRadius: const BorderRadius.all(Radius.circular(100.0))),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 1.0),
-        child: Text(game.isCleared ? "Cleared" : "Not cleared", style: TextStyle(fontSize: 12, color: text)),
+        child: Text(
+          game.isCleared ? s.gameClearedLabel : s.gameNotClearedLabel,
+          style: TextStyle(fontSize: 12, color: text),
+        ),
       ),
     );
   }

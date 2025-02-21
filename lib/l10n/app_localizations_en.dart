@@ -60,6 +60,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startEmptyControl => 'Discard pile at start';
 
   @override
+  String get soundControl => 'Sound';
+
+  @override
   String get decorControl => 'Card back decoration';
 
   @override
@@ -84,6 +87,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get darkThemeModeLabel => 'Dark';
 
   @override
+  String get soundOnLabel => 'On';
+
+  @override
+  String get soundMutedLabel => 'Off';
+
+  @override
   String get layoutControl => 'Board layout';
 
   @override
@@ -102,7 +111,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get interfaceSettingGroupTitle => 'Interface';
 
   @override
-  String get nextGameeSettingGroupTitle => 'Next Game';
+  String get nextGameSettingGroupTitle => 'Next Game';
 
   @override
   String get selectLayoutDialogTitle => 'Select Layout';
@@ -121,4 +130,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newGameButtonLabel => 'New Game';
+
+  @override
+  String get statisticsPageTitle => 'Player Statistics';
+
+  @override
+  String get overallStatisticsTitle => 'Overall';
+
+  @override
+  String get lastGameStatistics => 'Last Game';
+
+  @override
+  String get bestGamesStatistics => 'Highest Scores';
+
+  @override
+  String get statisticsSummary => 'Summary';
+
+  @override
+  String get totalPlayedLabel => 'Total played';
+
+  @override
+  String get totalClearedLabel => 'Total cleared';
+
+  @override
+  String get bestScoreLabel => 'Total cleared';
+
+  @override
+  String get gameClearedLabel => 'Cleared';
+
+  @override
+  String get gameNotClearedLabel => 'Not cleared';
 }

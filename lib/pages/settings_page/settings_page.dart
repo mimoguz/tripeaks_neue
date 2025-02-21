@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/item_container.dart';
@@ -22,6 +23,7 @@ class SettingsPage extends StatelessWidget {
         SetStartEmptyIntent: SetStartEmptyAction(),
         SetDecorIntent: SetDecorAction(),
         SetLayoutIntent: SetLayoutAction(),
+        SetSoundModeIntent: SetSoundModeAction(),
       },
       child: Builder(
         builder: (context) {
@@ -109,8 +111,11 @@ class UiItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
-      child: SettingsGroupCard(title: "Interface", children: [ThemeModeSetting(), Divider(), DecorSetting()]),
+    return SliverToBoxAdapter(
+      child: SettingsGroupCard(
+        title: AppLocalizations.of(context)!.interfaceSettingGroupTitle,
+        children: const [SoundSetting(), Divider(), ThemeModeSetting(), Divider(), DecorSetting()],
+      ),
     );
   }
 }
