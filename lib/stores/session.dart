@@ -24,8 +24,8 @@ class Session extends _Session with _$Session {
     final game =
         await IO.read("game", Game.fromJsonObject) ??
         _Session._makeRandomGame(sessionData.layout, sessionData.startEmpty);
-    // TODO: Load statistics
-    final statistics = PlayerStatistics.empty();
+    final statistics =
+        await IO.read("statistics", PlayerStatistics.fromJsonObject) ?? PlayerStatistics.empty();
     return Session(
       game,
       sessionData.layout,
@@ -38,7 +38,7 @@ class Session extends _Session with _$Session {
   Future<void> write() async {
     await IO.write("session", _SessionData.of(this).toJsonObject());
     await IO.write("game", _game.toJsonObject());
-    // TODO: Save statistics
+    await IO.write("statistics", _statistics.toJsonObject());
   }
 
   Future<void> writeOptions() async {
@@ -50,7 +50,7 @@ class Session extends _Session with _$Session {
   }
 
   Future<void> writeStatistics() async {
-    // TODO: Save statistics
+    await IO.write("statistics", _statistics.toJsonObject());
     return;
   }
 }
