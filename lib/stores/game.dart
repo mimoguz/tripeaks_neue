@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
 import 'package:mobx/mobx.dart';
+import 'package:tripeaks_neue/util/json_object.dart';
 
 part "game.g.dart";
 
@@ -348,10 +349,11 @@ final class Event {
   final Pin pin;
   final int score;
 
-  Map<String, dynamic> toJsonObject() => <String, dynamic>{"pin": pin.index, "score": score};
+  JsonObject toJsonObject() => {"pin": pin.index, "score": score};
 
   factory Event.fromJsonObject(Map<String, dynamic> jsonObject, Layout layout) {
-    final pin = layout.pins[jsonObject["pin"] as int];
+    final pinIndex = jsonObject.read<int>("pin");
+    final pin = pinIndex < 0 ? Pin.unpin : layout.pins[pinIndex];
     final score = jsonObject["score"] as int;
     return Event(pin, score);
   }

@@ -8,18 +8,39 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  final session = Session.fresh();
+void main() async {
+  final session = await Session.read();
   runApp(
     MultiProvider(
       providers: [Provider<Session>(create: (_) => session), Provider<Settings>(create: (_) => Settings())],
-      builder: (context, _) => MainApp(),
+      builder: (context, _) => MainApp(session),
     ),
   );
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MainApp extends StatefulWidget {
+  const MainApp(this.session, {super.key});
+
+  final Session session;
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  late final AppLifecycleListener _listener;
+
+  @override
+  void initState() {
+    super.initState();
+    _listener = AppLifecycleListener(onPause: _onPause, onExitRequested: _onExitRequested);
+  }
+
+  @override
+  void dispose() {
+    _listener.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +51,10 @@ class MainApp extends StatelessWidget {
             localizationsDelegates: [AppLocalizations.delegate],
             supportedLocales: [Locale("en")],
             themeMode: settings.themeMode,
-            // theme: Green(_defaultTextTheme).light(),
-            // darkTheme: Green(_defaultTextTheme).dark(),
             theme: _defaultLight,
             darkTheme: _defaultDark,
             scrollBehavior: const MyCustomScrollBehavior(),
-            home: HomePage(), // TestPage(),
+            home: HomePage(),
           ),
     );
   }
@@ -75,6 +94,19 @@ class MainApp extends StatelessWidget {
       brightness: Brightness.dark,
     ),
   );
+
+  void _onPause() => _onPauseAsync();
+
+  Future<void> _onPauseAsync() async {
+    // await widget.session.writeGame();
+    await widget.session.write();
+  }
+
+  Future<AppExitResponse> _onExitRequested() async {
+    // await widget.session.writeGame();
+    await widget.session.write();
+    return AppExitResponse.exit;
+  }
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {

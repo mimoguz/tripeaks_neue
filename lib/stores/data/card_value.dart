@@ -1,3 +1,5 @@
+import 'package:tripeaks_neue/util/json_object.dart';
+
 enum Rank {
   two._("2"),
   three._("3"),
@@ -51,9 +53,9 @@ final class CardValue {
 
   bool checkAdjacent(CardValue other) => rank.checkAdjacent(other.rank);
 
-  Map<String, dynamic> toJsonObject() => <String, dynamic>{"rank": rank.index, "suit": suit.index};
+  JsonObject toJsonObject() => {"rank": rank.index, "suit": suit.index};
 
-  factory CardValue.fromJsonObject(Map<String, dynamic> jsonObject) =>
+  factory CardValue.fromJsonObject(JsonObject jsonObject) =>
       CardValue(rank: Rank.values[jsonObject["rank"] as int], suit: Suit.values[jsonObject["suit"] as int]);
 }
 

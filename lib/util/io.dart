@@ -11,6 +11,7 @@ class IO {
     try {
       final file = await _getFile(key);
       await file.writeAsString(json.encode(jsonObject));
+      _logger.d("Write $key to ${file.absolute.path}");
       return true;
     } catch (e) {
       _logger.e("Could not save $key.\n$e");
@@ -22,6 +23,7 @@ class IO {
     try {
       final file = await _getFile(key);
       final jsonText = await file.readAsString();
+      _logger.d("Read $key from ${file.absolute.path}");
       return reader(json.decode(jsonText));
     } catch (e) {
       _logger.e("Could not read $key.\n$e");
