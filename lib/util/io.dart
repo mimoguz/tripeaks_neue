@@ -10,7 +10,7 @@ class IO {
   static Future<bool> write(String key, Map<String, dynamic> jsonObject) async {
     try {
       final file = await _getFile(key);
-      await file.writeAsString(json.encode(jsonObject));
+      await file.writeAsString(json.encode(jsonObject), flush: true);
       _logger.d("Write $key to ${file.absolute.path}");
       return true;
     } catch (e) {

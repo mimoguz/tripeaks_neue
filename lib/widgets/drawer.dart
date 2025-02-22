@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
@@ -98,16 +100,17 @@ class HomePageDrawer extends StatelessWidget {
                   shape: StadiumBorder(),
                   onTap: Actions.handler(context, const NavigateToStatisticsIntent()),
                 ),
-                Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
-                ListTile(
-                  style: ListTileStyle.drawer,
-                  iconColor: iconColour,
-                  leading: const Icon(Icons.exit_to_app),
-                  title: Text(s.exitAction),
-                  shape: StadiumBorder(),
-                  visualDensity: VisualDensity.comfortable,
-                  onTap: Actions.handler(context, const ExitIntent()),
-                ),
+                if (!Platform.isIOS) Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
+                if (!Platform.isIOS)
+                  ListTile(
+                    style: ListTileStyle.drawer,
+                    iconColor: iconColour,
+                    leading: const Icon(Icons.exit_to_app),
+                    title: Text(s.exitAction),
+                    shape: StadiumBorder(),
+                    visualDensity: VisualDensity.comfortable,
+                    onTap: Actions.handler(context, const ExitIntent()),
+                  ),
               ],
             ),
           ),

@@ -1,4 +1,4 @@
-package com.example.tripeaks_neue
+package io.github.mimoguz.tripeaks_neue
 
 import io.flutter.embedding.android.FlutterActivity
 
