@@ -49,7 +49,10 @@ flutter:
   fonts:
     - family: Peaks-Neue
       fonts:
-        - asset: fonts/Peaks-Neue.ttf
+        - asset: fonts/actions.ttf
+    - family: Cards-Neue
+      fonts:
+        - asset: fonts/cards.ttf
     - family: Outfit
       fonts:
         - asset: fonts/Outfit-VariableFont_wght.ttf
