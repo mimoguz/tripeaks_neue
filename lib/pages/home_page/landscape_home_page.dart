@@ -45,14 +45,40 @@ class LandscapeHomePage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.surfaceContainerLow,
                 child: Padding(
                   padding: EdgeInsets.all((24.0 * scale).roundToDouble()),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    spacing: 24.0 * scale,
+                  child: Stack(
                     children: [
-                      LandscapeHomePageBoard(game: game, scale: scale, back: back),
-                      LandscapeHomePageCounter(game: game, scale: scale),
-                      LandscapeHomePageBottomArea(game: game, scale: scale, back: back),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        spacing: 24.0 * scale,
+                        children: [
+                          LandscapeHomePageBoard(game: game, scale: scale, back: back),
+                          LandscapeHomePageCounter(game: game, scale: scale),
+                          LandscapeHomePageBottomArea(game: game, scale: scale, back: back),
+                        ],
+                      ),
+                      Observer(
+                        builder: (context) {
+                          return Center(
+                            child: ClearedCardAnimated(
+                              id: game.started.millisecondsSinceEpoch,
+                              score: game.score,
+                              show: game.isCleared,
+                            ),
+                          );
+                        },
+                      ),
+                      Observer(
+                        builder: (context) {
+                          return Center(
+                            child: StalledCardAnimated(
+                              score: game.score,
+                              id: game.started.millisecondsSinceEpoch + 1,
+                              show: game.isStalled,
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -81,30 +107,10 @@ final class LandscapeHomePageBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Observer(
-        builder:
-            (context) => Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    LandscapeBoard(game: game, scale: scale, back: back),
-                    ClearedCardAnimated(
-                      id: game.started.millisecondsSinceEpoch,
-                      score: game.score,
-                      show: game.isCleared,
-                    ),
-                    StalledCardAnimated(
-                      score: game.score,
-                      id: game.started.millisecondsSinceEpoch + 1,
-                      show: game.isStalled,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [LandscapeBoard(game: game, scale: scale, back: back)],
       ),
     );
   }

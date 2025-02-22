@@ -45,14 +45,32 @@ class PortraitHomePage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.surfaceContainerLow,
                 child: Padding(
                   padding: EdgeInsets.all((24.0 * scale).roundToDouble()),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    spacing: 24.0 * scale,
+                  child: Stack(
                     children: [
-                      PortraitHomePageBoard(game: game, scale: scale, back: back),
-                      PortraitHomePageRightArea(game: game, scale: scale, back: back),
-                      PortraitHomePageCounter(game: game, scale: scale),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        spacing: 24.0 * scale,
+                        children: [
+                          PortraitHomePageBoard(game: game, scale: scale, back: back),
+                          PortraitHomePageRightArea(game: game, scale: scale, back: back),
+                          PortraitHomePageCounter(game: game, scale: scale),
+                        ],
+                      ),
+                      Center(
+                        child: ClearedCardAnimated(
+                          id: game.started.millisecondsSinceEpoch,
+                          score: game.score,
+                          show: game.isCleared,
+                        ),
+                      ),
+                      Center(
+                        child: StalledCardAnimated(
+                          score: game.score,
+                          id: game.started.millisecondsSinceEpoch + 1,
+                          show: game.isStalled,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -86,24 +104,7 @@ final class PortraitHomePageBoard extends StatelessWidget {
             (context) => Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    PortraitBoard(game: game, scale: scale, back: back),
-                    ClearedCardAnimated(
-                      id: game.started.millisecondsSinceEpoch,
-                      score: game.score,
-                      show: game.isCleared,
-                    ),
-                    StalledCardAnimated(
-                      score: game.score,
-                      id: game.started.millisecondsSinceEpoch + 1,
-                      show: game.isStalled,
-                    ),
-                  ],
-                ),
-              ],
+              children: [PortraitBoard(game: game, scale: scale, back: back)],
             ),
       ),
     );
