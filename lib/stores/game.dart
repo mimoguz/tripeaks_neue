@@ -24,6 +24,7 @@ class Game extends _Game with _$Game {
     required super.remaining,
     required super.chain,
     required super.isPlayed,
+    required super.statisticsPushed,
   });
 
   factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false}) {
@@ -56,6 +57,7 @@ class Game extends _Game with _$Game {
       remaining: lo.cardCount,
       chain: 0,
       isPlayed: false,
+      statisticsPushed: false,
     );
   }
 
@@ -79,6 +81,7 @@ class Game extends _Game with _$Game {
       "remaining": remaining,
       "started": started.toIso8601String(),
       "isPlayed": isPlayed,
+      "statisticsPushed": statisticsPushed,
     };
   }
 
@@ -104,6 +107,7 @@ class Game extends _Game with _$Game {
       remaining: jsonObject.read<int>("remaining"),
       chain: jsonObject.read<int>("chain"),
       isPlayed: jsonObject.read<bool>("isPlayed"),
+      statisticsPushed: jsonObject.read<bool>("statisticsPushed"),
     );
   }
 }
@@ -118,6 +122,7 @@ abstract class _Game with Store {
     required this.startsEmpty,
     required this.started,
     required this.isPlayed,
+    required this.statisticsPushed,
     required bool isCleared,
     required bool isStalled,
     required bool isEnded,
@@ -144,6 +149,8 @@ abstract class _Game with Store {
   bool startsEmpty;
 
   bool isPlayed;
+
+  bool statisticsPushed;
 
   final DateTime started;
 
@@ -303,6 +310,7 @@ abstract class _Game with Store {
       remaining: layout.cardCount,
       chain: 0,
       isPlayed: false,
+      statisticsPushed: false,
     );
   }
 

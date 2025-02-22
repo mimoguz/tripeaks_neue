@@ -59,7 +59,8 @@ abstract class _Session with Store {
   }) : _statistics = statistics,
        _game = game {
     whenCleared = when((_) => _game.isCleared, () {
-      if (game.isPlayed) {
+      if (game.isPlayed && !game.statisticsPushed) {
+        game.statisticsPushed = true;
         _statistics = _statistics.withGame(SingleGameStatistics.of(game));
       }
     });
@@ -91,10 +92,12 @@ abstract class _Session with Store {
 
     if (!_game.isCleared && _game.isPlayed) {
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      whenCleared?.reaction.dispose();
     }
 
     whenCleared = when((_) => next.isCleared, () {
       if (next.isPlayed) {
+        next.statisticsPushed = true;
         _statistics = _statistics.withGame(SingleGameStatistics.of(next));
         writeStatistics();
       }
@@ -110,12 +113,14 @@ abstract class _Session with Store {
       tile.hide();
     }
 
-    if (!_game.isCleared && _game.isPlayed) {
+    if (!_game.isCleared && _game.isPlayed && !_game.statisticsPushed) {
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
+      whenCleared?.reaction.dispose();
     }
 
     whenCleared = when((_) => next.isCleared, () {
-      if (next.isPlayed) {
+      if (next.isPlayed && !next.statisticsPushed) {
+        next.statisticsPushed = true;
         _statistics = _statistics.withGame(SingleGameStatistics.of(next));
         writeStatistics();
       }

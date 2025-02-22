@@ -24,7 +24,13 @@ final class TakeAction extends Action<TakeIntent> {
   void invoke(TakeIntent intent) {
     final took = game.take(intent.pin);
     if (took) {
-      sounds.playTake();
+      if (game.isCleared) {
+        sounds.playTake(game.chain).then((_) => sounds.playWin());
+      } else if (game.isStalled) {
+        sounds.playTake(game.chain).then((_) => sounds.playGameOver());
+      } else {
+        sounds.playTake(game.chain);
+      }
     } else {
       sounds.playError();
     }
@@ -43,7 +49,11 @@ final class DrawAction extends Action<DrawIntent> {
   @override
   void invoke(DrawIntent intent) {
     game.draw();
-    sounds.playDraw();
+    if (game.isStalled) {
+      sounds.playTake(game.chain).then((_) => sounds.playGameOver());
+    } else {
+      sounds.playDraw();
+    }
   }
 }
 
@@ -73,8 +83,8 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
     }
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
-    final settings = Provider.of<Settings>(context, listen: false);
-    settings.sounds.playStart();
+    // final settings = Provider.of<Settings>(context, listen: false);
+    // settings.sounds.playStart();
     session.newGame();
   }
 }
@@ -89,8 +99,8 @@ final class RestartAction extends ContextAction<RestartIntent> {
     }
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
-    final settings = Provider.of<Settings>(context, listen: false);
-    settings.sounds.playStart();
+    // final settings = Provider.of<Settings>(context, listen: false);
+    // settings.sounds.playStart();
     session.restart();
   }
 }

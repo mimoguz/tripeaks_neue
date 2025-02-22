@@ -36,13 +36,15 @@ flutter:
   assets:
     - images/tropy.png
     - images/empty.png
-    - sounds/138410__cameronmusic__item-collect-2.mp3
-    - sounds/608431__plasterbrain__shiny-coin-pickup.mp3
-    - sounds/138490__justinvoke__powerdown-2.mp3
-    - sounds/608433__plasterbrain__nintendo-coin-pickup.mp3
-    - sounds/423169__plasterbrain__pc-game-ui-error.mp3
-    - sounds/656394__nikos34__select-2.mp3
-    - sounds/50559__broumbroum__sf3-sfx-menu-select-l.mp3
+    - sounds/take1.mp3
+    - sounds/take2.mp3
+    - sounds/take3.mp3
+    - sounds/draw.mp3
+    - sounds/undo.mp3
+    - sounds/error.mp3
+    - sounds/start.mp3
+    - sounds/win.mp3
+    - sounds/gameover.mp3
 
   fonts:
     - family: Peaks-Neue

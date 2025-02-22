@@ -4,7 +4,8 @@ import 'package:logger/logger.dart';
 sealed class SoundEffects {
   Future<void> load();
   void dispose();
-  Future<void> playTake();
+  // Play a 'take' sound. 1-indexed.
+  Future<void> playTake(int n);
   Future<void> playDraw();
   Future<void> playRollback();
   Future<void> playError();
@@ -21,7 +22,7 @@ final class Silent implements SoundEffects {
   void dispose() {}
 
   @override
-  Future<void> playTake() => Future.value();
+  Future<void> playTake(int n) => Future.value();
 
   @override
   Future<void> playDraw() => Future.value();
@@ -117,10 +118,10 @@ final class SoundOn implements SoundEffects {
   }
 
   @override
-  Future<void> playTake() async {
+  Future<void> playTake(int n) async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_take));
+      await _player.play(AssetSource(_takes[(n - 1) % _takes.length]));
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
     }
@@ -136,12 +137,25 @@ final class SoundOn implements SoundEffects {
     }
   }
 
-  static const String _take = "608433__plasterbrain__nintendo-coin-pickup.mp3";
-  static const String _draw = "608431__plasterbrain__shiny-coin-pickup.mp3";
-  static const String _rollback = "50559__broumbroum__sf3-sfx-menu-select-l.mp3";
-  static const String _error = "423169__plasterbrain__pc-game-ui-error.mp3";
-  static const String _win = "656394__nikos34__select-2.mp3";
-  static const String _gameOver = "138490__justinvoke__powerdown-2.mp3";
-  static const String _start = "138410__cameronmusic__item-collect-2.mp3";
-  static const List<String> _sounds = [_take, _draw, _rollback, _error, _win, _gameOver, _start];
+  static const String _take1 = "take1.mp3";
+  static const String _take2 = "take2.mp3";
+  static const String _take3 = "take3.mp3";
+  static const String _draw = "draw.mp3";
+  static const String _rollback = "undo.mp3";
+  static const String _error = "error.mp3";
+  static const String _win = "win.mp3";
+  static const String _gameOver = "gameover.mp3";
+  static const String _start = "start.mp3";
+  static const List<String> _sounds = [
+    _take1,
+    _take2,
+    _take3,
+    _draw,
+    _rollback,
+    _error,
+    _win,
+    _gameOver,
+    _start,
+  ];
+  static const List<String> _takes = [_take1, _take2, _take3];
 }
