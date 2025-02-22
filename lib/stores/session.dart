@@ -10,9 +10,14 @@ part "session.g.dart";
 
 // ignore: library_private_types_in_public_api
 class Session extends _Session with _$Session {
-  Session(super.game, super.layout, {super.startEmpty, super.showAll, required super.statistics}) {
-    whenCleared = when((_) => game.isCleared, () => writeStatistics());
-  }
+  // ignore: use_super_parameters
+  Session(
+    Game game,
+    Peaks layout, {
+    bool startEmpty = false,
+    bool showAll = false,
+    required PlayerStatistics statistics,
+  }) : super(game, layout, startEmpty: startEmpty, showAll: showAll, statistics: statistics);
 
   factory Session.fresh() {
     final layout = Peaks.threePeaks;
@@ -53,10 +58,11 @@ abstract class _Session with Store {
     this.showAll = false,
   }) : _statistics = statistics,
        _game = game {
-    whenCleared = when(
-      (_) => _game.isCleared,
-      () => _statistics = _statistics.withGame(SingleGameStatistics.of(game)),
-    );
+    whenCleared = when((_) => _game.isCleared, () {
+      if (game.isPlayed) {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(game));
+      }
+    });
   }
 
   @readonly
@@ -83,14 +89,15 @@ abstract class _Session with Store {
       tile.hide();
     }
 
-    // TODO: Detect if played
-    if (!_game.isCleared) {
+    if (!_game.isCleared && _game.isPlayed) {
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
     }
 
     whenCleared = when((_) => next.isCleared, () {
-      _statistics = _statistics.withGame(SingleGameStatistics.of(next));
-      writeStatistics();
+      if (next.isPlayed) {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(next));
+        writeStatistics();
+      }
     });
     _game = next;
     _setupBoard(next);
@@ -103,13 +110,15 @@ abstract class _Session with Store {
       tile.hide();
     }
 
-    if (!_game.isCleared) {
+    if (!_game.isCleared && _game.isPlayed) {
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
     }
 
     whenCleared = when((_) => next.isCleared, () {
-      _statistics = _statistics.withGame(SingleGameStatistics.of(next));
-      writeStatistics();
+      if (next.isPlayed) {
+        _statistics = _statistics.withGame(SingleGameStatistics.of(next));
+        writeStatistics();
+      }
     });
 
     _game = next;

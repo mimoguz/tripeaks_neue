@@ -23,6 +23,7 @@ class Game extends _Game with _$Game {
     required super.score,
     required super.remaining,
     required super.chain,
+    required super.isPlayed,
   });
 
   factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false}) {
@@ -54,10 +55,11 @@ class Game extends _Game with _$Game {
       score: 0,
       remaining: lo.cardCount,
       chain: 0,
+      isPlayed: false,
     );
   }
 
-  Map<String, dynamic> toJsonObject() {
+  JsonObject toJsonObject() {
     final boardJson = board.map((it) => it.toJsonObject()).toList();
     final stockJson = stock.map((it) => it.toJsonObject()).toList();
     final discardJson = discard.map((it) => it.toJsonObject()).toList();
@@ -76,16 +78,17 @@ class Game extends _Game with _$Game {
       "chain": chain,
       "remaining": remaining,
       "started": started.toIso8601String(),
+      "isPlayed": isPlayed,
     };
   }
 
-  factory Game.fromJsonObject(Map<String, dynamic> jsonObject) {
+  factory Game.fromJsonObject(JsonObject jsonObject) {
     final layout = Peaks.values[jsonObject["layout"] as int].implementation;
-    final board = (jsonObject["board"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
-    final stock = (jsonObject["stock"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
-    final discard = (jsonObject["discard"] as List<dynamic>).map((it) => Tile.fromJsonObject(it, layout));
-    final history = (jsonObject["history"] as List<dynamic>).map((it) => Event.fromJsonObject(it, layout));
-    final started = DateTime.parse(jsonObject["started"]);
+    final board = jsonObject.read<List<dynamic>>("board").map((it) => Tile.fromJsonObject(it, layout));
+    final stock = jsonObject.read<List<dynamic>>("stock").map((it) => Tile.fromJsonObject(it, layout));
+    final discard = jsonObject.read<List<dynamic>>("discard").map((it) => Tile.fromJsonObject(it, layout));
+    final history = jsonObject.read<List<dynamic>>("history").map((it) => Event.fromJsonObject(it, layout));
+    final started = jsonObject.readDate("started");
     return Game._(
       layout: layout,
       board: ObservableList.of(board),
@@ -93,13 +96,14 @@ class Game extends _Game with _$Game {
       discard: ObservableList.of(discard),
       history: ObservableList.of(history),
       started: started,
-      startsEmpty: jsonObject["startsEmpty"] as bool,
-      isCleared: jsonObject["isCleared"] as bool,
-      isStalled: jsonObject["isStalled"] as bool,
-      isEnded: jsonObject["isEnded"] as bool,
-      score: jsonObject["score"] as int,
-      remaining: jsonObject["remaining"] as int,
-      chain: jsonObject["chain"] as int,
+      startsEmpty: jsonObject.read<bool>("startsEmpty"),
+      isCleared: jsonObject.read<bool>("isCleared"),
+      isStalled: jsonObject.read<bool>("isStalled"),
+      isEnded: jsonObject.read<bool>("isEnded"),
+      score: jsonObject.read<int>("score"),
+      remaining: jsonObject.read<int>("remaining"),
+      chain: jsonObject.read<int>("chain"),
+      isPlayed: jsonObject.read<bool>("isPlayed"),
     );
   }
 }
@@ -113,6 +117,7 @@ abstract class _Game with Store {
     required this.history,
     required this.startsEmpty,
     required this.started,
+    required this.isPlayed,
     required bool isCleared,
     required bool isStalled,
     required bool isEnded,
@@ -137,6 +142,8 @@ abstract class _Game with Store {
   ObservableList<Event> history;
 
   bool startsEmpty;
+
+  bool isPlayed;
 
   final DateTime started;
 
@@ -167,6 +174,8 @@ abstract class _Game with Store {
       tile.lastError = DateTime.now();
       return false;
     }
+
+    isPlayed = true;
 
     board[pin.index].take();
     discard.add(Tile(card: tile.card, pin: Pin.unpin));
@@ -204,6 +213,8 @@ abstract class _Game with Store {
     if (stock.isEmpty) {
       return;
     }
+
+    isPlayed = true;
 
     // You only get a score when a chain is completed
     final chainScore = _chain * _chain;
@@ -291,6 +302,7 @@ abstract class _Game with Store {
       score: 0,
       remaining: layout.cardCount,
       chain: 0,
+      isPlayed: false,
     );
   }
 
