@@ -58,17 +58,25 @@ class PortraitHomePage extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: ClearedCardAnimated(
-                          id: game.started.millisecondsSinceEpoch,
-                          score: game.score,
-                          show: game.isCleared,
+                        child: Observer(
+                          builder: (context) {
+                            return ClearedCardAnimated(
+                              id: game.started.millisecondsSinceEpoch,
+                              score: game.score,
+                              show: game.isCleared,
+                            );
+                          },
                         ),
                       ),
                       Center(
-                        child: StalledCardAnimated(
-                          score: game.score,
-                          id: game.started.millisecondsSinceEpoch + 1,
-                          show: game.isStalled,
+                        child: Observer(
+                          builder: (context) {
+                            return StalledCardAnimated(
+                              score: game.score,
+                              id: game.started.millisecondsSinceEpoch + 1,
+                              show: game.isStalled,
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -99,13 +107,10 @@ final class PortraitHomePageBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Observer(
-        builder:
-            (context) => Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [PortraitBoard(game: game, scale: scale, back: back)],
-            ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [PortraitBoard(game: game, scale: scale, back: back)],
       ),
     );
   }

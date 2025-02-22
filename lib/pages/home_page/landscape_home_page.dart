@@ -57,27 +57,27 @@ class LandscapeHomePage extends StatelessWidget {
                           LandscapeHomePageBottomArea(game: game, scale: scale, back: back),
                         ],
                       ),
-                      Observer(
-                        builder: (context) {
-                          return Center(
-                            child: ClearedCardAnimated(
+                      Center(
+                        child: Observer(
+                          builder: (context) {
+                            return ClearedCardAnimated(
                               id: game.started.millisecondsSinceEpoch,
                               score: game.score,
                               show: game.isCleared,
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
-                      Observer(
-                        builder: (context) {
-                          return Center(
-                            child: StalledCardAnimated(
+                      Center(
+                        child: Observer(
+                          builder: (context) {
+                            return StalledCardAnimated(
                               score: game.score,
                               id: game.started.millisecondsSinceEpoch + 1,
                               show: game.isStalled,
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),
