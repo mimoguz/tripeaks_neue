@@ -6,7 +6,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/widgets/list_item.dart';
+import 'package:tripeaks_neue/widgets/list_tile.dart';
 
 class LayoutSetting extends StatelessWidget {
   const LayoutSetting({super.key});

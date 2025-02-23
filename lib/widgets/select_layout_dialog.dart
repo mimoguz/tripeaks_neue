@@ -4,7 +4,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/list_item.dart';
+import 'package:tripeaks_neue/widgets/list_tile.dart';
 
 class SelectLayoutDialog extends StatefulWidget {
   const SelectLayoutDialog({super.key});

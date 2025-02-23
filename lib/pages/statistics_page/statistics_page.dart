@@ -9,7 +9,7 @@ import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/widgets/list_item.dart';
+import 'package:tripeaks_neue/widgets/list_tile.dart';
 
 class StatisticsPage extends StatelessWidget {
   const StatisticsPage({super.key});
@@ -260,6 +260,9 @@ final class Order extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(value.toString(), style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600));
+    return SizedBox(
+      width: 24.0,
+      child: Text(value.toString(), style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600)),
+    );
   }
 }

@@ -2,13 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 final class MyListTile extends StatelessWidget {
-  const MyListTile({super.key, required this.title, this.subtitle, this.leading, this.trailing, this.onTap});
+  const MyListTile({
+    super.key,
+    required this.title,
+    this.subtitle,
+    this.leading,
+    this.trailing,
+    this.onTap,
+    this.leftSpacing = 8.0,
+    this.rightSpacing = 8.0,
+  });
 
   final Widget title;
   final Widget? subtitle;
   final Widget? leading;
   final Widget? trailing;
   final VoidCallback? onTap;
+  final double leftSpacing;
+  final double rightSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +31,7 @@ final class MyListTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (leading != null) leading!,
-            if (leading != null) const SizedBox(width: 16.0),
+            if (leading != null && leftSpacing > 0.0) SizedBox(width: leftSpacing),
             Column(
               spacing: 4.0,
               mainAxisSize: MainAxisSize.min,
@@ -32,7 +43,7 @@ final class MyListTile extends StatelessWidget {
               ],
             ),
             Spacer(),
-            if (trailing != null) const SizedBox(width: 8.0),
+            if (trailing != null && rightSpacing > 0.0) SizedBox(width: rightSpacing),
             if (trailing != null) trailing!,
           ],
         ),

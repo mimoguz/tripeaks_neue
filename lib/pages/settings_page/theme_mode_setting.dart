@@ -5,7 +5,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/list_item.dart';
+import 'package:tripeaks_neue/widgets/list_tile.dart';
 
 class ThemeModeSetting extends StatelessWidget {
   const ThemeModeSetting({super.key});
