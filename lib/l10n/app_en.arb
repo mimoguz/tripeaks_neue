@@ -288,7 +288,7 @@
         "context": "statistics",
         "description": "Label of the total games cleared statistic."
     },
-    "bestScoreLabel": "Total cleared",
+    "bestScoreLabel": "Highest score",
     "@bestScoreLabel": {
         "type": "text",
         "context": "statistics",
