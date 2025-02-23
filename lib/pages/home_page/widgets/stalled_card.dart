@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
+// TODO: Strings to arb
 class StalledCardAnimated extends StatelessWidget {
   const StalledCardAnimated({super.key, required this.score, required this.id, required this.show});
 
@@ -47,13 +48,14 @@ final class StalledCard extends StatelessWidget {
                 Image.asset("images/empty.png", width: 90, height: 90),
                 const SizedBox(height: 16),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Flexible(
                       child: Text(
-                        "Unfortunately, you ran out of moves. How do you want to proceed?",
+                        "Unfortunately, you ran out of moves.\nYour score so far: $score.\nHow do you want to proceed?",
                         softWrap: true,
-                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
                       ),
                     ),
                   ],
