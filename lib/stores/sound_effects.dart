@@ -58,6 +58,7 @@ final class SoundOn implements SoundEffects {
     _player = AudioPlayer();
     _player.audioCache = _cache;
     _player.setReleaseMode(ReleaseMode.stop);
+    _player.setPlayerMode(PlayerMode.lowLatency);
     await _cache.loadAll(_sounds);
   }
 

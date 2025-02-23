@@ -94,22 +94,22 @@ mixin _$Session on _Session, Store {
       ActionController(name: '_Session', context: context);
 
   @override
-  void newGame() {
+  void newGame(Future<void> Function() callback) {
     final _$actionInfo =
         _$_SessionActionController.startAction(name: '_Session.newGame');
     try {
-      return super.newGame();
+      return super.newGame(callback);
     } finally {
       _$_SessionActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void restart() {
+  void restart(Future<void> Function() callback) {
     final _$actionInfo =
         _$_SessionActionController.startAction(name: '_Session.restart');
     try {
-      return super.restart();
+      return super.restart(callback);
     } finally {
       _$_SessionActionController.endAction(_$actionInfo);
     }

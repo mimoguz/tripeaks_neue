@@ -84,7 +84,7 @@ abstract class _Session with Store {
   ReactionDisposer? whenCleared;
 
   @action
-  void newGame() {
+  void newGame(Future<void> Function() callback) {
     final next = _makeRandomGame(layout, startEmpty);
     for (final tile in next.board) {
       tile.hide();
@@ -103,11 +103,11 @@ abstract class _Session with Store {
       }
     });
     _game = next;
-    _setupBoard(next);
+    _setupBoard(next, callback);
   }
 
   @action
-  void restart() {
+  void restart(Future<void> Function() callback) {
     final next = _game.rebuild();
     for (final tile in next.board) {
       tile.hide();
@@ -127,7 +127,7 @@ abstract class _Session with Store {
     });
 
     _game = next;
-    _setupBoard(next);
+    _setupBoard(next, callback);
   }
 
   Future<void> writeStatistics() async {
@@ -153,11 +153,12 @@ abstract class _Session with Store {
     return make();
   }
 
-  void _setupBoard(Game next) async {
+  void _setupBoard(Game next, Future<void> Function() callback) async {
     for (final tile in _game.board) {
       tile.show();
       await Future.delayed(_addAnimDelay);
     }
+    await callback();
   }
 
   static const Duration _addAnimDelay = Duration(milliseconds: 16);

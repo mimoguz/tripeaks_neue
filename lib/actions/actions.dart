@@ -83,9 +83,8 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
     }
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
-    // final settings = Provider.of<Settings>(context, listen: false);
-    // settings.sounds.playStart();
-    session.newGame();
+    final settings = Provider.of<Settings>(context, listen: false);
+    session.newGame(settings.sounds.playStart);
   }
 }
 
@@ -99,9 +98,8 @@ final class RestartAction extends ContextAction<RestartIntent> {
     }
     _closeDrawer(context);
     final session = Provider.of<Session>(context, listen: false);
-    // final settings = Provider.of<Settings>(context, listen: false);
-    // settings.sounds.playStart();
-    session.restart();
+    final settings = Provider.of<Settings>(context, listen: false);
+    session.restart(settings.sounds.playStart);
   }
 }
 

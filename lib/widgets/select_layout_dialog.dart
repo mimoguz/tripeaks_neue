@@ -98,7 +98,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             session.startEmpty = _startEmpty!;
             session.layout = _layout!;
             settings.sounds.playStart();
-            session.newGame();
+            session.newGame(settings.sounds.playStart);
             Navigator.pop(context);
           },
           child: Text(s.newGameButtonLabel),
