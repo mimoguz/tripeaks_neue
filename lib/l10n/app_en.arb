@@ -264,7 +264,7 @@
         "context": "statistics",
         "description": "Title of the last game statistics group."
     },
-    "bestGamesStatistics": "Highest Scores",
+    "bestGamesStatistics": "Highest-Scoring Games",
     "@bestGamesStatistics": {
         "type": "text",
         "context": "statistics",

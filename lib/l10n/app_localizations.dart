@@ -360,7 +360,7 @@ abstract class AppLocalizations {
   /// Title of the best games statistics group.
   ///
   /// In en, this message translates to:
-  /// **'Highest Scores'**
+  /// **'Highest-Scoring Games'**
   String get bestGamesStatistics;
 
   /// Title of the general statistics group (overal & per each layout).
@@ -384,7 +384,7 @@ abstract class AppLocalizations {
   /// Label of the best score statistic.
   ///
   /// In en, this message translates to:
-  /// **'Total cleared'**
+  /// **'Highest score'**
   String get bestScoreLabel;
 
   /// Value label for the game result chip if the game was cleared.

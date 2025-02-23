@@ -141,7 +141,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lastGameStatistics => 'Last Game';
 
   @override
-  String get bestGamesStatistics => 'Highest Scores';
+  String get bestGamesStatistics => 'Highest-Scoring Games';
 
   @override
   String get statisticsSummary => 'Summary';
@@ -153,7 +153,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalClearedLabel => 'Total cleared';
 
   @override
-  String get bestScoreLabel => 'Total cleared';
+  String get bestScoreLabel => 'Highest score';
 
   @override
   String get gameClearedLabel => 'Cleared';
