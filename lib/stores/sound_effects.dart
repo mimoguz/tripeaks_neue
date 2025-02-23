@@ -60,6 +60,7 @@ final class SoundOn implements SoundEffects {
     _player.setReleaseMode(ReleaseMode.stop);
     _player.setPlayerMode(PlayerMode.lowLatency);
     await _cache.loadAll(_sounds);
+    _prePlay();
   }
 
   @override
@@ -72,7 +73,7 @@ final class SoundOn implements SoundEffects {
   Future<void> playDraw() async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_draw));
+      await _player.play(AssetSource(_draw), volume: 1.0);
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
     }
@@ -82,7 +83,7 @@ final class SoundOn implements SoundEffects {
   Future<void> playError() async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_error));
+      await _player.play(AssetSource(_error), volume: 1.0);
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
     }
@@ -92,7 +93,7 @@ final class SoundOn implements SoundEffects {
   Future<void> playGameOver() async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_gameOver));
+      await _player.play(AssetSource(_gameOver), volume: 1.0);
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
     }
@@ -102,7 +103,7 @@ final class SoundOn implements SoundEffects {
   Future<void> playRollback() async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_rollback));
+      await _player.play(AssetSource(_rollback), volume: 1.0);
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
     }
@@ -112,19 +113,19 @@ final class SoundOn implements SoundEffects {
   Future<void> playStart() async {
     // TODO: Not happy with this
 
-    // try {
-    //   await _player.stop();
-    //   await _player.play(AssetSource(_start));
-    // } catch (e) {
-    //   _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
-    // }
+    try {
+      await _player.stop();
+      await _player.play(AssetSource(_start), volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playTake(int n) async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_takes[(n - 1) % _takes.length]));
+      await _player.play(AssetSource(_takes[(n - 1) % _takes.length]), volume: 1.0);
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
     }
@@ -134,9 +135,16 @@ final class SoundOn implements SoundEffects {
   Future<void> playWin() async {
     try {
       await _player.stop();
-      await _player.play(AssetSource(_win));
+      await _player.play(AssetSource(_win), volume: 1.0);
     } catch (e) {
       _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
+  }
+
+  Future<void> _prePlay() async {
+    for (final sound in _sounds) {
+      await _player.play(AssetSource(sound), volume: 0.0);
+      await _player.stop();
     }
   }
 

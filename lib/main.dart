@@ -109,6 +109,7 @@ class _MainAppState extends State<MainApp> {
   Future<AppExitResponse> _onExitRequested() async {
     await widget.session.write();
     await widget.settings.write();
+    widget.settings.dispose();
     return AppExitResponse.exit;
   }
 }

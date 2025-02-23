@@ -161,7 +161,7 @@ abstract class _Session with Store {
     await callback();
   }
 
-  static const Duration _addAnimDelay = Duration(milliseconds: 16);
+  static const Duration _addAnimDelay = Duration(milliseconds: 8);
 }
 
 final class _SessionData {

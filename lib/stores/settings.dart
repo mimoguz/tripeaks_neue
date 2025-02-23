@@ -47,6 +47,8 @@ abstract class _Settings with Store {
     _sounds = value ? SoundOn() : Silent();
     _sounds.load();
   }
+
+  void dispose() => _sounds.dispose();
 }
 
 /// Users of this enum, when they need an ordinal value, should consider using the 'value' property
