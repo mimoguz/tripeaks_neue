@@ -47,10 +47,10 @@ flutter:
     - sounds/gameover.mp3
 
   fonts:
-    - family: Peaks-Neue
+    - family: Actions
       fonts:
         - asset: fonts/actions.ttf
-    - family: Cards-Neue
+    - family: Cards
       fonts:
         - asset: fonts/cards.ttf
     - family: Outfit

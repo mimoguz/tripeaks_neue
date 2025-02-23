@@ -35,6 +35,6 @@ class CustomIcons {
   static const undo = IconData(0xe90a, fontFamily: _actions);
   static const undo16 = IconData(0xe909, fontFamily: _actions);
 
-  static const _actions = "Peaks-Neue";
-  static const _cards = "Cards-Neue";
+  static const _actions = "Actions";
+  static const _cards = "Cards";
 }
