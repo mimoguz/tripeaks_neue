@@ -110,12 +110,14 @@ final class SoundOn implements SoundEffects {
 
   @override
   Future<void> playStart() async {
-    try {
-      await _player.stop();
-      await _player.play(AssetSource(_start));
-    } catch (e) {
-      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
-    }
+    // TODO: Not happy with this
+
+    // try {
+    //   await _player.stop();
+    //   await _player.play(AssetSource(_start));
+    // } catch (e) {
+    //   _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    // }
   }
 
   @override
