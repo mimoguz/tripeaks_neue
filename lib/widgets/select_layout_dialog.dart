@@ -50,6 +50,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 8.0),
             Text(s.selectLayoutDialogTitle, style: Theme.of(context).textTheme.titleSmall),
             for (final layout in Peaks.values)
               MyListTile(
