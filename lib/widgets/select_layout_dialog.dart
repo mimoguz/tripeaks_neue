@@ -65,14 +65,14 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               ),
             const Divider(),
             const SizedBox(height: 8.0),
-            Text(s.additionalOptions, style: Theme.of(context).textTheme.titleSmall),
+            Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
             MyListTile(
               leading: Checkbox(
                 value: _showAll,
                 visualDensity: VisualDensity.compact,
                 onChanged: (value) => setState(() => _showAll = value!),
               ),
-              title: Text(s.showAllCheckboxLabel),
+              title: Text(s.showAllOptionLabel),
               onTap: () => setState(() => _showAll = !_showAll!),
             ),
             MyListTile(
@@ -81,7 +81,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
                 visualDensity: VisualDensity.compact,
                 onChanged: (value) => setState(() => _startEmpty = value!),
               ),
-              title: Text(s.startsEmptyCheckboxLabel),
+              title: Text(s.startsEmptyOptionLabel),
               onTap: () => setState(() => _startEmpty = !_startEmpty!),
             ),
           ],
@@ -91,7 +91,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
         TextButton(
           onPressed: () => Navigator.pop(context),
           style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
-          child: Text(s.cancelButtonLabel),
+          child: Text(s.selectDialogCancelAction),
         ),
         TextButton(
           onPressed: () {
@@ -102,7 +102,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             session.newGame(settings.sounds.playStart);
             Navigator.pop(context);
           },
-          child: Text(s.newGameButtonLabel),
+          child: Text(s.selectLayoutDialogNewGameAction),
         ),
       ],
     );

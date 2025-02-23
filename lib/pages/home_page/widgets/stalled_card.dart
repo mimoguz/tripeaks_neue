@@ -6,7 +6,6 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-// TODO: Strings to arb
 class StalledCardAnimated extends StatelessWidget {
   const StalledCardAnimated({super.key, required this.score, required this.id, required this.show});
 
@@ -53,7 +52,7 @@ final class StalledCard extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        "Unfortunately, you ran out of moves.\nYour score so far: $score.\nHow do you want to proceed?",
+                        s.stalledCardMessage(score),
                         softWrap: true,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
                       ),
@@ -65,14 +64,14 @@ final class StalledCard extends StatelessWidget {
                   builder: (context) {
                     return TextButton(
                       onPressed: Actions.handler(context, const RollbackIntent()),
-                      child: Text("Undo last move"),
+                      child: Text(s.stalledCardRollbackAction),
                     );
                   },
                 ),
                 const SizedBox(height: 12),
                 TextButton(
                   onPressed: Actions.handler(context, const NewGameIntent()),
-                  child: Text(s.newGameButtonLabel),
+                  child: Text(s.stalledCardNewGameAction),
                 ),
               ],
             ),

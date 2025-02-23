@@ -9,6 +9,32 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get drawTooltip => 'Draw';
+
+  @override
+  String get undoTooltip => 'Undo';
+
+  @override
+  String get menuTooltip => 'Menu';
+
+  @override
+  String get clearedCardMessage => 'Cleared!';
+
+  @override
+  String get clearedCardNewGameAction => 'New game';
+
+  @override
+  String stalledCardMessage(Object SCORE) {
+    return 'Unfortunately, you ran out of moves.\nYour score so far: $SCORE.\nHow do you want to proceed?';
+  }
+
+  @override
+  String get stalledCardNewGameAction => 'New game';
+
+  @override
+  String get stalledCardRollbackAction => 'Undo last move';
+
+  @override
   String get newGameAction => 'New Game';
 
   @override
@@ -24,46 +50,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get exitAction => 'Exit';
 
   @override
-  String get returnAction => 'Return to Game';
-
-  @override
-  String get drawTooltip => 'Draw';
-
-  @override
-  String get undoTooltip => 'Undo';
-
-  @override
-  String get menuTooltip => 'Menu';
-
-  @override
   String get settingsTooltip => 'Settings';
 
   @override
   String get infoTooltip => 'Help & About';
 
   @override
-  String get homeTooltip => 'Return to Game';
-
-  @override
   String get settingsTitle => 'Settings';
 
   @override
-  String get multiStateSwitchDefaultLabel => 'Multi-state switch';
+  String get interfaceSettingGroupTitle => 'Interface';
 
   @override
-  String get themeModeControl => 'Theme mode';
+  String get nextGameSettingGroupTitle => 'Next Game';
 
   @override
   String get showAllControl => 'Values of closed cards';
-
-  @override
-  String get startEmptyControl => 'Discard pile at start';
-
-  @override
-  String get soundControl => 'Sound';
-
-  @override
-  String get decorControl => 'Card back decoration';
 
   @override
   String get showAllOffLabel => 'Hidden';
@@ -72,10 +74,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showAllOnLabel => 'Visible';
 
   @override
+  String get startEmptyControl => 'Discard pile at start';
+
+  @override
   String get startEmptyOffLabel => 'Has one card';
 
   @override
   String get startEmptyOnLabel => 'Empty';
+
+  @override
+  String get themeModeControl => 'Theme mode';
 
   @override
   String get systemThemeModeLabel => 'System';
@@ -85,12 +93,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get darkThemeModeLabel => 'Dark';
-
-  @override
-  String get soundOnLabel => 'On';
-
-  @override
-  String get soundMutedLabel => 'Off';
 
   @override
   String get layoutControl => 'Board layout';
@@ -108,28 +110,34 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upDownLayoutLabel => 'Opposing directions';
 
   @override
-  String get interfaceSettingGroupTitle => 'Interface';
+  String get soundControl => 'Sound';
 
   @override
-  String get nextGameSettingGroupTitle => 'Next Game';
+  String get soundOnLabel => 'On';
+
+  @override
+  String get soundMutedLabel => 'Off';
+
+  @override
+  String get decorControl => 'Card back decoration';
 
   @override
   String get selectLayoutDialogTitle => 'Select Layout';
 
   @override
-  String get additionalOptions => 'Additional Options';
+  String get additionalOptionsGroupTitle => 'Additional Options';
 
   @override
-  String get startsEmptyCheckboxLabel => 'Start with an empty discard pile';
+  String get startsEmptyOptionLabel => 'Start with an empty discard pile';
 
   @override
-  String get showAllCheckboxLabel => 'Show values of closed cards';
+  String get showAllOptionLabel => 'Show values of closed cards';
 
   @override
-  String get cancelButtonLabel => 'Cancel';
+  String get selectDialogCancelAction => 'Cancel';
 
   @override
-  String get newGameButtonLabel => 'New Game';
+  String get selectLayoutDialogNewGameAction => 'New game';
 
   @override
   String get statisticsPageTitle => 'Player Statistics';
@@ -144,6 +152,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bestGamesStatistics => 'Highest-Scoring Games';
 
   @override
+  String get gameClearedLabel => 'Cleared';
+
+  @override
+  String get gameNotClearedLabel => 'Not cleared';
+
+  @override
   String get statisticsSummary => 'Summary';
 
   @override
@@ -154,10 +168,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bestScoreLabel => 'Highest score';
-
-  @override
-  String get gameClearedLabel => 'Cleared';
-
-  @override
-  String get gameNotClearedLabel => 'Not cleared';
 }

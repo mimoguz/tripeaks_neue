@@ -111,8 +111,6 @@ final class SoundOn implements SoundEffects {
 
   @override
   Future<void> playStart() async {
-    // TODO: Not happy with this
-
     try {
       await _player.stop();
       await _player.play(AssetSource(_start), volume: 1.0);

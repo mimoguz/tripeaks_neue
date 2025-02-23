@@ -93,6 +93,54 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
+  /// Tooltip of a control that draws a card from the stock.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get drawTooltip;
+
+  /// Tooltip of a control that undoes the last action.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undoTooltip;
+
+  /// Tooltip of a control that opens the game drawer.
+  ///
+  /// In en, this message translates to:
+  /// **'Menu'**
+  String get menuTooltip;
+
+  /// Card message
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared!'**
+  String get clearedCardMessage;
+
+  /// Label of a control that starts a new game.
+  ///
+  /// In en, this message translates to:
+  /// **'New game'**
+  String get clearedCardNewGameAction;
+
+  /// Card message
+  ///
+  /// In en, this message translates to:
+  /// **'Unfortunately, you ran out of moves.\nYour score so far: {SCORE}.\nHow do you want to proceed?'**
+  String stalledCardMessage(Object SCORE);
+
+  /// Label of a control that starts a new game.
+  ///
+  /// In en, this message translates to:
+  /// **'New game'**
+  String get stalledCardNewGameAction;
+
+  /// Label of a control that undoes the last action.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo last move'**
+  String get stalledCardRollbackAction;
+
   /// Label of a control that starts a new game.
   ///
   /// In en, this message translates to:
@@ -123,30 +171,6 @@ abstract class AppLocalizations {
   /// **'Exit'**
   String get exitAction;
 
-  /// Label of a control that closes menu and returns to the game page.
-  ///
-  /// In en, this message translates to:
-  /// **'Return to Game'**
-  String get returnAction;
-
-  /// Tooltip of a control that draws a card from the stock.
-  ///
-  /// In en, this message translates to:
-  /// **'Draw'**
-  String get drawTooltip;
-
-  /// Tooltip of a control that undoes the last action.
-  ///
-  /// In en, this message translates to:
-  /// **'Undo'**
-  String get undoTooltip;
-
-  /// Tooltip of a control that opens the game drawer.
-  ///
-  /// In en, this message translates to:
-  /// **'Menu'**
-  String get menuTooltip;
-
   /// Tooltip of a control that navigates to the 'Settings' page.
   ///
   /// In en, this message translates to:
@@ -159,53 +183,29 @@ abstract class AppLocalizations {
   /// **'Help & About'**
   String get infoTooltip;
 
-  /// Tooltip of a control that navigates to the 'Help & About' page.
-  ///
-  /// In en, this message translates to:
-  /// **'Return to Game'**
-  String get homeTooltip;
-
   /// Title of the 'Settings' page.
   ///
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsTitle;
 
-  /// Default semantic label of a multi-state switch.
+  /// Title of the settings group that contains ui related settings.
   ///
   /// In en, this message translates to:
-  /// **'Multi-state switch'**
-  String get multiStateSwitchDefaultLabel;
+  /// **'Interface'**
+  String get interfaceSettingGroupTitle;
 
-  /// Label of a control that sets application theme mode.
+  /// Title of the settings group that contains settings which will be used starting from next new game.
   ///
   /// In en, this message translates to:
-  /// **'Theme mode'**
-  String get themeModeControl;
+  /// **'Next Game'**
+  String get nextGameSettingGroupTitle;
 
   /// Label of a control that sets if the values of closed cards should be shown.
   ///
   /// In en, this message translates to:
   /// **'Values of closed cards'**
   String get showAllControl;
-
-  /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
-  ///
-  /// In en, this message translates to:
-  /// **'Discard pile at start'**
-  String get startEmptyControl;
-
-  /// Label of a control that sets sound mode.
-  ///
-  /// In en, this message translates to:
-  /// **'Sound'**
-  String get soundControl;
-
-  /// Label of a control that sets the decoration that is used on the back of the cards.
-  ///
-  /// In en, this message translates to:
-  /// **'Card back decoration'**
-  String get decorControl;
 
   /// Value label of showAll control when it is off.
   ///
@@ -219,6 +219,12 @@ abstract class AppLocalizations {
   /// **'Visible'**
   String get showAllOnLabel;
 
+  /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard pile at start'**
+  String get startEmptyControl;
+
   /// Value label of startEmpty control when it is off.
   ///
   /// In en, this message translates to:
@@ -230,6 +236,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Empty'**
   String get startEmptyOnLabel;
+
+  /// Label of a control that sets application theme mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme mode'**
+  String get themeModeControl;
 
   /// Value label of themeMode control when it is set to system.
   ///
@@ -248,18 +260,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark'**
   String get darkThemeModeLabel;
-
-  /// Value label of sound control when it is set to on.
-  ///
-  /// In en, this message translates to:
-  /// **'On'**
-  String get soundOnLabel;
-
-  /// Value label of sound control when it is set to off.
-  ///
-  /// In en, this message translates to:
-  /// **'Off'**
-  String get soundMutedLabel;
 
   /// Label of a control that sets game layout theme mode.
   ///
@@ -291,17 +291,29 @@ abstract class AppLocalizations {
   /// **'Opposing directions'**
   String get upDownLayoutLabel;
 
-  /// Title of the settings group that contains ui related settings.
+  /// Label of a control that sets sound mode.
   ///
   /// In en, this message translates to:
-  /// **'Interface'**
-  String get interfaceSettingGroupTitle;
+  /// **'Sound'**
+  String get soundControl;
 
-  /// Title of the settings group that contains settings which will be used starting from next new game.
+  /// Value label of sound control when it is set to on.
   ///
   /// In en, this message translates to:
-  /// **'Next Game'**
-  String get nextGameSettingGroupTitle;
+  /// **'On'**
+  String get soundOnLabel;
+
+  /// Value label of sound control when it is set to off.
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get soundMutedLabel;
+
+  /// Label of a control that sets the decoration that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card back decoration'**
+  String get decorControl;
 
   /// Title of the dialog that will open when 'New Game with Layout...' action is called.
   ///
@@ -313,31 +325,31 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Additional Options'**
-  String get additionalOptions;
+  String get additionalOptionsGroupTitle;
 
   /// Label of the checkbox that sets if the discard pile should be empty at the beginning of the game.
   ///
   /// In en, this message translates to:
   /// **'Start with an empty discard pile'**
-  String get startsEmptyCheckboxLabel;
+  String get startsEmptyOptionLabel;
 
   /// Label of the checkbox that sets if the values of closed cards should be shown.
   ///
   /// In en, this message translates to:
   /// **'Show values of closed cards'**
-  String get showAllCheckboxLabel;
+  String get showAllOptionLabel;
 
   /// Label of the cancel button of the dialog.
   ///
   /// In en, this message translates to:
   /// **'Cancel'**
-  String get cancelButtonLabel;
+  String get selectDialogCancelAction;
 
   /// Label of the new game button of the dialog.
   ///
   /// In en, this message translates to:
-  /// **'New Game'**
-  String get newGameButtonLabel;
+  /// **'New game'**
+  String get selectLayoutDialogNewGameAction;
 
   /// Title of the 'Player Statistics' page.
   ///
@@ -363,6 +375,18 @@ abstract class AppLocalizations {
   /// **'Highest-Scoring Games'**
   String get bestGamesStatistics;
 
+  /// Value label for the game result chip if the game was cleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared'**
+  String get gameClearedLabel;
+
+  /// Value label for the game result chip if the game wasn't cleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Not cleared'**
+  String get gameNotClearedLabel;
+
   /// Title of the general statistics group (overal & per each layout).
   ///
   /// In en, this message translates to:
@@ -386,18 +410,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Highest score'**
   String get bestScoreLabel;
-
-  /// Value label for the game result chip if the game was cleared.
-  ///
-  /// In en, this message translates to:
-  /// **'Cleared'**
-  String get gameClearedLabel;
-
-  /// Value label for the game result chip if the game wasn't cleared.
-  ///
-  /// In en, this message translates to:
-  /// **'Not cleared'**
-  String get gameNotClearedLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

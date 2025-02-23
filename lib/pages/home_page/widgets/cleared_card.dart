@@ -47,7 +47,7 @@ final class ClearedCard extends StatelessWidget {
                 children: [
                   Image.asset("images/tropy.png", width: 90, height: 90),
                   Text(
-                    "Cleared!",
+                    s.clearedCardMessage,
                     style: Theme.of(context).textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
@@ -70,7 +70,7 @@ final class ClearedCard extends StatelessWidget {
                   const Divider(),
                   TextButton(
                     onPressed: Actions.handler(context, const NewGameIntent()),
-                    child: Text(s.newGameButtonLabel),
+                    child: Text(s.clearedCardNewGameAction),
                   ),
                 ],
               ),

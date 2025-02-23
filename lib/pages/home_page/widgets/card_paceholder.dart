@@ -17,7 +17,6 @@ class CardPlaceHolder extends StatelessWidget {
       ),
       width: c.cardSize * scale,
       height: c.cardSize * scale,
-      // TODO: Specific icon
       child: Icon(
         scale < c.iconScaleThreshold ? CustomIcons.draw16 : CustomIcons.draw,
         color: colours.outlineVariant,

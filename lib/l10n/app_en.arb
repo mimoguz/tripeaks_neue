@@ -1,118 +1,136 @@
 {
     "@@locale": "en",
-    "newGameAction": "New Game",
-    "@newGameAction": {
-        "type": "text",
-        "context": "menu",
-        "description": "Label of a control that starts a new game."
-    },
-    "newGameWithLayoutAction": "New Game with Layout...",
-    "@newGameWithLayoutAction": {
-        "type": "text",
-        "context": "menu",
-        "description": "Label of a control that shows layout options then starts a new game."
-    },
-    "restartGameAction": "Restart Current Game",
-    "@restartGameAction": {
-        "type": "text",
-        "context": "menu",
-        "description": "Label of a control that restarts the current game."
-    },
-    "statisticsAction": "Statistics",
-    "@statisticsAction": {
-        "type": "text",
-        "context": "menu",
-        "description": "Label of a control that navigates to the 'Statistics' page."
-    },
-    "exitAction": "Exit",
-    "@exitAction": {
-        "type": "text",
-        "context": "menu",
-        "description": "Label of a control that exits the application."
-    },
-    "returnAction": "Return to Game",
-    "@returnAction": {
-        "type": "text",
-        "context": "menu",
-        "description": "Label of a control that closes menu and returns to the game page."
-    },
+
+    "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {
         "type": "text",
-        "context": "home",
+        "context": "homePage",
         "description": "Tooltip of a control that draws a card from the stock."
     },
     "undoTooltip": "Undo",
     "@undoTooltip": {
         "type": "text",
-        "context": "home",
+        "context": "homePage",
         "description": "Tooltip of a control that undoes the last action."
     },
     "menuTooltip": "Menu",
     "@menuTooltip": {
         "type": "text",
-        "context": "home",
+        "context": "homePage",
         "description": "Tooltip of a control that opens the game drawer."
     },
+
+    "@_HOME_PAGE__CLEARED_CARD": {},
+    "clearedCardMessage": "Cleared!",
+    "@clearedCardMessage": {
+        "type": "text",
+        "context": "homePage:clearedCard",
+        "description": "Card message"
+    },
+    "clearedCardNewGameAction": "New game",
+    "@clearedCardNewGameAction": {
+        "type": "text",
+        "context": "homePage:clearedCard",
+        "description": "Label of a control that starts a new game."
+    },
+    
+    "@_HOME_PAGE__STALLED_CARD": {},
+    "stalledCardMessage": "Unfortunately, you ran out of moves.\nYour score so far: {SCORE}.\nHow do you want to proceed?",
+    "@stalledCardMessage": {
+        "type": "text",
+        "context": "homePage:stalledCard",
+        "description": "Card message",
+        "placeholders": {
+            "SCORE": {
+                "example": "128",
+                "description": "Game score"
+            }
+        }
+    },
+    "stalledCardNewGameAction": "New game",
+    "@stalledCardNewGameAction": {
+        "type": "text",
+        "context": "homePage:stalledCard",
+        "description": "Label of a control that starts a new game."
+    },
+    "stalledCardRollbackAction": "Undo last move",
+    "@stalledCardRollbackAction": {
+        "type": "text",
+        "context": "homePage:stalledCard",
+        "description": "Label of a control that undoes the last action."
+    },
+
+    "@_HOME_PAGE__DRAWER": {},
+    "newGameAction": "New Game",
+    "@newGameAction": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Label of a control that starts a new game."
+    },
+    "newGameWithLayoutAction": "New Game with Layout...",
+    "@newGameWithLayoutAction": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Label of a control that shows layout options then starts a new game."
+    },
+    "restartGameAction": "Restart Current Game",
+    "@restartGameAction": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Label of a control that restarts the current game."
+    },
+    "statisticsAction": "Statistics",
+    "@statisticsAction": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Label of a control that navigates to the 'Statistics' page."
+    },
+    "exitAction": "Exit",
+    "@exitAction": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Label of a control that exits the application."
+    },    
     "settingsTooltip": "Settings",
     "@settingsTooltip": {
         "type": "text",
-        "context": "menu",
+        "context": "homePage:drawer",
         "description": "Tooltip of a control that navigates to the 'Settings' page."
     },
     "infoTooltip": "Help & About",
     "@infoTooltip": {
         "type": "text",
-        "context": "menu",
+        "context": "homePage:drawer",
         "description": "Tooltip of a control that navigates to the 'Help & About' page."
     },
-    "homeTooltip": "Return to Game",
-    "@homeTooltip": {
-        "type": "text",
-        "context": "sub-pages",
-        "description": "Tooltip of a control that navigates to the 'Help & About' page."
-    },
+    
+    "@_SETTINGS_PAGE": {},
     "settingsTitle": "Settings",
     "@settingsTitle": {
         "type": "text",
         "context": "settings",
         "description": "Title of the 'Settings' page."
     },
-    "multiStateSwitchDefaultLabel": "Multi-state switch",
-    "@multiStateSwitchDefaultLabel": {
+    "interfaceSettingGroupTitle": "Interface",
+    "@interfaceSettingGroupTitle": {
         "type": "text",
         "context": "settings",
-        "description": "Default semantic label of a multi-state switch."
+        "description": "Title of the settings group that contains ui related settings."
     },
-    "themeModeControl": "Theme mode",
-    "@themeModeControl": {
+    "nextGameSettingGroupTitle": "Next Game",
+    "@nextGameSettingGroupTitle": {
         "type": "text",
         "context": "settings",
-        "description": "Label of a control that sets application theme mode."
+        "description": "Title of the settings group that contains settings which will be used starting from next new game."
     },
+
+    "@_SETTINGS_PAGE__SHOW_ALL_SETTING": {},
     "showAllControl": "Values of closed cards",
     "@showAllControl": {
         "type": "text",
-        "context": "settings",
+        "context": "settings:showAllSetting",
         "description": "Label of a control that sets if the values of closed cards should be shown."
-    },
-    "startEmptyControl": "Discard pile at start",
-    "@startEmptyControl": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
-    },
-    "soundControl": "Sound",
-    "@soundControl": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a control that sets sound mode."
-    },
-    "decorControl": "Card back decoration",
-    "@decorControl": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a control that sets the decoration that is used on the back of the cards."
     },
     "showAllOffLabel": "Hidden",
     "@showAllOffLabel": {
@@ -126,6 +144,14 @@
         "context": "settings",
         "description": "Value label of showAll control when it is on."
     },
+
+    "@_SETTINGS_PAGE__START_EMPTY_SETTING": {},
+    "startEmptyControl": "Discard pile at start",
+    "@startEmptyControl": {
+        "type": "text",
+        "context": "settings:startEmptySetting",
+        "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
+    },
     "startEmptyOffLabel": "Has one card",
     "@startEmptyOffLabel": {
         "type": "text",
@@ -137,6 +163,14 @@
         "type": "text",
         "context": "settings",
         "description": "Value label of startEmpty control when it is on."
+    },
+    
+    "@_SETTINGS_PAGE__THEME_MODE_SETTING": {},
+    "themeModeControl": "Theme mode",
+    "@themeModeControl": {
+        "type": "text",
+        "context": "settings:themeModeSetting",
+        "description": "Label of a control that sets application theme mode."
     },
     "systemThemeModeLabel": "System",
     "@systemThemeModeLabel": {
@@ -156,18 +190,8 @@
         "context": "settings",
         "description": "Value label of themeMode control when it is set to dark."
     },
-    "soundOnLabel": "On",
-    "@soundOnLabel": {
-        "type": "text",
-        "context": "settings",
-        "description": "Value label of sound control when it is set to on."
-    },
-    "soundMutedLabel": "Off",
-    "@soundMutedLabel": {
-        "type": "text",
-        "context": "settings",
-        "description": "Value label of sound control when it is set to off."
-    },
+    
+    "@_SETTINGS_PAGE__LAYOUT_SETTING": {},
     "layoutControl": "Board layout",
     "@layoutControl": {
         "type": "text",
@@ -198,112 +222,135 @@
         "context": "settings",
         "description": "Value label of layout selection control when it is set to 'upDown'."
     },
-    "interfaceSettingGroupTitle": "Interface",
-    "@interfaceSettingGroupTitle": {
+    
+    "@_SETTINGS_PAGE__SOUND_SETTING": {},
+    "soundControl": "Sound",
+    "@soundControl": {
         "type": "text",
         "context": "settings",
-        "description": "Title of the settings group that contains ui related settings."
+        "description": "Label of a control that sets sound mode."
     },
-    "nextGameSettingGroupTitle": "Next Game",
-    "@nextGameSettingGroupTitle": {
+    "soundOnLabel": "On",
+    "@soundOnLabel": {
         "type": "text",
         "context": "settings",
-        "description": "Title of the settings group that contains settings which will be used starting from next new game."
+        "description": "Value label of sound control when it is set to on."
     },
+    "soundMutedLabel": "Off",
+    "@soundMutedLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of sound control when it is set to off."
+    },
+
+    "@_SETTINGS_PAGE__DECOR_SETTING": {},
+    "decorControl": "Card back decoration",
+    "@decorControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets the decoration that is used on the back of the cards."
+    },
+
+    
+    "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
     "@selectLayoutDialogTitle": {
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Title of the dialog that will open when 'New Game with Layout...' action is called."
     },
-    "additionalOptions": "Additional Options",
-    "@additionalOptions": {
+    "additionalOptionsGroupTitle": "Additional Options",
+    "@additionalOptionsGroupTitle": {
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Title of the additional options section of the dialog."
     },
-    "startsEmptyCheckboxLabel": "Start with an empty discard pile",
-    "@startsEmptyCheckboxLabel": {
+    "startsEmptyOptionLabel": "Start with an empty discard pile",
+    "@startsEmptyOptionLabel": {
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Label of the checkbox that sets if the discard pile should be empty at the beginning of the game."
     },
-    "showAllCheckboxLabel": "Show values of closed cards",
-    "@showAllCheckboxLabel": {
+    "showAllOptionLabel": "Show values of closed cards",
+    "@showAllOptionLabel": {
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Label of the checkbox that sets if the values of closed cards should be shown."
     },
-    "cancelButtonLabel": "Cancel",
-    "@cancelButtonLabel": {
+    "selectDialogCancelAction": "Cancel",
+    "@selectDialogCancelAction": {
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Label of the cancel button of the dialog."
     },
-    "newGameButtonLabel": "New Game",
-    "@newGameButtonLabel": {
+    "selectLayoutDialogNewGameAction": "New game",
+    "@selectLayoutDialogNewGameAction": {
         "type": "text",
         "context": "selectLayoutDialog",
         "description": "Label of the new game button of the dialog."
     },
+
+    "@_STATISTICS_PAGE": {},
     "statisticsPageTitle": "Player Statistics",
     "@statisticsPageTitle": {
         "type": "text",
-        "context": "statistics",
+        "context": "statisticsPage",
         "description": "Title of the 'Player Statistics' page."
     },
     "overallStatisticsTitle": "Overall",
     "@overallStatisticsTitle": {
         "type": "text",
-        "context": "statistics",
+        "context": "statisticsPage",
         "description": "Title of the general statistics tab."
     },
     "lastGameStatistics": "Last Game",
     "@lastGameStatistics": {
         "type": "text",
-        "context": "statistics",
+        "context": "statisticsPage",
         "description": "Title of the last game statistics group."
     },
     "bestGamesStatistics": "Highest-Scoring Games",
     "@bestGamesStatistics": {
         "type": "text",
-        "context": "statistics",
+        "context": "statisticsPage",
         "description": "Title of the best games statistics group."
-    },
-    "statisticsSummary": "Summary",
-    "@statisticsSummary": {
-        "type": "text",
-        "context": "statistics",
-        "description": "Title of the general statistics group (overal & per each layout)."
-    },
-    "totalPlayedLabel": "Total played",
-    "@totalPlayedLabel": {
-        "type": "text",
-        "context": "statistics",
-        "description": "Label of the total games played statistic."
-    },
-    "totalClearedLabel": "Total cleared",
-    "@totalClearedLabel": {
-        "type": "text",
-        "context": "statistics",
-        "description": "Label of the total games cleared statistic."
-    },
-    "bestScoreLabel": "Highest score",
-    "@bestScoreLabel": {
-        "type": "text",
-        "context": "statistics",
-        "description": "Label of the best score statistic."
     },
     "gameClearedLabel": "Cleared",
     "@gameClearedLabel": {
         "type": "text",
-        "context": "statistics",
+        "context": "statisticsPage",
         "description": "Value label for the game result chip if the game was cleared."
     },
     "gameNotClearedLabel": "Not cleared",
     "@gameNotClearedLabel": {
         "type": "text",
-        "context": "statistics",
+        "context": "statisticsPage",
         "description": "Value label for the game result chip if the game wasn't cleared."
+    },
+
+    "@_STATISTICS_PAGE__SUMMARY": {},
+    "statisticsSummary": "Summary",
+    "@statisticsSummary": {
+        "type": "text",
+        "context": "statisticsPage:summary",
+        "description": "Title of the general statistics group (overal & per each layout)."
+    },
+    "totalPlayedLabel": "Total played",
+    "@totalPlayedLabel": {
+        "type": "text",
+        "context": "statisticsPage:summary",
+        "description": "Label of the total games played statistic."
+    },
+    "totalClearedLabel": "Total cleared",
+    "@totalClearedLabel": {
+        "type": "text",
+        "context": "statisticsPage:summary",
+        "description": "Label of the total games cleared statistic."
+    },
+    "bestScoreLabel": "Highest score",
+    "@bestScoreLabel": {
+        "type": "text",
+        "context": "statisticsPage:summary",
+        "description": "Label of the best score statistic."
     }
 }
