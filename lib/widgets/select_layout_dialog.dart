@@ -45,12 +45,12 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     _layout ??= session.layout;
 
     return AlertDialog.adaptive(
-      title: Text(s.selectLayoutDialogTitle),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(s.selectLayoutDialogTitle, style: Theme.of(context).textTheme.titleSmall),
             for (final layout in Peaks.values)
               MyListTile(
                 leading: Radio<Peaks>(
