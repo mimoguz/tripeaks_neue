@@ -9,12 +9,13 @@ import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/card_paceholder.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/card_placeholder.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/stalled_card.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/swipe_area.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -47,6 +48,7 @@ class PortraitHomePage extends StatelessWidget {
                   padding: EdgeInsets.all((24.0 * scale).roundToDouble()),
                   child: Stack(
                     children: [
+                      SwipeArea(intent: const DrawIntent()),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -129,9 +131,11 @@ class PortraitHomePageCounter extends StatelessWidget {
         Expanded(
           child: Observer(
             builder:
-                (context) => RotatedBox(
-                  quarterTurns: 3,
-                  child: CardCounter(maxCount: game.layout.cardCount, count: game.remaining),
+                (context) => IgnorePointer(
+                  child: RotatedBox(
+                    quarterTurns: 3,
+                    child: CardCounter(maxCount: game.layout.cardCount, count: game.remaining),
+                  ),
                 ),
           ),
         ),
@@ -173,27 +177,29 @@ class PortraitHomePageRightArea extends StatelessWidget {
                 onPressed: Actions.handler(context, const RollbackIntent()),
               ),
         ),
-        SizedBox(
-          width: c.cardSize * scale,
-          height: c.cardSize * scale,
-          child: Observer(
-            builder:
-                (context) =>
-                    game.discard.isEmpty
-                        ? CardPlaceHolder(scale: scale)
-                        : FittedBox(
-                          child: TileCard(
-                            game.discard.last
-                              ..open()
-                              ..put(),
-                            back: back,
-                            orientation: Orientation.portrait,
+        IgnorePointer(
+          child: SizedBox(
+            width: c.cardSize * scale,
+            height: c.cardSize * scale,
+            child: Observer(
+              builder:
+                  (context) =>
+                      game.discard.isEmpty
+                          ? CardPlaceHolder(scale: scale)
+                          : FittedBox(
+                            child: TileCard(
+                              game.discard.last
+                                ..open()
+                                ..put(),
+                              back: back,
+                              orientation: Orientation.portrait,
+                            ),
                           ),
-                        ),
+            ),
           ),
         ),
         Spacer(),
-        PortraitStock(game, scale: scale, back: back),
+        IgnorePointer(child: PortraitStock(game, scale: scale, back: back)),
         Observer(
           builder:
               (context) => GameButton.wide(

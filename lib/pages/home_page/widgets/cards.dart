@@ -138,26 +138,28 @@ final class InactiveCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colours = theme.colorScheme;
-    return Material(
-      color: Color.alphaBlend(
-        theme.colorScheme.surface.withValues(alpha: 1.0 - t),
-        colours.tertiaryContainer,
-      ),
-      borderRadius: c.commonBorderRadius,
-      child: SizedBox(
-        width: c.cardSize,
-        height: c.cardSize,
-        child:
-            options.showValue
-                ? Stack(
-                  children: [
-                    CardBack(t: t, decor: options.decor),
-                    Align(alignment: Alignment.topLeft, child: HorizontalSmallFace(cardValue)),
-                    Align(alignment: Alignment.bottomLeft, child: HorizontalSmallFaceAlt(cardValue)),
-                  ],
-                )
-                : CardBack(t: t, decor: options.decor),
-        // : SizedBox(),
+    return IgnorePointer(
+      child: Material(
+        color: Color.alphaBlend(
+          theme.colorScheme.surface.withValues(alpha: 1.0 - t),
+          colours.tertiaryContainer,
+        ),
+        borderRadius: c.commonBorderRadius,
+        child: SizedBox(
+          width: c.cardSize,
+          height: c.cardSize,
+          child:
+              options.showValue
+                  ? Stack(
+                    children: [
+                      CardBack(t: t, decor: options.decor),
+                      Align(alignment: Alignment.topLeft, child: HorizontalSmallFace(cardValue)),
+                      Align(alignment: Alignment.bottomLeft, child: HorizontalSmallFaceAlt(cardValue)),
+                    ],
+                  )
+                  : CardBack(t: t, decor: options.decor),
+          // : SizedBox(),
+        ),
       ),
     );
   }
