@@ -58,3 +58,21 @@ AppImage:
   arch: x86_64
   update-information: guess
   sign-key: None
+
+# TODO: fix this
+#error:
+# cp build/linux/x64/release/bundle/tripeaks_neue AppDir
+# cp -r build/linux/x64/release/bundle/lib/. AppDir/lib
+# cp -r build/linux/x64/release/bundle/data AppDir
+# cp icon.svg AppDir/usr/share/icons/
+# cp: cannot create regular file 'AppDir/usr/share/icons/': Not a directory
+# Traceback (most recent call last):
+  # File "/usr/local/bin/appimage-builder", line 8, in <module>
+    # sys.exit(__main__())
+  # File "/usr/local/lib/python3.8/dist-packages/appimagebuilder/__main__.py", line 50, in __main__
+    # invoker.execute(commands)
+  # File "/usr/local/lib/python3.8/dist-packages/appimagebuilder/invoker.py", line 29, in execute
+    # command()
+  # File "/usr/local/lib/python3.8/dist-packages/appimagebuilder/commands/run_script.py", line 82, in __call__
+    # raise RuntimeError("Script exited with code: %s" % _proc.returncode)
+# RuntimeError: Script exited with code: 1
