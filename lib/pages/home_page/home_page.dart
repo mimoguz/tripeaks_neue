@@ -2,7 +2,7 @@ import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/landscape_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/portrait_home_page.dart';
-import 'package:tripeaks_neue/widgets/drawer.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

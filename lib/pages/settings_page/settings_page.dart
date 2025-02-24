@@ -8,7 +8,7 @@ import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
-import 'package:tripeaks_neue/widgets/item_container.dart';
+import 'package:tripeaks_neue/widgets/group_tile.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -52,24 +52,21 @@ final class SettingsPageBody extends StatelessWidget {
         Expanded(
           child: Container(
             color: Theme.of(context).colorScheme.surfaceContainerLow,
-            child: const Center(
+            child: Center(
               child: Column(
                 children: [
                   Flexible(
-                    child: CustomScrollView(
+                    child: ListView(
                       shrinkWrap: true,
-                      slivers: [
-                        SliverPadding(
-                          padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
-                          sliver: GameItems(),
-                        ),
+                      children: [
+                        Padding(padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0), child: GameItems()),
 
-                        SliverPadding(
+                        Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-                          sliver: NextGameItems(),
+                          child: NextGameItems(),
                         ),
 
-                        SliverPadding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), sliver: UiItems()),
+                        Padding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), child: UiItems()),
                       ],
                     ),
                   ),
@@ -88,7 +85,7 @@ class GameItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(child: SettingsGroupCard(children: [ShowAllSetting()]));
+    return GroupTile(children: [ShowAllSetting()]);
   }
 }
 
@@ -97,12 +94,7 @@ class NextGameItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
-      child: SettingsGroupCard(
-        title: "Next Game",
-        children: [LayoutSetting(), Divider(), StartEmptySetting()],
-      ),
-    );
+    return GroupTile(title: "Next Game", children: [LayoutSetting(), Divider(), StartEmptySetting()]);
   }
 }
 
@@ -111,49 +103,9 @@ class UiItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: SettingsGroupCard(
-        title: AppLocalizations.of(context)!.interfaceSettingGroupTitle,
-        children: const [SoundSetting(), Divider(), ThemeModeSetting(), Divider(), DecorSetting()],
-      ),
-    );
-  }
-}
-
-class SettingsGroupCard extends StatelessWidget {
-  const SettingsGroupCard({super.key, this.title, required this.children});
-
-  final List<Widget> children;
-  final String? title;
-
-  @override
-  Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    return ListItemContainer(
-      child: Card(
-        color: colours.surface,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
-          child: Column(
-            spacing: 4.0,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (title != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
-                  child: Text(
-                    title!,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: Theme.of(context).colorScheme.outline,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              for (final child in children) child,
-            ],
-          ),
-        ),
-      ),
+    return GroupTile(
+      title: AppLocalizations.of(context)!.interfaceSettingGroupTitle,
+      children: const [SoundSetting(), Divider(), ThemeModeSetting(), Divider(), DecorSetting()],
     );
   }
 }

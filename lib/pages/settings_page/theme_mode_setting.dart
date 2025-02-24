@@ -3,9 +3,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/list_tile.dart';
+import 'package:tripeaks_neue/widgets/widget_group.dart';
 
 class ThemeModeSetting extends StatelessWidget {
   const ThemeModeSetting({super.key});
@@ -15,7 +15,7 @@ class ThemeModeSetting extends StatelessWidget {
     final settings = Provider.of<Settings>(context);
     final s = AppLocalizations.of(context)!;
     final radioTextStyle = TextStyle(fontSize: 14.0);
-    return VerticalSettingTile(
+    return WidgetGroup(
       title: Text(s.themeModeControl),
       control: Observer(
         builder: (context) {
