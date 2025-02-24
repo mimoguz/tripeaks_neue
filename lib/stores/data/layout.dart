@@ -1,3 +1,4 @@
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
 
 final class Layout {
@@ -36,6 +37,24 @@ final class Layout {
   final List<List<int>> above;
 
   final Peaks tag;
+}
+
+enum Peaks { threePeaks, diamonds, valley, upDown }
+
+extension PeaksExt on Peaks {
+  Layout get implementation => switch (this) {
+    Peaks.threePeaks => threePeaksLayout,
+    Peaks.diamonds => diamondsLayout,
+    Peaks.valley => valleyLayout,
+    Peaks.upDown => upDownLayout,
+  };
+
+  String label(AppLocalizations s) => switch (this) {
+    Peaks.threePeaks => s.threePeaksLayoutLabel,
+    Peaks.diamonds => s.diamondsLayoutLabel,
+    Peaks.valley => s.valleyLayoutLabel,
+    Peaks.upDown => s.upDownLayoutLabel,
+  };
 }
 
 final threePeaksLayout = Layout(
@@ -440,14 +459,3 @@ final upDownLayout = Layout(
     List<int>.unmodifiable([19]), //     index: 30
   ]),
 );
-
-enum Peaks { threePeaks, diamonds, valley, upDown }
-
-extension PeaksExt on Peaks {
-  Layout get implementation => switch (this) {
-    Peaks.threePeaks => threePeaksLayout,
-    Peaks.diamonds => diamondsLayout,
-    Peaks.valley => valleyLayout,
-    Peaks.upDown => upDownLayout,
-  };
-}
