@@ -12,19 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - uses: AppImageCrafters/build-appimage@master
         with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y appimage-builder
-
-      - name: Build AppImage
-        run: |
-          appimage-builder --recipe AppImageBuilder.yml
+          recipe: "./AppImageBuilder.yml"
 
       - name: Upload AppImage
         uses: actions/upload-release-asset@v1
