@@ -79,7 +79,7 @@ class _SwipeAreaState extends State<SwipeArea> {
     _start = Offset.zero;
   }
 
-  static const double _distanceThreshold = 70.0;
+  static const double _distanceThreshold = 60.0;
 }
 
 class _GesturePainter extends CustomPainter {
