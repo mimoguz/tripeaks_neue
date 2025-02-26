@@ -53,6 +53,7 @@ AppDir:
     - cp build/linux/x64/release/bundle/tripeaks_neue AppDir
     - cp -r build/linux/x64/release/bundle/lib/. AppDir/lib
     - cp -r build/linux/x64/release/bundle/data AppDir
+    - mkdir -p AppDir/usr/share/icons/
     - cp icon.svg AppDir/usr/share/icons/
 AppImage:
   arch: x86_64
