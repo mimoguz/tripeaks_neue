@@ -195,6 +195,7 @@ abstract class _Game with Store {
       _isCleared = true;
       _isEnded = true;
       // Clearing the game obviously ends a chain, so you get a score
+      // Also a bonus for the number of cards of the current layout
       final chainScore = _chain * _chain + layout.cardCount;
       _score += chainScore;
       history.add(Event(pin, chainScore));
@@ -202,7 +203,7 @@ abstract class _Game with Store {
     }
 
     if (stock.isEmpty && !_checkMoves(board: board, stock: stock, discard: discard)) {
-      final chainScore = _chain * _chain + layout.cardCount;
+      final chainScore = _chain * _chain;
       history.add(Event(pin, chainScore));
       _score += chainScore;
       _isEnded = true;
