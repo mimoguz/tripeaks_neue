@@ -25,9 +25,9 @@ final class TakeAction extends Action<TakeIntent> {
     final took = game.take(intent.pin);
     if (took) {
       if (game.isCleared) {
-        sounds.playTake(game.chain).then((_) => sounds.playWin());
+        sounds.playWin();
       } else if (game.isStalled) {
-        sounds.playTake(game.chain).then((_) => sounds.playGameOver());
+        sounds.playGameOver();
       } else {
         sounds.playTake(game.chain);
       }
@@ -50,7 +50,7 @@ final class DrawAction extends Action<DrawIntent> {
   void invoke(DrawIntent intent) {
     game.draw();
     if (game.isStalled) {
-      sounds.playTake(game.chain).then((_) => sounds.playGameOver());
+      sounds.playGameOver();
     } else {
       sounds.playDraw();
     }
