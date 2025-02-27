@@ -359,6 +359,7 @@ abstract class _Game with Store {
   }
 }
 
+// TODO: Log history progression during a game and check if it looks correct.
 final class Event {
   Event({required this.pin, required this.score, required this.chain});
 
