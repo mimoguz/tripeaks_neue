@@ -1,6 +1,5 @@
 {
     "@@locale": "en",
-
     "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {
@@ -20,7 +19,6 @@
         "context": "homePage",
         "description": "Tooltip of a control that opens the game drawer."
     },
-
     "@_HOME_PAGE__CLEARED_CARD": {},
     "clearedCardMessage": "Cleared!",
     "@clearedCardMessage": {
@@ -34,7 +32,6 @@
         "context": "homePage:clearedCard",
         "description": "Label of a control that starts a new game."
     },
-    
     "@_HOME_PAGE__STALLED_CARD": {},
     "stalledCardMessage": "Unfortunately, you ran out of moves.\nYour score so far: {SCORE}.\nHow do you want to proceed?",
     "@stalledCardMessage": {
@@ -60,8 +57,19 @@
         "context": "homePage:stalledCard",
         "description": "Label of a control that undoes the last action."
     },
-
     "@_HOME_PAGE__DRAWER": {},
+    "soundOnToolTip": "Sound is on",
+    "@soundOnToolTip": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Tool tip for sound toggle when sound is on."
+    },
+    "soundOffToolTip": "Sound is off",
+    "@soundOffToolTip": {
+        "type": "text",
+        "context": "homePage:drawer",
+        "description": "Tool tip for sound toggle when sound is off."
+    },
     "newGameAction": "New Game",
     "@newGameAction": {
         "type": "text",
@@ -91,20 +99,19 @@
         "type": "text",
         "context": "homePage:drawer",
         "description": "Label of a control that exits the application."
-    },    
+    },
     "settingsTooltip": "Settings",
     "@settingsTooltip": {
         "type": "text",
         "context": "homePage:drawer",
         "description": "Tooltip of a control that navigates to the 'Settings' page."
     },
-    "infoTooltip": "Help & About",
+    "infoTooltip": "How to & About",
     "@infoTooltip": {
         "type": "text",
         "context": "homePage:drawer",
-        "description": "Tooltip of a control that navigates to the 'Help & About' page."
+        "description": "Tooltip of a control that navigates to the info page."
     },
-    
     "@_SETTINGS_PAGE": {},
     "settingsTitle": "Settings",
     "@settingsTitle": {
@@ -124,7 +131,6 @@
         "context": "settings",
         "description": "Title of the settings group that contains settings which will be used starting from next new game."
     },
-
     "@_SETTINGS_PAGE__SHOW_ALL_SETTING": {},
     "showAllControl": "Values of closed cards",
     "@showAllControl": {
@@ -144,7 +150,6 @@
         "context": "settings",
         "description": "Value label of showAll control when it is on."
     },
-
     "@_SETTINGS_PAGE__START_EMPTY_SETTING": {},
     "startEmptyControl": "Discard pile at start",
     "@startEmptyControl": {
@@ -164,7 +169,6 @@
         "context": "settings",
         "description": "Value label of startEmpty control when it is on."
     },
-    
     "@_SETTINGS_PAGE__THEME_MODE_SETTING": {},
     "themeModeControl": "Theme mode",
     "@themeModeControl": {
@@ -190,7 +194,6 @@
         "context": "settings",
         "description": "Value label of themeMode control when it is set to dark."
     },
-    
     "@_SETTINGS_PAGE__LAYOUT_SETTING": {},
     "layoutControl": "Board layout",
     "@layoutControl": {
@@ -222,7 +225,6 @@
         "context": "settings",
         "description": "Value label of layout selection control when it is set to 'upDown'."
     },
-    
     "@_SETTINGS_PAGE__SOUND_SETTING": {},
     "soundControl": "Sound",
     "@soundControl": {
@@ -242,7 +244,6 @@
         "context": "settings",
         "description": "Value label of sound control when it is set to off."
     },
-
     "@_SETTINGS_PAGE__DECOR_SETTING": {},
     "decorControl": "Card back decoration",
     "@decorControl": {
@@ -250,8 +251,6 @@
         "context": "settings",
         "description": "Label of a control that sets the decoration that is used on the back of the cards."
     },
-
-    
     "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
     "@selectLayoutDialogTitle": {
@@ -289,7 +288,6 @@
         "context": "selectLayoutDialog",
         "description": "Label of the new game button of the dialog."
     },
-
     "@_STATISTICS_PAGE": {},
     "statisticsPageTitle": "Player Statistics",
     "@statisticsPageTitle": {
@@ -327,7 +325,6 @@
         "context": "statisticsPage",
         "description": "Value label for the game result chip if the game wasn't cleared."
     },
-
     "@_STATISTICS_PAGE__SUMMARY": {},
     "statisticsSummary": "Summary",
     "@statisticsSummary": {

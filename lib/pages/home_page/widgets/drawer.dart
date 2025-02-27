@@ -1,9 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 
 class HomePageDrawer extends StatelessWidget {
   const HomePageDrawer({super.key});
@@ -15,7 +18,6 @@ class HomePageDrawer extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
-      width: 360.0,
       elevation: 2.0,
       shape: RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.zero)),
       clipBehavior: Clip.antiAlias,
@@ -49,7 +51,24 @@ class HomePageDrawer extends StatelessWidget {
             ),
             leading: CloseButton(),
             actions: [
-              IconButton(icon: const Icon(Icons.help), tooltip: s.infoTooltip, onPressed: () {}),
+              IconButton(
+                icon: const Icon(Icons.help),
+                tooltip: s.infoTooltip,
+                onPressed: Actions.handler(context, const NavigateToInfoIntent(replace: false)),
+              ),
+              Observer(
+                builder: (context) {
+                  final settings = Provider.of<Settings>(context);
+                  return IconButton(
+                    icon: const Icon(Icons.volume_off),
+                    isSelected: settings.soundOn,
+                    selectedIcon: const Icon(Icons.volume_up),
+                    // TODO: Add to arb
+                    tooltip: settings.soundOn ? s.soundOnToolTip : s.soundOffToolTip,
+                    onPressed: () => settings.setSoundOn(!settings.soundOn),
+                  );
+                },
+              ),
               const SizedBox(width: 4.0),
               IconButton(
                 icon: const Icon(Icons.settings),
