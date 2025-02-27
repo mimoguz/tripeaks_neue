@@ -55,8 +55,8 @@ class PortraitHomePage extends StatelessWidget {
                         spacing: 24.0 * scale,
                         children: [
                           PortraitHomePageBoard(game: game, scale: scale, back: back),
-                          PortraitHomePageRightArea(game: game, scale: scale, back: back),
                           PortraitHomePageCounter(game: game, scale: scale),
+                          PortraitHomePageRightArea(game: game, scale: scale, back: back),
                         ],
                       ),
                       Center(
