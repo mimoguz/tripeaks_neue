@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
 class ExpandableBox extends StatelessWidget {
@@ -23,7 +24,7 @@ class ExpandableBox extends StatelessWidget {
                       Expanded(
                         child: InkWell(
                           onTap: onTap,
-                          radius: 20.0,
+                          borderRadius: c.commonBorderRadius,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
                             child: title,
@@ -48,7 +49,7 @@ class ExpandableBox extends StatelessWidget {
                     Expanded(
                       child: InkWell(
                         onTap: onTap,
-                        radius: 20.0,
+                        borderRadius: c.commonBorderRadius,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
                           child: title,
