@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
+import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
 import 'package:tripeaks_neue/stores/game.dart';
@@ -147,6 +148,22 @@ final class NavigateToStatisticsAction extends ContextAction<NavigateToStatistic
     } else {
       _closeDrawer(context);
       navigator.push(MaterialPageRoute(builder: (_) => StatisticsPage()));
+    }
+  }
+}
+
+final class NavigateToInfoAction extends ContextAction<NavigateToInfoIntent> {
+  @override
+  void invoke(NavigateToInfoIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final navigator = Navigator.of(context);
+    if (intent.replace) {
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => InfoPage()));
+    } else {
+      _closeDrawer(context);
+      navigator.push(MaterialPageRoute(builder: (_) => InfoPage()));
     }
   }
 }
