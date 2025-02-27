@@ -51,6 +51,12 @@ final class NavigateToSettingsIntent extends Intent {
   final bool replace;
 }
 
+final class NavigateToInfoIntent extends Intent {
+  const NavigateToInfoIntent({this.replace = false});
+
+  final bool replace;
+}
+
 final class SetThemeModeIntent extends Intent {
   const SetThemeModeIntent(this.mode);
 

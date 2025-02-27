@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
@@ -261,7 +263,7 @@ abstract class _Game with Store {
     if (event.pin.index >= 0) {
       board[event.pin.index].put();
       _remaining++;
-      _chain--;
+      _chain = max(0, _chain - 1);
       _closeBelow(event.pin);
       return;
     }

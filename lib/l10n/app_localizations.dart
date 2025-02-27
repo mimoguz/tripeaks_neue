@@ -141,6 +141,18 @@ abstract class AppLocalizations {
   /// **'Undo last move'**
   String get stalledCardRollbackAction;
 
+  /// Tool tip for sound toggle when sound is on.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound is on'**
+  String get soundOnToolTip;
+
+  /// Tool tip for sound toggle when sound is off.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound is off'**
+  String get soundOffToolTip;
+
   /// Label of a control that starts a new game.
   ///
   /// In en, this message translates to:
@@ -177,10 +189,10 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settingsTooltip;
 
-  /// Tooltip of a control that navigates to the 'Help & About' page.
+  /// Tooltip of a control that navigates to the info page.
   ///
   /// In en, this message translates to:
-  /// **'Help & About'**
+  /// **'How to & About'**
   String get infoTooltip;
 
   /// Title of the 'Settings' page.

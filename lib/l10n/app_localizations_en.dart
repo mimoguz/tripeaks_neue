@@ -35,6 +35,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stalledCardRollbackAction => 'Undo last move';
 
   @override
+  String get soundOnToolTip => 'Sound is on';
+
+  @override
+  String get soundOffToolTip => 'Sound is off';
+
+  @override
   String get newGameAction => 'New Game';
 
   @override
@@ -53,7 +59,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsTooltip => 'Settings';
 
   @override
-  String get infoTooltip => 'Help & About';
+  String get infoTooltip => 'How to & About';
 
   @override
   String get settingsTitle => 'Settings';
