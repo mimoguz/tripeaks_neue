@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({super.key});
@@ -21,7 +22,7 @@ class InfoPage extends StatelessWidget {
               tabs: <Widget>[Tab(text: "How to Play"), Tab(text: "About the Game")],
             ),
           ),
-          body: TabBarView(children: <Widget>[Placeholder(), Placeholder()]),
+          body: TabBarView(children: <Widget>[HowtoTab(), Placeholder()]),
         ),
       ),
     );
