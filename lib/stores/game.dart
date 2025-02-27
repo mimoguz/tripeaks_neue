@@ -198,23 +198,19 @@ abstract class _Game with Store {
       _isEnded = true;
       // Clearing the game obviously ends a chain, so you get a score
       // Also a bonus for the number of cards of the current layout
-      final chainScore = _chain * _chain + layout.cardCount;
-      _score += chainScore;
-      history.add(Event(pin, chainScore));
+      _score += _chain * _chain + layout.cardCount;
+      history.add(Event(pin: pin, score: _score, chain: _chain));
       return true;
     }
 
     if (stock.isEmpty && !_checkMoves(board: board, stock: stock, discard: discard)) {
-      final chainScore = _chain * _chain;
-      history.add(Event(pin, chainScore));
-      _score += chainScore;
+      _score += _chain * _chain;
       _isEnded = true;
       _isCleared = false;
       _isStalled = true;
-      return true;
     }
 
-    history.add(Event(pin, 0));
+    history.add(Event(pin: pin, score: _score, chain: _chain));
     return true;
   }
 
@@ -227,10 +223,9 @@ abstract class _Game with Store {
     isPlayed = true;
 
     // You only get a score when a chain is completed
-    final chainScore = _chain * _chain;
-    _score += chainScore;
+    _score += _chain * _chain;
     _chain = 0;
-    history.add(Event(Pin.unpin, chainScore));
+    history.add(Event(pin: Pin.unpin, score: _score, chain: _chain));
 
     discard.add(
       stock.removeLast()
@@ -258,17 +253,16 @@ abstract class _Game with Store {
     final event = history.removeLast();
     final card = discard.removeLast().card;
 
-    _score -= event.score;
+    _score = event.score;
+    _chain = event.chain;
 
     if (event.pin.index >= 0) {
       board[event.pin.index].put();
       _remaining++;
-      _chain = max(0, _chain - 1);
       _closeBelow(event.pin);
       return;
     }
 
-    _chain = 0;
     stock.add(
       Tile(card: card, pin: Pin.unpin)
         ..put()
@@ -366,17 +360,19 @@ abstract class _Game with Store {
 }
 
 final class Event {
-  Event(this.pin, this.score);
+  Event({required this.pin, required this.score, required this.chain});
 
   final Pin pin;
   final int score;
+  final int chain;
 
-  JsonObject toJsonObject() => {"pin": pin.index, "score": score};
+  JsonObject toJsonObject() => {"pin": pin.index, "score": score, "chain": chain};
 
   factory Event.fromJsonObject(Map<String, dynamic> jsonObject, Layout layout) {
     final pinIndex = jsonObject.read<int>("pin");
     final pin = pinIndex < 0 ? Pin.unpin : layout.pins[pinIndex];
     final score = jsonObject["score"] as int;
-    return Event(pin, score);
+    final chain = jsonObject["chain"] as int;
+    return Event(pin: pin, score: score, chain: chain);
   }
 }
