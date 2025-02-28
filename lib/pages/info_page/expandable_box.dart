@@ -28,6 +28,7 @@ class ExpandableBox extends StatelessWidget {
           child: Card(
             color: Theme.of(context).colorScheme.surface,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
                   onTap: onTap,
