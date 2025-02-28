@@ -13,25 +13,29 @@ class _HowtoTabState extends State<HowtoTab> {
 
   @override
   Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
     return Container(
-      color: Theme.of(context).colorScheme.surfaceContainerLow,
+      color: colours.surfaceContainerLow,
       child: Column(
         children: [
           ExpandableBox(
             expanded: _expandIndex == 0,
             title: Text("Playing TriPeaks"),
+            icon: Icon(Icons.play_arrow, color: colours.outline),
             onTap: () => _onTap(0),
             child: Placeholder(),
           ),
           ExpandableBox(
             expanded: _expandIndex == 1,
             title: Text("Interaction"),
+            icon: Icon(Icons.touch_app, color: colours.outline),
             onTap: () => _onTap(1),
             child: Placeholder(),
           ),
           ExpandableBox(
             expanded: _expandIndex == 2,
             title: Text("Scoring"),
+            icon: Icon(Icons.star_border, color: colours.outline),
             onTap: () => _onTap(2),
             child: Placeholder(),
           ),
