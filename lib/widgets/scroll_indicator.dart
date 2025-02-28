@@ -27,7 +27,10 @@ class _ScrollIndicatorState extends State<ScrollIndicator> {
         Positioned(
           right: 8.0,
           bottom: 8.0,
-          child: _atEnd ? SizedBox() : Icon(Icons.more_horiz, color: Theme.of(context).colorScheme.outline),
+          child: AnimatedSwitcher(
+            duration: Durations.medium3,
+            child: _atEnd ? SizedBox() : Icon(Icons.more_horiz, color: Theme.of(context).colorScheme.outline),
+          ),
         ),
         NotificationListener<ScrollMetricsNotification>(
           onNotification: (notification) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
-import 'package:tripeaks_neue/pages/info_page/playing.dart';
+import 'package:tripeaks_neue/pages/info_page/how_to_play.dart';
 
 class HowtoTab extends StatefulWidget {
   const HowtoTab({super.key});
@@ -9,11 +9,15 @@ class HowtoTab extends StatefulWidget {
   State<HowtoTab> createState() => _HowtoTabState();
 }
 
-class _HowtoTabState extends State<HowtoTab> {
+class _HowtoTabState extends State<HowtoTab> with AutomaticKeepAliveClientMixin<HowtoTab> {
   int _expandIndex = -1;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     final colours = Theme.of(context).colorScheme;
     return Container(
       color: colours.surfaceContainerLow,

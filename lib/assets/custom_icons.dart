@@ -34,6 +34,8 @@ class CustomIcons {
   static const themeModeLight = IconData(0xe913, fontFamily: _actions);
   static const undo = IconData(0xe90a, fontFamily: _actions);
   static const undo16 = IconData(0xe909, fontFamily: _actions);
+  static const copy16 = IconData(0xe900, fontFamily: _actions);
+  static const link20 = IconData(0xe901, fontFamily: _actions);
 
   static const _actions = "Actions";
   static const _cards = "Cards";

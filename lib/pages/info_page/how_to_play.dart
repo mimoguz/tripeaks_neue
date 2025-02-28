@@ -14,24 +14,24 @@ class HowToPlay extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
           children: [
             ExternalLink(
-              uri: Uri.https("en.wikipedia.org", "/wiki/Tri_Peaks_(game)"),
+              uri: Uri.https("en.wikipedia.org", "wiki/Tri_Peaks_(game)"),
               alt: "TriPeaks on Wikipedia",
               label: "Wikipedia article",
             ),
             const SizedBox(height: 12.0),
             // TODO: Rich text, move to arb
             Text(
-              "In a standard TriPeaks solitaire game, 28 cards are arranged on the board in the "
-              "shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining "
-              "cards form the stock. At the start, the topmost card from the stock is placed on "
-              "the discard pile.",
+              "In a standard TriPeaks patience (solitaire) game, 28 cards are arranged on the "
+              "board in the shape of three peaks: 18 cards face-down and 10 cards face-up. "
+              "The remaining  cards form the stock. At the start, the topmost card from "
+              "the stock is placed on the discard pile.",
             ),
             const SizedBox(height: 12.0),
             Text(
               "The objective is to clear all the peaks by removing cards one by one and placing "
               "them on the discard pile. A card can be removed if it is face-up and adjacent to "
               "the card on top of the discard pile. The player can move in any direction, "
-              "forming sequences such as \"Ace → Two → Three → Two → Ace → King\". "
+              "forming sequences such as \"Ace → 2 → 3 → 2 → Ace → King → Queen → King\". "
               "As demonstrated in the example, sequences can loop, so movement from Ace to King "
               "or from King to Ace is possible.",
             ),
@@ -49,22 +49,14 @@ class HowToPlay extends StatelessWidget {
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, left: 16.0),
-                  child: Icon(Icons.circle, size: 6),
-                ),
-                Flexible(child: Text("Three additional board layouts,")),
-              ],
+              children: [Text("●"), Flexible(child: Text("Three additional board layouts,"))],
             ),
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, left: 16.0),
-                  child: Icon(Icons.circle, size: 6),
-                ),
+                Text("●"),
+
                 Flexible(child: Text("An option to show the values of face-down cards,")),
               ],
             ),
@@ -72,10 +64,7 @@ class HowToPlay extends StatelessWidget {
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, left: 16.0),
-                  child: Icon(Icons.circle, size: 6),
-                ),
+                Text("●"),
                 Flexible(
                   child: Text(
                     "An option to start with an empty discard pile, allowing the player to choose any starting card.",
