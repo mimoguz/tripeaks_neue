@@ -174,4 +174,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bestScoreLabel => 'Highest score';
+
+  @override
+  String get longestChainLabel => 'Longest chain';
 }

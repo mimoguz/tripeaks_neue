@@ -28,6 +28,10 @@ final class Summary extends StatelessWidget {
           title: Text(s.bestScoreLabel),
           trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
         ),
+        MyListTile(
+          title: Text(s.longestChainLabel),
+          trailing: Text((statistics.longestChain).toString(), style: trailingStyle),
+        ),
       ],
     );
   }

@@ -46,12 +46,15 @@ final class Statistics {
   Statistics({
     required this.totalGames,
     required this.cleared,
+    required this.longestChain,
     required this.lastGame,
     required List<SingleGameStatistics> bestGames,
   }) : bestGames = List.unmodifiable(bestGames.take(10));
+
   Statistics._({
     required this.totalGames,
     required this.cleared,
+    required this.longestChain,
     required this.lastGame,
     required this.bestGames,
   });
@@ -60,18 +63,21 @@ final class Statistics {
 
   final int totalGames;
   final int cleared;
+  final int longestChain;
   final SingleGameStatistics? lastGame;
   final List<SingleGameStatistics> bestGames;
 
   Statistics.empty()
     : totalGames = 0,
       cleared = 0,
+      longestChain = 0,
       lastGame = null,
       bestGames = List<SingleGameStatistics>.unmodifiable([]);
 
   Statistics.fromJsonObject(JsonObject jsonObject)
     : totalGames = jsonObject.read<int>("totalGames"),
       cleared = jsonObject.read<int>("cleared"),
+      longestChain = jsonObject.read<int>("longestChain"),
       lastGame =
           jsonObject["lastGame"] == null ? null : SingleGameStatistics.fromJsonObject(jsonObject["lastGame"]),
       bestGames =
@@ -101,6 +107,7 @@ final class Statistics {
     return Statistics._(
       totalGames: totalGames + 1,
       cleared: cleared + (game.isCleared ? 1 : 0),
+      longestChain: game.longestChain > longestChain ? game.longestChain : longestChain,
       lastGame: game,
       bestGames: updatedBestGames,
     );
@@ -109,6 +116,7 @@ final class Statistics {
   JsonObject toJsonObject() => {
     "totalGames": totalGames,
     "cleared": cleared,
+    "longestChain": longestChain,
     "lastGame": lastGame?.toJsonObject(),
     "bestGames": bestGames.map((it) => it.toJsonObject()).toList(),
   };

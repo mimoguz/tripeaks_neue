@@ -422,6 +422,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Highest score'**
   String get bestScoreLabel;
+
+  /// Label of the longest chain statistic.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest chain'**
+  String get longestChainLabel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

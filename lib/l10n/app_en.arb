@@ -349,5 +349,11 @@
         "type": "text",
         "context": "statisticsPage:summary",
         "description": "Label of the best score statistic."
+    },
+    "longestChainLabel": "Longest chain",
+    "@longestChainLabel": {
+        "type": "text",
+        "context": "statisticsPage:summary",
+        "description": "Label of the longest chain statistic."
     }
 }
