@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -56,18 +57,20 @@ final class SettingsPageBody extends StatelessWidget {
               child: Column(
                 children: [
                   Flexible(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Padding(padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0), child: GameItems()),
+                    child: ScrollIndicator(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          Padding(padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0), child: GameItems()),
 
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-                          child: NextGameItems(),
-                        ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                            child: NextGameItems(),
+                          ),
 
-                        Padding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), child: UiItems()),
-                      ],
+                          Padding(padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0), child: UiItems()),
+                        ],
+                      ),
                     ),
                   ),
                 ],
