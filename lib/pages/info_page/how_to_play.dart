@@ -43,7 +43,7 @@ class HowToPlay extends StatelessWidget {
               "discard pile (or at any time), the player can draw a card from the stock.",
             ),
             const SizedBox(height: 12.0),
-            Text("The game ends when the board is empty or no more moves are possible."),
+            Text("The game ends when the board is cleared or no more moves are possible."),
             const SizedBox(height: 12.0),
             Text("In addition to the standard game, this app offers:"),
             Row(

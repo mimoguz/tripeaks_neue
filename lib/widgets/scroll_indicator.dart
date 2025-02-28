@@ -24,6 +24,13 @@ class _ScrollIndicatorState extends State<ScrollIndicator> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        NotificationListener<ScrollMetricsNotification>(
+          onNotification: (notification) {
+            atEnd = notification.metrics.pixels >= notification.metrics.maxScrollExtent;
+            return true;
+          },
+          child: widget.child,
+        ),
         Positioned(
           right: 8.0,
           bottom: 8.0,
@@ -31,13 +38,6 @@ class _ScrollIndicatorState extends State<ScrollIndicator> {
             duration: Durations.medium3,
             child: _atEnd ? SizedBox() : Icon(Icons.more_horiz, color: Theme.of(context).colorScheme.outline),
           ),
-        ),
-        NotificationListener<ScrollMetricsNotification>(
-          onNotification: (notification) {
-            atEnd = notification.metrics.pixels >= notification.metrics.maxScrollExtent;
-            return true;
-          },
-          child: widget.child,
         ),
       ],
     );
