@@ -131,7 +131,7 @@ class _GameButtonState extends State<GameButton> {
       _setColours();
       _primary = colours.primary;
     }
-    final useSmall = widget.scale < 0.75;
+    final useSmall = widget.scale < c.iconScaleThreshold;
     return SizedBox(
       width: widget.width * widget.scale,
       height: widget.height * widget.scale,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
+import 'package:tripeaks_neue/pages/info_page/licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/privacy_policy.dart';
 
 class AboutTab extends StatefulWidget {
@@ -10,7 +11,7 @@ class AboutTab extends StatefulWidget {
 }
 
 class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<AboutTab> {
-  int _expandIndex = 0;
+  int _expandIndex = -1;
 
   @override
   bool get wantKeepAlive => true;
@@ -31,6 +32,13 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
               icon: Icon(Icons.privacy_tip, color: colours.outline),
               onTap: () => _onTap(0),
               child: Column(children: [Flexible(child: PrivacyPolicy())]),
+            ),
+            ExpandableBox(
+              expanded: _expandIndex == 1,
+              title: Text("Licenses"),
+              icon: Icon(Icons.copyright, color: colours.outline),
+              onTap: () => _onTap(1),
+              child: Column(children: [Flexible(child: Licenses())]),
             ),
           ],
         ),

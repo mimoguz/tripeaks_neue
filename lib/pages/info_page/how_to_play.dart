@@ -7,9 +7,11 @@ class HowToPlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ScrollIndicator(
       child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.8),
+        style: textTheme.bodyMedium!.copyWith(height: 1.8),
+        // TODO: Move to arb
         child: ListView(
           padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
           children: [
@@ -19,7 +21,6 @@ class HowToPlay extends StatelessWidget {
               label: "Wikipedia article",
             ),
             const SizedBox(height: 12.0),
-            // TODO: Rich text, move to arb
             Text(
               "In a standard TriPeaks patience (solitaire) game, 28 cards are arranged on the "
               "board in the shape of three peaks: 18 cards face-down and 10 cards face-up. "
@@ -27,10 +28,25 @@ class HowToPlay extends StatelessWidget {
               "the stock is placed on the discard pile.",
             ),
             const SizedBox(height: 12.0),
+            RichText(
+              text: TextSpan(
+                text:
+                    "The objective is to clear all the peaks by removing cards one by one and placing "
+                    "them on the discard pile. ",
+                style: textTheme.bodyMedium!.copyWith(height: 1.8),
+                children: <TextSpan>[
+                  TextSpan(
+                    text:
+                        "A card can be removed only if it is face-up and adjacent to the card on "
+                        "top of the discard pile.",
+                    style: const TextStyle(fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12.0),
             Text(
-              "The objective is to clear all the peaks by removing cards one by one and placing "
-              "them on the discard pile. A card can be removed if it is face-up and adjacent to "
-              "the card on top of the discard pile. The player can move in any direction, "
+              " The player can move in any direction, "
               "forming sequences such as \"Ace → 2 → 3 → 2 → Ace → King → Queen → King\". "
               "As demonstrated in the example, sequences can loop, so movement from Ace to King "
               "or from King to Ace is possible.",

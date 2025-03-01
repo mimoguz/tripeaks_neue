@@ -18,21 +18,24 @@ class ExternalLink extends StatelessWidget {
         message: uri.toString(),
         child: InkWell(
           onTap: () => _copy(context),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 8.0,
-            children: [
-              Icon(CustomIcons.link20, color: colours.primary, size: 20.0),
-              Flexible(
-                child: Text(
-                  label ?? uri.toString(),
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colours.primary),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 8.0,
+              children: [
+                Icon(CustomIcons.link20, color: colours.primary, size: 20.0),
+                Flexible(
+                  child: Text(
+                    label ?? uri.toString(),
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colours.primary),
+                  ),
                 ),
-              ),
-              Icon(CustomIcons.copy16, color: colours.outline, size: 16.0),
-            ],
+                Icon(CustomIcons.copy16, color: colours.outline, size: 16.0),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/how_to_play.dart';
+import 'package:tripeaks_neue/pages/info_page/interaction.dart';
+import 'package:tripeaks_neue/pages/info_page/scoring.dart';
 
 class HowtoTab extends StatefulWidget {
   const HowtoTab({super.key});
@@ -34,17 +36,17 @@ class _HowtoTabState extends State<HowtoTab> with AutomaticKeepAliveClientMixin<
             ),
             ExpandableBox(
               expanded: _expandIndex == 1,
-              title: Text("Interaction"),
+              title: Text("User Interface & Interaction"),
               icon: Icon(Icons.touch_app, color: colours.outline),
               onTap: () => _onTap(1),
-              child: Placeholder(),
+              child: Interaction(),
             ),
             ExpandableBox(
               expanded: _expandIndex == 2,
               title: Text("Scoring"),
               icon: Icon(Icons.star_border, color: colours.outline),
               onTap: () => _onTap(2),
-              child: Placeholder(),
+              child: Scoring(),
             ),
           ],
         ),

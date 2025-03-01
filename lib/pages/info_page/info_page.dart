@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/info_page/about_tab.dart';
 import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
 
@@ -8,7 +7,6 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
     return SafeArea(
       child: DefaultTabController(
         initialIndex: 0,
