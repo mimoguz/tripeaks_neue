@@ -3,6 +3,7 @@ version: 1
 script:
   - rm -rf AppDir | true
   - mkdir AppDir
+  - which mksquashfs || apt install squashfs-tools
 AppDir:
   path: ./AppDir
   app_info:
