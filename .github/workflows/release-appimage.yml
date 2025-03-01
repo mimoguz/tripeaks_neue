@@ -36,7 +36,7 @@ jobs:
           recipe: "./AppImageBuilder.yml"
 
       - name: Upload AppImage
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: AppImage
           path: AppDir/*.AppImage
