@@ -20,6 +20,15 @@ final class Interaction extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
           children: [
             InteractionListCell(
+              description: const Text(
+                "To remove a card from the board, just tap on it. If it is a valid move, "
+                "the card will be moved on top of the discard pile; otherwise, it will "
+                "wobble momentarily.",
+              ),
+              image: Icon(Icons.touch_app),
+            ),
+            const SizedBox(height: 24.0),
+            InteractionListCell(
               description: RichText(
                 text: TextSpan(
                   text: "This is the draw button. Pressing this, ",
