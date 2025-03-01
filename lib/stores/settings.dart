@@ -60,7 +60,8 @@ enum Decor {
   ohRain(300),
   neue(400),
   sevenMiles(500),
-  solar(600);
+  solar(600),
+  organic(700);
 
   final int value;
 
@@ -78,5 +79,6 @@ extension DecorExt on Decor {
     Decor.ohRain => CustomIcons.backOhRain,
     Decor.sevenMiles => CustomIcons.backSevenMiles,
     Decor.solar => CustomIcons.backSolar,
+    Decor.organic => CustomIcons.backOrganic,
   };
 }

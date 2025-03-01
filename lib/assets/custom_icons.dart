@@ -9,6 +9,7 @@ class CustomIcons {
   static const backOhRain = IconData(0xe916, fontFamily: _cards);
   static const backSevenMiles = IconData(0xe91c, fontFamily: _cards);
   static const backSolar = IconData(0xe91b, fontFamily: _cards);
+  static const backOrganic = IconData(0xe904, fontFamily: _cards);
   static const clubs = IconData(0xe903, fontFamily: _cards);
   static const clubsSm = IconData(0xe90f, fontFamily: _cards);
   static const diamonds = IconData(0xe901, fontFamily: _cards);
