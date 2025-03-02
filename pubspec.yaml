@@ -1,7 +1,7 @@
 name: tripeaks_neue
-description: "A new Flutter project."
+description: "A TriPeaks patience (solitaire)"
 
-version: 1.0.0+1
+version: 0.8.0
 
 environment:
   sdk: ^3.7.0
@@ -21,7 +21,6 @@ dependencies:
 
   # cupertino_icons: ^1.0.8
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,7 +30,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  # generate: true
 
   assets:
     - images/tropy.png
