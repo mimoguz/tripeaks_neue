@@ -79,23 +79,23 @@ class _CarouselItemState extends State<CarouselItem> {
     _fill = _focus.hasFocus ? colours.tertiaryContainer : colours.onSecondaryFixed;
     return Material(
       color: _fill,
-      borderRadius: c.commonBorderRadius,
+      borderRadius: _borderRadius,
       clipBehavior: Clip.antiAlias,
       child: SizedBox(
-        width: c.cardSize,
-        height: c.cardSize,
+        width: _sideLength,
+        height: _sideLength,
         child: InkWell(
-          borderRadius: c.commonBorderRadius,
+          borderRadius: _borderRadius,
           onTap: _onTap,
           focusNode: _focus,
           child: Observer(
             builder: (context) {
               return Stack(
                 children: [
-                  Icon(widget.decor.icon, size: c.cardSize, color: Colors.white30),
+                  Icon(widget.decor.icon, size: _sideLength, color: Colors.white30),
                   Positioned(
-                    left: 8.0,
-                    top: 6.0,
+                    left: 2.0,
+                    top: 2.0,
                     child: AnimatedSwitcher(
                       duration: Durations.medium2,
                       child:
@@ -134,4 +134,7 @@ class _CarouselItemState extends State<CarouselItem> {
     Actions.handler(context, SetDecorIntent(widget.decor))?.call();
     _focus.requestFocus();
   }
+
+  static const _borderRadius = BorderRadius.all(Radius.circular(c.commonRadius * 0.85));
+  static const _sideLength = c.cardSize * 0.75;
 }

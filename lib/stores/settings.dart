@@ -57,11 +57,12 @@ abstract class _Settings with Store {
 enum Decor {
   checkered(100),
   crosshatch(200),
-  ohRain(300),
+  lazySuzan(800),
   neue(400),
+  ohRain(300),
+  organic(700),
   sevenMiles(500),
-  solar(600),
-  organic(700);
+  solar(600);
 
   final int value;
 
@@ -75,10 +76,11 @@ extension DecorExt on Decor {
   IconData get icon => switch (this) {
     Decor.checkered => CustomIcons.backCheckered,
     Decor.crosshatch => CustomIcons.backCrossHatch,
+    Decor.lazySuzan => CustomIcons.backLazySuzan,
     Decor.neue => CustomIcons.backNeue,
     Decor.ohRain => CustomIcons.backOhRain,
+    Decor.organic => CustomIcons.backOrganic,
     Decor.sevenMiles => CustomIcons.backSevenMiles,
     Decor.solar => CustomIcons.backSolar,
-    Decor.organic => CustomIcons.backOrganic,
   };
 }
