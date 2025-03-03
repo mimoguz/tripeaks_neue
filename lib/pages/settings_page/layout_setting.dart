@@ -18,7 +18,7 @@ class LayoutSetting extends StatelessWidget {
     final radioTextStyle = TextStyle(fontSize: 14.0);
     return WidgetGroup(
       title: Text(s.layoutControl),
-      control: Observer(
+      child: Observer(
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,

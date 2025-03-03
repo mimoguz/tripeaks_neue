@@ -128,6 +128,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get decorControl => 'Card back decoration';
 
   @override
+  String get checkeredDecorLabel => 'Checkered';
+
+  @override
+  String get crosshatchDecorLabel => 'Crosshatch';
+
+  @override
+  String get gridAlignedDecorLabel => 'Grid Aligned';
+
+  @override
+  String get lazySuzanDecorLabel => 'Lazy Suzan';
+
+  @override
+  String get neueDecorLabel => 'N E U E';
+
+  @override
+  String get ohRainDecorLabel => 'Oh, Rain';
+
+  @override
+  String get sevenMilesDecorLabel => 'Seven Miles';
+
+  @override
+  String get solarDecorLabel => 'Solar';
+
+  @override
   String get selectLayoutDialogTitle => 'Select Layout';
 
   @override

@@ -17,6 +17,7 @@ import 'package:tripeaks_neue/pages/home_page/widgets/stalled_card.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/swipe_area.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';

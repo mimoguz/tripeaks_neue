@@ -3,9 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/settings_page/setting_tile.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/widget_group.dart';
 
 class DecorSetting extends StatefulWidget {
   const DecorSetting({super.key});
@@ -15,21 +16,15 @@ class DecorSetting extends StatefulWidget {
 }
 
 class _DecorSettingState extends State<DecorSetting> {
-  final CarouselController _controller = CarouselController();
-
-  @override
-  dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
+    final settings = Provider.of<Settings>(context);
 
-    return VerticalSettingTile(
+    return WidgetGroup(
       title: Text(s.decorControl),
-      control: LayoutBuilder(
+      subtitle: Observer(builder: (context) => Text(settings.decor.name(s))),
+      child: LayoutBuilder(
         builder:
             (context, constraints) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -37,7 +32,7 @@ class _DecorSettingState extends State<DecorSetting> {
                 child: Wrap(
                   spacing: 8.0,
                   runSpacing: 8.0,
-                  children: <Widget>[for (final decor in Decor.values) CarouselItem(decor: decor)],
+                  children: <Widget>[for (final decor in Decor.values) DecorItem(decor: decor)],
                 ),
               ),
             ),
@@ -46,16 +41,16 @@ class _DecorSettingState extends State<DecorSetting> {
   }
 }
 
-class CarouselItem extends StatefulWidget {
-  const CarouselItem({super.key, required this.decor});
+class DecorItem extends StatefulWidget {
+  const DecorItem({super.key, required this.decor});
 
   final Decor decor;
 
   @override
-  State<CarouselItem> createState() => _CarouselItemState();
+  State<DecorItem> createState() => _DecorItemState();
 }
 
-class _CarouselItemState extends State<CarouselItem> {
+class _DecorItemState extends State<DecorItem> {
   final FocusNode _focus = FocusNode();
   Color? _fill;
 

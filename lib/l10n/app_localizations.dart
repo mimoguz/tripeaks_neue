@@ -327,6 +327,54 @@ abstract class AppLocalizations {
   /// **'Card back decoration'**
   String get decorControl;
 
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkered'**
+  String get checkeredDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Crosshatch'**
+  String get crosshatchDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid Aligned'**
+  String get gridAlignedDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Lazy Suzan'**
+  String get lazySuzanDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'N E U E'**
+  String get neueDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Oh, Rain'**
+  String get ohRainDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Seven Miles'**
+  String get sevenMilesDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Solar'**
+  String get solarDecorLabel;
+
   /// Title of the dialog that will open when 'New Game with Layout...' action is called.
   ///
   /// In en, this message translates to:

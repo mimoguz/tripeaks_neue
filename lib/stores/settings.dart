@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/util/io.dart';
 import 'package:tripeaks_neue/util/json_object.dart';
@@ -49,38 +49,4 @@ abstract class _Settings with Store {
   }
 
   void dispose() => _sounds.dispose();
-}
-
-/// Users of this enum, when they need an ordinal value, should consider using the 'value' property
-/// instead of the 'index' property of an enum variant, so that new variants can be added or the existing
-/// ones can be removed without disturbing user preferences.
-enum Decor {
-  checkered(100),
-  crosshatch(200),
-  lazySuzan(800),
-  neue(400),
-  ohRain(300),
-  organic(700),
-  sevenMiles(500),
-  solar(600);
-
-  final int value;
-
-  const Decor(this.value);
-
-  static Decor? fromValue(int value) =>
-      values.firstWhere((it) => it.value == value, orElse: () => values.first);
-}
-
-extension DecorExt on Decor {
-  IconData get icon => switch (this) {
-    Decor.checkered => CustomIcons.backCheckered,
-    Decor.crosshatch => CustomIcons.backCrossHatch,
-    Decor.lazySuzan => CustomIcons.backLazySuzan,
-    Decor.neue => CustomIcons.backNeue,
-    Decor.ohRain => CustomIcons.backOhRain,
-    Decor.organic => CustomIcons.backOrganic,
-    Decor.sevenMiles => CustomIcons.backSevenMiles,
-    Decor.solar => CustomIcons.backSolar,
-  };
 }

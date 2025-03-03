@@ -16,7 +16,7 @@ class SoundSetting extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     return WidgetGroup(
       title: Text(s.soundControl),
-      control: Observer(
+      child: Observer(
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,

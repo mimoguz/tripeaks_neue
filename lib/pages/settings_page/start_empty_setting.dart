@@ -17,7 +17,7 @@ class StartEmptySetting extends StatelessWidget {
     final radioTextStyle = TextStyle(fontSize: 14.0);
     return WidgetGroup(
       title: Text(s.startEmptyControl),
-      control: Observer(
+      child: Observer(
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,

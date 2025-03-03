@@ -20,7 +20,7 @@ class HomePageDrawer extends StatelessWidget {
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
       elevation: 2.0,
-      width: 360.0,
+      width: 340.0,
       shape: RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.zero)),
       clipBehavior: Clip.antiAlias,
       child: ScrollIndicator(

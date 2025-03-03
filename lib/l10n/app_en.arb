@@ -251,6 +251,54 @@
         "context": "settings",
         "description": "Label of a control that sets the decoration that is used on the back of the cards."
     },
+    "checkeredDecorLabel": "Checkered",
+    "@checkeredDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "crosshatchDecorLabel": "Crosshatch",
+    "@crosshatchDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "gridAlignedDecorLabel": "Grid Aligned",
+    "@gridAlignedDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "lazySuzanDecorLabel": "Lazy Suzan",
+    "@lazySuzanDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "neueDecorLabel": "N E U E",
+    "@neueDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "ohRainDecorLabel": "Oh, Rain",
+    "@ohRainDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "sevenMilesDecorLabel": "Seven Miles",
+    "@sevenMilesDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
+    "solarDecorLabel": "Solar",
+    "@solarDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
     "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
     "@selectLayoutDialogTitle": {

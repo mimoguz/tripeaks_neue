@@ -16,7 +16,7 @@ class ShowAllSetting extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     return WidgetGroup(
       title: Text(s.showAllControl),
-      control: Observer(
+      child: Observer(
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,
