@@ -7,11 +7,11 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 /// ones can be removed without disturbing user preferences.
 enum Decor {
   checkered(100),
-  crosshatch(200),
-  gridAligned(250),
+  dotMatrix(250),
+  ennui(200),
+  fanConvention(300),
   lazySuzan(800),
   neue(400),
-  ohRain(300),
   sevenMiles(500),
   solar(600);
 
@@ -26,23 +26,23 @@ enum Decor {
 extension DecorExt on Decor {
   IconData get icon => switch (this) {
     Decor.checkered => CustomIcons.backCheckered,
-    Decor.crosshatch => CustomIcons.backCrossHatch,
-    Decor.gridAligned => CustomIcons.gridAligned,
+    Decor.ennui => CustomIcons.backEnnui,
+    Decor.dotMatrix => CustomIcons.backGridAligned,
     Decor.lazySuzan => CustomIcons.backLazySuzan,
     Decor.neue => CustomIcons.backNeue,
-    Decor.ohRain => CustomIcons.backOhRain,
+    Decor.fanConvention => CustomIcons.backFanConvetion,
     Decor.sevenMiles => CustomIcons.backSevenMiles,
     Decor.solar => CustomIcons.backSolar,
   };
 
   String name(AppLocalizations s) => switch (this) {
-    Decor.checkered => s.checkeredDecorLabel, // s.checkered,
-    Decor.crosshatch => s.crosshatchDecorLabel, // s.crosshatch,
-    Decor.gridAligned => s.gridAlignedDecorLabel, // s.gridAligned,
-    Decor.lazySuzan => s.lazySuzanDecorLabel, // s.lazySuzan,
-    Decor.neue => s.neueDecorLabel, // s.neue,
-    Decor.ohRain => s.ohRainDecorLabel, // s.ohRain,
-    Decor.sevenMiles => s.sevenMilesDecorLabel, // s.sevenMiles,
-    Decor.solar => s.solarDecorLabel, // s.solar,
+    Decor.checkered => s.checkeredDecorLabel,
+    Decor.dotMatrix => s.dotMatrixDecorLabel,
+    Decor.ennui => s.ennuiDecorLabel,
+    Decor.fanConvention => s.fanConventionDecorLabel,
+    Decor.lazySuzan => s.lazySuzanDecorLabel,
+    Decor.neue => s.neueDecorLabel,
+    Decor.sevenMiles => s.sevenMilesDecorLabel,
+    Decor.solar => s.solarDecorLabel,
   };
 }

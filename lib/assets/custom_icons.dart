@@ -4,12 +4,12 @@ class CustomIcons {
   const CustomIcons._();
 
   static const backCheckered = IconData(0xe915, fontFamily: _cards);
-  static const backCrossHatch = IconData(0xe90c, fontFamily: _cards);
+  static const backEnnui = IconData(0xe90c, fontFamily: _cards);
   static const backNeue = IconData(0xe914, fontFamily: _cards);
-  static const backOhRain = IconData(0xe916, fontFamily: _cards);
+  static const backFanConvetion = IconData(0xe916, fontFamily: _cards);
   static const backSevenMiles = IconData(0xe91c, fontFamily: _cards);
   static const backSolar = IconData(0xe91b, fontFamily: _cards);
-  static const gridAligned = IconData(0xe904, fontFamily: _cards);
+  static const backGridAligned = IconData(0xe904, fontFamily: _cards);
   static const backLazySuzan = IconData(0xe905, fontFamily: _cards);
   static const clubs = IconData(0xe903, fontFamily: _cards);
   static const clubsSm = IconData(0xe90f, fontFamily: _cards);
