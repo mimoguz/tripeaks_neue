@@ -281,14 +281,14 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "fanConventionDecorLabel": "Fan Convetion",
-    "@fanConventionDecorLabel": {
+    "roundaboutDecorLabel": "Roundabout Flower Bed",
+    "@roundaboutDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "sevenMilesDecorLabel": "Seven Miles",
-    "@sevenMilesDecorLabel": {
+    "organicDecorLabel": "Organic",
+    "@organicDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
