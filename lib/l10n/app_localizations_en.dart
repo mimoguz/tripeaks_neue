@@ -131,10 +131,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checkeredDecorLabel => 'Checkered';
 
   @override
-  String get crosshatchDecorLabel => 'Crosshatch';
+  String get ennuiDecorLabel => 'Ennui';
 
   @override
-  String get gridAlignedDecorLabel => 'Grid Aligned';
+  String get dotMatrixDecorLabel => 'Dot Matrix';
 
   @override
   String get lazySuzanDecorLabel => 'Lazy Suzan';
@@ -143,7 +143,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get neueDecorLabel => 'N E U E';
 
   @override
-  String get ohRainDecorLabel => 'Oh, Rain';
+  String get fanConventionDecorLabel => 'Fan Convetion';
 
   @override
   String get sevenMilesDecorLabel => 'Seven Miles';

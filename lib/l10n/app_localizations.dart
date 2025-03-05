@@ -336,14 +336,14 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Crosshatch'**
-  String get crosshatchDecorLabel;
+  /// **'Ennui'**
+  String get ennuiDecorLabel;
 
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Grid Aligned'**
-  String get gridAlignedDecorLabel;
+  /// **'Dot Matrix'**
+  String get dotMatrixDecorLabel;
 
   /// Label of a decoration variant.
   ///
@@ -360,8 +360,8 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Oh, Rain'**
-  String get ohRainDecorLabel;
+  /// **'Fan Convetion'**
+  String get fanConventionDecorLabel;
 
   /// Label of a decoration variant.
   ///

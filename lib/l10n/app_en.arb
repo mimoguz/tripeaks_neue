@@ -257,14 +257,14 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "crosshatchDecorLabel": "Crosshatch",
-    "@crosshatchDecorLabel": {
+    "ennuiDecorLabel": "Ennui",
+    "@ennuiDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "gridAlignedDecorLabel": "Grid Aligned",
-    "@gridAlignedDecorLabel": {
+    "dotMatrixDecorLabel": "Dot Matrix",
+    "@dotMatrixDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
@@ -281,8 +281,8 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "ohRainDecorLabel": "Oh, Rain",
-    "@ohRainDecorLabel": {
+    "fanConventionDecorLabel": "Fan Convetion",
+    "@fanConventionDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
