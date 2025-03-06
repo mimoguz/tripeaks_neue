@@ -360,14 +360,14 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Fan Convetion'**
-  String get fanConventionDecorLabel;
+  /// **'Roundabout Flower Bed'**
+  String get roundaboutDecorLabel;
 
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Seven Miles'**
-  String get sevenMilesDecorLabel;
+  /// **'Organic'**
+  String get organicDecorLabel;
 
   /// Label of a decoration variant.
   ///
