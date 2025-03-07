@@ -16,7 +16,7 @@ A simple [TriPeaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using 
 
 ### Credit where credit is due
 
-While it's not a copy, I hope, the game draws a lot of design inspiration from Dusland Design's Solitaire - The Clean One. Credit where credit is due.
+While it's not a copy, I hope, the game draws a lot of design inspiration from Dustland Design's Solitaire - The Clean One. Credit where credit is due.
 
 # License
 
