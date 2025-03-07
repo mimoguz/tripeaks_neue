@@ -13,7 +13,7 @@ class Settings extends _Settings with _$Settings {
   Settings.fromJsonObject(JsonObject jsonObject)
     : super._(
         ThemeMode.values[jsonObject.read<int>("themeMode")],
-        Decor.values[jsonObject.read<int>("decor")],
+        _readDecor(jsonObject),
         jsonObject.read<bool>("soundOn"),
         jsonObject.read<bool>("soundOn") ? SoundOn() : Silent(),
       );
@@ -24,6 +24,14 @@ class Settings extends _Settings with _$Settings {
   JsonObject toJsonObject() => {"themeMode": themeMode.index, "decor": decor.index, "soundOn": _soundOn};
 
   Future<void> write() async => await IO.write("settings", toJsonObject());
+
+  static Decor _readDecor(JsonObject jsonObject) {
+    try {
+      return Decor.values[jsonObject.read<int>("decor")];
+    } on Error {
+      return Decor.values.first;
+    }
+  }
 }
 
 abstract class _Settings with Store {

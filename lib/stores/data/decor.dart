@@ -9,11 +9,11 @@ enum Decor {
   checkered(100),
   dotMatrix(250),
   ennui(200),
-  lazySuzan(800),
   neue(400),
-  organic(500),
-  roundabout(300),
   solar(600);
+  // organic(500);
+  // lazySuzan(800),
+  // roundabout(300),
 
   final int value;
 
@@ -28,10 +28,7 @@ extension DecorExt on Decor {
     Decor.checkered => CustomIcons.backCheckered,
     Decor.dotMatrix => CustomIcons.backGridAligned,
     Decor.ennui => CustomIcons.backEnnui,
-    Decor.lazySuzan => CustomIcons.backLazySuzan,
     Decor.neue => CustomIcons.backNeue,
-    Decor.organic => CustomIcons.backSevenMiles,
-    Decor.roundabout => CustomIcons.backFanConvetion,
     Decor.solar => CustomIcons.backSolar,
   };
 
@@ -39,10 +36,7 @@ extension DecorExt on Decor {
     Decor.checkered => s.checkeredDecorLabel,
     Decor.dotMatrix => s.dotMatrixDecorLabel,
     Decor.ennui => s.ennuiDecorLabel,
-    Decor.lazySuzan => s.lazySuzanDecorLabel,
     Decor.neue => s.neueDecorLabel,
-    Decor.organic => s.organicDecorLabel,
-    Decor.roundabout => s.roundaboutDecorLabel,
     Decor.solar => s.solarDecorLabel,
   };
 }
