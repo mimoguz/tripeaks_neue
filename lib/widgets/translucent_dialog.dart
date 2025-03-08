@@ -23,21 +23,27 @@ class TranslucentDialog extends StatelessWidget {
           filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
           child: Material(
             color: colours.surfaceContainer.withAlpha(200),
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                spacing: 16.0,
-                children: [
-                  if (title != null)
-                    DefaultTextStyle(
-                      style: Theme.of(context).textTheme.titleMedium!,
-                      child: Row(children: [title!]),
-                    ),
-                  SingleChildScrollView(child: content),
-                  if (actions != null && actions!.isNotEmpty)
-                    Row(mainAxisAlignment: MainAxisAlignment.end, spacing: 12.0, children: actions!),
-                ],
+            child: Ink(
+              decoration: BoxDecoration(
+                border: Border.all(color: _borderColour),
+                borderRadius: c.commonBorderRadius,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  spacing: 16.0,
+                  children: [
+                    if (title != null)
+                      DefaultTextStyle(
+                        style: Theme.of(context).textTheme.titleMedium!,
+                        child: Row(children: [title!]),
+                      ),
+                    SingleChildScrollView(child: content),
+                    if (actions != null && actions!.isNotEmpty)
+                      Row(mainAxisAlignment: MainAxisAlignment.end, spacing: 12.0, children: actions!),
+                  ],
+                ),
               ),
             ),
           ),
@@ -45,4 +51,6 @@ class TranslucentDialog extends StatelessWidget {
       ),
     );
   }
+
+  static const _borderColour = Color(0x15b0d0f0);
 }

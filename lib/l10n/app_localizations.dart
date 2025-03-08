@@ -354,7 +354,7 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'N E U E'**
+  /// **'NEUE'**
   String get neueDecorLabel;
 
   /// Label of a decoration variant.

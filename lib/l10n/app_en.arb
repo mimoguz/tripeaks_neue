@@ -275,7 +275,7 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "neueDecorLabel": "N E U E",
+    "neueDecorLabel": "NEUE",
     "@neueDecorLabel": {
         "type": "text",
         "context": "settings",

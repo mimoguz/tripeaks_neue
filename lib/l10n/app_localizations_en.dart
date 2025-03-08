@@ -140,7 +140,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lazySuzanDecorLabel => 'Lazy Suzan';
 
   @override
-  String get neueDecorLabel => 'N E U E';
+  String get neueDecorLabel => 'NEUE';
 
   @override
   String get roundaboutDecorLabel => 'Roundabout Flower Bed';
