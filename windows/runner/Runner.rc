@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "Oguz Tas" "\0"
             VALUE "FileDescription", "tripeaks_neue" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "tripeaks_neue" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 Oguz Tas. All rights reserved." "\0"
             VALUE "OriginalFilename", "tripeaks_neue.exe" "\0"
-            VALUE "ProductName", "tripeaks_neue" "\0"
+            VALUE "ProductName", "TriPeaks NEUE" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
