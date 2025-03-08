@@ -411,6 +411,36 @@ abstract class AppLocalizations {
   /// **'New game'**
   String get selectLayoutDialogNewGameAction;
 
+  /// Title of the welcome dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to TriPeaks NEUE'**
+  String get welcomeDialogTitle;
+
+  /// Welcome dialog body.
+  ///
+  /// In en, this message translates to:
+  /// **'Would you like to...'**
+  String get welcomeDialogMessage;
+
+  /// Label of a button that navigates to the info page.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn how to play this game?'**
+  String get welcomeDialogToInfoPageAction;
+
+  /// Label of a button that navigates to the settings page.
+  ///
+  /// In en, this message translates to:
+  /// **'Check avalible customizations?'**
+  String get welcomeDialogToSettingsPageAction;
+
+  /// Label of a button that closes the welcome dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Just play?'**
+  String get welcomeDialogCloseAction;
+
   /// Title of the 'Player Statistics' page.
   ///
   /// In en, this message translates to:

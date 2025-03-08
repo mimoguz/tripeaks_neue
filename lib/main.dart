@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/widgets/welcome_dialog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +50,11 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
+    var showWelcome = settings.firstRun;
+    if (showWelcome) {
+      settings.ran();
+      settings.write();
+    }
     return Observer(
       builder:
           (context) => MaterialApp(
@@ -58,7 +64,22 @@ class _MainAppState extends State<MainApp> {
             theme: _defaultLight,
             darkTheme: _defaultDark,
             scrollBehavior: const MyCustomScrollBehavior(),
-            home: HomePage(),
+            home: Builder(
+              builder: (context) {
+                if (showWelcome) {
+                  showWelcome = false;
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const WelcomeDialog(),
+                      barrierDismissible: true,
+                      barrierColor: Colors.transparent,
+                    );
+                  });
+                }
+                return HomePage();
+              },
+            ),
           ),
     );
   }

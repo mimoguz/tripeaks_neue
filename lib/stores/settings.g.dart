@@ -75,8 +75,37 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
+  late final _$_firstRunAtom =
+      Atom(name: '_Settings._firstRun', context: context);
+
+  bool get firstRun {
+    _$_firstRunAtom.reportRead();
+    return super._firstRun;
+  }
+
+  @override
+  bool get _firstRun => firstRun;
+
+  @override
+  set _firstRun(bool value) {
+    _$_firstRunAtom.reportWrite(value, super._firstRun, () {
+      super._firstRun = value;
+    });
+  }
+
   late final _$_SettingsActionController =
       ActionController(name: '_Settings', context: context);
+
+  @override
+  void ran() {
+    final _$actionInfo =
+        _$_SettingsActionController.startAction(name: '_Settings.ran');
+    try {
+      return super.ran();
+    } finally {
+      _$_SettingsActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setSoundOn(bool value) {

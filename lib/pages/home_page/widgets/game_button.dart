@@ -33,6 +33,7 @@ class CircleGameButton extends StatelessWidget {
           children: [
             Material(
               shape: CircleBorder(),
+              type: MaterialType.button,
               color: colours.surfaceContainerLow,
               child: Ink(
                 decoration: BoxDecoration(
@@ -141,6 +142,7 @@ class _GameButtonState extends State<GameButton> {
         child: Stack(
           children: [
             Material(
+              type: MaterialType.button,
               borderRadius: BorderRadius.circular(c.commonRadius * widget.scale),
               color: widget.onPressed != null ? _buttonColour : colours.outlineVariant,
               child: InkWell(

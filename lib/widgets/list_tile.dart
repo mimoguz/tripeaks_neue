@@ -23,6 +23,7 @@ final class MyListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -37,9 +38,8 @@ final class MyListTile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DefaultTextStyle(style: Theme.of(context).textTheme.bodyMedium!, child: title),
-                if (subtitle != null)
-                  DefaultTextStyle(style: Theme.of(context).textTheme.bodySmall!, child: subtitle!),
+                DefaultTextStyle(style: theme.textTheme.bodyMedium!, child: title),
+                if (subtitle != null) DefaultTextStyle(style: theme.textTheme.bodySmall!, child: subtitle!),
               ],
             ),
             Spacer(),

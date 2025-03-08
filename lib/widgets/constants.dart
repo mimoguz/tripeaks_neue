@@ -16,5 +16,5 @@ const double inactiveSuitSize = 20.0;
 const double requiredWidth = 1260;
 const double requiredHeight = 600;
 const double dropdownItemWidth = 120;
-const double maxListWidth = 550;
+const double maxListWidth = 700;
 const double maxRadioWidth = maxListWidth - 32;

@@ -8,14 +8,22 @@ import 'package:tripeaks_neue/util/json_object.dart';
 part 'settings.g.dart';
 
 class Settings extends _Settings with _$Settings {
-  Settings() : super._(ThemeMode.system, Decor.values.first, true, SoundOn());
+  Settings()
+    : super._(
+        themeMode: ThemeMode.system,
+        decor: Decor.values.first,
+        soundOn: true,
+        sounds: SoundOn(),
+        firstRun: true,
+      );
 
   Settings.fromJsonObject(JsonObject jsonObject)
     : super._(
-        ThemeMode.values[jsonObject.read<int>("themeMode")],
-        _readDecor(jsonObject),
-        jsonObject.read<bool>("soundOn"),
-        jsonObject.read<bool>("soundOn") ? SoundOn() : Silent(),
+        themeMode: ThemeMode.values[jsonObject.read<int>("themeMode")],
+        decor: _readDecor(jsonObject),
+        soundOn: jsonObject.read<bool>("soundOn"),
+        sounds: jsonObject.read<bool>("soundOn") ? SoundOn() : Silent(),
+        firstRun: false,
       );
 
   static Future<Settings> read() async =>
@@ -35,7 +43,15 @@ class Settings extends _Settings with _$Settings {
 }
 
 abstract class _Settings with Store {
-  _Settings._(this.themeMode, this.decor, this._soundOn, this._sounds);
+  _Settings._({
+    required this.themeMode,
+    required this.decor,
+    required bool soundOn,
+    required SoundEffects sounds,
+    required bool firstRun,
+  }) : _soundOn = soundOn,
+       _sounds = sounds,
+       _firstRun = firstRun;
 
   @observable
   ThemeMode themeMode;
@@ -48,6 +64,14 @@ abstract class _Settings with Store {
 
   @readonly
   SoundEffects _sounds;
+
+  @readonly
+  bool _firstRun;
+
+  @action
+  void ran() {
+    _firstRun = false;
+  }
 
   @action
   void setSoundOn(bool value) {

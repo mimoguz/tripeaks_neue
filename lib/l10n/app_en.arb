@@ -336,6 +336,37 @@
         "context": "selectLayoutDialog",
         "description": "Label of the new game button of the dialog."
     },
+    "@_WELCOME_DIALOG": {},
+    "welcomeDialogTitle": "Welcome to TriPeaks NEUE",
+    "@welcomeDialogTitle": {
+        "type": "text",
+        "context": "welcomeDialog",
+        "description": "Title of the welcome dialog."
+    },
+    "welcomeDialogMessage": "Would you like to...",
+    "@welcomeDialogMessage": {
+        "type": "text",
+        "context": "welcomeDialog",
+        "description": "Welcome dialog body."
+    },
+    "welcomeDialogToInfoPageAction": "Learn how to play this game?",
+    "@welcomeDialogToInfoPageAction": {
+        "type": "text",
+        "context": "welcomeDialog",
+        "description": "Label of a button that navigates to the info page."
+    },
+    "welcomeDialogToSettingsPageAction": "Check avalible customizations?",
+    "@welcomeDialogToSettingsPageAction": {
+        "type": "text",
+        "context": "welcomeDialog",
+        "description": "Label of a button that navigates to the settings page."
+    },
+    "welcomeDialogCloseAction": "Just play?",
+    "@welcomeDialogCloseAction": {
+        "type": "text",
+        "context": "welcomeDialog",
+        "description": "Label of a button that closes the welcome dialog."
+    },
     "@_STATISTICS_PAGE": {},
     "statisticsPageTitle": "Player Statistics",
     "@statisticsPageTitle": {
