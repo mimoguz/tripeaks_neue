@@ -11,7 +11,16 @@ class WelcomeDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
     return TranslucentDialog(
-      title: Text(s.welcomeDialogTitle),
+      title: Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 12.0,
+          children: [
+            Center(child: Image.asset("images/welcome.png", width: 90, height: 90)),
+            Text(s.welcomeDialogTitle),
+          ],
+        ),
+      ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 16.0,

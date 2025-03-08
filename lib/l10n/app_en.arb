@@ -349,19 +349,19 @@
         "context": "welcomeDialog",
         "description": "Welcome dialog body."
     },
-    "welcomeDialogToInfoPageAction": "Learn how to play this game?",
+    "welcomeDialogToInfoPageAction": "Learn how to play this game",
     "@welcomeDialogToInfoPageAction": {
         "type": "text",
         "context": "welcomeDialog",
         "description": "Label of a button that navigates to the info page."
     },
-    "welcomeDialogToSettingsPageAction": "Check avalible customizations?",
+    "welcomeDialogToSettingsPageAction": "Check avalible customizations",
     "@welcomeDialogToSettingsPageAction": {
         "type": "text",
         "context": "welcomeDialog",
         "description": "Label of a button that navigates to the settings page."
     },
-    "welcomeDialogCloseAction": "Just play?",
+    "welcomeDialogCloseAction": "Just play",
     "@welcomeDialogCloseAction": {
         "type": "text",
         "context": "welcomeDialog",

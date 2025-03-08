@@ -176,13 +176,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeDialogMessage => 'Would you like to...';
 
   @override
-  String get welcomeDialogToInfoPageAction => 'Learn how to play this game?';
+  String get welcomeDialogToInfoPageAction => 'Learn how to play this game';
 
   @override
-  String get welcomeDialogToSettingsPageAction => 'Check avalible customizations?';
+  String get welcomeDialogToSettingsPageAction => 'Check avalible customizations';
 
   @override
-  String get welcomeDialogCloseAction => 'Just play?';
+  String get welcomeDialogCloseAction => 'Just play';
 
   @override
   String get statisticsPageTitle => 'Player Statistics';

@@ -34,6 +34,7 @@ flutter:
   assets:
     - images/tropy.png
     - images/empty.png
+    - images/welcome.png
     - sounds/take1.mp3
     - sounds/take2.mp3
     - sounds/take3.mp3

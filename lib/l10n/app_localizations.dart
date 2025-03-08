@@ -426,19 +426,19 @@ abstract class AppLocalizations {
   /// Label of a button that navigates to the info page.
   ///
   /// In en, this message translates to:
-  /// **'Learn how to play this game?'**
+  /// **'Learn how to play this game'**
   String get welcomeDialogToInfoPageAction;
 
   /// Label of a button that navigates to the settings page.
   ///
   /// In en, this message translates to:
-  /// **'Check avalible customizations?'**
+  /// **'Check avalible customizations'**
   String get welcomeDialogToSettingsPageAction;
 
   /// Label of a button that closes the welcome dialog.
   ///
   /// In en, this message translates to:
-  /// **'Just play?'**
+  /// **'Just play'**
   String get welcomeDialogCloseAction;
 
   /// Title of the 'Player Statistics' page.
