@@ -22,7 +22,7 @@ class TranslucentDialog extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
           child: Material(
-            color: colours.surfaceContainer.withAlpha(200),
+            color: colours.surfaceContainer.withAlpha(230),
             child: Ink(
               decoration: BoxDecoration(
                 border: Border.all(color: _borderColour),
