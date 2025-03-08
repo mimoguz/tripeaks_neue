@@ -12,7 +12,7 @@ A simple [TriPeaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using 
 
 ## Screenshots
 ![Portait](./.github/readme/screenshot_portrait_2025-03-07.png)
-![Landscape](./.github/readme/screenshot_landscape_2025-03-07.png)
+![Landscape](./.github/readme/screenshot_landscape_2025-03-08.png)
 
 ### Credit where credit is due
 
