@@ -1,7 +1,8 @@
 name: tripeaks_neue
 description: "A TriPeaks patience (solitaire)"
 
-version: 0.8.0
+# Don't forget to increase version code (the number that comes after '+')
+version: 0.8.0+1
 
 environment:
   sdk: ^3.7.0

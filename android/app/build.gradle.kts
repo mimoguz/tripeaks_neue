@@ -22,14 +22,16 @@ android {
     kotlinOptions { jvmTarget = JavaVersion.VERSION_11.toString() }
 
     signingConfigs {
-        create("release") {
+        create("signed") {
             val keystorePropertiesFile = rootProject.file("keystore.properties")
-            val keystoreProperties = Properties()
-            keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as String
+            if (keystorePropertiesFile.exists()) {
+                val keystoreProperties = Properties()
+                keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
         }
     }
 
@@ -43,14 +45,27 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        debug {
-            signingConfig = signingConfigs.getByName("debug")
+    flavorDimensions += "deploy"
+
+    productFlavors {
+        create("store") {
+            dimension = "deploy"
+            signingConfig = signingConfigs.getByName("signed")
         }
-        release {
-            signingConfig = signingConfigs.getByName("release")
+        create("fdroid") {
+            dimension = "deploy"
+            signingConfig = null
         }
     }
+
+    // buildTypes {
+    //     debug {
+    //         signingConfig = signingConfigs.getByName("debug")
+    //     }
+    //     release {
+    //         signingConfig = signingConfigs.getByName("release")
+    //     }
+    // }
 }
 
 flutter { source = "../.." }

@@ -47,3 +47,4 @@ app.*.map.json
 # Key store
 key.properties
 keystore.properties
+*keystore.properties
