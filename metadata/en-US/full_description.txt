@@ -1,0 +1,10 @@
+A simple TriPeaks patience (solitaire) game.
+
+This is a remake of tripeaks-gdx project, my previous implementation of the same game.
+
+Main Features:
+- Four board layouts
+- An option to show the values of face-down cards
+- An option to start with an empty discard pile, allowing the player to choose any starting card
+- Aggregated and per-layout statistics
+- Portrait and landscape orientation support
