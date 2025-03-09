@@ -8,10 +8,6 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties()
-keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-
 android {
     namespace = "io.github.mimoguz.tripeaksneue"
     compileSdk = flutter.compileSdkVersion
@@ -27,6 +23,9 @@ android {
 
     signingConfigs {
         create("release") {
+            val keystorePropertiesFile = rootProject.file("keystore.properties")
+            val keystoreProperties = Properties()
+            keystoreProperties.load(FileInputStream(keystorePropertiesFile))
             keyAlias = keystoreProperties["keyAlias"] as String
             keyPassword = keystoreProperties["keyPassword"] as String
             storeFile = file(keystoreProperties["storeFile"] as String)
