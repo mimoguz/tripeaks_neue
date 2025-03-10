@@ -59,7 +59,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
                 visualDensity: VisualDensity.compact,
                 onChanged: (value) => setState(() => _layout = value!),
               ),
-              title: Text(_valueLabel(layout, s)),
+              title: Text(layout.label(s)),
               onTap: () => setState(() => _layout = layout),
             ),
           const Divider(),
@@ -104,11 +104,4 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
       ],
     );
   }
-
-  String _valueLabel(Peaks value, AppLocalizations s) => switch (value) {
-    Peaks.threePeaks => s.threePeaksLayoutLabel,
-    Peaks.diamonds => s.diamondsLayoutLabel,
-    Peaks.valley => s.valleyLayoutLabel,
-    Peaks.upDown => s.upDownLayoutLabel,
-  };
 }

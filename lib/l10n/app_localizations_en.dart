@@ -116,6 +116,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upDownLayoutLabel => 'Opposing directions';
 
   @override
+  String get theatreLayoutLabel => 'Theatre';
+
+  @override
   String get soundControl => 'Sound';
 
   @override

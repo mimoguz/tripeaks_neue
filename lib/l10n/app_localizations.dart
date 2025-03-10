@@ -303,6 +303,12 @@ abstract class AppLocalizations {
   /// **'Opposing directions'**
   String get upDownLayoutLabel;
 
+  /// Value label of layout selection control when it is set to 'theatre'.
+  ///
+  /// In en, this message translates to:
+  /// **'Theatre'**
+  String get theatreLayoutLabel;
+
   /// Label of a control that sets sound mode.
   ///
   /// In en, this message translates to:

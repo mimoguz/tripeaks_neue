@@ -225,6 +225,12 @@
         "context": "settings",
         "description": "Value label of layout selection control when it is set to 'upDown'."
     },
+    "theatreLayoutLabel": "Theatre",
+    "@theatreLayoutLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Value label of layout selection control when it is set to 'theatre'."
+    },
     "@_SETTINGS_PAGE__SOUND_SETTING": {},
     "soundControl": "Sound",
     "@soundControl": {

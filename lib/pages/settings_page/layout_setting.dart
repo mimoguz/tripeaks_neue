@@ -31,7 +31,7 @@ class LayoutSetting extends StatelessWidget {
                     visualDensity: VisualDensity.compact,
                     onChanged: (value) => Actions.handler(context, SetLayoutIntent(value!))?.call(),
                   ),
-                  title: Text(_valueLabel(layout, s), style: radioTextStyle),
+                  title: Text(layout.label(s), style: radioTextStyle),
                   onTap: () => Actions.handler(context, SetLayoutIntent(layout))?.call(),
                 ),
             ],
@@ -40,11 +40,4 @@ class LayoutSetting extends StatelessWidget {
       ),
     );
   }
-
-  String _valueLabel(Peaks value, AppLocalizations s) => switch (value) {
-    Peaks.threePeaks => s.threePeaksLayoutLabel,
-    Peaks.diamonds => s.diamondsLayoutLabel,
-    Peaks.valley => s.valleyLayoutLabel,
-    Peaks.upDown => s.upDownLayoutLabel,
-  };
 }

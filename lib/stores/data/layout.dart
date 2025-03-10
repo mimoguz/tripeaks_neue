@@ -39,21 +39,21 @@ final class Layout {
   final Peaks tag;
 }
 
-enum Peaks { threePeaks, diamonds, valley, upDown }
+enum Peaks { threePeaks, diamonds, valley, theatre }
 
 extension PeaksExt on Peaks {
   Layout get implementation => switch (this) {
     Peaks.threePeaks => threePeaksLayout,
     Peaks.diamonds => diamondsLayout,
     Peaks.valley => valleyLayout,
-    Peaks.upDown => upDownLayout,
+    Peaks.theatre => theatreLayout,
   };
 
   String label(AppLocalizations s) => switch (this) {
     Peaks.threePeaks => s.threePeaksLayoutLabel,
     Peaks.diamonds => s.diamondsLayoutLabel,
     Peaks.valley => s.valleyLayoutLabel,
-    Peaks.upDown => s.upDownLayoutLabel,
+    Peaks.theatre => s.theatreLayoutLabel,
   };
 }
 
@@ -360,7 +360,7 @@ final upDownLayout = Layout(
   cardCount: 30,
   width: 18,
   height: 6,
-  tag: Peaks.upDown,
+  tag: Peaks.theatre,
   pins: List.unmodifiable([
     Pin(index: 0, mainAxis: 0, crossAxis: 4, z: 4, startsOpen: false),
     Pin(index: 1, mainAxis: 4, crossAxis: 12, z: 4, startsOpen: false),
@@ -457,5 +457,108 @@ final upDownLayout = Layout(
     List<int>.unmodifiable([17, 18]), // index: 28
     List<int>.unmodifiable([18, 19]), // index: 29
     List<int>.unmodifiable([19]), //     index: 30
+  ]),
+);
+
+final theatreLayout = Layout(
+  cardCount: 30,
+  width: 20,
+  height: 5,
+  tag: Peaks.theatre,
+  pins: List.unmodifiable([
+    Pin(index: 0, mainAxis: 0, crossAxis: 3, z: 3, startsOpen: false),
+    Pin(index: 1, mainAxis: 0, crossAxis: 5, z: 3, startsOpen: false),
+    Pin(index: 2, mainAxis: 0, crossAxis: 8, z: 3, startsOpen: false),
+    Pin(index: 3, mainAxis: 0, crossAxis: 10, z: 3, startsOpen: false),
+    Pin(index: 4, mainAxis: 0, crossAxis: 13, z: 3, startsOpen: false),
+    Pin(index: 5, mainAxis: 0, crossAxis: 15, z: 3, startsOpen: false),
+    Pin(index: 6, mainAxis: 1, crossAxis: 2, z: 2, startsOpen: false),
+    Pin(index: 7, mainAxis: 1, crossAxis: 4, z: 2, startsOpen: false),
+    Pin(index: 8, mainAxis: 1, crossAxis: 7, z: 2, startsOpen: false),
+    Pin(index: 9, mainAxis: 1, crossAxis: 9, z: 2, startsOpen: false),
+    Pin(index: 10, mainAxis: 1, crossAxis: 11, z: 2, startsOpen: false),
+    Pin(index: 11, mainAxis: 1, crossAxis: 14, z: 2, startsOpen: false),
+    Pin(index: 12, mainAxis: 1, crossAxis: 16, z: 2, startsOpen: false),
+    Pin(index: 13, mainAxis: 2, crossAxis: 1, z: 1, startsOpen: false),
+    Pin(index: 14, mainAxis: 2, crossAxis: 3, z: 1, startsOpen: false),
+    Pin(index: 15, mainAxis: 2, crossAxis: 6, z: 1, startsOpen: false),
+    Pin(index: 16, mainAxis: 2, crossAxis: 8, z: 1, startsOpen: false),
+    Pin(index: 17, mainAxis: 2, crossAxis: 10, z: 1, startsOpen: false),
+    Pin(index: 18, mainAxis: 2, crossAxis: 12, z: 1, startsOpen: false),
+    Pin(index: 19, mainAxis: 2, crossAxis: 15, z: 1, startsOpen: false),
+    Pin(index: 20, mainAxis: 2, crossAxis: 17, z: 1, startsOpen: false),
+    Pin(index: 21, mainAxis: 3, crossAxis: 0, z: 0, startsOpen: true),
+    Pin(index: 22, mainAxis: 3, crossAxis: 2, z: 0, startsOpen: true),
+    Pin(index: 23, mainAxis: 3, crossAxis: 5, z: 0, startsOpen: true),
+    Pin(index: 24, mainAxis: 3, crossAxis: 7, z: 0, startsOpen: true),
+    Pin(index: 25, mainAxis: 3, crossAxis: 9, z: 0, startsOpen: true),
+    Pin(index: 26, mainAxis: 3, crossAxis: 11, z: 0, startsOpen: true),
+    Pin(index: 27, mainAxis: 3, crossAxis: 13, z: 0, startsOpen: true),
+    Pin(index: 28, mainAxis: 3, crossAxis: 16, z: 0, startsOpen: true),
+    Pin(index: 29, mainAxis: 3, crossAxis: 18, z: 0, startsOpen: true),
+  ]),
+  above: List.unmodifiable([
+    List<int>.unmodifiable([6, 7]),
+    List<int>.unmodifiable([7]),
+    List<int>.unmodifiable([8, 9]),
+    List<int>.unmodifiable([9, 10]),
+    List<int>.unmodifiable([11]),
+    List<int>.unmodifiable([11, 12]),
+    List<int>.unmodifiable([13, 14]),
+    List<int>.unmodifiable([14]),
+    List<int>.unmodifiable([15, 16]),
+    List<int>.unmodifiable([16, 17]),
+    List<int>.unmodifiable([17, 18]),
+    List<int>.unmodifiable([19]),
+    List<int>.unmodifiable([19, 20]),
+    List<int>.unmodifiable([21, 22]),
+    List<int>.unmodifiable([22]),
+    List<int>.unmodifiable([23, 24]),
+    List<int>.unmodifiable([24, 25]),
+    List<int>.unmodifiable([25, 26]),
+    List<int>.unmodifiable([26, 27]),
+    List<int>.unmodifiable([28]),
+    List<int>.unmodifiable([28, 29]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+  ]),
+  below: List.unmodifiable([
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([]),
+    List<int>.unmodifiable([0]),
+    List<int>.unmodifiable([0, 1]),
+    List<int>.unmodifiable([2]),
+    List<int>.unmodifiable([2, 3]),
+    List<int>.unmodifiable([3]),
+    List<int>.unmodifiable([4, 5]),
+    List<int>.unmodifiable([5]),
+    List<int>.unmodifiable([6]),
+    List<int>.unmodifiable([6, 7]),
+    List<int>.unmodifiable([8]),
+    List<int>.unmodifiable([8, 9]),
+    List<int>.unmodifiable([9, 10]),
+    List<int>.unmodifiable([10]),
+    List<int>.unmodifiable([11, 12]),
+    List<int>.unmodifiable([12]),
+    List<int>.unmodifiable([13]),
+    List<int>.unmodifiable([13, 14]),
+    List<int>.unmodifiable([15]),
+    List<int>.unmodifiable([15, 16]),
+    List<int>.unmodifiable([16, 17]),
+    List<int>.unmodifiable([17, 18]),
+    List<int>.unmodifiable([18]),
+    List<int>.unmodifiable([19, 20]),
+    List<int>.unmodifiable([20]),
   ]),
 );
