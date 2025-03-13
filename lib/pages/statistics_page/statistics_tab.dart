@@ -3,6 +3,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/game_entry.dart';
 import 'package:tripeaks_neue/pages/statistics_page/summary.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
@@ -24,11 +25,22 @@ final class StatisticsTab extends StatelessWidget {
           Flexible(
             child: ScrollIndicator(
               child: ListView(
-                children: [
-                  Padding(padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0), child: Summary(statistics)),
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      c.utilPageMargin,
+                      c.utilPageMargin,
+                      c.utilPageMargin,
+                      c.utilPageMargin / 2.0,
+                    ),
+                    child: Summary(statistics),
+                  ),
                   if (statistics.lastGame != null)
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: c.utilPageMargin,
+                        vertical: c.utilPageMargin / 2.0,
+                      ),
                       child: GroupTile(
                         title: s.lastGameStatistics,
                         children: [GameEntry(place: -1, game: statistics.lastGame!, showLayout: showLayout)],
@@ -36,7 +48,12 @@ final class StatisticsTab extends StatelessWidget {
                     ),
                   if (statistics.bestGames.isNotEmpty)
                     Padding(
-                      padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
+                      padding: const EdgeInsets.fromLTRB(
+                        c.utilPageMargin,
+                        c.utilPageMargin / 2.0,
+                        c.utilPageMargin,
+                        c.utilPageMargin,
+                      ),
                       child: GroupTile(
                         title: s.bestGamesStatistics,
                         children: [

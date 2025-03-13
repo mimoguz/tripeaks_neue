@@ -26,13 +26,13 @@ final class GameEntry extends StatelessWidget {
         textBaseline: TextBaseline.alphabetic,
         crossAxisAlignment: CrossAxisAlignment.baseline,
         spacing: 12.0,
-        children: [if (showLayout) Text(game.layout.label(s)), ResultChip(game)],
+        children: <Widget>[if (showLayout) Text(game.layout.label(s)), ResultChip(game)],
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 4,
-        children: [
+        children: <Widget>[
           Text(game.score.toString(), style: theme.textTheme.titleMedium),
           Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.outline),
         ],

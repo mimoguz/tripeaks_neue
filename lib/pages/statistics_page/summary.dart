@@ -15,7 +15,7 @@ final class Summary extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     return GroupTile(
       title: s.statisticsSummary,
-      children: [
+      children: <Widget>[
         MyListTile(
           title: Text(s.totalPlayedLabel),
           trailing: Text(statistics.totalGames.toString(), style: trailingStyle),

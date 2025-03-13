@@ -3,6 +3,7 @@ import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/how_to_play.dart';
 import 'package:tripeaks_neue/pages/info_page/interaction.dart';
 import 'package:tripeaks_neue/pages/info_page/scoring.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class HowtoTab extends StatefulWidget {
   const HowtoTab({super.key});
@@ -24,7 +25,7 @@ class _HowtoTabState extends State<HowtoTab> with AutomaticKeepAliveClientMixin<
     return Container(
       color: colours.surfaceContainerLow,
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(c.utilPageMargin),
         child: Column(
           children: [
             ExpandableBox(

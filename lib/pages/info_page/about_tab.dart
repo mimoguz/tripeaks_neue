@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/privacy_policy.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class AboutTab extends StatefulWidget {
   const AboutTab({super.key});
@@ -23,7 +24,7 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
     return Container(
       color: colours.surfaceContainerLow,
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(c.utilPageMargin),
         child: Column(
           children: [
             ExpandableBox(

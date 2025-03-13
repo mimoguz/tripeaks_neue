@@ -18,3 +18,4 @@ const double requiredHeight = 600;
 const double dropdownItemWidth = 120;
 const double maxListWidth = 700;
 const double maxRadioWidth = maxListWidth - 32;
+const double utilPageMargin = 4.0;
