@@ -65,7 +65,7 @@ final class SettingsPageBody extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.fromLTRB(
                               c.utilPageMargin,
-                              c.utilPageMargin,
+                              16.0,
                               c.utilPageMargin,
                               c.utilPageMargin / 2.0,
                             ),

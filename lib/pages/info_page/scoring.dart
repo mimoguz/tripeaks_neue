@@ -52,7 +52,7 @@ class Scoring extends StatelessWidget {
             const SizedBox(height: 12.0),
             Text(
               "While clearing the board is the goal, you can easily get a higher "
-              "score by creating long chains, even if you can't clear the it. "
+              "score by creating long chains, even if you can't clear it. "
               "Play any way you want.",
             ),
           ],
