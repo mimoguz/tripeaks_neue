@@ -33,8 +33,8 @@ class CircleGameButton extends StatelessWidget {
           children: [
             Material(
               shape: CircleBorder(),
-              type: MaterialType.button,
-              color: colours.surfaceContainerLow,
+              type: MaterialType.transparency,
+              // color: colours.surfaceContainerLow,
               child: Ink(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(100.0)),

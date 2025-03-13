@@ -11,7 +11,7 @@ final class GroupTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListItemContainer(
       child: Card(
-        color: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).colorScheme.surfaceContainerHigh,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
           child: Column(

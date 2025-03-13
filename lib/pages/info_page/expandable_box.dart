@@ -27,7 +27,7 @@ class ExpandableBox extends StatelessWidget {
         child: ListItemContainer(
           child: Card(
             clipBehavior: Clip.antiAlias,
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.surfaceContainerHigh,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
