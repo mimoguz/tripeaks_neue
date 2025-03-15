@@ -1,3 +1,4 @@
+import com.android.build.api.variant.ApplicationVariant
 import java.util.Properties
 import java.io.FileInputStream
 import com.android.build.gradle.internal.api.ApkVariantOutputImpl
@@ -54,23 +55,19 @@ android {
             signingConfig = signingConfigs.getByName("release")
         }
     }
+}
 
-    val abiCodes = mapOf(
-        "armeabi-v7a" to 1,
-        "arm64-v8a" to 2,
-        "x86_64" to 3,
-    )
+val abiCodes = mapOf(
+    "armeabi-v7a" to 1,
+    "arm64-v8a" to 2,
+    "x86_64" to 3,
+)
 
-    applicationVariants.forEach { variant ->
-        variant.outputs.forEach { output ->
-            // Filter file type really should be compared to VariantOutput.ABI (or OutFile.ABI,
-            // as OutFile derives from VariantOutput), the name of the ABI variant of FilterType
-            // also defined in VariantOutput. But since VariantOutput is depreciated anyway and
-            // I don't want to depend some depreciated interface  I'm just comparing the
-            // filter type to "ABI".
-            val abi = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier] ?: 0
-            (output as? ApkVariantOutputImpl)?.versionCodeOverride = variant.versionCode * 10 + abi
-        }
+android.applicationVariants.all {
+    val variant = this
+    outputs.all {
+        val abi = abiCodes[filters.find { it.filterType == "ABI" }?.identifier] ?: 0
+        (this as ApkVariantOutputImpl).versionCodeOverride = variant.versionCode * 10 + abi
     }
 }
 
