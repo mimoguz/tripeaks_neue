@@ -61,15 +61,15 @@ android {
         "x86_64" to 3,
     )
 
-    applicationVariants.configureEach {
-        outputs.configureEach {
+    applicationVariants.forEach { variant ->
+        variant.outputs.forEach { output ->
             // Filter file type really should be compared to VariantOutput.ABI (or OutFile.ABI,
             // as OutFile derives from VariantOutput), the name of the ABI variant of FilterType
             // also defined in VariantOutput. But since VariantOutput is depreciated anyway and
             // I don't want to depend some depreciated interface  I'm just comparing the
             // filter type to "ABI".
-            val abiCode = abiCodes[filters.find { it.filterType == "ABI" }?.identifier] ?: 0
-            (this as? ApkVariantOutputImpl)?.versionCodeOverride = versionCode * 10 + abiCode
+            val abi = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier] ?: 0
+            (output as? ApkVariantOutputImpl)?.versionCodeOverride = variant.versionCode * 10 + abi
         }
     }
 }
