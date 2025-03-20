@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
       child: Shortcuts(
         shortcuts: <ShortcutActivator, Intent>{
           SingleActivator(LogicalKeyboardKey.keyD): const DrawIntent(),
+          SingleActivator(LogicalKeyboardKey.keyZ, control: true): const RollbackIntent(),
           SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
           SingleActivator(LogicalKeyboardKey.keyM): const ShowNavigationDrawerIntent(),
           SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
