@@ -219,4 +219,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get longestChainLabel => 'Longest chain';
+
+  @override
+  String get infoPageTitle => 'How to & About';
+
+  @override
+  String get howToPlayTabTitle => 'How to Play';
+
+  @override
+  String get aboutTabTitle => 'About the Game';
 }

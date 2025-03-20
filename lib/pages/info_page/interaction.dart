@@ -16,6 +16,7 @@ final class Interaction extends StatelessWidget {
       child: DefaultTextStyle(
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
+        // TODO: Add keyboard shortcuts
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
           children: [

@@ -271,3 +271,31 @@ void _closeDrawer(BuildContext context) {
     scaffold.closeDrawer();
   }
 }
+
+final class ShowNavigationDrawerAction extends ContextAction<ShowNavigationDrawerIntent> {
+  @override
+  void invoke(ShowNavigationDrawerIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final scaffold = Scaffold.of(context);
+    if (scaffold.isDrawerOpen) {
+      scaffold.closeDrawer();
+    } else {
+      scaffold.openDrawer();
+    }
+  }
+}
+
+final class GoBackAction extends ContextAction<GoBackIntent> {
+  @override
+  void invoke(GoBackIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final navigator = Navigator.of(context);
+    if (navigator.canPop()) {
+      Navigator.of(context).pop();
+    }
+  }
+}

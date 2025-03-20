@@ -23,8 +23,27 @@ import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class PortraitHomePage extends StatelessWidget {
+class PortraitHomePage extends StatefulWidget {
   const PortraitHomePage({super.key});
+
+  @override
+  State<PortraitHomePage> createState() => _PortraitHomePageState();
+}
+
+class _PortraitHomePageState extends State<PortraitHomePage> {
+  late final FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,46 +62,53 @@ class PortraitHomePage extends StatelessWidget {
           },
           child: Builder(
             builder: (context) {
-              return Container(
-                color: Theme.of(context).colorScheme.surfaceContainerLow,
-                child: Padding(
-                  padding: EdgeInsets.all((24.0 * scale).roundToDouble()),
-                  child: Stack(
-                    children: [
-                      SwipeArea(intent: const DrawIntent()),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        spacing: 24.0 * scale,
-                        children: [
-                          PortraitHomePageBoard(game: game, scale: scale, back: back),
-                          PortraitHomePageCounter(game: game, scale: scale),
-                          PortraitHomePageRightArea(game: game, scale: scale, back: back),
-                        ],
-                      ),
-                      Center(
-                        child: Observer(
-                          builder: (context) {
-                            return ClearedCardAnimated(
-                              id: game.started.millisecondsSinceEpoch,
-                              score: game.score,
-                              show: game.isCleared,
-                            );
-                          },
+              return Focus(
+                focusNode: _focusNode,
+                autofocus: true,
+                skipTraversal: true,
+                descendantsAreFocusable: true,
+                descendantsAreTraversable: true,
+                child: Container(
+                  color: Theme.of(context).colorScheme.surfaceContainerLow,
+                  child: Padding(
+                    padding: EdgeInsets.all((24.0 * scale).roundToDouble()),
+                    child: Stack(
+                      children: [
+                        SwipeArea(intent: const DrawIntent()),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          spacing: 24.0 * scale,
+                          children: [
+                            PortraitHomePageBoard(game: game, scale: scale, back: back),
+                            PortraitHomePageCounter(game: game, scale: scale),
+                            PortraitHomePageRightArea(game: game, scale: scale, back: back),
+                          ],
                         ),
-                      ),
-                      Center(
-                        child: Observer(
-                          builder: (context) {
-                            return StalledCardAnimated(
-                              score: game.score,
-                              id: game.started.millisecondsSinceEpoch + 1,
-                              show: game.isStalled,
-                            );
-                          },
+                        Center(
+                          child: Observer(
+                            builder: (context) {
+                              return ClearedCardAnimated(
+                                id: game.started.millisecondsSinceEpoch,
+                                score: game.score,
+                                show: game.isCleared,
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                        Center(
+                          child: Observer(
+                            builder: (context) {
+                              return StalledCardAnimated(
+                                score: game.score,
+                                id: game.started.millisecondsSinceEpoch + 1,
+                                show: game.isStalled,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

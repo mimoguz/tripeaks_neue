@@ -512,6 +512,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Longest chain'**
   String get longestChainLabel;
+
+  /// Info page title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to & About'**
+  String get infoPageTitle;
+
+  /// 'How to play' tab title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Play'**
+  String get howToPlayTabTitle;
+
+  /// 'About' tab title.
+  ///
+  /// In en, this message translates to:
+  /// **'About the Game'**
+  String get aboutTabTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

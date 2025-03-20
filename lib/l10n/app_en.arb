@@ -440,5 +440,25 @@
         "type": "text",
         "context": "statisticsPage:summary",
         "description": "Label of the longest chain statistic."
+    },
+    "@_INFO_PAGE": {},
+    "infoPageTitle": "How to & About",
+    "@infoPageTitle": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "Info page title."
+    },
+    "howToPlayTabTitle": "How to Play",
+    "@howToPlayTabTitle": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "'How to play' tab title."
+    },
+    "aboutTabTitle": "About the Game",
+    "@aboutTabTitle": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "'About' tab title."
     }
+
 }

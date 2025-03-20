@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
@@ -12,8 +13,27 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-final class SettingsPage extends StatelessWidget {
+final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  late final FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +46,32 @@ final class SettingsPage extends StatelessWidget {
         SetDecorIntent: SetDecorAction(),
         SetLayoutIntent: SetLayoutAction(),
         SetSoundModeIntent: SetSoundModeAction(),
+        ExitIntent: ExitAction(),
+        GoBackIntent: GoBackAction(),
       },
       child: Builder(
         builder: (context) {
-          return SafeArea(
-            child: Scaffold(
-              appBar: AppBar(
-                title: Text(s.settingsTitle),
-                backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+          return Shortcuts(
+            shortcuts: <ShortcutActivator, Intent>{
+              SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
+              SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
+              SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
+            },
+            child: SafeArea(
+              child: Scaffold(
+                appBar: AppBar(
+                  title: Text(s.settingsTitle),
+                  backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+                ),
+                body: Focus(
+                  focusNode: _focusNode,
+                  autofocus: true,
+                  skipTraversal: true,
+                  descendantsAreFocusable: true,
+                  descendantsAreTraversable: true,
+                  child: const SettingsPageBody(),
+                ),
               ),
-              body: const SettingsPageBody(),
             ),
           );
         },

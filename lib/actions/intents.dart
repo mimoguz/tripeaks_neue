@@ -92,3 +92,11 @@ final class SetLayoutIntent extends Intent {
 
   final Peaks value;
 }
+
+final class ShowNavigationDrawerIntent extends Intent {
+  const ShowNavigationDrawerIntent();
+}
+
+final class GoBackIntent extends Intent {
+  const GoBackIntent();
+}

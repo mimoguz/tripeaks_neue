@@ -67,7 +67,6 @@ class HomePageDrawer extends StatelessWidget {
                       icon: const Icon(Icons.volume_off),
                       isSelected: settings.soundOn,
                       selectedIcon: const Icon(Icons.volume_up),
-                      // TODO: Add to arb
                       tooltip: settings.soundOn ? s.soundOnToolTip : s.soundOffToolTip,
                       onPressed: () => settings.setSoundOn(!settings.soundOn),
                     );

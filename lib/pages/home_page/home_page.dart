@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/landscape_home_page.dart';
@@ -12,28 +13,41 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     return SafeArea(
-      child: Actions(
-        actions: <Type, Action<Intent>>{
-          NewGameIntent: NewGameAction(),
-          NavigateToSettingsIntent: NavigateToSettingsAction(),
-          NavigateToStatisticsIntent: NavigateToStatisticsAction(),
-          NavigateToInfoIntent: NavigateToInfoAction(),
-          NewGameWithLayoutIntent: NewGameWithLayoutAction(),
-          RestartIntent: RestartAction(),
-          ExitIntent: ExitAction(),
+      child: Shortcuts(
+        shortcuts: <ShortcutActivator, Intent>{
+          SingleActivator(LogicalKeyboardKey.keyD): const DrawIntent(),
+          SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
+          SingleActivator(LogicalKeyboardKey.keyM): const ShowNavigationDrawerIntent(),
+          SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
+          SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
+          SingleActivator(LogicalKeyboardKey.period, control: true): const NavigateToSettingsIntent(),
+          SingleActivator(LogicalKeyboardKey.f1): const NavigateToInfoIntent(),
         },
-        child: Builder(
-          builder: (context) {
-            return Scaffold(
-              drawerScrimColor: Colors.transparent,
-              drawer: HomePageDrawer(),
-              body: Builder(
-                builder: (context) {
-                  return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
-                },
-              ),
-            );
+        child: Actions(
+          actions: <Type, Action<Intent>>{
+            NewGameIntent: NewGameAction(),
+            NavigateToSettingsIntent: NavigateToSettingsAction(),
+            NavigateToStatisticsIntent: NavigateToStatisticsAction(),
+            NavigateToInfoIntent: NavigateToInfoAction(),
+            NewGameWithLayoutIntent: NewGameWithLayoutAction(),
+            RestartIntent: RestartAction(),
+            ExitIntent: ExitAction(),
+            ShowNavigationDrawerIntent: ShowNavigationDrawerAction(),
+            GoBackIntent: GoBackAction(),
           },
+          child: Builder(
+            builder: (context) {
+              return Scaffold(
+                drawerScrimColor: Colors.transparent,
+                drawer: HomePageDrawer(),
+                body: Builder(
+                  builder: (context) {
+                    return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
+                  },
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
