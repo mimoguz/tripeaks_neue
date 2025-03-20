@@ -1,7 +1,7 @@
-import com.android.build.api.variant.ApplicationVariant
 import java.util.Properties
 import java.io.FileInputStream
 import com.android.build.gradle.internal.api.ApkVariantOutputImpl
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 
 plugins {
     id("com.android.application")
@@ -64,10 +64,10 @@ val abiCodes = mapOf(
 )
 
 android.applicationVariants.all {
-    val variant = this
+    val variantVersionCode = this.versionCode
     outputs.all {
-        val abi = abiCodes[filters.find { it.filterType == "ABI" }?.identifier] ?: 0
-        (this as ApkVariantOutputImpl).versionCodeOverride = variant.versionCode * 10 + abi
+        val abi = abiCodes[filters.find { it.filterType == BaseVariantOutputImpl.ABI }?.identifier] ?: 0
+        (this as ApkVariantOutputImpl).versionCodeOverride = variantVersionCode * 10 + abi
     }
 }
 
