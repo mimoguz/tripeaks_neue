@@ -39,7 +39,11 @@ class ShortcutHint extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       spacing: 6,
-      children: [if (showLabel) Text("Shortcut: "), for (final k in shorcut) KeyboardKey(keyboardKey: k)],
+      children: [
+        // TODO: Move to arb
+        if (showLabel) Text("Shortcut: ", style: const TextStyle(fontStyle: FontStyle.italic)),
+        for (final k in shorcut) KeyboardKey(keyboardKey: k),
+      ],
     );
   }
 }

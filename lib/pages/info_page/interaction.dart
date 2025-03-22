@@ -20,7 +20,7 @@ final class Interaction extends StatelessWidget {
         // TODO: Move to arb
         // TODO: Add keyboard shortcuts
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+          padding: EdgeInsets.only(bottom: 16),
           children: [
             InteractionListCell(
               description: const Text(
@@ -30,7 +30,7 @@ final class Interaction extends StatelessWidget {
               ),
               image: Icon(Icons.touch_app),
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: RichText(
                 text: TextSpan(
@@ -57,7 +57,7 @@ final class Interaction extends StatelessWidget {
               ),
               shorcut: _drawShortcut,
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: const Text(
                 "This is the undo button. Pressing this will roll back the last move. "
@@ -71,7 +71,7 @@ final class Interaction extends StatelessWidget {
               ),
               shorcut: _undoShortcut,
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: const Text("This is the menu button."),
               image: CircleGameButton(
@@ -82,7 +82,7 @@ final class Interaction extends StatelessWidget {
               ),
               shorcut: _menuShortcut,
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: const Text(
                 "From the menu, different game modes can be selected by visiting the settings page,",
@@ -90,12 +90,12 @@ final class Interaction extends StatelessWidget {
               image: Icon(Icons.settings),
               shorcut: _settingsShortcut,
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: Text("or by using \"${s.newGameWithLayoutAction}\" option."),
               image: Icon(CustomIcons.pickAndPlay),
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: Text(
                 "When a game ends, you will see an \"ending card\". "
@@ -104,18 +104,20 @@ final class Interaction extends StatelessWidget {
               ),
               image: Image.asset("images/tropy.png", width: c.maxRealButtonSize, height: c.maxRealButtonSize),
             ),
-            const SizedBox(height: 24.0),
+            const InteractionListDivider(),
             InteractionListCell(
               description: Text("The game supports both portrait and landscape orientations."),
               image: Icon(Icons.screen_rotation),
             ),
-            SizedBox(height: 16.0),
-            Divider(),
+            const InteractionListDivider(),
             Padding(
-              padding: const EdgeInsets.only(top: 16, bottom: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Text(
                 "Other Shorcuts",
-                style: textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.outline),
+                style: textTheme.titleSmall!.copyWith(
+                  color: Theme.of(context).colorScheme.outline,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut),
@@ -150,21 +152,27 @@ class InteractionListCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      spacing: 12.0,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Flexible(
-          child: Column(
-            spacing: 6,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [description, if (shorcut != null) ShortcutHint(shorcut: shorcut!)],
+    return Padding(
+      padding: const EdgeInsets.only(left: 12),
+      child: Row(
+        spacing: 12.0,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: Column(
+              spacing: 6,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [description, if (shorcut != null) ShortcutHint(shorcut: shorcut!)],
+            ),
           ),
-        ),
-        SizedBox(width: c.buttonSize * 0.7, child: Align(alignment: Alignment.topRight, child: image)),
-      ],
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+            width: 90,
+            child: Align(alignment: Alignment.center, child: image),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -178,12 +186,24 @@ class ShorcutListCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [Text(title), ShortcutHint(shorcut: shorcut, showLabel: false)],
       ),
+    );
+  }
+}
+
+class InteractionListDivider extends StatelessWidget {
+  const InteractionListDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Divider(color: Theme.of(context).colorScheme.surfaceContainerLowest),
     );
   }
 }

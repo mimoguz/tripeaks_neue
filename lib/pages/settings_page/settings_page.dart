@@ -153,7 +153,7 @@ final class NextGameItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return GroupTile(
       title: AppLocalizations.of(context)!.nextGameSettingGroupTitle,
-      children: const [LayoutSetting(), GroupDivider(), StartEmptySetting()],
+      children: const [LayoutSetting(), GroupTileDivider(), StartEmptySetting()],
     );
   }
 }
@@ -167,20 +167,11 @@ final class UiItems extends StatelessWidget {
       title: AppLocalizations.of(context)!.interfaceSettingGroupTitle,
       children: const <Widget>[
         SoundSetting(),
-        GroupDivider(),
+        GroupTileDivider(),
         ThemeModeSetting(),
-        GroupDivider(),
+        GroupTileDivider(),
         DecorSetting(),
       ],
     );
-  }
-}
-
-class GroupDivider extends StatelessWidget {
-  const GroupDivider({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(padding: EdgeInsets.only(bottom: 8.0), child: Divider());
   }
 }

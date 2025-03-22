@@ -35,7 +35,7 @@ class ExpandableBox extends StatelessWidget {
                   onTap: onTap,
                   borderRadius: c.commonBorderRadius,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                    padding: const EdgeInsets.all(12),
                     child: Row(
                       spacing: 12.0,
                       children: [
