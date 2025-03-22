@@ -17,13 +17,14 @@ class _MyVerticalTabViewState extends State<MyVerticalTabView> {
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColour = Theme.of(context).colorScheme.surfaceContainerLow;
     return Column(
       children: [
         Expanded(
           child: Row(
             children: [
               Container(
-                color: Theme.of(context).colorScheme.surfaceContainerLow,
+                color: backgroundColour,
                 width: widget.width,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: c.utilPageMargin),
@@ -42,7 +43,7 @@ class _MyVerticalTabViewState extends State<MyVerticalTabView> {
               ),
               Expanded(
                 child: Container(
-                  color: Theme.of(context).colorScheme.surfaceContainerLow,
+                  color: backgroundColour,
                   child: AnimatedSwitcher(
                     duration: Durations.medium3,
                     transitionBuilder:
@@ -110,7 +111,7 @@ class TabHeader extends StatelessWidget {
                 height: isSelected ? height : 0,
                 decoration: BoxDecoration(
                   borderRadius: _indicatorBorder,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             ),
