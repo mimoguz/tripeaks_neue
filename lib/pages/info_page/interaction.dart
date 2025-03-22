@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_neue/widgets/shortcut_hint.dart';
 
 final class Interaction extends StatelessWidget {
   const Interaction({super.key});
@@ -53,6 +55,7 @@ final class Interaction extends StatelessWidget {
                 onPressed: () {},
                 tooltip: s.drawTooltip,
               ),
+              shorcut: _drawShortcut,
             ),
             const SizedBox(height: 24.0),
             InteractionListCell(
@@ -66,6 +69,7 @@ final class Interaction extends StatelessWidget {
                 tooltip: s.undoTooltip,
                 onPressed: () {},
               ),
+              shorcut: _undoShortcut,
             ),
             const SizedBox(height: 24.0),
             InteractionListCell(
@@ -76,6 +80,7 @@ final class Interaction extends StatelessWidget {
                 tooltip: s.menuTooltip,
                 onPressed: () {},
               ),
+              shorcut: _menuShortcut,
             ),
             const SizedBox(height: 24.0),
             InteractionListCell(
@@ -83,6 +88,7 @@ final class Interaction extends StatelessWidget {
                 "From the menu, different game modes can be selected by visiting the settings page,",
               ),
               image: Icon(Icons.settings),
+              shorcut: _settingsShortcut,
             ),
             const SizedBox(height: 24.0),
             InteractionListCell(
@@ -103,18 +109,44 @@ final class Interaction extends StatelessWidget {
               description: Text("The game supports both portrait and landscape orientations."),
               image: Icon(Icons.screen_rotation),
             ),
+            SizedBox(height: 16.0),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.only(top: 16, bottom: 8),
+              child: Text(
+                "Other Shorcuts",
+                style: textTheme.titleSmall!.copyWith(color: Theme.of(context).colorScheme.outline),
+              ),
+            ),
+            ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut),
+            ShorcutListCell(title: "Back", shorcut: _backShortcut),
+            ShorcutListCell(title: "Back (alternative)", shorcut: _backShortcutAlt),
+            ShorcutListCell(title: s.exitAction, shorcut: _exitShortcut),
           ],
         ),
       ),
     );
   }
+
+  static final _drawShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.keyD];
+  static final _undoShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.control, LogicalKeyboardKey.keyZ];
+  static final _menuShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.keyM];
+  static final _settingsShortcut = <LogicalKeyboardKey>[
+    LogicalKeyboardKey.control,
+    LogicalKeyboardKey.period,
+  ];
+  static final _infoShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.f1];
+  static final _backShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.escape];
+  static final _backShortcutAlt = <LogicalKeyboardKey>[LogicalKeyboardKey.backspace];
+  static final _exitShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.control, LogicalKeyboardKey.keyQ];
 }
 
 class InteractionListCell extends StatelessWidget {
-  const InteractionListCell({super.key, required this.description, this.image});
+  const InteractionListCell({super.key, required this.description, this.image, this.shorcut});
 
   final Widget description;
   final Widget? image;
+  final List<LogicalKeyboardKey>? shorcut;
 
   @override
   Widget build(BuildContext context) {
@@ -123,9 +155,35 @@ class InteractionListCell extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Flexible(child: description),
-        SizedBox(width: c.buttonSize * 0.7, child: Align(alignment: Alignment.topCenter, child: image)),
+        Flexible(
+          child: Column(
+            spacing: 6,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [description, if (shorcut != null) ShortcutHint(shorcut: shorcut!)],
+          ),
+        ),
+        SizedBox(width: c.buttonSize * 0.7, child: Align(alignment: Alignment.topRight, child: image)),
       ],
+    );
+  }
+}
+
+class ShorcutListCell extends StatelessWidget {
+  const ShorcutListCell({super.key, required this.title, required this.shorcut});
+
+  final String title;
+  final List<LogicalKeyboardKey> shorcut;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [Text(title), ShortcutHint(shorcut: shorcut, showLabel: false)],
+      ),
     );
   }
 }
