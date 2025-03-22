@@ -45,7 +45,7 @@ class GroupTileDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
-      child: Divider(color: Theme.of(context).colorScheme.surfaceContainerLowest),
+      child: Divider(color: Theme.of(context).colorScheme.outlineVariant),
     );
   }
 }

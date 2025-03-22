@@ -12,7 +12,7 @@ class Scoring extends StatelessWidget {
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
         child: ListView(
-          padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+          padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
           children: [
             RichText(
               text: TextSpan(

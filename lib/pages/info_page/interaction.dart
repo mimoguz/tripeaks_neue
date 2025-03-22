@@ -20,7 +20,7 @@ final class Interaction extends StatelessWidget {
         // TODO: Move to arb
         // TODO: Add keyboard shortcuts
         child: ListView(
-          padding: EdgeInsets.only(bottom: 16),
+          padding: EdgeInsets.only(bottom: 12),
           children: [
             InteractionListCell(
               description: const Text(
@@ -202,8 +202,8 @@ class InteractionListDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Divider(color: Theme.of(context).colorScheme.surfaceContainerLowest),
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Divider(color: Theme.of(context).colorScheme.outlineVariant),
     );
   }
 }
