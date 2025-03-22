@@ -222,6 +222,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+  cupertino_icons:
+    dependency: "direct main"
+    description:
+      name: cupertino_icons
+      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   dart_style:
     dependency: transitive
     description:
@@ -267,6 +275,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_horizontal_vertical_tabview:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "468caf3"
+      resolved-ref: "468caf32e7c874f24d4a20bf3b6e45d17bd533c6"
+      url: "https://github.com/mimoguz/flutter_horizontal_vertical_tabview.git"
+    source: git
+    version: "0.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:

@@ -1,6 +1,8 @@
 name: tripeaks_neue
 description: "A TriPeaks patience (solitaire)"
 
+publish_to: 'none'
+
 # Don't forget to increase version code (the number that comes after '+')
 version: 0.8.1+1
 
@@ -19,8 +21,11 @@ dependencies:
   mobx: ^2.5.0
   path_provider: ^2.1.5
   provider: ^6.1.2
-
-  # cupertino_icons: ^1.0.8
+  flutter_horizontal_vertical_tabview:
+    git:
+      url: https://github.com/mimoguz/flutter_horizontal_vertical_tabview.git
+      ref: 468caf3
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:

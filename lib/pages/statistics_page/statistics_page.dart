@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_horizontal_vertical_tabview/vertical_tab_view.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
@@ -8,6 +9,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class StatisticsPage extends StatefulWidget {
   const StatisticsPage({super.key});
@@ -34,6 +36,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
+    final useVertical = MediaQuery.sizeOf(context).height < c.verticalTabsThreshold;
     return Shortcuts(
       shortcuts: <ShortcutActivator, Intent>{
         SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -59,15 +62,18 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-                        bottom: TabBar(
-                          isScrollable: true,
-                          tabAlignment: TabAlignment.center,
-                          dividerColor: Colors.transparent,
-                          tabs: <Widget>[
-                            Tab(text: s.overallStatisticsTitle),
-                            for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
-                          ],
-                        ),
+                        bottom:
+                            useVertical
+                                ? null
+                                : TabBar(
+                                  isScrollable: true,
+                                  tabAlignment: TabAlignment.center,
+                                  dividerColor: Colors.transparent,
+                                  tabs: <Widget>[
+                                    Tab(text: s.overallStatisticsTitle),
+                                    for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
+                                  ],
+                                ),
                       ),
                       body: Focus(
                         focusNode: _focusNode,
@@ -75,13 +81,28 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         skipTraversal: true,
                         descendantsAreFocusable: true,
                         descendantsAreTraversable: true,
-                        child: TabBarView(
-                          children: <Widget>[
-                            StatisticsTab(statistics.overallStatistics),
-                            for (final layout in perLayoutStats)
-                              StatisticsTab(layout.value, showLayout: false),
-                          ],
-                        ),
+                        child:
+                            useVertical
+                                ? VerticalTabView(
+                                  tabsWidth: 180,
+                                  backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+                                  tabs: <Tab>[
+                                    Tab(text: s.overallStatisticsTitle),
+                                    for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
+                                  ],
+                                  contents: <Widget>[
+                                    StatisticsTab(statistics.overallStatistics),
+                                    for (final layout in perLayoutStats)
+                                      StatisticsTab(layout.value, showLayout: false),
+                                  ],
+                                )
+                                : TabBarView(
+                                  children: <Widget>[
+                                    StatisticsTab(statistics.overallStatistics),
+                                    for (final layout in perLayoutStats)
+                                      StatisticsTab(layout.value, showLayout: false),
+                                  ],
+                                ),
                       ),
                     ),
                   );
