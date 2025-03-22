@@ -10,6 +10,7 @@ import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_vertical_tab_view.dart';
 
 class StatisticsPage extends StatefulWidget {
   const StatisticsPage({super.key});
@@ -83,17 +84,20 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         descendantsAreTraversable: true,
                         child:
                             useVertical
-                                ? VerticalTabView(
-                                  tabsWidth: 180,
-                                  backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+                                ? MyVerticalTabView(
+                                  width: 180,
                                   tabs: <Tab>[
                                     Tab(text: s.overallStatisticsTitle),
                                     for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
                                   ],
                                   contents: <Widget>[
-                                    StatisticsTab(statistics.overallStatistics),
+                                    StatisticsTab(statistics.overallStatistics, key: ValueKey("overall")),
                                     for (final layout in perLayoutStats)
-                                      StatisticsTab(layout.value, showLayout: false),
+                                      StatisticsTab(
+                                        layout.value,
+                                        showLayout: false,
+                                        key: Key(layout.key.name),
+                                      ),
                                   ],
                                 )
                                 : TabBarView(

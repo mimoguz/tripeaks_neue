@@ -275,15 +275,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_horizontal_vertical_tabview:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "468caf3"
-      resolved-ref: "468caf32e7c874f24d4a20bf3b6e45d17bd533c6"
-      url: "https://github.com/mimoguz/flutter_horizontal_vertical_tabview.git"
-    source: git
-    version: "0.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
