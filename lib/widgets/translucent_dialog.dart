@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class TranslucentDialog extends StatelessWidget {
   const TranslucentDialog({super.key, this.actions, this.title, required this.content});
@@ -39,7 +40,7 @@ class TranslucentDialog extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium!,
                         child: Row(children: [title!]),
                       ),
-                    SingleChildScrollView(child: content),
+                    Flexible(child: ScrollIndicator(child: SingleChildScrollView(child: content))),
                     if (actions != null && actions!.isNotEmpty)
                       Row(mainAxisAlignment: MainAxisAlignment.end, spacing: 12.0, children: actions!),
                   ],
