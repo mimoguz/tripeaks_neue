@@ -81,41 +81,39 @@ class TabHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: isSelected ? null : onTap,
-      child: Container(
-        color: Colors.transparent,
-        width: width,
-        height: height,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: c.utilPageMargin),
-              child: DefaultTextStyle(
-                textAlign: TextAlign.left,
-                style:
-                    isSelected
-                        ? Theme.of(context).textTheme.bodyMedium!
-                        : Theme.of(
-                          context,
-                        ).textTheme.bodyMedium!.copyWith(color: Theme.of(context).hintColor),
-                child: tab,
-              ),
-            ),
-            AnimatedSize(
-              duration: Durations.medium3,
-              curve: Curves.easeInOut,
-              child: Container(
-                width: 3,
-                height: isSelected ? height : 0,
-                decoration: BoxDecoration(
-                  borderRadius: _indicatorBorder,
-                  color: Theme.of(context).colorScheme.primary,
+    final theme = Theme.of(context);
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        onTap: isSelected ? null : onTap,
+        child: SizedBox(
+          width: width,
+          height: height,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: c.utilPageMargin),
+                child: DefaultTextStyle(
+                  textAlign: TextAlign.left,
+                  style:
+                      isSelected
+                          ? theme.textTheme.bodyMedium!
+                          : theme.textTheme.bodyMedium!.copyWith(color: theme.hintColor),
+                  child: tab,
                 ),
               ),
-            ),
-          ],
+              AnimatedSize(
+                duration: Durations.medium3,
+                curve: Curves.easeInOut,
+                child: Container(
+                  width: 3,
+                  height: isSelected ? height : 0,
+                  decoration: BoxDecoration(borderRadius: _indicatorBorder, color: theme.colorScheme.primary),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
