@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/pages/info_page/dependencies.dart';
 import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/privacy_policy.dart';
@@ -40,6 +41,13 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
               icon: Icon(Icons.copyright, color: colours.outline),
               onTap: () => _onTap(1),
               child: Column(children: [Flexible(child: Licenses())]),
+            ),
+            ExpandableBox(
+              expanded: _expandIndex == 2,
+              title: Text("Dependencies"),
+              icon: Icon(Icons.code, color: colours.outline),
+              onTap: () => _onTap(2),
+              child: Column(children: [Flexible(child: Dependencies())]),
             ),
           ],
         ),

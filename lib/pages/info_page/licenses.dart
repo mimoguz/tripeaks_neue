@@ -45,14 +45,14 @@ class Licenses extends StatelessWidget {
 final class LicenseEntry extends StatelessWidget {
   const LicenseEntry({
     super.key,
-    required this.link,
     required this.title,
     required this.license,
+    this.link,
     this.description,
     this.exceptions = const <String>[],
   });
 
-  final Uri link;
+  final Uri? link;
   final String title;
   final String? description;
   final String license;
@@ -72,7 +72,7 @@ final class LicenseEntry extends StatelessWidget {
           Text("Exceptions", style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
         if (exceptions.isNotEmpty)
           for (final e in exceptions) Text(e, style: textTheme.bodySmall),
-        ExternalLink(uri: link),
+        if (link != null) ExternalLink(uri: link!),
       ],
     );
   }

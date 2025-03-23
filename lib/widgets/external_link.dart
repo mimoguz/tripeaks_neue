@@ -28,7 +28,7 @@ class ExternalLink extends StatelessWidget {
                 Icon(CustomIcons.link20, color: colours.primary, size: 20.0),
                 Flexible(
                   child: Text(
-                    label ?? uri.toString(),
+                    label ?? uri.toString().replaceAll("data:,", ""),
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colours.primary),
                   ),

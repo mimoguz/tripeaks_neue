@@ -36,6 +36,7 @@ final class GroupTile extends StatelessWidget {
   }
 }
 
+// TODO: Add padding param and consolidate various dividers
 class GroupTileDivider extends StatelessWidget {
   const GroupTileDivider({super.key});
 
