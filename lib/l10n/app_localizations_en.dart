@@ -228,4 +228,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutTabTitle => 'About the Game';
+
+  @override
+  String get showLicenseAction => 'Show License';
+
+  @override
+  String get licenseDialogCloseAction => 'Close';
 }

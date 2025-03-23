@@ -459,6 +459,18 @@
         "type": "text",
         "context": "infoPage",
         "description": "'About' tab title."
+    },
+    "showLicenseAction": "Show License",
+    "@showLicenseAction": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "Label of a button that displays the license of a dependency."
+    },
+    "@_LICENSE_DIALOG": {},
+    "licenseDialogCloseAction": "Close",
+    "@licenseDialogCloseAction": {
+        "type": "text",
+        "context": "licenseDialog",
+        "description": "Label of a button that closes the license dialog."
     }
-
 }

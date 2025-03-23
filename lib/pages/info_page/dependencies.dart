@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/oss_licenses.dart';
+import 'package:tripeaks_neue/pages/info_page/license_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/group_tile.dart';
@@ -41,9 +43,30 @@ final class DependencyEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final link = package.homepage ?? package.repository;
+    final s = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Text(package.name), if (link != null) ExternalLink(uri: Uri.dataFromString(link))],
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          textBaseline: TextBaseline.alphabetic,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          children: [
+            Text(package.name),
+            if (package.license != null)
+              FilledButton.tonal(onPressed: () => _showLicense(context), child: Text(s.showLicenseAction)),
+          ],
+        ),
+        if (link != null) ExternalLink(uri: Uri.dataFromString(link)),
+      ],
+    );
+  }
+
+  void _showLicense(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (context) => LicenseDialog(package: package),
     );
   }
 }

@@ -530,6 +530,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'About the Game'**
   String get aboutTabTitle;
+
+  /// Label of a button that displays the license of a dependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Show License'**
+  String get showLicenseAction;
+
+  /// Label of a button that closes the license dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get licenseDialogCloseAction;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
