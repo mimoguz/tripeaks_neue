@@ -33,9 +33,9 @@ final class ClearedCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: c.commonBorderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
         child: Container(
-          color: Theme.of(context).colorScheme.surfaceContainerLow.withAlpha(200),
+          color: Theme.of(context).colorScheme.surfaceContainerLow.withAlpha(210),
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 240),
             child: Padding(

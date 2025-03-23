@@ -34,9 +34,9 @@ final class StalledCard extends StatelessWidget {
     return ClipRRect(
       borderRadius: c.commonBorderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
         child: Container(
-          color: Theme.of(context).colorScheme.surfaceContainerLow.withAlpha(200),
+          color: Theme.of(context).colorScheme.surfaceContainerLow.withAlpha(210),
           width: 300,
           child: Padding(
             padding: const EdgeInsets.all(16.0),

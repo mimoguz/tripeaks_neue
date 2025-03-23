@@ -21,9 +21,9 @@ class TranslucentDialog extends StatelessWidget {
       content: ClipRRect(
         borderRadius: c.commonBorderRadius,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+          filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
           child: Material(
-            color: colours.surfaceContainer.withAlpha(230),
+            color: colours.surfaceContainer.withAlpha(210),
             child: Ink(
               decoration: BoxDecoration(
                 border: Border.all(color: _borderColour),
