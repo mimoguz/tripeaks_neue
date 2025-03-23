@@ -36,14 +36,15 @@ final class GroupTile extends StatelessWidget {
   }
 }
 
-// TODO: Add padding param and consolidate various dividers
 class GroupTileDivider extends StatelessWidget {
-  const GroupTileDivider({super.key});
+  const GroupTileDivider({super.key, this.padding});
+
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: c.divPadding),
+      padding: padding ?? const EdgeInsets.only(bottom: c.divPadding),
       child: Divider(color: Theme.of(context).colorScheme.outlineVariant),
     );
   }
