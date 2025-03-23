@@ -93,7 +93,7 @@ class TabHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 12, right: c.utilPageMargin),
+                padding: const EdgeInsets.only(left: c.cardPadding, right: c.utilPageMargin),
                 child: DefaultTextStyle(
                   textAlign: TextAlign.left,
                   style:

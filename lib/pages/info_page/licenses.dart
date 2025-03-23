@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
@@ -14,7 +15,7 @@ class Licenses extends StatelessWidget {
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
         child: ListView(
-          padding: EdgeInsets.only(bottom: 12.0),
+          padding: EdgeInsets.fromLTRB(c.cardPadding, 0, c.cardPadding, c.cardPadding),
           children: [
             LicenseEntry(
               link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
@@ -60,22 +61,19 @@ final class LicenseEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 6.0,
-        children: [
-          Text(title, style: textTheme.titleMedium),
-          if (description != null) Text(description!),
-          Text("Avaliable under $license."),
-          if (exceptions.isNotEmpty)
-            Text("Exceptions", style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
-          if (exceptions.isNotEmpty)
-            for (final e in exceptions) Text(e, style: textTheme.bodySmall),
-          ExternalLink(uri: link),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 6.0,
+      children: [
+        Text(title, style: textTheme.titleMedium),
+        if (description != null) Text(description!),
+        Text("Avaliable under $license."),
+        if (exceptions.isNotEmpty)
+          Text("Exceptions", style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600)),
+        if (exceptions.isNotEmpty)
+          for (final e in exceptions) Text(e, style: textTheme.bodySmall),
+        ExternalLink(uri: link),
+      ],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class Scoring extends StatelessWidget {
@@ -12,7 +13,7 @@ class Scoring extends StatelessWidget {
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
         child: ListView(
-          padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+          padding: const EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
           children: [
             RichText(
               text: TextSpan(

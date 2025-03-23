@@ -16,33 +16,21 @@ final class Summary extends StatelessWidget {
     return GroupTile(
       title: s.statisticsSummary,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: MyListTile(
-            title: Text(s.totalPlayedLabel),
-            trailing: Text(statistics.totalGames.toString(), style: trailingStyle),
-          ),
+        MyListTile(
+          title: Text(s.totalPlayedLabel),
+          trailing: Text(statistics.totalGames.toString(), style: trailingStyle),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: MyListTile(
-            title: Text(s.totalClearedLabel),
-            trailing: Text(statistics.cleared.toString(), style: trailingStyle),
-          ),
+        MyListTile(
+          title: Text(s.totalClearedLabel),
+          trailing: Text(statistics.cleared.toString(), style: trailingStyle),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: MyListTile(
-            title: Text(s.bestScoreLabel),
-            trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
-          ),
+        MyListTile(
+          title: Text(s.bestScoreLabel),
+          trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: MyListTile(
-            title: Text(s.longestChainLabel),
-            trailing: Text((statistics.longestChain).toString(), style: trailingStyle),
-          ),
+        MyListTile(
+          title: Text(s.longestChainLabel),
+          trailing: Text((statistics.longestChain).toString(), style: trailingStyle),
         ),
       ],
     );

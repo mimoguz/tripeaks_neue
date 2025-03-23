@@ -19,26 +19,23 @@ final class GameEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
-      child: MyListTile(
-        leading: place > 0 ? Order(place) : null,
-        title: Text(_dateFormat.format(game.ended)),
-        subtitle: Row(
-          textBaseline: TextBaseline.alphabetic,
-          crossAxisAlignment: CrossAxisAlignment.baseline,
-          spacing: 12.0,
-          children: <Widget>[if (showLayout) Text(game.layout.label(s)), ResultChip(game)],
-        ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 4,
-          children: <Widget>[
-            Text(game.score.toString(), style: theme.textTheme.titleMedium),
-            Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.outline),
-          ],
-        ),
+    return MyListTile(
+      leading: place > 0 ? Order(place) : null,
+      title: Text(_dateFormat.format(game.ended)),
+      subtitle: Row(
+        textBaseline: TextBaseline.alphabetic,
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        spacing: 12.0,
+        children: <Widget>[if (showLayout) Text(game.layout.label(s)), ResultChip(game)],
+      ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 4,
+        children: <Widget>[
+          Text(game.score.toString(), style: theme.textTheme.titleMedium),
+          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.outline),
+        ],
       ),
     );
   }

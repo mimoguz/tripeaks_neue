@@ -99,16 +99,16 @@ final class SettingsPageBody extends StatelessWidget {
                         shrinkWrap: true,
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(
+                            padding: const EdgeInsets.fromLTRB(
                               c.utilPageMargin,
-                              c.utilPageMargin * 2,
+                              c.utilPageMargin,
                               c.utilPageMargin,
                               c.utilPageMargin / 2.0,
                             ),
                             child: GameItems(),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               horizontal: c.utilPageMargin,
                               vertical: c.utilPageMargin / 2.0,
                             ),

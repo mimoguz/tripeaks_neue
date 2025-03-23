@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
 final class GroupTile extends StatelessWidget {
@@ -13,19 +14,16 @@ final class GroupTile extends StatelessWidget {
       child: Card(
         color: Theme.of(context).colorScheme.surfaceContainerHigh,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          padding: const EdgeInsets.all(c.cardPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (title != null)
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Text(
-                    title!,
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: Theme.of(context).colorScheme.outline,
-                      fontWeight: FontWeight.w600,
-                    ),
+                Text(
+                  title!,
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.outline,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               if (title != null) const SizedBox(height: 8.0),
@@ -44,7 +42,7 @@ class GroupTileDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(bottom: c.divPadding),
       child: Divider(color: Theme.of(context).colorScheme.outlineVariant),
     );
   }

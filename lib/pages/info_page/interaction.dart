@@ -20,7 +20,7 @@ final class Interaction extends StatelessWidget {
         // TODO: Move to arb
         // TODO: Add keyboard shortcuts
         child: ListView(
-          padding: EdgeInsets.only(bottom: 12),
+          padding: EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
           children: [
             InteractionListCell(
               description: const Text(
@@ -111,7 +111,7 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.only(bottom: 4),
               child: Text(
                 "Other Shorcuts",
                 style: textTheme.titleSmall!.copyWith(
@@ -152,27 +152,24 @@ class InteractionListCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 12),
-      child: Row(
-        spacing: 12.0,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Flexible(
-            child: Column(
-              spacing: 6,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [description, if (shorcut != null) ShortcutHint(shorcut: shorcut!)],
-            ),
+    return Row(
+      spacing: 12.0,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Column(
+            spacing: 6,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [description, if (shorcut != null) ShortcutHint(shorcut: shorcut!)],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            width: 90,
-            child: Align(alignment: Alignment.center, child: image),
-          ),
-        ],
-      ),
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 8),
+          width: c.buttonSize * 0.7,
+          child: Align(alignment: Alignment.center, child: image),
+        ),
+      ],
     );
   }
 }
@@ -186,7 +183,7 @@ class ShorcutListCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: c.divPadding / 2),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

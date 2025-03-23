@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
@@ -11,7 +12,7 @@ class PrivacyPolicy extends StatelessWidget {
       child: DefaultTextStyle(
         style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.8),
         child: ListView(
-          padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+          padding: const EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
           children: [
             // TODO: Move to arb
             Text(

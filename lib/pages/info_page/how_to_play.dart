@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
@@ -13,7 +14,7 @@ class HowToPlay extends StatelessWidget {
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
         child: ListView(
-          padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+          padding: EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
           children: [
             ExternalLink(
               uri: Uri.https("en.wikipedia.org", "wiki/Tri_Peaks_(game)"),

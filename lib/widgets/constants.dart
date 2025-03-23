@@ -19,4 +19,6 @@ const double dropdownItemWidth = 120;
 const double maxListWidth = 700;
 const double maxRadioWidth = maxListWidth - 32;
 const double utilPageMargin = 4.0;
+const double cardPadding = 12;
+const double divPadding = 8;
 const double verticalTabsThreshold = 500;

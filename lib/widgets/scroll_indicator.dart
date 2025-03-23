@@ -37,9 +37,7 @@ class _ScrollIndicatorState extends State<ScrollIndicator> {
           child: AnimatedSwitcher(
             duration: Durations.medium3,
             child:
-                _atEnd
-                    ? SizedBox()
-                    : Icon(Icons.more_horiz, color: Theme.of(context).colorScheme.outlineVariant),
+                _atEnd ? SizedBox() : Icon(Icons.more_horiz, color: Theme.of(context).colorScheme.secondary),
           ),
         ),
       ],
