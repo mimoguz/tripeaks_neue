@@ -39,14 +39,10 @@ final class DependencyEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final link = package.homepage ?? package.repository;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(package.name, style: textTheme.titleMedium),
-        if (link != null) ExternalLink(uri: Uri.dataFromString(link)),
-      ],
+      children: [Text(package.name), if (link != null) ExternalLink(uri: Uri.dataFromString(link))],
     );
   }
 }
