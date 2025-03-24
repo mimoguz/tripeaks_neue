@@ -38,8 +38,8 @@ class HowToPlay extends StatelessWidget {
                 children: <TextSpan>[
                   TextSpan(
                     text:
-                        "A card can be removed only if it is face-up and adjacent to the card on "
-                        "top of the discard pile.",
+                        "A card may be removed from the board only if it is face-up and adjacent to "
+                        "the top card of the discard pile, irrespective of its suit.",
                     style: const TextStyle(fontStyle: FontStyle.italic),
                   ),
                 ],
