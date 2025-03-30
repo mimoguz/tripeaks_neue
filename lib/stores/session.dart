@@ -1,10 +1,15 @@
+import 'package:flutter/foundation.dart';
+import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/stores/game.dart';
-import 'package:mobx/mobx.dart';
-import 'package:tripeaks_neue/util/io.dart';
+import 'package:tripeaks_neue/util/get_io.dart'
+    // ignore: uri_does_not_exist
+    if (dart.io) 'package:tripeaks_neue/util/local_io.dart'
+    // ignore: uri_does_not_exist
+    if (dart.library.js_util) 'package:tripeaks_neue/util/web_io.dart';
 
 part "session.g.dart";
 
@@ -27,12 +32,13 @@ class Session extends _Session with _$Session {
   }
 
   static Future<Session> read() async {
-    final sessionData = await IO.read("session", _SessionData.fromJsonObject) ?? _SessionData.fresh();
+    final io = getIO();
+    final sessionData = await io.read("session", _SessionData.fromJsonObject) ?? _SessionData.fresh();
     final game =
-        await IO.read("game", Game.fromJsonObject) ??
+        await io.read("game", Game.fromJsonObject) ??
         _Session._makeRandomGame(sessionData.layout, sessionData.startEmpty);
     final statistics =
-        await IO.read("statistics", PlayerStatistics.fromJsonObject) ?? PlayerStatistics.empty();
+        await io.read("statistics", PlayerStatistics.fromJsonObject) ?? PlayerStatistics.empty();
     return Session(
       game,
       sessionData.layout,
@@ -43,9 +49,10 @@ class Session extends _Session with _$Session {
   }
 
   Future<void> write() async {
-    await IO.write("session", _SessionData.of(this).toJsonObject());
-    await IO.write("game", _game.toJsonObject());
-    await IO.write("statistics", _statistics.toJsonObject());
+    final io = getIO();
+    await io.write("session", _SessionData.of(this).toJsonObject());
+    await io.write("game", _game.toJsonObject());
+    await io.write("statistics", _statistics.toJsonObject());
   }
 }
 
@@ -95,6 +102,10 @@ abstract class _Session with Store {
       whenCleared?.reaction.dispose();
     }
 
+    if (kIsWasm || kIsWeb) {
+      writeStatistics();
+    }
+
     whenCleared = when((_) => next.isCleared, () {
       if (next.isPlayed) {
         next.statisticsPushed = true;
@@ -131,7 +142,7 @@ abstract class _Session with Store {
   }
 
   Future<void> writeStatistics() async {
-    await IO.write("statistics", _statistics.toJsonObject());
+    await getIO().write("statistics", _statistics.toJsonObject());
     return;
   }
 

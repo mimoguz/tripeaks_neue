@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
@@ -17,6 +18,7 @@ class HomePageDrawer extends StatelessWidget {
     final colours = Theme.of(context).colorScheme;
     final iconColour = colours.outline;
     final s = AppLocalizations.of(context)!;
+    final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
       elevation: 2.0,
@@ -122,8 +124,8 @@ class HomePageDrawer extends StatelessWidget {
                     shape: StadiumBorder(),
                     onTap: Actions.handler(context, const NavigateToStatisticsIntent()),
                   ),
-                  if (!Platform.isIOS) Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
-                  if (!Platform.isIOS)
+                  if (canExit) Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
+                  if (canExit)
                     ListTile(
                       style: ListTileStyle.drawer,
                       iconColor: iconColour,

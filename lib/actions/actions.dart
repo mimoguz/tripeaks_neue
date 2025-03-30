@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -295,7 +296,11 @@ final class GoBackAction extends ContextAction<GoBackIntent> {
     }
     final navigator = Navigator.of(context);
     if (navigator.canPop()) {
-      Navigator.of(context).pop();
+      navigator.pop();
+      if (intent.saveSettings) {
+        final settings = Provider.of<Settings>(context, listen: false);
+        settings.write();
+      }
     }
   }
 }
