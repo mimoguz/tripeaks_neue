@@ -354,26 +354,14 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Lazy Suzan'**
-  String get lazySuzanDecorLabel;
+  /// **'Knot Today'**
+  String get knotTodayDecorLabel;
 
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
   /// **'NEUE'**
   String get neueDecorLabel;
-
-  /// Label of a decoration variant.
-  ///
-  /// In en, this message translates to:
-  /// **'Roundabout Flower Bed'**
-  String get roundaboutDecorLabel;
-
-  /// Label of a decoration variant.
-  ///
-  /// In en, this message translates to:
-  /// **'Organic'**
-  String get organicDecorLabel;
 
   /// Label of a decoration variant.
   ///
