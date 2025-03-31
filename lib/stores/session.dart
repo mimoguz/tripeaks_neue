@@ -7,7 +7,7 @@ import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
-    if (dart.io) 'package:tripeaks_neue/util/local_io.dart'
+    if (dart.library.io) 'package:tripeaks_neue/util/local_io.dart'
     // ignore: uri_does_not_exist
     if (dart.library.js_util) 'package:tripeaks_neue/util/web_io.dart';
 
