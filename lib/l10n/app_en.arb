@@ -275,26 +275,14 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "lazySuzanDecorLabel": "Lazy Suzan",
-    "@lazySuzanDecorLabel": {
+    "knotTodayDecorLabel": "Knot Today",
+    "@knotTodayDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
     },
     "neueDecorLabel": "NEUE",
     "@neueDecorLabel": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a decoration variant."
-    },
-    "roundaboutDecorLabel": "Roundabout Flower Bed",
-    "@roundaboutDecorLabel": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a decoration variant."
-    },
-    "organicDecorLabel": "Organic",
-    "@organicDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
