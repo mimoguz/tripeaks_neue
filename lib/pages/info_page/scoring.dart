@@ -39,8 +39,8 @@ class Scoring extends StatelessWidget {
                   TextSpan(text: "square", style: const TextStyle(fontStyle: FontStyle.italic)),
                   TextSpan(
                     text:
-                        " of that chain's length: for one card, 1 point; "
-                        "for two cards, 4 points; for three cards, 9 points, etc.",
+                        " of that chain's length: 1 point for one card, "
+                        "4 points for two cards, 9 points for three cards, and so on.",
                   ),
                 ],
               ),
