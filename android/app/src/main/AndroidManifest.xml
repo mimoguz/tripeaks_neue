@@ -1,11 +1,19 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
+        
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
+
+    <uses-permission 
+        android:name="android.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" 
+        tools:node="remove" />
+
 
     <application
         android:banner="@mipmap/ic_launcher"
