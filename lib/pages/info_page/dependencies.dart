@@ -13,11 +13,9 @@ class Dependencies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final last = _extendedDependencies.length - 1;
     return ScrollIndicator(
       child: DefaultTextStyle(
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
-        // TODO: Move to arb
         child: ListView.separated(
           padding: EdgeInsets.fromLTRB(c.cardPadding, 0, c.cardPadding, c.cardPadding),
           itemCount: _extendedDependencies.length,
