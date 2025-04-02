@@ -140,7 +140,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dotMatrixDecorLabel => 'Dot Matrix';
 
   @override
-  String get hankyDecorLabel => 'Hanky';
+  String get itsKnotDecorLabel => 'Hanky';
 
   @override
   String get neueDecorLabel => 'NEUE';

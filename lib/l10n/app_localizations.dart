@@ -355,7 +355,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Hanky'**
-  String get hankyDecorLabel;
+  String get itsKnotDecorLabel;
 
   /// Label of a decoration variant.
   ///
