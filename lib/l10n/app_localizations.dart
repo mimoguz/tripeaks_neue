@@ -354,26 +354,14 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Lazy Suzan'**
-  String get lazySuzanDecorLabel;
+  /// **'Hanky'**
+  String get hankyDecorLabel;
 
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
   /// **'NEUE'**
   String get neueDecorLabel;
-
-  /// Label of a decoration variant.
-  ///
-  /// In en, this message translates to:
-  /// **'Roundabout Flower Bed'**
-  String get roundaboutDecorLabel;
-
-  /// Label of a decoration variant.
-  ///
-  /// In en, this message translates to:
-  /// **'Organic'**
-  String get organicDecorLabel;
 
   /// Label of a decoration variant.
   ///
@@ -536,6 +524,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show License'**
   String get showLicenseAction;
+
+  /// If the dependency is direct.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct'**
+  String get directDependencyLabel;
+
+  /// If the dependency is a dependency of a direct dependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect'**
+  String get indirectDependencyLabel;
 
   /// Label of a button that closes the license dialog.
   ///

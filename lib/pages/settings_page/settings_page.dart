@@ -55,13 +55,17 @@ class _SettingsPageState extends State<SettingsPage> {
             shortcuts: <ShortcutActivator, Intent>{
               SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
               SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
-              SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
+              SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(saveSettings: true),
             },
             child: SafeArea(
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
                   backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+                  leading: IconButton(
+                    icon: const BackButtonIcon(),
+                    onPressed: Actions.handler(context, const GoBackIntent(saveSettings: true)),
+                  ),
                 ),
                 body: Focus(
                   focusNode: _focusNode,

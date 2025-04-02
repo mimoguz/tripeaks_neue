@@ -9,6 +9,7 @@ enum Decor {
   checkered(100),
   dotMatrix(250),
   ennui(200),
+  hanky(250),
   neue(400),
   solar(600);
   // organic(500);
@@ -26,8 +27,9 @@ enum Decor {
 extension DecorExt on Decor {
   IconData get icon => switch (this) {
     Decor.checkered => CustomIcons.backCheckered,
-    Decor.dotMatrix => CustomIcons.backGridAligned,
+    Decor.dotMatrix => CustomIcons.backDotMatrix,
     Decor.ennui => CustomIcons.backEnnui,
+    Decor.hanky => CustomIcons.backHanky,
     Decor.neue => CustomIcons.backNeue,
     Decor.solar => CustomIcons.backSolar,
   };
@@ -36,6 +38,7 @@ extension DecorExt on Decor {
     Decor.checkered => s.checkeredDecorLabel,
     Decor.dotMatrix => s.dotMatrixDecorLabel,
     Decor.ennui => s.ennuiDecorLabel,
+    Decor.hanky => s.hankyDecorLabel,
     Decor.neue => s.neueDecorLabel,
     Decor.solar => s.solarDecorLabel,
   };

@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
-import 'package:tripeaks_neue/util/io.dart';
 import 'package:tripeaks_neue/util/json_object.dart';
+import 'package:tripeaks_neue/util/get_io.dart'
+    // ignore: uri_does_not_exist
+    if (dart.library.io) 'package:tripeaks_neue/util/local_io.dart'
+    // ignore: uri_does_not_exist
+    if (dart.library.js_util) 'package:tripeaks_neue/util/web_io.dart';
 
 part 'settings.g.dart';
 
@@ -27,11 +31,11 @@ class Settings extends _Settings with _$Settings {
       );
 
   static Future<Settings> read() async =>
-      await IO.read("settings", (it) => Settings.fromJsonObject(it)) ?? Settings();
+      await getIO().read("settings", (it) => Settings.fromJsonObject(it)) ?? Settings();
 
   JsonObject toJsonObject() => {"themeMode": themeMode.index, "decor": decor.index, "soundOn": _soundOn};
 
-  Future<void> write() async => await IO.write("settings", toJsonObject());
+  Future<void> write() async => await getIO().write("settings", toJsonObject());
 
   static Decor _readDecor(JsonObject jsonObject) {
     try {

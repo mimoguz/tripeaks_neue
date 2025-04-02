@@ -140,16 +140,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dotMatrixDecorLabel => 'Dot Matrix';
 
   @override
-  String get lazySuzanDecorLabel => 'Lazy Suzan';
+  String get hankyDecorLabel => 'Hanky';
 
   @override
   String get neueDecorLabel => 'NEUE';
-
-  @override
-  String get roundaboutDecorLabel => 'Roundabout Flower Bed';
-
-  @override
-  String get organicDecorLabel => 'Organic';
 
   @override
   String get solarDecorLabel => 'Solar';
@@ -231,6 +225,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get showLicenseAction => 'Show License';
+
+  @override
+  String get directDependencyLabel => 'Direct';
+
+  @override
+  String get indirectDependencyLabel => 'Indirect';
 
   @override
   String get licenseDialogCloseAction => 'Close';

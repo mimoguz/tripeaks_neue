@@ -98,5 +98,7 @@ final class ShowNavigationDrawerIntent extends Intent {
 }
 
 final class GoBackIntent extends Intent {
-  const GoBackIntent();
+  const GoBackIntent({this.saveSettings = false});
+
+  final bool saveSettings;
 }

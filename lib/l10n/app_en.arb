@@ -275,26 +275,14 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "lazySuzanDecorLabel": "Lazy Suzan",
-    "@lazySuzanDecorLabel": {
+    "hankyDecorLabel": "Hanky",
+    "@hankyDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
     },
     "neueDecorLabel": "NEUE",
     "@neueDecorLabel": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a decoration variant."
-    },
-    "roundaboutDecorLabel": "Roundabout Flower Bed",
-    "@roundaboutDecorLabel": {
-        "type": "text",
-        "context": "settings",
-        "description": "Label of a decoration variant."
-    },
-    "organicDecorLabel": "Organic",
-    "@organicDecorLabel": {
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
@@ -465,6 +453,18 @@
         "type": "text",
         "context": "infoPage",
         "description": "Label of a button that displays the license of a dependency."
+    },
+    "directDependencyLabel": "Direct",
+    "@directDependencyLabel": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "If the dependency is direct."
+    },
+    "indirectDependencyLabel": "Indirect",
+    "@indirectDependencyLabel": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "If the dependency is a dependency of a direct dependency."
     },
     "@_LICENSE_DIALOG": {},
     "licenseDialogCloseAction": "Close",
