@@ -275,7 +275,7 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
-    "itsKnotDecorLabel": "Hanky",
+    "itsKnotDecorLabel": "It's Knot",
     "@itsKnotDecorLabel": {
         "type": "text",
         "context": "settings",

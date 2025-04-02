@@ -354,7 +354,7 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
-  /// **'Hanky'**
+  /// **'It\'s Knot'**
   String get itsKnotDecorLabel;
 
   /// Label of a decoration variant.
