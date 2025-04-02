@@ -525,6 +525,18 @@ abstract class AppLocalizations {
   /// **'Show License'**
   String get showLicenseAction;
 
+  /// If the dependency is direct.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct'**
+  String get directDependencyLabel;
+
+  /// If the dependency is a dependency of a direct dependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect'**
+  String get indirectDependencyLabel;
+
   /// Label of a button that closes the license dialog.
   ///
   /// In en, this message translates to:

@@ -227,5 +227,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showLicenseAction => 'Show License';
 
   @override
+  String get directDependencyLabel => 'Direct';
+
+  @override
+  String get indirectDependencyLabel => 'Indirect';
+
+  @override
   String get licenseDialogCloseAction => 'Close';
 }

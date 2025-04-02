@@ -454,6 +454,18 @@
         "context": "infoPage",
         "description": "Label of a button that displays the license of a dependency."
     },
+    "directDependencyLabel": "Direct",
+    "@directDependencyLabel": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "If the dependency is direct."
+    },
+    "indirectDependencyLabel": "Indirect",
+    "@indirectDependencyLabel": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "If the dependency is a dependency of a direct dependency."
+    },
     "@_LICENSE_DIALOG": {},
     "licenseDialogCloseAction": "Close",
     "@licenseDialogCloseAction": {

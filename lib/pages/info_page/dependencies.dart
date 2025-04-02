@@ -13,32 +13,36 @@ class Dependencies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final last = _extendedDependencies.length - 1;
     return ScrollIndicator(
       child: DefaultTextStyle(
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
-        child: ListView(
+        child: ListView.separated(
           padding: EdgeInsets.fromLTRB(c.cardPadding, 0, c.cardPadding, c.cardPadding),
-          children: [
-            for (final dep in dependencies) ...[
-              DependencyEntry(package: dep),
-              const GroupTileDivider(padding: EdgeInsets.zero),
-            ],
-            for (final (index, dep) in devDependencies.indexed) ...[
-              DependencyEntry(package: dep),
-              if (index < devDependencies.length - 1) const GroupTileDivider(padding: EdgeInsets.zero),
-            ],
-          ],
+          itemCount: _extendedDependencies.length,
+          itemBuilder:
+              (context, index) => DependencyEntry(
+                package: _extendedDependencies[index],
+                isDirectDependency: _directDependencies.contains(_extendedDependencies[index].name),
+              ),
+          separatorBuilder: (context, index) => const GroupTileDivider(padding: EdgeInsets.zero),
         ),
       ),
     );
   }
+
+  static final _extendedDependencies =
+      allDependencies.where((it) => !it.isSdk || it.name == "flutter").toList();
+
+  static final _directDependencies = (dependencies + devDependencies).map((it) => it.name).toSet();
 }
 
 final class DependencyEntry extends StatelessWidget {
-  const DependencyEntry({super.key, required this.package});
+  const DependencyEntry({super.key, required this.package, required this.isDirectDependency});
 
   final Package package;
+  final bool isDirectDependency;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +52,13 @@ final class DependencyEntry extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          textBaseline: TextBaseline.alphabetic,
-          crossAxisAlignment: CrossAxisAlignment.baseline,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 8,
           children: [
             Text(package.name),
+            Spacer(),
+            DependencyStatusChip(isDirectDependency),
             if (package.license != null)
               FilledButton.tonal(onPressed: () => _showLicense(context), child: Text(s.showLicenseAction)),
           ],
@@ -68,5 +74,20 @@ final class DependencyEntry extends StatelessWidget {
       barrierColor: Colors.transparent,
       builder: (context) => LicenseDialog(package: package),
     );
+  }
+}
+
+class DependencyStatusChip extends StatelessWidget {
+  const DependencyStatusChip(this.isDirectDependency, {super.key});
+
+  final bool isDirectDependency;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    final s = AppLocalizations.of(context)!;
+    final textColour = colours.outline;
+    final text = isDirectDependency ? s.directDependencyLabel : s.indirectDependencyLabel;
+    return Text(text, style: TextStyle(fontSize: 12, color: textColour));
   }
 }
