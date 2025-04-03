@@ -2,12 +2,10 @@ name: "Build for Linux"
 
 # Adapted from https://github.com/ferraridamiano/ConverterNOW/blob/master/.github/workflows/build_deploy.yml
 
-# v* tags will trigger F-Droid, others wont. Use v-less tag names for now, for testing. 
 on:
   push:
     tags:
     - '*'
-    - '!v*' 
 
 jobs:
   build:
