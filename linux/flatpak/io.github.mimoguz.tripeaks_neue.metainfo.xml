@@ -49,7 +49,7 @@
 
     <content_rating type="oars-1.1" />
 
-    <launchable type="desktop-id">io.github.mimoguz.tripeaksneue.desktop</launchable>
+    <launchable type="desktop-id">io.github.mimoguz.tripeaks_neue.desktop</launchable>
 
     <screenshots>
         <screenshot type="default">
