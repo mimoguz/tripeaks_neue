@@ -10,13 +10,17 @@
 
     <metadata_license>MIT</metadata_license>
     <project_license>AGPL-3.0-only</project_license>
-    <developer_name>Oguz Tas</developer_name>
 
-    <supports>
-        <control>pointing</control>
+    <developer id="io.github.mimoguz">
+        <name>Oguz Tas</name>
+    </developer>
+
+    <!-- Desktop AND mobile supported -->
+    <recommends>
         <control>keyboard</control>
+        <control>pointing</control>
         <control>touch</control>
-    </supports>
+    </recommends>
 
     <description>
         <p>
@@ -33,7 +37,20 @@
         </ul>
     </description>
 
+    <categories>
+        <category>Game</category>
+    </categories>
+
+    <keywords>
+        <keyword>card</keyword>
+        <keyword>patience</keyword>
+        <keyword>solitaire</keyword>
+    </keywords>
+
+    <content_rating type="oars-1.1" />
+
     <launchable type="desktop-id">io.github.mimoguz.tripeaksneue.desktop</launchable>
+
     <screenshots>
         <screenshot type="default">
             <caption>Standard game</caption>
@@ -56,7 +73,7 @@
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_portrait.png</image>
         </screenshot>
     </screenshots>
-    <content_rating type="oars-1.0" />
+
     <releases>
         <release version="0.8.3" date="2025-04-03">
         </release>
