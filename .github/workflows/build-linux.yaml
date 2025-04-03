@@ -60,5 +60,5 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "tripeaksneue-linux-${{ matrix.label }}.tar.gz"
-        token: ${{ secrets.GH_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         allowUpdates: true
