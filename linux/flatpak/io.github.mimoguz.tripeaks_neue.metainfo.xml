@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>io.github.mimoguz.tripeaksneue</id>
+    <id>io.github.mimoguz.tripeaks_neue</id>
 
     <name>TriPeaks NEUE</name>
     <summary>A simple TriPeaks game</summary>
