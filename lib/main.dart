@@ -141,11 +141,12 @@ class _MainAppState extends State<MainApp> {
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   const MyCustomScrollBehavior();
 
-  // Override behavior methods and getters like dragDevices
   @override
   Set<PointerDeviceKind> get dragDevices => {
     PointerDeviceKind.touch,
     PointerDeviceKind.mouse,
-    // etc.
+    PointerDeviceKind.stylus,
+    PointerDeviceKind.invertedStylus,
+    PointerDeviceKind.trackpad,
   };
 }
