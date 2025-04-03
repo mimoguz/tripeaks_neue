@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>io.github.mimoguz.tripeaksneue</id>
+
+    <name>TriPeaks NEUE</name>
+    <summary>A simple TriPeaks game</summary>
+    <url type="homepage">https://github.com/mimoguz/tripeaks_neue</url>
+    <url type="bugtracker">https://github.com/mimoguz/tripeaks_neue/issues</url>
+    <url type="donation">https://buymeacoffee.com/mimoguz</url>
+
+    <metadata_license>MIT</metadata_license>
+    <project_license>AGPL-3.0-only</project_license>
+    <developer_name>Oguz Tas</developer_name>
+
+    <supports>
+        <control>pointing</control>
+        <control>keyboard</control>
+        <control>touch</control>
+    </supports>
+
+    <description>
+        <p>
+            TriPeaks NEUE is a simple TriPeaks patience (solitaire) game
+        </p>
+        <p> Main Features:</p>
+        <ul>
+            <li>Four board layouts</li>
+            <li>An option to show the values of face-down cards</li>
+            <li>An option to start with an empty discard pile, allowing the player to choose any
+                starting card</li>
+            <li>Aggregated and per-layout statistics</li>
+            <li>Portrait and landscape orientation support</li>
+        </ul>
+    </description>
+
+    <launchable type="desktop-id">io.github.mimoguz.tripeaksneue.desktop</launchable>
+    <screenshots>
+        <screenshot type="default">
+            <caption>Standard game</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Layout selection dialog</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_layout_dialog.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Statistics page</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_statistics.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Portrait layout</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_portrait.png</image>
+        </screenshot>
+    </screenshots>
+    <content_rating type="oars-1.0" />
+    <releases>
+        <release version="0.8.3" date="2025-04-03">
+        </release>
+    </releases>
+</component>

@@ -59,6 +59,8 @@ class _MainAppState extends State<MainApp> {
       builder:
           (context) => MaterialApp(
             localizationsDelegates: [AppLocalizations.delegate],
+            debugShowCheckedModeBanner: false,
+            title: "TriPeaks NEUE",
             supportedLocales: [Locale("en")],
             themeMode: settings.themeMode,
             theme: _defaultLight,

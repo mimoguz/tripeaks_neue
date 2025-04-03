@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TriPeaks NEUE
+Comment=A simple TriPeaks game
+Exec=tripeaks_neue
+Icon=icon.svg
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=Card,Casual,Game;
+StartupNotify=false
