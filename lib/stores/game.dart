@@ -200,7 +200,7 @@ abstract class _Game with Store {
       // Clearing the game obviously ends a chain, so you get a score
       // Also a bonus for the number of cards of the current layout
       _score += _chain * _chain + layout.cardCount;
-      history.add(Event(pin: pin, score: _score, chain: _chain));
+      history.add(Event(pin: pin, score: currentScore, chain: currentChain));
       return true;
     }
 
