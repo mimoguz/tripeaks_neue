@@ -42,10 +42,17 @@
     </categories>
 
     <keywords>
-        <keyword>card</keyword>
+        <keyword>cards</keyword>
         <keyword>patience</keyword>
         <keyword>solitaire</keyword>
     </keywords>
+
+    <!--
+    <branding>
+        <color type="primary" scheme_preference="light">#e57373</color>
+        <color type="primary" scheme_preference="dark">#f44336</color>
+    </branding>
+    -->
 
     <content_rating type="oars-1.1" />
 
