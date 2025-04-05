@@ -1,5 +1,5 @@
 - [] F-Droid changelog
 - [] F-Droid images
-- [] Flatpak images
 - [] Flatpak changelog
+- [] Flatpak images
 - [] Readme images
