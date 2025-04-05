@@ -151,6 +151,17 @@ mixin _$Game on _Game, Store {
   }
 
   @override
+  void forfeit() {
+    final _$actionInfo =
+        _$_GameActionController.startAction(name: '_Game.forfeit');
+    try {
+      return super.forfeit();
+    } finally {
+      _$_GameActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 

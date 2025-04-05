@@ -277,6 +277,17 @@ abstract class _Game with Store {
     );
   }
 
+  @action
+  void forfeit() {
+    if (_isCleared) {
+      return;
+    }
+    _isEnded = true;
+    _isStalled = true;
+    _score += _chain * _chain;
+    _chain = 0;
+  }
+
   Game rebuild() {
     final reBoard =
         board.map((it) {

@@ -98,6 +98,7 @@ abstract class _Session with Store {
     }
 
     if (!_game.isCleared && _game.isPlayed) {
+      _game.forfeit();
       _statistics = _statistics.withGame(SingleGameStatistics.of(_game));
       whenCleared?.reaction.dispose();
     }
