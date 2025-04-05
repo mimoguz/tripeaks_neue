@@ -22,7 +22,7 @@ class CardCounter extends StatelessWidget {
               final paintWidth = segmentWidth * maxCount;
               final left = ((constraints.maxWidth - paintWidth) / 2.0).floorToDouble();
               return SizedBox(
-                height: 2,
+                height: 5,
                 width: constraints.maxWidth,
                 child: Stack(
                   children: [
@@ -40,7 +40,7 @@ class CardCounter extends StatelessWidget {
                     ),
                     if (count > 0)
                       AnimatedPositioned(
-                        top: 0.0,
+                        top: 1.0,
                         left: (count - 1) * segmentWidth + left,
                         duration: Durations.medium3,
                         curve: Curves.easeInOutCirc,
@@ -68,7 +68,7 @@ class CounterSegment extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: _space),
       child: Container(
         width: width - 2.0 * _space,
-        height: 2.0,
+        height: 3.0,
         color: Theme.of(context).colorScheme.tertiary,
       ),
     );
@@ -104,22 +104,12 @@ final class SegmentPainter extends CustomPainter {
 
     _paint
       ..color = bold
-      ..strokeWidth = 2.0;
+      ..strokeWidth = 3.0
+      ..style = PaintingStyle.stroke;
     for (var i = 0; i < last; i++) {
       canvas.drawLine(
-        Offset(left + i * segmentWidth + _space, 1.0),
-        Offset(left + (i + 1) * segmentWidth - _space, 1.0),
-        _paint,
-      );
-    }
-
-    _paint
-      ..color = group
-      ..strokeWidth = 1;
-    for (var i = highlightedSegments; i < groupLast; i++) {
-      canvas.drawLine(
-        Offset(left + i * segmentWidth + _space, 0.5),
-        Offset(left + (i + 1) * segmentWidth - _space, 0.5),
+        Offset(left + i * segmentWidth + _space, 2.5),
+        Offset(left + (i + 1) * segmentWidth - _space, 2.5),
         _paint,
       );
     }
@@ -129,10 +119,27 @@ final class SegmentPainter extends CustomPainter {
       ..strokeWidth = 1.0;
     for (var i = groupLast; i < allSegments; i++) {
       canvas.drawLine(
-        Offset(left + i * segmentWidth + _space, 0.5),
-        Offset(left + (i + 1) * segmentWidth - _space, 0.5),
+        Offset(left + i * segmentWidth + _space, 2.5),
+        Offset(left + (i + 1) * segmentWidth - _space, 2.5),
         _paint,
       );
+    }
+
+    _paint
+      ..color = group
+      ..style = PaintingStyle.fill;
+    for (var i = highlightedSegments; i < groupLast; i++) {
+      // canvas.drawRRect(
+      //   RRect.fromLTRBR(
+      //     left + i * segmentWidth + _space,
+      //     0.5,
+      //     left + (i + 1) * segmentWidth - _space,
+      //     4.5,
+      //     _radius,
+      //   ),
+      //   _paint,
+      // );
+      canvas.drawCircle(Offset(left + (i + 0.5) * segmentWidth, 2.5), 5.0, _paint);
     }
   }
 
@@ -141,4 +148,5 @@ final class SegmentPainter extends CustomPainter {
       oldDelegate is SegmentPainter && oldDelegate.highlightedSegments != highlightedSegments;
 }
 
-const _space = 4.0;
+const _space = 2.0;
+const _radius = Radius.circular(5.0);
