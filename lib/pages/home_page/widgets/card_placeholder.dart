@@ -10,6 +10,7 @@ class CardPlaceHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
+    final useSmall = scale < c.iconScaleThreshold;
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: colours.outlineVariant, width: 2),
@@ -18,7 +19,8 @@ class CardPlaceHolder extends StatelessWidget {
       width: c.cardSize * scale,
       height: c.cardSize * scale,
       child: Icon(
-        scale < c.iconScaleThreshold ? CustomIcons.draw16 : CustomIcons.draw,
+        useSmall ? CustomIcons.draw16 : CustomIcons.draw,
+        size: useSmall ? 16.0 : 24.0,
         color: colours.outlineVariant,
       ),
     );
