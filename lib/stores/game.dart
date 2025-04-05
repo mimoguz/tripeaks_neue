@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
@@ -201,6 +202,7 @@ abstract class _Game with Store {
       // Also a bonus for the number of cards of the current layout
       _score += _chain * _chain + layout.cardCount;
       history.add(Event(pin: pin, score: currentScore, chain: currentChain));
+      _logger.d("Take. Chain: $_chain, Score: $_score");
       return true;
     }
 
@@ -212,6 +214,7 @@ abstract class _Game with Store {
     }
 
     history.add(Event(pin: pin, score: currentScore, chain: currentChain));
+    _logger.d("Take. Chain: $_chain, Score: $_score");
     return true;
   }
 
@@ -224,9 +227,9 @@ abstract class _Game with Store {
     isPlayed = true;
 
     // You only get a score when a chain is completed
+    history.add(Event(pin: Pin.unpin, score: _score, chain: _chain));
     _score += _chain * _chain;
     _chain = 0;
-    history.add(Event(pin: Pin.unpin, score: _score, chain: _chain));
 
     discard.add(
       stock.removeLast()
@@ -240,6 +243,8 @@ abstract class _Game with Store {
       _isStalled = !hasMoves;
       _isEnded = _isStalled;
     }
+
+    _logger.d("Draw. Chain: $_chain, Score: $_score");
   }
 
   @action
@@ -256,8 +261,7 @@ abstract class _Game with Store {
 
     _score = event.score;
     _chain = event.chain;
-
-    print(_chain);
+    _logger.d("Rollback. Chain: $_chain, Score: $_score");
 
     if (event.pin.index >= 0) {
       board[event.pin.index].put();
@@ -360,6 +364,8 @@ abstract class _Game with Store {
 
     return false;
   }
+
+  static final _logger = Logger();
 }
 
 // TODO: Log history progression during a game and check if it looks correct.
