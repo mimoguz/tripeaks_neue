@@ -188,7 +188,7 @@ final class NewGameWithLayoutAction extends ContextAction<NewGameWithLayoutInten
 final class ExitAction extends ContextAction<ExitIntent> {
   @override
   Future<void> invoke(ExitIntent intent, [BuildContext? context]) async {
-    if (kIsWeb) {
+    if (kIsWeb || kIsWasm) {
       return;
     }
     final session = Provider.of<Session>(context!, listen: false);
