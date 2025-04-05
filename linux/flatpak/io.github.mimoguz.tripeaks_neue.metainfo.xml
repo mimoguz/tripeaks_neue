@@ -87,7 +87,7 @@
         <release version="0.8.4" date="2025-04-05">
             <description>
                 <ul>
-                    <li>Fixed an issue with undo: Wrong chain length & score were being restored.</li>
+                    <li>Fixed an issue with undo: Wrong chain length &amp; score were being restored.</li>
                     <li>Fixed an issue with statistics: Current chain weren't included in the score
                         if a new game started without clearing the current game.</li>
                     <li>The card counter now also shows the current chain (circle indicators).</li>
