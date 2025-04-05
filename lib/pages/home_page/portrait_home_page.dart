@@ -78,7 +78,7 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 24.0 * scale,
+                          spacing: 16.0 * scale,
                           children: [
                             PortraitHomePageBoard(game: game, scale: scale, back: back),
                             PortraitHomePageCounter(game: game, scale: scale),

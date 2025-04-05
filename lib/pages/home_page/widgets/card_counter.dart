@@ -22,7 +22,7 @@ class CardCounter extends StatelessWidget {
               final paintWidth = segmentWidth * maxCount;
               final left = ((constraints.maxWidth - paintWidth) / 2.0).floorToDouble();
               return SizedBox(
-                height: 5,
+                height: 9.0,
                 width: constraints.maxWidth,
                 child: Stack(
                   children: [
@@ -40,7 +40,7 @@ class CardCounter extends StatelessWidget {
                     ),
                     if (count > 0)
                       AnimatedPositioned(
-                        top: 1.0,
+                        top: 3.0,
                         left: (count - 1) * segmentWidth + left,
                         duration: Durations.medium3,
                         curve: Curves.easeInOutCirc,
@@ -104,32 +104,23 @@ final class SegmentPainter extends CustomPainter {
 
     _paint
       ..color = bold
-      ..strokeWidth = 3.0
-      ..style = PaintingStyle.stroke;
+      ..style = PaintingStyle.fill;
     for (var i = 0; i < last; i++) {
-      canvas.drawLine(
-        Offset(left + i * segmentWidth + _space, 2.5),
-        Offset(left + (i + 1) * segmentWidth - _space, 2.5),
-        _paint,
-      );
+      final x0 = left + i * segmentWidth;
+      canvas.drawRect(Rect.fromLTRB(x0 + _space, 3.0, x0 + segmentWidth - _space, 6.0), _paint);
     }
 
-    _paint
-      ..color = thin
-      ..strokeWidth = 1.0;
+    _paint.color = thin;
     for (var i = groupLast; i < allSegments; i++) {
-      canvas.drawLine(
-        Offset(left + i * segmentWidth + _space, 2.5),
-        Offset(left + (i + 1) * segmentWidth - _space, 2.5),
-        _paint,
-      );
+      final x0 = left + i * segmentWidth;
+      canvas.drawRect(Rect.fromLTRB(x0 + _space, 4.0, x0 + segmentWidth - _space, 5.0), _paint);
     }
 
     _paint
       ..color = group
       ..strokeWidth = 1.0;
     for (var i = highlightedSegments; i < groupLast; i++) {
-      final centre = Offset(left + (i + 0.5) * segmentWidth, 2.5);
+      final centre = Offset(left + (i + 0.5) * segmentWidth, 4.5);
       _paint.style = PaintingStyle.stroke;
       canvas.drawCircle(centre, 4.5, _paint);
       _paint.style = PaintingStyle.fill;

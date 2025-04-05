@@ -78,7 +78,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 24.0 * scale,
+                          spacing: 16.0 * scale,
                           children: [
                             LandscapeHomePageBoard(game: game, scale: scale, back: back),
                             LandscapeHomePageCounter(game: game, scale: scale),
