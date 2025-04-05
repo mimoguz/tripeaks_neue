@@ -1,4 +1,4 @@
-A simple TriPeaks patience (solitaire) game.
+A simple Tri Peaks patience (solitaire) game.
 
 This is a remake of tripeaks-gdx project, my previous implementation of the same game.
 

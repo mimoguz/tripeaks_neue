@@ -1,6 +1,6 @@
 # TriPeaks NEUE
 
-A simple [TriPeaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using Flutter. This is a remake of [my previous implementation](https://github.com/mimoguz/tripeaks-gdx) of the same game.<br>
+A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using Flutter. This is a remake of [my previous implementation](https://github.com/mimoguz/tripeaks-gdx) of the same game.<br>
 
 <div align="center">
 <a href="https://f-droid.org/en/packages/io.github.mimoguz.tripeaksneue/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
@@ -20,8 +20,8 @@ A simple [TriPeaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using 
 - Portrait and landscape orientation support
 
 ## Screenshots
-![Portait](./.github/readme/screenshot_portrait_2025-03-24.png)
-![Landscape](./.github/readme/screenshot_landscape_2025-03-24.png)
+![Portait](./.github/readme/screenshot_portrait_2025-04-05.png)
+![Landscape](./.github/readme/screenshot_landscape_2025-04-05.png)
 
 ## Credit where credit is due
 

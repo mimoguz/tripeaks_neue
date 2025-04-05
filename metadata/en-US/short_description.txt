@@ -1,1 +1,1 @@
-A simple TriPeaks game.
+A simple Tri Peaks game.

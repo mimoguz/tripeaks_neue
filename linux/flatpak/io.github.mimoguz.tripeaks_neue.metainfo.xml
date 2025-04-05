@@ -3,7 +3,7 @@
     <id>io.github.mimoguz.tripeaks_neue</id>
 
     <name>TriPeaks NEUE</name>
-    <summary>A simple TriPeaks game</summary>
+    <summary>A simple Tri Peaks game</summary>
     <url type="homepage">https://github.com/mimoguz/tripeaks_neue</url>
     <url type="bugtracker">https://github.com/mimoguz/tripeaks_neue/issues</url>
     <url type="donation">https://buymeacoffee.com/mimoguz</url>
@@ -24,7 +24,7 @@
 
     <description>
         <p>
-            TriPeaks NEUE is a simple TriPeaks patience (solitaire) game
+            TriPeaks NEUE is a simple Tri Peaks patience (solitaire) game.
         </p>
         <p> Main Features:</p>
         <ul>
@@ -43,16 +43,16 @@
 
     <keywords>
         <keyword>cards</keyword>
+        <keyword>card-game</keyword>
         <keyword>patience</keyword>
         <keyword>solitaire</keyword>
     </keywords>
 
-    <!--
+    
     <branding>
-        <color type="primary" scheme_preference="light">#e57373</color>
-        <color type="primary" scheme_preference="dark">#f44336</color>
+        <color type="primary" scheme_preference="light">#f3f3fa</color>
+        <color type="primary" scheme_preference="dark">#1a1b20</color>
     </branding>
-    -->
 
     <content_rating type="oars-1.1" />
 

@@ -1,0 +1,4 @@
+- Fixed an issue with undo: Wrong chain length & score were being restored.
+- The card counter now also shows the current chain (circle indicators).
+- "Dependencies" card now also includes indirect dependencies.
+- Added a new card decor.
