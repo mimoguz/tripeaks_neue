@@ -74,6 +74,21 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
+              description: const Text(
+                "Between the board and the stock, you will see the card counter. "
+                "Thick lines on the bottom or left show the remaining cards. "
+                "The circles show the current chain.",
+              ),
+              image: Image.asset(
+                Theme.of(context).brightness == Brightness.light
+                    ? "images/card_counter_light.png"
+                    : "images/card_counter_dark.png",
+                width: 11,
+                height: 74,
+              ),
+            ),
+            const InteractionListDivider(),
+            InteractionListCell(
               description: const Text("This is the menu button."),
               image: CircleGameButton(
                 scale: 1.0,

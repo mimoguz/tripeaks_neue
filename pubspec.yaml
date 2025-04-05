@@ -39,6 +39,8 @@ flutter:
     - images/tropy.png
     - images/empty.png
     - images/welcome.png
+    - images/card_counter_dark.png
+    - images/card_counter_light.png
     - sounds/take1.mp3
     - sounds/take2.mp3
     - sounds/take3.mp3
