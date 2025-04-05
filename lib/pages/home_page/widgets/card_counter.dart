@@ -12,7 +12,7 @@ class CardCounter extends StatelessWidget {
     final colours = Theme.of(context).colorScheme;
     final bold = colours.outline;
     final thin = colours.outlineVariant;
-    final group = colours.primary;
+    final group = colours.tertiary;
     return Row(
       children: [
         Expanded(
@@ -127,19 +127,13 @@ final class SegmentPainter extends CustomPainter {
 
     _paint
       ..color = group
-      ..style = PaintingStyle.fill;
+      ..strokeWidth = 1.0;
     for (var i = highlightedSegments; i < groupLast; i++) {
-      // canvas.drawRRect(
-      //   RRect.fromLTRBR(
-      //     left + i * segmentWidth + _space,
-      //     0.5,
-      //     left + (i + 1) * segmentWidth - _space,
-      //     4.5,
-      //     _radius,
-      //   ),
-      //   _paint,
-      // );
-      canvas.drawCircle(Offset(left + (i + 0.5) * segmentWidth, 2.5), 5.0, _paint);
+      final centre = Offset(left + (i + 0.5) * segmentWidth, 2.5);
+      _paint.style = PaintingStyle.stroke;
+      canvas.drawCircle(centre, 4.5, _paint);
+      _paint.style = PaintingStyle.fill;
+      canvas.drawCircle(centre, 2, _paint);
     }
   }
 
@@ -149,4 +143,3 @@ final class SegmentPainter extends CustomPainter {
 }
 
 const _space = 2.0;
-const _radius = Radius.circular(5.0);
