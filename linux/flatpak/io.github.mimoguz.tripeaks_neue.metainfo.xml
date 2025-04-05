@@ -48,7 +48,7 @@
         <keyword>solitaire</keyword>
     </keywords>
 
-    
+
     <branding>
         <color type="primary" scheme_preference="light">#f3f3fa</color>
         <color type="primary" scheme_preference="dark">#1a1b20</color>
@@ -83,6 +83,18 @@
 
     <releases>
         <release version="0.8.3" date="2025-04-03">
+        </release>
+        <release version="0.8.4" date="2025-04-05">
+            <description>
+                <ul>
+                    <li>Fixed an issue with undo: Wrong chain length & score were being restored.</li>
+                    <li>Fixed an issue with statistics: Current chain weren't included in the score
+                        if a new game started without clearing the current game.</li>
+                    <li>The card counter now also shows the current chain (circle indicators).</li>
+                    <li>"Dependencies" card now also includes indirect dependencies.</li>
+                    <li>Added a new card decoration.</li>
+                </ul>
+            </description>
         </release>
     </releases>
 </component>
