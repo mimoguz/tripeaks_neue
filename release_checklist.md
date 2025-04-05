@@ -4,4 +4,5 @@
 - [] Flatpak changelog
 - [] Flatpak screenshots
 - [] Flatpak icon
+- [] Flutter version
 - [] Readme images
