@@ -6,6 +6,8 @@ A simple [TriPeaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using 
 <a href="https://buymeacoffee.com/mimoguz"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 <a href="https://f-droid.org/en/packages/io.github.mimoguz.tripeaksneue/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
+
+<a href="https://flathub.org/apps/io.github.mimoguz.tripeaks_neue"> <img width="180" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
 </div>
 
 ## Main Features
