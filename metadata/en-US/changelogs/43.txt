@@ -2,4 +2,4 @@
 - Fixed an issue with statistics: Current chain weren't included in the score if a new game started without clearing the current game.
 - The card counter now also shows the current chain (circle indicators).
 - "Dependencies" card now also includes indirect dependencies.
-- Added a new card decor.
+- Added a new card decoration.
