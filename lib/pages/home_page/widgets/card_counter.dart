@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 class CardCounter extends StatelessWidget {
-  const CardCounter({super.key, required this.maxCount, required this.count});
+  const CardCounter({super.key, required this.maxCount, required this.count, required this.chainLength});
 
   final int maxCount;
   final int count;
+  final int chainLength;
 
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     final bold = colours.outline;
     final thin = colours.outlineVariant;
+    final group = colours.primary;
     return Row(
       children: [
         Expanded(
@@ -28,10 +30,12 @@ class CardCounter extends StatelessWidget {
                       painter: SegmentPainter(
                         allSegments: maxCount,
                         highlightedSegments: count,
+                        groupSegments: chainLength,
                         segmentWidth: segmentWidth,
                         left: left,
                         bold: bold,
                         thin: thin,
+                        group: group,
                       ),
                     ),
                     if (count > 0)
@@ -75,23 +79,29 @@ final class SegmentPainter extends CustomPainter {
   SegmentPainter({
     required this.allSegments,
     required this.highlightedSegments,
+    required this.groupSegments,
     required this.segmentWidth,
     required this.left,
     required this.bold,
     required this.thin,
+    required this.group,
   }) : _paint = Paint()..style = PaintingStyle.stroke;
 
   final int allSegments;
   final int highlightedSegments;
+  final int groupSegments;
   final double segmentWidth;
   final double left;
   final Color bold;
   final Color thin;
+  final Color group;
   final Paint _paint;
 
   @override
   void paint(Canvas canvas, Size size) {
     final last = highlightedSegments - 1;
+    final groupLast = highlightedSegments + groupSegments;
+
     _paint
       ..color = bold
       ..strokeWidth = 2.0;
@@ -104,9 +114,20 @@ final class SegmentPainter extends CustomPainter {
     }
 
     _paint
+      ..color = group
+      ..strokeWidth = 1;
+    for (var i = highlightedSegments; i < groupLast; i++) {
+      canvas.drawLine(
+        Offset(left + i * segmentWidth + _space, 0.5),
+        Offset(left + (i + 1) * segmentWidth - _space, 0.5),
+        _paint,
+      );
+    }
+
+    _paint
       ..color = thin
       ..strokeWidth = 1.0;
-    for (var i = highlightedSegments; i < allSegments; i++) {
+    for (var i = groupLast; i < allSegments; i++) {
       canvas.drawLine(
         Offset(left + i * segmentWidth + _space, 0.5),
         Offset(left + (i + 1) * segmentWidth - _space, 0.5),
@@ -120,4 +141,4 @@ final class SegmentPainter extends CustomPainter {
       oldDelegate is SegmentPainter && oldDelegate.highlightedSegments != highlightedSegments;
 }
 
-const _space = 2.0;
+const _space = 4.0;

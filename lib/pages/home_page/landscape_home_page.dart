@@ -158,7 +158,12 @@ class LandscapeHomePageCounter extends StatelessWidget {
         children: [
           Expanded(
             child: Observer(
-              builder: (context) => CardCounter(maxCount: game.layout.cardCount, count: game.remaining),
+              builder:
+                  (context) => CardCounter(
+                    maxCount: game.layout.cardCount,
+                    count: game.remaining,
+                    chainLength: game.chain,
+                  ),
             ),
           ),
         ],

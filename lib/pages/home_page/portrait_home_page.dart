@@ -161,7 +161,11 @@ class PortraitHomePageCounter extends StatelessWidget {
                 (context) => IgnorePointer(
                   child: RotatedBox(
                     quarterTurns: 3,
-                    child: CardCounter(maxCount: game.layout.cardCount, count: game.remaining),
+                    child: CardCounter(
+                      maxCount: game.layout.cardCount,
+                      count: game.remaining,
+                      chainLength: game.chain,
+                    ),
                   ),
                 ),
           ),
