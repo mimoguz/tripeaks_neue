@@ -188,6 +188,9 @@ abstract class _Game with Store {
     discard.add(Tile(card: tile.card, pin: Pin.unpin));
     _openBelow(pin);
 
+    final currentScore = _score;
+    final currentChain = _chain;
+
     _remaining--;
     _chain++;
 
@@ -208,7 +211,7 @@ abstract class _Game with Store {
       _isStalled = true;
     }
 
-    history.add(Event(pin: pin, score: _score, chain: _chain));
+    history.add(Event(pin: pin, score: currentScore, chain: currentChain));
     return true;
   }
 
@@ -253,6 +256,8 @@ abstract class _Game with Store {
 
     _score = event.score;
     _chain = event.chain;
+
+    print(_chain);
 
     if (event.pin.index >= 0) {
       board[event.pin.index].put();
