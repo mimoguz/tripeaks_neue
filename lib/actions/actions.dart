@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -187,6 +188,9 @@ final class NewGameWithLayoutAction extends ContextAction<NewGameWithLayoutInten
 final class ExitAction extends ContextAction<ExitIntent> {
   @override
   Future<void> invoke(ExitIntent intent, [BuildContext? context]) async {
+    if (kIsWeb) {
+      return;
+    }
     final session = Provider.of<Session>(context!, listen: false);
     final settings = Provider.of<Settings>(context, listen: false);
     await session.write();
