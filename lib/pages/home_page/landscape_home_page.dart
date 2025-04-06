@@ -71,14 +71,14 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                 child: Container(
                   color: Theme.of(context).colorScheme.surfaceContainerLow,
                   child: Padding(
-                    padding: EdgeInsets.all((24.0 * scale).roundToDouble()),
+                    padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
                     child: Stack(
                       children: [
                         SwipeArea(intent: const DrawIntent()),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: 16.0 * scale,
+                          spacing: (16.0 * scale).floorToDouble(),
                           children: [
                             LandscapeHomePageBoard(game: game, scale: scale, back: back),
                             LandscapeHomePageCounter(game: game, scale: scale),

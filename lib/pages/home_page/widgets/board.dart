@@ -19,8 +19,8 @@ class LandscapeBoard extends StatelessWidget {
     final width = quarter * game.layout.width;
     final height = rowShift * game.layout.height;
     return SizedBox(
-      width: width * scale,
-      height: height * scale,
+      width: (width * scale).floorToDouble(),
+      height: (height * scale).floorToDouble(),
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: SizedBox(
@@ -56,8 +56,8 @@ class PortraitBoard extends StatelessWidget {
     final width = quarter * game.layout.height;
     final height = quarter * game.layout.width;
     return SizedBox(
-      width: width * scale,
-      height: height * scale,
+      width: (width * scale).floorToDouble(),
+      height: (height * scale).floorToDouble(),
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: SizedBox(
