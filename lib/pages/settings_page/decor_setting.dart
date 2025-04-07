@@ -91,20 +91,24 @@ class _DecorItemState extends State<DecorItem> {
                   Positioned(
                     left: 2.0,
                     top: 2.0,
-                    child: AnimatedSwitcher(
-                      duration: Durations.medium2,
-                      child:
-                          (widget.decor == settings.decor)
-                              ? Icon(
-                                key: ValueKey((widget.decor, true)),
-                                Icons.radio_button_checked,
-                                color: Colors.white,
-                              )
-                              : Icon(
-                                key: ValueKey((widget.decor, false)),
-                                Icons.radio_button_off,
-                                color: Colors.white,
-                              ),
+                    child: Builder(
+                      builder: (context) {
+                        return AnimatedSwitcher(
+                          duration: Durations.medium2,
+                          child:
+                              (widget.decor == settings.decor)
+                                  ? Icon(
+                                    key: ValueKey((widget.decor, true)),
+                                    Icons.radio_button_checked,
+                                    color: Colors.white,
+                                  )
+                                  : Icon(
+                                    key: ValueKey((widget.decor, false)),
+                                    Icons.radio_button_off,
+                                    color: Colors.white,
+                                  ),
+                        );
+                      },
                     ),
                   ),
                 ],

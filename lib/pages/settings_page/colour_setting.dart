@@ -73,6 +73,10 @@ class _ColourSwatchState extends State<ColourSwatch> {
     final colours = Theme.of(context).colorScheme;
     final fill =
         colours.brightness == Brightness.dark ? widget.colour.darkBackground : widget.colour.lightBackground;
+    final foreground =
+        colours.brightness == Brightness.dark
+            ? widget.colour.darkControlForeground
+            : widget.colour.lightControlForeground;
     _borderColour = _focus.hasFocus ? colours.onSurface : Colors.transparent;
     return Material(
       type: MaterialType.transparency,
@@ -92,20 +96,24 @@ class _ColourSwatchState extends State<ColourSwatch> {
                   color: fill,
                 ),
                 child: Center(
-                  child: AnimatedSwitcher(
-                    duration: Durations.medium1,
-                    child:
-                        widget.colour == settings.decorColour
-                            ? Icon(
-                              Icons.radio_button_checked,
-                              key: ValueKey("selected"),
-                              color: widget.colour.over,
-                            )
-                            : Icon(
-                              Icons.radio_button_off,
-                              key: ValueKey("unselected"),
-                              color: widget.colour.over,
-                            ),
+                  child: Observer(
+                    builder: (context) {
+                      return AnimatedSwitcher(
+                        duration: Durations.medium1,
+                        child:
+                            widget.colour == settings.decorColour
+                                ? Icon(
+                                  Icons.radio_button_checked,
+                                  key: ValueKey("selected"),
+                                  color: foreground,
+                                )
+                                : Icon(
+                                  Icons.radio_button_off,
+                                  key: ValueKey("unselected"),
+                                  color: foreground,
+                                ),
+                      );
+                    },
                   ),
                 ),
               ),

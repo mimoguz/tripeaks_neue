@@ -45,20 +45,55 @@ extension DecorExt on Decor {
 }
 
 enum DecorColour {
-  red(Colors.red, Color(0xffffdcd0)),
-  green(Colors.green, Color(0xf0dcffd0)),
-  blue(Colors.blue, Color(0xffd0dcff)),
-  yellow(Colors.yellow, Color(0xffa08010));
+  red(
+    darkBackground: Color(0xffe57373),
+    darkForeground: Color(0x30ffcdd2),
+    darkControlForeground: Color(0xFFFFCDD2),
+    lightBackground: Color(0xFFF44336),
+    lightForeground: Color(0xf0EF9A9A),
+    lightControlForeground: Color(0xFFEF9A9A),
+  ),
+  green(
+    darkBackground: Color(0xff4caf50),
+    darkForeground: Color(0x30c8e6c9),
+    darkControlForeground: Color(0xffc8e6c9),
+    lightBackground: Color(0xff4caf50),
+    lightForeground: Color(0xf0c8e6c9),
+    lightControlForeground: Color(0xffc8e6c9),
+  ),
+  blue(
+    darkBackground: Color(0xff2196f3),
+    darkForeground: Color(0x30b3e5fc),
+    darkControlForeground: Color(0xffb3e5fc),
+    lightBackground: Color(0xff2196f3),
+    lightForeground: Color(0xf0b3e5fc),
+    lightControlForeground: Color(0xffb3e5fc),
+  ),
+  yellow(
+    darkBackground: Color(0xffffeb3b),
+    darkForeground: Color(0x30fff9c4),
+    darkControlForeground: Color(0xffff8f00),
+    lightBackground: Color(0xffffeb3b),
+    lightForeground: Color(0xf0fff9c4),
+    lightControlForeground: Color(0xffff6f00),
+  );
 
-  const DecorColour(this.value, this.over);
-  final MaterialColor value;
-  final Color over;
+  const DecorColour({
+    required this.darkBackground,
+    required this.darkForeground,
+    required this.darkControlForeground,
+    required this.lightBackground,
+    required this.lightForeground,
+    required this.lightControlForeground,
+  });
 
-  Color get lightBackground => value.shade500;
-  Color get lightForeground => value.shade400;
+  final Color darkBackground;
+  final Color darkForeground;
+  final Color darkControlForeground;
 
-  Color get darkBackground => value.shade300;
-  Color get darkForeground => value.shade200;
+  final Color lightBackground;
+  final Color lightForeground;
+  final Color lightControlForeground;
 
   String name(AppLocalizations s) => switch (this) {
     DecorColour.red => "Red",
