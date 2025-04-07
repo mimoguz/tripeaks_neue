@@ -24,7 +24,7 @@
 
     <description>
         <p>
-            TriPeaks NEUE is a simple Tri Peaks patience (solitaire) game.
+            A simple Tri Peaks patience (solitaire) game.
         </p>
         <p> Main Features:</p>
         <ul>
@@ -39,6 +39,7 @@
 
     <categories>
         <category>Game</category>
+        <category>CardGame</category>
     </categories>
 
     <keywords>
@@ -48,10 +49,9 @@
         <keyword>solitaire</keyword>
     </keywords>
 
-
     <branding>
-        <color type="primary" scheme_preference="light">#f3f3fa</color>
-        <color type="primary" scheme_preference="dark">#1a1b20</color>
+        <color type="primary" scheme_preference="light">#e57373</color>
+        <color type="primary" scheme_preference="dark">#b84040</color>
     </branding>
 
     <content_rating type="oars-1.1" />
