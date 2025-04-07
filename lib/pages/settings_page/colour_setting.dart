@@ -5,7 +5,6 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/widget_group.dart';
 
 class ColourSetting extends StatefulWidget {

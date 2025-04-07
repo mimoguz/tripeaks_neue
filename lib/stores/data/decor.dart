@@ -46,12 +46,12 @@ extension DecorExt on Decor {
 
 enum DecorColour {
   red(
-    darkBackground: Color(0xffe57373),
+    darkBackground: Color(0xffe53935),
     darkForeground: Color(0x30ffcdd2),
-    darkControlForeground: Color(0xFFFFCDD2),
-    lightBackground: Color(0xFFF44336),
-    lightForeground: Color(0xf0EF9A9A),
-    lightControlForeground: Color(0xFFEF9A9A),
+    darkControlForeground: Color(0xffffcdd2),
+    lightBackground: Color(0xffe53935),
+    lightForeground: Color(0xf0ef9a9a),
+    lightControlForeground: Color(0xffef9a9a),
   ),
   green(
     darkBackground: Color(0xff4caf50),
