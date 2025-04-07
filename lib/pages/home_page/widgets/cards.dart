@@ -47,7 +47,7 @@ final class TileCard extends StatelessWidget {
                     tile.card,
                     t: (tile.pin.z < 0 ? t : (1.0 / (tile.pin.z + 1)) * 0.6 + 0.4),
                     key: childKey,
-                    options: back,
+                    back: back,
                   ),
         );
       },
@@ -128,36 +128,37 @@ final class ActiveCardFace extends StatelessWidget {
 }
 
 final class InactiveCard extends StatelessWidget {
-  const InactiveCard(this.cardValue, {super.key, required this.options, this.t = 0.5});
+  const InactiveCard(this.cardValue, {super.key, required this.back, this.t = 0.5});
 
   final double t;
   final CardValue cardValue;
-  final BackOptions options;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colours = theme.colorScheme;
+    final fill =
+        colours.brightness == Brightness.dark
+            ? back.decorColour.darkBackground
+            : back.decorColour.lightBackground;
     return IgnorePointer(
       child: Material(
-        color: Color.alphaBlend(
-          theme.colorScheme.surface.withValues(alpha: 1.0 - t),
-          colours.tertiaryContainer,
-        ),
+        color: Color.alphaBlend(theme.colorScheme.surface.withValues(alpha: 1.0 - t), fill),
         borderRadius: c.commonBorderRadius,
         child: SizedBox(
           width: c.cardSize,
           height: c.cardSize,
           child:
-              options.showValue
+              back.showValue
                   ? Stack(
                     children: [
-                      CardBack(t: t, decor: options.decor),
+                      CardBack(t: t, back: back),
                       Align(alignment: Alignment.topLeft, child: HorizontalSmallFace(cardValue)),
                       Align(alignment: Alignment.bottomLeft, child: HorizontalSmallFaceAlt(cardValue)),
                     ],
                   )
-                  : CardBack(t: t, decor: options.decor),
+                  : CardBack(t: t, back: back),
           // : SizedBox(),
         ),
       ),
@@ -200,24 +201,26 @@ final class HorizontalSmallFaceAlt extends StatelessWidget {
 }
 
 class CardBack extends StatelessWidget {
-  const CardBack({super.key, required this.decor, this.t = 1.0});
+  const CardBack({super.key, required this.back, this.t = 1.0});
 
   final double t;
-  final IconData decor;
+  final BackOptions back;
 
   @override
   Widget build(BuildContext context) {
+    final useDark = Theme.of(context).brightness == Brightness.dark;
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(c.commonRadius - 2.0)),
       child: Icon(
-        decor,
+        back.decor,
         size: c.cardSize,
-        color: _foreground, // Theme.of(context).colorScheme.surface.withAlpha(38),
+        color:
+            useDark
+                ? back.decorColour.darkForeground
+                : back.decorColour.lightForeground, // Theme.of(context).colorScheme.surface.withAlpha(38),
       ),
     );
   }
-
-  static const _foreground = Color(0x30ffffff);
 }
 
 final class RankText extends StatelessWidget {

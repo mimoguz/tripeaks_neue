@@ -53,7 +53,11 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
     return Observer(
       builder: (context) {
         final game = session.game;
-        final back = BackOptions(showValue: session.showAll, decor: settings.decor.icon);
+        final back = BackOptions(
+          showValue: session.showAll,
+          decor: settings.decor.icon,
+          decorColour: settings.decorColour,
+        );
         return Actions(
           actions: <Type, Action<Intent>>{
             TakeIntent: TakeAction(game, settings.sounds),

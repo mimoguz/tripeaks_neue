@@ -40,6 +40,22 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
+  late final _$decorColourAtom =
+      Atom(name: '_Settings.decorColour', context: context);
+
+  @override
+  DecorColour get decorColour {
+    _$decorColourAtom.reportRead();
+    return super.decorColour;
+  }
+
+  @override
+  set decorColour(DecorColour value) {
+    _$decorColourAtom.reportWrite(value, super.decorColour, () {
+      super.decorColour = value;
+    });
+  }
+
   late final _$_soundOnAtom =
       Atom(name: '_Settings._soundOn', context: context);
 
@@ -122,7 +138,8 @@ mixin _$Settings on _Settings, Store {
   String toString() {
     return '''
 themeMode: ${themeMode},
-decor: ${decor}
+decor: ${decor},
+decorColour: ${decorColour}
     ''';
   }
 }

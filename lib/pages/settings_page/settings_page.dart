@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
@@ -44,6 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
         SetShowAllIntent: SetShowAllAction(),
         SetStartEmptyIntent: SetStartEmptyAction(),
         SetDecorIntent: SetDecorAction(),
+        SetDecorColourIntent: SetDecorColourAction(),
         SetLayoutIntent: SetLayoutAction(),
         SetSoundModeIntent: SetSoundModeAction(),
         ExitIntent: ExitAction(),
@@ -175,6 +177,7 @@ final class UiItems extends StatelessWidget {
         ThemeModeSetting(),
         GroupTileDivider(),
         DecorSetting(),
+        ColourSetting(),
       ],
     );
   }

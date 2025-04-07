@@ -3,7 +3,7 @@
     <id>io.github.mimoguz.tripeaks_neue</id>
 
     <name>TriPeaks NEUE</name>
-    <summary>A simple Tri Peaks game</summary>
+    <summary>Play Tri Peaks</summary>
     <url type="homepage">https://github.com/mimoguz/tripeaks_neue</url>
     <url type="bugtracker">https://github.com/mimoguz/tripeaks_neue/issues</url>
     <url type="donation">https://buymeacoffee.com/mimoguz</url>
@@ -93,6 +93,13 @@
                     <li>The card counter now also shows the current chain (circle indicators).</li>
                     <li>"Dependencies" card now also includes indirect dependencies.</li>
                     <li>Added a new card decoration.</li>
+                </ul>
+            </description>
+        </release>
+        <release version="0.8.5" date="2025-04-05">
+            <description>
+                <ul>
+                    <li>Added card back colour customisation</li>
                 </ul>
             </description>
         </release>

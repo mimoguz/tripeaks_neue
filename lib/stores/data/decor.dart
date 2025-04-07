@@ -43,3 +43,27 @@ extension DecorExt on Decor {
     Decor.solar => s.solarDecorLabel,
   };
 }
+
+enum DecorColour {
+  red(Colors.red, Color(0xffffdcd0)),
+  green(Colors.green, Color(0xf0dcffd0)),
+  blue(Colors.blue, Color(0xffd0dcff)),
+  yellow(Colors.yellow, Color(0xffa08010));
+
+  const DecorColour(this.value, this.over);
+  final MaterialColor value;
+  final Color over;
+
+  Color get lightBackground => value.shade500;
+  Color get lightForeground => value.shade400;
+
+  Color get darkBackground => value.shade300;
+  Color get darkForeground => value.shade200;
+
+  String name(AppLocalizations s) => switch (this) {
+    DecorColour.red => "Red",
+    DecorColour.green => "Green",
+    DecorColour.blue => "Blue",
+    DecorColour.yellow => "Yellow",
+  };
+}

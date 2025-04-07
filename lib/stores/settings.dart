@@ -16,6 +16,7 @@ class Settings extends _Settings with _$Settings {
     : super._(
         themeMode: ThemeMode.system,
         decor: Decor.values.first,
+        decorColour: DecorColour.red,
         soundOn: true,
         sounds: SoundOn(),
         firstRun: true,
@@ -25,6 +26,7 @@ class Settings extends _Settings with _$Settings {
     : super._(
         themeMode: ThemeMode.values[jsonObject.read<int>("themeMode")],
         decor: _readDecor(jsonObject),
+        decorColour: _readDecorColour(jsonObject),
         soundOn: jsonObject.read<bool>("soundOn"),
         sounds: jsonObject.read<bool>("soundOn") ? SoundOn() : Silent(),
         firstRun: false,
@@ -33,7 +35,12 @@ class Settings extends _Settings with _$Settings {
   static Future<Settings> read() async =>
       await getIO().read("settings", (it) => Settings.fromJsonObject(it)) ?? Settings();
 
-  JsonObject toJsonObject() => {"themeMode": themeMode.index, "decor": decor.index, "soundOn": _soundOn};
+  JsonObject toJsonObject() => {
+    "themeMode": themeMode.index,
+    "decor": decor.index,
+    "decorColour": decorColour.index,
+    "soundOn": _soundOn,
+  };
 
   Future<void> write() async => await getIO().write("settings", toJsonObject());
 
@@ -44,12 +51,21 @@ class Settings extends _Settings with _$Settings {
       return Decor.values.first;
     }
   }
+
+  static DecorColour _readDecorColour(JsonObject jsonObject) {
+    try {
+      return DecorColour.values[jsonObject.read<int>("decorColour")];
+    } on Error {
+      return DecorColour.red;
+    }
+  }
 }
 
 abstract class _Settings with Store {
   _Settings._({
     required this.themeMode,
     required this.decor,
+    required this.decorColour,
     required bool soundOn,
     required SoundEffects sounds,
     required bool firstRun,
@@ -62,6 +78,9 @@ abstract class _Settings with Store {
 
   @observable
   Decor decor;
+
+  @observable
+  DecorColour decorColour;
 
   @readonly
   bool _soundOn;
