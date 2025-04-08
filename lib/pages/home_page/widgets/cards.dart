@@ -137,11 +137,7 @@ final class InactiveCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colours = theme.colorScheme;
-    final fill =
-        colours.brightness == Brightness.dark
-            ? back.decorColour.darkBackground
-            : back.decorColour.lightBackground;
+    final fill = back.decorColour.background;
     return IgnorePointer(
       child: Material(
         color: Color.alphaBlend(theme.colorScheme.surface.withValues(alpha: 1.0 - t), fill),
@@ -208,17 +204,9 @@ class CardBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final useDark = Theme.of(context).brightness == Brightness.dark;
     return ClipRRect(
       borderRadius: const BorderRadius.all(Radius.circular(c.commonRadius - 2.0)),
-      child: Icon(
-        back.decor,
-        size: c.cardSize,
-        color:
-            useDark
-                ? back.decorColour.darkForeground
-                : back.decorColour.lightForeground, // Theme.of(context).colorScheme.surface.withAlpha(38),
-      ),
+      child: Icon(back.decor, size: c.cardSize, color: back.decorColour.foreground),
     );
   }
 }

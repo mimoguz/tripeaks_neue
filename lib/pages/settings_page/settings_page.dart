@@ -176,8 +176,9 @@ final class UiItems extends StatelessWidget {
         GroupTileDivider(),
         ThemeModeSetting(),
         GroupTileDivider(),
-        DecorSetting(),
         ColourSetting(),
+        GroupTileDivider(),
+        DecorSetting(),
       ],
     );
   }

@@ -21,8 +21,8 @@ class _ColourSettingState extends State<ColourSetting> {
     final settings = Provider.of<Settings>(context);
 
     return WidgetGroup(
-      title: Text(s.decorControl),
-      subtitle: Observer(builder: (context) => Text(settings.decor.name(s))),
+      title: Text(s.decorColourControl),
+      subtitle: Observer(builder: (context) => Text(settings.decorColour.name(s))),
       child: LayoutBuilder(
         builder:
             (context, constraints) => Padding(
@@ -70,12 +70,8 @@ class _ColourSwatchState extends State<ColourSwatch> {
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
     final colours = Theme.of(context).colorScheme;
-    final fill =
-        colours.brightness == Brightness.dark ? widget.colour.darkBackground : widget.colour.lightBackground;
-    final foreground =
-        colours.brightness == Brightness.dark
-            ? widget.colour.darkControlForeground
-            : widget.colour.lightControlForeground;
+    final fill = widget.colour.background;
+    final foreground = widget.colour.controlForeground;
     _borderColour = _focus.hasFocus ? colours.onSurface : Colors.transparent;
     return Material(
       type: MaterialType.transparency,

@@ -149,6 +149,30 @@ class AppLocalizationsEn extends AppLocalizations {
   String get solarDecorLabel => 'Solar';
 
   @override
+  String get decorColourControl => 'Card back colour';
+
+  @override
+  String get redColourLabel => 'Red';
+
+  @override
+  String get orangeColourLabel => 'Orange';
+
+  @override
+  String get amberColourLabel => 'Amber';
+
+  @override
+  String get greenColourLabel => 'Green';
+
+  @override
+  String get cyanColourLabel => 'Cyan';
+
+  @override
+  String get blueColourLabel => 'Blue';
+
+  @override
+  String get violetColourLabel => 'Violet';
+
+  @override
   String get selectLayoutDialogTitle => 'Select Layout';
 
   @override

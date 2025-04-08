@@ -293,6 +293,54 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
+    "decorColourControl": "Card back colour",
+    "@decorColourControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets the colour that is used on the back of the cards."
+    },
+    "redColourLabel": "Red",
+    "@redColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "orangeColourLabel": "Orange",
+    "@orangeColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "amberColourLabel": "Amber",
+    "@amberColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "greenColourLabel": "Green",
+    "@greenColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "cyanColourLabel": "Cyan",
+    "@cyanColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "blueColourLabel": "Blue",
+    "@blueColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "violetColourLabel": "Violet",
+    "@violetColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
     "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
     "@selectLayoutDialogTitle": {

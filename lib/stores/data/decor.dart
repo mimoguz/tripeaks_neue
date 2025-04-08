@@ -45,60 +45,27 @@ extension DecorExt on Decor {
 }
 
 enum DecorColour {
-  red(
-    darkBackground: Color(0xffe53935),
-    darkForeground: Color(0x30ffcdd2),
-    darkControlForeground: Color(0xffffcdd2),
-    lightBackground: Color(0xffe53935),
-    lightForeground: Color(0xf0ef9a9a),
-    lightControlForeground: Color(0xffef9a9a),
-  ),
-  green(
-    darkBackground: Color(0xff4caf50),
-    darkForeground: Color(0x30c8e6c9),
-    darkControlForeground: Color(0xffc8e6c9),
-    lightBackground: Color(0xff4caf50),
-    lightForeground: Color(0xf0c8e6c9),
-    lightControlForeground: Color(0xffc8e6c9),
-  ),
-  blue(
-    darkBackground: Color(0xff2196f3),
-    darkForeground: Color(0x30b3e5fc),
-    darkControlForeground: Color(0xffb3e5fc),
-    lightBackground: Color(0xff2196f3),
-    lightForeground: Color(0xf0b3e5fc),
-    lightControlForeground: Color(0xffb3e5fc),
-  ),
-  yellow(
-    darkBackground: Color(0xffffeb3b),
-    darkForeground: Color(0x30fff9c4),
-    darkControlForeground: Color(0xffff8f00),
-    lightBackground: Color(0xffffeb3b),
-    lightForeground: Color(0xf0fff9c4),
-    lightControlForeground: Color(0xffff6f00),
-  );
+  red(background: Color(0xfff44336), foreground: Color(0x30ffcdd2), controlForeground: Color(0xffffcdd2)),
+  orange(background: Color(0xffff8000), foreground: Color(0x30fffca0), controlForeground: Color(0xffffe0b2)),
+  amber(background: Color(0xffffa000), foreground: Color(0x30fff9c4), controlForeground: Color(0xffffecb3)),
+  green(background: Color(0xff4caf50), foreground: Color(0x30c8e6c9), controlForeground: Color(0xffc8e6c9)),
+  cyan(background: Color(0xff04c4dd), foreground: Color(0x45d3f4f8), controlForeground: Color(0xffb2ebf2)),
+  blue(background: Color(0xff2196f3), foreground: Color(0x30b3e5fc), controlForeground: Color(0xffb3e5fc)),
+  violet(background: Color(0xff8806ce), foreground: Color(0x30fdd0ff), controlForeground: Color(0xffe1bee7));
 
-  const DecorColour({
-    required this.darkBackground,
-    required this.darkForeground,
-    required this.darkControlForeground,
-    required this.lightBackground,
-    required this.lightForeground,
-    required this.lightControlForeground,
-  });
+  const DecorColour({required this.background, required this.foreground, required this.controlForeground});
 
-  final Color darkBackground;
-  final Color darkForeground;
-  final Color darkControlForeground;
-
-  final Color lightBackground;
-  final Color lightForeground;
-  final Color lightControlForeground;
+  final Color background;
+  final Color foreground;
+  final Color controlForeground;
 
   String name(AppLocalizations s) => switch (this) {
-    DecorColour.red => "Red",
-    DecorColour.green => "Green",
-    DecorColour.blue => "Blue",
-    DecorColour.yellow => "Yellow",
+    DecorColour.red => s.redColourLabel,
+    DecorColour.orange => s.orangeColourLabel,
+    DecorColour.amber => s.amberColourLabel,
+    DecorColour.cyan => s.cyanColourLabel,
+    DecorColour.green => s.greenColourLabel,
+    DecorColour.blue => s.blueColourLabel,
+    DecorColour.violet => s.violetColourLabel,
   };
 }

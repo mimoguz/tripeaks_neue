@@ -369,6 +369,54 @@ abstract class AppLocalizations {
   /// **'Solar'**
   String get solarDecorLabel;
 
+  /// Label of a control that sets the colour that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card back colour'**
+  String get decorColourControl;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Red'**
+  String get redColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Orange'**
+  String get orangeColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Amber'**
+  String get amberColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Green'**
+  String get greenColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Cyan'**
+  String get cyanColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get blueColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Violet'**
+  String get violetColourLabel;
+
   /// Title of the dialog that will open when 'New Game with Layout...' action is called.
   ///
   /// In en, this message translates to:
