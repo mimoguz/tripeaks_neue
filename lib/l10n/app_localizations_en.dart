@@ -258,4 +258,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get licenseDialogCloseAction => 'Close';
+
+  @override
+  String get wikiLinkAlt => 'Tri Peaks on Wikipedia';
+
+  @override
+  String get wikiLinkText => 'Wikipedia article';
+
+  @override
+  String get howToP01 => 'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
+
+  @override
+  String get howToRichP02 => 'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
+
+  @override
+  String get howToRichP03 => 'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
+
+  @override
+  String get howToP04 => 'When a face-down card is no longer blocked by other cards, it is flipped face-up.';
+
+  @override
+  String get howToP05 => 'If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
+
+  @override
+  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
+
+  @override
+  String get howToP07 => 'In addition to the standard game, this app offers:';
+
+  @override
+  String get howToP08 => 'Three additional board layouts,';
+
+  @override
+  String get howToP09 => 'An option to show the values of face-down cards,';
+
+  @override
+  String get howToP10 => 'An option to start with an empty discard pile, allowing the player to choose any starting card.';
 }

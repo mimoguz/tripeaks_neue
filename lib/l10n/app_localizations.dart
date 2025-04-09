@@ -590,6 +590,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Close'**
   String get licenseDialogCloseAction;
+
+  /// Alt text for Wikipedia link.
+  ///
+  /// In en, this message translates to:
+  /// **'Tri Peaks on Wikipedia'**
+  String get wikiLinkAlt;
+
+  /// Text for Wikipedia link.
+  ///
+  /// In en, this message translates to:
+  /// **'Wikipedia article'**
+  String get wikiLinkText;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
+  String get howToP01;
+
+  /// How to play text, contains formatting.
+  ///
+  /// In en, this message translates to:
+  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
+  String get howToRichP02;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
+  String get howToRichP03;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'When a face-down card is no longer blocked by other cards, it is flipped face-up.'**
+  String get howToP04;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
+  String get howToP05;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'The game ends when the board is cleared or no more moves are possible.'**
+  String get howToP06;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'In addition to the standard game, this app offers:'**
+  String get howToP07;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'Three additional board layouts,'**
+  String get howToP08;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'An option to show the values of face-down cards,'**
+  String get howToP09;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
+  String get howToP10;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
