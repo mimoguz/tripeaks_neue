@@ -1,3 +1,4 @@
+import 'package:fast_rich_text/fast_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -12,6 +13,7 @@ class HowToPlay extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final s = AppLocalizations.of(context)!;
+    final italic = TextStyle(fontStyle: FontStyle.italic, color: Theme.of(context).colorScheme.primary);
     return ScrollIndicator(
       child: DefaultTextStyle(
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
@@ -26,9 +28,9 @@ class HowToPlay extends StatelessWidget {
             const SizedBox(height: 12.0),
             Text(s.howToP01),
             const SizedBox(height: 12.0),
-            TypeSet(s.howToRichP02),
+            FastRichText(text: s.howToRichP02, textStyle: textTheme.bodyMedium!, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            TypeSet(s.howToRichP03),
+            FastRichText(text: s.howToRichP03, textStyle: textTheme.bodyMedium!, italicTextStyle: italic),
             const SizedBox(height: 12.0),
             Text(s.howToP04),
             const SizedBox(height: 12.0),
