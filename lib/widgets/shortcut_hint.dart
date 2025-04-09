@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 
 class KeyboardKey extends StatelessWidget {
   const KeyboardKey({super.key, required this.keyboardKey});
@@ -35,13 +36,13 @@ class ShortcutHint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppLocalizations.of(context)!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       spacing: 6,
       children: [
-        // TODO: Move to arb
-        if (showLabel) Text("Shortcut: ", style: const TextStyle(fontStyle: FontStyle.italic)),
+        if (showLabel) Text(s.shortcutTitle, style: const TextStyle(fontStyle: FontStyle.italic)),
         for (final k in shorcut) KeyboardKey(keyboardKey: k),
       ],
     );

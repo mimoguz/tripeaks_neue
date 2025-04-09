@@ -662,6 +662,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
   String get howToP10;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
+  String get interactionP01;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
+  String get interactionRichP02;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.'**
+  String get interactionP03;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
+  String get interactionP04;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the menu button.'**
+  String get interactionP05;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
+  String get interactionP06;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'or by using \"New Game with Layout...\" option.'**
+  String get interactionP07;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
+  String get interactionP08;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'The game supports both portrait and landscape orientations.'**
+  String get interactionP09;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Shorcuts'**
+  String get interactionP10;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get interactionP12;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Back (alternative)'**
+  String get interactionP13;
+
+  /// Shortcut hint title
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: '**
+  String get shortcutTitle;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'Removing cards from the board one after the other creates a _chain_.'**
+  String get scoringRichP01;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. '**
+  String get scoringP02;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.'**
+  String get scoringRichP03;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. '**
+  String get scoringRichP04;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
+  String get scoringP05;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

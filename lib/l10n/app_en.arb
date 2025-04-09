@@ -593,5 +593,115 @@
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text."
+    },
+    "@_INTERACTION": {},
+    "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.",
+    "@interactionP01": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionRichP02": "This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.",
+    "@interactionRichP02": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP03": "This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.",
+    "@interactionP03": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP04": "Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.",
+    "@interactionP04": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP05": "This is the menu button.",
+    "@interactionP05": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP06": "From the menu, different game modes can be selected by visiting the settings page,",
+    "@interactionP06": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP07": "or by using \"New Game with Layout...\" option.",
+    "@interactionP07": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP08": "When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don't block interaction with the other parts of the interface.",
+    "@interactionP08": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP09": "The game supports both portrait and landscape orientations.",
+    "@interactionP09": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP10": "Other Shorcuts",
+    "@interactionP10": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP12": "Back",
+    "@interactionP12": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP13": "Back (alternative)",
+    "@interactionP13": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "shortcutTitle": "Shortcut: ",
+    "@shortcutTitle": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "Shortcut hint title"
+    },
+    "@_SCORING": {},
+    "scoringRichP01": "Removing cards from the board one after the other creates a _chain_.",
+    "@scoringRichP01": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringP02": "A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain's length, it will not end it. ",
+    "@scoringP02": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringRichP03": "When a chain ends, the player gains a score equal to the _square_ of that chain's length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.",
+    "@scoringRichP03": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringRichP04": "When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ",
+    "@scoringRichP04": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringP05": "While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can't clear it. Play any way you want.",
+    "@scoringP05": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
     }
 }

@@ -1,3 +1,4 @@
+import 'package:fast_rich_text/fast_rich_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
@@ -14,41 +15,22 @@ final class Interaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
+    final italic = TextStyle(fontStyle: FontStyle.italic, color: Theme.of(context).colorScheme.primary);
     final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
       child: DefaultTextStyle(
-        style: textTheme.bodyMedium!.copyWith(height: 1.8),
-        // TODO: Move to arb
-        // TODO: Add keyboard shortcuts
+        style: paragraphStyle,
         child: ListView(
           padding: EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
           children: [
-            InteractionListCell(
-              description: const Text(
-                "To remove a card from the board, just tap on it. If it is a valid move, "
-                "the card will be moved on top of the discard pile; otherwise, it will "
-                "wobble momentarily.",
-              ),
-              image: Icon(Icons.touch_app),
-            ),
+            InteractionListCell(description: Text(s.interactionP01), image: Icon(Icons.touch_app)),
             const InteractionListDivider(),
             InteractionListCell(
-              description: RichText(
-                text: TextSpan(
-                  text: "This is the draw button. Pressing this, ",
-                  style: textTheme.bodyMedium!.copyWith(height: 1.8),
-                  children: const <TextSpan>[
-                    TextSpan(
-                      text:
-                          "or swiping up on an otherwise non-actionable part (except the very edges) "
-                          "of the game screen",
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                    TextSpan(
-                      text: " will draw a card from the stock and place it on top of the discard pile.",
-                    ),
-                  ],
-                ),
+              description: FastRichText(
+                text: s.interactionRichP02,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
               ),
               image: GameButton.narrow(
                 scale: 0.7,
@@ -60,10 +42,7 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: const Text(
-                "This is the undo button. Pressing this will roll back the last move. "
-                "This can go back to the very beginning of the game.",
-              ),
+              description: Text(s.interactionP03),
               image: CircleGameButton(
                 scale: 1.0,
                 icon: CustomIcons.undo,
@@ -74,11 +53,7 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: const Text(
-                "Between the board and the stock, you will see the card counter. "
-                "Thick lines on the bottom or left show the remaining cards. "
-                "The circles show the current chain.",
-              ),
+              description: Text(s.interactionP04),
               image: Image.asset(
                 Theme.of(context).brightness == Brightness.light
                     ? "images/card_counter_light.png"
@@ -89,7 +64,7 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: const Text("This is the menu button."),
+              description: Text(s.interactionP05),
               image: CircleGameButton(
                 scale: 1.0,
                 icon: CustomIcons.menu,
@@ -100,36 +75,24 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: const Text(
-                "From the menu, different game modes can be selected by visiting the settings page,",
-              ),
+              description: Text(s.interactionP06),
               image: Icon(Icons.settings),
               shorcut: _settingsShortcut,
             ),
             const InteractionListDivider(),
-            InteractionListCell(
-              description: Text("or by using \"${s.newGameWithLayoutAction}\" option."),
-              image: Icon(CustomIcons.pickAndPlay),
-            ),
+            InteractionListCell(description: Text(s.interactionP07), image: Icon(CustomIcons.pickAndPlay)),
             const InteractionListDivider(),
             InteractionListCell(
-              description: Text(
-                "When a game ends, you will see an \"ending card\". "
-                "They are not modal dialogs, and they don't block interaction with "
-                "the other parts of the interface.",
-              ),
+              description: Text(s.interactionP08),
               image: Image.asset("images/tropy.png", width: c.maxRealButtonSize, height: c.maxRealButtonSize),
             ),
             const InteractionListDivider(),
-            InteractionListCell(
-              description: Text("The game supports both portrait and landscape orientations."),
-              image: Icon(Icons.screen_rotation),
-            ),
+            InteractionListCell(description: Text(s.interactionP09), image: Icon(Icons.screen_rotation)),
             const InteractionListDivider(),
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
-                "Other Shorcuts",
+                s.interactionP10,
                 style: textTheme.titleSmall!.copyWith(
                   color: Theme.of(context).colorScheme.outline,
                   fontWeight: FontWeight.w600,
@@ -137,8 +100,8 @@ final class Interaction extends StatelessWidget {
               ),
             ),
             ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut),
-            ShorcutListCell(title: "Back", shorcut: _backShortcut),
-            ShorcutListCell(title: "Back (alternative)", shorcut: _backShortcutAlt),
+            ShorcutListCell(title: s.interactionP12, shorcut: _backShortcut),
+            ShorcutListCell(title: s.interactionP13, shorcut: _backShortcutAlt),
             ShorcutListCell(title: s.exitAction, shorcut: _exitShortcut),
           ],
         ),

@@ -12,10 +12,11 @@ class HowToPlay extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final s = AppLocalizations.of(context)!;
-    final italic = TextStyle(fontStyle: FontStyle.italic, color: Theme.of(context).colorScheme.primary);
+    final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
+    final italic = TextStyle(fontStyle: FontStyle.italic, color: Theme.of(context).colorScheme.secondary);
     return ScrollIndicator(
       child: DefaultTextStyle(
-        style: textTheme.bodyMedium!.copyWith(height: 1.8),
+        style: paragraphStyle,
         child: ListView(
           padding: EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
           children: [
@@ -27,9 +28,9 @@ class HowToPlay extends StatelessWidget {
             const SizedBox(height: 12.0),
             Text(s.howToP01),
             const SizedBox(height: 12.0),
-            FastRichText(text: s.howToRichP02, textStyle: textTheme.bodyMedium!, italicTextStyle: italic),
+            FastRichText(text: s.howToRichP02, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            FastRichText(text: s.howToRichP03, textStyle: textTheme.bodyMedium!, italicTextStyle: italic),
+            FastRichText(text: s.howToRichP03, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
             Text(s.howToP04),
             const SizedBox(height: 12.0),
