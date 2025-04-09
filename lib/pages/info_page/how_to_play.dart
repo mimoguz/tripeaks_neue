@@ -4,7 +4,6 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
-import 'package:typeset/typeset.dart';
 
 class HowToPlay extends StatelessWidget {
   const HowToPlay({super.key});
