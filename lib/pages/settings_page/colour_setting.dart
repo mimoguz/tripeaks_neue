@@ -23,18 +23,13 @@ class _ColourSettingState extends State<ColourSetting> {
     return WidgetGroup(
       title: Text(s.decorColourControl),
       subtitle: Observer(builder: (context) => Text(settings.decorColour.name(s))),
-      child: LayoutBuilder(
-        builder:
-            (context, constraints) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Center(
-                child: Wrap(
-                  spacing: 8.0,
-                  runSpacing: 8.0,
-                  children: <Widget>[for (final colour in DecorColour.values) ColourSwatch(colour: colour)],
-                ),
-              ),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Wrap(
+          spacing: 16.0,
+          runSpacing: 16.0,
+          children: <Widget>[for (final colour in DecorColour.values) ColourSwatch(colour: colour)],
+        ),
       ),
     );
   }

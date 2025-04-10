@@ -24,18 +24,13 @@ class _DecorSettingState extends State<DecorSetting> {
     return WidgetGroup(
       title: Text(s.decorControl),
       subtitle: Observer(builder: (context) => Text(settings.decor.name(s))),
-      child: LayoutBuilder(
-        builder:
-            (context, constraints) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Center(
-                child: Wrap(
-                  spacing: 8.0,
-                  runSpacing: 8.0,
-                  children: <Widget>[for (final decor in Decor.values) DecorItem(decor: decor)],
-                ),
-              ),
-            ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: Wrap(
+          spacing: 8.0,
+          runSpacing: 8.0,
+          children: <Widget>[for (final decor in Decor.values) DecorItem(decor: decor)],
+        ),
       ),
     );
   }
