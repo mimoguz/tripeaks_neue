@@ -26,8 +26,8 @@ class _ColourSettingState extends State<ColourSetting> {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         child: Wrap(
-          spacing: 16.0,
-          runSpacing: 16.0,
+          spacing: 12.0,
+          runSpacing: 12.0,
           children: <Widget>[for (final colour in DecorColour.values) ColourSwatch(colour: colour)],
         ),
       ),
