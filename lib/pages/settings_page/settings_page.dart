@@ -13,6 +13,7 @@ import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -119,6 +120,40 @@ final class SettingsPageBody extends StatelessWidget {
                               vertical: c.utilPageMargin / 2.0,
                             ),
                             child: NextGameItems(),
+                          ),
+                          SettingTile(
+                            title: "Test Settings",
+                            showArrow: true,
+                            subtitle: "Test value",
+                            location: Location.first,
+                          ),
+                          SettingTile(
+                            title: "Test Settings",
+                            showArrow: false,
+                            subtitle: "Test value",
+                            location: Location.centre,
+                            trailing: Switch(
+                              value: false,
+                              onChanged: (_) {},
+                              thumbIcon: const WidgetStateProperty.fromMap({
+                                WidgetState.selected: Icon(Icons.check),
+                                WidgetState.any: Icon(Icons.close),
+                              }),
+                            ),
+                          ),
+                          SettingTile(
+                            title: "Test Settings",
+                            showArrow: false,
+                            subtitle: "Test value",
+                            location: Location.last,
+                            trailing: Switch(
+                              value: true,
+                              onChanged: (_) {},
+                              thumbIcon: const WidgetStateProperty.fromMap({
+                                WidgetState.selected: Icon(Icons.check),
+                                WidgetState.any: Icon(Icons.close),
+                              }),
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(
