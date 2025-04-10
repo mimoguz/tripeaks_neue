@@ -46,6 +46,7 @@ class ExpandableBox extends StatelessWidget {
                             child: title,
                           ),
                         ),
+                        Icon(expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 24.0),
                       ],
                     ),
                   ),
