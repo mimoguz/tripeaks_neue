@@ -93,6 +93,12 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
+  /// Label of a control that cancels the current action.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelAction;
+
   /// Tooltip of a control that draws a card from the stock.
   ///
   /// In en, this message translates to:

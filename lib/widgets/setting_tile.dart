@@ -23,34 +23,43 @@ final class SettingTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final br = _borderRadius;
     return ListItemContainer(
       child: Padding(
-        padding: location != Location.first ? const EdgeInsets.only(top: 2.0) : EdgeInsets.zero,
+        padding: EdgeInsets.only(
+          left: c.utilPageMargin,
+          right: c.utilPageMargin,
+          top: location == Location.first || location == Location.only ? 0 : 3,
+        ),
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
-          elevation: 2.0,
+          elevation: 1.0,
           shadowColor: theme.shadowColor,
-          borderRadius: _borderRadius,
-          child: Padding(
-            padding: const EdgeInsets.all(c.cardPadding),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(title, style: theme.textTheme.titleSmall),
-                      if (subtitle != null)
-                        Text(
-                          subtitle!,
-                          style: theme.textTheme.labelMedium!.copyWith(color: theme.colorScheme.outline),
-                        ),
-                    ],
+          borderRadius: br,
+          child: InkWell(
+            borderRadius: br,
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.all(c.cardPadding),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(title, style: theme.textTheme.titleSmall),
+                        if (subtitle != null)
+                          Text(
+                            subtitle!,
+                            style: theme.textTheme.labelMedium!.copyWith(color: theme.colorScheme.outline),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-                if (trailing != null) trailing!,
-                if (showArrow) Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
-              ],
+                  if (trailing != null) trailing!,
+                  if (showArrow) Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+                ],
+              ),
             ),
           ),
         ),
@@ -62,6 +71,7 @@ final class SettingTile extends StatelessWidget {
     Location.first => _firstBorder,
     Location.centre => _centreBorder,
     Location.last => _lastBorder,
+    Location.only => _onlyBorder,
   };
 
   static const _firstBorder = BorderRadius.only(
@@ -79,6 +89,8 @@ final class SettingTile extends StatelessWidget {
     bottomLeft: Radius.circular(c.commonRadius),
     bottomRight: Radius.circular(c.commonRadius),
   );
+
+  static const _onlyBorder = c.commonBorderRadius;
 }
 
-enum Location { first, centre, last }
+enum Location { first, centre, last, only }

@@ -1,5 +1,11 @@
 {
     "@@locale": "en",
+    "cancelAction": "Cancel",
+    "@cancelAction": {
+        "type": "text",
+        "context": "general",
+        "description": "Label of a control that cancels the current action."
+    },
     "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {

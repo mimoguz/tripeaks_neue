@@ -13,6 +13,7 @@ import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 final class SettingsPage extends StatefulWidget {
@@ -126,6 +127,7 @@ final class SettingsPageBody extends StatelessWidget {
                             showArrow: true,
                             subtitle: "Test value",
                             location: Location.first,
+                            onTap: () => _testSelection(context),
                           ),
                           SettingTile(
                             title: "Test Settings",
@@ -174,6 +176,19 @@ final class SettingsPageBody extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _testSelection(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder:
+          (context) => SelectionDialog(
+            title: "Select Things",
+            options: <String>["Option 1", "Option 2", "Option 3"],
+            selected: 1,
+          ),
     );
   }
 }
