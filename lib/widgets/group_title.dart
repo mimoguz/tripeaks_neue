@@ -16,7 +16,7 @@ final class GroupTitle extends StatelessWidget {
         padding: EdgeInsets.only(
           left: c.utilPageMargin + c.cardPadding,
           right: c.utilPageMargin,
-          top: isFirst ? c.utilPageMargin : 24.0,
+          top: isFirst ? c.utilPageMargin + 4.0 : 24.0,
           bottom: 8.0,
         ),
         child: Row(
