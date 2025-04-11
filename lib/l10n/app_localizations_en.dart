@@ -74,7 +74,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nextGameSettingGroupTitle => 'Next Game';
 
   @override
-  String get showAllControl => 'Values of closed cards';
+  String get showAllControl => 'Show values of closed cards';
 
   @override
   String get showAllOffLabel => 'Hidden';
@@ -83,13 +83,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showAllOnLabel => 'Visible';
 
   @override
-  String get startEmptyControl => 'Discard pile at start';
+  String get startEmptyControl => 'Start with an empty discard pile';
 
   @override
-  String get startEmptyOffLabel => 'Has one card';
+  String get startEmptyOffLabel => 'Start with one card';
 
   @override
-  String get startEmptyOnLabel => 'Empty';
+  String get startEmptyOnLabel => 'Start empty';
 
   @override
   String get themeModeControl => 'Theme mode';

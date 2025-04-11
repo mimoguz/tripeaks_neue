@@ -222,7 +222,7 @@ abstract class AppLocalizations {
   /// Label of a control that sets if the values of closed cards should be shown.
   ///
   /// In en, this message translates to:
-  /// **'Values of closed cards'**
+  /// **'Show values of closed cards'**
   String get showAllControl;
 
   /// Value label of showAll control when it is off.
@@ -240,19 +240,19 @@ abstract class AppLocalizations {
   /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
   ///
   /// In en, this message translates to:
-  /// **'Discard pile at start'**
+  /// **'Start with an empty discard pile'**
   String get startEmptyControl;
 
   /// Value label of startEmpty control when it is off.
   ///
   /// In en, this message translates to:
-  /// **'Has one card'**
+  /// **'Start with one card'**
   String get startEmptyOffLabel;
 
   /// Value label of startEmpty control when it is on.
   ///
   /// In en, this message translates to:
-  /// **'Empty'**
+  /// **'Start empty'**
   String get startEmptyOnLabel;
 
   /// Label of a control that sets application theme mode.

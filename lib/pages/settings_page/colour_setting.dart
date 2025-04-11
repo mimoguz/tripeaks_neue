@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
 
@@ -18,16 +19,19 @@ class ColourSetting extends StatelessWidget {
       builder: (context) {
         return SettingTile(
           title: s.decorColourControl,
-          location: Location.first,
+          location: Location.centre,
           onTap: () => _showSelection(context, settings),
           subtitle: settings.decorColour.label(s),
           showArrow: true,
           trailing: Padding(
             padding: const EdgeInsets.only(right: 12.0),
             child: Container(
-              width: 42.0,
-              height: 42.0,
-              decoration: BoxDecoration(color: settings.decorColour.background, shape: BoxShape.circle),
+              width: 64.0,
+              height: 24.0,
+              decoration: BoxDecoration(
+                color: settings.decorColour.background,
+                borderRadius: c.commonBorderRadius,
+              ),
             ),
           ),
         );
@@ -129,12 +133,12 @@ class _ColourSwatchState extends State<ColourSwatch> {
                             widget.isSelected
                                 ? Icon(
                                   Icons.radio_button_checked,
-                                  key: ValueKey("selected"),
+                                  key: const ValueKey("selected"),
                                   color: foreground,
                                 )
                                 : Icon(
                                   Icons.radio_button_off,
-                                  key: ValueKey("unselected"),
+                                  key: const ValueKey("unselected"),
                                   color: foreground,
                                 ),
                       );

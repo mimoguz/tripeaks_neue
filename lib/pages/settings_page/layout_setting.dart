@@ -36,7 +36,7 @@ class LayoutSetting extends StatelessWidget {
           (context) => SelectionDialog(
             title: s.layoutControl,
             selected: session.layout.index,
-            options: Peaks.values.map((e) => e.label(AppLocalizations.of(context)!)).toList(),
+            options: Peaks.values.map((e) => e.label(s)).toList(),
           ),
     );
     if (result >= 0) {

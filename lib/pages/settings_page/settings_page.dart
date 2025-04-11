@@ -11,11 +11,8 @@ import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/group_title.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
-import 'package:tripeaks_neue/widgets/selection_dialog.dart';
-import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -108,21 +105,16 @@ final class SettingsPageBody extends StatelessWidget {
                       child: ListView(
                         shrinkWrap: true,
                         children: [
+                          const SizedBox(height: c.utilPageMargin),
                           const ShowAllSetting(),
                           GroupTitle(s.nextGameSettingGroupTitle),
                           const LayoutSetting(),
                           const StartEmptySetting(),
                           GroupTitle(s.interfaceSettingGroupTitle),
+                          const SoundSetting(),
+                          const ThemeModeSetting(),
                           const ColourSetting(),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(
-                              c.utilPageMargin,
-                              c.utilPageMargin / 2.0,
-                              c.utilPageMargin,
-                              c.utilPageMargin,
-                            ),
-                            child: UiItems(),
-                          ),
+                          const DecorSetting(),
                         ],
                       ),
                     ),
@@ -132,60 +124,6 @@ final class SettingsPageBody extends StatelessWidget {
             ),
           ),
         ),
-      ],
-    );
-  }
-
-  void _testSelection(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierColor: Colors.transparent,
-      builder:
-          (context) => SelectionDialog(
-            title: "Select Things",
-            options: <String>["Option 1", "Option 2", "Option 3"],
-            selected: 1,
-          ),
-    );
-  }
-}
-
-final class GameItems extends StatelessWidget {
-  const GameItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GroupTile(children: [ShowAllSetting()]);
-  }
-}
-
-final class NextGameItems extends StatelessWidget {
-  const NextGameItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GroupTile(
-      title: AppLocalizations.of(context)!.nextGameSettingGroupTitle,
-      children: const [LayoutSetting(), GroupTileDivider(), StartEmptySetting()],
-    );
-  }
-}
-
-final class UiItems extends StatelessWidget {
-  const UiItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GroupTile(
-      title: AppLocalizations.of(context)!.interfaceSettingGroupTitle,
-      children: const <Widget>[
-        SoundSetting(),
-        GroupTileDivider(),
-        ThemeModeSetting(),
-        GroupTileDivider(),
-        ColourSetting(),
-        GroupTileDivider(),
-        DecorSetting(),
       ],
     );
   }
