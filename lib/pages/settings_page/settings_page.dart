@@ -12,6 +12,7 @@ import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/group_title.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
@@ -122,6 +123,7 @@ final class SettingsPageBody extends StatelessWidget {
                             ),
                             child: NextGameItems(),
                           ),
+                          GroupTitle("Test Group"),
                           SettingTile(
                             title: "Test Settings",
                             showArrow: true,
