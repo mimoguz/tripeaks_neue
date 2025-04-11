@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
-import 'package:tripeaks_neue/widgets/list_tile.dart';
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/widget_group.dart';
 
 class LayoutSetting extends StatelessWidget {
   const LayoutSetting({super.key});
@@ -34,6 +31,7 @@ class LayoutSetting extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     final result = await showDialog(
       context: context,
+      barrierColor: Colors.transparent,
       builder:
           (context) => SelectionDialog(
             title: s.layoutControl,

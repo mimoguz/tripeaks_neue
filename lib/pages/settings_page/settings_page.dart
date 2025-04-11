@@ -112,6 +112,8 @@ final class SettingsPageBody extends StatelessWidget {
                           GroupTitle(s.nextGameSettingGroupTitle),
                           const LayoutSetting(),
                           const StartEmptySetting(),
+                          GroupTitle(s.interfaceSettingGroupTitle),
+                          const ColourSetting(),
                           Padding(
                             padding: EdgeInsets.fromLTRB(
                               c.utilPageMargin,

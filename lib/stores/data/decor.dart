@@ -59,7 +59,7 @@ enum DecorColour {
   final Color foreground;
   final Color controlForeground;
 
-  String name(AppLocalizations s) => switch (this) {
+  String label(AppLocalizations s) => switch (this) {
     DecorColour.red => s.redColourLabel,
     DecorColour.orange => s.orangeColourLabel,
     DecorColour.amber => s.amberColourLabel,
