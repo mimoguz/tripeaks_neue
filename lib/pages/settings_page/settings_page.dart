@@ -115,6 +115,7 @@ final class SettingsPageBody extends StatelessWidget {
                           const ThemeModeSetting(),
                           const ColourSetting(),
                           const DecorSetting(),
+                          const SizedBox(height: c.utilPageMargin),
                         ],
                       ),
                     ),

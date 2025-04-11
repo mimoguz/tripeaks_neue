@@ -3,20 +3,21 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
 final class GroupTitle extends StatelessWidget {
-  const GroupTitle(this.title, {super.key});
+  const GroupTitle(this.title, {super.key, this.isFirst = false});
 
   final String title;
+  final bool isFirst;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ListItemContainer(
       child: Padding(
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: c.utilPageMargin + c.cardPadding,
           right: c.utilPageMargin,
-          top: 32,
-          bottom: 8,
+          top: isFirst ? c.utilPageMargin : 24.0,
+          bottom: 8.0,
         ),
         child: Row(
           children: [
