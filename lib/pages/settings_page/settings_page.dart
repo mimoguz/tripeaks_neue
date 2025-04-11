@@ -94,6 +94,7 @@ final class SettingsPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppLocalizations.of(context)!;
     return Column(
       children: [
         Expanded(
@@ -107,58 +108,10 @@ final class SettingsPageBody extends StatelessWidget {
                       child: ListView(
                         shrinkWrap: true,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                              c.utilPageMargin,
-                              c.utilPageMargin,
-                              c.utilPageMargin,
-                              c.utilPageMargin / 2.0,
-                            ),
-                            child: GameItems(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: c.utilPageMargin,
-                              vertical: c.utilPageMargin / 2.0,
-                            ),
-                            child: NextGameItems(),
-                          ),
-                          GroupTitle("Test Group"),
-                          SettingTile(
-                            title: "Test Settings",
-                            showArrow: true,
-                            subtitle: "Test value",
-                            location: Location.first,
-                            onTap: () => _testSelection(context),
-                          ),
-                          SettingTile(
-                            title: "Test Settings",
-                            showArrow: false,
-                            subtitle: "Test value",
-                            location: Location.centre,
-                            trailing: Switch(
-                              value: false,
-                              onChanged: (_) {},
-                              thumbIcon: const WidgetStateProperty.fromMap({
-                                WidgetState.selected: Icon(Icons.check),
-                                WidgetState.any: Icon(Icons.close),
-                              }),
-                            ),
-                          ),
-                          SettingTile(
-                            title: "Test Settings",
-                            showArrow: false,
-                            subtitle: "Test value",
-                            location: Location.last,
-                            trailing: Switch(
-                              value: true,
-                              onChanged: (_) {},
-                              thumbIcon: const WidgetStateProperty.fromMap({
-                                WidgetState.selected: Icon(Icons.check),
-                                WidgetState.any: Icon(Icons.close),
-                              }),
-                            ),
-                          ),
+                          const ShowAllSetting(),
+                          GroupTitle(s.nextGameSettingGroupTitle),
+                          const LayoutSetting(),
+                          const StartEmptySetting(),
                           Padding(
                             padding: EdgeInsets.fromLTRB(
                               c.utilPageMargin,

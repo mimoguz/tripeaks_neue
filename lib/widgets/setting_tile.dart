@@ -29,7 +29,7 @@ final class SettingTile extends StatelessWidget {
         padding: EdgeInsets.only(
           left: c.utilPageMargin,
           right: c.utilPageMargin,
-          top: location == Location.first || location == Location.only ? 0 : 3,
+          top: location == Location.first || location == Location.only ? 0.0 : 3.0,
         ),
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
@@ -77,20 +77,22 @@ final class SettingTile extends StatelessWidget {
   static const _firstBorder = BorderRadius.only(
     topLeft: Radius.circular(c.commonRadius),
     topRight: Radius.circular(c.commonRadius),
-    bottomLeft: Radius.circular(2.0),
-    bottomRight: Radius.circular(2.0),
+    bottomLeft: Radius.circular(_smallRadius),
+    bottomRight: Radius.circular(_smallRadius),
   );
 
-  static const _centreBorder = BorderRadius.all(Radius.circular(2.0));
+  static const _centreBorder = BorderRadius.all(Radius.circular(_smallRadius));
 
   static const _lastBorder = BorderRadius.only(
-    topLeft: Radius.circular(2.0),
-    topRight: Radius.circular(2.0),
+    topLeft: Radius.circular(_smallRadius),
+    topRight: Radius.circular(_smallRadius),
     bottomLeft: Radius.circular(c.commonRadius),
     bottomRight: Radius.circular(c.commonRadius),
   );
 
   static const _onlyBorder = c.commonBorderRadius;
+
+  static const _smallRadius = 3.0;
 }
 
 enum Location { first, centre, last, only }

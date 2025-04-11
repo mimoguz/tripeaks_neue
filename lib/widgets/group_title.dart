@@ -12,7 +12,12 @@ final class GroupTitle extends StatelessWidget {
     final theme = Theme.of(context);
     return ListItemContainer(
       child: Padding(
-        padding: const EdgeInsets.only(left: c.utilPageMargin, right: c.utilPageMargin, top: 24, bottom: 12),
+        padding: const EdgeInsets.only(
+          left: c.utilPageMargin + c.cardPadding,
+          right: c.utilPageMargin,
+          top: 32,
+          bottom: 8,
+        ),
         child: Row(
           children: [
             Text(
