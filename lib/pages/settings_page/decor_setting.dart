@@ -25,7 +25,7 @@ class DecorSetting extends StatelessWidget {
           subtitle: settings.decor.name(s),
           showArrow: true,
           trailing: Padding(
-            padding: const EdgeInsets.only(right: 12.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: ClipRRect(
               borderRadius: c.commonBorderRadius,
               child: Container(
@@ -118,15 +118,12 @@ class _DecorItemState extends State<DecorItem> {
       width: _sideLength,
       height: _sideLength,
       child: Material(
-        borderRadius: _borderRadius,
         clipBehavior: Clip.antiAlias,
         child: InkWell(
-          borderRadius: _borderRadius,
           onTap: widget.onTap,
           focusNode: _focus,
           child: Ink(
             decoration: BoxDecoration(
-              borderRadius: _borderRadius,
               border: Border.all(width: 2.0, color: _borderColour!),
               color: widget.isSelected ? colours.primary : colours.surfaceContainer,
             ),

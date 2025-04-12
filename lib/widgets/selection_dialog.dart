@@ -19,9 +19,11 @@ class SelectionDialog extends StatelessWidget {
         children: [
           for (final (index, item) in options.indexed)
             MyListTile(
-              leading: Icon(
-                index == selected ? Icons.radio_button_checked : Icons.radio_button_off,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              leading: Radio<int>(
+                value: index,
+                groupValue: selected,
+                visualDensity: VisualDensity.compact,
+                onChanged: (value) => Navigator.pop(context, value ?? -1),
               ),
               title: Text(item),
               onTap: () => Navigator.pop(context, index),

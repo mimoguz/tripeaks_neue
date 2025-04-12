@@ -24,7 +24,7 @@ class ColourSetting extends StatelessWidget {
           subtitle: settings.decorColour.label(s),
           showArrow: true,
           trailing: Padding(
-            padding: const EdgeInsets.only(right: 12.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: Container(
               width: 64.0,
               height: 24.0,
