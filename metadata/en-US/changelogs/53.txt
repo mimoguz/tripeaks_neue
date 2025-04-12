@@ -1,0 +1,3 @@
+- Added card back colour customisation.
+- Tweaked the swipe indicator.
+- Settings page is now more compact.

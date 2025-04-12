@@ -96,10 +96,12 @@
                 </ul>
             </description>
         </release>
-        <release version="0.8.5" date="2025-04-05">
+        <release version="0.9.0" date="2025-04-12">
             <description>
                 <ul>
-                    <li>Added card back colour customisation</li>
+                    <li>Added card back colour customisation.</li>
+                    <li>Tweaked the swipe indicator.</li>
+                    <li>Settings page is now more compact.</li>
                 </ul>
             </description>
         </release>
