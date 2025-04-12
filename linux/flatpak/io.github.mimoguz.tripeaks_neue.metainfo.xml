@@ -3,7 +3,7 @@
     <id>io.github.mimoguz.tripeaks_neue</id>
 
     <name>TriPeaks NEUE</name>
-    <summary>A simple Tri Peaks game</summary>
+    <summary>Play Tri Peaks</summary>
     <url type="homepage">https://github.com/mimoguz/tripeaks_neue</url>
     <url type="bugtracker">https://github.com/mimoguz/tripeaks_neue/issues</url>
     <url type="donation">https://buymeacoffee.com/mimoguz</url>
@@ -24,7 +24,7 @@
 
     <description>
         <p>
-            TriPeaks NEUE is a simple Tri Peaks patience (solitaire) game.
+            A simple Tri Peaks patience (solitaire) game.
         </p>
         <p> Main Features:</p>
         <ul>
@@ -39,6 +39,7 @@
 
     <categories>
         <category>Game</category>
+        <category>CardGame</category>
     </categories>
 
     <keywords>
@@ -48,10 +49,9 @@
         <keyword>solitaire</keyword>
     </keywords>
 
-
     <branding>
-        <color type="primary" scheme_preference="light">#f3f3fa</color>
-        <color type="primary" scheme_preference="dark">#1a1b20</color>
+        <color type="primary" scheme_preference="light">#e57373</color>
+        <color type="primary" scheme_preference="dark">#b84040</color>
     </branding>
 
     <content_rating type="oars-1.1" />
@@ -93,6 +93,13 @@
                     <li>The card counter now also shows the current chain (circle indicators).</li>
                     <li>"Dependencies" card now also includes indirect dependencies.</li>
                     <li>Added a new card decoration.</li>
+                </ul>
+            </description>
+        </release>
+        <release version="0.8.5" date="2025-04-05">
+            <description>
+                <ul>
+                    <li>Added card back colour customisation</li>
                 </ul>
             </description>
         </release>

@@ -9,6 +9,9 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get cancelAction => 'Cancel';
+
+  @override
   String get drawTooltip => 'Draw';
 
   @override
@@ -71,7 +74,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nextGameSettingGroupTitle => 'Next Game';
 
   @override
-  String get showAllControl => 'Values of closed cards';
+  String get showAllControl => 'Show values of closed cards';
 
   @override
   String get showAllOffLabel => 'Hidden';
@@ -80,13 +83,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showAllOnLabel => 'Visible';
 
   @override
-  String get startEmptyControl => 'Discard pile at start';
+  String get startEmptyControl => 'Start with an empty discard pile';
 
   @override
-  String get startEmptyOffLabel => 'Has one card';
+  String get startEmptyOffLabel => 'Start with one card';
 
   @override
-  String get startEmptyOnLabel => 'Empty';
+  String get startEmptyOnLabel => 'Start empty';
 
   @override
   String get themeModeControl => 'Theme mode';
@@ -147,6 +150,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get solarDecorLabel => 'Solar';
+
+  @override
+  String get decorColourControl => 'Card back colour';
+
+  @override
+  String get redColourLabel => 'Red';
+
+  @override
+  String get orangeColourLabel => 'Orange';
+
+  @override
+  String get amberColourLabel => 'Amber';
+
+  @override
+  String get greenColourLabel => 'Green';
+
+  @override
+  String get cyanColourLabel => 'Cyan';
+
+  @override
+  String get blueColourLabel => 'Blue';
+
+  @override
+  String get violetColourLabel => 'Violet';
 
   @override
   String get selectLayoutDialogTitle => 'Select Layout';
@@ -234,4 +261,94 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get licenseDialogCloseAction => 'Close';
+
+  @override
+  String get wikiLinkAlt => 'Tri Peaks on Wikipedia';
+
+  @override
+  String get wikiLinkText => 'Wikipedia article';
+
+  @override
+  String get howToP01 => 'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
+
+  @override
+  String get howToRichP02 => 'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
+
+  @override
+  String get howToRichP03 => 'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
+
+  @override
+  String get howToP04 => 'When a face-down card is no longer blocked by other cards, it is flipped face-up.';
+
+  @override
+  String get howToP05 => 'If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
+
+  @override
+  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
+
+  @override
+  String get howToP07 => 'In addition to the standard game, this app offers:';
+
+  @override
+  String get howToP08 => 'Three additional board layouts,';
+
+  @override
+  String get howToP09 => 'An option to show the values of face-down cards,';
+
+  @override
+  String get howToP10 => 'An option to start with an empty discard pile, allowing the player to choose any starting card.';
+
+  @override
+  String get interactionP01 => 'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
+
+  @override
+  String get interactionRichP02 => 'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
+
+  @override
+  String get interactionP03 => 'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.';
+
+  @override
+  String get interactionP04 => 'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
+
+  @override
+  String get interactionP05 => 'This is the menu button.';
+
+  @override
+  String get interactionP06 => 'From the menu, different game modes can be selected by visiting the settings page,';
+
+  @override
+  String get interactionP07 => 'or by using \"New Game with Layout...\" option.';
+
+  @override
+  String get interactionP08 => 'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
+
+  @override
+  String get interactionP09 => 'The game supports both portrait and landscape orientations.';
+
+  @override
+  String get interactionP10 => 'Other Shorcuts';
+
+  @override
+  String get interactionP12 => 'Back';
+
+  @override
+  String get interactionP13 => 'Back (alternative)';
+
+  @override
+  String get shortcutTitle => 'Shortcut: ';
+
+  @override
+  String get scoringRichP01 => 'Removing cards from the board one after the other creates a _chain_.';
+
+  @override
+  String get scoringP02 => 'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. ';
+
+  @override
+  String get scoringRichP03 => 'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.';
+
+  @override
+  String get scoringRichP04 => 'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ';
+
+  @override
+  String get scoringP05 => 'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
 }

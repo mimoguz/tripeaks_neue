@@ -6,5 +6,5 @@ Icon=icon.svg
 Terminal=false
 Type=Application
 Categories=Game;
-Keywords=Card,Casual,Game;
+Keywords=cards,card-game,casual,solitaire,patience;
 StartupNotify=false

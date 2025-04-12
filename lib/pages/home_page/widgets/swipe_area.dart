@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _SwipeAreaState extends State<SwipeArea> {
   Offset _start = Offset.zero;
   Offset _end = Offset.zero;
   Color _fill = Colors.transparent;
+  bool _drawAction = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,18 @@ class _SwipeAreaState extends State<SwipeArea> {
       onVerticalDragCancel: _onDragCancel,
       onVerticalDragUpdate: (d) => _onDragUpdate(d, Theme.of(context).colorScheme.tertiary),
       child: SizedBox.expand(
-        child: _watching ? CustomPaint(painter: _GesturePainter(_start, _end, _fill)) : null,
+        child:
+            _watching
+                ? CustomPaint(
+                  painter: _GesturePainter(
+                    from: _start,
+                    to: _end,
+                    colour: _fill,
+                    actionColour: Theme.of(context).colorScheme.surfaceContainerLow,
+                    drawAction: _drawAction,
+                  ),
+                )
+                : null,
       ),
     );
   }
@@ -41,14 +54,20 @@ class _SwipeAreaState extends State<SwipeArea> {
       return;
     }
     final distance = _start.dy - details.localPosition.dy;
-    if (distance <= _distanceThreshold) {
-      setState(() => _fill = Colors.transparent);
+    if (distance <= 0.0) {
+      setState(() {
+        _fill = Colors.transparent;
+        if (_drawAction) {
+          _drawAction = false;
+        }
+      });
       return;
     }
-    final t = max(0.05, min(0.25, (distance - _distanceThreshold) / (_distanceThreshold * 10.0)));
+    final t = max(0.0, min(1.0, distance / _distanceThreshold) * 0.3);
     setState(() {
       _end = details.localPosition;
       _fill = tintColour.withValues(alpha: t);
+      _drawAction = distance > _distanceThreshold;
     });
   }
 
@@ -83,11 +102,19 @@ class _SwipeAreaState extends State<SwipeArea> {
 }
 
 class _GesturePainter extends CustomPainter {
-  _GesturePainter(this.from, this.to, this.color) : _paint = Paint()..color = color;
+  _GesturePainter({
+    required this.from,
+    required this.to,
+    required this.colour,
+    required this.actionColour,
+    required this.drawAction,
+  }) : _paint = Paint()..color = colour;
 
   final Offset from;
   final Offset to;
-  final Color color;
+  final Color colour;
+  final Color actionColour;
+  final bool drawAction;
   final Paint _paint;
 
   @override
@@ -100,11 +127,27 @@ class _GesturePainter extends CustomPainter {
       _radius,
     );
     canvas.drawRRect(rect, _paint);
+    if (drawAction) {
+      _paint
+        ..color = actionColour
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 4.0;
+      canvas.drawPath(
+        Path()
+          ..moveTo(from.dx - 10, from.dy)
+          ..lineTo(from.dx - 3, from.dy + 8)
+          ..lineTo(from.dx + 10, from.dy - 8),
+        _paint,
+      );
+      _paint
+        ..color = colour
+        ..style = PaintingStyle.fill;
+    }
   }
 
   @override
   bool shouldRepaint(_GesturePainter oldDelegate) {
-    return oldDelegate.color != color || oldDelegate.from != from || oldDelegate.to != to;
+    return oldDelegate.colour != colour || oldDelegate.from != from || oldDelegate.to != to;
   }
 
   static const Radius _radius = Radius.circular(24.0);

@@ -13,6 +13,7 @@ final class GroupTile extends StatelessWidget {
     return ListItemContainer(
       child: Card(
         color: Theme.of(context).colorScheme.surfaceContainerHigh,
+        elevation: 1.0,
         child: Padding(
           padding: const EdgeInsets.all(c.cardPadding),
           child: Column(

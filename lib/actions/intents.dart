@@ -87,6 +87,12 @@ final class SetDecorIntent extends Intent {
   final Decor value;
 }
 
+final class SetDecorColourIntent extends Intent {
+  const SetDecorColourIntent(this.value);
+
+  final DecorColour value;
+}
+
 final class SetLayoutIntent extends Intent {
   const SetLayoutIntent(this.value);
 

@@ -93,6 +93,12 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
+  /// Label of a control that cancels the current action.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelAction;
+
   /// Tooltip of a control that draws a card from the stock.
   ///
   /// In en, this message translates to:
@@ -216,7 +222,7 @@ abstract class AppLocalizations {
   /// Label of a control that sets if the values of closed cards should be shown.
   ///
   /// In en, this message translates to:
-  /// **'Values of closed cards'**
+  /// **'Show values of closed cards'**
   String get showAllControl;
 
   /// Value label of showAll control when it is off.
@@ -234,19 +240,19 @@ abstract class AppLocalizations {
   /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
   ///
   /// In en, this message translates to:
-  /// **'Discard pile at start'**
+  /// **'Start with an empty discard pile'**
   String get startEmptyControl;
 
   /// Value label of startEmpty control when it is off.
   ///
   /// In en, this message translates to:
-  /// **'Has one card'**
+  /// **'Start with one card'**
   String get startEmptyOffLabel;
 
   /// Value label of startEmpty control when it is on.
   ///
   /// In en, this message translates to:
-  /// **'Empty'**
+  /// **'Start empty'**
   String get startEmptyOnLabel;
 
   /// Label of a control that sets application theme mode.
@@ -368,6 +374,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Solar'**
   String get solarDecorLabel;
+
+  /// Label of a control that sets the colour that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card back colour'**
+  String get decorColourControl;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Red'**
+  String get redColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Orange'**
+  String get orangeColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Amber'**
+  String get amberColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Green'**
+  String get greenColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Cyan'**
+  String get cyanColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get blueColourLabel;
+
+  /// Label of a decoration colour variant.
+  ///
+  /// In en, this message translates to:
+  /// **'Violet'**
+  String get violetColourLabel;
 
   /// Title of the dialog that will open when 'New Game with Layout...' action is called.
   ///
@@ -542,6 +596,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Close'**
   String get licenseDialogCloseAction;
+
+  /// Alt text for Wikipedia link.
+  ///
+  /// In en, this message translates to:
+  /// **'Tri Peaks on Wikipedia'**
+  String get wikiLinkAlt;
+
+  /// Text for Wikipedia link.
+  ///
+  /// In en, this message translates to:
+  /// **'Wikipedia article'**
+  String get wikiLinkText;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
+  String get howToP01;
+
+  /// How to play text, contains formatting.
+  ///
+  /// In en, this message translates to:
+  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
+  String get howToRichP02;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
+  String get howToRichP03;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'When a face-down card is no longer blocked by other cards, it is flipped face-up.'**
+  String get howToP04;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
+  String get howToP05;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'The game ends when the board is cleared or no more moves are possible.'**
+  String get howToP06;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'In addition to the standard game, this app offers:'**
+  String get howToP07;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'Three additional board layouts,'**
+  String get howToP08;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'An option to show the values of face-down cards,'**
+  String get howToP09;
+
+  /// How to play text.
+  ///
+  /// In en, this message translates to:
+  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
+  String get howToP10;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
+  String get interactionP01;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
+  String get interactionRichP02;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.'**
+  String get interactionP03;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
+  String get interactionP04;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the menu button.'**
+  String get interactionP05;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
+  String get interactionP06;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'or by using \"New Game with Layout...\" option.'**
+  String get interactionP07;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
+  String get interactionP08;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'The game supports both portrait and landscape orientations.'**
+  String get interactionP09;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Shorcuts'**
+  String get interactionP10;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get interactionP12;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Back (alternative)'**
+  String get interactionP13;
+
+  /// Shortcut hint title
+  ///
+  /// In en, this message translates to:
+  /// **'Shortcut: '**
+  String get shortcutTitle;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'Removing cards from the board one after the other creates a _chain_.'**
+  String get scoringRichP01;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. '**
+  String get scoringP02;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.'**
+  String get scoringRichP03;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. '**
+  String get scoringRichP04;
+
+  /// Scoring description.
+  ///
+  /// In en, this message translates to:
+  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
+  String get scoringP05;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

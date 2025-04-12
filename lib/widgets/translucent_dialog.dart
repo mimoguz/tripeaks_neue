@@ -30,7 +30,7 @@ class TranslucentDialog extends StatelessWidget {
                 borderRadius: c.commonBorderRadius,
               ),
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   spacing: 16.0,

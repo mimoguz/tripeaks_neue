@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/pages/statistics_page/summary.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/group_title.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 final class StatisticsTab extends StatelessWidget {
@@ -26,42 +27,22 @@ final class StatisticsTab extends StatelessWidget {
             child: ScrollIndicator(
               child: ListView(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      c.utilPageMargin,
-                      c.utilPageMargin,
-                      c.utilPageMargin,
-                      c.utilPageMargin / 2.0,
-                    ),
-                    child: Summary(statistics),
-                  ),
+                  GroupTitle(s.statisticsSummary, isFirst: true),
+                  Summary(statistics),
+                  if (statistics.lastGame != null) GroupTitle(s.lastGameStatistics),
                   if (statistics.lastGame != null)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: c.utilPageMargin,
-                        vertical: c.utilPageMargin / 2.0,
-                      ),
-                      child: GroupTile(
-                        title: s.lastGameStatistics,
-                        children: [GameEntry(place: -1, game: statistics.lastGame!, showLayout: showLayout)],
-                      ),
+                    GroupTile(
+                      children: [GameEntry(place: -1, game: statistics.lastGame!, showLayout: showLayout)],
                     ),
+                  if (statistics.bestGames.isNotEmpty) GroupTitle(s.bestGamesStatistics),
                   if (statistics.bestGames.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        c.utilPageMargin,
-                        c.utilPageMargin / 2.0,
-                        c.utilPageMargin,
-                        c.utilPageMargin,
-                      ),
-                      child: GroupTile(
-                        title: s.bestGamesStatistics,
-                        children: [
-                          for (final (index, game) in statistics.bestGames.indexed)
-                            GameEntry(place: index + 1, game: game, showLayout: showLayout),
-                        ],
-                      ),
+                    GroupTile(
+                      children: [
+                        for (final (index, game) in statistics.bestGames.indexed)
+                          GameEntry(place: index + 1, game: game, showLayout: showLayout),
+                      ],
                     ),
+                  const SizedBox(height: c.utilPageMargin),
                 ],
               ),
             ),

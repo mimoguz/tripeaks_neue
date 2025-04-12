@@ -30,7 +30,7 @@ class _HowtoTabState extends State<HowtoTab> with AutomaticKeepAliveClientMixin<
           children: [
             ExpandableBox(
               expanded: _expandIndex == 0,
-              title: Text("Playing TriPeaks"),
+              title: Text("Playing Tri Peaks"),
               icon: Icon(Icons.play_arrow, color: colours.outline),
               onTap: () => _onTap(0),
               child: Column(children: [Flexible(child: HowToPlay())]),

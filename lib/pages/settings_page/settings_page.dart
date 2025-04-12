@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
@@ -10,7 +11,7 @@ import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/group_title.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 final class SettingsPage extends StatefulWidget {
@@ -44,6 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
         SetShowAllIntent: SetShowAllAction(),
         SetStartEmptyIntent: SetStartEmptyAction(),
         SetDecorIntent: SetDecorAction(),
+        SetDecorColourIntent: SetDecorColourAction(),
         SetLayoutIntent: SetLayoutAction(),
         SetSoundModeIntent: SetSoundModeAction(),
         ExitIntent: ExitAction(),
@@ -89,6 +91,7 @@ final class SettingsPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = AppLocalizations.of(context)!;
     return Column(
       children: [
         Expanded(
@@ -102,31 +105,17 @@ final class SettingsPageBody extends StatelessWidget {
                       child: ListView(
                         shrinkWrap: true,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                              c.utilPageMargin,
-                              c.utilPageMargin,
-                              c.utilPageMargin,
-                              c.utilPageMargin / 2.0,
-                            ),
-                            child: GameItems(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: c.utilPageMargin,
-                              vertical: c.utilPageMargin / 2.0,
-                            ),
-                            child: NextGameItems(),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(
-                              c.utilPageMargin,
-                              c.utilPageMargin / 2.0,
-                              c.utilPageMargin,
-                              c.utilPageMargin,
-                            ),
-                            child: UiItems(),
-                          ),
+                          const SizedBox(height: c.utilPageMargin),
+                          const ShowAllSetting(),
+                          GroupTitle(s.nextGameSettingGroupTitle),
+                          const LayoutSetting(),
+                          const StartEmptySetting(),
+                          GroupTitle(s.interfaceSettingGroupTitle),
+                          const SoundSetting(),
+                          const ThemeModeSetting(),
+                          const ColourSetting(),
+                          const DecorSetting(),
+                          const SizedBox(height: c.utilPageMargin),
                         ],
                       ),
                     ),
@@ -136,45 +125,6 @@ final class SettingsPageBody extends StatelessWidget {
             ),
           ),
         ),
-      ],
-    );
-  }
-}
-
-final class GameItems extends StatelessWidget {
-  const GameItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GroupTile(children: [ShowAllSetting()]);
-  }
-}
-
-final class NextGameItems extends StatelessWidget {
-  const NextGameItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GroupTile(
-      title: AppLocalizations.of(context)!.nextGameSettingGroupTitle,
-      children: const [LayoutSetting(), GroupTileDivider(), StartEmptySetting()],
-    );
-  }
-}
-
-final class UiItems extends StatelessWidget {
-  const UiItems({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GroupTile(
-      title: AppLocalizations.of(context)!.interfaceSettingGroupTitle,
-      children: const <Widget>[
-        SoundSetting(),
-        GroupTileDivider(),
-        ThemeModeSetting(),
-        GroupTileDivider(),
-        DecorSetting(),
       ],
     );
   }

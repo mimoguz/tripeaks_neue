@@ -1,5 +1,11 @@
 {
     "@@locale": "en",
+    "cancelAction": "Cancel",
+    "@cancelAction": {
+        "type": "text",
+        "context": "general",
+        "description": "Label of a control that cancels the current action."
+    },
     "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {
@@ -132,7 +138,7 @@
         "description": "Title of the settings group that contains settings which will be used starting from next new game."
     },
     "@_SETTINGS_PAGE__SHOW_ALL_SETTING": {},
-    "showAllControl": "Values of closed cards",
+    "showAllControl": "Show values of closed cards",
     "@showAllControl": {
         "type": "text",
         "context": "settings:showAllSetting",
@@ -151,19 +157,19 @@
         "description": "Value label of showAll control when it is on."
     },
     "@_SETTINGS_PAGE__START_EMPTY_SETTING": {},
-    "startEmptyControl": "Discard pile at start",
+    "startEmptyControl": "Start with an empty discard pile",
     "@startEmptyControl": {
         "type": "text",
         "context": "settings:startEmptySetting",
         "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
     },
-    "startEmptyOffLabel": "Has one card",
+    "startEmptyOffLabel": "Start with one card",
     "@startEmptyOffLabel": {
         "type": "text",
         "context": "settings",
         "description": "Value label of startEmpty control when it is off."
     },
-    "startEmptyOnLabel": "Empty",
+    "startEmptyOnLabel": "Start empty",
     "@startEmptyOnLabel": {
         "type": "text",
         "context": "settings",
@@ -292,6 +298,54 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a decoration variant."
+    },
+    "decorColourControl": "Card back colour",
+    "@decorColourControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets the colour that is used on the back of the cards."
+    },
+    "redColourLabel": "Red",
+    "@redColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "orangeColourLabel": "Orange",
+    "@orangeColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "amberColourLabel": "Amber",
+    "@amberColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "greenColourLabel": "Green",
+    "@greenColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "cyanColourLabel": "Cyan",
+    "@cyanColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "blueColourLabel": "Blue",
+    "@blueColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
+    },
+    "violetColourLabel": "Violet",
+    "@violetColourLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration colour variant."
     },
     "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
@@ -472,5 +526,188 @@
         "type": "text",
         "context": "licenseDialog",
         "description": "Label of a button that closes the license dialog."
+    },
+    "@_HOW_TO_PLAY": {},
+    "wikiLinkAlt": "Tri Peaks on Wikipedia",
+    "@wikiLinkAlt": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "Alt text for Wikipedia link."
+    },
+    "wikiLinkText": "Wikipedia article",
+    "@wikiLinkText": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "Text for Wikipedia link."
+    },
+    "howToP01": "In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.",
+    "@howToP01": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToRichP02": "The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._",
+    "@howToRichP02": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text, contains formatting."
+    },
+    "howToRichP03": "The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.",
+    "@howToRichP03": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP04": "When a face-down card is no longer blocked by other cards, it is flipped face-up.",
+    "@howToP04": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP05": "If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.",
+    "@howToP05": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP06": "The game ends when the board is cleared or no more moves are possible.",
+    "@howToP06": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP07": "In addition to the standard game, this app offers:",
+    "@howToP07": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP08": "Three additional board layouts,",
+    "@howToP08": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP09": "An option to show the values of face-down cards,",
+    "@howToP09": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "howToP10": "An option to start with an empty discard pile, allowing the player to choose any starting card.",
+    "@howToP10": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "How to play text."
+    },
+    "@_INTERACTION": {},
+    "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.",
+    "@interactionP01": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionRichP02": "This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.",
+    "@interactionRichP02": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP03": "This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.",
+    "@interactionP03": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP04": "Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.",
+    "@interactionP04": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP05": "This is the menu button.",
+    "@interactionP05": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP06": "From the menu, different game modes can be selected by visiting the settings page,",
+    "@interactionP06": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP07": "or by using \"New Game with Layout...\" option.",
+    "@interactionP07": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP08": "When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don't block interaction with the other parts of the interface.",
+    "@interactionP08": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP09": "The game supports both portrait and landscape orientations.",
+    "@interactionP09": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP10": "Other Shorcuts",
+    "@interactionP10": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP12": "Back",
+    "@interactionP12": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP13": "Back (alternative)",
+    "@interactionP13": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "shortcutTitle": "Shortcut: ",
+    "@shortcutTitle": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "Shortcut hint title"
+    },
+    "@_SCORING": {},
+    "scoringRichP01": "Removing cards from the board one after the other creates a _chain_.",
+    "@scoringRichP01": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringP02": "A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain's length, it will not end it. ",
+    "@scoringP02": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringRichP03": "When a chain ends, the player gains a score equal to the _square_ of that chain's length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.",
+    "@scoringRichP03": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringRichP04": "When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ",
+    "@scoringRichP04": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
+    },
+    "scoringP05": "While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can't clear it. Play any way you want.",
+    "@scoringP05": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Scoring description."
     }
 }
