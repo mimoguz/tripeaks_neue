@@ -33,7 +33,7 @@ class ThemeModeSetting extends StatelessWidget {
       barrierColor: Colors.transparent,
       builder:
           (context) => SelectionDialog(
-            title: s.layoutControl,
+            title: s.themeModeControl,
             selected: settings.themeMode.index,
             options: ThemeMode.values.map((e) => _valueLabel(e, s)).toList(),
           ),
