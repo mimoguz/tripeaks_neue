@@ -24,7 +24,7 @@ final class GroupTitle extends StatelessWidget {
             Text(
               title,
               style: theme.textTheme.titleSmall!.copyWith(
-                color: theme.colorScheme.primary,
+                color: theme.colorScheme.outline,
                 fontWeight: FontWeight.w600,
               ),
             ),

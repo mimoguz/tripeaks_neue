@@ -130,12 +130,12 @@ class _GesturePainter extends CustomPainter {
       _paint
         ..color = actionColour
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 4.0;
+        ..strokeWidth = 3.0;
       canvas.drawPath(
         Path()
           ..moveTo(from.dx - 10, from.dy)
-          ..lineTo(from.dx - 3, from.dy + 8)
-          ..lineTo(from.dx + 10, from.dy - 8),
+          ..lineTo(from.dx - 3, from.dy + 7)
+          ..lineTo(from.dx + 10, from.dy - 7),
         _paint,
       );
       _paint
