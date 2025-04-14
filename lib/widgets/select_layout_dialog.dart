@@ -61,6 +61,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               ),
               title: Text(layout.label(s)),
               onTap: () => setState(() => _layout = layout),
+              padding: _choicePadding,
             ),
           const Divider(),
           const SizedBox(height: 8.0),
@@ -73,6 +74,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             ),
             title: Text(s.showAllOptionLabel),
             onTap: () => setState(() => _showAll = !_showAll!),
+            padding: _choicePadding,
           ),
           MyListTile(
             leading: Checkbox(
@@ -82,6 +84,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             ),
             title: Text(s.startsEmptyOptionLabel),
             onTap: () => setState(() => _startEmpty = !_startEmpty!),
+            padding: _choicePadding,
           ),
         ],
       ),
@@ -104,4 +107,6 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
       ],
     );
   }
+
+  static const _choicePadding = EdgeInsets.only(left: 0, right: 10, top: 6, bottom: 6);
 }

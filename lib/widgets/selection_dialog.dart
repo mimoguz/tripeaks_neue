@@ -27,6 +27,7 @@ class SelectionDialog extends StatelessWidget {
               ),
               title: Text(item),
               onTap: () => Navigator.pop(context, index),
+              padding: _padding,
             ),
         ],
       ),
@@ -39,4 +40,6 @@ class SelectionDialog extends StatelessWidget {
       ],
     );
   }
+
+  static const _padding = EdgeInsets.only(left: 0, right: 10, top: 6, bottom: 6);
 }
