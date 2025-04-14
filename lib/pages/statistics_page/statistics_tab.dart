@@ -26,6 +26,7 @@ final class StatisticsTab extends StatelessWidget {
           Flexible(
             child: ScrollIndicator(
               child: ListView(
+                padding: c.utilPageInsets,
                 children: <Widget>[
                   GroupTitle(s.statisticsSummary, isFirst: true),
                   Summary(statistics),
@@ -42,7 +43,6 @@ final class StatisticsTab extends StatelessWidget {
                           GameEntry(place: index + 1, game: game, showLayout: showLayout),
                       ],
                     ),
-                  const SizedBox(height: c.utilPageMargin),
                 ],
               ),
             ),

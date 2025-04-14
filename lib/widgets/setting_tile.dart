@@ -11,7 +11,7 @@ final class SettingTile extends StatelessWidget {
     this.trailing,
     this.showArrow = false,
     this.onTap,
-  }) : _padding = showArrow ? _correctedPadding : c.cardPadding;
+  });
 
   final String title;
   final String? subtitle;
@@ -19,29 +19,26 @@ final class SettingTile extends StatelessWidget {
   final bool showArrow;
   final Location location;
   final VoidCallback? onTap;
-  final EdgeInsets _padding;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final br = _borderRadius;
+    final borderRadius = _borderRadius;
+    final padding = showArrow ? _correctedPadding : c.cardPadding;
+    final margin = location == Location.first || location == Location.only ? EdgeInsets.zero : _spacing;
     return Padding(
-      padding: EdgeInsets.only(
-        left: c.utilPageMargin,
-        right: c.utilPageMargin,
-        top: location == Location.first || location == Location.only ? 0.0 : 3.0,
-      ),
+      padding: margin,
       child: ListItemContainer(
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,
           shadowColor: theme.shadowColor,
-          borderRadius: br,
+          borderRadius: borderRadius,
           child: InkWell(
-            borderRadius: br,
+            borderRadius: borderRadius,
             onTap: onTap,
             child: Padding(
-              padding: _padding,
+              padding: padding,
               child: Row(
                 children: [
                   Expanded(
@@ -77,10 +74,12 @@ final class SettingTile extends StatelessWidget {
 
   static const _correctedPadding = EdgeInsets.only(
     left: c.cardPaddingHorizontal,
-    right: c.cardPaddingHorizontal - 2.0,
+    right: c.cardPaddingHorizontal - 4.0,
     top: c.cardPaddingVertical,
     bottom: c.cardPaddingVertical,
   );
+
+  static const _spacing = EdgeInsets.only(top: 3.0);
 
   static const _firstBorder = BorderRadius.only(
     topLeft: Radius.circular(c.commonRadius),

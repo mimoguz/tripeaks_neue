@@ -27,3 +27,5 @@ const EdgeInsets cardPadding = EdgeInsets.symmetric(
   horizontal: cardPaddingHorizontal,
   vertical: cardPaddingVertical,
 );
+const EdgeInsets utilPageInsetsHorizontal = EdgeInsets.symmetric(horizontal: utilPageMargin);
+const EdgeInsets utilPageInsets = EdgeInsets.all(utilPageMargin);

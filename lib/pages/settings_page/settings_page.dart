@@ -104,8 +104,8 @@ final class SettingsPageBody extends StatelessWidget {
                     child: ScrollIndicator(
                       child: ListView(
                         shrinkWrap: true,
+                        padding: c.utilPageInsets,
                         children: [
-                          const SizedBox(height: c.utilPageMargin),
                           const ShowAllSetting(),
                           GroupTitle(s.nextGameSettingGroupTitle),
                           const LayoutSetting(),
@@ -115,7 +115,6 @@ final class SettingsPageBody extends StatelessWidget {
                           const ThemeModeSetting(),
                           const ColourSetting(),
                           const DecorSetting(),
-                          const SizedBox(height: c.utilPageMargin),
                         ],
                       ),
                     ),
