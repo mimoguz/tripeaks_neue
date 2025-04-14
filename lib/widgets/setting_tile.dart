@@ -11,7 +11,7 @@ final class SettingTile extends StatelessWidget {
     this.trailing,
     this.showArrow = false,
     this.onTap,
-  });
+  }) : _padding = showArrow ? _correctedPadding : c.cardPadding;
 
   final String title;
   final String? subtitle;
@@ -19,18 +19,19 @@ final class SettingTile extends StatelessWidget {
   final bool showArrow;
   final Location location;
   final VoidCallback? onTap;
+  final EdgeInsets _padding;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final br = _borderRadius;
-    return ListItemContainer(
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: c.utilPageMargin,
-          right: c.utilPageMargin,
-          top: location == Location.first || location == Location.only ? 0.0 : 3.0,
-        ),
+    return Padding(
+      padding: EdgeInsets.only(
+        left: c.utilPageMargin,
+        right: c.utilPageMargin,
+        top: location == Location.first || location == Location.only ? 0.0 : 3.0,
+      ),
+      child: ListItemContainer(
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,
@@ -40,7 +41,7 @@ final class SettingTile extends StatelessWidget {
             borderRadius: br,
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.all(c.cardPadding),
+              padding: _padding,
               child: Row(
                 children: [
                   Expanded(
@@ -73,6 +74,13 @@ final class SettingTile extends StatelessWidget {
     Location.last => _lastBorder,
     Location.only => _onlyBorder,
   };
+
+  static const _correctedPadding = EdgeInsets.only(
+    left: c.cardPaddingHorizontal,
+    right: c.cardPaddingHorizontal - 2.0,
+    top: c.cardPaddingVertical,
+    bottom: c.cardPaddingVertical,
+  );
 
   static const _firstBorder = BorderRadius.only(
     topLeft: Radius.circular(c.commonRadius),

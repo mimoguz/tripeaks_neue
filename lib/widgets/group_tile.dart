@@ -10,31 +10,37 @@ final class GroupTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListItemContainer(
-      child: Card(
-        color: Theme.of(context).colorScheme.surfaceContainerHigh,
-        elevation: 1.0,
-        child: Padding(
-          padding: const EdgeInsets.all(c.cardPadding),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (title != null)
-                Text(
-                  title!,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.outline,
-                    fontWeight: FontWeight.w600,
+    return Padding(
+      padding: _margin,
+      child: ListItemContainer(
+        child: Material(
+          color: Theme.of(context).colorScheme.surfaceContainerHigh,
+          elevation: 1.0,
+          borderRadius: c.commonBorderRadius,
+          child: Padding(
+            padding: c.cardPadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (title != null)
+                  Text(
+                    title!,
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: Theme.of(context).colorScheme.outline,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              if (title != null) const SizedBox(height: 8.0),
-              ...children,
-            ],
+                if (title != null) const SizedBox(height: 8.0),
+                ...children,
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
+  static const _margin = EdgeInsets.symmetric(horizontal: c.utilPageMargin);
 }
 
 class GroupTileDivider extends StatelessWidget {

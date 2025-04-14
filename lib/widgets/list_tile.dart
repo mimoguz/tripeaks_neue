@@ -11,6 +11,7 @@ final class MyListTile extends StatelessWidget {
     this.onTap,
     this.leftSpacing = 8.0,
     this.rightSpacing = 8.0,
+    this.padding = const EdgeInsets.symmetric(horizontal: 10, vertical: 6.0),
   });
 
   final Widget title;
@@ -20,6 +21,7 @@ final class MyListTile extends StatelessWidget {
   final VoidCallback? onTap;
   final double leftSpacing;
   final double rightSpacing;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ final class MyListTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+        padding: padding,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

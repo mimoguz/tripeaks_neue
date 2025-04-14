@@ -18,7 +18,12 @@ class HowToPlay extends StatelessWidget {
       child: DefaultTextStyle(
         style: paragraphStyle,
         child: ListView(
-          padding: EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
+          padding: EdgeInsets.fromLTRB(
+            c.cardPaddingHorizontal,
+            0.0,
+            c.cardPaddingHorizontal,
+            c.cardPaddingVertical,
+          ),
           children: [
             ExternalLink(
               uri: Uri.https("en.wikipedia.org", "wiki/Tri_Peaks_(game)"),

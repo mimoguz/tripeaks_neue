@@ -51,4 +51,6 @@ final class StatisticsTab extends StatelessWidget {
       ),
     );
   }
+
+  static const _margin = EdgeInsets.symmetric(horizontal: c.utilPageMargin);
 }

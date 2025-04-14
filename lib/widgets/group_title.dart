@@ -14,7 +14,7 @@ final class GroupTitle extends StatelessWidget {
     return ListItemContainer(
       child: Padding(
         padding: EdgeInsets.only(
-          left: c.utilPageMargin + c.cardPadding,
+          left: c.utilPageMargin + c.cardPaddingHorizontal,
           right: c.utilPageMargin,
           top: isFirst ? c.utilPageMargin + 4.0 : 24.0,
           bottom: 8.0,

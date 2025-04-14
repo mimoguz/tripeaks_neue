@@ -25,9 +25,11 @@ class ExpandableBox extends StatelessWidget {
       child: AnimatedSize(
         duration: Durations.short3,
         child: ListItemContainer(
-          child: Card(
+          child: Material(
             clipBehavior: Clip.antiAlias,
             color: Theme.of(context).colorScheme.surfaceContainerHigh,
+            borderRadius: c.commonBorderRadius,
+            elevation: 1.0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -35,9 +37,9 @@ class ExpandableBox extends StatelessWidget {
                   onTap: onTap,
                   borderRadius: c.commonBorderRadius,
                   child: Padding(
-                    padding: const EdgeInsets.all(c.cardPadding),
+                    padding: c.cardPadding,
                     child: Row(
-                      spacing: c.cardPadding,
+                      spacing: c.cardPaddingHorizontal,
                       children: [
                         if (icon != null) icon!,
                         Expanded(

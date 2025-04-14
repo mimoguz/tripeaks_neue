@@ -17,7 +17,12 @@ class Scoring extends StatelessWidget {
       child: DefaultTextStyle(
         style: paragraphStyle,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
+          padding: const EdgeInsets.fromLTRB(
+            c.cardPaddingHorizontal,
+            0.0,
+            c.cardPaddingHorizontal,
+            c.cardPaddingVertical,
+          ),
           children: [
             FastRichText(text: s.scoringRichP01, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),

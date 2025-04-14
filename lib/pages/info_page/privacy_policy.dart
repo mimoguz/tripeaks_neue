@@ -12,7 +12,12 @@ class PrivacyPolicy extends StatelessWidget {
       child: DefaultTextStyle(
         style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.8),
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
+          padding: const EdgeInsets.fromLTRB(
+            c.cardPaddingHorizontal,
+            0.0,
+            c.cardPaddingHorizontal,
+            c.cardPaddingVertical,
+          ),
           children: [
             // TODO: Move to arb
             Text(

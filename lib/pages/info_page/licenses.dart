@@ -15,7 +15,12 @@ class Licenses extends StatelessWidget {
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
         child: ListView(
-          padding: EdgeInsets.fromLTRB(c.cardPadding, 0, c.cardPadding, c.cardPadding),
+          padding: EdgeInsets.fromLTRB(
+            c.cardPaddingHorizontal,
+            0,
+            c.cardPaddingHorizontal,
+            c.cardPaddingVertical,
+          ),
           children: [
             LicenseEntry(
               link: Uri.https("github.com", "mimoguz/tripeaks_neue"),

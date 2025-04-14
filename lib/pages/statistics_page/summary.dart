@@ -18,18 +18,22 @@ final class Summary extends StatelessWidget {
         MyListTile(
           title: Text(s.totalPlayedLabel),
           trailing: Text(statistics.totalGames.toString(), style: trailingStyle),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
         ),
         MyListTile(
           title: Text(s.totalClearedLabel),
           trailing: Text(statistics.cleared.toString(), style: trailingStyle),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
         ),
         MyListTile(
           title: Text(s.bestScoreLabel),
           trailing: Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: trailingStyle),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
         ),
         MyListTile(
           title: Text(s.longestChainLabel),
           trailing: Text((statistics.longestChain).toString(), style: trailingStyle),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
         ),
       ],
     );

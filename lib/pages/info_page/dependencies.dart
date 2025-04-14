@@ -17,7 +17,12 @@ class Dependencies extends StatelessWidget {
       child: DefaultTextStyle(
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         child: ListView.separated(
-          padding: EdgeInsets.fromLTRB(c.cardPadding, 0, c.cardPadding, c.cardPadding),
+          padding: EdgeInsets.fromLTRB(
+            c.cardPaddingHorizontal,
+            0,
+            c.cardPaddingHorizontal,
+            c.cardPaddingVertical,
+          ),
           itemCount: _extendedDependencies.length,
           itemBuilder:
               (context, index) => DependencyEntry(

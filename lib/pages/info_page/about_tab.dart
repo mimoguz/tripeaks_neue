@@ -27,6 +27,7 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
       child: Padding(
         padding: const EdgeInsets.all(c.utilPageMargin),
         child: Column(
+          spacing: c.utilPageMargin,
           children: [
             ExpandableBox(
               expanded: _expandIndex == 0,

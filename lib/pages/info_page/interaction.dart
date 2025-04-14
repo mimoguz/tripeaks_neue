@@ -22,7 +22,12 @@ final class Interaction extends StatelessWidget {
       child: DefaultTextStyle(
         style: paragraphStyle,
         child: ListView(
-          padding: EdgeInsets.fromLTRB(c.cardPadding, 0.0, c.cardPadding, c.cardPadding),
+          padding: EdgeInsets.fromLTRB(
+            c.cardPaddingHorizontal,
+            0.0,
+            c.cardPaddingHorizontal,
+            c.cardPaddingVertical,
+          ),
           children: [
             InteractionListCell(description: Text(s.interactionP01), image: Icon(Icons.touch_app)),
             const InteractionListDivider(),
