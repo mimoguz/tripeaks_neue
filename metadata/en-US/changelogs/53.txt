@@ -1,3 +1,4 @@
+- Fixed saving state when the user exits the app via the back button or gesture.
 - Added card back colour customisation.
 - Tweaked the swipe indicator.
 - Settings page is now more compact.

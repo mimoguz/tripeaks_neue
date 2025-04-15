@@ -96,9 +96,10 @@
                 </ul>
             </description>
         </release>
-        <release version="0.9.0" date="2025-04-12">
+        <release version="0.9.0" date="2025-04-15">
             <description>
                 <ul>
+                    <li>Fixed saving state when the user exits the app via the back button or gesture.</li>
                     <li>Added card back colour customisation.</li>
                     <li>Tweaked the swipe indicator.</li>
                     <li>Settings page is now more compact.</li>

@@ -44,19 +44,19 @@ class HomePage extends StatelessWidget {
           },
           child: Builder(
             builder: (context) {
-              return PopScope(
-                canPop: false,
-                onPopInvokedWithResult: (didPop, result) async {
-                  _onPopInvokedWithResult(context, didPop, result);
-                },
-                child: Scaffold(
-                  drawerScrimColor: Colors.transparent,
-                  drawer: HomePageDrawer(),
-                  body: Builder(
-                    builder: (context) {
-                      return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
-                    },
-                  ),
+              return Scaffold(
+                drawerScrimColor: Colors.transparent,
+                drawer: HomePageDrawer(),
+                body: Builder(
+                  builder: (context) {
+                    return PopScope(
+                      canPop: false,
+                      onPopInvokedWithResult: (didPop, result) async {
+                        _onPopInvokedWithResult(context, didPop, result);
+                      },
+                      child: size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage(),
+                    );
+                  },
                 ),
               );
             },
@@ -71,6 +71,10 @@ class HomePage extends StatelessWidget {
       return;
     }
     if (didPop) {
+      return;
+    }
+    if (Scaffold.of(context).isDrawerOpen) {
+      Scaffold.of(context).closeDrawer();
       return;
     }
     if (context.mounted) {
