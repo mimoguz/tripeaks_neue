@@ -4,7 +4,7 @@
 - [ ] F-Droid screenshots
 - [ ] F-Droid icon
 - [ ] Flatpak changelog
-- [x] Flatpak screenshots
+- [ ] Flatpak screenshots
 - [x] Flatpak icon
 - [ ] Flutter version
 - [ ] Readme images

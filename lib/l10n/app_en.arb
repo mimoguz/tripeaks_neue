@@ -207,7 +207,7 @@
         "context": "settings",
         "description": "Label of a control that sets game layout theme mode."
     },
-    "threePeaksLayoutLabel": "Three peaks",
+    "threePeaksLayoutLabel": "Three Peaks",
     "@threePeaksLayoutLabel": {
         "type": "text",
         "context": "settings",
