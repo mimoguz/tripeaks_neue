@@ -1,10 +1,10 @@
 - [] Run ```build_runner build```
 - [] Run ```flutter_oss_licenses:generate```
-- [] F-Droid changelog
+- [x] F-Droid changelog
 - [] F-Droid screenshots
 - [] F-Droid icon
 - [] Flatpak changelog
-- [] Flatpak screenshots
-- [] Flatpak icon
+- [x] Flatpak screenshots
+- [x] Flatpak icon
 - [] Flutter version
 - [] Readme images
