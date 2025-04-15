@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/info_page/about_tab.dart';
 import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
+import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_vertical_tab_view.dart';
 

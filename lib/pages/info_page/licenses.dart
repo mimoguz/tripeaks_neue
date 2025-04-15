@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/group_tile.dart';
@@ -24,7 +25,7 @@ class Licenses extends StatelessWidget {
           children: [
             LicenseEntry(
               link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
-              title: "Tripeaks NEUE",
+              title: "Tripeaks NEUE v$version",
               description: "Oguz Tas, 2025.",
               license: "GNU Affero General Public License (AGPL) Version 3",
               exceptions: [
@@ -45,6 +46,8 @@ class Licenses extends StatelessWidget {
       ),
     );
   }
+
+  static final version = packageVersion.split("+")[0];
 }
 
 final class LicenseEntry extends StatelessWidget {
