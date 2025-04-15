@@ -45,7 +45,7 @@ final class SettingTile extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title, style: theme.textTheme.titleSmall),
+                        Text(title, style: theme.textTheme.titleMedium),
                         if (subtitle != null)
                           Text(
                             subtitle!,
