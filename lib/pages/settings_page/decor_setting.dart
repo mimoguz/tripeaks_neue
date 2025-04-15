@@ -148,6 +148,5 @@ class _DecorItemState extends State<DecorItem> {
   }
 
   static const _scale = 0.75;
-  static const _borderRadius = BorderRadius.all(Radius.circular(c.commonRadius * _scale));
   static const _sideLength = c.cardSize * _scale;
 }
