@@ -1,10 +1,16 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/landscape_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/portrait_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -38,13 +44,19 @@ class HomePage extends StatelessWidget {
           },
           child: Builder(
             builder: (context) {
-              return Scaffold(
-                drawerScrimColor: Colors.transparent,
-                drawer: HomePageDrawer(),
-                body: Builder(
-                  builder: (context) {
-                    return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
-                  },
+              return PopScope(
+                canPop: false,
+                onPopInvokedWithResult: (didPop, result) async {
+                  _onPopInvokedWithResult(context, didPop, result);
+                },
+                child: Scaffold(
+                  drawerScrimColor: Colors.transparent,
+                  drawer: HomePageDrawer(),
+                  body: Builder(
+                    builder: (context) {
+                      return size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage();
+                    },
+                  ),
                 ),
               );
             },
@@ -52,5 +64,28 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _onPopInvokedWithResult(BuildContext context, bool didPop, dynamic result) async {
+    if (kIsWeb || kIsWasm) {
+      return;
+    }
+    if (didPop) {
+      return;
+    }
+    if (context.mounted) {
+      final session = Provider.of<Session>(context, listen: false);
+      await session.write();
+      await session.writeStatistics();
+    }
+    if (context.mounted) {
+      final settings = Provider.of<Settings>(context, listen: false);
+      await settings.write();
+    }
+    if (Platform.isIOS || Platform.isWindows) {
+      exit(0);
+    } else {
+      SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+    }
   }
 }
