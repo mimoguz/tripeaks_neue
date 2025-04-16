@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=TriPeaks NEUE
-Comment=A simple TriPeaks game
+Comment=A simple Tri Peaks game
 Exec=tripeaks_neue
 Icon=icon.svg
 Terminal=false
