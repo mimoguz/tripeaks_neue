@@ -288,7 +288,7 @@ abstract class AppLocalizations {
   /// Value label of layout selection control when it is set to 'threePeaks'.
   ///
   /// In en, this message translates to:
-  /// **'Three peaks'**
+  /// **'Three Peaks'**
   String get threePeaksLayoutLabel;
 
   /// Value label of layout selection control when it is set to 'diamonds'.

@@ -107,7 +107,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get layoutControl => 'Board layout';
 
   @override
-  String get threePeaksLayoutLabel => 'Three peaks';
+  String get threePeaksLayoutLabel => 'Three Peaks';
 
   @override
   String get diamondsLayoutLabel => 'Diamonds';
