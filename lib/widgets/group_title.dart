@@ -21,7 +21,7 @@ final class GroupTitle extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Text(title, style: theme.textTheme.titleMedium!.copyWith(color: theme.colorScheme.primary)),
+            Text(title, style: theme.textTheme.titleSmall!.copyWith(color: theme.colorScheme.primary)),
           ],
         ),
       ),
