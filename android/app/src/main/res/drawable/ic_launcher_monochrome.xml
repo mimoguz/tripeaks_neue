@@ -1,0 +1,31 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+  <path
+      android:pathData="m70,23.02 l-8.88,24.15 4.35,11.59L70,61.02l12,-6zM54,31.02 L45.12,55.17 49.47,66.76L54,69.02l12,-6zM38,39.02 L26,71.02 38,77.02 50,71.02z"
+      android:strokeWidth="2"
+      android:fillColor="#000"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="square"/>
+  <path
+      android:pathData="M31,22s-0.06,4.56 -2.25,6.75C26.56,30.94 22,31 22,31s4.56,0.06 6.75,2.25C30.94,35.44 31,40 31,40s0.06,-4.56 2.25,-6.75C35.44,31.06 40,31 40,31s-4.56,-0.06 -6.75,-2.25C31.06,26.56 31,22 31,22Z"
+      android:strokeLineJoin="miter"
+      android:strokeWidth="1.375"
+      android:fillColor="#000"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="butt"/>
+  <path
+      android:pathData="m108,49 l-10,5 5,5 5,-5zM98,54L78,64l5,5zM78,64 L58,74l5,5ZM58,74 L38,84l5,5ZM38,84 L18,94l5,5ZM18,94l-18,9v3l2,2h2z"
+      android:strokeWidth=".999993"
+      android:fillColor="#000"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="square"/>
+  <path
+      android:pathData="m93,59 l5,5 5,-5zM103,59 L108,64v-5zM108,64L98,64l5,5zM103,69 L108,74v-5zM103,69L93,69l5,5zM98,74 L103,79 108,74zM98,74L88,74l5,5zM93,79 L98,84 103,79zM93,79L83,79l5,5zM88,84 L93,89 98,84zM88,84L78,84l5,5zM83,89 L88,94 93,89zM83,89L73,89l5,5zM78,94 L83,99 88,94zM78,94L68,94l5,5zM73,99 L78,104 83,99zM73,99L63,99l5,5zM68,104 L72,108h2l4,-4zM68,104L58,104l4,4h2zM58,104L48,104l4,4h2zM58,104 L63,99L53,99ZM53,99L43,99l5,5zM53,99 L58,94L48,94ZM48,94L38,94l5,5zM48,94 L53,89L43,89ZM43,89L33,89l5,5zM38,94L28,94l5,5zM33,99 L38,104 43,99zM33,99L23,99l5,5zM28,104 L32,108h2l4,-4zM28,104L18,104l4,4h2zM18,104L8,104l4,4h2zM18,104 L23,99L13,99ZM38,104 L42,108h2l4,-4zM53,89 L58,84L48,84ZM53,89 L58,94 63,89zM63,89 L68,84L58,84ZM63,89 L68,94 73,89zM73,89 L78,84L68,84ZM68,84 L73,79L63,79ZM63,79L53,79l5,5zM73,79 L78,74L68,74ZM73,79 L78,84 83,79zM83,79 L88,74L78,74ZM78,74 L83,69L73,69ZM83,69 L88,74 93,69zM93,69 L98,64L88,64ZM68,94L58,94l5,5zM78,104 L82,108h2l4,-4zM88,104 L93,99L83,99ZM88,104 L92,108h2l4,-4zM98,104 L103,99L93,99ZM98,104 L102,108h2l4,-4zM108,104v-5h-5zM103,99 L108,94L98,94ZM98,94L88,94l5,5zM98,94 L103,89L93,89ZM103,89 L108,84L98,84ZM103,89 L108,94v-5zM108,84v-5h-5z"
+      android:strokeWidth="2"
+      android:fillColor="#000"
+      android:strokeColor="#00000000"
+      android:strokeLineCap="square"/>
+</vector>
