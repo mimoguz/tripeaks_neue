@@ -8,3 +8,4 @@
 - [x] Flatpak icon
 - [x] Flutter version
 - [ ] Readme images
+- [ ] Web release
