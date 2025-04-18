@@ -82,7 +82,15 @@
     </screenshots>
 
     <releases>
-        <release version="0.8.3" date="2025-04-03">
+        <release version="0.9.0" date="2025-04-18">
+            <description>
+                <ul>
+                    <li>Fixed saving state when the user exits the app via the back button or gesture.</li>
+                    <li>Added card back colour customisation.</li>
+                    <li>Tweaked the swipe indicator.</li>
+                    <li>Settings page is now more compact.</li>
+                </ul>
+            </description>
         </release>
         <release version="0.8.4" date="2025-04-05">
             <description>
@@ -96,15 +104,7 @@
                 </ul>
             </description>
         </release>
-        <release version="0.9.0" date="2025-04-18">
-            <description>
-                <ul>
-                    <li>Fixed saving state when the user exits the app via the back button or gesture.</li>
-                    <li>Added card back colour customisation.</li>
-                    <li>Tweaked the swipe indicator.</li>
-                    <li>Settings page is now more compact.</li>
-                </ul>
-            </description>
+        <release version="0.8.3" date="2025-04-03">
         </release>
     </releases>
 </component>

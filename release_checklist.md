@@ -8,6 +8,7 @@
 - [x] Flatpak changelog
 - [x] Flatpak screenshots
 - [x] Flatpak icon
+- [x] Flatpak metainfo lint
 - [x] Flutter version
 - [x] Readme images
 - [x] Web release
