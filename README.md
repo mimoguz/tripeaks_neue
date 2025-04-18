@@ -5,8 +5,6 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 [Play online](https://mimoguz.github.io/tripeaks_neue/index.html)
 
 <div align="center">
-
-
 <a href="https://f-droid.org/en/packages/io.github.mimoguz.tripeaksneue/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
 
 <a href="https://flathub.org/apps/io.github.mimoguz.tripeaks_neue"> <img width="180" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
@@ -24,8 +22,8 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 - Portrait and landscape orientation support
 
 ## Screenshots
-![Portait](./.github/readme/screenshot_portrait_2025-04-05.png)
-![Landscape](./.github/readme/screenshot_landscape_2025-04-05.png)
+![Portait](./.github/readme/screenshot_portrait_2025-04-18.png)
+![Landscape](./.github/readme/screenshot_landscape_2025-04-18.png)
 
 ## Credit where credit is due
 
