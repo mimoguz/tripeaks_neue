@@ -125,24 +125,20 @@ class _ColourSwatchState extends State<ColourSwatch> {
                   color: fill,
                 ),
                 child: Center(
-                  child: Observer(
-                    builder: (context) {
-                      return AnimatedSwitcher(
-                        duration: Durations.medium1,
-                        child:
-                            widget.isSelected
-                                ? Icon(
-                                  Icons.radio_button_checked,
-                                  key: const ValueKey("selected"),
-                                  color: foreground,
-                                )
-                                : Icon(
-                                  Icons.radio_button_off,
-                                  key: const ValueKey("unselected"),
-                                  color: foreground,
-                                ),
-                      );
-                    },
+                  child: AnimatedSwitcher(
+                    duration: Durations.medium1,
+                    child:
+                        widget.isSelected
+                            ? Icon(
+                              Icons.radio_button_checked,
+                              key: const ValueKey("selected"),
+                              color: foreground,
+                            )
+                            : Icon(
+                              Icons.radio_button_off,
+                              key: const ValueKey("unselected"),
+                              color: foreground,
+                            ),
                   ),
                 ),
               ),
