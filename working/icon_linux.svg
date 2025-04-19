@@ -9,7 +9,7 @@
    id="svg1"
    sodipodi:docname="icon_linux.svg"
    inkscape:version="1.4 (e7c3feb, 2024-10-09)"
-   inkscape:export-batch-path="/home/oguz/Documents/Projects/Dart/tripeaks_neue"
+   inkscape:export-batch-path="../linux/flatpak"
    inkscape:export-batch-name=""
    xml:space="preserve"
    inkscape:export-filename="../linux/flatpak/icon_linux.svg"
@@ -28,9 +28,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="3.7765735"
-     inkscape:cx="1775.8161"
-     inkscape:cy="88.969538"
+     inkscape:zoom="1.9288527"
+     inkscape:cx="1090.0262"
+     inkscape:cy="108.87301"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -2945,7 +2945,7 @@
        id="path35"
        sodipodi:nodetypes="ccccc" /><path
        id="path38"
-       style="fill:#b8deea;fill-opacity:0.538834;stroke:none;stroke-width:0.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       style="fill:#b8deea;fill-opacity:0.25;stroke:none;stroke-width:0.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        d="m 1207,84.00085 -4,3.486328 V 187 c 0,7.202 -5.798,13 -13,13 h -116.0592 l -4.5879,4 H 1190 c 9.418,0 17,-7.582 17,-17 z"
        sodipodi:nodetypes="ccssccssc" /><path
        style="fill:url(#linearGradient119);stroke:none;stroke-width:2;stroke-linecap:square;paint-order:markers stroke fill"
@@ -2966,7 +2966,7 @@
        inkscape:path-effect="#path-effect126"
        inkscape:original-d="m 1224.5625,84 c -12,12 -10.8125,24.9948 -6.8125,36 h 20.7139 c -5.9411,-1.14726 -17.9014,-12 -13.9014,-36 z" /><path
        id="path40"
-       style="fill:#e6dacf;fill-opacity:0.303173;stroke:none;stroke-width:0.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       style="fill:#e6dacf;fill-opacity:0.2;stroke:none;stroke-width:0.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
        d="m 1016,24 c -9.418,0 -17,7.582 -17,17 v 146 c 0,9.418 7.582,17 17,17 h 53.3529 l 4.5879,-4 H 1016 c -7.202,0 -13,-5.798 -13,-13 V 41 c 0,-7.202 5.798,-13 13,-13 h 174 c 7.202,0 13,5.798 13,13 v 46.487178 l 4,-3.486328 V 41 c 0,-9.418 -7.582,-17 -17,-17 z"
        sodipodi:nodetypes="ssssccssssssccsss" /><path
        id="path123"
