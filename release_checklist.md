@@ -1,14 +1,14 @@
-# 0.9.0
+# vNext
 
-- [x] Run ```build_runner build```
-- [x] Run ```flutter_oss_licenses:generate```
-- [x] F-Droid changelog
-- [x] F-Droid screenshots
-- [x] F-Droid icon
-- [x] Flatpak changelog
-- [x] Flatpak screenshots
-- [x] Flatpak icon
-- [x] Flatpak metainfo lint
-- [x] Flutter version
-- [x] Readme images
-- [x] Web release
+- [ ] Run ```build_runner build```
+- [ ] Run ```flutter_oss_licenses:generate```
+- [ ] F-Droid changelog
+- [ ] F-Droid screenshots
+- [ ] F-Droid icon
+- [ ] Flatpak changelog
+- [ ] Flatpak screenshots
+- [ ] Flatpak icon
+- [ ] Flatpak metainfo lint
+- [ ] Flutter version
+- [ ] Readme images
+- [ ] Web release
