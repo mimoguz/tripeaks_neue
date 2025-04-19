@@ -21,7 +21,7 @@ final class GameEntry extends StatelessWidget {
     final theme = Theme.of(context);
     return MyListTile(
       leading: place > 0 ? Order(place) : null,
-      title: Text(_dateFormat.format(game.ended)),
+      title: Text(_dateFormat.format(game.ended), style: theme.textTheme.titleMedium),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
       subtitle: Row(
         textBaseline: TextBaseline.alphabetic,

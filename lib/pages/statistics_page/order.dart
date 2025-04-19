@@ -7,9 +7,8 @@ final class Order extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 24.0,
-      child: Text(value.toString(), style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600)),
-    );
+    return SizedBox(width: 24.0, child: Text(value.toString(), style: _style));
   }
+
+  static const _style = TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600);
 }
