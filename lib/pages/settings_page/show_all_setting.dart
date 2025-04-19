@@ -23,8 +23,8 @@ final class ShowAllSetting extends StatelessWidget {
             value: session.showAll,
             onChanged: (v) => session.showAll = v,
             thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(Icons.visibility_outlined),
-              WidgetState.any: Icon(Icons.visibility_off_outlined),
+              WidgetState.selected: Icon(Icons.visibility),
+              WidgetState.any: Icon(Icons.visibility_off),
             }),
           ),
           showArrow: false,
