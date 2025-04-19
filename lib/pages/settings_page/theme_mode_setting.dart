@@ -28,7 +28,7 @@ class ThemeModeSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = AppLocalizations.of(context)!;
-    final result = await showDialog(
+    final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
       builder:
