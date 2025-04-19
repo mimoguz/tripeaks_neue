@@ -68,7 +68,7 @@ class ColourSetting extends StatelessWidget {
             ],
           ),
     );
-    if (result >= 0) {
+    if (result != null && result >= 0) {
       settings.decorColour = DecorColour.values[result];
     }
   }

@@ -73,7 +73,7 @@ class DecorSetting extends StatelessWidget {
             ],
           ),
     );
-    if (result >= 0) {
+    if (result != null && result >= 0) {
       settings.decor = Decor.values[result];
     }
   }

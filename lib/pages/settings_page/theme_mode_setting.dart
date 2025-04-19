@@ -38,7 +38,7 @@ class ThemeModeSetting extends StatelessWidget {
             options: ThemeMode.values.map((e) => _valueLabel(e, s)).toList(),
           ),
     );
-    if (result >= 0) {
+    if (result != null && result >= 0) {
       settings.themeMode = ThemeMode.values[result];
     }
   }

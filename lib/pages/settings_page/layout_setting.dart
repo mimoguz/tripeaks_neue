@@ -39,7 +39,7 @@ class LayoutSetting extends StatelessWidget {
             options: Peaks.values.map((e) => e.label(s)).toList(),
           ),
     );
-    if (result >= 0) {
+    if (result != null && result >= 0) {
       session.layout = Peaks.values[result];
     }
   }
