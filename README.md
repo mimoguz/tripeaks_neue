@@ -2,7 +2,8 @@
 
 A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using Flutter. This is a remake of [my previous implementation](https://github.com/mimoguz/tripeaks-gdx) of the same game.<br>
 
-[Play online](https://mimoguz.github.io/tripeaks_neue/index.html)
+[Play online](https://mimoguz.github.io/tripeaks_neue/index.html)<br>
+[Play on itch.io](https://mimoguz.itch.io/tripeaks-neue)
 
 <div align="center">
 <a href="https://f-droid.org/en/packages/io.github.mimoguz.tripeaksneue/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
