@@ -48,3 +48,9 @@ The best explanation I could find about this was again in the F-Droid repository
 * An open issue: [handle androidx DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION hack](https://gitlab.com/fdroid/fdroidclient/-/issues/2608)
 
 **Tl;dr**: As far as I could understand, it's a compatibility hack rather than a true permission. Its existence means that the application uses broadcasts, but only internally and rejects intents coming from outside.
+
+## Bonus Content 🙂
+
+Here is a couple of wallpapers I made when trying to make a banner for Google Play: [dowload zip file](./.github/readme/tri_peaks_wallpapers.zip)
+
+<a href="./.github/readme/tri_peaks_wallpapers.zip" download><img src="./.github/readme/tripeaks_wallpapers.png" alt="Wallpapers"></img></a>
