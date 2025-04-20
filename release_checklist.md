@@ -11,4 +11,5 @@
 - [ ] Flatpak metainfo lint
 - [ ] Flutter version
 - [ ] Readme images
-- [ ] Web release
+- [ ] Web release, base href "/tripeaks_neue/"
+- [ ] For itch.io base href must be empty string
