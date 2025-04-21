@@ -16,7 +16,7 @@ class HomePageDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final iconColour = colours.outline;
+    final iconColour = colours.secondary;
     final s = AppLocalizations.of(context)!;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(

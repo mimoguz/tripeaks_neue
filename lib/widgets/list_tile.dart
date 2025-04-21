@@ -41,7 +41,11 @@ final class MyListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DefaultTextStyle(style: theme.textTheme.bodyMedium!, child: title),
-                if (subtitle != null) DefaultTextStyle(style: theme.textTheme.bodySmall!, child: subtitle!),
+                if (subtitle != null)
+                  DefaultTextStyle(
+                    style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.secondary),
+                    child: subtitle!,
+                  ),
               ],
             ),
             Spacer(),

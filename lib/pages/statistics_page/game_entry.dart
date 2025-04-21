@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/statistics_page/order.dart';
 import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
@@ -21,6 +20,7 @@ final class GameEntry extends StatelessWidget {
     final theme = Theme.of(context);
     return MyListTile(
       leading: place > 0 ? Order(place) : null,
+      leftSpacing: 16.0,
       title: Text(_dateFormat.format(game.ended), style: theme.textTheme.titleSmall),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
       subtitle: Row(
@@ -35,11 +35,30 @@ final class GameEntry extends StatelessWidget {
         spacing: 4,
         children: <Widget>[
           Text(game.score.toString(), style: theme.textTheme.titleMedium),
-          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.outline),
+          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.secondary),
         ],
       ),
     );
   }
 
   static final _dateFormat = DateFormat("d MMMM y, HH:mm");
+}
+
+final class Order extends StatelessWidget {
+  const Order(this.value, {super.key});
+
+  final int value;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    return Container(
+      height: 24,
+      width: 24.0,
+      decoration: BoxDecoration(color: colours.secondary, shape: BoxShape.circle),
+      child: Center(child: Text(value.toString(), style: _style.copyWith(color: colours.onSecondary))),
+    );
+  }
+
+  static const _style = TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600);
 }

@@ -48,7 +48,11 @@ class ExpandableBox extends StatelessWidget {
                             child: title,
                           ),
                         ),
-                        Icon(expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 24.0),
+                        Icon(
+                          expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                          size: 24.0,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                       ],
                     ),
                   ),
