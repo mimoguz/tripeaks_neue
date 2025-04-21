@@ -87,54 +87,30 @@ class HomePageDrawer extends StatelessWidget {
               padding: EdgeInsets.all(12.0),
               sliver: SliverList.list(
                 children: <Widget>[
-                  ListTile(
-                    style: ListTileStyle.drawer,
-                    iconColor: iconColour,
-                    leading: const Icon(CustomIcons.newGame),
-                    title: Text(s.newGameAction),
-                    shape: StadiumBorder(),
-                    visualDensity: VisualDensity.comfortable,
-                    onTap: Actions.handler(context, const NewGameIntent()),
+                  DrawerListTile(
+                    icon: CustomIcons.newGame,
+                    title: s.newGameAction,
+                    intent: const NewGameIntent(),
                   ),
-                  ListTile(
-                    style: ListTileStyle.drawer,
-                    iconColor: iconColour,
-                    leading: const Icon(CustomIcons.pickAndPlay),
-                    title: Text(s.newGameWithLayoutAction),
-                    shape: StadiumBorder(),
-                    visualDensity: VisualDensity.comfortable,
-                    onTap: Actions.handler(context, const NewGameWithLayoutIntent()),
+                  DrawerListTile(
+                    icon: CustomIcons.pickAndPlay,
+                    title: s.newGameWithLayoutAction,
+                    intent: const NewGameWithLayoutIntent(),
                   ),
-                  ListTile(
-                    style: ListTileStyle.drawer,
-                    iconColor: iconColour,
-                    leading: const Icon(Icons.restart_alt),
-                    title: Text(s.restartGameAction),
-                    shape: StadiumBorder(),
-                    visualDensity: VisualDensity.comfortable,
-                    onTap: Actions.handler(context, const RestartIntent()),
+                  DrawerListTile(
+                    icon: Icons.restart_alt,
+                    title: s.restartGameAction,
+                    intent: const RestartIntent(),
                   ),
                   Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
-                  ListTile(
-                    style: ListTileStyle.drawer,
-                    iconColor: iconColour,
-                    leading: const Icon(Icons.bar_chart),
-                    title: Text(s.statisticsAction),
-                    visualDensity: VisualDensity.comfortable,
-                    shape: StadiumBorder(),
-                    onTap: Actions.handler(context, const NavigateToStatisticsIntent()),
+                  DrawerListTile(
+                    icon: Icons.bar_chart,
+                    title: s.statisticsAction,
+                    intent: const NavigateToStatisticsIntent(),
                   ),
                   if (canExit) Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
                   if (canExit)
-                    ListTile(
-                      style: ListTileStyle.drawer,
-                      iconColor: iconColour,
-                      leading: const Icon(Icons.exit_to_app),
-                      title: Text(s.exitAction),
-                      shape: StadiumBorder(),
-                      visualDensity: VisualDensity.comfortable,
-                      onTap: Actions.handler(context, const ExitIntent()),
-                    ),
+                    DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
                 ],
               ),
             ),
@@ -143,4 +119,23 @@ class HomePageDrawer extends StatelessWidget {
       ),
     );
   }
+}
+
+class DrawerListTile<T extends Intent> extends StatelessWidget {
+  const DrawerListTile({super.key, required this.icon, required this.title, required this.intent});
+
+  final IconData icon;
+  final String title;
+  final T intent;
+
+  @override
+  Widget build(BuildContext context) => ListTile(
+    style: ListTileStyle.drawer,
+    iconColor: Theme.of(context).colorScheme.secondary,
+    leading: Icon(icon),
+    title: Text(title),
+    shape: StadiumBorder(),
+    visualDensity: VisualDensity.comfortable,
+    onTap: Actions.handler(context, intent),
+  );
 }

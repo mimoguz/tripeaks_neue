@@ -13,7 +13,10 @@ class HowToPlay extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final s = AppLocalizations.of(context)!;
     final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = TextStyle(fontStyle: FontStyle.italic, color: Theme.of(context).colorScheme.secondary);
+    final italic = TextStyle(
+      fontStyle: FontStyle.italic,
+      color: Theme.of(context).colorScheme.onSurfaceVariant,
+    );
     return ScrollIndicator(
       child: DefaultTextStyle(
         style: paragraphStyle,

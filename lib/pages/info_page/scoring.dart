@@ -11,7 +11,10 @@ class Scoring extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = TextStyle(fontStyle: FontStyle.italic, color: Theme.of(context).colorScheme.secondary);
+    final italic = TextStyle(
+      fontStyle: FontStyle.italic,
+      color: Theme.of(context).colorScheme.onSurfaceVariant,
+    );
     final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
       child: DefaultTextStyle(

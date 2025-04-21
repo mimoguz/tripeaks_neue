@@ -87,10 +87,8 @@ class DependencyStatusChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
     final s = AppLocalizations.of(context)!;
-    final textColour = colours.outline;
     final text = isDirectDependency ? s.directDependencyLabel : s.indirectDependencyLabel;
-    return Text(text, style: TextStyle(fontSize: 12, color: textColour));
+    return Text(text, style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.secondary));
   }
 }
