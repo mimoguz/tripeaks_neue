@@ -102,7 +102,7 @@ final class Interaction extends StatelessWidget {
               child: Text(
                 s.interactionP10,
                 style: textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.outline,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
