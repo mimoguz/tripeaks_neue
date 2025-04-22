@@ -101,7 +101,7 @@ class _MainAppState extends State<MainApp> {
       seedColor: Colors.blueAccent,
       tertiary: Colors.red.shade500,
       tertiaryContainer: Colors.red.shade600,
-      secondary: Color(0xff6a7082),
+      secondary: Color(0xff606680),
     ),
   );
 
@@ -120,7 +120,7 @@ class _MainAppState extends State<MainApp> {
       tertiary: Colors.red.shade300,
       tertiaryContainer: Colors.red.shade600, // Color(0xff932e2e),
       surfaceContainer: Color(0xff151618),
-      secondary: Color(0xffa0a7b9),
+      secondary: Color(0xffb6bcd0),
       brightness: Brightness.dark,
     ),
   );
