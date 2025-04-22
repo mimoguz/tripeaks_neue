@@ -3,7 +3,6 @@
 A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using Flutter. This is a remake of [my previous implementation](https://github.com/mimoguz/tripeaks-gdx) of the same game.<br>
 
 [Play online](https://mimoguz.github.io/tripeaks_neue/index.html)<br>
-[Play on itch.io](https://mimoguz.itch.io/tripeaks-neue)
 
 <div align="center">
 <a href="https://f-droid.org/en/packages/io.github.mimoguz.tripeaksneue/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
@@ -11,6 +10,8 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 <a href="https://flathub.org/apps/io.github.mimoguz.tripeaks_neue"> <img width="180" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
 
 <a href="https://play.google.com/store/apps/details?id=io.github.mimoguz.tripeaksneue&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80"/></a>
+
+<a href="https://mimoguz.itch.io/tripeaks-neue"> <img height="60" alt="Play on itch.io" src="./.github/readme/itch.io.png"/></a>
 
 <a href="https://buymeacoffee.com/mimoguz"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 </div>
