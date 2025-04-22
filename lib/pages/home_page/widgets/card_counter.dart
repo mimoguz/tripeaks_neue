@@ -10,7 +10,7 @@ class CardCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final bold = colours.outline;
+    final bold = colours.secondary;
     final thin = colours.outlineVariant;
     final group = colours.tertiary;
     return Row(

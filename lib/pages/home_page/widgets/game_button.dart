@@ -39,7 +39,7 @@ class CircleGameButton extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(100.0)),
                   border: Border.all(
-                    color: onPressed == null ? colours.outlineVariant : colours.outline,
+                    color: onPressed == null ? colours.outlineVariant : colours.secondary,
                     width: 2.0,
                   ),
                 ),

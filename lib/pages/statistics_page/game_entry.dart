@@ -33,7 +33,7 @@ final class GameEntry extends StatelessWidget {
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: c.cardPaddingHorizontal,
+        spacing: c.cardPaddingHorizontal - 2.0,
         children: <Widget>[
           Text(game.score.toString(), style: theme.textTheme.titleMedium),
           Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.onSurfaceVariant),
