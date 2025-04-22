@@ -16,12 +16,15 @@
     </developer>
 
     <!-- Desktop AND mobile supported -->
-    <recommends>
+    <supports>
         <control>keyboard</control>
         <control>pointing</control>
         <control>touch</control>
-    </recommends>
-
+    </supports>
+    <requires>
+        <display_length compare="ge">360</display_length>
+    </requires>
+    
     <description>
         <p>
             A simple Tri Peaks patience (solitaire) game.
@@ -50,7 +53,7 @@
     </keywords>
 
     <branding>
-        <color type="primary" scheme_preference="light">#e57373</color>
+        <color type="primary" scheme_preference="light">#e98686</color>
         <color type="primary" scheme_preference="dark">#b84040</color>
     </branding>
 
