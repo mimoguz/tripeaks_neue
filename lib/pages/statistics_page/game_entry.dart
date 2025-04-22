@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/list_tile.dart';
 
 final class GameEntry extends StatelessWidget {
@@ -20,7 +21,7 @@ final class GameEntry extends StatelessWidget {
     final theme = Theme.of(context);
     return MyListTile(
       leading: place > 0 ? Order(place) : null,
-      leftSpacing: 16.0,
+      leftSpacing: c.cardPaddingHorizontal,
       title: Text(_dateFormat.format(game.ended), style: theme.textTheme.titleSmall),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
       subtitle: Row(
@@ -32,10 +33,10 @@ final class GameEntry extends StatelessWidget {
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 4,
+        spacing: c.cardPaddingHorizontal,
         children: <Widget>[
           Text(game.score.toString(), style: theme.textTheme.titleMedium),
-          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.secondary),
+          Icon(CustomIcons.star16, size: 16, color: theme.colorScheme.onSurfaceVariant),
         ],
       ),
     );
@@ -55,10 +56,12 @@ final class Order extends StatelessWidget {
     return Container(
       height: 24,
       width: 24.0,
-      decoration: BoxDecoration(color: colours.secondary, shape: BoxShape.circle),
-      child: Center(child: Text(value.toString(), style: _style.copyWith(color: colours.onSecondary))),
+      decoration: BoxDecoration(color: colours.onSurfaceVariant, shape: BoxShape.circle),
+      child: Center(
+        child: Text(value.toString(), style: _style.copyWith(color: colours.surfaceContainerHigh)),
+      ),
     );
   }
 
-  static const _style = TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600);
+  static const _style = TextStyle(fontSize: 13.0, fontWeight: FontWeight.w600);
 }

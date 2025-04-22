@@ -16,7 +16,6 @@ class HomePageDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final iconColour = colours.secondary;
     final s = AppLocalizations.of(context)!;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
@@ -102,13 +101,13 @@ class HomePageDrawer extends StatelessWidget {
                     title: s.restartGameAction,
                     intent: const RestartIntent(),
                   ),
-                  Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
+                  Divider(indent: 20, endIndent: 20),
                   DrawerListTile(
                     icon: Icons.bar_chart,
                     title: s.statisticsAction,
                     intent: const NavigateToStatisticsIntent(),
                   ),
-                  if (canExit) Divider(color: colours.outlineVariant, indent: 20, endIndent: 20),
+                  if (canExit) Divider(indent: 20, endIndent: 20),
                   if (canExit)
                     DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
                 ],
@@ -131,7 +130,7 @@ class DrawerListTile<T extends Intent> extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ListTile(
     style: ListTileStyle.drawer,
-    iconColor: Theme.of(context).colorScheme.secondary,
+    iconColor: Theme.of(context).colorScheme.onSurfaceVariant,
     leading: Icon(icon),
     title: Text(title),
     shape: StadiumBorder(),
