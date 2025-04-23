@@ -1,5 +1,6 @@
-# vNext
+# 0.9.1
 
+- [x] Update version
 - [ ] Run ```build_runner build```
 - [ ] Run ```flutter_oss_licenses:generate```
 - [ ] F-Droid changelog

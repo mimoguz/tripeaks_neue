@@ -1,0 +1,1 @@
+- Enhancement: The swipe indicator is now drawn over the other UI elements, not under.

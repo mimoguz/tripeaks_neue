@@ -4,7 +4,7 @@ description: "A Tri Peaks patience (solitaire) game"
 publish_to: 'none'
 
 # Don't forget to increase version code (the number that comes after '+')
-version: 0.9.0+5
+version: 0.9.1+6
 
 environment:
   sdk: ^3.7.0
