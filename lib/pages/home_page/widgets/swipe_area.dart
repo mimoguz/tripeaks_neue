@@ -17,38 +17,27 @@ class _SwipeAreaState extends State<SwipeArea> {
   Offset _end = Offset.zero;
   Color _fill = Colors.transparent;
   bool _drawAction = false;
+  OverlayEntry? _overlay;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onVerticalDragStart: _onDragStart,
+      onVerticalDragStart: (d) => _onDragStart(d, context),
       onVerticalDragEnd: (result) => _onDragEnd(context, result),
       onVerticalDragCancel: _onDragCancel,
-      onVerticalDragUpdate: (d) => _onDragUpdate(d, Theme.of(context).colorScheme.tertiary),
-      child: SizedBox.expand(
-        child:
-            _watching
-                ? CustomPaint(
-                  painter: _GesturePainter(
-                    from: _start,
-                    to: _end,
-                    colour: _fill,
-                    actionColour: Theme.of(context).colorScheme.surfaceContainerLow,
-                    drawAction: _drawAction,
-                  ),
-                )
-                : null,
-      ),
+      onVerticalDragUpdate: (d) => _onDragUpdate(d, Theme.of(context).colorScheme.tertiary, context),
+      child: SizedBox.expand(),
     );
   }
 
-  void _onDragStart(DragStartDetails details) {
+  void _onDragStart(DragStartDetails details, BuildContext context) {
     _watching = true;
     _start = details.localPosition;
+    _updateOverlay(context);
   }
 
-  void _onDragUpdate(DragUpdateDetails details, Color tintColour) {
+  void _onDragUpdate(DragUpdateDetails details, Color tintColour, BuildContext context) {
     if (!_watching) {
       return;
     }
@@ -60,17 +49,21 @@ class _SwipeAreaState extends State<SwipeArea> {
           _drawAction = false;
         }
       });
+      _updateOverlay(context);
       return;
     }
-    final t = max(0.0, min(1.0, distance / _distanceThreshold) * 0.3);
+    final t = max(0.0, min(1.0, distance / _distanceThreshold) * 0.5);
     setState(() {
       _end = details.localPosition;
       _fill = tintColour.withValues(alpha: t);
       _drawAction = distance > _distanceThreshold;
     });
+    _updateOverlay(context);
   }
 
   void _onDragEnd(BuildContext context, DragEndDetails details) {
+    _removeOVerlay();
+
     if (!_watching) {
       return;
     }
@@ -85,6 +78,7 @@ class _SwipeAreaState extends State<SwipeArea> {
       _watching = false;
       _start = Offset.zero;
       _end = Offset.zero;
+      _drawAction = false;
     });
 
     if (distance > _distanceThreshold) {
@@ -93,8 +87,40 @@ class _SwipeAreaState extends State<SwipeArea> {
   }
 
   void _onDragCancel() {
-    _watching = false;
-    _start = Offset.zero;
+    setState(() {
+      _watching = false;
+      _start = Offset.zero;
+      _drawAction = false;
+    });
+    _removeOVerlay();
+  }
+
+  void _removeOVerlay() {
+    _overlay?.remove();
+    _overlay?.dispose();
+    _overlay = null;
+  }
+
+  void _updateOverlay(BuildContext context) {
+    _overlay?.remove();
+    _overlay?.dispose();
+    _overlay = OverlayEntry(
+      builder:
+          (_) => IgnorePointer(
+            child: SizedBox.expand(
+              child: CustomPaint(
+                painter: _GesturePainter(
+                  from: _start,
+                  to: _end,
+                  colour: _fill,
+                  actionColour: Theme.of(context).colorScheme.surfaceContainerLow,
+                  drawAction: _drawAction,
+                ),
+              ),
+            ),
+          ),
+    );
+    Overlay.of(context).insert(_overlay!);
   }
 
   static const double _distanceThreshold = 60.0;
