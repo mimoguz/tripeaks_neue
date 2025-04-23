@@ -62,7 +62,7 @@ class _SwipeAreaState extends State<SwipeArea> {
   }
 
   void _onDragEnd(BuildContext context, DragEndDetails details) {
-    _removeOVerlay();
+    _removeOverlay();
 
     if (!_watching) {
       return;
@@ -92,10 +92,10 @@ class _SwipeAreaState extends State<SwipeArea> {
       _start = Offset.zero;
       _drawAction = false;
     });
-    _removeOVerlay();
+    _removeOverlay();
   }
 
-  void _removeOVerlay() {
+  void _removeOverlay() {
     _overlay?.remove();
     _overlay?.dispose();
     _overlay = null;
