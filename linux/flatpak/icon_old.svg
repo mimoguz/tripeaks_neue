@@ -1,0 +1,71 @@
+<svg xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="a">
+      <stop style="stop-color:#9e7f6e;stop-opacity:1" offset="0"/>
+      <stop style="stop-color:#785e4f;stop-opacity:1" offset=".085"/>
+    </linearGradient>
+    <linearGradient id="b">
+      <stop style="stop-color:#3081b2;stop-opacity:1" offset=".885"/>
+      <stop style="stop-color:#83aad8;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient id="e">
+      <stop style="stop-color:#4e4029;stop-opacity:1" offset="0"/>
+      <stop style="stop-color:#654f29;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient id="f">
+      <stop style="stop-color:#40bf36;stop-opacity:1" offset="0"/>
+      <stop style="stop-color:#c6c64d;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient id="c">
+      <stop style="stop-color:#36302a;stop-opacity:.30958882" offset="0"/>
+      <stop style="stop-color:#383028;stop-opacity:.78398025" offset="1"/>
+    </linearGradient>
+    <linearGradient id="d">
+      <stop style="stop-color:#433525;stop-opacity:1" offset="0"/>
+      <stop style="stop-color:#5c4527;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient id="g">
+      <stop style="stop-color:#dad6d2;stop-opacity:1" offset="0"/>
+      <stop style="stop-color:#c5bbb6;stop-opacity:1" offset="1"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="h" gradientUnits="userSpaceOnUse" gradientTransform="translate(532)" x1="467" y1="128" x2="675" y2="128"/>
+    <linearGradient xlink:href="#b" id="j" gradientUnits="userSpaceOnUse" gradientTransform="translate(532)" x1="519" y1="150" x2="675" y2="150"/>
+    <linearGradient xlink:href="#c" id="o" gradientUnits="userSpaceOnUse" gradientTransform="translate(308.51 -17.658) scale(1.3914)" x1="514" y1="96.5" x2="571" y2="96.5"/>
+    <linearGradient xlink:href="#d" id="p" gradientUnits="userSpaceOnUse" gradientTransform="translate(308.51 -17.658) scale(1.3914)" x1="543" y1="96.5" x2="564.853" y2="75.088"/>
+    <linearGradient xlink:href="#c" id="q" gradientUnits="userSpaceOnUse" gradientTransform="translate(260.51 24.188) scale(1.3914)" x1="514" y1="96.5" x2="571" y2="96.5"/>
+    <linearGradient xlink:href="#e" id="r" gradientUnits="userSpaceOnUse" gradientTransform="translate(260.51 24.188) scale(1.3914)" x1="543" y1="96.5" x2="564.853" y2="75.088"/>
+    <linearGradient xlink:href="#c" id="m" gradientUnits="userSpaceOnUse" gradientTransform="translate(356.52 -59.512) scale(1.3914)" x1="514" y1="96.5" x2="571" y2="96.5"/>
+    <linearGradient xlink:href="#d" id="n" gradientUnits="userSpaceOnUse" gradientTransform="translate(356.52 -59.512) scale(1.3914)" x1="543" y1="96.5" x2="564.853" y2="75.088"/>
+    <linearGradient xlink:href="#f" id="i" x1="1004.558" y1="28.406" x2="1124.822" y2="155.643" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#g" id="k" x1="1221.033" y1="120" x2="1221.033" y2="160" gradientUnits="userSpaceOnUse" spreadMethod="pad"/>
+    <linearGradient xlink:href="#g" id="l" gradientUnits="userSpaceOnUse" x1="1221.033" y1="120" x2="1221.033" y2="160" spreadMethod="pad"/>
+  </defs>
+  <g style="display:inline;fill:none;stroke:#dee4da;stroke-width:.5;stroke-dasharray:none;stroke-opacity:1" stroke="none">
+    <path style="display:inline;fill:url(#h);fill-opacity:1;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1069.353 232H1016c-9.418 0-17-7.582-17-17V41c0-9.418 7.582-17 17-17h174c9.418 0 17 7.582 17 17v43z" transform="translate(-975)"/>
+    <path style="fill:url(#i);fill-opacity:1;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1069.353 204H1016c-9.418 0-17-7.582-17-17V41c0-9.418 7.582-17 17-17h174c9.418 0 17 7.582 17 17v43l-62.738 67.457z" transform="translate(-975)"/>
+    <path style="display:inline;fill:url(#j);fill-opacity:1;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1207 84v131c0 9.418-7.582 17-17 17h-120.647v-28z" transform="translate(-975)"/>
+    <path style="fill:#3297d3;fill-opacity:1;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1207 84v103c0 9.418-7.582 17-17 17h-120.647z" transform="translate(-975)"/>
+    <path style="fill:#2e8ac4;fill-opacity:1;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1087.706 204 1207 100V84l-137.647 120z" transform="translate(-975)"/>
+    <path style="fill:#b8deea;fill-opacity:.25;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m1207 84-4 3.487V187c0 7.202-5.798 13-13 13h-116.06l-4.587 4H1190c9.418 0 17-7.582 17-17z" transform="translate(-975)"/>
+    <path style="fill:url(#k);stroke:none;stroke-width:2;stroke-linecap:square;paint-order:markers stroke fill" d="M1224.563 84c-12 12-10.813 24.995-6.813 36h20.714c-5.941-1.147-17.901-12-13.901-36zm0 72c-12-12-10.813-24.995-6.813-36h20.714c-5.941 1.147-17.901 12-13.901 36z" transform="translate(-1016.563 4)"/>
+    <path style="fill:#5f6740;fill-opacity:.409274;stroke:none;stroke-width:2;stroke-linecap:square;paint-order:markers stroke fill" d="M1114.31 164.807c-.937-5.076-.884-11.37.89-19.014-10.61 8.674-12.432 18.65-10.944 27.78z" transform="translate(-975)"/>
+    <path style="fill:url(#l);stroke:none;stroke-width:2;stroke-linecap:square;paint-order:markers stroke fill" d="M1224.563 84c-12 12-10.813 24.995-6.813 36h20.714c-5.941-1.147-17.901-12-13.901-36zm0 72c-12-12-10.813-24.995-6.813-36h20.714c-5.941 1.147-17.901 12-13.901 36z" transform="translate(-1154.464 -68)"/>
+    <path style="fill:#e6dacf;fill-opacity:.2;stroke:none;stroke-width:.5;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1016 24c-9.418 0-17 7.582-17 17v146c0 9.418 7.582 17 17 17h53.353l4.588-4H1016c-7.202 0-13-5.798-13-13V41c0-7.202 5.798-13 13-13h174c7.202 0 13 5.798 13 13v46.487l4-3.486V41c0-9.418-7.582-17-17-17z" transform="translate(-975)"/>
+    <path style="fill:#2b588f;fill-opacity:.200881;stroke:none;stroke-width:2;stroke-linecap:square;paint-order:markers stroke fill" d="m1114.31 164.807-10.054 8.765c.463 2.844 1.237 5.608 2.18 8.221-2.45 6.788-3.83 14.57-1.268 22.207h8.572c.572-14.517 8.636-21.308 13.26-22.207-4.03-.784-10.668-6.043-12.69-16.986z" transform="translate(-975)"/>
+    <path style="display:inline;fill:url(#m);fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m1151.01 41.364-79.31 33.393 79.31 33.394V74.757Z" transform="translate(-975)"/>
+    <path style="fill:#bca17c;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1151.01 52.297 1147 76l4.01 32.151 38.959-33.964-21.722-36.666z" transform="translate(-975)"/>
+    <path style="fill:url(#n);fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1151.01 52.297v55.854l-38.96-33.964 21.721-36.666z" transform="translate(-975)"/>
+    <path style="fill:#d2ceca;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1168.247 37.52 1151.01 7.97 1147 32l4.01 20.297z" transform="translate(-975)"/>
+    <path style="fill:#709098;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m1133.771 37.52 17.238-29.55v44.327z" transform="translate(-975)"/>
+    <path style="display:inline;fill:url(#o);fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m1103 83.218-79.31 33.394 79.31 33.393v-33.393z" transform="translate(-975)"/>
+    <path style="fill:#bca17c;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m1103 94.15-4 25.85 4 30.005 38.96-33.964-21.722-36.666z" transform="translate(-975)"/>
+    <path style="fill:url(#p);fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1103 94.15v55.855l-38.96-33.964 21.722-36.666Z" transform="translate(-975)"/>
+    <path style="fill:#d2ceca;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1120.238 79.375 1103 49.825 1099 72l4 22.15z" transform="translate(-975)"/>
+    <path style="fill:#709098;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1085.762 79.375 1103 49.825V94.15z" transform="translate(-975)"/>
+    <path style="display:inline;fill:url(#q);fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="m1055 125.064-56 23.58v19.629l56 23.579v-33.394z" transform="translate(-975)"/>
+    <path style="fill:#bca17c;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1055 135.997 1051 164l4 27.852 38.96-33.965-21.722-36.666z" transform="translate(-975)"/>
+    <path style="fill:#d2ceca;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1072.238 121.221 1055 91.671 1051 112l4 23.997z" transform="translate(-975)"/>
+    <path style="fill:#709098;fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1037.762 121.221 1055 91.671v44.326z" transform="translate(-975)"/>
+    <path style="fill:url(#r);fill-opacity:1;stroke:none;stroke-width:.500001;stroke-linecap:square;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" d="M1055 135.997v55.855l-38.96-33.965 21.722-36.666z" transform="translate(-975)"/>
+  </g>
+</svg>

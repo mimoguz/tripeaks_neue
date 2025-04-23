@@ -53,8 +53,8 @@
     </keywords>
 
     <branding>
-        <color type="primary" scheme_preference="light">#e98686</color>
-        <color type="primary" scheme_preference="dark">#b84040</color>
+        <color type="primary" scheme_preference="light">#c6e955</color>
+        <color type="primary" scheme_preference="dark">#1a5fb4</color>
     </branding>
 
     <content_rating type="oars-1.1" />
