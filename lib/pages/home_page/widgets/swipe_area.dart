@@ -33,7 +33,7 @@ class _SwipeAreaState extends State<SwipeArea> {
 
   void _onDragStart(DragStartDetails details, BuildContext context) {
     _watching = true;
-    _start = details.localPosition;
+    _start = details.globalPosition;
     _updateOverlay(context);
   }
 
@@ -41,7 +41,7 @@ class _SwipeAreaState extends State<SwipeArea> {
     if (!_watching) {
       return;
     }
-    final distance = _start.dy - details.localPosition.dy;
+    final distance = _start.dy - details.globalPosition.dy;
     if (distance <= 0.0) {
       setState(() {
         _fill = Colors.transparent;
@@ -52,9 +52,9 @@ class _SwipeAreaState extends State<SwipeArea> {
       _updateOverlay(context);
       return;
     }
-    final t = max(0.0, min(1.0, distance / _distanceThreshold) * 0.5);
+    final t = max(0.0, min(1.0, distance / _distanceThreshold) * 0.667);
     setState(() {
-      _end = details.localPosition;
+      _end = details.globalPosition;
       _fill = tintColour.withValues(alpha: t);
       _drawAction = distance > _distanceThreshold;
     });
@@ -71,7 +71,7 @@ class _SwipeAreaState extends State<SwipeArea> {
       return;
     }
 
-    final distance = _start.dy - details.localPosition.dy;
+    final distance = _start.dy - details.globalPosition.dy;
 
     setState(() {
       _fill = Colors.transparent;
@@ -133,7 +133,10 @@ class _GesturePainter extends CustomPainter {
     required this.colour,
     required this.actionColour,
     required this.drawAction,
-  }) : _paint = Paint()..color = colour;
+  }) : _paint =
+           Paint()
+             ..style = PaintingStyle.stroke
+             ..strokeCap = StrokeCap.round;
 
   final Offset from;
   final Offset to;
@@ -144,18 +147,13 @@ class _GesturePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = RRect.fromLTRBR(
-      from.dx - 24,
-      max(from.dy, to.dy) + 24,
-      from.dx + 24,
-      min(from.dy, to.dy) - 24,
-      _radius,
-    );
-    canvas.drawRRect(rect, _paint);
+    _paint
+      ..color = colour
+      ..strokeWidth = 42.0;
+    canvas.drawLine(from, Offset(from.dx, to.dy), _paint);
     if (drawAction) {
       _paint
         ..color = actionColour
-        ..style = PaintingStyle.stroke
         ..strokeWidth = 3.0;
       canvas.drawPath(
         Path()
@@ -164,9 +162,6 @@ class _GesturePainter extends CustomPainter {
           ..lineTo(from.dx + 10, from.dy - 7),
         _paint,
       );
-      _paint
-        ..color = colour
-        ..style = PaintingStyle.fill;
     }
   }
 
