@@ -56,10 +56,11 @@ final class Order extends StatelessWidget {
     return Container(
       height: 24,
       width: 24.0,
-      decoration: BoxDecoration(color: colours.onSurfaceVariant, shape: BoxShape.circle),
-      child: Center(
-        child: Text(value.toString(), style: _style.copyWith(color: colours.surfaceContainerHigh)),
+      decoration: BoxDecoration(
+        border: Border.all(color: colours.onSurfaceVariant, width: 2),
+        shape: BoxShape.circle,
       ),
+      child: Center(child: Text(value.toString(), style: _style.copyWith(color: colours.onSurfaceVariant))),
     );
   }
 
