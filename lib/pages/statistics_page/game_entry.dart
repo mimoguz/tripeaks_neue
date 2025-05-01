@@ -21,7 +21,7 @@ final class GameEntry extends StatelessWidget {
     final theme = Theme.of(context);
     return MyListTile(
       leading: place > 0 ? Order(place) : null,
-      leftSpacing: c.cardPaddingHorizontal,
+      leftSpacing: 6.0,
       title: Text(_dateFormat.format(game.ended), style: theme.textTheme.titleSmall),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
       subtitle: Row(
@@ -53,14 +53,13 @@ final class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    return Container(
-      height: 24,
+    return SizedBox(
+      height: 24.0,
       width: 24.0,
-      decoration: BoxDecoration(
-        border: Border.all(color: colours.onSurfaceVariant, width: 2),
-        shape: BoxShape.circle,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(value.toString(), style: _style.copyWith(color: colours.onSurfaceVariant)),
       ),
-      child: Center(child: Text(value.toString(), style: _style.copyWith(color: colours.onSurfaceVariant))),
     );
   }
 
