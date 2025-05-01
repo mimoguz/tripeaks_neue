@@ -61,6 +61,7 @@ class DecorSetting extends StatelessWidget {
                     decor: decor,
                     isSelected: settings.decor == decor,
                     onTap: () => Navigator.pop(context, index),
+                    selectedDecorColour: settings.decorColour,
                   ),
               ],
             ),
@@ -84,11 +85,18 @@ class DecorSetting extends StatelessWidget {
 }
 
 class DecorItem extends StatefulWidget {
-  const DecorItem({super.key, required this.decor, this.onTap, required this.isSelected});
+  const DecorItem({
+    super.key,
+    required this.decor,
+    this.onTap,
+    required this.isSelected,
+    required this.selectedDecorColour,
+  });
 
   final Decor decor;
   final bool isSelected;
   final VoidCallback? onTap;
+  final DecorColour selectedDecorColour;
 
   @override
   State<DecorItem> createState() => _DecorItemState();
@@ -125,12 +133,12 @@ class _DecorItemState extends State<DecorItem> {
           child: Ink(
             decoration: BoxDecoration(
               border: Border.all(width: 2.0, color: _borderColour!),
-              color: widget.isSelected ? colours.primary : colours.surfaceContainer,
+              color: widget.isSelected ? widget.selectedDecorColour.background : colours.onSurface,
             ),
             child: Icon(
               widget.decor.icon,
               size: _sideLength - 4,
-              color: widget.isSelected ? colours.inversePrimary : colours.onSurfaceVariant,
+              color: widget.isSelected ? Colors.white70 : colours.surface,
             ),
           ),
         ),
