@@ -53,7 +53,7 @@
     </keywords>
 
     <branding>
-        <color type="primary" scheme_preference="light">#c6e955</color>
+        <color type="primary" scheme_preference="light">#d9af99</color>
         <color type="primary" scheme_preference="dark">#1a5fb4</color>
     </branding>
 
@@ -85,6 +85,24 @@
     </screenshots>
 
     <releases>
+        <release version="0.9.1" date="2025-05-03">
+            <description>
+                <ul>
+                    <li>Enhancement: The swipe indicator is now rendered as an overlay, to ensure it won't be obstructed by other UI elements.</li>
+                    <li>Minor UI tweaks.</li>
+                </ul>
+            </description>
+        </release>
+        <release version="0.9.0" date="2025-04-18">
+            <description>
+                <ul>
+                    <li>Fixed saving state when the user exits the app via the back button or gesture.</li>
+                    <li>Added card back colour customisation.</li>
+                    <li>Tweaked the swipe indicator.</li>
+                    <li>Settings page is now more compact.</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.9.0" date="2025-04-18">
             <description>
                 <ul>

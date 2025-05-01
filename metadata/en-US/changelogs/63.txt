@@ -1,1 +1,2 @@
-- Enhancement: The swipe indicator is now drawn over the other UI elements, not under.
+- Enhancement: The swipe indicator is now rendered as an overlay, to ensure it won't be obstructed by other UI elements.
+- Minor UI tweaks.
