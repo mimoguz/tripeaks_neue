@@ -43,7 +43,7 @@ final class MyListTile extends StatelessWidget {
                 DefaultTextStyle(style: theme.textTheme.bodyMedium!, child: title),
                 if (subtitle != null)
                   DefaultTextStyle(
-                    style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.secondary),
+                    style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onSurfaceVariant),
                     child: subtitle!,
                   ),
               ],

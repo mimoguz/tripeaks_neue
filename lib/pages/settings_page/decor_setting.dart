@@ -133,12 +133,13 @@ class _DecorItemState extends State<DecorItem> {
           child: Ink(
             decoration: BoxDecoration(
               border: Border.all(width: 2.0, color: _borderColour!),
-              color: widget.isSelected ? widget.selectedDecorColour.background : colours.onSurface,
+              color:
+                  widget.isSelected ? widget.selectedDecorColour.background : colours.surfaceContainerHighest,
             ),
             child: Icon(
               widget.decor.icon,
               size: _sideLength - 4,
-              color: widget.isSelected ? Colors.white70 : colours.surface,
+              color: widget.isSelected ? Colors.white70 : colours.onSurfaceVariant,
             ),
           ),
         ),

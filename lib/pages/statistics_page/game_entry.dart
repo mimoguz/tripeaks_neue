@@ -21,14 +21,14 @@ final class GameEntry extends StatelessWidget {
     final theme = Theme.of(context);
     return MyListTile(
       leading: place > 0 ? Order(place) : null,
-      leftSpacing: 6.0,
+      leftSpacing: c.cardPaddingHorizontal,
       title: Text(_dateFormat.format(game.ended), style: theme.textTheme.titleSmall),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
       subtitle: Row(
         textBaseline: TextBaseline.alphabetic,
         crossAxisAlignment: CrossAxisAlignment.baseline,
-        spacing: 12.0,
-        children: <Widget>[if (showLayout) Text(game.layout.label(s)), ResultChip(game)],
+        spacing: 8.0,
+        children: <Widget>[ResultChip(game), if (showLayout) Text(game.layout.label(s))],
       ),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
@@ -53,15 +53,15 @@ final class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    return SizedBox(
-      height: 24.0,
+    return Container(
+      decoration: BoxDecoration(color: colours.onSurfaceVariant, shape: BoxShape.circle),
       width: 24.0,
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(value.toString(), style: _style.copyWith(color: colours.onSurfaceVariant)),
+      height: 24.0,
+      child: Center(
+        child: Text(value.toString(), style: _style.copyWith(color: colours.surfaceContainerHigh)),
       ),
     );
   }
 
-  static const _style = TextStyle(fontSize: 13.0, fontWeight: FontWeight.w600);
+  static const _style = TextStyle(fontSize: 13.0, fontWeight: FontWeight.w600, letterSpacing: -1.0);
 }
