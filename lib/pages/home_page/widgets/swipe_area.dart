@@ -169,6 +169,4 @@ class _GesturePainter extends CustomPainter {
   bool shouldRepaint(_GesturePainter oldDelegate) {
     return oldDelegate.colour != colour || oldDelegate.from != from || oldDelegate.to != to;
   }
-
-  static const Radius _radius = Radius.circular(24.0);
 }
