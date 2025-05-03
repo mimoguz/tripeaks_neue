@@ -1,2 +1,3 @@
 - The swipe indicator is now rendered as an overlay, to ensure it won't be obstructed by other UI elements.
+- Fixed the short-side alignment of the diamonds layout.
 - Minor UI tweaks.

@@ -89,6 +89,7 @@
             <description>
                 <ul>
                     <li>The swipe indicator is now rendered as an overlay, to ensure it won't be obstructed by other UI elements.</li>
+                    <li>Fixed the short-side alignment of the diamonds layout.</li>
                     <li>Minor UI tweaks.</li>
                 </ul>
             </description>
