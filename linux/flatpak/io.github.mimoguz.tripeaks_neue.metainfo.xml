@@ -88,7 +88,7 @@
         <release version="0.9.1" date="2025-05-03">
             <description>
                 <ul>
-                    <li>Enhancement: The swipe indicator is now rendered as an overlay, to ensure it won't be obstructed by other UI elements.</li>
+                    <li>The swipe indicator is now rendered as an overlay, to ensure it won't be obstructed by other UI elements.</li>
                     <li>Minor UI tweaks.</li>
                 </ul>
             </description>
