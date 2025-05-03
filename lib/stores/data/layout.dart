@@ -157,7 +157,7 @@ final threePeaksLayout = Layout(
 final diamondsLayout = Layout(
   cardCount: 27,
   width: 18,
-  height: 7,
+  height: 6,
   tag: Peaks.diamonds,
   pins: List<Pin>.unmodifiable([
     // Row 1
