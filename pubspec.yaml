@@ -23,7 +23,7 @@ dependencies:
   path_provider: ^2.1.5
   provider: ^6.1.2
   web: ^1.1.1
-  # cupertino_icons: ^1.0.8
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:

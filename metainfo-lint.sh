@@ -1,0 +1,1 @@
+flatpak run --command=flatpak-builder-lint org.flatpak.Builder appstream ./linux/flatpak/io.github.mimoguz.tripeaks_neue.metainfo.xml

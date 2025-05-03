@@ -1,0 +1,1 @@
+flutter build web --release --base-href "/tripeaks_neue/"
