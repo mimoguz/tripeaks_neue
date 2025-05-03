@@ -54,12 +54,11 @@ final class Order extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     return Container(
-      decoration: BoxDecoration(color: colours.onSurfaceVariant, shape: BoxShape.circle),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(color: colours.surfaceContainerLow, shape: BoxShape.circle),
       width: 24.0,
       height: 24.0,
-      child: Center(
-        child: Text(value.toString(), style: _style.copyWith(color: colours.surfaceContainerHigh)),
-      ),
+      child: Center(child: Text(value.toString(), style: _style.copyWith(color: colours.onSurfaceVariant))),
     );
   }
 
