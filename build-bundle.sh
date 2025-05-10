@@ -1,0 +1,1 @@
+flutter build appbundle --release --no-obfuscate 
