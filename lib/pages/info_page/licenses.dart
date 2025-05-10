@@ -26,7 +26,7 @@ class Licenses extends StatelessWidget {
             LicenseEntry(
               link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
               title: "Tripeaks NEUE v$version",
-              description: "Oguz Tas, 2025.",
+              description: "Oguz Tas, 2025.\nSolvable game algorithm was developed by Lykae.",
               license: "GNU Affero General Public License (AGPL) Version 3",
               exceptions: [
                 "fonts/actions.ttf: This file includes symbols derived from "

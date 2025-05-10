@@ -182,13 +182,13 @@
         "context": "settings:ensureSolvableSetting",
         "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
     },
-    "ensureSolvableOffLabel": "Random game",
+    "ensureSolvableOffLabel": "Create a random game",
     "@ensureSolvableOffLabel": {
         "type": "text",
         "context": "settings:ensureSolvableSetting",
         "description": "Value label of ensureSolvable control when it is off."
     },
-    "ensureSolvableOnLabel": "Ensure solvable",
+    "ensureSolvableOnLabel": "Ensure the game is solvable",
     "@ensureSolvableOnLabel": {
         "type": "text",
         "context": "settings:ensureSolvableSetting",

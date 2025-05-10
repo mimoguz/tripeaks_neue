@@ -264,13 +264,13 @@ abstract class AppLocalizations {
   /// Value label of ensureSolvable control when it is off.
   ///
   /// In en, this message translates to:
-  /// **'Random game'**
+  /// **'Create a random game'**
   String get ensureSolvableOffLabel;
 
   /// Value label of ensureSolvable control when it is on.
   ///
   /// In en, this message translates to:
-  /// **'Ensure solvable'**
+  /// **'Ensure the game is solvable'**
   String get ensureSolvableOnLabel;
 
   /// Label of a control that sets application theme mode.

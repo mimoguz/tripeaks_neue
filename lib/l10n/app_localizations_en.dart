@@ -95,10 +95,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ensureSolvableControl => 'Use solvable game algorithm';
 
   @override
-  String get ensureSolvableOffLabel => 'Random game';
+  String get ensureSolvableOffLabel => 'Create a random game';
 
   @override
-  String get ensureSolvableOnLabel => 'Ensure solvable';
+  String get ensureSolvableOnLabel => 'Ensure the game is solvable';
 
   @override
   String get themeModeControl => 'Theme mode';
