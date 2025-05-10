@@ -147,13 +147,13 @@
     "showAllOffLabel": "Hidden",
     "@showAllOffLabel": {
         "type": "text",
-        "context": "settings",
+        "context": "settings:showAllSetting",
         "description": "Value label of showAll control when it is off."
     },
     "showAllOnLabel": "Visible",
     "@showAllOnLabel": {
         "type": "text",
-        "context": "settings",
+        "context": "settings:showAllSetting",
         "description": "Value label of showAll control when it is on."
     },
     "@_SETTINGS_PAGE__START_EMPTY_SETTING": {},
@@ -166,14 +166,33 @@
     "startEmptyOffLabel": "Start with one card",
     "@startEmptyOffLabel": {
         "type": "text",
-        "context": "settings",
+        "context": "settings:startEmptySetting",
         "description": "Value label of startEmpty control when it is off."
     },
     "startEmptyOnLabel": "Start empty",
     "@startEmptyOnLabel": {
         "type": "text",
-        "context": "settings",
+        "context": "settings:startEmptySetting",
         "description": "Value label of startEmpty control when it is on."
+    },
+    "@_SETTINGS_PAGE__ENSURE_SOLVABLE_SETTING": {},
+    "ensureSolvableControl": "Use solvable game algorithm",
+    "@ensureSolvableControl": {
+        "type": "text",
+        "context": "settings:ensureSolvableSetting",
+        "description": "Label of a control that sets if the discard pile should be empty at the beginning of the game."
+    },
+    "ensureSolvableOffLabel": "Random game",
+    "@ensureSolvableOffLabel": {
+        "type": "text",
+        "context": "settings:ensureSolvableSetting",
+        "description": "Value label of ensureSolvable control when it is off."
+    },
+    "ensureSolvableOnLabel": "Ensure solvable",
+    "@ensureSolvableOnLabel": {
+        "type": "text",
+        "context": "settings:ensureSolvableSetting",
+        "description": "Value label of ensureSolvable control when it is on."
     },
     "@_SETTINGS_PAGE__THEME_MODE_SETTING": {},
     "themeModeControl": "Theme mode",

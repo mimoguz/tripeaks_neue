@@ -72,6 +72,22 @@ mixin _$Session on _Session, Store {
     });
   }
 
+  late final _$ensureSolvableAtom =
+      Atom(name: '_Session.ensureSolvable', context: context);
+
+  @override
+  bool get ensureSolvable {
+    _$ensureSolvableAtom.reportRead();
+    return super.ensureSolvable;
+  }
+
+  @override
+  set ensureSolvable(bool value) {
+    _$ensureSolvableAtom.reportWrite(value, super.ensureSolvable, () {
+      super.ensureSolvable = value;
+    });
+  }
+
   late final _$_statisticsAtom =
       Atom(name: '_Session._statistics', context: context);
 
@@ -120,7 +136,8 @@ mixin _$Session on _Session, Store {
     return '''
 layout: ${layout},
 startEmpty: ${startEmpty},
-showAll: ${showAll}
+showAll: ${showAll},
+ensureSolvable: ${ensureSolvable}
     ''';
   }
 }

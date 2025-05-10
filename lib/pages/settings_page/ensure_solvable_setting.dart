@@ -6,8 +6,8 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
-final class StartEmptySetting extends StatelessWidget {
-  const StartEmptySetting({super.key});
+final class EnsureSolvableSetting extends StatelessWidget {
+  const EnsureSolvableSetting({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +16,16 @@ final class StartEmptySetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.startEmptyControl,
-          location: Location.centre,
-          onTap: () => session.startEmpty = !session.startEmpty,
-          subtitle: session.startEmpty ? s.startEmptyOnLabel : s.startEmptyOffLabel,
+          title: s.ensureSolvableControl,
+          location: Location.last,
+          onTap: () => session.ensureSolvable = !session.ensureSolvable,
+          subtitle: session.ensureSolvable ? s.ensureSolvableOnLabel : s.ensureSolvableOffLabel,
           trailing: Switch(
-            value: session.startEmpty,
-            onChanged: (v) => session.startEmpty = v,
+            value: session.ensureSolvable,
+            onChanged: (v) => session.ensureSolvable = v,
             thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.empty16),
-              WidgetState.any: Icon(CustomIcons.filled16),
+              WidgetState.selected: Icon(CustomIcons.algorithm16),
+              WidgetState.any: Icon(CustomIcons.random16),
             }),
           ),
           showArrow: false,

@@ -1,3 +1,4 @@
+
 import 'package:tripeaks_neue/util/json_object.dart';
 
 enum Rank {
@@ -21,6 +22,11 @@ enum Rank {
 
   bool checkAdjacent(Rank other) =>
       (index - other.index).abs() == 1 || this == ace && other == two || this == two && other == ace;
+
+  bool checkAdjacentFromDirection(Rank other, bool plus) =>
+      plus
+          ? index - other.index == 1 || this == ace && other == two
+          : other.index - index == 1 || other == ace && this == two;
 
   (Rank previous, Rank next) get neighbours => (
     this == two ? ace : values[index - 1],
@@ -52,6 +58,9 @@ final class CardValue {
   int get hashCode => (suit.index << 16) & rank.index;
 
   bool checkAdjacent(CardValue other) => rank.checkAdjacent(other.rank);
+
+  bool checkAdjacentFromDirection(CardValue other, bool plus) =>
+      rank.checkAdjacentFromDirection(other.rank, plus);
 
   JsonObject toJsonObject() => {"rank": rank.index, "suit": suit.index};
 

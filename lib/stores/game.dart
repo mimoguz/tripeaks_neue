@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:logger/logger.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
@@ -28,19 +30,25 @@ class Game extends _Game with _$Game {
     required super.statisticsPushed,
   });
 
-  factory Game.usingDeck(List<CardValue> deck, {Layout? layout, bool startsEmpty = false}) {
+  factory Game.usingDeck(
+    List<CardValue> deck, {
+    Layout? layout,
+    bool startsEmpty = false,
+    bool ensureSolvable = false,
+  }) {
     assert(deck.length == 52);
     final lo = layout ?? threePeaksLayout;
+    final useDeck = ensureSolvable ? _makeSolvable(deck, lo) : deck;
     final board =
         lo.pins.map((pin) {
-          final tile = Tile(pin: pin, card: deck.removeLast());
+          final tile = Tile(pin: pin, card: useDeck.removeLast());
           if (pin.startsOpen) {
             tile.open();
           }
           return tile;
         }).toList();
-    final discard = startsEmpty ? <Tile>[] : <Tile>[Tile(card: deck.removeLast(), pin: Pin.unpin)];
-    final stock = deck.map((card) => Tile(card: card, pin: Pin.unpin)).toList();
+    final discard = startsEmpty ? <Tile>[] : <Tile>[Tile(card: useDeck.removeLast(), pin: Pin.unpin)];
+    final stock = useDeck.map((card) => Tile(card: card, pin: Pin.unpin)).toList();
     final isStalled = !_Game._checkMoves(board: board, stock: stock, discard: discard);
 
     return Game._(
@@ -110,6 +118,145 @@ class Game extends _Game with _$Game {
       isPlayed: jsonObject.read<bool>("isPlayed"),
       statisticsPushed: jsonObject.read<bool>("statisticsPushed"),
     );
+  }
+
+  // Algorithm developed by https://github.com/Lykae
+  static List<CardValue> _makeSolvable(List<CardValue> deck, Layout lo) {
+    var rng = Random();
+    List<CardValue> stockDeck = [];
+
+    // create moves
+    var stockPadding = 5;
+    var maxStockMoves = deck.length - lo.pins.length;
+    var numStockMoves = stockPadding + rng.nextInt(maxStockMoves - stockPadding * 2);
+    var countStockMoves = numStockMoves;
+    double directionChances = 0.99;
+    var goUpChance = 0.8;
+    var maxMoves = lo.pins.length + numStockMoves;
+    List<CardValue> moves = [deck.removeLast()];
+    bool initialDirection = rng.nextDouble() <= 0.5;
+    bool direction = initialDirection;
+    for (var i = 1; i < maxMoves; i++) {
+      var lastNode = moves[moves.length - 1];
+      direction =
+          direction
+              ? (initialDirection
+                  ? rng.nextDouble() <= directionChances
+                  : rng.nextDouble() >= directionChances)
+              : initialDirection;
+      var possibleNextMoves = deck.where((x) => lastNode.checkAdjacentFromDirection(x, direction)).toList();
+      if (possibleNextMoves.isEmpty) {
+        direction = !direction;
+        possibleNextMoves = deck.where((x) => lastNode.checkAdjacentFromDirection(x, direction)).toList();
+      }
+      CardValue nextMove;
+      if (possibleNextMoves.isEmpty) {
+        numStockMoves -= maxMoves - i;
+        countStockMoves = numStockMoves;
+        maxMoves = moves.length;
+        break;
+      } else if (possibleNextMoves.length == 1) {
+        nextMove = possibleNextMoves[0];
+      } else {
+        var rIdx = rng.nextInt(possibleNextMoves.length);
+        nextMove = possibleNextMoves[rIdx];
+      }
+      moves.add(nextMove);
+      deck.removeWhere((x) => x.rank == nextMove.rank && x.suit == nextMove.suit);
+    }
+
+    // build pins and stock
+    Map<int, CardValue> pinMap = {};
+    var maxMainAxis = 0;
+    for (var x in lo.pins) {
+      if (x.mainAxis > maxMainAxis) {
+        maxMainAxis = x.mainAxis;
+      }
+    }
+
+    maxMoves = moves.length;
+    var rdmStockPadding = rng.nextInt(stockPadding);
+    var stockInterval = (maxMoves - rdmStockPadding) / numStockMoves;
+
+    for (var i = 0; i < maxMoves; i++) {
+      List<int> possibleTargets = [];
+      if (i != 0 && countStockMoves > 0) {
+        if (i >= ((numStockMoves - countStockMoves + 1) * stockInterval) + rdmStockPadding ||
+            countStockMoves == maxMoves - i) {
+          stockDeck.add(moves.removeLast());
+          countStockMoves--;
+          continue;
+        }
+      }
+      var bottomUncompletedMainAxis = 0;
+      Map<int, bool> mainAxisCompletedMap = {};
+      for (var j = 0; j < lo.pins.length; j++) {
+        if (pinMap[j] != null) {
+          continue;
+        }
+        bool unlocked = true;
+        loop:
+        for (var tileAbove in lo.above[j]) {
+          if (pinMap[tileAbove] == null) {
+            unlocked = false;
+            break loop;
+          }
+        }
+
+        mainAxisCompletedMap[lo.pins[j].mainAxis] = false;
+
+        if (unlocked) {
+          possibleTargets.add(j);
+        }
+      }
+
+      for (var i = 0; i <= maxMainAxis; i++) {
+        var row = mainAxisCompletedMap[i];
+        if (row != null) {
+          if (!row) {
+            bottomUncompletedMainAxis = i;
+            break;
+          }
+        }
+      }
+
+      if (i != 0) {
+        if (rng.nextDouble() <= goUpChance) {
+          var goUpTargets =
+              possibleTargets.where((x) => lo.pins[x].mainAxis > bottomUncompletedMainAxis).toList();
+          if (goUpTargets.isNotEmpty) {
+            possibleTargets = goUpTargets;
+          }
+        }
+      }
+      var targetIdx = rng.nextInt(possibleTargets.length);
+      var target = possibleTargets[targetIdx];
+      pinMap[target] = moves.removeLast();
+    }
+
+    // construct deck
+    List<CardValue> newDeck = [];
+    var stockIdxs = [];
+    var randomStockIdxs = [];
+    for (var i = 0; i < maxStockMoves; i++) {
+      stockIdxs.add(i);
+    }
+    stockIdxs = stockIdxs..shuffle();
+    for (var i = 0; i < stockDeck.length; i++) {
+      randomStockIdxs.add(stockIdxs[i]);
+    }
+    for (var i = 0; i < maxStockMoves; i++) {
+      if (randomStockIdxs.contains(i)) {
+        newDeck.add(stockDeck.removeLast());
+      } else {
+        var temp = deck.removeLast();
+        newDeck.add(temp);
+      }
+    }
+    for (var pin in pinMap.keys.toList().reversed.toList()) {
+      newDeck.add(pinMap[pin]!);
+    }
+    return newDeck;
   }
 }
 
