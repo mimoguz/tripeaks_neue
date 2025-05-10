@@ -112,6 +112,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           onPressed: () {
             session.showAll = _showAll!;
             session.startEmpty = _startEmpty!;
+            session.ensureSolvable = _ensureSolvable!;
             session.layout = _layout!;
             session.newGame(settings.sounds.playStart);
             Navigator.pop(context);
