@@ -7,14 +7,12 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 /// ones can be removed without disturbing user preferences.
 enum Decor {
   checkered(100),
+  // dotLove(150),
   dotMatrix(250),
   ennui(200),
   itsKnot(250),
   neue(400),
   solar(600);
-  // organic(500);
-  // lazySuzan(800),
-  // roundabout(300),
 
   final int value;
 
@@ -27,6 +25,7 @@ enum Decor {
 extension DecorExt on Decor {
   IconData get icon => switch (this) {
     Decor.checkered => CustomIcons.backCheckered,
+    // Decor.dotLove => CustomIcons.backDotLove,
     Decor.dotMatrix => CustomIcons.backDotMatrix,
     Decor.ennui => CustomIcons.backEnnui,
     Decor.itsKnot => CustomIcons.backItsKnot,
@@ -36,6 +35,7 @@ extension DecorExt on Decor {
 
   String name(AppLocalizations s) => switch (this) {
     Decor.checkered => s.checkeredDecorLabel,
+    // Decor.dotLove => s.dotLoveDecorLabel,
     Decor.dotMatrix => s.dotMatrixDecorLabel,
     Decor.ennui => s.ennuiDecorLabel,
     Decor.itsKnot => s.itsKnotDecorLabel,

@@ -137,6 +137,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get checkeredDecorLabel => 'Checkered';
 
   @override
+  String get dotLoveDecorLabel => '.love';
+
+  @override
   String get ennuiDecorLabel => 'Ennui';
 
   @override

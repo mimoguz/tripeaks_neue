@@ -269,6 +269,12 @@
         "context": "settings",
         "description": "Label of a decoration variant."
     },
+    "dotLoveDecorLabel": ".love",
+    "@dotLoveDecorLabel": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a decoration variant."
+    },
     "ennuiDecorLabel": "Ennui",
     "@ennuiDecorLabel": {
         "type": "text",

@@ -348,6 +348,12 @@ abstract class AppLocalizations {
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
+  /// **'.love'**
+  String get dotLoveDecorLabel;
+
+  /// Label of a decoration variant.
+  ///
+  /// In en, this message translates to:
   /// **'Ennui'**
   String get ennuiDecorLabel;
 
