@@ -108,6 +108,7 @@ final class Interaction extends StatelessWidget {
               ),
             ),
             ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut),
+            ShorcutListCell(title: s.interactionP11, shorcut: _menuShortcutAlt),
             ShorcutListCell(title: s.interactionP12, shorcut: _backShortcut),
             ShorcutListCell(title: s.interactionP13, shorcut: _backShortcutAlt),
             ShorcutListCell(title: s.exitAction, shorcut: _exitShortcut),
@@ -120,6 +121,7 @@ final class Interaction extends StatelessWidget {
   static final _drawShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.keyD];
   static final _undoShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.control, LogicalKeyboardKey.keyZ];
   static final _menuShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.keyM];
+  static final _menuShortcutAlt = <LogicalKeyboardKey>[LogicalKeyboardKey.f10];
   static final _settingsShortcut = <LogicalKeyboardKey>[
     LogicalKeyboardKey.control,
     LogicalKeyboardKey.period,

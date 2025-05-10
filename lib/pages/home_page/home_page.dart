@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
           SingleActivator(LogicalKeyboardKey.keyZ, control: true): const RollbackIntent(),
           SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
           SingleActivator(LogicalKeyboardKey.keyM): const ShowNavigationDrawerIntent(),
+          SingleActivator(LogicalKeyboardKey.f10): const ShowNavigationDrawerIntent(),
           SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
           SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
           SingleActivator(LogicalKeyboardKey.period, control: true): const NavigateToSettingsIntent(),

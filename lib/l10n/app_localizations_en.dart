@@ -341,6 +341,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get interactionP10 => 'Other Shorcuts';
 
   @override
+  String get interactionP11 => 'Show/hide menu (alternative)';
+
+  @override
   String get interactionP12 => 'Back';
 
   @override

@@ -686,6 +686,12 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
+    "interactionP11": "Show/hide menu (alternative)",
+    "@interactionP11": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
     "interactionP12": "Back",
     "@interactionP12": {
         "type": "text",

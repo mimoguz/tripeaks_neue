@@ -756,6 +756,12 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
+  /// **'Show/hide menu (alternative)'**
+  String get interactionP11;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
   /// **'Back'**
   String get interactionP12;
 
