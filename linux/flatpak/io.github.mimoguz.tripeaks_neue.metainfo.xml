@@ -35,6 +35,7 @@
             <li>An option to show the values of face-down cards</li>
             <li>An option to start with an empty discard pile, allowing the player to choose any
                 starting card</li>
+            <li>An option to ensure the created games are solvable</li>
             <li>Aggregated and per-layout statistics</li>
             <li>Portrait and landscape orientation support</li>
         </ul>
@@ -85,6 +86,13 @@
     </screenshots>
 
     <releases>
+        <release version="0.9.2" date="2025-05-01">
+            <description>
+                <ul>
+                    <li>Added the solvable game generation algorithm</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.9.1" date="2025-05-03">
             <description>
                 <ul>
