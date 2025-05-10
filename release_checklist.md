@@ -16,6 +16,6 @@
 - [ ] Web release, base href "/tripeaks_neue/"
 - [ ] For itch.io base href must be empty string
 
-# Post release:
+## Post release:
 
 - [ ] Make sure the Flathub auto-pr is correct!! 
