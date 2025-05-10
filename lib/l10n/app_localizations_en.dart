@@ -92,6 +92,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startEmptyOnLabel => 'Start empty';
 
   @override
+  String get ensureSolvableControl => 'Use solvable game algorithm';
+
+  @override
+  String get ensureSolvableOffLabel => 'Create a random game';
+
+  @override
+  String get ensureSolvableOnLabel => 'Ensure the game is solvable';
+
+  @override
   String get themeModeControl => 'Theme mode';
 
   @override

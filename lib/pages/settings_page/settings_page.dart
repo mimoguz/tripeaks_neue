@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/ensure_solvable_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
@@ -110,6 +111,7 @@ final class SettingsPageBody extends StatelessWidget {
                           GroupTitle(s.nextGameSettingGroupTitle),
                           const LayoutSetting(),
                           const StartEmptySetting(),
+                          const EnsureSolvableSetting(),
                           GroupTitle(s.interfaceSettingGroupTitle),
                           const SoundSetting(),
                           const ThemeModeSetting(),

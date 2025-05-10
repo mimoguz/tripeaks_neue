@@ -255,6 +255,24 @@ abstract class AppLocalizations {
   /// **'Start empty'**
   String get startEmptyOnLabel;
 
+  /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
+  ///
+  /// In en, this message translates to:
+  /// **'Use solvable game algorithm'**
+  String get ensureSolvableControl;
+
+  /// Value label of ensureSolvable control when it is off.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a random game'**
+  String get ensureSolvableOffLabel;
+
+  /// Value label of ensureSolvable control when it is on.
+  ///
+  /// In en, this message translates to:
+  /// **'Ensure the game is solvable'**
+  String get ensureSolvableOnLabel;
+
   /// Label of a control that sets application theme mode.
   ///
   /// In en, this message translates to:

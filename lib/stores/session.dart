@@ -21,14 +21,29 @@ class Session extends _Session with _$Session {
     Peaks layout, {
     bool startEmpty = false,
     bool showAll = false,
+    bool ensureSolvable = false,
     required PlayerStatistics statistics,
-  }) : super(game, layout, startEmpty: startEmpty, showAll: showAll, statistics: statistics);
+  }) : super(
+         game,
+         layout,
+         startEmpty: startEmpty,
+         showAll: showAll,
+         ensureSolvable: ensureSolvable,
+         statistics: statistics,
+       );
 
   factory Session.fresh() {
     final layout = Peaks.threePeaks;
     final startEmpty = false;
-    final game = _Session._makeRandomGame(layout, startEmpty);
-    return Session(game, layout, startEmpty: startEmpty, statistics: PlayerStatistics.empty());
+    final ensureSolvable = false;
+    final game = _Session._makeRandomGame(layout, startEmpty: startEmpty, ensureSolvable: ensureSolvable);
+    return Session(
+      game,
+      layout,
+      startEmpty: startEmpty,
+      ensureSolvable: ensureSolvable,
+      statistics: PlayerStatistics.empty(),
+    );
   }
 
   static Future<Session> read() async {
@@ -36,7 +51,11 @@ class Session extends _Session with _$Session {
     final sessionData = await io.read("session", _SessionData.fromJsonObject) ?? _SessionData.fresh();
     final game =
         await io.read("game", Game.fromJsonObject) ??
-        _Session._makeRandomGame(sessionData.layout, sessionData.startEmpty);
+        _Session._makeRandomGame(
+          sessionData.layout,
+          startEmpty: sessionData.startEmpty,
+          ensureSolvable: sessionData.ensureSolvable,
+        );
     final statistics =
         await io.read("statistics", PlayerStatistics.fromJsonObject) ?? PlayerStatistics.empty();
     return Session(
@@ -44,6 +63,7 @@ class Session extends _Session with _$Session {
       sessionData.layout,
       startEmpty: sessionData.startEmpty,
       showAll: sessionData.showAll,
+      ensureSolvable: sessionData.ensureSolvable,
       statistics: statistics,
     );
   }
@@ -63,6 +83,7 @@ abstract class _Session with Store {
     required PlayerStatistics statistics,
     this.startEmpty = false,
     this.showAll = false,
+    this.ensureSolvable = false,
   }) : _statistics = statistics,
        _game = game {
     whenCleared = when((_) => _game.isCleared, () {
@@ -85,6 +106,9 @@ abstract class _Session with Store {
   @observable
   bool showAll;
 
+  @observable
+  bool ensureSolvable;
+
   @readonly
   PlayerStatistics _statistics;
 
@@ -92,7 +116,7 @@ abstract class _Session with Store {
 
   @action
   void newGame(Future<void> Function() callback) {
-    final next = _makeRandomGame(layout, startEmpty);
+    final next = _makeRandomGame(layout, startEmpty: startEmpty, ensureSolvable: ensureSolvable);
     for (final tile in next.board) {
       tile.hide();
     }
@@ -147,12 +171,12 @@ abstract class _Session with Store {
     return;
   }
 
-  static Game _makeRandomGame(Peaks layout, bool startEmpty) {
+  static Game _makeRandomGame(Peaks layout, {bool startEmpty = false, bool ensureSolvable = false}) {
     final layoutObj = layout.implementation;
 
     Game make() {
       final deck = getDeck()..shuffle();
-      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: startEmpty);
+      return Game.usingDeck(deck, layout: layoutObj, startsEmpty: startEmpty, ensureSolvable: ensureSolvable);
     }
 
     for (var i = 0; i < 10; i++) {
@@ -177,25 +201,39 @@ abstract class _Session with Store {
 }
 
 final class _SessionData {
-  _SessionData({required this.layout, required this.startEmpty, required this.showAll});
+  _SessionData({
+    required this.layout,
+    required this.startEmpty,
+    required this.showAll,
+    required this.ensureSolvable,
+  });
 
   final Peaks layout;
   final bool startEmpty;
   final bool showAll;
+  final bool ensureSolvable;
 
-  _SessionData.fresh() : this(layout: Peaks.threePeaks, startEmpty: false, showAll: false);
+  _SessionData.fresh()
+    : this(layout: Peaks.threePeaks, startEmpty: false, showAll: false, ensureSolvable: false);
 
   _SessionData.fromJsonObject(Map<String, dynamic> jsonObject)
-    : layout = Peaks.values[jsonObject["layout"]],
-      startEmpty = jsonObject["startEmpty"],
-      showAll = jsonObject["showAll"];
+    : layout = Peaks.values[jsonObject["layout"] ?? 0],
+      startEmpty = jsonObject["startEmpty"] ?? false,
+      showAll = jsonObject["showAll"] ?? false,
+      ensureSolvable = jsonObject["ensureSolvable"] ?? false;
 
   _SessionData.of(Session session)
-    : this(layout: session.layout, startEmpty: session.startEmpty, showAll: session.showAll);
+    : this(
+        layout: session.layout,
+        startEmpty: session.startEmpty,
+        showAll: session.showAll,
+        ensureSolvable: session.ensureSolvable,
+      );
 
   Map<String, dynamic> toJsonObject() => <String, dynamic>{
     "layout": layout.index,
     "startEmpty": startEmpty,
     "showAll": showAll,
+    "ensureSolvable": ensureSolvable,
   };
 }
