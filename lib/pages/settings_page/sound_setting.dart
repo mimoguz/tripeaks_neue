@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
@@ -23,8 +24,8 @@ final class SoundSetting extends StatelessWidget {
             value: settings.soundOn,
             onChanged: (v) => settings.setSoundOn(v),
             thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(Icons.volume_up),
-              WidgetState.any: Icon(Icons.volume_off),
+              WidgetState.selected: Icon(CustomIcons.volumeOn),
+              WidgetState.any: Icon(CustomIcons.volumeOff),
             }),
           ),
           showArrow: false,

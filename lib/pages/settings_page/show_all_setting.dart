@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
@@ -23,8 +24,8 @@ final class ShowAllSetting extends StatelessWidget {
             value: session.showAll,
             onChanged: (v) => session.showAll = v,
             thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(Icons.visibility),
-              WidgetState.any: Icon(Icons.visibility_off),
+              WidgetState.selected: Icon(CustomIcons.visible16),
+              WidgetState.any: Icon(CustomIcons.invisible16),
             }),
           ),
           showArrow: false,
