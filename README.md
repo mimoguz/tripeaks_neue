@@ -52,6 +52,6 @@ The best explanation I could find about this was again in the F-Droid repository
 
 ## Bonus Content 🙂
 
-Here is a couple of wallpapers I made when trying to make a banner for Google Play: <a href="./.github/readme/tri_peaks_wallpapers.zip?raw=true" download>download zip file</a>
+Here is a couple of wallpapers I made when trying to make a banner for Google Play: <a href="https://mimoguz.github.io/files/tri_peaks_wallpapers.zip" download>download zip file</a>
 
 <a href="https://mimoguz.github.io/files/tri_peaks_wallpapers.zip" download><img src="./.github/readme/tripeaks_wallpapers.png" alt="Wallpapers"></img></a>
