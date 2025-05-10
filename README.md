@@ -21,7 +21,7 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 - Four board layouts
 - An option to show the values of face-down cards
 - An option to start with an empty discard pile, allowing the player to choose any starting card
-- An option to ensure the created games are solvable (developed by @Lykae)
+- An option to ensure the created games are solvable (developed by [Lykae](https://github.com/Lykae))
 - Aggregated and per-layout statistics
 - Portrait and landscape orientation support
 
