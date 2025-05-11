@@ -92,7 +92,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startEmptyOnLabel => 'Start empty';
 
   @override
-  String get ensureSolvableControl => 'Use solvable game algorithm';
+  String get ensureSolvableControl => 'Use a solvable game algorithm';
 
   @override
   String get ensureSolvableOffLabel => 'Create a random game';

@@ -176,7 +176,7 @@
         "description": "Value label of startEmpty control when it is on."
     },
     "@_SETTINGS_PAGE__ENSURE_SOLVABLE_SETTING": {},
-    "ensureSolvableControl": "Use solvable game algorithm",
+    "ensureSolvableControl": "Use a solvable game algorithm",
     "@ensureSolvableControl": {
         "type": "text",
         "context": "settings:ensureSolvableSetting",

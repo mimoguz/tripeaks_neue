@@ -258,7 +258,7 @@ abstract class AppLocalizations {
   /// Label of a control that sets if the discard pile should be empty at the beginning of the game.
   ///
   /// In en, this message translates to:
-  /// **'Use solvable game algorithm'**
+  /// **'Use a solvable game algorithm'**
   String get ensureSolvableControl;
 
   /// Value label of ensureSolvable control when it is off.
