@@ -7,7 +7,7 @@ publish_to: 'none'
 version: 0.9.2+7
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.8.0
 
 dependencies:
   audioplayers: ^6.2.0
@@ -36,6 +36,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - images/tropy.png
