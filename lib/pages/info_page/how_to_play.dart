@@ -13,7 +13,7 @@ class HowToPlay extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final s = AppLocalizations.of(context)!;
     final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = TextStyle(
+    final italic = textTheme.bodyMedium!.copyWith(
       fontStyle: FontStyle.italic,
       color: Theme.of(context).colorScheme.onSurfaceVariant,
     );
@@ -50,17 +50,26 @@ class HowToPlay extends StatelessWidget {
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text("●"), Flexible(child: Text(s.howToP08))],
+              children: [
+                Text("●"),
+                Flexible(child: Text(s.howToP08)),
+              ],
             ),
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text("●"), Flexible(child: Text(s.howToP09))],
+              children: [
+                Text("●"),
+                Flexible(child: Text(s.howToP09)),
+              ],
             ),
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text("●"), Flexible(child: Text(s.howToP10))],
+              children: [
+                Text("●"),
+                Flexible(child: Text(s.howToP10)),
+              ],
             ),
           ],
         ),
