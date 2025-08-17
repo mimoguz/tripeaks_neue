@@ -9,8 +9,10 @@ part of 'settings.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$Settings on _Settings, Store {
-  late final _$themeModeAtom =
-      Atom(name: '_Settings.themeMode', context: context);
+  late final _$themeModeAtom = Atom(
+    name: '_Settings.themeMode',
+    context: context,
+  );
 
   @override
   ThemeMode get themeMode {
@@ -40,8 +42,10 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
-  late final _$decorColourAtom =
-      Atom(name: '_Settings.decorColour', context: context);
+  late final _$decorColourAtom = Atom(
+    name: '_Settings.decorColour',
+    context: context,
+  );
 
   @override
   DecorColour get decorColour {
@@ -56,8 +60,10 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
-  late final _$_soundOnAtom =
-      Atom(name: '_Settings._soundOn', context: context);
+  late final _$_soundOnAtom = Atom(
+    name: '_Settings._soundOn',
+    context: context,
+  );
 
   bool get soundOn {
     _$_soundOnAtom.reportRead();
@@ -91,8 +97,10 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
-  late final _$_firstRunAtom =
-      Atom(name: '_Settings._firstRun', context: context);
+  late final _$_firstRunAtom = Atom(
+    name: '_Settings._firstRun',
+    context: context,
+  );
 
   bool get firstRun {
     _$_firstRunAtom.reportRead();
@@ -109,13 +117,16 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
-  late final _$_SettingsActionController =
-      ActionController(name: '_Settings', context: context);
+  late final _$_SettingsActionController = ActionController(
+    name: '_Settings',
+    context: context,
+  );
 
   @override
   void ran() {
-    final _$actionInfo =
-        _$_SettingsActionController.startAction(name: '_Settings.ran');
+    final _$actionInfo = _$_SettingsActionController.startAction(
+      name: '_Settings.ran',
+    );
     try {
       return super.ran();
     } finally {
@@ -125,8 +136,9 @@ mixin _$Settings on _Settings, Store {
 
   @override
   void setSoundOn(bool value) {
-    final _$actionInfo =
-        _$_SettingsActionController.startAction(name: '_Settings.setSoundOn');
+    final _$actionInfo = _$_SettingsActionController.startAction(
+      name: '_Settings.setSoundOn',
+    );
     try {
       return super.setSoundOn(value);
     } finally {

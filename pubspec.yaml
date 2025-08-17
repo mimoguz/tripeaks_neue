@@ -4,13 +4,13 @@ description: "A Tri Peaks patience (solitaire) game"
 publish_to: 'none'
 
 # Don't forget to increase version code (the number that comes after '+')
-version: 0.9.2+7
+version: 0.9.3+8
 
 environment:
-  sdk: ^3.8.0
+  sdk: ^3.9.0
 
 dependencies:
-  audioplayers: ^6.4.0
+  audioplayers: ^6.5.0
   fast_rich_text: ^0.0.1
   flutter:
     sdk: flutter
@@ -18,20 +18,20 @@ dependencies:
     sdk: flutter
   flutter_mobx: ^2.3.0
   intl: any
-  logger: ^2.5.0
+  logger: ^2.6.1
   mobx: ^2.5.0
   path_provider: ^2.1.5
   provider: ^6.1.5
   web: ^1.1.1
 
 dev_dependencies:
-  build_runner: ^2.4.15
-  build_version: ^2.1.1
+  build_runner: ^2.7.0
+  build_version: ^2.1.2
   flutter_lints: ^5.0.0
   flutter_oss_licenses: ^3.0.4
   flutter_test:
     sdk: flutter
-  mobx_codegen: ^2.7.0
+  mobx_codegen: ^2.7.2
 
 flutter:
   uses-material-design: true

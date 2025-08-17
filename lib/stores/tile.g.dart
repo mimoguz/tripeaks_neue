@@ -41,8 +41,10 @@ mixin _$Tile on _Tile, Store {
     });
   }
 
-  late final _$_isVisibleAtom =
-      Atom(name: '_Tile._isVisible', context: context);
+  late final _$_isVisibleAtom = Atom(
+    name: '_Tile._isVisible',
+    context: context,
+  );
 
   bool get isVisible {
     _$_isVisibleAtom.reportRead();
@@ -59,13 +61,16 @@ mixin _$Tile on _Tile, Store {
     });
   }
 
-  late final _$_TileActionController =
-      ActionController(name: '_Tile', context: context);
+  late final _$_TileActionController = ActionController(
+    name: '_Tile',
+    context: context,
+  );
 
   @override
   void open() {
-    final _$actionInfo =
-        _$_TileActionController.startAction(name: '_Tile.open');
+    final _$actionInfo = _$_TileActionController.startAction(
+      name: '_Tile.open',
+    );
     try {
       return super.open();
     } finally {
@@ -75,8 +80,9 @@ mixin _$Tile on _Tile, Store {
 
   @override
   void close() {
-    final _$actionInfo =
-        _$_TileActionController.startAction(name: '_Tile.close');
+    final _$actionInfo = _$_TileActionController.startAction(
+      name: '_Tile.close',
+    );
     try {
       return super.close();
     } finally {
@@ -86,8 +92,9 @@ mixin _$Tile on _Tile, Store {
 
   @override
   void take() {
-    final _$actionInfo =
-        _$_TileActionController.startAction(name: '_Tile.take');
+    final _$actionInfo = _$_TileActionController.startAction(
+      name: '_Tile.take',
+    );
     try {
       return super.take();
     } finally {
@@ -107,8 +114,9 @@ mixin _$Tile on _Tile, Store {
 
   @override
   void hide() {
-    final _$actionInfo =
-        _$_TileActionController.startAction(name: '_Tile.hide');
+    final _$actionInfo = _$_TileActionController.startAction(
+      name: '_Tile.hide',
+    );
     try {
       return super.hide();
     } finally {
@@ -118,8 +126,9 @@ mixin _$Tile on _Tile, Store {
 
   @override
   void show() {
-    final _$actionInfo =
-        _$_TileActionController.startAction(name: '_Tile.show');
+    final _$actionInfo = _$_TileActionController.startAction(
+      name: '_Tile.show',
+    );
     try {
       return super.show();
     } finally {

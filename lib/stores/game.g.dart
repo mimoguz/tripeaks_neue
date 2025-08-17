@@ -9,8 +9,10 @@ part of 'game.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$Game on _Game, Store {
-  late final _$_isClearedAtom =
-      Atom(name: '_Game._isCleared', context: context);
+  late final _$_isClearedAtom = Atom(
+    name: '_Game._isCleared',
+    context: context,
+  );
 
   bool get isCleared {
     _$_isClearedAtom.reportRead();
@@ -27,8 +29,10 @@ mixin _$Game on _Game, Store {
     });
   }
 
-  late final _$_isStalledAtom =
-      Atom(name: '_Game._isStalled', context: context);
+  late final _$_isStalledAtom = Atom(
+    name: '_Game._isStalled',
+    context: context,
+  );
 
   bool get isStalled {
     _$_isStalledAtom.reportRead();
@@ -79,8 +83,10 @@ mixin _$Game on _Game, Store {
     });
   }
 
-  late final _$_remainingAtom =
-      Atom(name: '_Game._remaining', context: context);
+  late final _$_remainingAtom = Atom(
+    name: '_Game._remaining',
+    context: context,
+  );
 
   int get remaining {
     _$_remainingAtom.reportRead();
@@ -114,13 +120,16 @@ mixin _$Game on _Game, Store {
     });
   }
 
-  late final _$_GameActionController =
-      ActionController(name: '_Game', context: context);
+  late final _$_GameActionController = ActionController(
+    name: '_Game',
+    context: context,
+  );
 
   @override
   bool take(Pin pin) {
-    final _$actionInfo =
-        _$_GameActionController.startAction(name: '_Game.take');
+    final _$actionInfo = _$_GameActionController.startAction(
+      name: '_Game.take',
+    );
     try {
       return super.take(pin);
     } finally {
@@ -130,8 +139,9 @@ mixin _$Game on _Game, Store {
 
   @override
   void draw() {
-    final _$actionInfo =
-        _$_GameActionController.startAction(name: '_Game.draw');
+    final _$actionInfo = _$_GameActionController.startAction(
+      name: '_Game.draw',
+    );
     try {
       return super.draw();
     } finally {
@@ -141,8 +151,9 @@ mixin _$Game on _Game, Store {
 
   @override
   void rollback() {
-    final _$actionInfo =
-        _$_GameActionController.startAction(name: '_Game.rollback');
+    final _$actionInfo = _$_GameActionController.startAction(
+      name: '_Game.rollback',
+    );
     try {
       return super.rollback();
     } finally {
@@ -152,8 +163,9 @@ mixin _$Game on _Game, Store {
 
   @override
   void forfeit() {
-    final _$actionInfo =
-        _$_GameActionController.startAction(name: '_Game.forfeit');
+    final _$actionInfo = _$_GameActionController.startAction(
+      name: '_Game.forfeit',
+    );
     try {
       return super.forfeit();
     } finally {

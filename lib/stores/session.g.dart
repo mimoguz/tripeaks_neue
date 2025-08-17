@@ -41,8 +41,10 @@ mixin _$Session on _Session, Store {
     });
   }
 
-  late final _$startEmptyAtom =
-      Atom(name: '_Session.startEmpty', context: context);
+  late final _$startEmptyAtom = Atom(
+    name: '_Session.startEmpty',
+    context: context,
+  );
 
   @override
   bool get startEmpty {
@@ -72,8 +74,10 @@ mixin _$Session on _Session, Store {
     });
   }
 
-  late final _$ensureSolvableAtom =
-      Atom(name: '_Session.ensureSolvable', context: context);
+  late final _$ensureSolvableAtom = Atom(
+    name: '_Session.ensureSolvable',
+    context: context,
+  );
 
   @override
   bool get ensureSolvable {
@@ -88,8 +92,10 @@ mixin _$Session on _Session, Store {
     });
   }
 
-  late final _$_statisticsAtom =
-      Atom(name: '_Session._statistics', context: context);
+  late final _$_statisticsAtom = Atom(
+    name: '_Session._statistics',
+    context: context,
+  );
 
   PlayerStatistics get statistics {
     _$_statisticsAtom.reportRead();
@@ -106,13 +112,16 @@ mixin _$Session on _Session, Store {
     });
   }
 
-  late final _$_SessionActionController =
-      ActionController(name: '_Session', context: context);
+  late final _$_SessionActionController = ActionController(
+    name: '_Session',
+    context: context,
+  );
 
   @override
   void newGame(Future<void> Function() callback) {
-    final _$actionInfo =
-        _$_SessionActionController.startAction(name: '_Session.newGame');
+    final _$actionInfo = _$_SessionActionController.startAction(
+      name: '_Session.newGame',
+    );
     try {
       return super.newGame(callback);
     } finally {
@@ -122,8 +131,9 @@ mixin _$Session on _Session, Store {
 
   @override
   void restart(Future<void> Function() callback) {
-    final _$actionInfo =
-        _$_SessionActionController.startAction(name: '_Session.restart');
+    final _$actionInfo = _$_SessionActionController.startAction(
+      name: '_Session.restart',
+    );
     try {
       return super.restart(callback);
     } finally {
