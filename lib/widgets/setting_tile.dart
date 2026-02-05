@@ -56,7 +56,7 @@ final class SettingTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (trailing != null) trailing!,
+                  ?trailing,
                   if (showArrow) Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
                 ],
               ),

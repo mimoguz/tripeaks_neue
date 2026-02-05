@@ -39,14 +39,13 @@ class Game extends _Game with _$Game {
     assert(deck.length == 52);
     final lo = layout ?? threePeaksLayout;
     final useDeck = ensureSolvable ? _makeSolvable(deck, lo) : deck;
-    final board =
-        lo.pins.map((pin) {
-          final tile = Tile(pin: pin, card: useDeck.removeLast());
-          if (pin.startsOpen) {
-            tile.open();
-          }
-          return tile;
-        }).toList();
+    final board = lo.pins.map((pin) {
+      final tile = Tile(pin: pin, card: useDeck.removeLast());
+      if (pin.startsOpen) {
+        tile.open();
+      }
+      return tile;
+    }).toList();
     final discard = startsEmpty ? <Tile>[] : <Tile>[Tile(card: useDeck.removeLast(), pin: Pin.unpin)];
     final stock = useDeck.map((card) => Tile(card: card, pin: Pin.unpin)).toList();
     final isStalled = !_Game._checkMoves(board: board, stock: stock, discard: discard);
@@ -138,12 +137,9 @@ class Game extends _Game with _$Game {
     bool direction = initialDirection;
     for (var i = 1; i < maxMoves; i++) {
       var lastNode = moves[moves.length - 1];
-      direction =
-          direction
-              ? (initialDirection
-                  ? rng.nextDouble() <= directionChances
-                  : rng.nextDouble() >= directionChances)
-              : initialDirection;
+      direction = direction
+          ? (initialDirection ? rng.nextDouble() <= directionChances : rng.nextDouble() >= directionChances)
+          : initialDirection;
       var possibleNextMoves = deck.where((x) => lastNode.checkAdjacentFromDirection(x, direction)).toList();
       if (possibleNextMoves.isEmpty) {
         direction = !direction;
@@ -222,8 +218,9 @@ class Game extends _Game with _$Game {
 
       if (i != 0) {
         if (rng.nextDouble() <= goUpChance) {
-          var goUpTargets =
-              possibleTargets.where((x) => lo.pins[x].mainAxis > bottomUncompletedMainAxis).toList();
+          var goUpTargets = possibleTargets
+              .where((x) => lo.pins[x].mainAxis > bottomUncompletedMainAxis)
+              .toList();
           if (goUpTargets.isNotEmpty) {
             possibleTargets = goUpTargets;
           }
@@ -436,14 +433,13 @@ abstract class _Game with Store {
   }
 
   Game rebuild() {
-    final reBoard =
-        board.map((it) {
-          final reTile = it.clone();
-          if (reTile.pin.startsOpen) {
-            reTile.open();
-          }
-          return reTile;
-        }).toList();
+    final reBoard = board.map((it) {
+      final reTile = it.clone();
+      if (reTile.pin.startsOpen) {
+        reTile.open();
+      }
+      return reTile;
+    }).toList();
     final reStock = stock.map((it) => it.clone()).toList();
     final reDiscard = discard.map((it) => it.clone()).toList();
     for (final event in history.reversed) {
@@ -526,7 +522,6 @@ abstract class _Game with Store {
   static final _logger = Logger();
 }
 
-// TODO: Log history progression during a game and check if it looks correct.
 final class Event {
   Event({required this.pin, required this.score, required this.chain});
 

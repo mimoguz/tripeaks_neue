@@ -41,7 +41,7 @@ class ExpandableBox extends StatelessWidget {
                     child: Row(
                       spacing: c.cardPaddingHorizontal,
                       children: [
-                        if (icon != null) icon!,
+                        ?icon,
                         Expanded(
                           child: DefaultTextStyle(
                             style: Theme.of(context).textTheme.titleMedium!,
