@@ -20,7 +20,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions { jvmTarget = JavaVersion.VERSION_11.toString() }
+    kotlinOptions { jvmTarget = JavaVersion.VERSION_17.toString() }
 
     signingConfigs {
         create("release") {

@@ -748,13 +748,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [PackageRef('build_runner')],
   );
 
-/// build_runner 2.10.5
+/// build_runner 2.11.1
 const _build_runner = Package(
     name: 'build_runner',
     description: 'A build system for Dart code generation and modular compilation.',
     repository: 'https://github.com/dart-lang/build/tree/master/build_runner',
     authors: [],
-    version: '2.10.5',
+    version: '2.11.1',
     license: '''Copyright 2016, the Dart project authors. 
 
 Redistribution and use in source and binary forms, with or without
@@ -909,13 +909,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// characters 1.4.0
+/// characters 1.4.1
 const _characters = Package(
     name: 'characters',
     description: 'String replacement with operations that are Unicode/grapheme cluster aware.',
     repository: 'https://github.com/dart-lang/core/tree/main/pkgs/characters',
     authors: [],
-    version: '1.4.0',
+    version: '1.4.1',
     license: '''Copyright 2019, the Dart project authors. 
 
 Redistribution and use in source and binary forms, with or without
@@ -1749,13 +1749,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     devDependencies: [PackageRef('flutter_lints'), PackageRef('build_runner')],
   );
 
-/// ffi 2.1.5
+/// ffi 2.2.0
 const _ffi = Package(
     name: 'ffi',
     description: 'Utilities for working with Foreign Function Interface (FFI) code.',
     repository: 'https://github.com/dart-lang/native/tree/main/pkgs/ffi',
     authors: [],
-    version: '2.1.5',
+    version: '2.2.0',
     license: '''Copyright 2019, the Dart project authors. 
 
 Redistribution and use in source and binary forms, with or without
@@ -1868,13 +1868,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// flutter 3.38.9
+/// flutter 3.41.1
 const _flutter = Package(
     name: 'flutter',
     description: 'A framework for writing Flutter applications',
     homepage: 'https://flutter.dev',
     authors: [],
-    version: '3.38.9',
+    version: '3.41.1',
     license: '''Copyright 2014 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -2587,13 +2587,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// matcher 0.12.17
+/// matcher 0.12.18
 const _matcher = Package(
     name: 'matcher',
     description: 'Support for specifying test expectations via an extensible Matcher class. Also includes a number of built-in Matcher implementations for common cases.',
     repository: 'https://github.com/dart-lang/test/tree/master/pkgs/matcher',
     authors: [],
-    version: '0.12.17',
+    version: '0.12.18',
     license: '''Copyright 2014, the Dart project authors. 
 
 Redistribution and use in source and binary forms, with or without
@@ -2624,16 +2624,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     isMarkdown: false,
     isSdk: false,
     dependencies: [PackageRef('async'), PackageRef('meta'), PackageRef('stack_trace'), PackageRef('term_glyph'), PackageRef('test_api')],
-    devDependencies: [PackageRef('fake_async'), PackageRef('lints')],
+    devDependencies: [PackageRef('fake_async')],
   );
 
-/// material_color_utilities 0.11.1
+/// material_color_utilities 0.13.0
 const _material_color_utilities = Package(
     name: 'material_color_utilities',
     description: 'Algorithms and utilities that power the Material Design 3 color system, including choosing theme colors from images and creating tones of colors; all in a new color space.',
     repository: 'https://github.com/material-foundation/material-color-utilities/tree/main/dart',
     authors: [],
-    version: '0.11.1',
+    version: '0.13.0',
     license: '''Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -2838,7 +2838,7 @@ const _material_color_utilities = Package(
     isMarkdown: false,
     isSdk: false,
     dependencies: [PackageRef('collection')],
-    devDependencies: [PackageRef('matcher'), PackageRef('lints')],
+    devDependencies: [PackageRef('matcher')],
   );
 
 /// meta 1.17.0
@@ -3065,13 +3065,13 @@ SOFTWARE.''',
     devDependencies: [],
   );
 
-/// objective_c 9.2.5
+/// objective_c 9.3.0
 const _objective_c = Package(
     name: 'objective_c',
     description: 'A library to access Objective C from Flutter that acts as a support library for package:ffigen.',
     repository: 'https://github.com/dart-lang/native/tree/main/pkgs/objective_c',
     authors: [],
-    version: '9.2.5',
+    version: '9.3.0',
     license: '''Copyright 2024, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
@@ -3765,13 +3765,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [PackageRef('logging'), PackageRef('term_glyph')],
   );
 
-/// source_span 1.10.1
+/// source_span 1.10.2
 const _source_span = Package(
     name: 'source_span',
     description: 'Provides a standard representation for source code locations and spans.',
     repository: 'https://github.com/dart-lang/tools/tree/main/pkgs/source_span',
     authors: [],
-    version: '1.10.1',
+    version: '1.10.2',
     license: '''Copyright 2014, the Dart project authors. 
 
 Redistribution and use in source and binary forms, with or without
@@ -4039,13 +4039,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [PackageRef('dart_style')],
   );
 
-/// test_api 0.7.7
+/// test_api 0.7.9
 const _test_api = Package(
     name: 'test_api',
     description: 'The user facing API for structuring Dart tests and checking expectations.',
     repository: 'https://github.com/dart-lang/test/tree/master/pkgs/test_api',
     authors: [],
-    version: '0.7.7',
+    version: '0.7.9',
     license: '''Copyright 2018, the Dart project authors. 
 
 Redistribution and use in source and binary forms, with or without
@@ -4469,12 +4469,12 @@ SOFTWARE.''',
     devDependencies: [PackageRef('path')],
   );
 
-/// tripeaks_neue 0.9.3+8
+/// tripeaks_neue 0.9.4+9
 const _tripeaks_neue = Package(
     name: 'tripeaks_neue',
     description: 'A Tri Peaks patience (solitaire) game',
     authors: [],
-    version: '0.9.3+8',
+    version: '0.9.4+9',
     license: '''GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
