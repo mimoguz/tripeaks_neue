@@ -589,7 +589,7 @@
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP05": "If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.",
+    "howToP05": "If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.",
     "@howToP05": {
         "type": "text",
         "context": "howToPlay",
