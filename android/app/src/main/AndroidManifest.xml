@@ -36,6 +36,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+                <category android:name="android.intent.category.CAR_LAUNCHER" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

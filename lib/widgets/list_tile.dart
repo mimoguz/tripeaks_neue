@@ -33,7 +33,7 @@ final class MyListTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (leading != null) leading!,
+            ?leading,
             if (leading != null && leftSpacing > 0.0) SizedBox(width: leftSpacing),
             Column(
               spacing: 4.0,
@@ -50,7 +50,7 @@ final class MyListTile extends StatelessWidget {
             ),
             Spacer(),
             if (trailing != null && rightSpacing > 0.0) SizedBox(width: rightSpacing),
-            if (trailing != null) trailing!,
+            ?trailing,
           ],
         ),
       ),
