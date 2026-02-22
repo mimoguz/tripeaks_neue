@@ -1,18 +1,18 @@
 # vNext
 
-- [ ] Update version
-- [ ] Run ```build_runner build```
-- [ ] Run ```dart_pubspec_licenses:generate```
-- [ ] F-Droid changelog
-- [ ] F-Droid screenshots
-- [ ] F-Droid icon
+- [x] Update version
+- [x] Run ```build_runner build```
+- [x] Run ```dart_pubspec_licenses:generate```
+- [x] F-Droid changelog
+- [x] F-Droid screenshots
+- [x] F-Droid icon
 - [ ] Flatpak changelog
-- [ ] Flatpak screenshots
-- [ ] Flatpak icon
+- [x] Flatpak screenshots
+- [x] Flatpak icon
 - [ ] Flatpak metainfo lint
-- [ ] Flutter version
-- [ ] Google Play icon
-- [ ] Readme images
+- [x] Flutter version
+- [x] Google Play icon
+- [x] Readme images
 - [ ] Web release, base href "/tripeaks_neue/"
 - [ ] For itch.io base href must be empty string
 

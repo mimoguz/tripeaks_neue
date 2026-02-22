@@ -9,3 +9,6 @@ Main Features:
 - An option to ensure the created games are solvable
 - Aggregated and per-layout statistics
 - Portrait and landscape orientation support
+- Auto parked mode support (*)
+
+(*) Unfortunately, when the application was not installed from the Play Store, this will work only if Android Auto developer mode was enabled and the "Allow unknown sources option" was selected. Please see https://developer.android.com/training/cars/testing#unknown-sources 
