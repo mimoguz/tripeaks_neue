@@ -867,14 +867,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// built_value 8.12.3
+/// built_value 8.12.4
 const _built_value = Package(
     name: 'built_value',
     description: '''Value types with builders, Dart classes as enums, and serialization. This library is the runtime dependency.
 ''',
     repository: 'https://github.com/google/built_value.dart/tree/master/built_value',
     authors: [],
-    version: '8.12.3',
+    version: '8.12.4',
     license: '''Copyright 2015, Google Inc. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -1868,13 +1868,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// flutter 3.41.1
+/// flutter 3.41.2
 const _flutter = Package(
     name: 'flutter',
     description: 'A framework for writing Flutter applications',
     homepage: 'https://flutter.dev',
     authors: [],
-    version: '3.41.1',
+    version: '3.41.2',
     license: '''Copyright 2014 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -2311,13 +2311,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// json_annotation 4.10.0
+/// json_annotation 4.11.0
 const _json_annotation = Package(
     name: 'json_annotation',
     description: 'Classes and helper functions that support JSON code generation via the `json_serializable` package.',
     repository: 'https://github.com/google/json_serializable.dart/tree/master/json_annotation',
     authors: [],
-    version: '4.10.0',
+    version: '4.11.0',
     license: '''Copyright 2017, the Dart project authors. All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -4119,14 +4119,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     devDependencies: [],
   );
 
-/// uuid 4.5.2
+/// uuid 4.5.3
 const _uuid = Package(
     name: 'uuid',
     description: '''RFC4122 (v1, v4, v5, v6, v7, v8) UUID Generator and Parser for Dart
 ''',
     repository: 'https://github.com/Daegalus/dart-uuid',
     authors: [],
-    version: '4.5.2',
+    version: '4.5.3',
     license: '''Copyright (c) 2021 Yulian Kuncheff
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -4136,7 +4136,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.''',
     isMarkdown: false,
     isSdk: false,
-    dependencies: [PackageRef('crypto'), PackageRef('meta'), PackageRef('fixnum')],
+    dependencies: [PackageRef('crypto'), PackageRef('fixnum')],
     devDependencies: [PackageRef('lints')],
   );
 
