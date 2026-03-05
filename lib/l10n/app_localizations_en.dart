@@ -297,7 +297,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToP05 =>
-      'If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
+      'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
 
   @override
   String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';

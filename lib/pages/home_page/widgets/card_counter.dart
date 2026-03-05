@@ -85,7 +85,7 @@ final class SegmentPainter extends CustomPainter {
     required this.bold,
     required this.thin,
     required this.group,
-  }) : _paint = Paint()..style = PaintingStyle.stroke;
+  }) : _paint = Paint();
 
   final int allSegments;
   final int highlightedSegments;

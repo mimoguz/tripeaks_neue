@@ -658,7 +658,7 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'If there are no cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
+  /// **'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
   String get howToP05;
 
   /// How to play text.
