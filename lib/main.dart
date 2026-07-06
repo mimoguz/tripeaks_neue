@@ -15,7 +15,10 @@ void main() async {
   final settings = await Settings.read();
   runApp(
     MultiProvider(
-      providers: [Provider<Session>(create: (_) => session), Provider<Settings>(create: (_) => settings)],
+      providers: [
+        Provider<Session>(create: (_) => session),
+        Provider<Settings>(create: (_) => settings),
+      ],
       builder: (context, _) => MainApp(session, settings),
     ),
   );
@@ -56,33 +59,32 @@ class _MainAppState extends State<MainApp> {
       settings.write();
     }
     return Observer(
-      builder:
-          (context) => MaterialApp(
-            localizationsDelegates: [AppLocalizations.delegate],
-            debugShowCheckedModeBanner: false,
-            title: "TriPeaks NEUE",
-            supportedLocales: [Locale("en")],
-            themeMode: settings.themeMode,
-            theme: _defaultLight,
-            darkTheme: _defaultDark,
-            scrollBehavior: const MyCustomScrollBehavior(),
-            home: Builder(
-              builder: (context) {
-                if (showWelcome) {
-                  showWelcome = false;
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    showDialog(
-                      context: context,
-                      builder: (context) => const WelcomeDialog(),
-                      barrierDismissible: true,
-                      barrierColor: Colors.transparent,
-                    );
-                  });
-                }
-                return HomePage();
-              },
-            ),
-          ),
+      builder: (context) => MaterialApp(
+        localizationsDelegates: [AppLocalizations.delegate],
+        debugShowCheckedModeBanner: false,
+        title: "TriPeaks NEUE",
+        supportedLocales: [Locale("en")],
+        themeMode: settings.themeMode,
+        theme: _defaultLight,
+        darkTheme: _defaultDark,
+        scrollBehavior: const MyCustomScrollBehavior(),
+        home: Builder(
+          builder: (context) {
+            if (showWelcome) {
+              showWelcome = false;
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                showDialog(
+                  context: context,
+                  builder: (context) => const WelcomeDialog(),
+                  barrierDismissible: true,
+                  barrierColor: Colors.transparent,
+                );
+              });
+            }
+            return HomePage();
+          },
+        ),
+      ),
     );
   }
 

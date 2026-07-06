@@ -21,7 +21,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
   Peaks? _layout = Peaks.threePeaks;
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     _showAll = null;
     _startEmpty = null;

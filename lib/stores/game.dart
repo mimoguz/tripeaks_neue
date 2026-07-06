@@ -268,18 +268,13 @@ abstract class _Game with Store {
     required this.started,
     required this.isPlayed,
     required this.statisticsPushed,
-    required bool isCleared,
-    required bool isStalled,
-    required bool isEnded,
-    required int score,
-    required int remaining,
-    required int chain,
-  }) : _isCleared = isCleared,
-       _isStalled = isStalled,
-       _isEnded = isEnded,
-       _score = score,
-       _remaining = remaining,
-       _chain = chain;
+    required this._isCleared,
+    required this._isStalled,
+    required this._isEnded,
+    required this._score,
+    required this._remaining,
+    required this._chain,
+  });
 
   final Layout layout;
 

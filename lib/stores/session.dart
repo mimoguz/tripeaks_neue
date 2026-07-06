@@ -80,12 +80,11 @@ abstract class _Session with Store {
   _Session(
     Game game,
     this.layout, {
-    required PlayerStatistics statistics,
+    required this._statistics,
     this.startEmpty = false,
     this.showAll = false,
     this.ensureSolvable = false,
-  }) : _statistics = statistics,
-       _game = game {
+  }) : _game = game {
     whenCleared = when((_) => _game.isCleared, () {
       if (game.isPlayed && !game.statisticsPushed) {
         game.statisticsPushed = true;

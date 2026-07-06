@@ -66,12 +66,10 @@ abstract class _Settings with Store {
     required this.themeMode,
     required this.decor,
     required this.decorColour,
-    required bool soundOn,
-    required SoundEffects sounds,
-    required bool firstRun,
-  }) : _soundOn = soundOn,
-       _sounds = sounds,
-       _firstRun = firstRun;
+    required this._soundOn,
+    required this._sounds,
+    required this._firstRun,
+  });
 
   @observable
   ThemeMode themeMode;
