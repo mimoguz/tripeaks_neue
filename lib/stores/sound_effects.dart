@@ -1,10 +1,14 @@
 import 'dart:collection';
 
-// import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_soloud/flutter_soloud.dart';
 import 'package:logger/logger.dart';
 
+// Play methods return a Future, because of the
+// audio library I was using  before (audioplayers).
+// SoLoud play methods are not async, but I'm keeping
+// the interface as is for now.
+// TODO: Make play methods sync.
 sealed class SoundEffects {
   Future<void> load();
   Future<void> dispose();
@@ -23,7 +27,7 @@ final class Silent implements SoundEffects {
   Future<void> load() => Future.value();
 
   @override
-  Future<void> dispose() async {}
+  Future<void> dispose() => Future.value();
 
   @override
   Future<void> playTake(int n) => Future.value();
@@ -102,7 +106,7 @@ final class SoundOn implements SoundEffects {
 
   @override
   Future<void> playTake(int n) async {
-    final asset = _takes[n % _takes.length];
+    final asset = _takes[(n - 1) % _takes.length];
     play(_sources[asset]);
   }
 
