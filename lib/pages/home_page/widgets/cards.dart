@@ -33,22 +33,20 @@ final class TileCard extends StatelessWidget {
           duration: Durations.medium3,
           switchInCurve: Curves.fastOutSlowIn,
           switchOutCurve: Curves.fastOutSlowIn,
-          transitionBuilder:
-              (child, animation) => SlideTransition(
-                position: Tween(begin: Offset(dx, dy), end: Offset.zero).animate(animation),
-                child: FadeTransition(opacity: animation, child: child),
-              ),
-          child:
-              !tile.isVisible
-                  ? SizedBox(width: c.cardSize, height: c.cardSize, key: childKey)
-                  : tile.isOpen
-                  ? ActiveCard(tile, key: childKey)
-                  : InactiveCard(
-                    tile.card,
-                    t: (tile.pin.z < 0 ? t : (1.0 / (tile.pin.z + 1)) * 0.6 + 0.4),
-                    key: childKey,
-                    back: back,
-                  ),
+          transitionBuilder: (child, animation) => SlideTransition(
+            position: Tween(begin: Offset(dx, dy), end: Offset.zero).animate(animation),
+            child: FadeTransition(opacity: animation, child: child),
+          ),
+          child: !tile.isVisible
+              ? SizedBox(width: c.cardSize, height: c.cardSize, key: childKey)
+              : tile.isOpen
+              ? ActiveCard(tile, key: childKey)
+              : InactiveCard(
+                  tile.card,
+                  t: (tile.pin.z < 0 ? t : (1.0 / (tile.pin.z + 1)) * 0.6 + 0.4),
+                  key: childKey,
+                  back: back,
+                ),
         );
       },
     );
@@ -94,9 +92,8 @@ final class ActiveCard extends StatelessWidget {
                 key: ValueKey(t),
                 duration: t == 0 ? Duration.zero : Durations.medium4,
                 tween: Tween(begin: 0.0, end: 1.0),
-                builder:
-                    (context, animation, child) =>
-                        Transform.translate(offset: Offset(_shake(animation) * 24.0, 0.0), child: child),
+                builder: (context, animation, child) =>
+                    Transform.translate(offset: Offset(_shake(animation) * 24.0, 0.0), child: child),
                 child: ActiveCardFace(tile.card),
               );
             },
@@ -145,16 +142,15 @@ final class InactiveCard extends StatelessWidget {
         child: SizedBox(
           width: c.cardSize,
           height: c.cardSize,
-          child:
-              back.showValue
-                  ? Stack(
-                    children: [
-                      CardBack(t: t, back: back),
-                      Align(alignment: Alignment.topLeft, child: HorizontalSmallFace(cardValue)),
-                      Align(alignment: Alignment.bottomLeft, child: HorizontalSmallFaceAlt(cardValue)),
-                    ],
-                  )
-                  : CardBack(t: t, back: back),
+          child: back.showValue
+              ? Stack(
+                  children: [
+                    CardBack(t: t, back: back),
+                    Align(alignment: Alignment.topLeft, child: HorizontalSmallFace(cardValue)),
+                    Align(alignment: Alignment.bottomLeft, child: HorizontalSmallFaceAlt(cardValue)),
+                  ],
+                )
+              : CardBack(t: t, back: back),
           // : SizedBox(),
         ),
       ),
@@ -310,8 +306,8 @@ final class TileShadow extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     return Container(
-      width: c.cardSize - 2,
-      height: c.cardSize - 2,
+      width: c.cardSize,
+      height: c.cardSize,
       decoration: BoxDecoration(
         borderRadius: c.commonBorderRadius,
         gradient: RadialGradient(
