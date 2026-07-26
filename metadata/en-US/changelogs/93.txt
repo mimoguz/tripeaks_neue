@@ -1,3 +1,0 @@
-- Added Android Auto parked mode support (*)
-
-(*) Unfortunately, if the application was not installed from the Play Store, this will work only if Android Auto developer mode was enabled and the "Allow unknown sources" option was selected. Please see https://developer.android.com/training/cars/testing#unknown-sources 

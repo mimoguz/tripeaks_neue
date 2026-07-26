@@ -86,10 +86,10 @@
     </screenshots>
 
     <releases>
-        <release version="0.9.3" date="2025-05-11">
+        <release version="0.9.5" date="2026-07-26">
             <description>
                 <ul>
-                    <li>Build tooling update. This build has no user-facing changes.</li>
+                    <li>Replaced the audio package I was using. Other than that, this is mostly a service/SDK update release.</li>
                 </ul>
             </description>
         </release>
