@@ -16,7 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_mobx: ^2.3.0
-  flutter_soloud: ^4.0.12
+  flutter_soloud: ^4.1.4
   intl: any
   logger: ^2.7.0
   mobx: ^2.6.0

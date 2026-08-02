@@ -1918,13 +1918,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.''',
   );
 
-/// flutter_soloud 4.0.12
+/// flutter_soloud 4.1.4
 const _flutter_soloud = Package(
     name: 'flutter_soloud',
     description: 'A low-level audio plugin for Flutter, mainly meant for games and immersive apps. Based on the SoLoud (C++) audio engine.',
     homepage: 'https://github.com/alnitak/flutter_soloud',
     authors: [],
-    version: '4.0.12',
+    version: '4.1.4',
     spdxIdentifiers: ['MIT'],
     isMarkdown: false,
     isSdk: false,
@@ -35679,12 +35679,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.''',
   );
 
-/// tripeaks_neue 0.9.5+10
+/// tripeaks_neue 0.9.5+11
 const _tripeaks_neue = Package(
     name: 'tripeaks_neue',
     description: 'A Tri Peaks patience (solitaire) game',
     authors: [],
-    version: '0.9.5+10',
+    version: '0.9.5+11',
     spdxIdentifiers: ['AGPL-3.0'],
     isMarkdown: false,
     isSdk: false,
