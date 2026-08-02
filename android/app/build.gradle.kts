@@ -13,7 +13,7 @@ allprojects { extra["NO_XIPH_LIBS"] = "true" }
 
 android {
     namespace = "io.github.mimoguz.tripeaksneue"
-    compileSdk = flutter.compileSdkVersionallprojects { extra["NO_XIPH_LIBS"] = "true" }
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
