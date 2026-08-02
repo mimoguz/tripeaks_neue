@@ -9,8 +9,6 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-allprojects { extra["NO_XIPH_LIBS"] = "true" }
-
 android {
     namespace = "io.github.mimoguz.tripeaksneue"
     compileSdk = flutter.compileSdkVersion
