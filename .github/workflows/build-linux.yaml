@@ -34,8 +34,8 @@ jobs:
         sudo apt-get install -y curl git unzip xz-utils zip libglu1-mesa clang \
         cmake git ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev
 
-    - name: Install Soloud dependencies
-      run: sudo apt-get install libasound2-dev llvm ccache libflac-dev libogg-dev libopus-dev libvorbis-dev
+    - name: Install audioplayers dependencies
+      run: sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
     
     # Use git because subosito/flutter-action does not support arm64 yet (https://github.com/subosito/flutter-action/issues/345)
     - name: Setup Flutter

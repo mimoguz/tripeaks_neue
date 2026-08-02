@@ -1,14 +1,8 @@
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_soloud/flutter_soloud.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:logger/logger.dart';
 
-// Play methods return a Future, because of the
-// audio library I was using  before (audioplayers).
-// SoLoud play methods are not async, but I'm keeping
-// the interface as is for now.
-// TODO: Make play methods sync.
 sealed class SoundEffects {
   Future<void> load();
   Future<void> dispose();
@@ -52,98 +46,140 @@ final class Silent implements SoundEffects {
 }
 
 final class SoundOn implements SoundEffects {
-  final HashMap<String, AudioSource> _sources = HashMap();
+  late final AudioCache _cache;
+  late final AudioPlayer _player;
   late final _logger = Logger();
-
-  @override
-  Future<void> dispose() async {
-    SoLoud.instance.deinit();
-    _sources.clear();
-  }
+  final HashMap<String, AssetSource> _assets = HashMap();
+  bool loaded = false;
 
   @override
   Future<void> load() async {
-    await dispose();
-    await SoLoud.instance.init();
-    for (var asset in _assets) {
-      try {
-        final src = await SoLoud.instance.loadAsset(asset);
-        _sources[asset] = src;
-      } on FlutterError {
-        _logger.log(Level.error, "$asset was not found");
-      } on SoLoudTemporaryFolderFailedException catch (e) {
-        _logger.log(Level.error, "Couldn't create temp file for $asset:\n ${e.description}");
-      } on SoLoudFileLoadFailedException catch (e) {
-        _logger.log(Level.error, "Couldn't load $asset:\n ${e.description}");
-      }
+    if (loaded) {
+      return;
     }
+    _cache = AudioCache(prefix: "sounds/");
+    _player = AudioPlayer()
+      ..audioCache = _cache
+      ..setReleaseMode(ReleaseMode.stop)
+      ..setPlayerMode(PlayerMode.lowLatency);
+    await _cache.loadAll(_soundList);
+
+    for (var sound in _soundList) {
+      _assets[sound] = AssetSource(sound);
+    }
+
+    _prePlay();
+    loaded = true;
+  }
+
+  @override
+  Future<void> dispose() async {
+    _player.release();
+    _cache.clearAll();
+    loaded = false;
   }
 
   @override
   Future<void> playDraw() async {
-    play(_sources[_draw]);
+    try {
+      await _player.stop();
+      await _player.play(_assets[_draw]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playError() async {
-    play(_sources[_error]);
+    try {
+      await _player.stop();
+      await _player.play(_assets[_error]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playGameOver() async {
-    play(_sources[_gameOver]);
+    try {
+      await _player.stop();
+      await _player.play(_assets[_gameOver]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playRollback() async {
-    play(_sources[_rollback]);
+    try {
+      await _player.stop();
+      await _player.play(_assets[_rollback]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playStart() async {
-    play(_sources[_start]);
+    try {
+      await _player.stop();
+      await _player.play(_assets[_start]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playTake(int n) async {
-    final asset = _takes[(n - 1) % _takes.length];
-    play(_sources[asset]);
+    try {
+      await _player.stop();
+      final sound = _takes[(n - 1) % _takes.length];
+      await _player.play(_assets[sound]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
   @override
   Future<void> playWin() async {
-    play(_sources[_win]);
+    try {
+      await _player.stop();
+      await _player.play(_assets[_win]!, volume: 1.0);
+    } catch (e) {
+      _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
+    }
   }
 
-  void play(AudioSource? src) {
-    if (src is AudioSource) {
+  Future<void> _prePlay() async {
+    for (final sound in _soundList) {
       try {
-        SoLoud.instance.play(src);
+        await _player.play(_assets[sound]!, volume: 0.0);
+        await _player.stop();
       } catch (e) {
-        _logger.log(Level.error, "Can't play sound effect:\n $e");
+        _logger.e("Can'y play sound: $e\n${e is Error ? e.stackTrace : null}");
       }
     }
   }
 
-  static const String _draw = "sounds/draw.mp3";
-  static const String _error = "sounds/error.mp3";
-  static const String _gameOver = "sounds/gameover.mp3";
-  static const String _rollback = "sounds/undo.mp3";
-  static const String _start = "sounds/start.mp3";
-  static const String _take1 = "sounds/take1.mp3";
-  static const String _take2 = "sounds/take2.mp3";
-  static const String _take3 = "sounds/take3.mp3";
-  static const String _win = "sounds/win.mp3";
-  static const List<String> _assets = [
-    _draw,
-    _error,
-    _gameOver,
-    _rollback,
-    _start,
+  static const String _take1 = "take1.mp3";
+  static const String _take2 = "take2.mp3";
+  static const String _take3 = "take3.mp3";
+  static const String _draw = "draw.mp3";
+  static const String _rollback = "undo.mp3";
+  static const String _error = "error.mp3";
+  static const String _win = "win.mp3";
+  static const String _gameOver = "gameover.mp3";
+  static const String _start = "start.mp3";
+  static const List<String> _soundList = [
     _take1,
     _take2,
     _take3,
+    _draw,
+    _rollback,
+    _error,
     _win,
+    _gameOver,
+    _start,
   ];
   static const List<String> _takes = [_take1, _take2, _take3];
 }

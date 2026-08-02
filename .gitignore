@@ -48,3 +48,6 @@ app.*.map.json
 key.properties
 keystore.properties
 *keystore.properties
+
+# Notes
+extra-libs.txt

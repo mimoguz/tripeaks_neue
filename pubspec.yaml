@@ -10,13 +10,13 @@ environment:
   sdk: ^3.12.2
 
 dependencies:
+  audioplayers: ^6.8.1
   fast_rich_text: ^0.0.1
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   flutter_mobx: ^2.3.0
-  flutter_soloud: ^4.1.4
   intl: any
   logger: ^2.7.0
   mobx: ^2.6.0
