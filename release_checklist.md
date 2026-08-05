@@ -18,4 +18,4 @@
 
 ## Post release:
 
-- [ ] Make sure the Flathub auto-pr is correct!! 
+- [ ] Update Flathub build manifest 
