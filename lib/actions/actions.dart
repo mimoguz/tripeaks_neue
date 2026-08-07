@@ -13,6 +13,11 @@ import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
+import 'package:tripeaks_neue/util/get_io.dart'
+    // ignore: uri_does_not_exist
+    if (dart.library.io) 'package:tripeaks_neue/util/local_io.dart'
+    // ignore: uri_does_not_exist
+    if (dart.library.js_util) 'package:tripeaks_neue/util/web_io.dart';
 
 import 'intents.dart';
 
@@ -316,5 +321,20 @@ final class GoBackAction extends ContextAction<GoBackIntent> {
         settings.write();
       }
     }
+  }
+}
+
+final class ImportDataAction extends ContextAction<ImportDataIntent> {
+  @override
+  void invoke(ImportDataIntent intent, [BuildContext? context]) {
+    getIO().import<int>((_) => 0);
+  }
+}
+
+final class ExportDataAction extends ContextAction<ExportDataIntent> {
+  @override
+  void invoke(ExportDataIntent intent, [BuildContext? context]) {
+    final jsonObject = Map.fromEntries([MapEntry("datetime", DateTime.now().toIso8601String())]);
+    getIO().export(jsonObject);
   }
 }

@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.gradle/": true,
+        "**/.idea/": true,
+        "**/.cxx/": true,
+        "**/release/": true,
+        "**/build/": true,
+    }
+}

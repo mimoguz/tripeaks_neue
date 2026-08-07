@@ -22,5 +22,7 @@
   <string>1.0</string>
   <key>MinimumOSVersion</key>
   <string>12.0</string>
+  <key>com.apple.security.files.user-selected.read-write</key>
+  <true/>
 </dict>
 </plist>

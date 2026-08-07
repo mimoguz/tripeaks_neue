@@ -108,3 +108,11 @@ final class GoBackIntent extends Intent {
 
   final bool saveSettings;
 }
+
+final class ImportDataIntent extends Intent {
+  const ImportDataIntent();
+}
+
+final class ExportDataIntent extends Intent {
+  const ExportDataIntent();
+}

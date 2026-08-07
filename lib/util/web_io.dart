@@ -2,6 +2,7 @@ import "dart:convert";
 
 import "package:logger/web.dart";
 import "package:tripeaks_neue/util/io.dart";
+import "package:tripeaks_neue/util/shared_io.dart" as sio;
 import "package:web/web.dart";
 
 final class WebIO implements AbstractIO {
@@ -31,6 +32,12 @@ final class WebIO implements AbstractIO {
       return Future.value(false);
     }
   }
+
+  @override
+  Future<bool> export(Map<String, dynamic> jsonObject) => sio.export(jsonObject, _logger);
+
+  @override
+  Future<T?> import<T>(T Function(Map<String, dynamic>) reader) => sio.import(reader, _logger);
 
   static WebIO? _instance;
 
