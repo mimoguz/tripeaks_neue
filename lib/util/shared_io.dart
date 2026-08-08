@@ -4,17 +4,18 @@ import 'dart:typed_data';
 import 'package:file_selector/file_selector.dart';
 import 'package:logger/logger.dart';
 
-Future<bool> export(Map<String, dynamic> jsonObject, [Logger? logger]) async {
-  const String fileName = 'tripeaksneue-data.json';
-  const typeGroup = XTypeGroup(
-    label: 'JSON files',
-    extensions: <String>['json'],
-    uniformTypeIdentifiers: <String>['public.json'],
-  );
+const _typeGroup = XTypeGroup(
+  label: 'JSON files',
+  extensions: <String>['json'],
+  uniformTypeIdentifiers: <String>['public.json'],
+);
 
+const _suggestedFileName = 'tripeaksneue-data.json';
+
+Future<bool> export(Map<String, dynamic> jsonObject, [Logger? logger]) async {
   final FileSaveLocation? result = await getSaveLocation(
-    suggestedName: fileName,
-    acceptedTypeGroups: [typeGroup],
+    suggestedName: _suggestedFileName,
+    acceptedTypeGroups: [_typeGroup],
   );
 
   if (result == null) {
@@ -25,9 +26,10 @@ Future<bool> export(Map<String, dynamic> jsonObject, [Logger? logger]) async {
   final output = json.encode(jsonObject);
   final fileData = Uint8List.fromList(output.codeUnits);
   const mimeType = 'text/plain';
-  final XFile textFile = XFile.fromData(fileData, mimeType: mimeType, name: fileName);
+  final XFile textFile = XFile.fromData(fileData, mimeType: mimeType, name: _suggestedFileName);
 
   try {
+    // TODO: <Important!> Overwrite confirmation
     await textFile.saveTo(result.path);
     return true;
   } on Exception catch (e) {

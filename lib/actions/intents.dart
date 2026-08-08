@@ -114,5 +114,13 @@ final class ImportDataIntent extends Intent {
 }
 
 final class ExportDataIntent extends Intent {
-  const ExportDataIntent();
+  const ExportDataIntent({
+    this.includeStats = true,
+    this.includeSettings = true,
+    this.includeCurrentGame = true,
+  });
+
+  final bool includeStats;
+  final bool includeSettings;
+  final bool includeCurrentGame;
 }

@@ -334,7 +334,29 @@ final class ImportDataAction extends ContextAction<ImportDataIntent> {
 final class ExportDataAction extends ContextAction<ExportDataIntent> {
   @override
   void invoke(ExportDataIntent intent, [BuildContext? context]) {
-    final jsonObject = Map.fromEntries([MapEntry("datetime", DateTime.now().toIso8601String())]);
+    if (context == null) {
+      return;
+    }
+
+    final jsonObject = <String, dynamic>{};
+
+    final session = Provider.of<Session>(context, listen: false);
+    if (intent.includeStats) {
+      jsonObject["stats"] = session.statistics.toJsonObject();
+    }
+    if (intent.includeCurrentGame) {
+      jsonObject["game"] = session.game.toJsonObject();
+    }
+
+    if (intent.includeSettings) {
+      final settings = Provider.of<Settings>(context, listen: false);
+      jsonObject["settings"] = settings.toJsonObject();
+    }
+
+    if (jsonObject.isEmpty) {
+      return;
+    }
+
     getIO().export(jsonObject);
   }
 }
