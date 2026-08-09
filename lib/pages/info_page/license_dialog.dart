@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/oss_licenses.dart';
+import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
 
 class LicenseDialog extends StatelessWidget {

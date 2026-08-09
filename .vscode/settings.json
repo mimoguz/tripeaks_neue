@@ -6,5 +6,6 @@
         "**/.cxx/": true,
         "**/release/": true,
         "**/build/": true,
-    }
+    },
+    "dart.analysisExcludedFolders": ["lib/generated"]
 }

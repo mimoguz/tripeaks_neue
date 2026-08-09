@@ -2,7 +2,7 @@
 
 - [x] Update version
 - [x] Run ```build_runner build```
-- [x] Run ```dart_pubspec_licenses:generate```
+- [x] Run ```dart_pubspec_licenses:generate --output lib/generated/oss_licenses.dart```
 - [x] F-Droid changelog
 - [x] F-Droid screenshots
 - [x] F-Droid icon

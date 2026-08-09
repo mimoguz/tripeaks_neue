@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/oss_licenses.dart';
+import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/license_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
@@ -24,19 +24,19 @@ class Dependencies extends StatelessWidget {
             c.cardPaddingVertical,
           ),
           itemCount: _extendedDependencies.length,
-          itemBuilder:
-              (context, index) => DependencyEntry(
-                package: _extendedDependencies[index],
-                isDirectDependency: _directDependencies.contains(_extendedDependencies[index].name),
-              ),
+          itemBuilder: (context, index) => DependencyEntry(
+            package: _extendedDependencies[index],
+            isDirectDependency: _directDependencies.contains(_extendedDependencies[index].name),
+          ),
           separatorBuilder: (context, index) => const GroupTileDivider(padding: EdgeInsets.zero),
         ),
       ),
     );
   }
 
-  static final _extendedDependencies =
-      allDependencies.where((it) => !it.isSdk || it.name == "flutter").toList();
+  static final _extendedDependencies = allDependencies
+      .where((it) => !it.isSdk || it.name == "flutter")
+      .toList();
 
   static final _directDependencies = (dependencies + devDependencies).map((it) => it.name).toSet();
 }
