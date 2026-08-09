@@ -37,6 +37,7 @@ class HomePage extends StatelessWidget {
             NavigateToSettingsIntent: NavigateToSettingsAction(),
             NavigateToStatisticsIntent: NavigateToStatisticsAction(),
             NavigateToInfoIntent: NavigateToInfoAction(),
+            NavigateToDataIntent: NavigateToDataAction(),
             NewGameWithLayoutIntent: NewGameWithLayoutAction(),
             RestartIntent: RestartAction(),
             ImportDataIntent: ImportDataAction(),

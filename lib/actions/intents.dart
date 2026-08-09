@@ -124,3 +124,8 @@ final class ExportDataIntent extends Intent {
   final bool includeSettings;
   final bool includeCurrentGame;
 }
+
+final class NavigateToDataIntent extends Intent {
+  const NavigateToDataIntent({this.replace = false});
+  final bool replace;
+}

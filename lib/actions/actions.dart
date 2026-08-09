@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/pages/data_page/data_page.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -384,4 +385,20 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
   }
 
   final Logger _logger = Logger();
+}
+
+final class NavigateToDataAction extends ContextAction<NavigateToDataIntent> {
+  @override
+  void invoke(NavigateToDataIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    final navigator = Navigator.of(context);
+    if (intent.replace) {
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => DataPage()));
+    } else {
+      _closeDrawer(context);
+      navigator.push(MaterialPageRoute(builder: (_) => DataPage()));
+    }
+  }
 }

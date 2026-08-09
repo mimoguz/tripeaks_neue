@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/info_page/dependencies.dart';
-import 'package:tripeaks_neue/pages/info_page/expandable_box.dart';
+import 'package:tripeaks_neue/widgets/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/privacy_policy.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
