@@ -27,6 +27,8 @@ mixin SharedIo {
           final dialogResult = await showAdaptiveDialog<OverwriteDialogResult>(
             context: context,
             builder: (ctx) => OverwriteDialog(fileName: io.File(result.path).uri.pathSegments.last),
+            barrierDismissible: true,
+            barrierColor: Colors.transparent,
           );
           handleDialogResult:
           switch (dialogResult) {
@@ -39,7 +41,7 @@ mixin SharedIo {
               // Continue save operation
               break handleDialogResult;
             case _:
-              return ExportFailed("Unknown dialog result");
+              return ExportCancelled();
           }
         } else {
           return ExportFailed("File exists & can't use the build context");
@@ -114,12 +116,25 @@ class OverwriteDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     return TranslucentDialog(
-      title: Row(children: [Text("File $fileName is already exists.")]),
+      title: Text("Overwrite Exiting File?"),
       content: Column(
         crossAxisAlignment: .start,
         spacing: 16,
         children: [
-          SizedBox(height: 0),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: Row(
+              children: [
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: 400),
+                  child: Text(
+                    "A file named \"$fileName\" already exists. Would you like to select another file or overwrite the existing file?",
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           Row(
             mainAxisAlignment: .center,
             children: [
@@ -148,8 +163,9 @@ class OverwriteDialog extends StatelessWidget {
               Expanded(
                 child: TextButton.icon(
                   onPressed: () => Navigator.of(context).pop(OverwriteDialogResult.overwrite),
-                  icon: Icon(Icons.warning, color: colours.error),
-                  label: Text("Overwrite", style: TextStyle(color: colours.error)),
+                  style: TextButton.styleFrom(foregroundColor: colours.error),
+                  label: Text("Overwrite"),
+                  icon: Icon(Icons.warning_rounded),
                 ),
               ),
             ],
