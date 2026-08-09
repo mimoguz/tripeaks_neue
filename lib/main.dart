@@ -73,7 +73,7 @@ class _MainAppState extends State<MainApp> {
             if (showWelcome) {
               showWelcome = false;
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                showDialog(
+                showAdaptiveDialog(
                   context: context,
                   builder: (context) => const WelcomeDialog(),
                   barrierDismissible: true,

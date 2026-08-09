@@ -1,54 +1,74 @@
 import 'dart:convert';
+import 'dart:io' as io;
 import 'dart:typed_data';
 
 import 'package:file_selector/file_selector.dart';
-import 'package:logger/logger.dart';
+import 'package:tripeaks_neue/util/export_result.dart';
+import 'package:tripeaks_neue/util/import_result.dart';
 
-const _typeGroup = XTypeGroup(
-  label: 'JSON files',
-  extensions: <String>['json'],
-  uniformTypeIdentifiers: <String>['public.json'],
-);
+mixin SharedIo {
+  Future<ExportResult> export(Map<String, dynamic> jsonObject, [String? initialDirectory]) async {
+    final FileSaveLocation? result = await getSaveLocation(
+      initialDirectory: initialDirectory,
+      suggestedName: _suggestedFileName,
+      acceptedTypeGroups: [_typeGroup],
+    );
 
-const _suggestedFileName = 'tripeaksneue-data.json';
+    if (result == null) {
+      // Operation was canceled by the user.
+      return ExportCancelled();
+    }
 
-Future<bool> export(Map<String, dynamic> jsonObject, [Logger? logger]) async {
-  final FileSaveLocation? result = await getSaveLocation(
-    suggestedName: _suggestedFileName,
-    acceptedTypeGroups: [_typeGroup],
-  );
+    final output = json.encode(jsonObject);
+    final fileData = Uint8List.fromList(output.codeUnits);
+    const mimeType = 'text/plain';
+    final XFile textFile = XFile.fromData(fileData, mimeType: mimeType, name: _suggestedFileName);
 
-  if (result == null) {
-    // Operation was canceled by the user.
-    return false;
+    if (await io.File(result.path).exists()) {
+      return ExportFileExists(result.path);
+    }
+
+    try {
+      await textFile.saveTo(result.path);
+      return ExportSucceeded(result.path);
+    } on Exception catch (e) {
+      return ExportFailed(e.toString());
+    }
   }
 
-  final output = json.encode(jsonObject);
-  final fileData = Uint8List.fromList(output.codeUnits);
-  const mimeType = 'text/plain';
-  final XFile textFile = XFile.fromData(fileData, mimeType: mimeType, name: _suggestedFileName);
+  Future<ImportResult<T>> import<T>(T Function(Map<String, dynamic>) reader) async {
+    const typeGroup = XTypeGroup(
+      label: 'JSON files',
+      extensions: <String>['json'],
+      uniformTypeIdentifiers: <String>['public.json'],
+    );
 
-  try {
-    // TODO: <Important!> Overwrite confirmation
-    await textFile.saveTo(result.path);
-    return true;
-  } on Exception catch (e) {
-    logger?.d(e.toString());
-    return false;
+    final file = await openFile(acceptedTypeGroups: <XTypeGroup>[typeGroup]);
+    if (file == null) {
+      return ImportCancelled();
+    }
+
+    final String source;
+    try {
+      source = await file.readAsString();
+    } on Exception catch (e) {
+      return ImportIoFailed(e.toString());
+    }
+
+    try {
+      final jsonObject = json.decode(source);
+      final result = reader(jsonObject);
+      return ImportSucceeded(result);
+    } on Exception catch (e) {
+      return ImportReaderFailed(e.toString());
+    }
   }
-}
 
-Future<T?> import<T>(T Function(Map<String, dynamic>) reader, [Logger? logger]) async {
-  const typeGroup = XTypeGroup(
+  static const _typeGroup = XTypeGroup(
     label: 'JSON files',
     extensions: <String>['json'],
     uniformTypeIdentifiers: <String>['public.json'],
   );
 
-  final file = await openFile(acceptedTypeGroups: <XTypeGroup>[typeGroup]);
-  if (file == null) {
-    return null;
-  }
-  logger?.d(await file.readAsString());
-  return null;
+  static const _suggestedFileName = 'tripeaksneue-data.json';
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
@@ -12,6 +13,7 @@ import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
+import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
@@ -333,7 +335,7 @@ final class ImportDataAction extends ContextAction<ImportDataIntent> {
 
 final class ExportDataAction extends ContextAction<ExportDataIntent> {
   @override
-  void invoke(ExportDataIntent intent, [BuildContext? context]) {
+  void invoke(ExportDataIntent intent, [BuildContext? context]) async {
     if (context == null) {
       return;
     }
@@ -357,6 +359,23 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
       return;
     }
 
-    getIO().export(jsonObject);
+    // TODO: Handle errors
+    final result = await getIO().export(jsonObject);
+    switch (result) {
+      case ExportFileExists fileExists:
+        // TODO: Handle overwrite
+        _logger.e("Export file exists: ${fileExists.path}");
+        return;
+      case ExportCancelled _:
+        _logger.d("Export cancelled");
+        return;
+      case ExportFailed failed:
+        // TODO: Error dialog
+        _logger.e("Export failed: ${failed.reason}");
+      case ExportSucceeded succeeded:
+        _logger.d("Export succeded: ${succeeded.path}");
+    }
   }
+
+  final Logger _logger = Logger();
 }

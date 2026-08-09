@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tripeaks_neue/util/io.dart';
-import 'shared_io.dart' as sio;
+import 'package:tripeaks_neue/util/shared_io.dart';
 
-final class LocalIO implements AbstractIO {
+final class LocalIO with SharedIo implements AbstractIO {
   LocalIO._();
 
   final _logger = Logger();
@@ -36,12 +36,6 @@ final class LocalIO implements AbstractIO {
       return null;
     }
   }
-
-  @override
-  Future<bool> export(Map<String, dynamic> jsonObject) => sio.export(jsonObject, _logger);
-
-  @override
-  Future<T?> import<T>(T Function(Map<String, dynamic>) reader) => sio.import(reader, _logger);
 
   Future<File> _getFile(String key) async {
     Directory dir;
