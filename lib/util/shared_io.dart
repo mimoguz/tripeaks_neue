@@ -114,13 +114,7 @@ class OverwriteDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     return TranslucentDialog(
-      title: Row(
-        spacing: 12,
-        children: [
-          Icon(Icons.error, color: colours.onSurfaceVariant),
-          Text("File $fileName is already exists."),
-        ],
-      ),
+      title: Row(children: [Text("File $fileName is already exists.")]),
       content: Column(
         crossAxisAlignment: .start,
         spacing: 16,
@@ -148,14 +142,14 @@ class OverwriteDialog extends StatelessWidget {
               ),
             ],
           ),
-          Divider(),
           Row(
             mainAxisAlignment: .center,
             children: [
               Expanded(
-                child: TextButton(
+                child: TextButton.icon(
                   onPressed: () => Navigator.of(context).pop(OverwriteDialogResult.overwrite),
-                  child: Text("Overwrite", style: TextStyle(color: colours.error)),
+                  icon: Icon(Icons.warning, color: colours.error),
+                  label: Text("Overwrite", style: TextStyle(color: colours.error)),
                 ),
               ),
             ],
