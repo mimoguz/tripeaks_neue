@@ -7,4 +7,5 @@ abstract interface class AbstractIO {
 
   Future<ExportResult> export(Map<String, dynamic> jsonObject, [String? initialDirectory]);
   Future<ImportResult<T>> import<T>(T Function(Map<String, dynamic>) reader);
+  Future<void> writeExternal(Map<String, dynamic> jsonObject, String path);
 }

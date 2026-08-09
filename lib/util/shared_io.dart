@@ -19,21 +19,29 @@ mixin SharedIo {
       return ExportCancelled();
     }
 
-    final output = json.encode(jsonObject);
-    final fileData = Uint8List.fromList(output.codeUnits);
-    const mimeType = 'text/plain';
-    final XFile textFile = XFile.fromData(fileData, mimeType: mimeType, name: _suggestedFileName);
-
     if (await io.File(result.path).exists()) {
+      // TODO: Maybe I should handle this here
       return ExportFileExists(result.path);
     }
 
     try {
-      await textFile.saveTo(result.path);
+      await writeExternal(jsonObject, result.path);
       return ExportSucceeded(result.path);
     } on Exception catch (e) {
       return ExportFailed(e.toString());
     }
+  }
+
+  Future<void> writeExternal(Map<String, dynamic> jsonObject, String path) async {
+    final output = json.encode(jsonObject);
+    final fileData = Uint8List.fromList(output.codeUnits);
+    const mimeType = 'text/plain';
+    final XFile textFile = XFile.fromData(
+      fileData,
+      mimeType: mimeType,
+      name: io.File(path).uri.pathSegments.last,
+    );
+    await textFile.saveTo(path);
   }
 
   Future<ImportResult<T>> import<T>(T Function(Map<String, dynamic>) reader) async {

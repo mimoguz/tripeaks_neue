@@ -364,6 +364,10 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
     switch (result) {
       case ExportFileExists fileExists:
         // TODO: Handle overwrite
+        // - Show dialog to get user input
+        // - Overwrite -> call writeExternal
+        // - Select -> call export with previous path
+        // - Cancel -> Nothing to do
         _logger.e("Export file exists: ${fileExists.path}");
         return;
       case ExportCancelled _:
