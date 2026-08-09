@@ -19,10 +19,10 @@ class CustomIcons {
   static const spades = IconData(0xe902, fontFamily: _cards);
   static const spadesSm = IconData(0xe910, fontFamily: _cards);
 
-  static const algorithm16 = IconData(0xe910, fontFamily: _actions);
-  static const copy16 = IconData(0xe911, fontFamily: _actions);
-  static const draw = IconData(0xe90b, fontFamily: _actions);
-  static const draw16 = IconData(0xe904, fontFamily: _actions);
+  static const algorithm16 = IconData(0xe900, fontFamily: _actions);
+  static const copy16 = IconData(0xe901, fontFamily: _actions);
+  static const draw = IconData(0xe90c, fontFamily: _actions);
+  static const draw16 = IconData(0xe902, fontFamily: _actions);
   static const empty16 = IconData(0xe902, fontFamily: _actions);
   static const filled16 = IconData(0xe903, fontFamily: _actions);
   static const invisible16 = IconData(0xe90f, fontFamily: _actions);
@@ -36,8 +36,8 @@ class CustomIcons {
   static const undo = IconData(0xe90a, fontFamily: _actions);
   static const undo16 = IconData(0xe909, fontFamily: _actions);
   static const visible16 = IconData(0xe90e, fontFamily: _actions);
-  static const volumeOff = IconData(0xe90c, fontFamily: _actions);
-  static const volumeOn = IconData(0xe90d, fontFamily: _actions);
+  static const volumeOff16 = IconData(0xe90c, fontFamily: _actions);
+  static const volumeOn16 = IconData(0xe90d, fontFamily: _actions);
 
   static const _actions = "Actions";
   static const _cards = "Cards";
