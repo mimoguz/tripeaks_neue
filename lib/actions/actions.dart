@@ -329,6 +329,10 @@ final class GoBackAction extends ContextAction<GoBackIntent> {
 final class ImportDataAction extends ContextAction<ImportDataIntent> {
   @override
   void invoke(ImportDataIntent intent, [BuildContext? context]) {
+    if (context == null) {
+      return;
+    }
+    _closeDrawer(context);
     getIO().import<int>((_) => 0);
   }
 }
@@ -356,28 +360,26 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
     }
 
     if (jsonObject.isEmpty) {
+      _closeDrawer(context);
       return;
     }
 
-    // TODO: Handle errors
-    final result = await getIO().export(jsonObject);
+    final result = await getIO().export(jsonObject, context);
     switch (result) {
-      case ExportFileExists fileExists:
-        // TODO: Handle overwrite
-        // - Show dialog to get user input
-        // - Overwrite -> call writeExternal
-        // - Select -> call export with previous path
-        // - Cancel -> Nothing to do
-        _logger.e("Export file exists: ${fileExists.path}");
-        return;
       case ExportCancelled _:
         _logger.d("Export cancelled");
-        return;
+        break;
       case ExportFailed failed:
         // TODO: Error dialog
         _logger.e("Export failed: ${failed.reason}");
+        break;
       case ExportSucceeded succeeded:
         _logger.d("Export succeded: ${succeeded.path}");
+        break;
+    }
+
+    if (context.mounted) {
+      _closeDrawer(context);
     }
   }
 

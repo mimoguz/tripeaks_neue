@@ -2,11 +2,6 @@ sealed class ExportResult {
   const ExportResult();
 }
 
-final class ExportFileExists extends ExportResult {
-  final String path;
-  const ExportFileExists(this.path);
-}
-
 final class ExportCancelled extends ExportResult {
   const ExportCancelled();
 }
