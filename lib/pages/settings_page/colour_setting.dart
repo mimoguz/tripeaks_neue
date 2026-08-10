@@ -6,7 +6,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 class ColourSetting extends StatelessWidget {
   const ColourSetting({super.key});
@@ -44,29 +44,28 @@ class ColourSetting extends StatelessWidget {
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
-      builder:
-          (context) => TranslucentDialog(
-            title: Text(s.decorColourControl),
-            content: Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
-              children: [
-                for (final (index, colour) in DecorColour.values.indexed)
-                  ColourSwatch(
-                    colour: colour,
-                    isSelected: settings.decorColour == colour,
-                    onTap: () => Navigator.pop(context, index),
-                  ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, -1),
-                style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
-                child: Text(s.cancelAction),
+      builder: (context) => CommonDialog(
+        title: Text(s.decorColourControl),
+        content: Wrap(
+          spacing: 16.0,
+          runSpacing: 16.0,
+          children: [
+            for (final (index, colour) in DecorColour.values.indexed)
+              ColourSwatch(
+                colour: colour,
+                isSelected: settings.decorColour == colour,
+                onTap: () => Navigator.pop(context, index),
               ),
-            ],
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, -1),
+            style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+            child: Text(s.cancelAction),
           ),
+        ],
+      ),
     );
     if (result != null && result >= 0) {
       settings.decorColour = DecorColour.values[result];
@@ -127,18 +126,9 @@ class _ColourSwatchState extends State<ColourSwatch> {
                 child: Center(
                   child: AnimatedSwitcher(
                     duration: Durations.medium1,
-                    child:
-                        widget.isSelected
-                            ? Icon(
-                              Icons.radio_button_checked,
-                              key: const ValueKey("selected"),
-                              color: foreground,
-                            )
-                            : Icon(
-                              Icons.radio_button_off,
-                              key: const ValueKey("unselected"),
-                              color: foreground,
-                            ),
+                    child: widget.isSelected
+                        ? Icon(Icons.radio_button_checked, key: const ValueKey("selected"), color: foreground)
+                        : Icon(Icons.radio_button_off, key: const ValueKey("unselected"), color: foreground),
                   ),
                 ),
               ),

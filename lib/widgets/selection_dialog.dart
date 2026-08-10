@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/widgets/list_tile.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 class SelectionDialog extends StatelessWidget {
   const SelectionDialog({super.key, required this.options, required this.selected, this.title});
@@ -13,7 +13,7 @@ class SelectionDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
-    return TranslucentDialog(
+    return CommonDialog(
       title: title != null ? Text(title!) : null,
       content: Column(
         children: [

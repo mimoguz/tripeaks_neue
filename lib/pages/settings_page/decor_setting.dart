@@ -6,7 +6,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 class DecorSetting extends StatelessWidget {
   const DecorSetting({super.key});
@@ -49,30 +49,29 @@ class DecorSetting extends StatelessWidget {
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
-      builder:
-          (context) => TranslucentDialog(
-            title: Text(s.decorControl),
-            content: Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
-              children: [
-                for (final (index, decor) in Decor.values.indexed)
-                  DecorItem(
-                    decor: decor,
-                    isSelected: settings.decor == decor,
-                    onTap: () => Navigator.pop(context, index),
-                    selectedDecorColour: settings.decorColour,
-                  ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, -1),
-                style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
-                child: Text(s.cancelAction),
+      builder: (context) => CommonDialog(
+        title: Text(s.decorControl),
+        content: Wrap(
+          spacing: 16.0,
+          runSpacing: 16.0,
+          children: [
+            for (final (index, decor) in Decor.values.indexed)
+              DecorItem(
+                decor: decor,
+                isSelected: settings.decor == decor,
+                onTap: () => Navigator.pop(context, index),
+                selectedDecorColour: settings.decorColour,
               ),
-            ],
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, -1),
+            style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+            child: Text(s.cancelAction),
           ),
+        ],
+      ),
     );
     if (result != null && result >= 0) {
       settings.decor = Decor.values[result];
@@ -121,20 +120,21 @@ class _DecorItemState extends State<DecorItem> {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    _borderColour = _focus.hasFocus ? colours.onSurface : colours.surfaceContainer;
+    _borderColour = _focus.hasFocus ? colours.onSurface : colours.surfaceBright;
     return SizedBox(
       width: _sideLength,
       height: _sideLength,
       child: Material(
-        clipBehavior: Clip.antiAlias,
+        color: Colors.transparent,
         child: InkWell(
           onTap: widget.onTap,
           focusNode: _focus,
           child: Ink(
             decoration: BoxDecoration(
               border: Border.all(width: 2.0, color: _borderColour!),
-              color:
-                  widget.isSelected ? widget.selectedDecorColour.background : colours.surfaceContainerHighest,
+              color: widget.isSelected
+                  ? widget.selectedDecorColour.background
+                  : colours.surfaceContainerHighest,
             ),
             child: Icon(
               widget.decor.icon,
@@ -149,10 +149,9 @@ class _DecorItemState extends State<DecorItem> {
 
   void _onFocusChange() {
     setState(() {
-      _borderColour =
-          _focus.hasFocus
-              ? Theme.of(context).colorScheme.onSurface
-              : Theme.of(context).colorScheme.surfaceContainer;
+      _borderColour = _focus.hasFocus
+          ? Theme.of(context).colorScheme.onSurface
+          : Theme.of(context).colorScheme.surfaceContainer;
     });
   }
 

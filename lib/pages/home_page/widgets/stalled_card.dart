@@ -31,12 +31,13 @@ final class StalledCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
+    final colours = Theme.of(context).colorScheme;
     return ClipRRect(
       borderRadius: c.commonBorderRadius,
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: Container(
-          color: Theme.of(context).colorScheme.surfaceContainerLow.withAlpha(210),
+          color: colours.surfaceBright.withAlpha(200),
           width: 300,
           child: Padding(
             padding: const EdgeInsets.all(16.0),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 class WelcomeDialog extends StatelessWidget {
   const WelcomeDialog({super.key});
@@ -10,7 +10,7 @@ class WelcomeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
-    return TranslucentDialog(
+    return CommonDialog(
       title: Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

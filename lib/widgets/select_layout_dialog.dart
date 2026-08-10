@@ -5,7 +5,8 @@ import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/list_tile.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class SelectLayoutDialog extends StatefulWidget {
   const SelectLayoutDialog({super.key});
@@ -49,8 +50,8 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     _ensureSolvable ??= session.ensureSolvable;
     _layout ??= session.layout;
 
-    return TranslucentDialog(
-      title: Text(s.selectLayoutDialogTitle),
+    return CommonDialog(
+      title: Row(crossAxisAlignment: .center, spacing: 12, children: [Text(s.selectLayoutDialogTitle)]),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

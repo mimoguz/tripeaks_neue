@@ -20,7 +20,8 @@ class HomePageDrawer extends StatelessWidget {
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
-      elevation: 2.0,
+      elevation: 10.0,
+      shadowColor: colours.shadow,
       width: 340.0,
       shape: RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.zero)),
       clipBehavior: Clip.antiAlias,

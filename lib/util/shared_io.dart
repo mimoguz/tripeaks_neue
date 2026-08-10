@@ -6,7 +6,7 @@ import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
-import 'package:tripeaks_neue/widgets/translucent_dialog.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 mixin SharedIo {
   Future<ExportResult> export(Map<String, dynamic> jsonObject, BuildContext context) async {
@@ -115,7 +115,7 @@ class OverwriteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    return TranslucentDialog(
+    return CommonDialog(
       title: Text("Overwrite Exiting File?"),
       content: Column(
         crossAxisAlignment: .start,
