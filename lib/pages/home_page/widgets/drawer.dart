@@ -102,12 +102,10 @@ class HomePageDrawer extends StatelessWidget {
                     intent: const RestartIntent(),
                   ),
                   Divider(indent: 20, endIndent: 20),
-
-                  // TODO: Drawer item
                   DrawerListTile(
-                    icon: Icons.file_open,
-                    title: "Import Data...",
-                    intent: const ImportDataIntent(),
+                    icon: Icons.bar_chart,
+                    title: s.statisticsAction,
+                    intent: const NavigateToStatisticsIntent(),
                   ),
 
                   // TODO: Drawer item
@@ -117,15 +115,6 @@ class HomePageDrawer extends StatelessWidget {
                     intent: const NavigateToDataIntent(),
                   ),
 
-                  // TODO: Drawer item
-                  DrawerListTile(icon: Icons.save, title: "Export Data...", intent: const ExportDataIntent()),
-
-                  Divider(indent: 20, endIndent: 20),
-                  DrawerListTile(
-                    icon: Icons.bar_chart,
-                    title: s.statisticsAction,
-                    intent: const NavigateToStatisticsIntent(),
-                  ),
                   if (canExit) Divider(indent: 20, endIndent: 20),
                   if (canExit)
                     DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),

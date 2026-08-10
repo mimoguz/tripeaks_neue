@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/item_container.dart';
 
 final class MyListTile extends StatelessWidget {
   const MyListTile({
@@ -26,32 +27,38 @@ final class MyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: padding,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ?leading,
-            if (leading != null && leftSpacing > 0.0) SizedBox(width: leftSpacing),
-            Column(
-              spacing: 4.0,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+
+    return ListItemContainer(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: padding,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                DefaultTextStyle(style: theme.textTheme.bodyMedium!, child: title),
-                if (subtitle != null)
-                  DefaultTextStyle(
-                    style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onSurfaceVariant),
-                    child: subtitle!,
-                  ),
+                ?leading,
+                if (leading != null && leftSpacing > 0.0) SizedBox(width: leftSpacing),
+                Column(
+                  spacing: 4.0,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DefaultTextStyle(style: theme.textTheme.bodyMedium!, child: title),
+                    if (subtitle != null)
+                      DefaultTextStyle(
+                        style: theme.textTheme.bodySmall!.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                        child: subtitle!,
+                      ),
+                  ],
+                ),
+                Spacer(),
+                if (trailing != null && rightSpacing > 0.0) SizedBox(width: rightSpacing),
+                ?trailing,
               ],
             ),
-            Spacer(),
-            if (trailing != null && rightSpacing > 0.0) SizedBox(width: rightSpacing),
-            ?trailing,
-          ],
+          ),
         ),
       ),
     );

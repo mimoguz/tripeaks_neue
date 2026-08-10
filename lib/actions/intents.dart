@@ -110,7 +110,15 @@ final class GoBackIntent extends Intent {
 }
 
 final class ImportDataIntent extends Intent {
-  const ImportDataIntent();
+  const ImportDataIntent({
+    this.includeStats = true,
+    this.includeSettings = true,
+    this.includeCurrentGame = true,
+  });
+
+  final bool includeStats;
+  final bool includeSettings;
+  final bool includeCurrentGame;
 }
 
 final class ExportDataIntent extends Intent {
