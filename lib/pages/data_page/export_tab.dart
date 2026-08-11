@@ -25,7 +25,6 @@ class _ExportTabState extends State<ExportTab> with AutomaticKeepAliveClientMixi
   Widget build(BuildContext context) {
     super.build(context);
     final colours = Theme.of(context).colorScheme;
-    final listItemPadding = EdgeInsets.fromLTRB(10, 6, 0, 6);
     return Actions(
       actions: <Type, Action<Intent>>{ExportDataIntent: ExportDataAction()},
       child: Builder(
@@ -43,7 +42,7 @@ class _ExportTabState extends State<ExportTab> with AutomaticKeepAliveClientMixi
                       children: <Widget>[
                         MyListTile(
                           title: Text("Include statistics"),
-                          padding: listItemPadding,
+                          padding: _listItemPadding,
                           onTap: () => setState(() => _includeStatistics = !_includeStatistics),
                           trailing: Checkbox(
                             value: _includeStatistics,
@@ -52,7 +51,7 @@ class _ExportTabState extends State<ExportTab> with AutomaticKeepAliveClientMixi
                         ),
                         MyListTile(
                           title: Text("Include settings"),
-                          padding: listItemPadding,
+                          padding: _listItemPadding,
                           onTap: () => setState(() => _includeSettings = !_includeSettings),
                           trailing: Checkbox(
                             value: _includeSettings,
@@ -61,7 +60,7 @@ class _ExportTabState extends State<ExportTab> with AutomaticKeepAliveClientMixi
                         ),
                         MyListTile(
                           title: Text("Include the current game"),
-                          padding: listItemPadding,
+                          padding: _listItemPadding,
                           onTap: () => setState(() => _includeGame = !_includeGame),
                           trailing: Checkbox(
                             value: _includeGame,
@@ -100,4 +99,6 @@ class _ExportTabState extends State<ExportTab> with AutomaticKeepAliveClientMixi
       ),
     );
   }
+
+  static const _listItemPadding = EdgeInsets.fromLTRB(10, c.cellPadding, 0, c.cellPadding);
 }

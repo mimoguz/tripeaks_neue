@@ -9,11 +9,11 @@ class Scoring extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = TextStyle(
+    final theme = Theme.of(context);
+    final paragraphStyle = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
+    final italic = paragraphStyle.copyWith(
       fontStyle: FontStyle.italic,
-      color: Theme.of(context).colorScheme.onSurfaceVariant,
+      color: theme.colorScheme.onSurfaceVariant,
     );
     final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
@@ -29,13 +29,13 @@ class Scoring extends StatelessWidget {
           children: [
             FastRichText(text: s.scoringRichP01, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            Text(s.scoringP02),
+            FastRichText(text: s.scoringP02, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
             FastRichText(text: s.scoringRichP03, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
             FastRichText(text: s.scoringRichP04, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            Text(s.scoringP05),
+            FastRichText(text: s.scoringP05, textStyle: paragraphStyle, italicTextStyle: italic),
           ],
         ),
       ),

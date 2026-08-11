@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -51,14 +52,14 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     _layout ??= session.layout;
 
     return CommonDialog(
-      title: Row(crossAxisAlignment: .center, spacing: 12, children: [Text(s.selectLayoutDialogTitle)]),
+      title: Text(s.selectLayoutDialogTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (final layout in Peaks.values)
             MyListTile(
-              leading: Radio<Peaks>(
+              trailing: Radio<Peaks>(
                 value: layout,
                 groupValue: _layout,
                 visualDensity: VisualDensity.compact,
@@ -67,12 +68,14 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               title: Text(layout.label(s)),
               onTap: () => setState(() => _layout = layout),
               padding: _choicePadding,
+              rightSpacing: 16,
             ),
           const Divider(),
           const SizedBox(height: 8.0),
           Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
+          SizedBox(height: c.cellPadding * 2.0),
           MyListTile(
-            leading: Checkbox(
+            trailing: Checkbox(
               value: _showAll,
               visualDensity: VisualDensity.compact,
               onChanged: (value) => setState(() => _showAll = value!),
@@ -80,9 +83,10 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             title: Text(s.showAllOptionLabel),
             onTap: () => setState(() => _showAll = !_showAll!),
             padding: _choicePadding,
+            rightSpacing: 16,
           ),
           MyListTile(
-            leading: Checkbox(
+            trailing: Checkbox(
               value: _startEmpty,
               visualDensity: VisualDensity.compact,
               onChanged: (value) => setState(() => _startEmpty = value!),
@@ -90,9 +94,10 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             title: Text(s.startsEmptyOptionLabel),
             onTap: () => setState(() => _startEmpty = !_startEmpty!),
             padding: _choicePadding,
+            rightSpacing: 16,
           ),
           MyListTile(
-            leading: Checkbox(
+            trailing: Checkbox(
               value: _ensureSolvable,
               visualDensity: VisualDensity.compact,
               onChanged: (value) => setState(() => _ensureSolvable = value!),
@@ -100,6 +105,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             title: Text(s.ensureSolvableOnLabel),
             onTap: () => setState(() => _ensureSolvable = !_ensureSolvable!),
             padding: _choicePadding,
+            rightSpacing: 16,
           ),
         ],
       ),
@@ -124,5 +130,5 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     );
   }
 
-  static const _choicePadding = EdgeInsets.only(left: 0, right: 10, top: 6, bottom: 6);
+  static const _choicePadding = EdgeInsets.symmetric(vertical: c.cellPadding);
 }

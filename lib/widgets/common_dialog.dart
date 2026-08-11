@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
@@ -52,4 +50,21 @@ class CommonDialog extends StatelessWidget {
   }
 
   static const _borderColour = Color(0x15b0d0f0);
+}
+
+class CircleIcon extends StatelessWidget {
+  const CircleIcon({super.key, required this.icon});
+
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    return Container(
+      width: 32,
+      height: 32,
+      decoration: BoxDecoration(shape: BoxShape.circle, color: colours.tertiaryContainer),
+      child: Center(child: Icon(icon, size: 24, color: colours.onTertiaryContainer)),
+    );
+  }
 }

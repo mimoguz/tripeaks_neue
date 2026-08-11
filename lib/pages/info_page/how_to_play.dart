@@ -10,13 +10,13 @@ class HowToPlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final s = AppLocalizations.of(context)!;
-    final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = textTheme.bodyMedium!.copyWith(
+    final theme = Theme.of(context);
+    final paragraphStyle = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
+    final italic = paragraphStyle.copyWith(
       fontStyle: FontStyle.italic,
-      color: Theme.of(context).colorScheme.onSurfaceVariant,
+      color: theme.colorScheme.onSurfaceVariant,
     );
+    final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
       child: DefaultTextStyle(
         style: paragraphStyle,
@@ -34,41 +34,47 @@ class HowToPlay extends StatelessWidget {
               label: s.wikiLinkText,
             ),
             const SizedBox(height: 12.0),
-            Text(s.howToP01),
+            FastRichText(text: s.howToP01, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
             FastRichText(text: s.howToRichP02, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
             FastRichText(text: s.howToRichP03, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            Text(s.howToP04),
+            FastRichText(text: s.howToP04, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            Text(s.howToP05),
+            FastRichText(text: s.howToP05, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            Text(s.howToP06),
+            FastRichText(text: s.howToP06, textStyle: paragraphStyle, italicTextStyle: italic),
             const SizedBox(height: 12.0),
-            Text(s.howToP07),
+            FastRichText(text: s.howToP07, textStyle: paragraphStyle, italicTextStyle: italic),
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("●"),
-                Flexible(child: Text(s.howToP08)),
+                FastRichText(text: "●", textStyle: paragraphStyle, italicTextStyle: italic),
+                Flexible(
+                  child: FastRichText(text: s.howToP08, textStyle: paragraphStyle, italicTextStyle: italic),
+                ),
               ],
             ),
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("●"),
-                Flexible(child: Text(s.howToP09)),
+                FastRichText(text: "●", textStyle: paragraphStyle, italicTextStyle: italic),
+                Flexible(
+                  child: FastRichText(text: s.howToP09, textStyle: paragraphStyle, italicTextStyle: italic),
+                ),
               ],
             ),
             Row(
               spacing: 8.0,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("●"),
-                Flexible(child: Text(s.howToP10)),
+                FastRichText(text: "●", textStyle: paragraphStyle, italicTextStyle: italic),
+                Flexible(
+                  child: FastRichText(text: s.howToP10, textStyle: paragraphStyle, italicTextStyle: italic),
+                ),
               ],
             ),
           ],

@@ -14,11 +14,11 @@ final class Interaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final paragraphStyle = textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = TextStyle(
+    final theme = Theme.of(context);
+    final paragraphStyle = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
+    final italic = paragraphStyle.copyWith(
       fontStyle: FontStyle.italic,
-      color: Theme.of(context).colorScheme.onSurfaceVariant,
+      color: theme.colorScheme.onSurfaceVariant,
     );
     final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
@@ -32,7 +32,14 @@ final class Interaction extends StatelessWidget {
             c.cardPaddingVertical,
           ),
           children: [
-            InteractionListCell(description: Text(s.interactionP01), image: Icon(Icons.touch_app)),
+            InteractionListCell(
+              description: FastRichText(
+                text: s.interactionP01,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
+              image: Icon(Icons.touch_app),
+            ),
             const InteractionListDivider(),
             InteractionListCell(
               description: FastRichText(
@@ -50,7 +57,11 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: Text(s.interactionP03),
+              description: FastRichText(
+                text: s.interactionP03,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
               image: CircleGameButton(
                 scale: 1.0,
                 icon: CustomIcons.undo,
@@ -61,7 +72,11 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: Text(s.interactionP04),
+              description: FastRichText(
+                text: s.interactionP04,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
               image: Image.asset(
                 Theme.of(context).brightness == Brightness.light
                     ? "images/card_counter_light.png"
@@ -72,7 +87,11 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: Text(s.interactionP05),
+              description: FastRichText(
+                text: s.interactionP05,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
               image: CircleGameButton(
                 scale: 1.0,
                 icon: CustomIcons.menu,
@@ -83,35 +102,57 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: Text(s.interactionP06),
+              description: FastRichText(
+                text: s.interactionP06,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
               image: Icon(Icons.settings),
               shorcut: _settingsShortcut,
             ),
             const InteractionListDivider(),
-            InteractionListCell(description: Text(s.interactionP07), image: Icon(CustomIcons.pickAndPlay)),
+            InteractionListCell(
+              description: FastRichText(
+                text: s.interactionP07,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
+              image: Icon(CustomIcons.pickAndPlay),
+            ),
             const InteractionListDivider(),
             InteractionListCell(
-              description: Text(s.interactionP08),
+              description: FastRichText(
+                text: s.interactionP08,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
               image: Image.asset("images/tropy.png", width: c.maxRealButtonSize, height: c.maxRealButtonSize),
             ),
             const InteractionListDivider(),
-            InteractionListCell(description: Text(s.interactionP09), image: Icon(Icons.screen_rotation)),
+            InteractionListCell(
+              description: FastRichText(
+                text: s.interactionP09,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
+              image: Icon(Icons.screen_rotation),
+            ),
             const InteractionListDivider(),
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
-              child: Text(
-                s.interactionP10,
-                style: textTheme.titleSmall!.copyWith(
+              child: FastRichText(
+                text: s.interactionP10,
+                textStyle: theme.textTheme.titleSmall!.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
-            ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut),
-            ShorcutListCell(title: s.interactionP11, shorcut: _menuShortcutAlt),
-            ShorcutListCell(title: s.interactionP12, shorcut: _backShortcut),
-            ShorcutListCell(title: s.interactionP13, shorcut: _backShortcutAlt),
-            ShorcutListCell(title: s.exitAction, shorcut: _exitShortcut),
+            ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.interactionP11, shorcut: _menuShortcutAlt, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.interactionP12, shorcut: _backShortcut, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.interactionP13, shorcut: _backShortcutAlt, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.exitAction, shorcut: _exitShortcut, textStyle: paragraphStyle),
           ],
         ),
       ),
@@ -150,7 +191,10 @@ class InteractionListCell extends StatelessWidget {
             spacing: 6,
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [description, if (shorcut != null) ShortcutHint(shorcut: shorcut!)],
+            children: [
+              description,
+              if (shorcut != null) ShortcutHint(shorcut: shorcut!),
+            ],
           ),
         ),
         Container(
@@ -164,10 +208,11 @@ class InteractionListCell extends StatelessWidget {
 }
 
 class ShorcutListCell extends StatelessWidget {
-  const ShorcutListCell({super.key, required this.title, required this.shorcut});
+  const ShorcutListCell({super.key, required this.title, required this.shorcut, required this.textStyle});
 
   final String title;
   final List<LogicalKeyboardKey> shorcut;
+  final TextStyle textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +221,10 @@ class ShorcutListCell extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(title), ShortcutHint(shorcut: shorcut, showLabel: false)],
+        children: [
+          FastRichText(text: title, textStyle: textStyle),
+          ShortcutHint(shorcut: shorcut, showLabel: false),
+        ],
       ),
     );
   }
