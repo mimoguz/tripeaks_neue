@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/list_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
@@ -19,7 +20,7 @@ class SelectionDialog extends StatelessWidget {
         children: [
           for (final (index, item) in options.indexed)
             MyListTile(
-              leading: Radio<int>(
+              trailing: Radio<int>(
                 value: index,
                 groupValue: selected,
                 visualDensity: VisualDensity.compact,
@@ -41,5 +42,5 @@ class SelectionDialog extends StatelessWidget {
     );
   }
 
-  static const _padding = EdgeInsets.only(left: 0, right: 10, top: 6, bottom: 6);
+  static const _padding = EdgeInsets.fromLTRB(10, c.cellPadding, 0, c.cellPadding);
 }

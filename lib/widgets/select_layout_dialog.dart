@@ -70,10 +70,11 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               padding: _choicePadding,
               rightSpacing: 16,
             ),
-          const Divider(),
-          const SizedBox(height: 8.0),
-          Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
-          SizedBox(height: c.cellPadding * 2.0),
+          //const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: c.cellPadding * 2),
+            child: Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
+          ),
           MyListTile(
             trailing: Checkbox(
               value: _showAll,
@@ -130,5 +131,5 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     );
   }
 
-  static const _choicePadding = EdgeInsets.symmetric(vertical: c.cellPadding);
+  static const _choicePadding = EdgeInsets.fromLTRB(10, c.cellPadding, 0, c.cellPadding);
 }
