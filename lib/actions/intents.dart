@@ -109,31 +109,10 @@ final class GoBackIntent extends Intent {
   final bool saveSettings;
 }
 
-final class ImportDataIntent extends Intent {
-  const ImportDataIntent({
-    this.includeStats = true,
-    this.includeSettings = true,
-    this.includeCurrentGame = true,
-  });
-
-  final bool includeStats;
-  final bool includeSettings;
-  final bool includeCurrentGame;
+final class ImportStatsIntent extends Intent {
+  const ImportStatsIntent();
 }
 
-final class ExportDataIntent extends Intent {
-  const ExportDataIntent({
-    this.includeStats = true,
-    this.includeSettings = true,
-    this.includeCurrentGame = true,
-  });
-
-  final bool includeStats;
-  final bool includeSettings;
-  final bool includeCurrentGame;
-}
-
-final class NavigateToDataIntent extends Intent {
-  const NavigateToDataIntent({this.replace = false});
-  final bool replace;
+final class ExportStatsIntent extends Intent {
+  const ExportStatsIntent();
 }

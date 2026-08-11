@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/pages/data_page/data_page.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -17,7 +16,7 @@ import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
-import 'package:tripeaks_neue/util/json_object.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
@@ -330,33 +329,52 @@ final class GoBackAction extends ContextAction<GoBackIntent> {
   }
 }
 
-final class ImportDataAction extends ContextAction<ImportDataIntent> {
+final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
   @override
-  void invoke(ImportDataIntent intent, [BuildContext? context]) async {
+  void invoke(ImportStatsIntent intent, [BuildContext? context]) async {
     if (context == null) {
       return;
     }
-    final result = await getIO().import<(Settings?, PlayerStatistics?, Game?)>(_getReader(intent));
+    final result = await getIO().import<PlayerStatistics>(_reader);
     switch (result) {
-      case ImportCancelled<(Settings?, PlayerStatistics?, Game?)> _:
+      case ImportCancelled<PlayerStatistics?> _:
         _logger.d("Import cancelled");
         break;
       // TODO: Error dialog
-      case ImportIoFailed<(Settings?, PlayerStatistics?, Game?)> ioFailed:
+      case ImportIoFailed<PlayerStatistics> ioFailed:
         _logger.e("Import I/O failed: ${ioFailed.reason}");
         break;
       // TODO: Error dialog
-      case ImportReaderFailed<(Settings?, PlayerStatistics?, Game?)> readerFailed:
+      case ImportReaderFailed<PlayerStatistics> readerFailed:
         _logger.e("Import reader failed: ${readerFailed.reason}");
         break;
-      case ImportSucceeded<(Settings?, PlayerStatistics?, Game?)> succeded:
+      case ImportSucceeded<PlayerStatistics> succeded:
         if (context.mounted) {
-          try {
-            _handleResult(context, succeded.result.$1, succeded.result.$2, succeded.result.$3);
-          } on Exception catch (e) {
-            // TODO: Error dialog
-            _logger.e(e.toString());
+          final dialogResult = await showAdaptiveDialog<bool>(
+            context: context,
+            barrierColor: Colors.transparent,
+            barrierDismissible: true,
+            builder: (context) => CommonDialog(
+              title: Text("Caution"),
+              content: Text("This action will overwrite the current statistics.\nDo you want to continue?"),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop<bool>(context, false),
+                  style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+                  child: Text("Cancel"),
+                ),
+                TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text("Continue")),
+              ],
+            ),
+          );
+          if (!(dialogResult ?? false)) {
+            break;
           }
+        } else {
+          _logger.e("Import: Can't use context");
+        }
+        if (context.mounted) {
+          await Provider.of<Session>(context, listen: false).setStatistics(succeded.result);
         } else {
           _logger.e("Import: Can't use context");
         }
@@ -364,83 +382,24 @@ final class ImportDataAction extends ContextAction<ImportDataIntent> {
     }
   }
 
-  (Settings?, PlayerStatistics?, Game?) Function(Map<String, dynamic>) _getReader(ImportDataIntent intent) {
-    // TODO
-    return (jsonObject) {
-      final Settings? settings;
-      if (jsonObject.containsKey("settings")) {
-        final jo = jsonObject["settings"];
-        try {
-          settings = Settings.fromJsonObject(jo);
-        } on Exception catch (e) {
-          throw Exception("Can't read settings: $e");
-        }
-      } else {
-        settings = null;
-      }
-
-      final PlayerStatistics? statistics;
-      if (jsonObject.containsKey("statistics")) {
-        final jo = jsonObject["statistics"];
-        try {
-          statistics = PlayerStatistics.fromJsonObject(jo);
-        } on Exception catch (e) {
-          throw Exception("Can't read statistics: $e");
-        }
-      } else {
-        statistics = null;
-      }
-
-      final Game? game;
-      if (jsonObject.containsKey("game")) {
-        final jo = jsonObject["statistics"];
-        try {
-          game = Game.fromJsonObject(jo);
-        } on Exception catch (e) {
-          throw Exception("Can't read game data: $e");
-        }
-      } else {
-        game = null;
-      }
-
-      return (settings, statistics, game);
-    };
-  }
-
-  void _handleResult(BuildContext context, [Settings? settings, PlayerStatistics? stats, Game? game]) {
-    // TODO
-  }
+  PlayerStatistics _reader(Map<String, dynamic> jsonObject) => PlayerStatistics.fromJsonObject(jsonObject);
 
   final Logger _logger = Logger();
 }
 
-final class ExportDataAction extends ContextAction<ExportDataIntent> {
+final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
   @override
-  void invoke(ExportDataIntent intent, [BuildContext? context]) async {
+  void invoke(ExportStatsIntent intent, [BuildContext? context]) async {
     if (context == null) {
       return;
     }
-
-    final jsonObject = <String, dynamic>{};
-
     final session = Provider.of<Session>(context, listen: false);
-    if (intent.includeStats) {
-      jsonObject["statistics"] = session.statistics.toJsonObject();
-    }
-    if (intent.includeCurrentGame) {
-      jsonObject["game"] = session.game.toJsonObject();
-    }
-
-    if (intent.includeSettings) {
-      final settings = Provider.of<Settings>(context, listen: false);
-      jsonObject["settings"] = settings.toJsonObject();
-    }
-
-    if (jsonObject.isEmpty) {
-      return;
-    }
-
-    final result = await getIO().export(jsonObject, context);
+    final jsonObject = session.statistics.toJsonObject();
+    final result = await getIO().export(
+      context: context,
+      jsonObject: jsonObject,
+      suggestedFileName: _suggestedFileName,
+    );
     switch (result) {
       case ExportCancelled _:
         _logger.d("Export cancelled");
@@ -456,20 +415,5 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
   }
 
   final Logger _logger = Logger();
-}
-
-final class NavigateToDataAction extends ContextAction<NavigateToDataIntent> {
-  @override
-  void invoke(NavigateToDataIntent intent, [BuildContext? context]) {
-    if (context == null) {
-      return;
-    }
-    final navigator = Navigator.of(context);
-    if (intent.replace) {
-      navigator.pushReplacement(MaterialPageRoute(builder: (_) => DataPage()));
-    } else {
-      _closeDrawer(context);
-      navigator.push(MaterialPageRoute(builder: (_) => DataPage()));
-    }
-  }
+  static const _suggestedFileName = 'tripeaksneue-data.json';
 }

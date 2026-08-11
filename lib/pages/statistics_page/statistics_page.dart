@@ -44,17 +44,22 @@ class _StatisticsPageState extends State<StatisticsPage> {
         SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
       },
       child: Actions(
-        actions: <Type, Action<Intent>>{ExitIntent: ExitAction(), GoBackIntent: GoBackAction()},
+        actions: <Type, Action<Intent>>{
+          ExitIntent: ExitAction(),
+          GoBackIntent: GoBackAction(),
+          ImportStatsIntent: ImportStatsAction(),
+          ExportStatsIntent: ExportStatsAction(),
+        },
         child: SafeArea(
           child: Builder(
             builder: (context) {
               final session = Provider.of<Session>(context);
+              final colours = Theme.of(context).colorScheme;
               return Observer(
                 builder: (context) {
                   final statistics = session.statistics;
-                  final perLayoutStats =
-                      statistics.perLayoutStatistics.entries.toList()
-                        ..sort((a, b) => a.key.index.compareTo(b.key.index));
+                  final perLayoutStats = statistics.perLayoutStatistics.entries.toList()
+                    ..sort((a, b) => a.key.index.compareTo(b.key.index));
                   return DefaultTabController(
                     initialIndex: 0,
                     length: perLayoutStats.length + 1,
@@ -62,18 +67,52 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-                        bottom:
-                            useVertical
-                                ? null
-                                : TabBar(
-                                  isScrollable: true,
-                                  tabAlignment: TabAlignment.center,
-                                  dividerColor: Colors.transparent,
-                                  tabs: <Widget>[
-                                    Tab(text: s.overallStatisticsTitle),
-                                    for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
-                                  ],
+                        // TODO: Strings, tooltips, documentation
+                        actions: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: PopupMenuButton(
+                              color: colours.surfaceBright,
+                              elevation: 10,
+                              shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+                              icon: Icon(Icons.import_export, color: colours.onSurfaceVariant),
+                              tooltip: "Export/Import",
+                              itemBuilder: (context) => [
+                                PopupMenuItem(
+                                  onTap: Actions.handler(context, const ExportStatsIntent()),
+                                  child: Row(
+                                    spacing: 16,
+                                    children: [
+                                      Icon(Icons.upload, color: colours.onSurfaceVariant),
+                                      Text("Export statistics…"),
+                                    ],
+                                  ),
                                 ),
+                                PopupMenuItem(
+                                  onTap: Actions.handler(context, const ImportStatsIntent()),
+                                  child: Row(
+                                    spacing: 16,
+                                    children: [
+                                      Icon(Icons.download, color: colours.onSurfaceVariant),
+                                      Text("Import statistics…"),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                        bottom: useVertical
+                            ? null
+                            : TabBar(
+                                isScrollable: true,
+                                tabAlignment: TabAlignment.center,
+                                dividerColor: Colors.transparent,
+                                tabs: <Widget>[
+                                  Tab(text: s.overallStatisticsTitle),
+                                  for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
+                                ],
+                              ),
                       ),
                       body: Focus(
                         focusNode: _focusNode,
@@ -81,31 +120,26 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         skipTraversal: true,
                         descendantsAreFocusable: true,
                         descendantsAreTraversable: true,
-                        child:
-                            useVertical
-                                ? MyVerticalTabView(
-                                  width: 180,
-                                  tabs: <Tab>[
-                                    Tab(text: s.overallStatisticsTitle),
-                                    for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
-                                  ],
-                                  contents: <Widget>[
-                                    StatisticsTab(statistics.overallStatistics, key: ValueKey("overall")),
-                                    for (final layout in perLayoutStats)
-                                      StatisticsTab(
-                                        layout.value,
-                                        showLayout: false,
-                                        key: Key(layout.key.name),
-                                      ),
-                                  ],
-                                )
-                                : TabBarView(
-                                  children: <Widget>[
-                                    StatisticsTab(statistics.overallStatistics),
-                                    for (final layout in perLayoutStats)
-                                      StatisticsTab(layout.value, showLayout: false),
-                                  ],
-                                ),
+                        child: useVertical
+                            ? MyVerticalTabView(
+                                width: 180,
+                                tabs: <Tab>[
+                                  Tab(text: s.overallStatisticsTitle),
+                                  for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
+                                ],
+                                contents: <Widget>[
+                                  StatisticsTab(statistics.overallStatistics, key: ValueKey("overall")),
+                                  for (final layout in perLayoutStats)
+                                    StatisticsTab(layout.value, showLayout: false, key: Key(layout.key.name)),
+                                ],
+                              )
+                            : TabBarView(
+                                children: <Widget>[
+                                  StatisticsTab(statistics.overallStatistics),
+                                  for (final layout in perLayoutStats)
+                                    StatisticsTab(layout.value, showLayout: false),
+                                ],
+                              ),
                       ),
                     ),
                   );

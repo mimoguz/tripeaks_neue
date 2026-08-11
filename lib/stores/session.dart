@@ -170,6 +170,11 @@ abstract class _Session with Store {
     return;
   }
 
+  Future<void> setStatistics(PlayerStatistics newStats) async {
+    _statistics = newStats;
+    await writeStatistics();
+  }
+
   static Game _makeRandomGame(Peaks layout, {bool startEmpty = false, bool ensureSolvable = false}) {
     final layoutObj = layout.implementation;
 

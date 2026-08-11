@@ -9,11 +9,15 @@ import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 mixin SharedIo {
-  Future<ExportResult> export(Map<String, dynamic> jsonObject, BuildContext context) async {
+  Future<ExportResult> export({
+    required BuildContext context,
+    required Map<String, dynamic> jsonObject,
+    required String suggestedFileName,
+  }) async {
     saveLoop:
     while (true) {
       final FileSaveLocation? result = await getSaveLocation(
-        suggestedName: _suggestedFileName,
+        suggestedName: suggestedFileName,
         acceptedTypeGroups: [_typeGroup],
       );
 
@@ -102,8 +106,6 @@ mixin SharedIo {
     extensions: <String>['json'],
     uniformTypeIdentifiers: <String>['public.json'],
   );
-
-  static const _suggestedFileName = 'tripeaksneue-data.json';
 }
 
 // TODO: Localisation

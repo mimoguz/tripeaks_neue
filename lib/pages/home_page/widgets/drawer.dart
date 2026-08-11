@@ -108,14 +108,6 @@ class HomePageDrawer extends StatelessWidget {
                     title: s.statisticsAction,
                     intent: const NavigateToStatisticsIntent(),
                   ),
-
-                  // TODO: Drawer item
-                  DrawerListTile(
-                    icon: Icons.import_export,
-                    title: "Export/Import",
-                    intent: const NavigateToDataIntent(),
-                  ),
-
                   if (canExit) Divider(indent: 20, endIndent: 20),
                   if (canExit)
                     DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
