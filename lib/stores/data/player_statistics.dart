@@ -59,8 +59,6 @@ final class Statistics {
     required this.bestGames,
   });
 
-  // Statistics.fromJsonObject(Map<String, dynamic> jsonObject)
-
   final int totalGames;
   final int cleared;
   final int longestChain;
@@ -78,13 +76,13 @@ final class Statistics {
     : totalGames = jsonObject.read<int>("totalGames"),
       cleared = jsonObject.read<int>("cleared"),
       longestChain = jsonObject.read<int>("longestChain"),
-      lastGame =
-          jsonObject["lastGame"] == null ? null : SingleGameStatistics.fromJsonObject(jsonObject["lastGame"]),
-      bestGames =
-          jsonObject
-              .read<List<dynamic>>("bestGames")
-              .map((it) => SingleGameStatistics.fromJsonObject(it))
-              .toList();
+      lastGame = jsonObject["lastGame"] == null
+          ? null
+          : SingleGameStatistics.fromJsonObject(jsonObject["lastGame"]),
+      bestGames = jsonObject
+          .read<List<dynamic>>("bestGames")
+          .map((it) => SingleGameStatistics.fromJsonObject(it))
+          .toList();
 
   Statistics withGame(SingleGameStatistics game) {
     if (game.isSame(lastGame)) {

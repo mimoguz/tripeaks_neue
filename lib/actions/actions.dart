@@ -10,11 +10,14 @@ import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
+import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
+import 'package:tripeaks_neue/util/import_result.dart';
+import 'package:tripeaks_neue/util/json_object.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
@@ -329,13 +332,86 @@ final class GoBackAction extends ContextAction<GoBackIntent> {
 
 final class ImportDataAction extends ContextAction<ImportDataIntent> {
   @override
-  void invoke(ImportDataIntent intent, [BuildContext? context]) {
+  void invoke(ImportDataIntent intent, [BuildContext? context]) async {
     if (context == null) {
       return;
     }
-    _closeDrawer(context);
-    getIO().import<int>((_) => 0);
+    final result = await getIO().import<(Settings?, PlayerStatistics?, Game?)>(_getReader(intent));
+    switch (result) {
+      case ImportCancelled<(Settings?, PlayerStatistics?, Game?)> _:
+        _logger.d("Import cancelled");
+        break;
+      // TODO: Error dialog
+      case ImportIoFailed<(Settings?, PlayerStatistics?, Game?)> ioFailed:
+        _logger.e("Import I/O failed: ${ioFailed.reason}");
+        break;
+      // TODO: Error dialog
+      case ImportReaderFailed<(Settings?, PlayerStatistics?, Game?)> readerFailed:
+        _logger.e("Import reader failed: ${readerFailed.reason}");
+        break;
+      case ImportSucceeded<(Settings?, PlayerStatistics?, Game?)> succeded:
+        if (context.mounted) {
+          try {
+            _handleResult(context, succeded.result.$1, succeded.result.$2, succeded.result.$3);
+          } on Exception catch (e) {
+            // TODO: Error dialog
+            _logger.e(e.toString());
+          }
+        } else {
+          _logger.e("Import: Can't use context");
+        }
+        break;
+    }
   }
+
+  (Settings?, PlayerStatistics?, Game?) Function(Map<String, dynamic>) _getReader(ImportDataIntent intent) {
+    // TODO
+    return (jsonObject) {
+      final Settings? settings;
+      if (jsonObject.containsKey("settings")) {
+        final jo = jsonObject["settings"];
+        try {
+          settings = Settings.fromJsonObject(jo);
+        } on Exception catch (e) {
+          throw Exception("Can't read settings: $e");
+        }
+      } else {
+        settings = null;
+      }
+
+      final PlayerStatistics? statistics;
+      if (jsonObject.containsKey("statistics")) {
+        final jo = jsonObject["statistics"];
+        try {
+          statistics = PlayerStatistics.fromJsonObject(jo);
+        } on Exception catch (e) {
+          throw Exception("Can't read statistics: $e");
+        }
+      } else {
+        statistics = null;
+      }
+
+      final Game? game;
+      if (jsonObject.containsKey("game")) {
+        final jo = jsonObject["statistics"];
+        try {
+          game = Game.fromJsonObject(jo);
+        } on Exception catch (e) {
+          throw Exception("Can't read game data: $e");
+        }
+      } else {
+        game = null;
+      }
+
+      return (settings, statistics, game);
+    };
+  }
+
+  void _handleResult(BuildContext context, [Settings? settings, PlayerStatistics? stats, Game? game]) {
+    // TODO
+  }
+
+  final Logger _logger = Logger();
 }
 
 final class ExportDataAction extends ContextAction<ExportDataIntent> {
@@ -349,7 +425,7 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
 
     final session = Provider.of<Session>(context, listen: false);
     if (intent.includeStats) {
-      jsonObject["stats"] = session.statistics.toJsonObject();
+      jsonObject["statistics"] = session.statistics.toJsonObject();
     }
     if (intent.includeCurrentGame) {
       jsonObject["game"] = session.game.toJsonObject();
@@ -361,7 +437,6 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
     }
 
     if (jsonObject.isEmpty) {
-      _closeDrawer(context);
       return;
     }
 
@@ -377,10 +452,6 @@ final class ExportDataAction extends ContextAction<ExportDataIntent> {
       case ExportSucceeded succeeded:
         _logger.d("Export succeded: ${succeeded.path}");
         break;
-    }
-
-    if (context.mounted) {
-      _closeDrawer(context);
     }
   }
 
