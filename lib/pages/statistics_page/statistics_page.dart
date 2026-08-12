@@ -77,6 +77,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                               elevation: 10,
                               shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                               tooltip: "Export/Import",
+                              icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
                               itemBuilder: (context) => [
                                 PopupMenuItem<Never>(
                                   onTap: Actions.handler(context, const ExportStatsIntent()),
@@ -84,7 +85,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     spacing: 16,
                                     children: [
                                       Icon(Icons.upload, color: colours.onSurfaceVariant),
-                                      Text("Export statistics…"),
+                                      Text("Export to file…"),
                                     ],
                                   ),
                                 ),
@@ -94,7 +95,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     spacing: 16,
                                     children: [
                                       Icon(Icons.download, color: colours.onSurfaceVariant),
-                                      Text("Import statistics…"),
+                                      Text("Import from file…"),
                                     ],
                                   ),
                                 ),
@@ -105,7 +106,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     spacing: 16,
                                     children: [
                                       Icon(Icons.delete, color: colours.error),
-                                      Text("Clear all statistics", style: TextStyle(color: colours.error)),
+                                      Text("Clear all", style: TextStyle(color: colours.error)),
                                     ],
                                   ),
                                 ),
