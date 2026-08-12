@@ -8,7 +8,7 @@ final class LinuxFilePicker implements AbstractFilePicker {
   const LinuxFilePicker();
 
   @override
-  Future<String?> pickOpen() async {
+  Future<String?> openFile() async {
     final client = XdgDesktopPortalClient();
     try {
       // Invoke file chooser via Canonical's package wrapper
@@ -32,7 +32,7 @@ final class LinuxFilePicker implements AbstractFilePicker {
   }
 
   @override
-  Future<String?> pickSave([String? suggestedName]) async {
+  Future<String?> saveFile(String suggestedName, Uint8List data) async {
     final client = XdgDesktopPortalClient();
     try {
       // Invoke file chooser via Canonical's package wrapper
@@ -40,7 +40,8 @@ final class LinuxFilePicker implements AbstractFilePicker {
           .saveFile(
             title: "Select File to Export",
             filters: _filters,
-            currentFile: Uint8List.fromList((suggestedName ?? "").codeUnits),
+            currentFile: data,
+            currentName: suggestedName,
           )
           .first;
       if (result.uris.isEmpty) {

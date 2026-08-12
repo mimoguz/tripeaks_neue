@@ -70,48 +70,45 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
                         // TODO: Strings, tooltips, documentation
                         actions: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: PopupMenuButton(
-                              color: colours.surfaceBright,
-                              elevation: 10,
-                              shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-                              tooltip: "Export/Import",
-                              icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
-                              itemBuilder: (context) => [
-                                PopupMenuItem<Never>(
-                                  onTap: Actions.handler(context, const ExportStatsIntent()),
-                                  child: Row(
-                                    spacing: 16,
-                                    children: [
-                                      Icon(Icons.upload, color: colours.onSurfaceVariant),
-                                      Text("Export to file…"),
-                                    ],
-                                  ),
+                          PopupMenuButton(
+                            color: colours.surfaceBright,
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+                            tooltip: "Export/Import",
+                            icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
+                            itemBuilder: (context) => [
+                              PopupMenuItem<Never>(
+                                onTap: Actions.handler(context, const ExportStatsIntent()),
+                                child: Row(
+                                  spacing: 16,
+                                  children: [
+                                    Icon(Icons.upload, color: colours.onSurfaceVariant),
+                                    Text("Export to file…"),
+                                  ],
                                 ),
-                                PopupMenuItem<Never>(
-                                  onTap: Actions.handler(context, const ImportStatsIntent()),
-                                  child: Row(
-                                    spacing: 16,
-                                    children: [
-                                      Icon(Icons.download, color: colours.onSurfaceVariant),
-                                      Text("Import from file…"),
-                                    ],
-                                  ),
+                              ),
+                              PopupMenuItem<Never>(
+                                onTap: Actions.handler(context, const ImportStatsIntent()),
+                                child: Row(
+                                  spacing: 16,
+                                  children: [
+                                    Icon(Icons.download, color: colours.onSurfaceVariant),
+                                    Text("Import from file…"),
+                                  ],
                                 ),
-                                PopupMenuDivider(),
-                                PopupMenuItem<Never>(
-                                  onTap: Actions.handler(context, const ClearStatsIntent()),
-                                  child: Row(
-                                    spacing: 16,
-                                    children: [
-                                      Icon(Icons.delete, color: colours.error),
-                                      Text("Clear all", style: TextStyle(color: colours.error)),
-                                    ],
-                                  ),
+                              ),
+                              PopupMenuDivider(),
+                              PopupMenuItem<Never>(
+                                onTap: Actions.handler(context, const ClearStatsIntent()),
+                                child: Row(
+                                  spacing: 16,
+                                  children: [
+                                    Icon(Icons.delete, color: colours.error),
+                                    Text("Clear all", style: TextStyle(color: colours.error)),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                         bottom: useVertical

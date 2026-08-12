@@ -1,29 +1,36 @@
-import 'package:file_selector/file_selector.dart';
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:tripeaks_neue/util/abstract_file_picker.dart';
 
+// TODO: Strings
 final class GenericFilePicker implements AbstractFilePicker {
   const GenericFilePicker();
 
   @override
-  Future<String?> pickOpen() async {
-    final file = await openFile(acceptedTypeGroups: _typeGroups);
-    return file?.path;
+  Future<String?> openFile() async {
+    final result = await FilePicker.pickFile(
+      dialogTitle: "Pick File",
+      allowedExtensions: ["json"],
+      type: FileType.custom,
+    );
+    final bytes = await result?.readAsBytes();
+    if (bytes == null) {
+      return null;
+    }
+    return utf8.decoder.convert(bytes);
   }
 
   @override
-  Future<String?> pickSave([String? suggestedName]) async {
-    final file = await getSaveLocation(suggestedName: suggestedName, acceptedTypeGroups: _typeGroups);
-    return file?.path;
+  Future<String?> saveFile(String suggestedName, Uint8List data) async {
+    final result = await FilePicker.saveFile(
+      fileName: suggestedName,
+      allowedExtensions: ["json"],
+      bytes: data,
+    );
+    return result;
   }
-
-  static const _typeGroups = [
-    XTypeGroup(
-      label: "JSON files",
-      extensions: <String>["json"],
-      uniformTypeIdentifiers: <String>["public.json"],
-    ),
-    XTypeGroup(label: "All files", extensions: <String>[], uniformTypeIdentifiers: <String>[]),
-  ];
 
   static const instance = GenericFilePicker();
 }

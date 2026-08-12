@@ -1,4 +1,6 @@
+import 'dart:typed_data';
+
 abstract interface class AbstractFilePicker {
-  Future<String?> pickOpen();
-  Future<String?> pickSave([String? suggestedName]);
+  Future<String?> openFile();
+  Future<String?> saveFile(String suggestedName, Uint8List data);
 }

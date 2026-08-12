@@ -4,7 +4,7 @@ description: "A Tri Peaks patience (solitaire) game"
 publish_to: 'none'
 
 # Don't forget to increase version code (the number that comes after '+')
-version: 0.9.51+11
+version: 0.9.60+12
 
 environment:
   sdk: ^3.12.2
@@ -12,7 +12,7 @@ environment:
 dependencies:
   audioplayers: ^6.8.1
   fast_rich_text: ^0.0.1
-  file_selector: ^1.1.0
+  file_picker: ^12.0.0-beta.7
   flutter:
     sdk: flutter
   flutter_localizations:
