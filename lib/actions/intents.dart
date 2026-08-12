@@ -116,3 +116,7 @@ final class ImportStatsIntent extends Intent {
 final class ExportStatsIntent extends Intent {
   const ExportStatsIntent();
 }
+
+final class ClearStatsIntent extends Intent {
+  const ClearStatsIntent();
+}

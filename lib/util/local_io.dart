@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:tripeaks_neue/util/io.dart';
+import 'package:tripeaks_neue/util/abstract_io.dart';
 import 'package:tripeaks_neue/util/shared_io.dart';
 
 final class LocalIO with SharedIo implements AbstractIO {

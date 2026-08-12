@@ -9,7 +9,7 @@ abstract interface class AbstractIO {
   Future<ExportResult> export({
     required BuildContext context,
     required Map<String, dynamic> jsonObject,
-    required String suggestedFileName,
+    required String suggestedName,
   });
   Future<ImportResult<T>> import<T>(T Function(Map<String, dynamic>) reader);
 }

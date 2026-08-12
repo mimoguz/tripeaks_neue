@@ -398,7 +398,7 @@ final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
     final result = await getIO().export(
       context: context,
       jsonObject: jsonObject,
-      suggestedFileName: _suggestedFileName,
+      suggestedName: _suggestedFileName,
     );
     switch (result) {
       case ExportCancelled _:
@@ -416,4 +416,46 @@ final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
 
   final Logger _logger = Logger();
   static const _suggestedFileName = 'tripeaksneue-data.json';
+}
+
+// TODO: strings
+final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
+  @override
+  void invoke(ClearStatsIntent intent, [BuildContext? context]) async {
+    if (context == null) {
+      return;
+    }
+    if (context.mounted) {
+      final dialogResult = await showAdaptiveDialog<bool>(
+        context: context,
+        barrierColor: Colors.transparent,
+        barrierDismissible: true,
+        builder: (context) => CommonDialog(
+          title: Text("Caution"),
+          content: Text("This action will clear the current statistics.\nDo you want to continue?"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop<bool>(context, false),
+              style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+              child: Text("Cancel"),
+            ),
+            TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text("Continue")),
+          ],
+        ),
+      );
+      if (!(dialogResult ?? false)) {
+        return;
+      }
+    } else {
+      _logger.e("Import: Can't use context");
+    }
+
+    if (context.mounted) {
+      await Provider.of<Session>(context, listen: false).setStatistics(PlayerStatistics.empty());
+    } else {
+      _logger.e("Import: Can't use context");
+    }
+  }
+
+  final Logger _logger = Logger();
 }

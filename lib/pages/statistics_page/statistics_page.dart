@@ -49,6 +49,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           GoBackIntent: GoBackAction(),
           ImportStatsIntent: ImportStatsAction(),
           ExportStatsIntent: ExportStatsAction(),
+          ClearStatsIntent: ClearStatsAction(),
         },
         child: SafeArea(
           child: Builder(
@@ -75,10 +76,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
                               color: colours.surfaceBright,
                               elevation: 10,
                               shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-                              icon: Icon(Icons.import_export, color: colours.onSurfaceVariant),
                               tooltip: "Export/Import",
                               itemBuilder: (context) => [
-                                PopupMenuItem(
+                                PopupMenuItem<Never>(
                                   onTap: Actions.handler(context, const ExportStatsIntent()),
                                   child: Row(
                                     spacing: 16,
@@ -88,13 +88,24 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     ],
                                   ),
                                 ),
-                                PopupMenuItem(
+                                PopupMenuItem<Never>(
                                   onTap: Actions.handler(context, const ImportStatsIntent()),
                                   child: Row(
                                     spacing: 16,
                                     children: [
                                       Icon(Icons.download, color: colours.onSurfaceVariant),
                                       Text("Import statistics…"),
+                                    ],
+                                  ),
+                                ),
+                                PopupMenuDivider(),
+                                PopupMenuItem<Never>(
+                                  onTap: Actions.handler(context, const ClearStatsIntent()),
+                                  child: Row(
+                                    spacing: 16,
+                                    children: [
+                                      Icon(Icons.delete, color: colours.error),
+                                      Text("Clear all statistics", style: TextStyle(color: colours.error)),
                                     ],
                                   ),
                                 ),

@@ -1,7 +1,7 @@
 import "dart:convert";
 
 import "package:logger/web.dart";
-import "package:tripeaks_neue/util/io.dart";
+import "package:tripeaks_neue/util/abstract_io.dart";
 import "package:tripeaks_neue/util/shared_io.dart";
 import "package:web/web.dart";
 

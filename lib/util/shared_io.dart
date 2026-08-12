@@ -4,33 +4,32 @@ import 'dart:typed_data';
 
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/util/get_file_picker.dart';
 
 mixin SharedIo {
   Future<ExportResult> export({
     required BuildContext context,
     required Map<String, dynamic> jsonObject,
-    required String suggestedFileName,
+    required String suggestedName,
   }) async {
     saveLoop:
     while (true) {
-      final FileSaveLocation? result = await getSaveLocation(
-        suggestedName: suggestedFileName,
-        acceptedTypeGroups: [_typeGroup],
-      );
-
-      if (result == null) {
+      final path = await getFilePicker().pickSave(suggestedName);
+      if (path == null) {
         // Operation was canceled by the user.
         return ExportCancelled();
       }
-
-      if (await io.File(result.path).exists()) {
+      _sharedLoger.d("File picked to save: $path");
+      // XDG file chooser portal already handles overwrite problem
+      if (await io.File(path).exists() && !io.Platform.isLinux) {
         if (context.mounted) {
           final dialogResult = await showAdaptiveDialog<OverwriteDialogResult>(
             context: context,
-            builder: (ctx) => OverwriteDialog(fileName: io.File(result.path).uri.pathSegments.last),
+            builder: (ctx) => OverwriteDialog(fileName: io.File(path).uri.pathSegments.last),
             barrierDismissible: true,
             barrierColor: Colors.transparent,
           );
@@ -53,11 +52,35 @@ mixin SharedIo {
       }
 
       try {
-        await _writeExternal(jsonObject, result.path);
-        return ExportSucceeded(result.path);
+        await _writeExternal(jsonObject, path);
+        return ExportSucceeded(path);
       } on Exception catch (e) {
         return ExportFailed(e.toString());
       }
+    }
+  }
+
+  Future<ImportResult<T>> import<T>(T Function(Map<String, dynamic>) reader) async {
+    final path = await getFilePicker().pickOpen();
+    if (path == null) {
+      return ImportCancelled();
+    }
+    _sharedLoger.d("File picked to open: $path");
+
+    final String source;
+    try {
+      final file = XFile(path);
+      source = await file.readAsString();
+    } on Exception catch (e) {
+      return ImportIoFailed(e.toString());
+    }
+
+    try {
+      final jsonObject = json.decode(source);
+      final result = reader(jsonObject);
+      return ImportSucceeded(result);
+    } on Exception catch (e) {
+      return ImportReaderFailed(e.toString());
     }
   }
 
@@ -73,42 +96,10 @@ mixin SharedIo {
     await textFile.saveTo(path);
   }
 
-  Future<ImportResult<T>> import<T>(T Function(Map<String, dynamic>) reader) async {
-    const typeGroup = XTypeGroup(
-      label: 'JSON files',
-      extensions: <String>['json'],
-      uniformTypeIdentifiers: <String>['public.json'],
-    );
-
-    final file = await openFile(acceptedTypeGroups: <XTypeGroup>[typeGroup]);
-    if (file == null) {
-      return ImportCancelled();
-    }
-
-    final String source;
-    try {
-      source = await file.readAsString();
-    } on Exception catch (e) {
-      return ImportIoFailed(e.toString());
-    }
-
-    try {
-      final jsonObject = json.decode(source);
-      final result = reader(jsonObject);
-      return ImportSucceeded(result);
-    } on Exception catch (e) {
-      return ImportReaderFailed(e.toString());
-    }
-  }
-
-  static const _typeGroup = XTypeGroup(
-    label: 'JSON files',
-    extensions: <String>['json'],
-    uniformTypeIdentifiers: <String>['public.json'],
-  );
+  final _sharedLoger = Logger();
 }
 
-// TODO: Localisation
+// TODO: Strings
 class OverwriteDialog extends StatelessWidget {
   const OverwriteDialog({super.key, required this.fileName});
 
