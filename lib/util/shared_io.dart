@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
-import 'package:tripeaks_neue/util/get_file_picker.dart';
+import 'package:tripeaks_neue/util/generic_file_picker.dart';
 
 mixin SharedIo {
   Future<ExportResult> export({

@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:tripeaks_neue/util/abstract_file_picker.dart';
 
 // TODO: Strings
-final class GenericFilePicker implements AbstractFilePicker {
+final class GenericFilePicker {
   const GenericFilePicker();
 
-  @override
   Future<String?> openFile() async {
     final result = await FilePicker.pickFile(
       dialogTitle: "Pick File",
@@ -22,7 +20,6 @@ final class GenericFilePicker implements AbstractFilePicker {
     return utf8.decoder.convert(bytes);
   }
 
-  @override
   Future<String?> saveFile(String suggestedName, Uint8List data) async {
     final result = await FilePicker.saveFile(
       fileName: suggestedName,
@@ -35,4 +32,4 @@ final class GenericFilePicker implements AbstractFilePicker {
   static const instance = GenericFilePicker();
 }
 
-AbstractFilePicker getFilePicker() => GenericFilePicker.instance;
+GenericFilePicker getFilePicker() => GenericFilePicker.instance;
