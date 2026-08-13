@@ -68,13 +68,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-                        // TODO: Strings, tooltips, documentation
+                        // TODO: documentation
                         actions: [
                           PopupMenuButton(
                             color: colours.surfaceBright,
                             elevation: 10,
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-                            tooltip: "Export/Import",
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
                             itemBuilder: (context) => [
                               PopupMenuItem<Never>(
@@ -83,7 +82,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   spacing: 16,
                                   children: [
                                     Icon(Icons.upload, color: colours.onSurfaceVariant),
-                                    Text("Export to file…"),
+                                    Text(s.exportAction),
                                   ],
                                 ),
                               ),
@@ -93,7 +92,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   spacing: 16,
                                   children: [
                                     Icon(Icons.download, color: colours.onSurfaceVariant),
-                                    Text("Import from file…"),
+                                    Text(s.importAction),
                                   ],
                                 ),
                               ),
@@ -104,7 +103,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   spacing: 16,
                                   children: [
                                     Icon(Icons.delete, color: colours.error),
-                                    Text("Clear all", style: TextStyle(color: colours.error)),
+                                    Text(s.clearAction, style: TextStyle(color: colours.error)),
                                   ],
                                 ),
                               ),

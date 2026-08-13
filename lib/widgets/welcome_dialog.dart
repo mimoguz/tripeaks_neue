@@ -3,6 +3,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class WelcomeDialog extends StatelessWidget {
   const WelcomeDialog({super.key});
@@ -21,45 +22,48 @@ class WelcomeDialog extends StatelessWidget {
           ],
         ),
       ),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 16.0,
-        children: [
-          Text(s.welcomeDialogMessage),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () => _navigateTo(context, (_) => InfoPage()),
-                  child: Text(s.welcomeDialogToInfoPageAction),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(vertical: c.dialogPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 16.0,
+          children: [
+            Text(s.welcomeDialogMessage),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => _navigateTo(context, (_) => InfoPage()),
+                    child: Text(s.welcomeDialogToInfoPageAction),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () => _navigateTo(context, (_) => SettingsPage()),
-                  child: Text(s.welcomeDialogToSettingsPageAction),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => _navigateTo(context, (_) => SettingsPage()),
+                    child: Text(s.welcomeDialogToSettingsPageAction),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(s.welcomeDialogCloseAction),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text(s.welcomeDialogCloseAction),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

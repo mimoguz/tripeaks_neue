@@ -12,6 +12,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancelAction => 'Cancel';
 
   @override
+  String get closeAction => 'Close';
+
+  @override
+  String get continueAction => 'Continue';
+
+  @override
   String get drawTooltip => 'Draw';
 
   @override
@@ -254,6 +260,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get longestChainLabel => 'Longest chain';
 
   @override
+  String get importAction => 'Import from file…';
+
+  @override
+  String get exportAction => 'Export to file…';
+
+  @override
+  String get clearAction => 'Clear all';
+
+  @override
   String get infoPageTitle => 'How to & About';
 
   @override
@@ -381,4 +396,26 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get scoringP05 =>
       'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
+
+  @override
+  String get importFailedPrompt => 'Import failed:';
+
+  @override
+  String get exportFailedPrompt => 'Export failed:';
+
+  @override
+  String get contextError => 'Context is not valid.';
+
+  @override
+  String get caution => 'Caution';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get clearStatisticsWarning => 'This will clear existing statistics. Do you want to continue?';
+
+  @override
+  String get overwriteStatisticsWarning =>
+      'This will overwrite existing statistics. Do you want to continue?';
 }

@@ -6,6 +6,18 @@
         "context": "general",
         "description": "Label of a control that cancels the current action."
     },
+    "closeAction": "Close",
+    "@closeAction": {
+        "type": "text",
+        "context": "general",
+        "description": "Label of a control that closes the current dialog."
+    },
+    "continueAction": "Continue",
+    "@continueAction": {
+        "type": "text",
+        "context": "general",
+        "description": "Label of a control that give permission to run next action."
+    },
     "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {
@@ -508,6 +520,24 @@
         "context": "statisticsPage:summary",
         "description": "Label of the longest chain statistic."
     },
+    "importAction": "Import from file…",
+    "@importAction": {
+        "type": "text",
+        "context": "statisticsPage",
+        "description": "Label of the import menu item."
+    },
+    "exportAction": "Export to file…",
+    "@exportAction": {
+        "type": "text",
+        "context": "statisticsPage",
+        "description": "Label of the export menu item."
+    },
+    "clearAction": "Clear all",
+    "@clearAction": {
+        "type": "text",
+        "context": "statisticsPage",
+        "description": "Label of the clear menu item."
+    },
     "@_INFO_PAGE": {},
     "infoPageTitle": "How to & About",
     "@infoPageTitle": {
@@ -740,5 +770,48 @@
         "type": "text",
         "context": "scoring",
         "description": "Scoring description."
+    },
+    "@_ACTIONS": {},
+    "importFailedPrompt": "Import failed:",
+    "@importFailedPrompt": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog message."
+    },
+    "exportFailedPrompt": "Export failed:",
+    "@exportFailedPrompt": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog message."
+    },
+    "contextError": "Context is not valid.",
+    "@contextError": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog message."
+    },
+    "caution": "Caution",
+    "@caution": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog title."
+    },
+    "error": "Error",
+    "@error": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog title."
+    },
+    "clearStatisticsWarning": "This will clear existing statistics. Do you want to continue?",
+    "@clearStatisticsWarning": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog message."
+    },
+    "overwriteStatisticsWarning": "This will overwrite existing statistics. Do you want to continue?",
+    "@overwriteStatisticsWarning": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog message."
     }
 }

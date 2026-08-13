@@ -97,6 +97,18 @@ abstract class AppLocalizations {
   /// **'Cancel'**
   String get cancelAction;
 
+  /// Label of a control that closes the current dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get closeAction;
+
+  /// Label of a control that give permission to run next action.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueAction;
+
   /// Tooltip of a control that draws a card from the stock.
   ///
   /// In en, this message translates to:
@@ -577,6 +589,24 @@ abstract class AppLocalizations {
   /// **'Longest chain'**
   String get longestChainLabel;
 
+  /// Label of the import menu item.
+  ///
+  /// In en, this message translates to:
+  /// **'Import from file…'**
+  String get importAction;
+
+  /// Label of the export menu item.
+  ///
+  /// In en, this message translates to:
+  /// **'Export to file…'**
+  String get exportAction;
+
+  /// Label of the clear menu item.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all'**
+  String get clearAction;
+
   /// Info page title.
   ///
   /// In en, this message translates to:
@@ -804,6 +834,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
   String get scoringP05;
+
+  /// Alert dialog message.
+  ///
+  /// In en, this message translates to:
+  /// **'Import failed:'**
+  String get importFailedPrompt;
+
+  /// Alert dialog message.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed:'**
+  String get exportFailedPrompt;
+
+  /// Alert dialog message.
+  ///
+  /// In en, this message translates to:
+  /// **'Context is not valid.'**
+  String get contextError;
+
+  /// Alert dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Caution'**
+  String get caution;
+
+  /// Alert dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// Alert dialog message.
+  ///
+  /// In en, this message translates to:
+  /// **'This will clear existing statistics. Do you want to continue?'**
+  String get clearStatisticsWarning;
+
+  /// Alert dialog message.
+  ///
+  /// In en, this message translates to:
+  /// **'This will overwrite existing statistics. Do you want to continue?'**
+  String get overwriteStatisticsWarning;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

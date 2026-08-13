@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -14,6 +15,7 @@ import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
+import 'package:tripeaks_neue/util/alert.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
@@ -341,12 +343,18 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
       case ImportCancelled<PlayerStatistics?> _:
         _logger.d("Import cancelled");
         break;
-      // TODO: Error dialog
       case ImportIoFailed<PlayerStatistics> ioFailed:
+        if (context.mounted) {
+          final s = AppLocalizations.of(context)!;
+          alert(context, title: s.error, message: "${s.exportFailedPrompt}\n${ioFailed.reason}");
+        }
         _logger.e("Import I/O failed: ${ioFailed.reason}");
         break;
-      // TODO: Error dialog
       case ImportReaderFailed<PlayerStatistics> readerFailed:
+        if (context.mounted) {
+          final s = AppLocalizations.of(context)!;
+          alert(context, title: s.error, message: "${s.importFailedPrompt}\n${readerFailed.reason}");
+        }
         _logger.e("Import reader failed: ${readerFailed.reason}");
         break;
       case ImportSucceeded<PlayerStatistics> succeded:
@@ -355,26 +363,36 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
             context: context,
             barrierColor: Colors.transparent,
             barrierDismissible: true,
-            builder: (context) => CommonDialog(
-              title: Text("Caution"),
-              content: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
-                child: Text("This action will overwrite the current statistics.\nDo you want to continue?"),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop<bool>(context, false),
-                  style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
-                  child: Text("Cancel"),
+            builder: (context) {
+              final s = AppLocalizations.of(context)!;
+              return CommonDialog(
+                title: Text(s.caution),
+                content: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+                  child: Text(s.overwriteStatisticsWarning),
                 ),
-                TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text("Continue")),
-              ],
-            ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop<bool>(context, false),
+                    style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+                    child: Text(s.cancelAction),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop<bool>(context, true),
+                    child: Text(s.continueAction),
+                  ),
+                ],
+              );
+            },
           );
           if (!(dialogResult ?? false)) {
             break;
           }
         } else {
+          if (context.mounted) {
+            final s = AppLocalizations.of(context)!;
+            alert(context, title: s.error, message: "${s.importFailedPrompt}\n${s.contextError}");
+          }
           _logger.e("Import: Can't use context");
         }
         if (context.mounted) {
@@ -409,7 +427,10 @@ final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
         _logger.d("Export cancelled");
         break;
       case ExportFailed failed:
-        // TODO: Error dialog
+        if (context.mounted) {
+          final s = AppLocalizations.of(context)!;
+          alert(context, title: s.error, message: "${s.exportFailedPrompt}\n${failed.reason}");
+        }
         _logger.e("Export failed: ${failed.reason}");
         break;
       case ExportSucceeded succeeded:
@@ -434,21 +455,24 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
         context: context,
         barrierColor: Colors.transparent,
         barrierDismissible: true,
-        builder: (context) => CommonDialog(
-          title: Text("Caution"),
-          content: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
-            child: Text("This action will clear the current statistics.\nDo you want to continue?"),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop<bool>(context, false),
-              style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
-              child: Text("Cancel"),
+        builder: (context) {
+          final s = AppLocalizations.of(context)!;
+          return CommonDialog(
+            title: Text(s.caution),
+            content: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+              child: Text(s.clearStatisticsWarning),
             ),
-            TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text("Continue")),
-          ],
-        ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop<bool>(context, false),
+                style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+                child: Text(s.cancelAction),
+              ),
+              TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text(s.continueAction)),
+            ],
+          );
+        },
       );
       if (!(dialogResult ?? false)) {
         return;
