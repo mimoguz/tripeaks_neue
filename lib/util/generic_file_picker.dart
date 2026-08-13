@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 
-// TODO: Strings
 final class GenericFilePicker {
   const GenericFilePicker();
 
