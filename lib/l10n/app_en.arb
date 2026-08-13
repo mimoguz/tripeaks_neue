@@ -538,6 +538,18 @@
         "context": "statisticsPage",
         "description": "Label of the clear menu item."
     },
+    "openFileDialogTitle": "Pick file to import",
+    "@openFileDialogTitle": {
+        "type": "text",
+        "context": "statisticsPage",
+        "description": "Dialog title."
+    },
+    "saveFileDialogTitle": "Pick file to export",
+    "@saveFileDialogTitle": {
+        "type": "text",
+        "context": "statisticsPage",
+        "description": "Dialog title."
+    },
     "@_INFO_PAGE": {},
     "infoPageTitle": "How to & About",
     "@infoPageTitle": {
@@ -710,26 +722,32 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP10": "Other Shorcuts",
+    "interactionP10": "You can export, import, or clear your statistics using the top-left menu on the statistics page.",
     "@interactionP10": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP11": "Show/hide menu (alternative)",
+    "interactionP11": "Other Shorcuts",
     "@interactionP11": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP12": "Back",
+    "interactionP12": "Show/hide menu (alternative)",
     "@interactionP12": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP13": "Back (alternative)",
+    "interactionP13": "Back",
     "@interactionP13": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "UI & interaction text."
+    },
+    "interactionP14": "Back (alternative)",
+    "@interactionP14": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."

@@ -269,6 +269,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clearAction => 'Clear all';
 
   @override
+  String get openFileDialogTitle => 'Pick file to import';
+
+  @override
+  String get saveFileDialogTitle => 'Pick file to export';
+
+  @override
   String get infoPageTitle => 'How to & About';
 
   @override
@@ -364,16 +370,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get interactionP09 => 'The game supports both portrait and landscape orientations.';
 
   @override
-  String get interactionP10 => 'Other Shorcuts';
+  String get interactionP10 =>
+      'You can export, import, or clear your statistics using the top-left menu on the statistics page.';
 
   @override
-  String get interactionP11 => 'Show/hide menu (alternative)';
+  String get interactionP11 => 'Other Shorcuts';
 
   @override
-  String get interactionP12 => 'Back';
+  String get interactionP12 => 'Show/hide menu (alternative)';
 
   @override
-  String get interactionP13 => 'Back (alternative)';
+  String get interactionP13 => 'Back';
+
+  @override
+  String get interactionP14 => 'Back (alternative)';
 
   @override
   String get shortcutTitle => 'Shortcut: ';

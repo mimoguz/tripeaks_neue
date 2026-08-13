@@ -138,10 +138,19 @@ final class Interaction extends StatelessWidget {
               image: Icon(Icons.screen_rotation),
             ),
             const InteractionListDivider(),
+            InteractionListCell(
+              description: FastRichText(
+                text: s.interactionP10,
+                textStyle: paragraphStyle,
+                italicTextStyle: italic,
+              ),
+              image: Icon(Icons.more_vert),
+            ),
+            const InteractionListDivider(),
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
               child: FastRichText(
-                text: s.interactionP10,
+                text: s.interactionP11,
                 textStyle: theme.textTheme.titleSmall!.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.w600,
@@ -149,9 +158,9 @@ final class Interaction extends StatelessWidget {
               ),
             ),
             ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut, textStyle: paragraphStyle),
-            ShorcutListCell(title: s.interactionP11, shorcut: _menuShortcutAlt, textStyle: paragraphStyle),
-            ShorcutListCell(title: s.interactionP12, shorcut: _backShortcut, textStyle: paragraphStyle),
-            ShorcutListCell(title: s.interactionP13, shorcut: _backShortcutAlt, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.interactionP12, shorcut: _menuShortcutAlt, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.interactionP13, shorcut: _backShortcut, textStyle: paragraphStyle),
+            ShorcutListCell(title: s.interactionP14, shorcut: _backShortcutAlt, textStyle: paragraphStyle),
             ShorcutListCell(title: s.exitAction, shorcut: _exitShortcut, textStyle: paragraphStyle),
           ],
         ),

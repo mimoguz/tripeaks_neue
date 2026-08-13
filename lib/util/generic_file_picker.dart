@@ -9,7 +9,7 @@ final class GenericFilePicker {
 
   Future<String?> openFile() async {
     final result = await FilePicker.pickFile(
-      dialogTitle: "Pick File",
+      dialogTitle: "Pick file to import",
       allowedExtensions: ["json"],
       type: FileType.custom,
     );
@@ -22,6 +22,7 @@ final class GenericFilePicker {
 
   Future<String?> saveFile(String suggestedName, Uint8List data) async {
     final result = await FilePicker.saveFile(
+      dialogTitle: "Pick file to export",
       fileName: suggestedName,
       allowedExtensions: ["json"],
       bytes: data,

@@ -607,6 +607,18 @@ abstract class AppLocalizations {
   /// **'Clear all'**
   String get clearAction;
 
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick file to import'**
+  String get openFileDialogTitle;
+
+  /// Dialog title.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick file to export'**
+  String get saveFileDialogTitle;
+
   /// Info page title.
   ///
   /// In en, this message translates to:
@@ -778,26 +790,32 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Other Shorcuts'**
+  /// **'You can export, import, or clear your statistics using the top-left menu on the statistics page.'**
   String get interactionP10;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Show/hide menu (alternative)'**
+  /// **'Other Shorcuts'**
   String get interactionP11;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Back'**
+  /// **'Show/hide menu (alternative)'**
   String get interactionP12;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Back (alternative)'**
+  /// **'Back'**
   String get interactionP13;
+
+  /// UI & interaction text.
+  ///
+  /// In en, this message translates to:
+  /// **'Back (alternative)'**
+  String get interactionP14;
 
   /// Shortcut hint title
   ///
