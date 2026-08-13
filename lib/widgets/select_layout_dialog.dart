@@ -52,62 +52,60 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
 
     return CommonDialog(
       title: Text(s.selectLayoutDialogTitle),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          for (final layout in Peaks.values)
-            MyListTile(
-              trailing: Radio<Peaks>(
-                value: layout,
-                groupValue: _layout,
-                visualDensity: VisualDensity.compact,
-                onChanged: (value) => setState(() => _layout = value!),
+      content: ListTileTheme(
+        data: ListTileThemeData(
+          visualDensity: .compact,
+          titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+          controlAffinity: .leading,
+          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RadioGroup(
+              groupValue: _layout,
+              onChanged: (value) => setState(() {
+                _layout = value;
+              }),
+              child: Column(
+                children: [
+                  for (final layout in Peaks.values)
+                    RadioListTile<Peaks>(value: layout, title: Text(layout.label(s))),
+                ],
               ),
-              title: Text(layout.label(s)),
-              onTap: () => setState(() => _layout = layout),
-              padding: _choicePadding,
-              rightSpacing: 16,
             ),
-          //const Divider(),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: c.cellPadding * 2),
-            child: Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
-          ),
-          MyListTile(
-            trailing: Checkbox(
-              value: _showAll,
-              visualDensity: VisualDensity.compact,
-              onChanged: (value) => setState(() => _showAll = value!),
+            const Divider(),
+            ListTile(
+              title: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
+              ),
             ),
-            title: Text(s.showAllOptionLabel),
-            onTap: () => setState(() => _showAll = !_showAll!),
-            padding: _choicePadding,
-            rightSpacing: 16,
-          ),
-          MyListTile(
-            trailing: Checkbox(
-              value: _startEmpty,
-              visualDensity: VisualDensity.compact,
-              onChanged: (value) => setState(() => _startEmpty = value!),
+            Column(
+              children: [
+                CheckboxListTile(
+                  value: _showAll,
+                  onChanged: (value) => setState(() => _showAll = value!),
+                  title: Text(s.showAllOptionLabel),
+                ),
+                CheckboxListTile(
+                  value: _startEmpty,
+                  onChanged: (value) => setState(() => _startEmpty = value!),
+                  title: Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(s.startsEmptyOptionLabel, softWrap: false),
+                  ),
+                ),
+                CheckboxListTile(
+                  value: _ensureSolvable,
+                  onChanged: (value) => setState(() => _ensureSolvable = value!),
+                  title: Text(s.ensureSolvableOnLabel),
+                ),
+              ],
             ),
-            title: Text(s.startsEmptyOptionLabel),
-            onTap: () => setState(() => _startEmpty = !_startEmpty!),
-            padding: _choicePadding,
-            rightSpacing: 16,
-          ),
-          MyListTile(
-            trailing: Checkbox(
-              value: _ensureSolvable,
-              visualDensity: VisualDensity.compact,
-              onChanged: (value) => setState(() => _ensureSolvable = value!),
-            ),
-            title: Text(s.ensureSolvableOnLabel),
-            onTap: () => setState(() => _ensureSolvable = !_ensureSolvable!),
-            padding: _choicePadding,
-            rightSpacing: 16,
-          ),
-        ],
+          ],
+        ),
       ),
       actions: <Widget>[
         TextButton(

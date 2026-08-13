@@ -51,18 +51,21 @@ class DecorSetting extends StatelessWidget {
       barrierColor: Colors.transparent,
       builder: (context) => CommonDialog(
         title: Text(s.decorControl),
-        content: Wrap(
-          spacing: 16.0,
-          runSpacing: 16.0,
-          children: [
-            for (final (index, decor) in Decor.values.indexed)
-              DecorItem(
-                decor: decor,
-                isSelected: settings.decor == decor,
-                onTap: () => Navigator.pop(context, index),
-                selectedDecorColour: settings.decorColour,
-              ),
-          ],
+        content: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),
+          child: Wrap(
+            spacing: 16.0,
+            runSpacing: 16.0,
+            children: [
+              for (final (index, decor) in Decor.values.indexed)
+                DecorItem(
+                  decor: decor,
+                  isSelected: settings.decor == decor,
+                  onTap: () => Navigator.pop(context, index),
+                  selectedDecorColour: settings.decorColour,
+                ),
+            ],
+          ),
         ),
         actions: [
           TextButton(

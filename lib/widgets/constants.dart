@@ -7,6 +7,7 @@ const double cardPaddingHorizontal = 12.0;
 const double cardPaddingVertical = 10.0;
 const double cardSize = 116.0;
 const double cellPadding = 4.0;
+const double itemSpacing = 16;
 const double commonRadius = 12.0;
 const double divPadding = 8;
 const double dropdownItemWidth = 120;
@@ -21,6 +22,7 @@ const double requiredHeight = 600;
 const double requiredWidth = 1260;
 const double stockShift = 30.0;
 const double utilPageMargin = 6.0;
+const double dialogPadding = 20;
 const double verticalTabsThreshold = 500;
 
 const commonBorderRadius = BorderRadius.all(Radius.circular(commonRadius));

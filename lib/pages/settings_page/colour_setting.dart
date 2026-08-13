@@ -46,17 +46,26 @@ class ColourSetting extends StatelessWidget {
       barrierColor: Colors.transparent,
       builder: (context) => CommonDialog(
         title: Text(s.decorColourControl),
-        content: Wrap(
-          spacing: 16.0,
-          runSpacing: 16.0,
-          children: [
-            for (final (index, colour) in DecorColour.values.indexed)
-              ColourSwatch(
-                colour: colour,
-                isSelected: settings.decorColour == colour,
-                onTap: () => Navigator.pop(context, index),
+        content: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+          child: Row(
+            children: [
+              Expanded(
+                child: Wrap(
+                  spacing: c.itemSpacing,
+                  runSpacing: c.itemSpacing,
+                  children: [
+                    for (final (index, colour) in DecorColour.values.indexed)
+                      ColourSwatch(
+                        colour: colour,
+                        isSelected: settings.decorColour == colour,
+                        onTap: () => Navigator.pop(context, index),
+                      ),
+                  ],
+                ),
               ),
-          ],
+            ],
+          ),
         ),
         actions: [
           TextButton(

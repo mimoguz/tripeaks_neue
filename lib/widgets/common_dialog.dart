@@ -25,24 +25,36 @@ class CommonDialog extends StatelessWidget {
             border: Border.all(color: _borderColour),
             borderRadius: c.commonBorderRadius,
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 16.0,
-              children: [
-                if (title != null)
-                  DefaultTextStyle(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: c.itemSpacing,
+            children: [
+              if (title != null)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(c.dialogPadding, c.dialogPadding, c.dialogPadding, 0),
+                  child: DefaultTextStyle(
                     style: theme.textTheme.titleMedium!,
                     child: Row(children: [title!]),
                   ),
-                Flexible(
-                  child: ScrollIndicator(child: SingleChildScrollView(child: content)),
                 ),
-                if (actions != null && actions!.isNotEmpty)
-                  Row(mainAxisAlignment: MainAxisAlignment.end, spacing: 12.0, children: actions!),
-              ],
-            ),
+              Flexible(
+                child: ScrollIndicator(child: SingleChildScrollView(child: content)),
+              ),
+              if (actions != null && actions!.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    c.dialogPadding,
+                    0.0,
+                    c.dialogPadding,
+                    c.dialogPadding,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    spacing: c.itemSpacing,
+                    children: actions!,
+                  ),
+                ),
+            ],
           ),
         ),
       ),

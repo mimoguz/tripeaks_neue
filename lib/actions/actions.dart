@@ -17,6 +17,7 @@ import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
@@ -356,7 +357,10 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
             barrierDismissible: true,
             builder: (context) => CommonDialog(
               title: Text("Caution"),
-              content: Text("This action will overwrite the current statistics.\nDo you want to continue?"),
+              content: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+                child: Text("This action will overwrite the current statistics.\nDo you want to continue?"),
+              ),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop<bool>(context, false),
@@ -432,7 +436,10 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
         barrierDismissible: true,
         builder: (context) => CommonDialog(
           title: Text("Caution"),
-          content: Text("This action will clear the current statistics.\nDo you want to continue?"),
+          content: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+            child: Text("This action will clear the current statistics.\nDo you want to continue?"),
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop<bool>(context, false),
