@@ -723,12 +723,12 @@
         "description": "UI & interaction text."
     },
     "interactionP10": "You can export, import, or clear your statistics using the top-right menu on the statistics page.",
-    "@interactionP10": {
+    "@interactionP10": {description
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP11": "Other Shorcuts",
+    "interactionP11": "Other Shortcuts",
     "@interactionP11": {
         "type": "text",
         "context": "howToPlay",
