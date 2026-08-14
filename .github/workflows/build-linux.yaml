@@ -43,8 +43,8 @@ jobs:
       run: |
         echo "FLUTTER_VERSION=$(cat flutter-version)"
         git clone --branch stable https://github.com/flutter/flutter.git $RUNNER_TEMP/flutter
-        git checkout $FLUTTER_VERSION
         cd $RUNNER_TEMP/flutter
+        git checkout $FLUTTER_VERSION
         echo "$RUNNER_TEMP/flutter/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
