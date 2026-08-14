@@ -694,7 +694,7 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'When a face-down card is no longer blocked by other cards, it is flipped face-up.'**
+  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
   String get howToP04;
 
   /// How to play text.
