@@ -20,24 +20,21 @@ final class StatisticsTab extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     return Container(
       color: colours.surfaceContainerLow,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Flexible(
+      child: ScrollIndicator(
+        child: SingleChildScrollView(
+          child: Flexible(
             child: ScrollIndicator(
-              child: ListView(
-                padding: c.utilPageInsets,
+              child: GroupTile(
                 children: <Widget>[
-                  GroupTitle(s.statisticsSummary, isFirst: true),
+                  // GroupTitle(s.statisticsSummary, isFirst: true),
                   Summary(statistics),
-                  if (statistics.lastGame != null) GroupTitle(s.lastGameStatistics),
-                  if (statistics.lastGame != null)
-                    GroupTile(
-                      children: [GameEntry(place: -1, game: statistics.lastGame!, showLayout: showLayout)],
-                    ),
-                  if (statistics.bestGames.isNotEmpty) GroupTitle(s.bestGamesStatistics),
+                  if (statistics.lastGame != null) Divider(),
+                  // if (statistics.lastGame != null) GroupTitle(s.lastGameStatistics),
+                  if (statistics.lastGame != null) LastGame(statistics: statistics.lastGame!),
+                  if (statistics.bestGames.isNotEmpty) Divider(),
+                  // if (statistics.bestGames.isNotEmpty) GroupTitle(s.bestGamesStatistics),
                   if (statistics.bestGames.isNotEmpty)
-                    GroupTile(
+                    Column(
                       children: [
                         for (final (index, game) in statistics.bestGames.indexed)
                           GameEntry(place: index + 1, game: game, showLayout: showLayout),
@@ -47,7 +44,7 @@ final class StatisticsTab extends StatelessWidget {
               ),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
