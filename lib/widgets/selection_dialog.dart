@@ -24,18 +24,12 @@ class SelectionDialog extends StatelessWidget {
             visualDensity: .compact,
             titleTextStyle: Theme.of(context).textTheme.bodyMedium,
             controlAffinity: .leading,
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+            contentPadding: EdgeInsets.symmetric(horizontal: c.dialogPadding - 8, vertical: 0),
           ),
           child: Column(
             children: [
               for (final (index, item) in options.indexed)
-                RadioListTile<int>(value: index, title: Text(item), visualDensity: .compact),
-              // MyListTile(
-              //   trailing: Radio<int>(value: index, visualDensity: VisualDensity.compact),
-              //   title: Text(item),
-              //   onTap: () => Navigator.pop(context, index),
-              //   padding: _padding,
-              // ),
+                RadioListTile<int>(value: index, title: Text(item)),
             ],
           ),
         ),
