@@ -409,13 +409,16 @@ class AppLocalizationsEn extends AppLocalizations {
       'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
 
   @override
-  String get importFailedPrompt => 'Import failed:';
+  String get importFailedPrompt => 'Import failed';
 
   @override
-  String get exportFailedPrompt => 'Export failed:';
+  String get exportFailedPrompt => 'Export failed';
 
   @override
   String get contextError => 'Context is not valid.';
+
+  @override
+  String get invalidDataFile => 'Not a valid data file.';
 
   @override
   String get caution => 'Caution';

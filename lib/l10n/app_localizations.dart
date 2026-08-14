@@ -856,13 +856,13 @@ abstract class AppLocalizations {
   /// Alert dialog message.
   ///
   /// In en, this message translates to:
-  /// **'Import failed:'**
+  /// **'Import failed'**
   String get importFailedPrompt;
 
   /// Alert dialog message.
   ///
   /// In en, this message translates to:
-  /// **'Export failed:'**
+  /// **'Export failed'**
   String get exportFailedPrompt;
 
   /// Alert dialog message.
@@ -870,6 +870,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Context is not valid.'**
   String get contextError;
+
+  /// Alert dialog message.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a valid data file.'**
+  String get invalidDataFile;
 
   /// Alert dialog title.
   ///

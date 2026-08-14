@@ -32,12 +32,12 @@ class LayoutSetting extends StatelessWidget {
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
-      builder:
-          (context) => SelectionDialog(
-            title: s.layoutControl,
-            selected: session.layout.index,
-            options: Peaks.values.map((e) => e.label(s)).toList(),
-          ),
+      barrierDismissible: true,
+      builder: (context) => SelectionDialog(
+        title: s.layoutControl,
+        selected: session.layout.index,
+        options: Peaks.values.map((e) => e.label(s)).toList(),
+      ),
     );
     if (result != null && result >= 0) {
       session.layout = Peaks.values[result];

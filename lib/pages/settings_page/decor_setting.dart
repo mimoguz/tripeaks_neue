@@ -49,6 +49,7 @@ class DecorSetting extends StatelessWidget {
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
+      barrierDismissible: true,
       builder: (context) => CommonDialog(
         title: Text(s.decorControl),
         content: Padding(

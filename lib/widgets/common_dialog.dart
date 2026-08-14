@@ -3,11 +3,12 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class CommonDialog extends StatelessWidget {
-  const CommonDialog({super.key, this.actions, this.title, required this.content});
+  const CommonDialog({super.key, this.actions, this.title, this.tint, required this.content});
 
   final List<Widget>? actions;
   final Widget? title;
   final Widget content;
+  final Color? tint;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,10 @@ class CommonDialog extends StatelessWidget {
         c.dialogPadding,
         c.itemSpacing - 10,
         c.dialogPadding,
-        c.dialogPadding - 10,
+        c.dialogPadding - 6,
       ),
       titleTextStyle: theme.textTheme.titleMedium?.copyWith(fontWeight: .w600),
+      surfaceTintColor: tint ?? theme.colorScheme.primaryContainer,
       scrollable: false,
       backgroundColor: theme.colorScheme.surfaceBright,
       shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),

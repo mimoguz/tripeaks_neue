@@ -12,25 +12,27 @@ class WelcomeDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
     return CommonDialog(
-      title: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 12.0,
-          children: [
-            Center(child: Image.asset("images/welcome.png", width: 90, height: 90)),
-            Text(s.welcomeDialogTitle),
-          ],
-        ),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 12.0,
+        children: [
+          Center(child: Image.asset("images/welcome.png", width: 90, height: 90)),
+          Text(s.welcomeDialogTitle),
+        ],
       ),
       content: Padding(
-        padding: const EdgeInsets.symmetric(vertical: c.dialogPadding),
+        padding: const EdgeInsets.fromLTRB(c.dialogPadding, 0.0, c.dialogPadding, c.dialogPadding),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 16.0,
+          crossAxisAlignment: .start,
+          mainAxisAlignment: .start,
+          mainAxisSize: .min,
+          spacing: c.cellPadding,
           children: [
-            Text(s.welcomeDialogMessage),
+            Padding(
+              padding: const EdgeInsets.only(bottom: c.itemSpacing - c.cellPadding),
+              child: Row(children: [Text(s.welcomeDialogMessage)]),
+            ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   child: TextButton(
@@ -41,7 +43,6 @@ class WelcomeDialog extends StatelessWidget {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   child: TextButton(
@@ -52,7 +53,6 @@ class WelcomeDialog extends StatelessWidget {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   child: TextButton(

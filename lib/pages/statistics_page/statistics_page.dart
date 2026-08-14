@@ -68,11 +68,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-                        // TODO: documentation
                         actions: [
                           PopupMenuButton(
                             color: colours.surfaceBright,
                             elevation: 10,
+                            menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
                             itemBuilder: (context) => [

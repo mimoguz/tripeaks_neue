@@ -31,12 +31,12 @@ class ThemeModeSetting extends StatelessWidget {
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
-      builder:
-          (context) => SelectionDialog(
-            title: s.themeModeControl,
-            selected: settings.themeMode.index,
-            options: ThemeMode.values.map((e) => _valueLabel(e, s)).toList(),
-          ),
+      barrierDismissible: true,
+      builder: (context) => SelectionDialog(
+        title: s.themeModeControl,
+        selected: settings.themeMode.index,
+        options: ThemeMode.values.map((e) => _valueLabel(e, s)).toList(),
+      ),
     );
     if (result != null && result >= 0) {
       settings.themeMode = ThemeMode.values[result];

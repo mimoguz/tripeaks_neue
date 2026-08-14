@@ -790,13 +790,13 @@
         "description": "Scoring description."
     },
     "@_ACTIONS": {},
-    "importFailedPrompt": "Import failed:",
+    "importFailedPrompt": "Import failed",
     "@importFailedPrompt": {
         "type": "text",
         "context": "general",
         "description": "Alert dialog message."
     },
-    "exportFailedPrompt": "Export failed:",
+    "exportFailedPrompt": "Export failed",
     "@exportFailedPrompt": {
         "type": "text",
         "context": "general",
@@ -804,6 +804,12 @@
     },
     "contextError": "Context is not valid.",
     "@contextError": {
+        "type": "text",
+        "context": "general",
+        "description": "Alert dialog message."
+    },
+    "invalidDataFile": "Not a valid data file.",
+    "@invalidDataFile": {
         "type": "text",
         "context": "general",
         "description": "Alert dialog message."

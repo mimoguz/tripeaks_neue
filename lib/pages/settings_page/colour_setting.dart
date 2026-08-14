@@ -41,11 +41,13 @@ class ColourSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = AppLocalizations.of(context)!;
-    final result = await showDialog<int>(
+    final result = await showAdaptiveDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
+      barrierDismissible: true,
       builder: (context) => CommonDialog(
         title: Text(s.decorColourControl),
+        tint: settings.decorColour.background,
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
           child: Row(

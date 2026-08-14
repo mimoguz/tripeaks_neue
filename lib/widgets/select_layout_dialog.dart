@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class SelectLayoutDialog extends StatefulWidget {
   const SelectLayoutDialog({super.key});
@@ -55,7 +56,8 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           visualDensity: .compact,
           titleTextStyle: Theme.of(context).textTheme.bodyMedium,
           controlAffinity: .leading,
-          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+          horizontalTitleGap: c.itemSpacing,
+          contentPadding: EdgeInsets.symmetric(horizontal: c.itemSpacing, vertical: 0),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

@@ -28,7 +28,7 @@ final class SingleGameStatistics {
       started = game.started;
 
   SingleGameStatistics.fromJsonObject(JsonObject jsonObject)
-    : layout = Peaks.values[jsonObject.read<int>("layout")],
+    : layout = _layout(jsonObject.read<int>("layout")),
       score = jsonObject.read<int>("score"),
       longestChain = jsonObject.read<int>("longestChain"),
       isCleared = jsonObject.read<bool>("isCleared"),
@@ -57,4 +57,12 @@ final class SingleGameStatistics {
     "ended": ended.toIso8601String(),
     "started": started.toIso8601String(),
   };
+
+  static Peaks _layout(int index) {
+    final layout = Peaks.values.elementAtOrNull(index);
+    if (layout == null) {
+      throw Exception("$index is not a valid layout");
+    }
+    return layout;
+  }
 }

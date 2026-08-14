@@ -11,7 +11,7 @@ Future<void> alert(BuildContext context, {required String title, required String
       builder: (context) => CommonDialog(
         title: Text(title),
         content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+          padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),
           child: Text(message),
         ),
         actions: [

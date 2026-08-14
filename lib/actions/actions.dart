@@ -346,14 +346,14 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
       case ImportIoFailed<PlayerStatistics> ioFailed:
         if (context.mounted) {
           final s = AppLocalizations.of(context)!;
-          alert(context, title: s.error, message: "${s.exportFailedPrompt}\n${ioFailed.reason}");
+          alert(context, title: s.error, message: "${s.importFailedPrompt}: ${ioFailed.reason}");
         }
         _logger.e("Import I/O failed: ${ioFailed.reason}");
         break;
       case ImportReaderFailed<PlayerStatistics> readerFailed:
         if (context.mounted) {
           final s = AppLocalizations.of(context)!;
-          alert(context, title: s.error, message: "${s.importFailedPrompt}\n${readerFailed.reason}");
+          alert(context, title: s.error, message: "${s.importFailedPrompt}: ${s.invalidDataFile}");
         }
         _logger.e("Import reader failed: ${readerFailed.reason}");
         break;
@@ -391,10 +391,11 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
         } else {
           if (context.mounted) {
             final s = AppLocalizations.of(context)!;
-            alert(context, title: s.error, message: "${s.importFailedPrompt}\n${s.contextError}");
+            await alert(context, title: s.error, message: "${s.importFailedPrompt}: ${s.contextError}");
           }
           _logger.e("Import: Can't use context");
         }
+
         if (context.mounted) {
           await Provider.of<Session>(context, listen: false).setStatistics(succeded.result);
         } else {
@@ -429,7 +430,7 @@ final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
       case ExportFailed failed:
         if (context.mounted) {
           final s = AppLocalizations.of(context)!;
-          alert(context, title: s.error, message: "${s.exportFailedPrompt}\n${failed.reason}");
+          alert(context, title: s.error, message: "${s.exportFailedPrompt}: ${failed.reason}");
         }
         _logger.e("Export failed: ${failed.reason}");
         break;
@@ -443,7 +444,6 @@ final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
   static const _suggestedFileName = 'tripeaksneue-data.json';
 }
 
-// TODO: strings
 final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
   @override
   void invoke(ClearStatsIntent intent, [BuildContext? context]) async {
@@ -460,7 +460,7 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
           return CommonDialog(
             title: Text(s.caution),
             content: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+              padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),
               child: Text(s.clearStatisticsWarning),
             ),
             actions: [
