@@ -314,7 +314,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
 
   @override
-  String get howToP04 => 'When a face-down card is no longer blocked by other cards, it is flipped face-up.';
+  String get howToP04 =>
+      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
 
   @override
   String get howToP05 =>

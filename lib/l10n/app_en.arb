@@ -625,7 +625,7 @@
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP04": "When a face-down card is no longer blocked by other cards, it is flipped face-up.",
+    "howToP04": "When a face-down card is no longer blocked by other cards, it will be flipped face-up.",
     "@howToP04": {
         "type": "text",
         "context": "howToPlay",
