@@ -372,7 +372,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get interactionP10 =>
-      'You can export, import, or clear your statistics using the top-left menu on the statistics page.';
+      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
 
   @override
   String get interactionP11 => 'Other Shorcuts';

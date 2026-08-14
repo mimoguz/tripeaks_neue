@@ -790,7 +790,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'You can export, import, or clear your statistics using the top-left menu on the statistics page.'**
+  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
   String get interactionP10;
 
   /// UI & interaction text.
