@@ -10,15 +10,17 @@ class ResultChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final fill = game.isCleared ? colours.primary : colours.errorContainer;
-    final text = game.isCleared ? colours.onPrimary : colours.onErrorContainer;
+    final fill = game.isCleared ? colours.primary : colours.tertiary;
+    final text = game.isCleared ? colours.onPrimary : colours.onTertiary;
     final s = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(color: fill, borderRadius: const BorderRadius.all(Radius.circular(100.0))),
+      width: 100,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 1.0),
         child: Text(
           game.isCleared ? s.gameClearedLabel : s.gameNotClearedLabel,
+          textAlign: .center,
           style: TextStyle(fontSize: 12, color: text),
         ),
       ),
