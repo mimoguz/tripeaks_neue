@@ -375,7 +375,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
 
   @override
-  String get interactionP11 => 'Other Shorcuts';
+  String get interactionP11 => 'Other Shortcuts';
 
   @override
   String get interactionP12 => 'Show/hide menu (alternative)';

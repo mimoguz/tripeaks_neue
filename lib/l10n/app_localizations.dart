@@ -796,7 +796,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Other Shorcuts'**
+  /// **'Other Shortcuts'**
   String get interactionP11;
 
   /// UI & interaction text.
