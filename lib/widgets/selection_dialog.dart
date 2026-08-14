@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/list_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 class SelectionDialog extends StatelessWidget {
@@ -43,6 +42,4 @@ class SelectionDialog extends StatelessWidget {
       ],
     );
   }
-
-  static const _padding = EdgeInsets.fromLTRB(10, c.cellPadding, 0, c.cellPadding);
 }
