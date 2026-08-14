@@ -4,9 +4,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/list_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class SelectLayoutDialog extends StatefulWidget {
   const SelectLayoutDialog({super.key});
@@ -127,6 +125,4 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
       ],
     );
   }
-
-  static const _choicePadding = EdgeInsets.fromLTRB(10, c.cellPadding, 0, c.cellPadding);
 }
