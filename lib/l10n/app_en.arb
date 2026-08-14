@@ -722,7 +722,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP10": "You can export, import, or clear your statistics using the top-left menu on the statistics page.",
+    "interactionP10": "You can export, import, or clear your statistics using the top-right menu on the statistics page.",
     "@interactionP10": {
         "type": "text",
         "context": "howToPlay",
