@@ -40,7 +40,9 @@ jobs:
     # Use git because subosito/flutter-action does not support arm64 yet (https://github.com/subosito/flutter-action/issues/345)
     - name: Setup Flutter
       run: |
+        cat flutter_version >> $FLUTTER_VERSION
         git clone --branch stable https://github.com/flutter/flutter.git $RUNNER_TEMP/flutter
+        git checkout $FLUTTER_VERSION
         cd $RUNNER_TEMP/flutter
         echo "$RUNNER_TEMP/flutter/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
