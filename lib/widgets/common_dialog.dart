@@ -22,7 +22,7 @@ class CommonDialog extends StatelessWidget {
       ),
       actionsPadding: const EdgeInsets.fromLTRB(
         c.dialogPadding,
-        c.itemSpacing,
+        c.itemSpacing - 10,
         c.dialogPadding,
         c.dialogPadding - 10,
       ),
