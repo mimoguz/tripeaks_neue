@@ -20,10 +20,10 @@ final class GameEntry extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     return MyListTile(
-      leading: place > 0 ? Order(place) : null,
+      leading: place > 0 ? Order(value: place) : null,
       leftSpacing: c.cardPaddingHorizontal,
       title: Text(_dateFormat.format(game.ended), style: theme.textTheme.titleSmall),
-      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
+      padding: EdgeInsets.zero,
       subtitle: Row(
         textBaseline: TextBaseline.alphabetic,
         crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -46,19 +46,45 @@ final class GameEntry extends StatelessWidget {
 }
 
 final class Order extends StatelessWidget {
-  const Order(this.value, {super.key});
+  const Order({super.key, required this.value, this.last = 10});
 
   final int value;
+  final int last;
 
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(color: colours.surfaceContainerLow, shape: BoxShape.circle),
-      width: 24.0,
-      height: 24.0,
-      child: Center(child: Text(value.toString(), style: _style.copyWith(color: colours.onSurfaceVariant))),
+    return SizedBox(
+      height: 64,
+      width: 32,
+      child: Stack(
+        fit: .passthrough,
+        children: [
+          if (value > 1)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 32),
+              child: Center(
+                child: Container(width: 2, alignment: .topCenter, color: colours.secondary),
+              ),
+            ),
+          if (value < last)
+            Padding(
+              padding: const EdgeInsets.only(top: 32),
+              child: Center(
+                child: Container(width: 2, alignment: .topCenter, color: colours.secondary),
+              ),
+            ),
+          Container(
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(color: colours.secondary, shape: BoxShape.circle),
+            width: 24.0,
+            height: 24.0,
+            child: Center(
+              child: Text(value.toString(), style: _style.copyWith(color: colours.onSecondary)),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
