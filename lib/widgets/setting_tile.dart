@@ -49,7 +49,7 @@ final class SettingTile extends StatelessWidget {
                         if (subtitle != null)
                           Text(
                             subtitle!,
-                            style: theme.textTheme.labelMedium!.copyWith(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               color: theme.colorScheme.onSurfaceVariant,
                             ),
                           ),
