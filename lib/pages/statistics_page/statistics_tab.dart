@@ -8,6 +8,11 @@ import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'dart:math' as maths;
+
+const _leadingWidth = 22.0;
+const _verticalSpacing = 22.0;
+final _dateFormat = DateFormat("d MMMM y, HH:mm");
 
 final class StatisticsTab extends StatelessWidget {
   const StatisticsTab(this.statistics, {super.key, this.showLayout = true});
@@ -23,6 +28,7 @@ final class StatisticsTab extends StatelessWidget {
     final best = statistics.bestGames;
     final last = statistics.lastGame;
     final divColour = colours.onSurface.withAlpha(60);
+    final subtitleStyle = theme.textTheme.titleMedium?.copyWith(color: colours.primary);
     return Column(
       children: [
         Expanded(
@@ -35,21 +41,41 @@ final class StatisticsTab extends StatelessWidget {
                     padding: const EdgeInsets.all(c.utilPageMargin),
                     child: GroupTile(
                       children: <Widget>[
-                        OverallStatsDisplay(statistics),
-                        if (last != null) Container(height: 1, color: divColour),
+                        Padding(
+                          padding: const EdgeInsets.only(top: _verticalSpacing),
+                          child: OverallStatsDisplay(statistics),
+                        ),
+                        if (last != null)
+                          Padding(
+                            padding: const EdgeInsets.only(top: _verticalSpacing),
+                            child: Row(
+                              spacing: c.itemSpacing,
+                              children: [
+                                Text(s.lastGameStatistics, style: subtitleStyle),
+                                Expanded(child: Container(height: 1, color: divColour)),
+                              ],
+                            ),
+                          ),
                         if (last != null) LastGameEntry(last, showLayout: showLayout),
-                        if (best.isNotEmpty) Container(height: 1, color: divColour),
                         if (best.isNotEmpty)
                           Padding(
-                            padding: const EdgeInsets.only(top: c.itemSpacing, bottom: c.itemSpacing - 6),
+                            padding: const EdgeInsets.only(top: _verticalSpacing),
                             child: Row(
-                              mainAxisAlignment: .center,
-                              children: [Text(s.bestGamesStatistics, style: theme.textTheme.titleLarge)],
+                              spacing: c.itemSpacing,
+                              children: [
+                                Text(s.bestGamesStatistics, style: subtitleStyle),
+                                Expanded(child: Container(color: divColour, height: 1)),
+                              ],
                             ),
                           ),
                         if (best.isNotEmpty)
                           for (final (index, game) in best.indexed)
-                            ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
+                            ScoreboardEntry(
+                              game: game,
+                              place: index + 1,
+                              showLayout: showLayout,
+                              isLast: index == best.length - 1,
+                            ),
                       ],
                     ),
                   ),
@@ -72,61 +98,33 @@ class OverallStatsDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final s = AppLocalizations.of(context)!;
+    final statStyle = theme.textTheme.titleMedium?.copyWith(fontWeight: .w800);
     return Row(
-      spacing: c.itemSpacing,
-      mainAxisSize: .min,
-      children: [
-        Expanded(
+      mainAxisAlignment: .center,
+      spacing: 36.0,
+      children: <Widget>[
+        Pie(total: statistics.totalGames, slice: statistics.cleared),
+        Flexible(
           child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: StatChip(title: s.totalPlayedLabel, value: statistics.totalGames),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: StatChip(title: s.totalClearedLabel, value: statistics.cleared),
-                  ),
-                ],
-              ),
+            crossAxisAlignment: .start,
+            children: <Widget>[
+              Text(s.totalPlayedLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(statistics.totalGames.toString(), style: statStyle),
+              SizedBox(height: c.itemSpacing),
+              Text(s.totalClearedLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(statistics.cleared.toString(), style: statStyle),
             ],
           ),
         ),
-        Column(
-          children: [
-            Row(
-              children: [
-                Image.asset(
-                  theme.brightness == .dark ? "images/stats_icon_dark.png" : "images/stats_icon_light.png",
-                ),
-              ],
-            ),
-          ],
-        ),
-        Expanded(
+        Flexible(
           child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: StatChip(title: s.longestChainLabel, value: statistics.longestChain),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: StatChip(
-                      title: s.bestScoreLabel,
-                      value: statistics.bestGames.firstOrNull?.score ?? 0,
-                    ),
-                  ),
-                ],
-              ),
+            crossAxisAlignment: .start,
+            children: <Widget>[
+              Text(s.bestScoreLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: statStyle),
+              SizedBox(height: c.itemSpacing),
+              Text(s.longestChainLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(statistics.longestChain.toString(), style: statStyle),
             ],
           ),
         ),
@@ -145,52 +143,46 @@ class LastGameEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final s = AppLocalizations.of(context)!;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: c.itemSpacing, top: c.itemSpacing - 4),
-      child: Column(
-        crossAxisAlignment: .stretch,
+    return ListTile(
+      minLeadingWidth: _leadingWidth,
+      minTileHeight: 0.0,
+      visualDensity: .compact,
+      contentPadding: showLayout
+          ? EdgeInsets.zero
+          : const EdgeInsets.symmetric(horizontal: 0.0, vertical: 12.0),
+      leading: SizedBox(),
+      trailing: Column(
+        mainAxisSize: .min,
+        crossAxisAlignment: .center,
         children: [
-          Row(
-            mainAxisAlignment: .center,
-            children: [Text(s.lastGameStatistics, style: theme.textTheme.titleLarge)],
+          Text(
+            game.score.toString(),
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: .w800,
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
-          SizedBox(height: c.itemSpacing),
-          Row(
-            mainAxisAlignment: .center,
-            children: [
-              Text(
-                "${showLayout ? "${game.layout.label(s)} - " : ""}${_dateFormat.format(game.ended)}",
-                style: theme.textTheme.titleMedium,
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: .center,
-            children: [
-              Text(
-                "${game.score}",
-                style: theme.textTheme.titleLarge?.copyWith(
-                  fontWeight: .w800,
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 2),
-          Row(mainAxisAlignment: .center, children: [ResultChip(game)]),
+          ResultChip(game),
         ],
       ),
+      title: showLayout ? Text(game.layout.label(s)) : Text(_dateFormat.format(game.ended)),
+      subtitle: showLayout ? Text(_dateFormat.format(game.ended)) : null,
     );
   }
-
-  static final _dateFormat = DateFormat("d MMMM y, HH:mm");
 }
 
 class ScoreboardEntry extends StatelessWidget {
-  const ScoreboardEntry({super.key, required this.game, required this.place, required this.showLayout});
+  const ScoreboardEntry({
+    super.key,
+    required this.game,
+    required this.place,
+    required this.showLayout,
+    this.isLast = false,
+  });
 
   final SingleGameStatistics game;
   final int place;
+  final bool isLast;
   final bool showLayout;
 
   @override
@@ -201,22 +193,14 @@ class ScoreboardEntry extends StatelessWidget {
       mainAxisSize: .min,
       spacing: 0,
       children: [
-        Row(
-          children: [
-            SizedBox(
-              width: _left,
-              child: Text(place.toString(), style: theme.textTheme.labelMedium),
-            ),
-            Expanded(child: Container(height: 1, color: theme.colorScheme.onSurface.withAlpha(60))),
-          ],
-        ),
         ListTile(
-          minLeadingWidth: 44.0,
+          minLeadingWidth: _leadingWidth,
           minTileHeight: 0.0,
           visualDensity: .compact,
           contentPadding: showLayout
-              ? const EdgeInsets.only(left: _left)
-              : const EdgeInsets.fromLTRB(_left, c.cellPadding, 0, c.cellPadding),
+              ? EdgeInsets.zero
+              : const EdgeInsets.symmetric(horizontal: 0.0, vertical: 12.0),
+          leading: Text(place.toString(), style: theme.textTheme.labelMedium),
           trailing: Column(
             mainAxisSize: .min,
             crossAxisAlignment: .center,
@@ -234,12 +218,15 @@ class ScoreboardEntry extends StatelessWidget {
           title: showLayout ? Text(game.layout.label(s)) : Text(_dateFormat.format(game.ended)),
           subtitle: showLayout ? Text(_dateFormat.format(game.ended)) : null,
         ),
+        if (!isLast)
+          Row(
+            children: [
+              Expanded(child: Container(height: 1, color: theme.colorScheme.onSurface.withAlpha(60))),
+            ],
+          ),
       ],
     );
   }
-
-  static final _dateFormat = DateFormat("d MMMM y, HH:mm");
-  static const _left = 28.0;
 }
 
 class StatChip extends StatelessWidget {
@@ -276,4 +263,91 @@ class StatChip extends StatelessWidget {
       ),
     );
   }
+}
+
+class Pie extends StatelessWidget {
+  const Pie({super.key, required this.total, required this.slice});
+
+  final int total;
+  final int slice;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Stack(
+      alignment: .center,
+      children: [
+        SizedBox(
+          width: 72,
+          height: 72,
+          child: CustomPaint(
+            painter: PiePainter(
+              total: total,
+              slice: slice,
+              ringColour: theme.colorScheme.tertiary,
+              sliceColour: theme.colorScheme.primary,
+              ringThickness: 4.0,
+              sliceThickness: 8.0,
+            ),
+          ),
+        ),
+        Text("${f.format(slice / total.toDouble() * 100.0)}%"),
+      ],
+    );
+  }
+
+  static final f = NumberFormat("##0.0", "en_GB");
+}
+
+final class PiePainter extends CustomPainter {
+  PiePainter({
+    required this.total,
+    required this.slice,
+    this.ringColour = Colors.blueGrey,
+    this.sliceColour = Colors.deepOrange,
+    double? ringThickness,
+    double? sliceThickness,
+  }) : ringWidth = ringThickness ?? sliceThickness ?? 8.0,
+       sliceWidth = sliceThickness ?? ringThickness ?? 8.0;
+
+  final int total;
+  final int slice;
+  final double sliceWidth;
+  final double ringWidth;
+  final Color ringColour;
+  final Color sliceColour;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final maxWidth = ringWidth > sliceWidth ? ringWidth : sliceWidth;
+    final rect = Rect.fromLTWH(maxWidth * 0.5, maxWidth * 0.5, size.width - maxWidth, size.height - maxWidth);
+    final pt = Paint()
+      ..strokeWidth = ringWidth
+      ..style = .stroke
+      ..strokeCap = .round;
+
+    if (slice == 0) {
+      pt.color = ringColour;
+      canvas.drawOval(rect, pt);
+      return;
+    }
+
+    final ringAngle = _tau * ((total - slice) / total.toDouble());
+    final sliceAngle = _tau - ringAngle;
+
+    pt.color = ringColour;
+    canvas.drawArc(rect, sliceAngle + _gap - _start, ringAngle - _gap * 2.0, false, pt);
+
+    pt
+      ..color = sliceColour
+      ..strokeWidth = sliceWidth;
+    canvas.drawArc(rect, _gap - _start, sliceAngle - _gap * 2.0, false, pt);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+
+  static const _tau = 2.0 * maths.pi;
+  static const _start = maths.pi * 0.5;
+  static const _gap = 0.12;
 }
