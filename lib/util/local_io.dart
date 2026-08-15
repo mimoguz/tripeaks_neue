@@ -43,7 +43,19 @@ final class LocalIO with SharedIo implements AbstractIO {
       dir = await getApplicationSupportDirectory();
     } on MissingPlatformDirectoryException {
       dir = await getApplicationDocumentsDirectory();
+    } catch (_) {
+      final snapUserData = Platform.environment["SNAP_USER_DATA"];
+      if (snapUserData != null) {
+        dir = Directory("$snapUserData/AppData");
+      } else {
+        dir = await getTemporaryDirectory();
+      }
     }
+
+    if (!await dir.exists()) {
+      await dir.create(recursive: true);
+    }
+
     return File("${dir.path}/tripeaksneue.$key.json");
   }
 
