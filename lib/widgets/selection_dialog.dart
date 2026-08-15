@@ -23,8 +23,8 @@ class SelectionDialog extends StatelessWidget {
             visualDensity: .compact,
             titleTextStyle: Theme.of(context).textTheme.bodyMedium,
             controlAffinity: .leading,
-            horizontalTitleGap: c.itemSpacing,
-            contentPadding: EdgeInsets.symmetric(horizontal: c.itemSpacing, vertical: 0),
+            horizontalTitleGap: c.itemSpacing - c.radioCorrection,
+            contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
           ),
           child: Column(
             children: [

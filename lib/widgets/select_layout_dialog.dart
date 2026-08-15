@@ -51,19 +51,19 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
 
     return CommonDialog(
       title: Text(s.selectLayoutDialogTitle),
-      content: ListTileTheme(
-        data: ListTileThemeData(
-          visualDensity: .compact,
-          titleTextStyle: Theme.of(context).textTheme.bodyMedium,
-          controlAffinity: .leading,
-          horizontalTitleGap: c.itemSpacing,
-          contentPadding: EdgeInsets.symmetric(horizontal: c.itemSpacing, vertical: 0),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            RadioGroup(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTileTheme(
+            data: ListTileThemeData(
+              visualDensity: .compact,
+              titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+              controlAffinity: .leading,
+              horizontalTitleGap: c.itemSpacing,
+              contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
+            ),
+            child: RadioGroup(
               groupValue: _layout,
               onChanged: (value) => setState(() {
                 _layout = value;
@@ -75,15 +75,35 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
                 ],
               ),
             ),
-            const Divider(),
-            ListTile(
-              title: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(s.additionalOptionsGroupTitle, style: Theme.of(context).textTheme.titleSmall),
+          ),
+          const Divider(),
+          ListTileTheme(
+            data: ListTileThemeData(
+              visualDensity: .compact,
+              titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+              controlAffinity: .leading,
+              horizontalTitleGap: c.itemSpacing - c.checkBoxCorrection,
+              contentPadding: EdgeInsets.fromLTRB(
+                c.itemSpacing - c.checkBoxCorrection,
+                0.0,
+                c.itemSpacing,
+                0.0,
               ),
             ),
-            Column(
+            child: Column(
               children: [
+                ListTile(
+                  title: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Transform.translate(
+                      offset: const Offset(c.checkBoxCorrection - c.radioCorrection, 0.0),
+                      child: Text(
+                        s.additionalOptionsGroupTitle,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    ),
+                  ),
+                ),
                 CheckboxListTile(
                   value: _showAll,
                   onChanged: (value) => setState(() => _showAll = value!),
@@ -104,8 +124,8 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       actions: <Widget>[
         TextButton(
