@@ -41,14 +41,16 @@ final class LocalIO with SharedIo implements AbstractIO {
     Directory dir;
     try {
       dir = await getApplicationSupportDirectory();
-    } on MissingPlatformDirectoryException {
-      dir = await getApplicationDocumentsDirectory();
     } catch (_) {
-      final snapUserData = Platform.environment["SNAP_USER_DATA"];
-      if (snapUserData != null) {
-        dir = Directory(snapUserData);
-      } else {
-        dir = await getTemporaryDirectory();
+      try {
+        dir = await getApplicationDocumentsDirectory();
+      } catch (_) {
+        final snapUserData = Platform.environment["SNAP_USER_DATA"];
+        if (snapUserData != null) {
+          dir = Directory(snapUserData);
+        } else {
+          dir = await getTemporaryDirectory();
+        }
       }
     }
 
