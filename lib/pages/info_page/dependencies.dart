@@ -55,15 +55,22 @@ final class DependencyEntry extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 8,
           children: [
-            Text(package.name),
-            Spacer(),
-            DependencyStatusChip(isDirectDependency),
-            if (package.license != null)
-              FilledButton.tonal(onPressed: () => _showLicense(context), child: Text(s.showLicenseAction)),
+            Flexible(child: Text(package.name, softWrap: false, overflow: .fade)),
+            Row(
+              spacing: 8,
+              children: [
+                DependencyStatusChip(isDirectDependency),
+                if (package.license != null)
+                  FilledButton.tonal(
+                    onPressed: () => _showLicense(context),
+                    child: Text(s.showLicenseAction),
+                  ),
+              ],
+            ),
           ],
         ),
         if (link != null) ExternalLink(uri: Uri.dataFromString(link)),

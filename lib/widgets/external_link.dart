@@ -29,7 +29,8 @@ class ExternalLink extends StatelessWidget {
                 Flexible(
                   child: Text(
                     label ?? uri.toString().replaceAll("data:,", ""),
-                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                    overflow: .fade,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: colours.primary),
                   ),
                 ),
