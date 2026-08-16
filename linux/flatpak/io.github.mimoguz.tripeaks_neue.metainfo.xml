@@ -86,10 +86,11 @@
     </screenshots>
 
     <releases>
-        <release version="0.9.60" date="2026-08-14">
+        <release version="0.9.60" date="2026-08-16">
             <description>
                 <ul>
                     <li>Added a menu to export/import/clear statistics to the statistics page.</li>
+                    <li>Statistics page redesign.</li>
                     <li>Visual clean-up.</li>
                 </ul>
             </description>

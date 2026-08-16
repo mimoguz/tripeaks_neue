@@ -1,2 +1,3 @@
 - Added a menu to export/import/clear statistics to the statistics page.
+- Statistics page redesign.
 - Visual clean-up.
