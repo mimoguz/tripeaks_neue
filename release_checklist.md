@@ -1,5 +1,7 @@
 # vNext
 
+## v0.9.60
+
 - [x] Update version
 - [x] Run ```build_runner build```
 - [x] Run ```dart_pubspec_licenses:generate --output lib/generated/oss_licenses.dart```
@@ -13,9 +15,10 @@
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
 - [x] Readme images
-- [ ] Web release, base href "/tripeaks_neue/"
-- [ ] For itch.io base href must be empty string
+- [x] Web release, base href "/tripeaks_neue/"
+- [x] For itch.io base href must be empty string
+- [ ] itch.io screenshots
 
 ## Post release:
 
-- [ ] Update Flathub build manifest 
+- [x] Update Flathub build manifest 
