@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/pages/statistics_page/pie.dart';
 import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
@@ -8,12 +9,12 @@ import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
-import 'dart:math' as maths;
 
 const _leadingWidth = 22.0;
 const _verticalSpacing = 22.0;
 final _dateFormat = DateFormat("d MMMM y, HH:mm");
 
+// TODO: This is just a mess, clean-up a little
 final class StatisticsTab extends StatelessWidget {
   const StatisticsTab(this.statistics, {super.key, this.showLayout = true});
 
@@ -76,6 +77,7 @@ final class StatisticsTab extends StatelessWidget {
                               showLayout: showLayout,
                               isLast: index == best.length - 1,
                             ),
+                        SizedBox(height: _verticalSpacing - (best.isNotEmpty ? 10 : 8)),
                       ],
                     ),
                   ),
@@ -227,127 +229,4 @@ class ScoreboardEntry extends StatelessWidget {
       ],
     );
   }
-}
-
-class StatChip extends StatelessWidget {
-  const StatChip({super.key, required this.title, required this.value});
-
-  final String title;
-  final int value;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: c.cardPadding,
-      child: Column(
-        crossAxisAlignment: .stretch,
-        children: [
-          Row(
-            mainAxisAlignment: .center,
-            children: [Text(title, style: theme.textTheme.bodyLarge)],
-          ),
-          Row(
-            mainAxisAlignment: .center,
-            children: [
-              Text(
-                value.toString(),
-                style: theme.textTheme.titleLarge?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                  fontWeight: .w800,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Pie extends StatelessWidget {
-  const Pie({super.key, required this.total, required this.slice});
-
-  final int total;
-  final int slice;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Stack(
-      alignment: .center,
-      children: [
-        SizedBox(
-          width: 72,
-          height: 72,
-          child: CustomPaint(
-            painter: PiePainter(
-              total: total,
-              slice: slice,
-              ringColour: theme.colorScheme.tertiary,
-              sliceColour: theme.colorScheme.primary,
-              ringThickness: 4.0,
-              sliceThickness: 8.0,
-            ),
-          ),
-        ),
-        Text("${f.format(slice / total.toDouble() * 100.0)}%"),
-      ],
-    );
-  }
-
-  static final f = NumberFormat("##0.0", "en_GB");
-}
-
-final class PiePainter extends CustomPainter {
-  PiePainter({
-    required this.total,
-    required this.slice,
-    this.ringColour = Colors.blueGrey,
-    this.sliceColour = Colors.deepOrange,
-    double? ringThickness,
-    double? sliceThickness,
-  }) : ringWidth = ringThickness ?? sliceThickness ?? 8.0,
-       sliceWidth = sliceThickness ?? ringThickness ?? 8.0;
-
-  final int total;
-  final int slice;
-  final double sliceWidth;
-  final double ringWidth;
-  final Color ringColour;
-  final Color sliceColour;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final maxWidth = ringWidth > sliceWidth ? ringWidth : sliceWidth;
-    final rect = Rect.fromLTWH(maxWidth * 0.5, maxWidth * 0.5, size.width - maxWidth, size.height - maxWidth);
-    final pt = Paint()
-      ..strokeWidth = ringWidth
-      ..style = .stroke
-      ..strokeCap = .round;
-
-    if (slice == 0) {
-      pt.color = ringColour;
-      canvas.drawOval(rect, pt);
-      return;
-    }
-
-    final ringAngle = _tau * ((total - slice) / total.toDouble());
-    final sliceAngle = _tau - ringAngle;
-
-    pt.color = ringColour;
-    canvas.drawArc(rect, sliceAngle + _gap - _start, ringAngle - _gap * 2.0, false, pt);
-
-    pt
-      ..color = sliceColour
-      ..strokeWidth = sliceWidth;
-    canvas.drawArc(rect, _gap - _start, sliceAngle - _gap * 2.0, false, pt);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-
-  static const _tau = 2.0 * maths.pi;
-  static const _start = maths.pi * 0.5;
-  static const _gap = 0.12;
 }
