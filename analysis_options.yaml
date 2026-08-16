@@ -6,3 +6,7 @@ linter:
 
 formatter:
   page_width: 110
+
+analyzer:
+  exclude:
+    - lib/generated/*.dart
