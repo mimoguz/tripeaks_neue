@@ -72,9 +72,15 @@ class _MainAppState extends State<MainApp> {
         scrollBehavior: const MyCustomScrollBehavior(),
         home: Builder(
           builder: (context) {
+            final theme = Theme.of(context);
             if (Platform.isAndroid) {
               SystemChrome.setSystemUIOverlayStyle(
-                SystemUiOverlayStyle(statusBarBrightness: .dark, statusBarIconBrightness: .light),
+                SystemUiOverlayStyle(
+                  statusBarColor: theme.colorScheme.surfaceContainerLow,
+                  systemStatusBarContrastEnforced: true,
+                  statusBarBrightness: theme.brightness,
+                  statusBarIconBrightness: theme.brightness == .light ? .dark : .light,
+                ),
               );
             }
             if (showWelcome) {
