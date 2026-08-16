@@ -15,6 +15,10 @@ final class LocalIO with SharedIo implements AbstractIO {
   Future<bool> write(String key, Map<String, dynamic> jsonObject) async {
     try {
       final file = await _getFile(key);
+      if (file == null) {
+        _logger.e("Could not get save directory");
+        return false;
+      }
       await file.writeAsString(json.encode(jsonObject), flush: true);
       _logger.d("Write $key to ${file.absolute.path}");
       return true;
@@ -28,6 +32,10 @@ final class LocalIO with SharedIo implements AbstractIO {
   Future<T?> read<T>(String key, T Function(Map<String, dynamic>) reader) async {
     try {
       final file = await _getFile(key);
+      if (file == null) {
+        _logger.e("Could not get save directory");
+        return null;
+      }
       final jsonText = await file.readAsString();
       _logger.d("Read $key from ${file.absolute.path}");
       return reader(json.decode(jsonText));
@@ -37,24 +45,50 @@ final class LocalIO with SharedIo implements AbstractIO {
     }
   }
 
-  Future<File> _getFile(String key) async {
-    Directory dir;
-    try {
-      dir = await getApplicationSupportDirectory();
-    } catch (_) {
-      try {
-        dir = await getApplicationDocumentsDirectory();
-      } catch (_) {
-        final snapUserData = Platform.environment["SNAP_USER_DATA"];
-        if (snapUserData != null) {
-          dir = Directory(snapUserData);
-        } else {
-          dir = await getTemporaryDirectory();
-        }
-      }
-    }
+  Future<File?> _getFile(String key) async {
+    final dir =
+        await _getApplicationSupportDirectory() ??
+        await _getApplicationDocumentsDirectory() ??
+        await _getSnapUserDataDirectory() ??
+        await _getTemporaryDirectory();
 
+    if (dir == null) {
+      return null;
+    }
     return File("${dir.path}/tripeaksneue.$key.json");
+  }
+
+  Future<Directory?> _getApplicationSupportDirectory() async {
+    try {
+      final dir = await getApplicationSupportDirectory();
+      return dir;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<Directory?> _getApplicationDocumentsDirectory() async {
+    try {
+      return await getApplicationDocumentsDirectory();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<Directory?> _getSnapUserDataDirectory() {
+    final snapUserData = Platform.environment["SNAP_USER_DATA"];
+    if (snapUserData != null) {
+      return Future.value(Directory(snapUserData));
+    }
+    return Future.value(null);
+  }
+
+  Future<Directory?> _getTemporaryDirectory() async {
+    try {
+      return await getTemporaryDirectory();
+    } catch (_) {
+      return null;
+    }
   }
 
   static LocalIO? _instance;
