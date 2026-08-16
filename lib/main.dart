@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
@@ -70,6 +72,11 @@ class _MainAppState extends State<MainApp> {
         scrollBehavior: const MyCustomScrollBehavior(),
         home: Builder(
           builder: (context) {
+            if (Platform.isAndroid) {
+              SystemChrome.setSystemUIOverlayStyle(
+                SystemUiOverlayStyle(statusBarBrightness: .dark, statusBarIconBrightness: .light),
+              );
+            }
             if (showWelcome) {
               showWelcome = false;
               WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -130,7 +137,8 @@ class _MainAppState extends State<MainApp> {
       onPrimaryContainer: Color(0xFFECF3FD),
       tertiary: Colors.red.shade300,
       tertiaryContainer: Colors.red.shade600,
-      onTertiaryContainer: Colors.red.shade100, // Color(0xff932e2e),
+      onTertiaryContainer: Colors.red.shade100,
+      // Color(0xff932e2e),
       surfaceContainer: Color(0xff151618),
       secondary: Color(0xff868da0),
       brightness: Brightness.dark,
