@@ -80,6 +80,14 @@ final class PiePainter extends CustomPainter {
       return;
     }
 
+    if (slice == total) {
+      pt
+        ..color = sliceColour
+        ..strokeWidth = sliceWidth;
+      canvas.drawOval(rect, pt);
+      return;
+    }
+
     final ringAngle = _tau * ((total - slice) / total.toDouble());
     final sliceAngle = _tau - ringAngle;
 
