@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -73,16 +74,18 @@ class _MainAppState extends State<MainApp> {
         home: Builder(
           builder: (context) {
             final theme = Theme.of(context);
-            if (Platform.isAndroid) {
-              SystemChrome.setSystemUIOverlayStyle(
-                SystemUiOverlayStyle(
-                  statusBarColor: theme.colorScheme.surfaceContainerLow,
-                  systemStatusBarContrastEnforced: true,
-                  statusBarBrightness: theme.brightness,
-                  statusBarIconBrightness: theme.brightness == .light ? .dark : .light,
-                ),
-              );
-            }
+            try {
+              if (!kIsWeb && !kIsWasm && Platform.isAndroid) {
+                SystemChrome.setSystemUIOverlayStyle(
+                  SystemUiOverlayStyle(
+                    statusBarColor: theme.colorScheme.surfaceContainerLow,
+                    systemStatusBarContrastEnforced: true,
+                    statusBarBrightness: theme.brightness,
+                    statusBarIconBrightness: theme.brightness == .light ? .dark : .light,
+                  ),
+                );
+              }
+            } catch (_) {}
             if (showWelcome) {
               showWelcome = false;
               WidgetsBinding.instance.addPostFrameCallback((_) {
