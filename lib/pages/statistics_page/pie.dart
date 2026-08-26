@@ -81,10 +81,13 @@ final class PiePainter extends CustomPainter {
     }
 
     if (slice == total) {
-      pt
-        ..color = sliceColour
-        ..strokeWidth = sliceWidth;
-      canvas.drawOval(rect, pt);
+      pt.color = sliceColour;
+      _drawStar(
+        canvas,
+        pt,
+        outerRect: Rect.fromPoints(Offset.zero, size.bottomRight(Offset.zero)),
+        innerRect: Rect.fromLTRB(maxWidth, maxWidth, size.width - maxWidth, size.height - maxWidth),
+      );
       return;
     }
 
@@ -102,6 +105,28 @@ final class PiePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+
+  void _drawStar(Canvas canvas, Paint pt, {required Rect outerRect, required Rect innerRect}) {
+    final path = Path();
+
+    final style = pt.style;
+    pt.style = .fill;
+
+    path.moveTo(outerRect.center.dx, outerRect.bottom);
+    for (var i = 1; i < 36; i++) {
+      final angle = i * maths.pi / 18.0;
+      final r = outerRect.width * (0.5 - (i & 1 == 1 ? 0.06 : 0.0));
+      final x = outerRect.center.dx + r * maths.sin(angle);
+      final y = outerRect.center.dy + r * maths.cos(angle);
+      path.lineTo(x, y);
+    }
+    path.close();
+
+    path.addOval(innerRect);
+
+    canvas.drawPath(path, pt);
+    pt.style = style;
+  }
 
   static const _tau = 2.0 * maths.pi;
   static const _start = maths.pi * 0.5;
