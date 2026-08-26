@@ -107,21 +107,21 @@ final class PiePainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
   void _drawStar(Canvas canvas, Paint pt, {required Rect outerRect, required Rect innerRect}) {
-    final path = Path();
+    final path = Path()..fillType = .evenOdd;
 
     final style = pt.style;
     pt.style = .fill;
 
-    path.moveTo(outerRect.center.dx, outerRect.bottom);
-    for (var i = 1; i < 36; i++) {
-      final angle = i * maths.pi / 18.0;
-      final r = outerRect.width * (0.5 - (i & 1 == 1 ? 0.06 : 0.0));
-      final x = outerRect.center.dx + r * maths.sin(angle);
-      final y = outerRect.center.dy + r * maths.cos(angle);
-      path.lineTo(x, y);
-    }
-    path.close();
-
+    // path.moveTo(outerRect.center.dx, outerRect.bottom);
+    // for (var i = 1; i < 36; i++) {
+    //   final angle = i * maths.pi / 18.0;
+    //   final r = outerRect.width * (0.5 - (i & 1 == 1 ? 0.06 : 0.0));
+    //   final x = outerRect.center.dx + r * maths.sin(angle);
+    //   final y = outerRect.center.dy + r * maths.cos(angle);
+    //   path.lineTo(x, y);
+    // }
+    // path.close();
+    path.addPath(StarBorder(points: 18, innerRadiusRatio: 0.9).getOuterPath(outerRect), Offset.zero);
     path.addOval(innerRect);
 
     canvas.drawPath(path, pt);
