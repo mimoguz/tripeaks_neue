@@ -34,7 +34,7 @@ class Pie extends StatelessWidget {
     );
   }
 
-  static final f = NumberFormat("##0.0", "en_GB");
+  static final f = NumberFormat("##0.#", "en_GB");
 }
 
 final class PiePainter extends CustomPainter {
