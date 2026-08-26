@@ -11,7 +11,7 @@ import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 const _leadingWidth = 22.0;
-const _verticalSpacing = 22.0;
+const _verticalSpacing = 20.0;
 final _dateFormat = DateFormat("d MMMM y, HH:mm");
 
 // TODO: This is just a mess, clean-up a little
@@ -71,13 +71,8 @@ final class StatisticsTab extends StatelessWidget {
                           ),
                         if (best.isNotEmpty)
                           for (final (index, game) in best.indexed)
-                            ScoreboardEntry(
-                              game: game,
-                              place: index + 1,
-                              showLayout: showLayout,
-                              isLast: index == best.length - 1,
-                            ),
-                        SizedBox(height: _verticalSpacing - (best.isNotEmpty ? 10 : 8)),
+                            ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
+                        SizedBox(height: _verticalSpacing - (best.isNotEmpty ? 8 : 6)),
                       ],
                     ),
                   ),
@@ -174,17 +169,10 @@ class LastGameEntry extends StatelessWidget {
 }
 
 class ScoreboardEntry extends StatelessWidget {
-  const ScoreboardEntry({
-    super.key,
-    required this.game,
-    required this.place,
-    required this.showLayout,
-    this.isLast = false,
-  });
+  const ScoreboardEntry({super.key, required this.game, required this.place, required this.showLayout});
 
   final SingleGameStatistics game;
   final int place;
-  final bool isLast;
   final bool showLayout;
 
   @override
@@ -195,6 +183,12 @@ class ScoreboardEntry extends StatelessWidget {
       mainAxisSize: .min,
       spacing: 0,
       children: [
+        if (place > 1)
+          Row(
+            children: [
+              Expanded(child: Container(height: 1, color: theme.colorScheme.onSurface.withAlpha(60))),
+            ],
+          ),
         ListTile(
           minLeadingWidth: _leadingWidth,
           minTileHeight: 0.0,
@@ -220,12 +214,6 @@ class ScoreboardEntry extends StatelessWidget {
           title: showLayout ? Text(game.layout.label(s)) : Text(_dateFormat.format(game.ended)),
           subtitle: showLayout ? Text(_dateFormat.format(game.ended)) : null,
         ),
-        if (!isLast)
-          Row(
-            children: [
-              Expanded(child: Container(height: 1, color: theme.colorScheme.onSurface.withAlpha(60))),
-            ],
-          ),
       ],
     );
   }
