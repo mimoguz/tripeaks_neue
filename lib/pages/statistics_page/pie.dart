@@ -15,8 +15,8 @@ class Pie extends StatelessWidget {
       alignment: .center,
       children: [
         SizedBox(
-          width: 72,
-          height: 72,
+          width: 80,
+          height: 80,
           child: CustomPaint(
             painter: PiePainter(
               total: total,
@@ -29,7 +29,10 @@ class Pie extends StatelessWidget {
             ),
           ),
         ),
-        Text(total == 0 ? "-" : "${f.format(slice / total.toDouble() * 100.0)}%"),
+        Text(
+          total == 0 ? "-" : "${f.format(slice / total.toDouble() * 100.0)}%",
+          style: TextStyle(fontWeight: .w800),
+        ),
       ],
     );
   }
