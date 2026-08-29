@@ -95,6 +95,7 @@ class OverallStatsDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final s = AppLocalizations.of(context)!;
+    final titleStyle = theme.textTheme.titleSmall;
     final statStyle = theme.textTheme.titleMedium?.copyWith(fontWeight: .w800);
     return Row(
       mainAxisAlignment: .center,
@@ -105,10 +106,10 @@ class OverallStatsDisplay extends StatelessWidget {
           child: Column(
             crossAxisAlignment: .start,
             children: <Widget>[
-              Text(s.totalPlayedLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(s.totalPlayedLabel, style: titleStyle, overflow: .fade, softWrap: false),
               Text(statistics.totalGames.toString(), style: statStyle),
               SizedBox(height: c.itemSpacing),
-              Text(s.totalClearedLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(s.totalClearedLabel, style: titleStyle, overflow: .fade, softWrap: false),
               Text(statistics.cleared.toString(), style: statStyle),
             ],
           ),
@@ -117,10 +118,10 @@ class OverallStatsDisplay extends StatelessWidget {
           child: Column(
             crossAxisAlignment: .start,
             children: <Widget>[
-              Text(s.bestScoreLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(s.bestScoreLabel, style: titleStyle, overflow: .fade, softWrap: false),
               Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: statStyle),
               SizedBox(height: c.itemSpacing),
-              Text(s.longestChainLabel, style: theme.textTheme.titleSmall, overflow: .fade, softWrap: false),
+              Text(s.longestChainLabel, style: titleStyle, overflow: .fade, softWrap: false),
               Text(statistics.longestChain.toString(), style: statStyle),
             ],
           ),
