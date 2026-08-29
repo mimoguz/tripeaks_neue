@@ -124,6 +124,7 @@ class _MainAppState extends State<MainApp> {
       tertiary: Colors.red.shade500,
       tertiaryContainer: Colors.red.shade600,
       onTertiaryContainer: Colors.red.shade100,
+      surfaceContainerHighest: Color(0xFFDDDDE5),
     ),
   );
 

@@ -112,7 +112,7 @@ class OverallStatsDisplay2 extends StatelessWidget {
                     alignment: .start,
                     title: s.totalClearedLabel,
                     value: statistics.cleared,
-                    tint: statistics.cleared > 0 ? colours.primary : null,
+                    primary: statistics.cleared > 0,
                   ),
                 ],
               ),
@@ -148,34 +148,40 @@ class OverallStatsDisplay2 extends StatelessWidget {
 }
 
 class ScoreCard extends StatelessWidget {
-  const ScoreCard({super.key, required this.alignment, required this.title, required this.value, this.tint});
+  const ScoreCard({
+    super.key,
+    required this.alignment,
+    required this.title,
+    required this.value,
+    this.primary = false,
+  });
 
   final CrossAxisAlignment alignment;
   final String title;
   final int value;
-  final Color? tint;
+  final bool primary;
 
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
+    final fill = primary ? colours.primary : colours.surfaceContainerHighest;
+    final textColour = primary ? colours.onPrimary : colours.onSurface;
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: tint == null
-            ? colours.surfaceContainerHighest
-            : Color.lerp(colours.surfaceContainerHighest, tint, 0.2),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: fill),
       padding: c.cardPadding,
       child: Column(
         crossAxisAlignment: alignment,
         children: [
           Text(
             title,
-            style: TextStyle(color: colours.onSurface.withAlpha(150)),
+            style: TextStyle(color: textColour.withAlpha(180)),
             softWrap: false,
             overflow: .fade,
           ),
-          Text(value.toString(), style: TextStyle(fontSize: 24.0, fontWeight: .w800)),
+          Text(
+            value.toString(),
+            style: TextStyle(fontSize: 24.0, fontWeight: .w800, color: textColour),
+          ),
         ],
       ),
     );
