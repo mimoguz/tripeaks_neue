@@ -43,8 +43,8 @@ final class StatisticsTab extends StatelessWidget {
                     child: GroupTile(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(top: _verticalSpacing),
-                          child: OverallStatsDisplay(statistics),
+                          padding: const EdgeInsets.only(top: 4),
+                          child: OverallStatsDisplay2(statistics),
                         ),
                         if (last != null)
                           Padding(
@@ -72,7 +72,7 @@ final class StatisticsTab extends StatelessWidget {
                         if (best.isNotEmpty)
                           for (final (index, game) in best.indexed)
                             ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
-                        SizedBox(height: _verticalSpacing - (best.isNotEmpty ? 8 : 6)),
+                        SizedBox(height: best.isNotEmpty ? 0 : 2),
                       ],
                     ),
                   ),
@@ -82,6 +82,102 @@ final class StatisticsTab extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class OverallStatsDisplay2 extends StatelessWidget {
+  const OverallStatsDisplay2(this.statistics, {super.key});
+
+  final Statistics statistics;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colours = theme.colorScheme;
+    final s = AppLocalizations.of(context)!;
+    return Stack(
+      alignment: .center,
+      children: [
+        Row(
+          spacing: 8.0,
+          children: [
+            Expanded(
+              child: Column(
+                spacing: 8.0,
+                crossAxisAlignment: .stretch,
+                children: [
+                  ScoreCard(alignment: .start, title: s.totalPlayedLabel, value: statistics.totalGames),
+                  ScoreCard(
+                    alignment: .start,
+                    title: s.totalClearedLabel,
+                    value: statistics.cleared,
+                    tint: statistics.cleared > 0 ? colours.primary : null,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                spacing: 8.0,
+                crossAxisAlignment: .stretch,
+                children: [
+                  ScoreCard(
+                    alignment: .end,
+                    title: s.bestScoreLabel,
+                    value: statistics.bestGames.firstOrNull?.score ?? 0,
+                  ),
+                  ScoreCard(alignment: .end, title: s.longestChainLabel, value: statistics.longestChain),
+                ],
+              ),
+            ),
+          ],
+        ),
+        Align(
+          alignment: .center,
+          child: Container(
+            width: 96,
+            height: 96,
+            decoration: BoxDecoration(color: colours.surfaceContainerHigh, shape: BoxShape.circle),
+            child: Pie(total: statistics.totalGames, slice: statistics.cleared, size: 80),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ScoreCard extends StatelessWidget {
+  const ScoreCard({super.key, required this.alignment, required this.title, required this.value, this.tint});
+
+  final CrossAxisAlignment alignment;
+  final String title;
+  final int value;
+  final Color? tint;
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: tint == null
+            ? colours.surfaceContainerHighest
+            : Color.lerp(colours.surfaceContainerHighest, tint, 0.2),
+      ),
+      padding: c.cardPadding,
+      child: Column(
+        crossAxisAlignment: alignment,
+        children: [
+          Text(
+            title,
+            style: TextStyle(color: colours.onSurface.withAlpha(150)),
+            softWrap: false,
+            overflow: .fade,
+          ),
+          Text(value.toString(), style: TextStyle(fontSize: 24.0, fontWeight: .w800)),
+        ],
+      ),
     );
   }
 }

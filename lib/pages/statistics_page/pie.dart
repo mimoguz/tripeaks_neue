@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Pie extends StatelessWidget {
-  const Pie({super.key, required this.total, required this.slice});
+  const Pie({super.key, required this.total, required this.slice, this.size = 80});
 
   final int total;
   final int slice;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -15,17 +16,16 @@ class Pie extends StatelessWidget {
       alignment: .center,
       children: [
         SizedBox(
-          width: 80,
-          height: 80,
+          width: size,
+          height: size,
           child: CustomPaint(
             painter: PiePainter(
               total: total,
               slice: slice,
-              ringColour: theme.colorScheme.tertiary,
+              ringColour: theme.colorScheme.onSurface.withAlpha(60),
               sliceColour: theme.colorScheme.primary,
-              emptyColor: theme.colorScheme.onSurfaceVariant,
-              ringThickness: 4.0,
-              sliceThickness: 8.0,
+              emptyColor: theme.colorScheme.onSurface.withAlpha(20),
+              thickness: 8.0,
             ),
           ),
         ),
@@ -44,41 +44,34 @@ final class PiePainter extends CustomPainter {
   PiePainter({
     required this.total,
     required this.slice,
-    this.ringColour = Colors.blueGrey,
+    this.ringColour = Colors.yellow,
     this.sliceColour = Colors.deepOrange,
     this.emptyColor = Colors.grey,
-    double? ringThickness,
-    double? sliceThickness,
-  }) : ringWidth = ringThickness ?? sliceThickness ?? 8.0,
-       sliceWidth = sliceThickness ?? ringThickness ?? 8.0;
+    this.thickness = 8.0,
+  });
 
   final int total;
   final int slice;
-  final double sliceWidth;
-  final double ringWidth;
+  final double thickness;
   final Color ringColour;
   final Color sliceColour;
   final Color emptyColor;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final maxWidth = ringWidth > sliceWidth ? ringWidth : sliceWidth;
-    final rect = Rect.fromLTWH(maxWidth * 0.5, maxWidth * 0.5, size.width - maxWidth, size.height - maxWidth);
+    final rect = Rect.fromLTWH(
+      thickness * 0.5,
+      thickness * 0.5,
+      size.width - thickness,
+      size.height - thickness,
+    );
     final pt = Paint()
-      ..strokeWidth = ringWidth
+      ..strokeWidth = thickness
       ..style = .stroke
       ..strokeCap = .round;
 
     if (total == 0) {
-      pt
-        ..color = emptyColor
-        ..strokeWidth = 1.0;
-      canvas.drawOval(rect, pt);
-      return;
-    }
-
-    if (slice == 0) {
-      pt.color = ringColour;
+      pt.color = emptyColor;
       canvas.drawOval(rect, pt);
       return;
     }
@@ -89,21 +82,27 @@ final class PiePainter extends CustomPainter {
         canvas,
         pt,
         outerRect: Rect.fromPoints(Offset.zero, size.bottomRight(Offset.zero)),
-        innerRect: Rect.fromLTRB(maxWidth, maxWidth, size.width - maxWidth, size.height - maxWidth),
+        innerRect: Rect.fromLTRB(thickness, thickness, size.width - thickness, size.height - thickness),
       );
       return;
     }
 
     final ringAngle = _tau * ((total - slice) / total.toDouble());
     final sliceAngle = _tau - ringAngle;
+    // I need to fix the effect of the round stroke cap.
+    // The overhang diameter will be the stroke thickness. Use that the
+    // extra angle:
+    final fixAngle = maths.atan2(thickness, rect.width);
 
     pt.color = ringColour;
-    canvas.drawArc(rect, sliceAngle + _gap - _start, ringAngle - _gap * 2.0, false, pt);
+    canvas.drawOval(rect, pt);
 
-    pt
-      ..color = sliceColour
-      ..strokeWidth = sliceWidth;
-    canvas.drawArc(rect, _gap - _start, sliceAngle - _gap * 2.0, false, pt);
+    if (slice == 0) {
+      return;
+    }
+
+    pt.color = sliceColour;
+    canvas.drawArc(rect, _start + fixAngle, sliceAngle - 2 * fixAngle, false, pt);
   }
 
   @override
@@ -111,19 +110,8 @@ final class PiePainter extends CustomPainter {
 
   void _drawStar(Canvas canvas, Paint pt, {required Rect outerRect, required Rect innerRect}) {
     final path = Path()..fillType = .evenOdd;
-
     final style = pt.style;
     pt.style = .fill;
-
-    // path.moveTo(outerRect.center.dx, outerRect.bottom);
-    // for (var i = 1; i < 36; i++) {
-    //   final angle = i * maths.pi / 18.0;
-    //   final r = outerRect.width * (0.5 - (i & 1 == 1 ? 0.06 : 0.0));
-    //   final x = outerRect.center.dx + r * maths.sin(angle);
-    //   final y = outerRect.center.dy + r * maths.cos(angle);
-    //   path.lineTo(x, y);
-    // }
-    // path.close();
     path.addPath(StarBorder(points: 18, innerRadiusRatio: 0.9).getOuterPath(outerRect), Offset.zero);
     path.addOval(innerRect);
 
@@ -133,5 +121,5 @@ final class PiePainter extends CustomPainter {
 
   static const _tau = 2.0 * maths.pi;
   static const _start = maths.pi * 0.5;
-  static const _gap = 0.12;
+  // static const _gap = 0.12;
 }
