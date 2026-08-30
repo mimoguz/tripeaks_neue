@@ -32,7 +32,7 @@ class Pie extends StatelessWidget {
         ),
         Text(
           total == 0 ? "" : "${f.format(slice / total.toDouble() * 100.0)}%",
-          style: TextStyle(fontWeight: .w800, fontFeatures: c.fontFeatures),
+          style: theme.textTheme.titleMedium?.copyWith(fontWeight: .w800, fontFeatures: c.fontFeatures),
         ),
       ],
     );
