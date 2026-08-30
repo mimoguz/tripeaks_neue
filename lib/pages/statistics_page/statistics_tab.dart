@@ -69,7 +69,7 @@ final class StatisticsTab extends StatelessWidget {
                         if (best.isNotEmpty)
                           for (final (index, game) in best.indexed)
                             ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
-                        SizedBox(height: best.isNotEmpty ? 0 : 2),
+                        SizedBox(height: best.isNotEmpty ? 0 : 4),
                       ],
                     ),
                   ),
