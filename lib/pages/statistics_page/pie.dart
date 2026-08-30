@@ -1,6 +1,7 @@
 import 'dart:math' as maths;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class Pie extends StatelessWidget {
@@ -24,9 +25,9 @@ class Pie extends StatelessWidget {
               total: total,
               slice: slice,
               ringColour: theme.colorScheme.onSurface.withAlpha(60),
-              sliceColour: theme.colorScheme.primary,
+              sliceColour: DecorColour.green.background,
               emptyColor: theme.colorScheme.onSurface.withAlpha(20),
-              thickness: 8.0,
+              thickness: 12.0,
             ),
           ),
         ),

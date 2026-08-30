@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/pie.dart';
 import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
@@ -28,7 +29,7 @@ final class StatisticsTab extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     final best = statistics.bestGames;
     final last = statistics.lastGame;
-    final divColour = colours.onSurface.withAlpha(60);
+    final divColour = colours.onSurface.withAlpha(50);
     final subtitleStyle = theme.textTheme.titleMedium?.copyWith(color: colours.primary);
     return Column(
       children: [
@@ -105,13 +106,13 @@ class OverallStats extends StatelessWidget {
                 crossAxisAlignment: .stretch,
                 children: [
                   ScoreCard(
-                    alignment: .start,
+                    placement: .topLeft,
                     title: s.totalPlayedLabel,
                     value: statistics.totalGames,
                     background: statistics.totalGames > 0 ? colours.onSurface.withAlpha(50) : null,
                   ),
                   ScoreCard(
-                    alignment: .start,
+                    placement: .bottomLeft,
                     title: s.bestScoreLabel,
                     value: statistics.bestGames.firstOrNull?.score ?? 0,
                   ),
@@ -124,12 +125,17 @@ class OverallStats extends StatelessWidget {
                 crossAxisAlignment: .stretch,
                 children: [
                   ScoreCard(
-                    alignment: .end,
+                    placement: .topRight,
                     title: s.totalClearedLabel,
                     value: statistics.cleared,
-                    primary: statistics.cleared > 0,
+                    background: statistics.cleared > 0 ? DecorColour.green.background : null,
+                    foreground: statistics.cleared > 0 ? colours.onSecondary : null,
                   ),
-                  ScoreCard(alignment: .end, title: s.longestChainLabel, value: statistics.longestChain),
+                  ScoreCard(
+                    placement: .bottomRight,
+                    title: s.longestChainLabel,
+                    value: statistics.longestChain,
+                  ),
                 ],
               ),
             ),
@@ -152,37 +158,40 @@ class OverallStats extends StatelessWidget {
 class ScoreCard extends StatelessWidget {
   const ScoreCard({
     super.key,
-    required this.alignment,
+    required this.placement,
     required this.title,
     required this.value,
-    this.primary = false,
     this.background,
+    this.foreground,
   });
 
-  final CrossAxisAlignment alignment;
   final String title;
   final int value;
-  final bool primary;
   final Color? background;
+  final Color? foreground;
+  final Corner placement;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colours = theme.colorScheme;
-    final fill = primary ? colours.primary : background;
-    final gradient = fill != null
+    final textColour = foreground ?? colours.onSurface;
+    final gradient = background != null
         ? null
         : LinearGradient(
-            colors: <Color>[colours.surfaceContainerHighest, colours.surfaceContainerHighest.withAlpha(0)],
-            begin: alignment == .start ? .bottomStart : .bottomEnd,
-            end: alignment == .start ? .bottomEnd : .bottomStart,
+            colors: <Color>[colours.surfaceContainerHighest, colours.surfaceContainerHigh],
+            begin: _gradientBegin,
+            end: _gradientEnd,
           );
-    final textColour = primary ? colours.onPrimary : colours.onSurface;
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: fill, gradient: gradient),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: background,
+        gradient: gradient,
+      ),
       padding: c.cardPadding,
       child: Column(
-        crossAxisAlignment: alignment,
+        crossAxisAlignment: _align,
         children: [
           Text(
             title,
@@ -202,7 +211,26 @@ class ScoreCard extends StatelessWidget {
       ),
     );
   }
+
+  AlignmentGeometry get _gradientBegin => switch (placement) {
+    .topLeft || .topRight => .topCenter,
+    .bottomLeft || .bottomRight => .bottomCenter,
+  };
+
+  AlignmentGeometry get _gradientEnd => switch (placement) {
+    .topLeft => .bottomRight,
+    .topRight => .bottomLeft,
+    .bottomLeft => .topRight,
+    .bottomRight => .topLeft,
+  };
+
+  CrossAxisAlignment get _align => switch (placement) {
+    .topLeft || .bottomLeft => .start,
+    .topRight || .bottomRight => .end,
+  };
 }
+
+enum Corner { topLeft, topRight, bottomLeft, bottomRight }
 
 class LastGameEntry extends StatelessWidget {
   const LastGameEntry(this.game, {super.key, required this.showLayout});
@@ -260,7 +288,7 @@ class ScoreboardEntry extends StatelessWidget {
         if (place > 1)
           Row(
             children: [
-              Expanded(child: Container(height: 1, color: theme.colorScheme.onSurface.withAlpha(60))),
+              Expanded(child: Container(height: 1, color: theme.colorScheme.onSurface.withAlpha(50))),
             ],
           ),
         ListTile(

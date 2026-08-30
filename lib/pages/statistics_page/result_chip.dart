@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 
 class ResultChip extends StatelessWidget {
@@ -10,8 +11,8 @@ class ResultChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final fill = game.isCleared ? colours.primary : colours.tertiary;
-    final text = game.isCleared ? colours.onPrimary : colours.onTertiary;
+    final fill = game.isCleared ? DecorColour.green.background : colours.secondary;
+    final text = colours.onSecondary;
     final s = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(color: fill, borderRadius: const BorderRadius.all(Radius.circular(100.0))),
