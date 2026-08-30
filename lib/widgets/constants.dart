@@ -35,3 +35,5 @@ const EdgeInsets cardPadding = EdgeInsets.symmetric(
 );
 const EdgeInsets utilPageInsetsHorizontal = EdgeInsets.symmetric(horizontal: utilPageMargin);
 const EdgeInsets utilPageInsets = EdgeInsets.all(utilPageMargin);
+
+const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];

@@ -44,7 +44,7 @@ final class StatisticsTab extends StatelessWidget {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(top: 4),
-                          child: OverallStatsDisplay2(statistics),
+                          child: OverallStatsDisplay(statistics),
                         ),
                         if (last != null)
                           Padding(
@@ -86,8 +86,8 @@ final class StatisticsTab extends StatelessWidget {
   }
 }
 
-class OverallStatsDisplay2 extends StatelessWidget {
-  const OverallStatsDisplay2(this.statistics, {super.key});
+class OverallStatsDisplay extends StatelessWidget {
+  const OverallStatsDisplay(this.statistics, {super.key});
 
   final Statistics statistics;
 
@@ -163,7 +163,8 @@ class ScoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colours = theme.colorScheme;
     final fill = primary ? colours.primary : colours.surfaceContainerHighest;
     final textColour = primary ? colours.onPrimary : colours.onSurface;
     return Container(
@@ -180,55 +181,14 @@ class ScoreCard extends StatelessWidget {
           ),
           Text(
             value.toString(),
-            style: TextStyle(fontSize: 24.0, fontWeight: .w800, color: textColour),
+            style: theme.textTheme.headlineSmall?.copyWith(
+              color: textColour,
+              fontWeight: .w800,
+              fontFeatures: c.fontFeatures,
+            ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class OverallStatsDisplay extends StatelessWidget {
-  const OverallStatsDisplay(this.statistics, {super.key});
-
-  final Statistics statistics;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final s = AppLocalizations.of(context)!;
-    final titleStyle = theme.textTheme.titleSmall;
-    final statStyle = theme.textTheme.titleMedium?.copyWith(fontWeight: .w800);
-    return Row(
-      mainAxisAlignment: .center,
-      spacing: 36.0,
-      children: <Widget>[
-        Pie(total: statistics.totalGames, slice: statistics.cleared),
-        Flexible(
-          child: Column(
-            crossAxisAlignment: .start,
-            children: <Widget>[
-              Text(s.totalPlayedLabel, style: titleStyle, overflow: .fade, softWrap: false),
-              Text(statistics.totalGames.toString(), style: statStyle),
-              SizedBox(height: c.itemSpacing),
-              Text(s.totalClearedLabel, style: titleStyle, overflow: .fade, softWrap: false),
-              Text(statistics.cleared.toString(), style: statStyle),
-            ],
-          ),
-        ),
-        Flexible(
-          child: Column(
-            crossAxisAlignment: .start,
-            children: <Widget>[
-              Text(s.bestScoreLabel, style: titleStyle, overflow: .fade, softWrap: false),
-              Text((statistics.bestGames.firstOrNull?.score ?? 0).toString(), style: statStyle),
-              SizedBox(height: c.itemSpacing),
-              Text(s.longestChainLabel, style: titleStyle, overflow: .fade, softWrap: false),
-              Text(statistics.longestChain.toString(), style: statStyle),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
@@ -309,6 +269,7 @@ class ScoreboardEntry extends StatelessWidget {
                 style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: .w800,
                   color: theme.colorScheme.onSurfaceVariant,
+                  fontFeatures: c.fontFeatures,
                 ),
               ),
               ResultChip(game),

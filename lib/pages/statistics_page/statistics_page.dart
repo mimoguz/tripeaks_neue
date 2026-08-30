@@ -160,4 +160,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
       ),
     );
   }
+
+  static const _fontFeatures = <FontFeature>[.proportionalFigures(), .liningFigures()];
 }
