@@ -1,6 +1,7 @@
 import 'dart:math' as maths;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class Pie extends StatelessWidget {
   const Pie({super.key, required this.total, required this.slice, this.size = 80});
@@ -31,7 +32,7 @@ class Pie extends StatelessWidget {
         ),
         Text(
           total == 0 ? "" : "${f.format(slice / total.toDouble() * 100.0)}%",
-          style: TextStyle(fontWeight: .w800),
+          style: TextStyle(fontWeight: .w800, fontFeatures: c.fontFeatures),
         ),
       ],
     );
@@ -87,13 +88,6 @@ final class PiePainter extends CustomPainter {
       return;
     }
 
-    final ringAngle = _tau * ((total - slice) / total.toDouble());
-    final sliceAngle = _tau - ringAngle;
-    // I need to fix the effect of the round stroke cap.
-    // The overhang diameter will be the stroke thickness. Use that the
-    // extra angle:
-    final fixAngle = maths.atan2(thickness, rect.width);
-
     pt.color = ringColour;
     canvas.drawOval(rect, pt);
 
@@ -101,6 +95,12 @@ final class PiePainter extends CustomPainter {
       return;
     }
 
+    final ringAngle = _tau * ((total - slice) / total.toDouble());
+    final sliceAngle = _tau - ringAngle;
+    // I need to fix the effect of the round stroke cap.
+    // The overhang diameter will be the stroke thickness. Use that  estimate
+    // the error angle:
+    final fixAngle = maths.atan2(thickness, rect.width);
     pt.color = sliceColour;
     canvas.drawArc(rect, _start + fixAngle, sliceAngle - 2 * fixAngle, false, pt);
   }
