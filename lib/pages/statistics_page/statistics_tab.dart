@@ -42,10 +42,7 @@ final class StatisticsTab extends StatelessWidget {
                     padding: const EdgeInsets.all(c.utilPageMargin),
                     child: GroupTile(
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4),
-                          child: OverallStatsDisplay(statistics),
-                        ),
+                        Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
                         if (last != null)
                           Padding(
                             padding: const EdgeInsets.only(top: _verticalSpacing),
@@ -86,8 +83,8 @@ final class StatisticsTab extends StatelessWidget {
   }
 }
 
-class OverallStatsDisplay extends StatelessWidget {
-  const OverallStatsDisplay(this.statistics, {super.key});
+class OverallStats extends StatelessWidget {
+  const OverallStats(this.statistics, {super.key});
 
   final Statistics statistics;
 
@@ -107,12 +104,16 @@ class OverallStatsDisplay extends StatelessWidget {
                 spacing: 8.0,
                 crossAxisAlignment: .stretch,
                 children: [
-                  ScoreCard(alignment: .start, title: s.totalPlayedLabel, value: statistics.totalGames),
                   ScoreCard(
                     alignment: .start,
-                    title: s.totalClearedLabel,
-                    value: statistics.cleared,
-                    primary: statistics.cleared > 0,
+                    title: s.totalPlayedLabel,
+                    value: statistics.totalGames,
+                    background: statistics.totalGames > 0 ? colours.onSurface.withAlpha(50) : null,
+                  ),
+                  ScoreCard(
+                    alignment: .start,
+                    title: s.bestScoreLabel,
+                    value: statistics.bestGames.firstOrNull?.score ?? 0,
                   ),
                 ],
               ),
@@ -124,8 +125,9 @@ class OverallStatsDisplay extends StatelessWidget {
                 children: [
                   ScoreCard(
                     alignment: .end,
-                    title: s.bestScoreLabel,
-                    value: statistics.bestGames.firstOrNull?.score ?? 0,
+                    title: s.totalClearedLabel,
+                    value: statistics.cleared,
+                    primary: statistics.cleared > 0,
                   ),
                   ScoreCard(alignment: .end, title: s.longestChainLabel, value: statistics.longestChain),
                 ],
@@ -136,10 +138,10 @@ class OverallStatsDisplay extends StatelessWidget {
         Align(
           alignment: .center,
           child: Container(
-            width: 96,
-            height: 96,
+            width: 112,
+            height: 112,
             decoration: BoxDecoration(color: colours.surfaceContainerHigh, shape: BoxShape.circle),
-            child: Pie(total: statistics.totalGames, slice: statistics.cleared, size: 80),
+            child: Pie(total: statistics.totalGames, slice: statistics.cleared, size: 96),
           ),
         ),
       ],
@@ -154,28 +156,37 @@ class ScoreCard extends StatelessWidget {
     required this.title,
     required this.value,
     this.primary = false,
+    this.background,
   });
 
   final CrossAxisAlignment alignment;
   final String title;
   final int value;
   final bool primary;
+  final Color? background;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colours = theme.colorScheme;
-    final fill = primary ? colours.primary : colours.surfaceContainerHighest;
+    final fill = primary ? colours.primary : background;
+    final gradient = fill != null
+        ? null
+        : LinearGradient(
+            colors: <Color>[colours.surfaceContainerHighest, colours.surfaceContainerHighest.withAlpha(0)],
+            begin: alignment == .start ? .bottomStart : .bottomEnd,
+            end: alignment == .start ? .bottomEnd : .bottomStart,
+          );
     final textColour = primary ? colours.onPrimary : colours.onSurface;
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: fill),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: fill, gradient: gradient),
       padding: c.cardPadding,
       child: Column(
         crossAxisAlignment: alignment,
         children: [
           Text(
             title,
-            style: TextStyle(color: textColour.withAlpha(180)),
+            style: TextStyle(color: textColour.withAlpha(190)),
             softWrap: false,
             overflow: .fade,
           ),

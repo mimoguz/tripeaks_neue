@@ -120,6 +120,6 @@ final class PiePainter extends CustomPainter {
   }
 
   static const _tau = 2.0 * maths.pi;
-  static const _start = maths.pi * 0.5;
+  static const _start = maths.pi * -0.5;
   // static const _gap = 0.12;
 }
