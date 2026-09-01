@@ -184,14 +184,11 @@ class ScoreCard extends StatelessWidget {
             end: _gradientEnd,
           );
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: background,
-        gradient: gradient,
-      ),
+      decoration: BoxDecoration(borderRadius: c.commonBorderRadius, color: background, gradient: gradient),
       padding: c.cardPadding,
       child: Column(
         crossAxisAlignment: _align,
+        mainAxisAlignment: .center,
         children: [
           Text(
             title,
@@ -201,6 +198,7 @@ class ScoreCard extends StatelessWidget {
           ),
           Text(
             value.toString(),
+            textHeightBehavior: _textHeightBehaviour,
             style: theme.textTheme.headlineSmall?.copyWith(
               color: textColour,
               fontWeight: .w800,
@@ -228,6 +226,11 @@ class ScoreCard extends StatelessWidget {
     .topLeft || .bottomLeft => .start,
     .topRight || .bottomRight => .end,
   };
+
+  static const _textHeightBehaviour = TextHeightBehavior(
+    applyHeightToFirstAscent: true,
+    applyHeightToLastDescent: false,
+  );
 }
 
 enum Corner { topLeft, topRight, bottomLeft, bottomRight }

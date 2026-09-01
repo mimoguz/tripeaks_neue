@@ -37034,12 +37034,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.''',
   );
 
-/// tripeaks_neue 0.9.60+12
+/// tripeaks_neue 0.9.61+13
 const _tripeaks_neue = Package(
     name: 'tripeaks_neue',
     description: 'A Tri Peaks patience (solitaire) game',
     authors: [],
-    version: '0.9.60+12',
+    version: '0.9.61+13',
     spdxIdentifiers: ['AGPL-3.0'],
     isMarkdown: false,
     isSdk: false,

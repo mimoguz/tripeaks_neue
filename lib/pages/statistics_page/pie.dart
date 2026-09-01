@@ -113,7 +113,7 @@ final class PiePainter extends CustomPainter {
     final path = Path()..fillType = .evenOdd;
     final style = pt.style;
     pt.style = .fill;
-    path.addPath(StarBorder(points: 18, innerRadiusRatio: 0.9).getOuterPath(outerRect), Offset.zero);
+    path.addPath(StarBorder(points: 20, innerRadiusRatio: 0.9).getOuterPath(outerRect), Offset.zero);
     path.addOval(innerRect);
 
     canvas.drawPath(path, pt);
