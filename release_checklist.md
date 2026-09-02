@@ -11,7 +11,7 @@
 - [x] Flatpak changelog
 - [x] Flatpak screenshots
 - [x] Flatpak icon
-- [ ] Flatpak metainfo lint
+- [x] Flatpak metainfo lint
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
 - [x] Readme images
