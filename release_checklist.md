@@ -15,10 +15,10 @@
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
 - [x] Readme images
-- [ ] Web release, base href "/tripeaks_neue/"
-- [ ] For itch.io base href must be empty string
-- [ ] itch.io screenshots
+- [x] Web release, base href "/tripeaks_neue/"
+- [x] For itch.io base href must be empty string
+- [x] itch.io screenshots
 
 ## Post release:
 
-- [ ] Update Flathub build manifest 
+- [x] Update Flathub build manifest 
