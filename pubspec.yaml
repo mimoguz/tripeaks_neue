@@ -67,3 +67,11 @@ flutter:
     - family: Outfit
       fonts:
         - asset: fonts/Outfit-VariableFont_wght.ttf
+    - family: Peckish
+      fonts:
+        - asset: fonts/Peckish-Light.ttf
+          weight: 300
+        - asset: fonts/Peckish-Regular.ttf
+          weight: 400
+        - asset: fonts/Peckish-Medium.ttf
+          weight: 500

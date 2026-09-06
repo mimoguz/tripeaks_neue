@@ -114,11 +114,12 @@ final class ActiveCardFace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(bottom: 4.0),
       child: Column(
-        spacing: 4.0,
+        spacing: 6.0,
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [RankText(card), SuitImage(card)],
+        mainAxisSize: .min,
+        children: [Spacer(), RankText(card), SuitImage(card), Spacer()],
       ),
     );
   }
@@ -166,7 +167,7 @@ final class HorizontalSmallFace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0 - _suitCorrection(cardValue), 8.0),
+      padding: EdgeInsets.fromLTRB(11.0, 8.0, 12.0 - _suitCorrection(cardValue), 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [RankTextSm(cardValue), SuitImageSm(cardValue)],
@@ -183,7 +184,7 @@ final class HorizontalSmallFaceAlt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(12.0 - _suitCorrection(cardValue), 8.0, 12.0, 8.0),
+      padding: EdgeInsets.fromLTRB(12.0 - _suitCorrection(cardValue), 8.0, 11.0, 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [SuitImageSm(cardValue), RankTextSm(cardValue)],
@@ -216,18 +217,9 @@ final class RankText extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
-    return Baseline(
-      baseline: (c.inactiveRankSize * 0.91667).roundToDouble(),
-      baselineType: TextBaseline.alphabetic,
-      child: Text(
-        cardValue.rank.character,
-        style: TextStyle(
-          fontFamily: "Outfit",
-          fontSize: c.activeRankSize,
-          color: colour,
-          fontVariations: [FontVariation("wght", 400)],
-        ),
-      ),
+    return Text(
+      cardValue.rank.character,
+      style: TextStyle(fontFamily: "Peckish", fontSize: c.activeRankSize, fontWeight: .w500, color: colour),
     );
   }
 }
@@ -241,18 +233,9 @@ final class RankTextSm extends StatelessWidget {
   Widget build(BuildContext context) {
     // final colour = Theme.of(context).brightness == Brightness.dark ? Colors.black : Colors.white70;
     final colour = Colors.white70;
-    return Baseline(
-      baseline: (c.inactiveRankSize * 0.91667).roundToDouble(),
-      baselineType: TextBaseline.alphabetic,
-      child: Text(
-        cardValue.rank.character,
-        style: TextStyle(
-          fontFamily: "Outfit",
-          fontSize: c.inactiveRankSize,
-          color: colour,
-          fontVariations: [FontVariation("wght", 400)],
-        ),
-      ),
+    return Text(
+      cardValue.rank.character,
+      style: TextStyle(fontFamily: "Peckish", fontSize: c.inactiveRankSize, color: colour, fontWeight: .w400),
     );
   }
 }

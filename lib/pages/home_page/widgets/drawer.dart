@@ -31,29 +31,41 @@ class HomePageDrawer extends StatelessWidget {
             SliverAppBar.large(
               pinned: true,
               foregroundColor: colours.onSurfaceVariant,
-              title: RichText(
-                text: TextSpan(
-                  text: "TriPeaks",
-                  style: TextStyle(
-                    fontFamily: "Outfit",
-                    fontSize: 18,
-                    color: colours.onSurfaceVariant,
-                    fontVariations: [FontVariation("wght", 400)],
-                  ),
-                  children: [
-                    TextSpan(
-                      text: " NEUE",
-                      style: TextStyle(
-                        fontFamily: "Outfit",
-                        fontSize: 18,
-                        letterSpacing: 4.0,
-                        color: colours.tertiary.withAlpha(180),
-                        fontVariations: [FontVariation("wght", 200)],
-                      ),
+              title: Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: RichText(
+                  text: TextSpan(
+                    text: "TriPeaks",
+                    style: TextStyle(
+                      fontFamily: "Peckish",
+                      fontSize: 11,
+                      color: colours.onSurfaceVariant,
+                      fontWeight: .w300,
                     ),
-                  ],
+                    children: [
+                      TextSpan(
+                        text: " ",
+                        style: TextStyle(
+                          fontFamily: "Peckish",
+                          fontSize: 11,
+                          letterSpacing: 2.0,
+                          fontWeight: .w300,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "NEUE",
+                        style: TextStyle(
+                          fontFamily: "Peckish",
+                          fontSize: 12,
+                          letterSpacing: 6.0,
+                          color: colours.tertiary.withAlpha(200),
+                          fontWeight: .w300,
+                        ),
+                      ),
+                    ],
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-                overflow: TextOverflow.ellipsis,
               ),
               leading: CloseButton(),
               actions: [
