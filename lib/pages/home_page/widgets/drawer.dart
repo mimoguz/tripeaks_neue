@@ -32,13 +32,15 @@ class HomePageDrawer extends StatelessWidget {
               pinned: true,
               foregroundColor: colours.onSurfaceVariant,
               title: Padding(
-                padding: const EdgeInsets.only(left: 2),
+                padding: const EdgeInsets.only(left: 2.0, bottom: 2.0),
                 child: RichText(
                   text: TextSpan(
                     text: "TriPeaks",
                     style: TextStyle(
                       fontFamily: "Peckish",
-                      fontSize: 11,
+                      fontSize: 12,
+                      letterSpacing: 1.0,
+                      textBaseline: .alphabetic,
                       color: colours.onSurfaceVariant,
                       fontWeight: .w300,
                     ),
@@ -47,8 +49,9 @@ class HomePageDrawer extends StatelessWidget {
                         text: " ",
                         style: TextStyle(
                           fontFamily: "Peckish",
-                          fontSize: 11,
-                          letterSpacing: 2.0,
+                          fontSize: 12,
+                          letterSpacing: 2,
+                          textBaseline: .alphabetic,
                           fontWeight: .w300,
                         ),
                       ),
@@ -57,7 +60,7 @@ class HomePageDrawer extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: "Peckish",
                           fontSize: 12,
-                          letterSpacing: 6.0,
+                          letterSpacing: 4.0,
                           color: colours.tertiary.withAlpha(200),
                           fontWeight: .w300,
                         ),

@@ -219,7 +219,13 @@ final class RankText extends StatelessWidget {
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
     return Text(
       cardValue.rank.character,
-      style: TextStyle(fontFamily: "Peckish", fontSize: c.activeRankSize, fontWeight: .w500, color: colour),
+      style: TextStyle(
+        fontFamily: "Peckish",
+        fontSize: c.activeRankSize,
+        fontWeight: .w500,
+        color: colour,
+        letterSpacing: 1.0,
+      ),
     );
   }
 }
