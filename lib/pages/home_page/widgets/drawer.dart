@@ -38,7 +38,7 @@ class HomePageDrawer extends StatelessWidget {
                     text: "TriPeaks",
                     style: TextStyle(
                       fontFamily: "Peckish",
-                      fontSize: 12,
+                      fontSize: 14,
                       textBaseline: .alphabetic,
                       color: colours.onSurfaceVariant,
                       fontWeight: .w300,
@@ -48,8 +48,8 @@ class HomePageDrawer extends StatelessWidget {
                         text: " ",
                         style: TextStyle(
                           fontFamily: "Peckish",
-                          fontSize: 12,
-                          letterSpacing: 2,
+                          fontSize: 14,
+                          letterSpacing: 4.0,
                           textBaseline: .alphabetic,
                           fontWeight: .w300,
                         ),
@@ -58,8 +58,8 @@ class HomePageDrawer extends StatelessWidget {
                         text: "NEUE",
                         style: TextStyle(
                           fontFamily: "Peckish",
-                          fontSize: 12,
-                          letterSpacing: 4.0,
+                          fontSize: 14,
+                          letterSpacing: 6.0,
                           color: colours.tertiary.withAlpha(200),
                           fontWeight: .w300,
                         ),
