@@ -39,7 +39,6 @@ class HomePageDrawer extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: "Peckish",
                       fontSize: 12,
-                      letterSpacing: 1.0,
                       textBaseline: .alphabetic,
                       color: colours.onSurfaceVariant,
                       fontWeight: .w300,
