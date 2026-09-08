@@ -43,11 +43,13 @@ class HomePageDrawer extends StatelessWidget {
                       fontWeight: .w300,
                     ),
                     children: [
+                      TextSpan(text: "  "),
                       TextSpan(
-                        text: " NEUE",
+                        text: "NEUE",
                         style: TextStyle(
                           fontFamily: "Peckish",
                           fontSize: 14,
+                          letterSpacing: 1.0,
                           color: colours.tertiary.withAlpha(200),
                           fontWeight: .w400,
                         ),

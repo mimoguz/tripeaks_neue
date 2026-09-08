@@ -32,9 +32,9 @@
      inkscape:document-units="px"
      showgrid="true"
      showguides="true"
-     inkscape:zoom="1.198079"
-     inkscape:cx="14712.302"
-     inkscape:cy="325.52111"
+     inkscape:zoom="0.35"
+     inkscape:cx="12045.714"
+     inkscape:cy="551.42857"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -1167,7 +1167,8 @@
     <path
        id="path45"
        style="baseline-shift:baseline;display:inline;overflow:visible;opacity:1;vector-effect:none;fill:#1a1a1a;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
-       d="m 11952.096,174 c -91.544,0 -157,74.87795 -157,162 0,87.12204 65.456,162 157,162 39.616,0 74.346,-14.02229 101,-36.99219 V 488 h 56 V 184 h -56 v 26.99219 C 12026.442,188.02229 11991.712,174 11952.096,174 Z m 0,52.31055 c 62.455,0 100.998,48.79952 100.998,109.68945 0,60.88992 -38.543,109.68945 -100.998,109.68945 -62.456,0 -101,-48.79953 -101,-109.68945 0,-60.88993 38.544,-109.68945 101,-109.68945 z" />
+       d="m 11963,174 c -95,0 -157,74.87795 -157,162 0,87.12204 62,162 157,162 39.616,0 81,-18 101,-42 v 32 h 56 V 184 h -56 v 32 c -20,-24 -61.384,-42 -101,-42 z m 0,52.31055 c 62.455,0 102.998,48.79952 102.998,109.68945 0,60.88992 -40.543,109.68945 -102.998,109.68945 -62.456,0 -101,-48.79953 -101,-109.68945 0,-60.88993 38.544,-109.68945 101,-109.68945 z"
+       sodipodi:nodetypes="sssccccccssssss" />
     <path
        style="baseline-shift:baseline;display:inline;overflow:visible;opacity:1;vector-effect:none;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
        d="M 16282.752,14 C 16172.825,14 16094,103.64471 16094,258 c 0,155.43247 80.296,240 188.752,240 108.465,0 188.75,-84.58197 188.75,-240 0,-154.35292 -78.818,-244 -188.75,-244 z m 0,51.826653 c 123.371,0 132.75,148.337427 132.75,192.173347 0,50.4477 -11.455,188.17335 -132.75,188.17335 C 16161.454,446.17335 16150,308.44854 16150,258 c 0,-43.84262 9.38,-192.173347 132.752,-192.173347 z"
@@ -1212,6 +1213,19 @@
        style="fill:#000000;stroke:none;stroke-width:70.0001;stroke-linejoin:miter"
        d="m 20539.238,488 123.942,-200.98438 c 9.333,-15.135 24.345,-39.95204 29.697,-56.86523 5.364,-16.94987 9.123,-37.02598 9.123,-56.15039 0,-88.033912 -71.966,-160.000002 -160,-160.000002 -88.034,0 -160,71.96609 -160,160.000002 0,88.03391 71.966,160 160,160 10.451,0 20.677,-1.01408 30.581,-2.94922 L 20477.794,488 Z M 20542,278 c -57.769,0 -104,-46.23074 -104,-104 0,-57.76926 46.231,-104.000002 104,-104.000002 57.769,0 104,46.230742 104,104.000002 0,57.76926 -46.231,104 -104,104 z"
        sodipodi:nodetypes="ccssssscccsssss" />
+    <text
+       xml:space="preserve"
+       style="font-size:192px;font-family:'League Spartan';-inkscape-font-specification:'League Spartan';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke-width:30;stroke-miterlimit:10"
+       x="13876.191"
+       y="-1014.9119"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="13876.191"
+         y="-1014.9119"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Outfit;-inkscape-font-specification:Outfit">TriPeaks <tspan
+   style="font-style:normal;font-variant:normal;font-weight:200;font-stretch:normal;font-family:Outfit;-inkscape-font-specification:'Outfit Ultra-Light'"
+   id="tspan2">NEUE</tspan></tspan></text>
   </g>
   <metadata
      id="metadata1">
