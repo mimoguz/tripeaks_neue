@@ -23,7 +23,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1788846175
+ModificationTime: 1788883331
 PfmFamily: 33
 TTFWeight: 400
 TTFWidth: 5
@@ -58,7 +58,7 @@ WinInfo: 19 19 7
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
-BeginChars: 257 25
+BeginChars: 258 25
 
 StartChar: A
 Encoding: 65 65 0
@@ -140,25 +140,25 @@ EndChar
 
 StartChar: K
 Encoding: 75 75 3
-Width: 791
+Width: 806
 Flags: HW
 LayerCount: 2
 Fore
 SplineSet
-48 928 m 1
- 160 928 l 1
- 160 470 l 1
- 615 928 l 1
- 767 928 l 1
- 765 926 l 1
- 307 464 l 1
- 765 2 l 1
- 767 0 l 1
- 615 0 l 1
- 160 458 l 1
- 160 0 l 1
- 48 0 l 1
- 48 928 l 1
+48 928 m 5
+ 160 928 l 5
+ 160 471 l 5
+ 629 928 l 5
+ 783 928 l 5
+ 781 925 l 5
+ 308 464 l 5
+ 781 3 l 5
+ 783 0 l 5
+ 629 0 l 5
+ 160 457 l 5
+ 160 0 l 5
+ 48 0 l 5
+ 48 928 l 5
 EndSplineSet
 Validated: 1
 EndChar
@@ -443,7 +443,7 @@ SplineSet
  160 824 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 18 -22 "HKern-10"
+Kerns2: 18 12 "HKern-10"
 EndChar
 
 StartChar: T
@@ -464,7 +464,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 16 -38 "HKern-10"
+Kerns2: 16 -60 "HKern-10"
 EndChar
 
 StartChar: r
@@ -487,7 +487,7 @@ SplineSet
  210 604 276 628 346 628 c 0
 EndSplineSet
 Validated: 1
-Kerns2: 17 40 "HKern-10"
+Kerns2: 17 54 "HKern-10"
 EndChar
 
 StartChar: i
@@ -509,7 +509,7 @@ SplineSet
  48 608 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 14 40 "HKern-10"
+Kerns2: 14 96 "HKern-10"
 EndChar
 
 StartChar: e
@@ -535,7 +535,7 @@ SplineSet
  527 513 413 540 348 540 c 0
 EndSplineSet
 Validated: 1
-Kerns2: 19 48 "HKern-10"
+Kerns2: 19 70 "HKern-10"
 EndChar
 
 StartChar: a
@@ -562,7 +562,7 @@ SplineSet
  544 426 467 523 342 523 c 0
 EndSplineSet
 Validated: 1
-Kerns2: 20 36 "HKern-10"
+Kerns2: 20 96 "HKern-10"
 EndChar
 
 StartChar: k
@@ -586,7 +586,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 21 8 "HKern-10"
+Kerns2: 21 44 "HKern-10"
 EndChar
 
 StartChar: s
@@ -617,7 +617,7 @@ SplineSet
  155 613 211 628 271 628 c 0
 EndSplineSet
 Validated: 1
-Kerns2: 22 320 "HKern-10"
+Kerns2: 22 400 "HKern-10"
 EndChar
 
 StartChar: N
@@ -640,7 +640,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 23 320 "HKern-10"
+Kerns2: 23 400 "HKern-10"
 EndChar
 
 StartChar: E
@@ -665,7 +665,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 24 320 "HKern-10"
+Kerns2: 24 400 "HKern-10"
 EndChar
 
 StartChar: U
@@ -696,7 +696,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 23 320 "HKern-10"
+Kerns2: 23 400 "HKern-10"
 EndChar
 EndChars
 EndSplineFont
