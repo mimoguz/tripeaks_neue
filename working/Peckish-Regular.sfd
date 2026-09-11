@@ -58,7 +58,7 @@ WinInfo: 19 19 7
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
-BeginChars: 259 25
+BeginChars: 261 25
 
 StartChar: A
 Encoding: 65 65 0
@@ -443,7 +443,7 @@ SplineSet
  160 824 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 18 12 "HKern-10"
+Kerns2: 18 24 "HKern-10"
 EndChar
 
 StartChar: T
@@ -464,7 +464,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 16 -60 "HKern-10"
+Kerns2: 16 -48 "HKern-10"
 EndChar
 
 StartChar: r
@@ -487,7 +487,7 @@ SplineSet
  210 604 276 628 346 628 c 0
 EndSplineSet
 Validated: 1
-Kerns2: 17 54 "HKern-10"
+Kerns2: 17 66 "HKern-10"
 EndChar
 
 StartChar: i
@@ -509,7 +509,7 @@ SplineSet
  48 608 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 14 96 "HKern-10"
+Kerns2: 14 108 "HKern-10"
 EndChar
 
 StartChar: e
@@ -534,13 +534,13 @@ SplineSet
  552 381 l 1
  527 513 413 540 348 540 c 0
 EndSplineSet
-Kerns2: 19 70 "HKern-10"
+Kerns2: 19 82 "HKern-10"
 EndChar
 
 StartChar: a
 Encoding: 97 97 19
 Width: 704
-Flags: HWO
+Flags: HW
 LayerCount: 2
 Fore
 SplineSet
@@ -560,7 +560,7 @@ SplineSet
  467 85 552 176 552 304 c 0
  552 432 467 523 342 523 c 0
 EndSplineSet
-Kerns2: 20 96 "HKern-10"
+Kerns2: 20 108 "HKern-10"
 EndChar
 
 StartChar: k
@@ -584,7 +584,7 @@ SplineSet
  48 928 l 1
 EndSplineSet
 Validated: 1
-Kerns2: 21 44 "HKern-10"
+Kerns2: 21 56 "HKern-10"
 EndChar
 
 StartChar: s
@@ -615,7 +615,7 @@ SplineSet
  155 613 211 628 271 628 c 0
 EndSplineSet
 Validated: 1
-Kerns2: 22 400 "HKern-10"
+Kerns2: 22 108 "HKern-10"
 EndChar
 
 StartChar: N
@@ -637,7 +637,7 @@ SplineSet
  41 -10 l 1
  41 936 l 1
 EndSplineSet
-Kerns2: 23 400 "HKern-10"
+Kerns2: 23 108 "HKern-10"
 EndChar
 
 StartChar: E
@@ -661,7 +661,7 @@ SplineSet
  42 -10 l 1
  42 936 l 1
 EndSplineSet
-Kerns2: 24 400 "HKern-10"
+Kerns2: 24 108 "HKern-10"
 EndChar
 
 StartChar: U
@@ -691,7 +691,7 @@ SplineSet
  41 410 41 421 41 431 c 6
  41 936 l 5
 EndSplineSet
-Kerns2: 23 400 "HKern-10"
+Kerns2: 23 108 "HKern-10"
 EndChar
 EndChars
 EndSplineFont
