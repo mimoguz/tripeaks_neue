@@ -14,26 +14,25 @@ class About extends StatelessWidget {
       child: DefaultTextStyle(
         style: textTheme.bodyMedium!.copyWith(height: 1.8),
         // TODO: Move to arb
-        child: ListView(
+        child: SingleChildScrollView(
           padding: EdgeInsets.fromLTRB(
             c.cardPaddingHorizontal,
             0,
             c.cardPaddingHorizontal,
             c.cardPaddingVertical,
           ),
-          children: [
-            LicenseEntry(
-              link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
-              title: "Tripeaks NEUE v$version",
-              description: "Oguz Tas, 2026.\nSolvable game algorithm was developed by Lykae.",
-              license: "GNU Affero General Public License (AGPL) Version 3",
-              exceptions: [
-                "fonts/actions.ttf: This file includes symbols derived from "
-                    "Material Icons, and therefore available under Apache License "
-                    "Version 2.0 (same as Material Icons).",
-              ],
-            ),
-          ],
+          child: LicenseEntry(
+            link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
+            title: "Tripeaks NEUE v$version",
+            description: "Oguz Tas, 2026.\nSolvable game algorithm was developed by Lykae.",
+            license: "GNU Affero General Public License (AGPL) Version 3",
+            licenseLink: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt"),
+            exceptions: [
+              "fonts/actions.ttf: This file includes symbols derived from "
+                  "Material Icons, and therefore available under Apache License "
+                  "Version 2.0 (same as Material Icons).",
+            ],
+          ),
         ),
       ),
     );
@@ -47,6 +46,7 @@ final class LicenseEntry extends StatelessWidget {
     super.key,
     required this.title,
     required this.license,
+    this.licenseLink,
     this.link,
     this.description,
     this.exceptions = const <String>[],
@@ -57,6 +57,7 @@ final class LicenseEntry extends StatelessWidget {
   final String? description;
   final String license;
   final List<String> exceptions;
+  final Uri? licenseLink;
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +70,18 @@ final class LicenseEntry extends StatelessWidget {
         children: [
           Text(title, style: textTheme.titleMedium),
           if (description != null) Text(description!),
+          if (link != null) ExternalLink(uri: link!),
           Divider(height: c.itemSpacing * 2.0),
           Text("License", style: textTheme.titleMedium),
           Text("Available under $license."),
-          if (exceptions.isNotEmpty) Text("Exceptions", style: textTheme.titleSmall),
+          if (licenseLink != null) ExternalLink(uri: licenseLink!),
+          if (exceptions.isNotEmpty)
+            Padding(
+              padding: EdgeInsetsGeometry.only(top: 8),
+              child: Text("Exceptions", style: textTheme.titleSmall),
+            ),
           if (exceptions.isNotEmpty)
             for (final e in exceptions) Text(e, style: textTheme.bodySmall),
-          if (link != null) ExternalLink(uri: link!),
         ],
       ),
     );
