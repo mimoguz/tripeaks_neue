@@ -8,6 +8,7 @@ import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class HomePageDrawer extends StatelessWidget {
@@ -28,42 +29,12 @@ class HomePageDrawer extends StatelessWidget {
       child: ScrollIndicator(
         child: CustomScrollView(
           slivers: [
-            SliverAppBar.large(
+            SliverAppBar.medium(
               pinned: true,
               backgroundColor: colours.surfaceContainerLowest,
-              title: Row(
-                spacing: 6.0,
-                mainAxisAlignment: .center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 6.0),
-                    child: Text(
-                      "TriPeaks",
-                      textAlign: .right,
-                      style: TextStyle(
-                        fontFamily: "Peckish",
-                        fontSize: 14,
-                        color: colours.onSurfaceVariant,
-                        fontWeight: .w300,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "NEUE",
-                    textAlign: .left,
-                    style: TextStyle(
-                      fontFamily: "Peckish",
-                      fontSize: 14,
-                      letterSpacing: 10.0,
-                      color: colours.tertiary,
-                      fontWeight: .w300,
-                    ),
-                  ),
-                ],
-              ),
+              bottom: PreferredSize(preferredSize: Size.fromHeight(20.0), child: const AppTitle()),
               foregroundColor: colours.onSurfaceVariant,
-
-              leading: CloseButton(),
+              leading: const CloseButton(),
               actions: [
                 IconButton(
                   icon: const Icon(Icons.help),
@@ -110,13 +81,13 @@ class HomePageDrawer extends StatelessWidget {
                     title: s.restartGameAction,
                     intent: const RestartIntent(),
                   ),
-                  Divider(indent: 20, endIndent: 20),
+                  const Divider(indent: 20, endIndent: 20),
                   DrawerListTile(
                     icon: Icons.bar_chart,
                     title: s.statisticsAction,
                     intent: const NavigateToStatisticsIntent(),
                   ),
-                  if (canExit) Divider(indent: 20, endIndent: 20),
+                  if (canExit) const Divider(indent: 20, endIndent: 20),
                   if (canExit)
                     DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
                 ],
@@ -125,6 +96,57 @@ class HomePageDrawer extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class AppTitle extends StatelessWidget {
+  const AppTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colours = Theme.of(context).colorScheme;
+    final neue = TextStyle(
+      fontFamily: "Peckish",
+      fontSize: 14,
+      letterSpacing: 10.0,
+      color: colours.tertiary,
+      fontWeight: .w300,
+    );
+    return Column(
+      children: [
+        Divider(height: 1, color: colours.surfaceContainerLow),
+        Container(
+          color: Color.lerp(colours.surfaceContainerLowest, colours.surfaceTint, 0.08),
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: .spaceBetween,
+            spacing: 4.0,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 66.0),
+                child: Text(
+                  "TriPeaks",
+                  textAlign: .right,
+                  style: TextStyle(
+                    fontFamily: "Peckish",
+                    fontSize: 14,
+                    color: colours.onSurfaceVariant,
+                    fontWeight: .w300,
+                  ),
+                ),
+              ),
+              Text("N", style: neue),
+              Text("E", style: neue),
+              Text("U", style: neue),
+              Padding(
+                padding: const EdgeInsets.only(right: 66.0),
+                child: Text("E", textAlign: .left, style: neue),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -138,12 +160,13 @@ class DrawerListTile<T extends Intent> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ListTile(
-    style: ListTileStyle.drawer,
+    style: .drawer,
     iconColor: Theme.of(context).colorScheme.onSurfaceVariant,
     leading: Icon(icon),
     title: Text(title),
-    shape: StadiumBorder(),
-    visualDensity: VisualDensity.comfortable,
+    shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+    // visualDensity: .compact,
+    horizontalTitleGap: 30,
     onTap: Actions.handler(context, intent),
   );
 }
