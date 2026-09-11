@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/pages/info_page/dependencies.dart';
 import 'package:tripeaks_neue/widgets/expandable_box.dart';
-import 'package:tripeaks_neue/pages/info_page/licenses.dart';
+import 'package:tripeaks_neue/pages/info_page/about.dart';
 import 'package:tripeaks_neue/pages/info_page/privacy_policy.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -30,18 +30,18 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
           spacing: c.utilPageMargin,
           children: [
             ExpandableBox(
+              expanded: _expandIndex == 1,
+              title: Text("About"),
+              icon: Icon(Icons.article, color: colours.onSurfaceVariant),
+              onTap: () => _onTap(1),
+              child: Column(children: [Flexible(child: About())]),
+            ),
+            ExpandableBox(
               expanded: _expandIndex == 0,
               title: Text("Privacy Policy"),
               icon: Icon(Icons.privacy_tip, color: colours.onSurfaceVariant),
               onTap: () => _onTap(0),
               child: Column(children: [Flexible(child: PrivacyPolicy())]),
-            ),
-            ExpandableBox(
-              expanded: _expandIndex == 1,
-              title: Text("Licenses"),
-              icon: Icon(Icons.copyright, color: colours.onSurfaceVariant),
-              onTap: () => _onTap(1),
-              child: Column(children: [Flexible(child: Licenses())]),
             ),
             ExpandableBox(
               expanded: _expandIndex == 2,

@@ -64,9 +64,6 @@ flutter:
     - family: Cards
       fonts:
         - asset: fonts/cards.ttf
-    - family: Outfit
-      fonts:
-        - asset: fonts/Outfit-VariableFont_wght.ttf
     - family: Peckish
       fonts:
         - asset: fonts/Peckish-Regular.ttf
