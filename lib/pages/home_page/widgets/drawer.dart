@@ -30,35 +30,39 @@ class HomePageDrawer extends StatelessWidget {
           slivers: [
             SliverAppBar.large(
               pinned: true,
-              foregroundColor: colours.onSurfaceVariant,
-              title: Padding(
-                padding: const EdgeInsets.only(left: 2.0, bottom: 2.0),
-                child: RichText(
-                  text: TextSpan(
-                    text: "TriPeaks",
+              backgroundColor: colours.surfaceContainerLowest,
+              title: Row(
+                spacing: 6.0,
+                mainAxisAlignment: .center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 6.0),
+                    child: Text(
+                      "TriPeaks",
+                      textAlign: .right,
+                      style: TextStyle(
+                        fontFamily: "Peckish",
+                        fontSize: 14,
+                        color: colours.onSurfaceVariant,
+                        fontWeight: .w300,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "NEUE",
+                    textAlign: .left,
                     style: TextStyle(
                       fontFamily: "Peckish",
                       fontSize: 14,
-                      color: colours.onSurfaceVariant,
+                      letterSpacing: 10.0,
+                      color: colours.tertiary,
                       fontWeight: .w300,
                     ),
-                    children: [
-                      TextSpan(text: "  "),
-                      TextSpan(
-                        text: "NEUE",
-                        style: TextStyle(
-                          fontFamily: "Peckish",
-                          fontSize: 14,
-                          letterSpacing: 1.0,
-                          color: colours.tertiary.withAlpha(200),
-                          fontWeight: .w400,
-                        ),
-                      ),
-                    ],
                   ),
-                  overflow: TextOverflow.ellipsis,
-                ),
+                ],
               ),
+              foregroundColor: colours.onSurfaceVariant,
+
               leading: CloseButton(),
               actions: [
                 IconButton(

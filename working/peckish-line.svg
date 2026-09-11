@@ -30,9 +30,9 @@
      inkscape:document-units="px"
      showgrid="true"
      showguides="false"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="21214.618"
-     inkscape:cy="472.34733"
+     inkscape:zoom="2"
+     inkscape:cx="14549.75"
+     inkscape:cy="521"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -1349,16 +1349,16 @@
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-opacity:1;stroke:#1a1a1a;stroke-width:56;stroke-linecap:butt;stroke-dasharray:none"
-       d="M 14548,24 V 488"
+       d="M 14524,24 V 488"
        id="path65"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;fill-opacity:1;stroke:#1a1a1a;stroke-width:54;stroke-linecap:square;stroke-dasharray:none"
-       d="M 1996,5.999985 1747.8364,256 1996,506.00001"
+       d="M 2004,5.999985 1747.8364,256 2004,506.00001"
        id="path66"
        sodipodi:nodetypes="ccc"
        clip-path="url(#clipPath14)"
-       transform="translate(12863.452)" />
+       transform="translate(12839.452)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:56;stroke-linecap:butt;stroke-dasharray:none"
        d="M 4833.864,488 V 48 l -168,84"
