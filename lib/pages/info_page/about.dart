@@ -25,12 +25,12 @@ class About extends StatelessWidget {
             link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
             title: "Tripeaks NEUE v$version",
             description: "Oguz Tas, 2026.\nSolvable game algorithm was developed by Lykae.",
-            license: "GNU Affero General Public License (AGPL) Version 3",
+            license: "GNU Affero General Public License (AGPL) Version\u00A03",
             licenseLink: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt"),
             exceptions: [
               "fonts/actions.ttf: This file includes symbols derived from "
                   "Material Icons, and therefore available under Apache License "
-                  "Version 2.0 (same as Material Icons).",
+                  "Version\u00A02.0 (same as Material Icons).",
             ],
           ),
         ),
