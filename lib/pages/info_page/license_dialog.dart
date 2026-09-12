@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';

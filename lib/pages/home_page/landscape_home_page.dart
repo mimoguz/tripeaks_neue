@@ -18,7 +18,7 @@ import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -48,10 +48,10 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
   @override
   Widget build(BuildContext context) {
     final scale = _scale(MediaQuery.sizeOf(context));
-    final session = Provider.of<Session>(context);
-    final settings = Provider.of<Settings>(context);
     return Observer(
       builder: (context) {
+        final settings = Provider.of<Settings>(context);
+        final session = Provider.of<Session>(context);
         final game = session.game;
         final back = BackOptions(
           showValue: session.showAll,
@@ -78,7 +78,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                     padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
                     child: Stack(
                       children: [
-                        SwipeArea(intent: const DrawIntent()),
+                        SwipeArea(intent: DrawIntent()),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -162,12 +162,11 @@ class LandscapeHomePageCounter extends StatelessWidget {
         children: [
           Expanded(
             child: Observer(
-              builder:
-                  (context) => CardCounter(
-                    maxCount: game.layout.cardCount,
-                    count: game.remaining,
-                    chainLength: game.chain,
-                  ),
+              builder: (context) => CardCounter(
+                maxCount: game.layout.cardCount,
+                count: game.remaining,
+                chainLength: game.chain,
+              ),
             ),
           ),
         ],
@@ -199,47 +198,53 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
           // onPressed: () => Navigator.of(context).push(createRoute(() => const MenuPage())),
         ),
         Observer(
-          builder:
-              (context) => CircleGameButton(
-                scale: scale,
-                icon: CustomIcons.undo,
-                smallIcon: CustomIcons.undo16,
-                tooltip: s.undoTooltip,
-                onPressed: Actions.handler(context, const RollbackIntent()),
-              ),
+          builder: (context) {
+            final a = Actions.find<RollbackIntent>(context);
+            return CircleGameButton(
+              scale: scale,
+              icon: CustomIcons.undo,
+              smallIcon: CustomIcons.undo16,
+              tooltip: s.undoTooltip,
+              onPressed: a.isActionEnabled ? () => Actions.invoke(context, const RollbackIntent()) : null,
+            );
+          },
         ),
         IgnorePointer(
           child: SizedBox(
             width: c.cardSize * scale,
             height: c.cardSize * scale,
             child: Observer(
-              builder:
-                  (context) =>
-                      game.discard.isEmpty
-                          ? CardPlaceHolder(scale: scale)
-                          : FittedBox(
-                            child: TileCard(
-                              game.discard.last
-                                ..open()
-                                ..put(),
-                              back: back,
-                              orientation: Orientation.landscape,
-                            ),
-                          ),
+              builder: (context) => game.discard.isEmpty
+                  ? CardPlaceHolder(scale: scale)
+                  : FittedBox(
+                      child: TileCard(
+                        game.discard.last
+                          ..open()
+                          ..put(),
+                        back: back,
+                        orientation: Orientation.landscape,
+                      ),
+                    ),
             ),
           ),
         ),
         Spacer(),
-        IgnorePointer(child: LandscapeStock(game, scale: scale, back: back)),
+        IgnorePointer(
+          child: LandscapeStock(game, scale: scale, back: back),
+        ),
         Observer(
-          builder:
-              (context) => GameButton.narrow(
-                scale: scale,
-                icon: CustomIcons.draw,
-                smallIcon: CustomIcons.draw16,
-                tooltip: s.drawTooltip,
-                onPressed: Actions.handler(context, const DrawIntent()),
-              ),
+          builder: (context) {
+            final a = Actions.find<DrawIntent>(context);
+            return GameButton.narrow(
+              scale: scale,
+              icon: CustomIcons.draw,
+              smallIcon: CustomIcons.draw16,
+              tooltip: s.drawTooltip,
+              onPressed: a.isActionEnabled
+                  ? () => Actions.invoke<DrawIntent>(context, const DrawIntent())
+                  : null,
+            );
+          },
         ),
       ],
     );

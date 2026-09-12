@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class WidgetGroup extends StatelessWidget {
   const WidgetGroup({super.key, required this.title, this.subtitle, required this.child});

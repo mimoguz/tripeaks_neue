@@ -2,7 +2,7 @@ import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class LandscapeBoard extends StatelessWidget {
   const LandscapeBoard({super.key, required this.game, required this.back, required this.scale});

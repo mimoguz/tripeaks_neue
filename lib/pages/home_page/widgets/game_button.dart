@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class CircleGameButton extends StatelessWidget {
   const CircleGameButton({

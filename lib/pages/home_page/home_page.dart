@@ -8,7 +8,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/landscape_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/portrait_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/drawer.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Shortcuts(
         shortcuts: <ShortcutActivator, Intent>{
-          SingleActivator(LogicalKeyboardKey.keyD): const DrawIntent(),
+          SingleActivator(LogicalKeyboardKey.keyD): DrawIntent(),
           SingleActivator(LogicalKeyboardKey.keyZ, control: true): const RollbackIntent(),
           SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
           SingleActivator(LogicalKeyboardKey.keyM): const ShowNavigationDrawerIntent(),

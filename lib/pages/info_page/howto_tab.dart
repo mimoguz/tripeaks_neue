@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/widgets/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/how_to_play.dart';
 import 'package:tripeaks_neue/pages/info_page/interaction.dart';

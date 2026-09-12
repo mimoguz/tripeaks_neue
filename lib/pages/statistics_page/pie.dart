@@ -1,5 +1,5 @@
 import 'dart:math' as maths;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;

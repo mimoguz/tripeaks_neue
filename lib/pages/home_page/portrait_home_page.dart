@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
@@ -161,17 +161,16 @@ class PortraitHomePageCounter extends StatelessWidget {
       children: [
         Expanded(
           child: Observer(
-            builder:
-                (context) => IgnorePointer(
-                  child: RotatedBox(
-                    quarterTurns: 3,
-                    child: CardCounter(
-                      maxCount: game.layout.cardCount,
-                      count: game.remaining,
-                      chainLength: game.chain,
-                    ),
-                  ),
+            builder: (context) => IgnorePointer(
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: CardCounter(
+                  maxCount: game.layout.cardCount,
+                  count: game.remaining,
+                  chainLength: game.chain,
                 ),
+              ),
+            ),
           ),
         ),
       ],
@@ -203,47 +202,52 @@ class PortraitHomePageRightArea extends StatelessWidget {
           // onPressed: () => Navigator.of(context).push(createRoute(() => const MenuPage())),
         ),
         Observer(
-          builder:
-              (context) => CircleGameButton(
-                scale: scale,
-                icon: CustomIcons.undo,
-                smallIcon: CustomIcons.undo16,
-                tooltip: s.undoTooltip,
-                onPressed: Actions.handler(context, const RollbackIntent()),
-              ),
+          builder: (context) {
+            final a = Actions.find<RollbackIntent>(context);
+            return CircleGameButton(
+              scale: scale,
+              icon: CustomIcons.undo,
+              smallIcon: CustomIcons.undo16,
+              tooltip: s.undoTooltip,
+              onPressed: a.isActionEnabled ? () => Actions.invoke(context, const RollbackIntent()) : null,
+            );
+          },
         ),
         IgnorePointer(
           child: SizedBox(
             width: c.cardSize * scale,
             height: c.cardSize * scale,
             child: Observer(
-              builder:
-                  (context) =>
-                      game.discard.isEmpty
-                          ? CardPlaceHolder(scale: scale)
-                          : FittedBox(
-                            child: TileCard(
-                              game.discard.last
-                                ..open()
-                                ..put(),
-                              back: back,
-                              orientation: Orientation.portrait,
-                            ),
-                          ),
+              builder: (context) => game.discard.isEmpty
+                  ? CardPlaceHolder(scale: scale)
+                  : FittedBox(
+                      child: TileCard(
+                        game.discard.last
+                          ..open()
+                          ..put(),
+                        back: back,
+                        orientation: Orientation.portrait,
+                      ),
+                    ),
             ),
           ),
         ),
         Spacer(),
-        IgnorePointer(child: PortraitStock(game, scale: scale, back: back)),
+        IgnorePointer(
+          child: PortraitStock(game, scale: scale, back: back),
+        ),
         Observer(
-          builder:
-              (context) => GameButton.wide(
-                scale: scale,
-                icon: CustomIcons.draw,
-                smallIcon: CustomIcons.draw16,
-                tooltip: s.drawTooltip,
-                onPressed: Actions.handler(context, const DrawIntent()),
-              ),
+          builder: (context) {
+            final a = Actions.find<DrawIntent>(context);
+
+            return GameButton.wide(
+              scale: scale,
+              icon: CustomIcons.draw,
+              smallIcon: CustomIcons.draw16,
+              tooltip: s.drawTooltip,
+              onPressed: a.isActionEnabled ? () => Actions.invoke(context, const DrawIntent()) : null,
+            );
+          },
         ),
       ],
     );

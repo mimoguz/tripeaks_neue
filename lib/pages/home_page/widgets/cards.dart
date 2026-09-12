@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
@@ -83,7 +83,7 @@ final class ActiveCard extends StatelessWidget {
         color: colours.secondaryContainer,
         borderRadius: c.commonBorderRadius,
         child: InkWell(
-          onTap: tile.pin.index >= 0 ? Actions.handler(context, TakeIntent(tile.pin)) : null,
+          onTap: tile.pin.index >= 0 ? () => Actions.invoke(context, TakeIntent(tile.pin)) : null,
           borderRadius: c.commonBorderRadius,
           child: Observer(
             builder: (context) {

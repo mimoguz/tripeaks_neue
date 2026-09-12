@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
@@ -65,9 +65,8 @@ class _SettingsPageState extends State<SettingsPage> {
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
                   backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-                  leading: IconButton(
-                    icon: const BackButtonIcon(),
-                    onPressed: Actions.handler(context, const GoBackIntent(saveSettings: true)),
+                  leading: BackButton(
+                    onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
                 ),
                 body: Focus(
