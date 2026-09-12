@@ -8,6 +8,7 @@ import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class HomePageDrawer extends StatelessWidget {
@@ -23,7 +24,7 @@ class HomePageDrawer extends StatelessWidget {
       elevation: 10.0,
       shadowColor: colours.shadow,
       width: 340.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
       clipBehavior: Clip.antiAlias,
       child: ScrollIndicator(
         child: CustomScrollView(
@@ -34,6 +35,7 @@ class HomePageDrawer extends StatelessWidget {
               foregroundColor: colours.onSurfaceVariant,
               iconTheme: IconThemeData(color: colours.onSurfaceVariant),
               titleSpacing: 0,
+              centerTitle: true,
               actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
               title: AppTitle(),
               leading: const CloseButton(),
@@ -106,26 +108,26 @@ class AppTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final tripeaks = TextStyle(
+    final style = TextStyle(
       fontFamily: "Peckish",
-      fontSize: 12,
-      letterSpacing: 10.0,
+      fontSize: 13,
       color: colours.onSurfaceVariant,
       fontWeight: .w300,
     );
-    final neue = tripeaks.copyWith(color: colours.tertiary);
+    final peak = colours.brightness == .dark ? "-" : "*";
+    final neue = style.copyWith(color: colours.tertiary);
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints.loose(Size.fromWidth(180.0)),
+        constraints: BoxConstraints.loose(Size.fromWidth(170.0)),
         child: Semantics(
-          container: true,
-          hint: "Application tile: TriPeaks NEUE",
+          label: "TriPeaks NEUE",
+          hint: "Application title",
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Text("*", style: tripeaks),
-              Text("*", style: tripeaks),
-              Text("*", style: tripeaks),
+              Text(peak, style: style),
+              Text(peak, style: style),
+              Text(peak, style: style),
               Text("N", style: neue),
               Text("E", style: neue),
               Text("U", style: neue),

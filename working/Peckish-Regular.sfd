@@ -23,7 +23,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1789210088
+ModificationTime: 1789223100
 PfmFamily: 33
 TTFWeight: 400
 TTFWidth: 5
@@ -58,7 +58,7 @@ WinInfo: 0 19 7
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
-BeginChars: 263 26
+BeginChars: 263 27
 
 StartChar: A
 Encoding: 65 65 0
@@ -534,6 +534,7 @@ SplineSet
  552 381 l 1
  527 513 413 540 348 540 c 0
 EndSplineSet
+Validated: 1
 Kerns2: 19 100 "HKern-10"
 EndChar
 
@@ -560,6 +561,7 @@ SplineSet
  467 85 552 176 552 304 c 0
  552 432 467 523 342 523 c 0
 EndSplineSet
+Validated: 1
 Kerns2: 20 120 "HKern-10"
 EndChar
 
@@ -637,6 +639,7 @@ SplineSet
  41 -10 l 1
  41 936 l 1
 EndSplineSet
+Validated: 1
 Kerns2: 23 108 "HKern-10"
 EndChar
 
@@ -661,6 +664,7 @@ SplineSet
  42 -10 l 1
  42 936 l 1
 EndSplineSet
+Validated: 1
 Kerns2: 24 108 "HKern-10"
 EndChar
 
@@ -691,11 +695,32 @@ SplineSet
  41 410 41 421 41 431 c 6
  41 936 l 5
 EndSplineSet
+Validated: 1
 Kerns2: 23 108 "HKern-10"
 EndChar
 
 StartChar: asterisk
 Encoding: 42 42 25
+Width: 1024
+Flags: H
+LayerCount: 2
+Fore
+SplineSet
+512 951 m 5
+ 1001 -9 l 5
+ 23 -9 l 5
+ 512 951 l 5
+512 809 m 5
+ 287 368 l 5
+ 737 368 l 5
+ 512 809 l 5
+EndSplineSet
+Validated: 1
+Kerns2: 25 180 "HKern-10"
+EndChar
+
+StartChar: hyphen
+Encoding: 45 45 26
 Width: 1024
 Flags: HO
 LayerCount: 2
@@ -705,11 +730,14 @@ SplineSet
  1001 -9 l 5
  23 -9 l 5
  512 951 l 5
-512 809 m 5
+320 432 m 5
  124 48 l 5
  900 48 l 5
- 512 809 l 5
+ 704 432 l 5
+ 320 432 l 5
 EndSplineSet
+Validated: 1
+Kerns2: 26 180 "HKern-10"
 EndChar
 EndChars
 EndSplineFont
