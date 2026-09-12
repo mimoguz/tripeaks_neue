@@ -3,120 +3,48 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
 
-final class TakeIntent extends Intent {
-  const TakeIntent(this.pin);
+final class const TakeIntent(final Pin pin) extends Intent {}
 
-  final Pin pin;
-}
+final class const DrawIntent() extends Intent;
 
-final class DrawIntent extends Intent {
-  const DrawIntent();
-}
+final class const RollbackIntent() extends Intent;
 
-final class RollbackIntent extends Intent {
-  const RollbackIntent();
-}
+final class const NewGameIntent() extends Intent;
 
-final class NewGameIntent extends Intent {
-  const NewGameIntent();
-}
+final class const NewGameWithLayoutIntent() extends Intent;
 
-final class NewGameWithLayoutIntent extends Intent {
-  const NewGameWithLayoutIntent();
-}
+final class const RestartIntent() extends Intent;
 
-final class RestartIntent extends Intent {
-  const RestartIntent();
-}
+final class const ExitIntent() extends Intent;
 
-final class ExitIntent extends Intent {
-  const ExitIntent();
-}
+final class const NavigateToHomeIntent({final bool replace = false}) extends Intent {}
 
-final class NavigateToHomeIntent extends Intent {
-  const NavigateToHomeIntent({this.replace = false});
+final class const NavigateToStatisticsIntent({final bool replace = false}) extends Intent {}
 
-  final bool replace;
-}
+final class const NavigateToSettingsIntent({final bool replace = false}) extends Intent {}
 
-final class NavigateToStatisticsIntent extends Intent {
-  const NavigateToStatisticsIntent({this.replace = false});
+final class const NavigateToInfoIntent({final bool replace = false}) extends Intent {}
 
-  final bool replace;
-}
+final class const SetThemeModeIntent(final ThemeMode mode) extends Intent {}
 
-final class NavigateToSettingsIntent extends Intent {
-  const NavigateToSettingsIntent({this.replace = false});
+final class const SetShowAllIntent(final bool value) extends Intent {}
 
-  final bool replace;
-}
+final class const SetStartEmptyIntent(final bool value) extends Intent {}
 
-final class NavigateToInfoIntent extends Intent {
-  const NavigateToInfoIntent({this.replace = false});
+final class const SetSoundModeIntent(final bool value) extends Intent {}
 
-  final bool replace;
-}
+final class const SetDecorIntent(final Decor value) extends Intent {}
 
-final class SetThemeModeIntent extends Intent {
-  const SetThemeModeIntent(this.mode);
+final class const SetDecorColourIntent(final DecorColour value) extends Intent {}
 
-  final ThemeMode mode;
-}
+final class const SetLayoutIntent(final Peaks value) extends Intent {}
 
-final class SetShowAllIntent extends Intent {
-  const SetShowAllIntent(this.value);
+final class const ShowNavigationDrawerIntent() extends Intent;
 
-  final bool value;
-}
+final class const GoBackIntent({final bool saveSettings = false}) extends Intent {}
 
-final class SetStartEmptyIntent extends Intent {
-  const SetStartEmptyIntent(this.value);
+final class const ImportStatsIntent() extends Intent;
 
-  final bool value;
-}
+final class const ExportStatsIntent() extends Intent;
 
-final class SetSoundModeIntent extends Intent {
-  const SetSoundModeIntent(this.value);
-
-  final bool value;
-}
-
-final class SetDecorIntent extends Intent {
-  const SetDecorIntent(this.value);
-
-  final Decor value;
-}
-
-final class SetDecorColourIntent extends Intent {
-  const SetDecorColourIntent(this.value);
-
-  final DecorColour value;
-}
-
-final class SetLayoutIntent extends Intent {
-  const SetLayoutIntent(this.value);
-
-  final Peaks value;
-}
-
-final class ShowNavigationDrawerIntent extends Intent {
-  const ShowNavigationDrawerIntent();
-}
-
-final class GoBackIntent extends Intent {
-  const GoBackIntent({this.saveSettings = false});
-
-  final bool saveSettings;
-}
-
-final class ImportStatsIntent extends Intent {
-  const ImportStatsIntent();
-}
-
-final class ExportStatsIntent extends Intent {
-  const ExportStatsIntent();
-}
-
-final class ClearStatsIntent extends Intent {
-  const ClearStatsIntent();
-}
+final class const ClearStatsIntent() extends Intent;

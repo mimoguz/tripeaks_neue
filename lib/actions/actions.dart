@@ -29,12 +29,7 @@ import 'package:tripeaks_neue/util/get_io.dart'
 
 import 'intents.dart';
 
-final class TakeAction extends Action<TakeIntent> {
-  TakeAction(this.game, this.sounds);
-
-  final Game game;
-  final SoundEffects sounds;
-
+final class TakeAction(final Game game, final SoundEffects sounds) extends Action<TakeIntent> {
   @override
   void invoke(TakeIntent intent) {
     final took = game.take(intent.pin);
@@ -52,12 +47,7 @@ final class TakeAction extends Action<TakeIntent> {
   }
 }
 
-final class DrawAction extends Action<DrawIntent> {
-  DrawAction(this.game, this.sounds);
-
-  final Game game;
-  final SoundEffects sounds;
-
+final class DrawAction(final Game game, final SoundEffects sounds) extends Action<DrawIntent> {
   @override
   bool get isActionEnabled => game.stock.isNotEmpty && !game.isEnded;
 
@@ -72,12 +62,7 @@ final class DrawAction extends Action<DrawIntent> {
   }
 }
 
-final class RollbackAction extends Action<RollbackIntent> {
-  RollbackAction(this.game, this.sounds);
-
-  final Game game;
-  final SoundEffects sounds;
-
+final class RollbackAction(final Game game, final SoundEffects sounds) extends Action<RollbackIntent> {
   @override
   bool get isActionEnabled => game.history.isNotEmpty && !game.isCleared;
 
@@ -88,9 +73,7 @@ final class RollbackAction extends Action<RollbackIntent> {
   }
 }
 
-final class NewGameAction extends ContextAction<NewGameIntent> {
-  NewGameAction();
-
+final class NewGameAction() extends ContextAction<NewGameIntent> {
   @override
   void invoke(NewGameIntent intent, [BuildContext? context]) {
     if (context == null) {
@@ -103,9 +86,7 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
   }
 }
 
-final class RestartAction extends ContextAction<RestartIntent> {
-  RestartAction();
-
+final class RestartAction() extends ContextAction<RestartIntent> {
   @override
   void invoke(RestartIntent intent, [BuildContext? context]) {
     if (context == null) {
