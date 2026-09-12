@@ -7,8 +7,8 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class HomePageDrawer extends StatelessWidget {
@@ -24,17 +24,21 @@ class HomePageDrawer extends StatelessWidget {
       elevation: 10.0,
       shadowColor: colours.shadow,
       width: 340.0,
-      shape: RoundedRectangleBorder(borderRadius: const BorderRadius.all(Radius.zero)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       clipBehavior: Clip.antiAlias,
       child: ScrollIndicator(
         child: CustomScrollView(
           slivers: [
-            SliverAppBar.medium(
+            SliverAppBar.large(
               pinned: true,
-              backgroundColor: colours.surfaceContainerLowest,
-              bottom: PreferredSize(preferredSize: Size.fromHeight(20.0), child: const AppTitle()),
+              title: AppTitle(),
+              elevation: 5,
+              backgroundColor: colours.surfaceContainerLow,
               foregroundColor: colours.onSurfaceVariant,
               leading: const CloseButton(),
+              iconTheme: IconThemeData(color: colours.onSurfaceVariant),
+              centerTitle: true,
+              titleSpacing: 0,
               actions: [
                 IconButton(
                   icon: const Icon(Icons.help),
@@ -108,45 +112,37 @@ class AppTitle extends StatelessWidget {
     final colours = Theme.of(context).colorScheme;
     final neue = TextStyle(
       fontFamily: "Peckish",
-      fontSize: 14,
+      fontSize: 12,
       letterSpacing: 10.0,
       color: colours.tertiary,
       fontWeight: .w300,
     );
-    return Column(
-      children: [
-        Divider(height: 1, color: colours.surfaceContainerLow),
-        Container(
-          color: Color.lerp(colours.surfaceContainerLowest, colours.surfaceTint, 0.08),
-          padding: const EdgeInsets.all(8.0),
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints.loose(Size.fromWidth(200.0)),
+        child: Padding(
+          padding: const EdgeInsets.only(right: 8.0),
           child: Row(
             mainAxisAlignment: .spaceBetween,
-            spacing: 4.0,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 66.0),
-                child: Text(
-                  "TriPeaks",
-                  textAlign: .right,
-                  style: TextStyle(
-                    fontFamily: "Peckish",
-                    fontSize: 14,
-                    color: colours.onSurfaceVariant,
-                    fontWeight: .w300,
-                  ),
+              Text(
+                "TriPeaks",
+                textAlign: .right,
+                style: TextStyle(
+                  fontFamily: "Peckish",
+                  fontSize: 12,
+                  color: colours.secondary,
+                  fontWeight: .w300,
                 ),
               ),
               Text("N", style: neue),
               Text("E", style: neue),
               Text("U", style: neue),
-              Padding(
-                padding: const EdgeInsets.only(right: 66.0),
-                child: Text("E", textAlign: .left, style: neue),
-              ),
+              Text("E", style: neue),
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
@@ -164,9 +160,7 @@ class DrawerListTile<T extends Intent> extends StatelessWidget {
     iconColor: Theme.of(context).colorScheme.onSurfaceVariant,
     leading: Icon(icon),
     title: Text(title),
-    shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-    // visualDensity: .compact,
-    horizontalTitleGap: 30,
+    shape: StadiumBorder(),
     onTap: Actions.handler(context, intent),
   );
 }

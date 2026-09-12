@@ -39,7 +39,6 @@ This software is available under GNU Affero General Public License (AGPL) Versio
 
 - _fonts/actions.ttf:_ This file includes symbols derived from Material Icons, and therefore available under Apache License Version 2.0 (same as Material Icons).
 
-
 ## DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION issue
 
 If you check the required permissions for this game on F-Droid, you will see that it requires ```DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION```.
