@@ -19,12 +19,15 @@ class HomePageDrawer extends StatelessWidget {
     final colours = Theme.of(context).colorScheme;
     final s = AppLocalizations.of(context)!;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
+    final borderRadius = (kIsWeb || kIsWasm || Platform.isLinux)
+        ? BorderRadius.all(Radius.zero)
+        : BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
       elevation: 10.0,
       shadowColor: colours.shadow,
       width: 340.0,
-      shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+      shape: RoundedRectangleBorder(borderRadius: borderRadius),
       clipBehavior: Clip.antiAlias,
       child: ScrollIndicator(
         child: CustomScrollView(

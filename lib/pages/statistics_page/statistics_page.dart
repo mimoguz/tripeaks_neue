@@ -71,8 +71,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         actions: [
                           PopupMenuButton(
                             color: colours.surfaceBright,
-                            elevation: 10,
-                            surfaceTintColor: colours.primaryContainer,
+                            surfaceTintColor: colours.surfaceTint,
+                            elevation: 20,
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),

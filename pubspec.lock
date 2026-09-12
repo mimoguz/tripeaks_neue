@@ -405,6 +405,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  handy_window:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "7cd50e25c54665b96e0aed8fa9571ac32c413447"
+      url: "https://github.com/mimoguz/handy_window.dart"
+    source: git
+    version: "0.4.2"
   hooks:
     dependency: transitive
     description:
