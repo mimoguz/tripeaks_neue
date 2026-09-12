@@ -16,10 +16,7 @@ final class Interaction extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final paragraphStyle = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = paragraphStyle.copyWith(
-      fontStyle: FontStyle.italic,
-      color: theme.colorScheme.onSurfaceVariant,
-    );
+    final italic = paragraphStyle.copyWith(fontStyle: FontStyle.italic, color: theme.colorScheme.secondary);
     final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
       child: DefaultTextStyle(
@@ -148,14 +145,8 @@ final class Interaction extends StatelessWidget {
             ),
             const InteractionListDivider(),
             Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: FastRichText(
-                text: s.interactionP11,
-                textStyle: theme.textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.secondary,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              padding: const EdgeInsets.only(bottom: 6.0),
+              child: FastRichText(text: s.interactionP11, textStyle: theme.textTheme.titleSmall!),
             ),
             ShorcutListCell(title: s.infoPageTitle, shorcut: _infoShortcut, textStyle: paragraphStyle),
             ShorcutListCell(title: s.interactionP12, shorcut: _menuShortcutAlt, textStyle: paragraphStyle),

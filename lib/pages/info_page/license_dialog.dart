@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class LicenseDialog extends StatelessWidget {
   const LicenseDialog({super.key, required this.package});
@@ -13,7 +14,10 @@ class LicenseDialog extends StatelessWidget {
     final s = AppLocalizations.of(context)!;
     return CommonDialog(
       title: Text(package.name),
-      content: Text(package.license ?? "License not found"),
+      content: Padding(
+        padding: EdgeInsets.all(c.dialogPadding),
+        child: Text(package.license ?? "License not found"),
+      ),
       actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(s.licenseDialogCloseAction))],
     );
   }
