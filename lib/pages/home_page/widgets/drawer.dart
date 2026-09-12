@@ -7,7 +7,6 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
@@ -31,14 +30,13 @@ class HomePageDrawer extends StatelessWidget {
           slivers: [
             SliverAppBar.large(
               pinned: true,
-              title: AppTitle(),
-              elevation: 5,
               backgroundColor: colours.surfaceContainerLow,
               foregroundColor: colours.onSurfaceVariant,
-              leading: const CloseButton(),
               iconTheme: IconThemeData(color: colours.onSurfaceVariant),
-              centerTitle: true,
               titleSpacing: 0,
+              actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
+              title: AppTitle(),
+              leading: const CloseButton(),
               actions: [
                 IconButton(
                   icon: const Icon(Icons.help),
@@ -57,17 +55,15 @@ class HomePageDrawer extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(width: 4.0),
                 IconButton(
                   icon: const Icon(Icons.settings),
                   tooltip: s.settingsTooltip,
                   onPressed: Actions.handler(context, const NavigateToSettingsIntent(replace: false)),
                 ),
-                const SizedBox(width: 8.0),
               ],
             ),
             SliverPadding(
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
               sliver: SliverList.list(
                 children: <Widget>[
                   DrawerListTile(
@@ -110,31 +106,26 @@ class AppTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    final neue = TextStyle(
+    final tripeaks = TextStyle(
       fontFamily: "Peckish",
       fontSize: 12,
       letterSpacing: 10.0,
-      color: colours.tertiary,
+      color: colours.onSurfaceVariant,
       fontWeight: .w300,
     );
+    final neue = tripeaks.copyWith(color: colours.tertiary);
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints.loose(Size.fromWidth(200.0)),
-        child: Padding(
-          padding: const EdgeInsets.only(right: 8.0),
+        constraints: BoxConstraints.loose(Size.fromWidth(180.0)),
+        child: Semantics(
+          container: true,
+          hint: "Application tile: TriPeaks NEUE",
           child: Row(
             mainAxisAlignment: .spaceBetween,
             children: [
-              Text(
-                "TriPeaks",
-                textAlign: .right,
-                style: TextStyle(
-                  fontFamily: "Peckish",
-                  fontSize: 12,
-                  color: colours.secondary,
-                  fontWeight: .w300,
-                ),
-              ),
+              Text("*", style: tripeaks),
+              Text("*", style: tripeaks),
+              Text("*", style: tripeaks),
               Text("N", style: neue),
               Text("E", style: neue),
               Text("U", style: neue),

@@ -23,7 +23,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1788971664
+ModificationTime: 1789210088
 PfmFamily: 33
 TTFWeight: 400
 TTFWidth: 5
@@ -54,11 +54,11 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 19 19 7
+WinInfo: 0 19 7
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
-BeginChars: 263 25
+BeginChars: 263 26
 
 StartChar: A
 Encoding: 65 65 0
@@ -692,6 +692,24 @@ SplineSet
  41 936 l 5
 EndSplineSet
 Kerns2: 23 108 "HKern-10"
+EndChar
+
+StartChar: asterisk
+Encoding: 42 42 25
+Width: 1024
+Flags: HO
+LayerCount: 2
+Fore
+SplineSet
+512 951 m 5
+ 1001 -9 l 5
+ 23 -9 l 5
+ 512 951 l 5
+512 809 m 5
+ 124 48 l 5
+ 900 48 l 5
+ 512 809 l 5
+EndSplineSet
 EndChar
 EndChars
 EndSplineFont
