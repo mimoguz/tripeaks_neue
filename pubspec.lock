@@ -385,6 +385,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  flex_seed_scheme:
+    dependency: "direct main"
+    description:
+      name: flex_seed_scheme
+      sha256: "08f9ee11f9a08c2dee76d0a07ea824c8a09ea4db9456e32ac4f6dfb34d28392c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -449,8 +457,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: be9b595d10b50f31aba2948059197dc5499e00e6
+      ref: "35b816812218f014d0ab213629a6e18a251798df"
+      resolved-ref: "35b816812218f014d0ab213629a6e18a251798df"
       url: "https://github.com/mimoguz/handy_window.dart"
     source: git
     version: "0.4.2"
@@ -1093,4 +1101,4 @@ packages:
     version: "3.1.4"
 sdks:
   dart: ">=3.13.0 <4.0.0"
-  flutter: ">=3.44.0"
+  flutter: ">=3.47.0"

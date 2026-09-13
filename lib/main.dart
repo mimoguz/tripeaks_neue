@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
@@ -115,22 +116,18 @@ class _MainAppState extends State<MainApp> {
         value: (_) => const FadeForwardsPageTransitionsBuilder(),
       ),
     ),
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Color(0xFF5090EB),
-      primary: Color(0xFF2B5CA3),
-      primaryContainer: Color(0xFFC5DAF8),
-      onPrimary: Color(0xFFECF3FD),
-      onPrimaryContainer: Color(0xFF0F213A),
+    colorScheme: SeedColorScheme.fromSeeds(
+      brightness: .light,
+      primaryKey: _primarySeed,
+      secondaryKey: _secondarySeed,
+      tertiaryKey: _tertiarySeed,
       tertiary: Colors.red.shade500,
-      tertiaryContainer: Colors.red.shade600,
-      onTertiaryContainer: Colors.red.shade100,
-      surfaceContainerHighest: Color(0xFFDDDDE5),
+      variant: .vividSurfaces,
     ),
   );
 
   static final _defaultDark = ThemeData(
     useMaterial3: true,
-    brightness: Brightness.dark,
     tooltipTheme: _tooltipTheme,
     pageTransitionsTheme: PageTransitionsTheme(
       builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
@@ -138,18 +135,13 @@ class _MainAppState extends State<MainApp> {
         value: (_) => const FadeForwardsPageTransitionsBuilder(),
       ),
     ),
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Color(0xFF5090EB),
-      primary: Color(0xFF8BB5F2),
-      primaryContainer: Color(0xFF2B5CA3),
-      onPrimary: Color(0xFF0F213A),
-      onPrimaryContainer: Color(0xFFECF3FD),
+    colorScheme: SeedColorScheme.fromSeeds(
+      brightness: .dark,
+      primaryKey: _primarySeed,
+      secondaryKey: _secondarySeed,
+      tertiaryKey: _tertiarySeed,
       tertiary: Colors.red.shade300,
-      tertiaryContainer: Colors.red.shade600,
-      onTertiaryContainer: Colors.red.shade100,
-      surfaceContainer: Color(0xff151618),
-      secondary: Color(0xff868da0),
-      brightness: Brightness.dark,
+      variant: .vividSurfaces,
     ),
   );
 
@@ -166,6 +158,10 @@ class _MainAppState extends State<MainApp> {
     widget.settings.dispose();
     return AppExitResponse.exit;
   }
+
+  static const _primarySeed = Color(0xFF5090EB);
+  static const _secondarySeed = Color(0xFF565E6F);
+  static const _tertiarySeed = Color(0xFFE53935);
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {

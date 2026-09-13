@@ -28,7 +28,7 @@ class CommonDialog extends StatelessWidget {
         c.dialogPadding - 6,
       ),
       titleTextStyle: theme.textTheme.titleMedium?.copyWith(fontWeight: .w600),
-      surfaceTintColor: tint ?? theme.colorScheme.surfaceTint,
+      surfaceTintColor: tint,
       scrollable: false,
       backgroundColor: theme.colorScheme.surfaceBright,
       shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),

@@ -30,6 +30,8 @@ class HomePage extends StatelessWidget {
           SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
           SingleActivator(LogicalKeyboardKey.period, control: true): const NavigateToSettingsIntent(),
           SingleActivator(LogicalKeyboardKey.f1): const NavigateToInfoIntent(),
+          SingleActivator(LogicalKeyboardKey.keyN, control: true, shift: true):
+              const NewGameWithLayoutIntent(),
         },
         child: Actions(
           actions: <Type, Action<Intent>>{

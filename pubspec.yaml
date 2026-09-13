@@ -17,7 +17,9 @@ dependencies:
     sdk: flutter
   flutter_mobx: ^2.4.0
   handy_window: 
-    git: https://github.com/mimoguz/handy_window.dart
+    git: 
+      url: https://github.com/mimoguz/handy_window.dart
+      ref: "35b816812218f014d0ab213629a6e18a251798df"
   intl: any
   logger: ^2.8.0
   mobx: ^2.7.0
@@ -27,6 +29,7 @@ dependencies:
   xdg_desktop_portal: ^0.1.14
 
   material_ui: any
+  flex_seed_scheme: ^5.0.1
 dev_dependencies:
   build_runner: ^2.16.1
   build_version: ^2.1.3

@@ -115,6 +115,7 @@ final class Interaction extends StatelessWidget {
                 italicTextStyle: italic,
               ),
               image: Icon(CustomIcons.pickAndPlay),
+              shorcut: _newGameWithLayoutShortcut,
             ),
             const InteractionListDivider(),
             InteractionListCell(
@@ -159,18 +160,16 @@ final class Interaction extends StatelessWidget {
     );
   }
 
-  static final _drawShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.keyD];
-  static final _undoShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.control, LogicalKeyboardKey.keyZ];
-  static final _menuShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.keyM];
-  static final _menuShortcutAlt = <LogicalKeyboardKey>[LogicalKeyboardKey.f10];
-  static final _settingsShortcut = <LogicalKeyboardKey>[
-    LogicalKeyboardKey.control,
-    LogicalKeyboardKey.period,
-  ];
-  static final _infoShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.f1];
-  static final _backShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.escape];
-  static final _backShortcutAlt = <LogicalKeyboardKey>[LogicalKeyboardKey.backspace];
-  static final _exitShortcut = <LogicalKeyboardKey>[LogicalKeyboardKey.control, LogicalKeyboardKey.keyQ];
+  static final _drawShortcut = <LogicalKeyboardKey>[.keyD];
+  static final _undoShortcut = <LogicalKeyboardKey>[.control, .keyZ];
+  static final _menuShortcut = <LogicalKeyboardKey>[.keyM];
+  static final _menuShortcutAlt = <LogicalKeyboardKey>[.f10];
+  static final _settingsShortcut = <LogicalKeyboardKey>[.control, .period];
+  static final _newGameWithLayoutShortcut = <LogicalKeyboardKey>[.control, .shift, .keyN];
+  static final _infoShortcut = <LogicalKeyboardKey>[.f1];
+  static final _backShortcut = <LogicalKeyboardKey>[.escape];
+  static final _backShortcutAlt = <LogicalKeyboardKey>[.backspace];
+  static final _exitShortcut = <LogicalKeyboardKey>[.control, .keyQ];
 }
 
 class InteractionListCell extends StatelessWidget {
