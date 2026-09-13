@@ -1,21 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/license_dialog.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-class Dependencies extends StatelessWidget {
-  const Dependencies({super.key});
-
+class const Dependencies({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return ScrollIndicator(
       child: DefaultTextStyle(
-        style: textTheme.bodyMedium!.copyWith(height: 1.8),
+        style: context.styles.bodyMedium!.copyWith(height: 1.8),
         child: ListView.separated(
           padding: EdgeInsets.fromLTRB(
             c.cardPaddingHorizontal,
@@ -41,16 +38,15 @@ class Dependencies extends StatelessWidget {
   static final _directDependencies = (dependencies + devDependencies).map((it) => it.name).toSet();
 }
 
-final class DependencyEntry extends StatelessWidget {
-  const DependencyEntry({super.key, required this.package, required this.isDirectDependency});
-
-  final Package package;
-  final bool isDirectDependency;
-
+final class const DependencyEntry({
+  super.key,
+  required final Package package,
+  required final bool isDirectDependency,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final link = package.homepage ?? package.repository;
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -87,15 +83,11 @@ final class DependencyEntry extends StatelessWidget {
   }
 }
 
-class DependencyStatusChip extends StatelessWidget {
-  const DependencyStatusChip(this.isDirectDependency, {super.key});
-
-  final bool isDirectDependency;
-
+class const DependencyStatusChip(final bool isDirectDependency, {super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final text = isDirectDependency ? s.directDependencyLabel : s.indirectDependencyLabel;
-    return Text(text, style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.secondary));
+    return Text(text, style: TextStyle(fontSize: 12, color: context.colours.secondary));
   }
 }

@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+// ignore: unused_import
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 final class StartEmptySetting extends StatelessWidget {
@@ -12,7 +14,7 @@ final class StartEmptySetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Observer(
       builder: (context) {
         return SettingTile(

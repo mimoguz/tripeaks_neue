@@ -1,20 +1,18 @@
 import 'package:fast_rich_text/fast_rich_text.dart';
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-class Scoring extends StatelessWidget {
-  const Scoring({super.key});
-
+class const Scoring({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     final paragraphStyle = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
     final italic = paragraphStyle.copyWith(fontStyle: FontStyle.italic, color: theme.colorScheme.secondary);
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return ScrollIndicator(
-      child: DefaultTextStyle(
+      child: DefaultTextStyle.merge(
         style: paragraphStyle,
         child: ListView(
           padding: const EdgeInsets.fromLTRB(

@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
-class SelectionDialog extends StatelessWidget {
-  const SelectionDialog({super.key, required this.options, required this.selected, this.title});
-
-  final List<String> options;
-  final int selected;
-  final String? title;
-
+class const SelectionDialog({
+  super.key,
+  required final List<String> options,
+  required final int selected,
+  final String? title,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
+    final theme = context.theme;
     return CommonDialog(
       title: title != null ? Text(title!) : null,
       content: RadioGroup(
@@ -21,7 +21,7 @@ class SelectionDialog extends StatelessWidget {
         child: ListTileTheme(
           data: ListTileThemeData(
             visualDensity: .compact,
-            titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+            titleTextStyle: theme.textTheme.bodyMedium,
             controlAffinity: .leading,
             horizontalTitleGap: c.itemSpacing - c.radioCorrection,
             contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
@@ -37,7 +37,7 @@ class SelectionDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, -1),
-          style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
           child: Text(s.cancelAction),
         ),
       ],

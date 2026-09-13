@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:mobx/mobx.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';

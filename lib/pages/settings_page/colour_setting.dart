@@ -1,20 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
-class ColourSetting extends StatelessWidget {
-  const ColourSetting({super.key});
-
+class const ColourSetting({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Observer(
       builder: (context) {
         return SettingTile(
@@ -40,7 +38,7 @@ class ColourSetting extends StatelessWidget {
   }
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final result = await showAdaptiveDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
@@ -72,7 +70,7 @@ class ColourSetting extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+            style: TextButton.styleFrom(foregroundColor: context.colours.error),
             child: Text(s.cancelAction),
           ),
         ],
@@ -84,13 +82,12 @@ class ColourSetting extends StatelessWidget {
   }
 }
 
-class ColourSwatch extends StatefulWidget {
-  const ColourSwatch({super.key, required this.colour, required this.isSelected, this.onTap});
-
-  final DecorColour colour;
-  final bool isSelected;
-  final VoidCallback? onTap;
-
+class const ColourSwatch({
+  super.key,
+  required final DecorColour colour,
+  required final bool isSelected,
+  final VoidCallback? onTap,
+}) extends StatefulWidget {
   @override
   State<ColourSwatch> createState() => _ColourSwatchState();
 }
@@ -113,10 +110,9 @@ class _ColourSwatchState extends State<ColourSwatch> {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
     final fill = widget.colour.background;
     final foreground = widget.colour.controlForeground;
-    _borderColour = _focus.hasFocus ? colours.onSurface : Colors.transparent;
+    _borderColour = _focus.hasFocus ? context.colours.onSurface : Colors.transparent;
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(
@@ -152,7 +148,7 @@ class _ColourSwatchState extends State<ColourSwatch> {
 
   void _onFocusChange() {
     setState(() {
-      _borderColour = _focus.hasFocus ? Theme.of(context).colorScheme.onSurface : Colors.transparent;
+      _borderColour = _focus.hasFocus ? context.colours.onSurface : Colors.transparent;
     });
   }
 }

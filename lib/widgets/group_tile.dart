@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
@@ -10,9 +11,10 @@ final class GroupTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return ListItemContainer(
       child: Material(
-        color: Theme.of(context).colorScheme.surfaceContainerHigh,
+        color: theme.colorScheme.surfaceContainerHigh,
         elevation: 1.0,
         borderRadius: c.commonBorderRadius,
         child: Padding(
@@ -23,8 +25,8 @@ final class GroupTile extends StatelessWidget {
               if (title != null)
                 Text(
                   title!,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Theme.of(context).colorScheme.outline,
+                  style: theme.textTheme.titleSmall!.copyWith(
+                    color: theme.colorScheme.outline,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -45,6 +47,9 @@ class GroupTileDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: padding ?? const EdgeInsets.only(bottom: c.divPadding), child: Divider());
+    return Padding(
+      padding: padding ?? const EdgeInsets.only(bottom: c.divPadding),
+      child: Divider(),
+    );
   }
 }

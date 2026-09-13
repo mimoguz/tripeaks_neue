@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -10,7 +10,7 @@ class WelcomeDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return CommonDialog(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

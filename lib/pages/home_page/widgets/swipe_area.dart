@@ -1,12 +1,9 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 
-class SwipeArea extends StatefulWidget {
-  const SwipeArea({super.key, required this.intent});
-
-  final Intent intent;
-
+class const SwipeArea({super.key, required final Intent intent}) extends StatefulWidget {
   @override
   State<SwipeArea> createState() => _SwipeAreaState();
 }
@@ -21,12 +18,13 @@ class _SwipeAreaState extends State<SwipeArea> {
 
   @override
   Widget build(BuildContext context) {
+    final fill = context.colours.tertiary;
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onVerticalDragStart: (d) => _onDragStart(d, context),
       onVerticalDragEnd: (result) => _onDragEnd(context, result),
       onVerticalDragCancel: _onDragCancel,
-      onVerticalDragUpdate: (d) => _onDragUpdate(d, Theme.of(context).colorScheme.tertiary, context),
+      onVerticalDragUpdate: (d) => _onDragUpdate(d, fill, context),
       child: SizedBox.expand(),
     );
   }
@@ -105,20 +103,19 @@ class _SwipeAreaState extends State<SwipeArea> {
     _overlay?.remove();
     _overlay?.dispose();
     _overlay = OverlayEntry(
-      builder:
-          (_) => IgnorePointer(
-            child: SizedBox.expand(
-              child: CustomPaint(
-                painter: _GesturePainter(
-                  from: _start,
-                  to: _end,
-                  colour: _fill,
-                  actionColour: Theme.of(context).colorScheme.surfaceContainerLow,
-                  drawAction: _drawAction,
-                ),
-              ),
+      builder: (_) => IgnorePointer(
+        child: SizedBox.expand(
+          child: CustomPaint(
+            painter: _GesturePainter(
+              from: _start,
+              to: _end,
+              colour: _fill,
+              actionColour: context.colours.surfaceContainerLow,
+              drawAction: _drawAction,
             ),
           ),
+        ),
+      ),
     );
     Overlay.of(context).insert(_overlay!);
   }
@@ -126,23 +123,18 @@ class _SwipeAreaState extends State<SwipeArea> {
   static const double _distanceThreshold = 60.0;
 }
 
-class _GesturePainter extends CustomPainter {
-  _GesturePainter({
-    required this.from,
-    required this.to,
-    required this.colour,
-    required this.actionColour,
-    required this.drawAction,
-  }) : _paint =
-           Paint()
-             ..style = PaintingStyle.stroke
-             ..strokeCap = StrokeCap.round;
+class _GesturePainter({
+  required final Offset from,
+  required final Offset to,
+  required final Color colour,
+  required final Color actionColour,
+  required final bool drawAction,
+}) extends CustomPainter {
+  this
+    : _paint = Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeCap = StrokeCap.round;
 
-  final Offset from;
-  final Offset to;
-  final Color colour;
-  final Color actionColour;
-  final bool drawAction;
   final Paint _paint;
 
   @override

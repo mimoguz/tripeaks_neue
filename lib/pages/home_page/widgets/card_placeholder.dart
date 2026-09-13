@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class CardPlaceHolder extends StatelessWidget {
@@ -9,7 +10,7 @@ class CardPlaceHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     final useSmall = scale < c.iconScaleThreshold;
     return Container(
       decoration: BoxDecoration(

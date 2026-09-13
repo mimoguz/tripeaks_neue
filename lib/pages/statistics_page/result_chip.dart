@@ -1,19 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 
-class ResultChip extends StatelessWidget {
-  const ResultChip(this.game, {super.key});
-
-  final SingleGameStatistics game;
-
+class const ResultChip(final SingleGameStatistics game, {super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     final fill = game.isCleared ? DecorColour.green.background : colours.secondary;
-    final text = colours.onSecondary;
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Container(
       decoration: BoxDecoration(color: fill, borderRadius: const BorderRadius.all(Radius.circular(100.0))),
       width: 100,
@@ -22,7 +17,7 @@ class ResultChip extends StatelessWidget {
         child: Text(
           game.isCleared ? s.gameClearedLabel : s.gameNotClearedLabel,
           textAlign: .center,
-          style: TextStyle(fontSize: 12, color: text),
+          style: TextStyle(fontSize: 12, color: colours.onSecondary),
         ),
       ),
     );

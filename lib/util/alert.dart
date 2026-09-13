@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -15,10 +15,7 @@ Future<void> alert(BuildContext context, {required String title, required String
           child: Text(message),
         ),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(AppLocalizations.of(context)!.closeAction),
-          ),
+          TextButton(onPressed: () => Navigator.pop(context), child: Text(context.strings.closeAction)),
         ],
       ),
     );

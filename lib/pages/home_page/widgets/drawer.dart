@@ -5,29 +5,24 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:flutter/material.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-class HomePageDrawer extends StatelessWidget {
-  const HomePageDrawer({super.key});
-
+class const HomePageDrawer({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    final s = AppLocalizations.of(context)!;
+    final colours = context.colours;
+    final s = context.strings;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
-    final borderRadius = (kIsWeb || kIsWasm || Platform.isLinux)
-        ? BorderRadius.all(Radius.zero)
-        : BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
       elevation: 10.0,
       shadowColor: colours.shadow,
       width: 340.0,
-      shape: RoundedRectangleBorder(borderRadius: borderRadius),
+      shape: RoundedRectangleBorder(borderRadius: _borderRadius),
       clipBehavior: Clip.antiAlias,
       child: ScrollIndicator(
         child: CustomScrollView(
@@ -46,7 +41,7 @@ class HomePageDrawer extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.help),
                   tooltip: s.infoTooltip,
-                  onPressed: Actions.handler(context, const NavigateToInfoIntent(replace: false)),
+                  onPressed: () => Actions.invoke(context, const NavigateToInfoIntent(replace: false)),
                 ),
                 Observer(
                   builder: (context) {
@@ -63,7 +58,7 @@ class HomePageDrawer extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.settings),
                   tooltip: s.settingsTooltip,
-                  onPressed: Actions.handler(context, const NavigateToSettingsIntent(replace: false)),
+                  onPressed: () => Actions.invoke(context, const NavigateToSettingsIntent(replace: false)),
                 ),
               ],
             ),
@@ -103,14 +98,14 @@ class HomePageDrawer extends StatelessWidget {
       ),
     );
   }
+
+  static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
 }
 
-class AppTitle extends StatelessWidget {
-  const AppTitle({super.key});
-
+class const AppTitle({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     final style = TextStyle(
       fontFamily: "Peckish",
       fontSize: 13,
@@ -143,20 +138,21 @@ class AppTitle extends StatelessWidget {
   }
 }
 
-class DrawerListTile<T extends Intent> extends StatelessWidget {
-  const DrawerListTile({super.key, required this.icon, required this.title, required this.intent});
-
-  final IconData icon;
-  final String title;
-  final T intent;
-
+class const DrawerListTile<T extends Intent>({
+  super.key,
+  required final IconData icon,
+  required final String title,
+  required final T intent,
+}) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => ListTile(
-    style: .drawer,
-    iconColor: Theme.of(context).colorScheme.onSurfaceVariant,
-    leading: Icon(icon),
-    title: Text(title),
-    shape: StadiumBorder(),
-    onTap: Actions.handler(context, intent),
-  );
+  Widget build(BuildContext context) {
+    return ListTile(
+      style: .drawer,
+      iconColor: context.colours.onSurfaceVariant,
+      leading: Icon(icon),
+      title: Text(title),
+      shape: StadiumBorder(),
+      onTap: () => Actions.invoke<T>(context, intent),
+    );
+  }
 }

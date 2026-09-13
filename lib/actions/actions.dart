@@ -1,11 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -18,6 +17,7 @@ import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/util/alert.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
@@ -29,12 +29,7 @@ import 'package:tripeaks_neue/util/get_io.dart'
 
 import 'intents.dart';
 
-final class TakeAction extends Action<TakeIntent> {
-  TakeAction(this.game, this.sounds);
-
-  final Game game;
-  final SoundEffects sounds;
-
+final class TakeAction(final Game game, final SoundEffects sounds) extends Action<TakeIntent> {
   @override
   void invoke(TakeIntent intent) {
     final took = game.take(intent.pin);
@@ -52,12 +47,7 @@ final class TakeAction extends Action<TakeIntent> {
   }
 }
 
-final class DrawAction extends Action<DrawIntent> {
-  DrawAction(this.game, this.sounds);
-
-  final Game game;
-  final SoundEffects sounds;
-
+final class DrawAction(final Game game, final SoundEffects sounds) extends Action<DrawIntent> {
   @override
   bool get isActionEnabled => game.stock.isNotEmpty && !game.isEnded;
 
@@ -72,12 +62,7 @@ final class DrawAction extends Action<DrawIntent> {
   }
 }
 
-final class RollbackAction extends Action<RollbackIntent> {
-  RollbackAction(this.game, this.sounds);
-
-  final Game game;
-  final SoundEffects sounds;
-
+final class RollbackAction(final Game game, final SoundEffects sounds) extends Action<RollbackIntent> {
   @override
   bool get isActionEnabled => game.history.isNotEmpty && !game.isCleared;
 
@@ -88,9 +73,7 @@ final class RollbackAction extends Action<RollbackIntent> {
   }
 }
 
-final class NewGameAction extends ContextAction<NewGameIntent> {
-  NewGameAction();
-
+final class NewGameAction() extends ContextAction<NewGameIntent> {
   @override
   void invoke(NewGameIntent intent, [BuildContext? context]) {
     if (context == null) {
@@ -103,9 +86,7 @@ final class NewGameAction extends ContextAction<NewGameIntent> {
   }
 }
 
-final class RestartAction extends ContextAction<RestartIntent> {
-  RestartAction();
-
+final class RestartAction() extends ContextAction<RestartIntent> {
   @override
   void invoke(RestartIntent intent, [BuildContext? context]) {
     if (context == null) {
@@ -345,14 +326,14 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
         break;
       case ImportIoFailed<PlayerStatistics> ioFailed:
         if (context.mounted) {
-          final s = AppLocalizations.of(context)!;
+          final s = context.strings;
           alert(context, title: s.error, message: "${s.importFailedPrompt}: ${ioFailed.reason}");
         }
         _logger.e("Import I/O failed: ${ioFailed.reason}");
         break;
       case ImportReaderFailed<PlayerStatistics> readerFailed:
         if (context.mounted) {
-          final s = AppLocalizations.of(context)!;
+          final s = context.strings;
           alert(context, title: s.error, message: "${s.importFailedPrompt}: ${s.invalidDataFile}");
         }
         _logger.e("Import reader failed: ${readerFailed.reason}");
@@ -364,7 +345,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
             barrierColor: Colors.transparent,
             barrierDismissible: true,
             builder: (context) {
-              final s = AppLocalizations.of(context)!;
+              final s = context.strings;
               return CommonDialog(
                 title: Text(s.caution),
                 content: Padding(
@@ -374,7 +355,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop<bool>(context, false),
-                    style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+                    style: TextButton.styleFrom(foregroundColor: context.colours.error),
                     child: Text(s.cancelAction),
                   ),
                   TextButton(
@@ -390,7 +371,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
           }
         } else {
           if (context.mounted) {
-            final s = AppLocalizations.of(context)!;
+            final s = context.strings;
             await alert(context, title: s.error, message: "${s.importFailedPrompt}: ${s.contextError}");
           }
           _logger.e("Import: Can't use context");
@@ -429,7 +410,7 @@ final class ExportStatsAction extends ContextAction<ExportStatsIntent> {
         break;
       case ExportFailed failed:
         if (context.mounted) {
-          final s = AppLocalizations.of(context)!;
+          final s = context.strings;
           alert(context, title: s.error, message: "${s.exportFailedPrompt}: ${failed.reason}");
         }
         _logger.e("Export failed: ${failed.reason}");
@@ -456,7 +437,7 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
         barrierColor: Colors.transparent,
         barrierDismissible: true,
         builder: (context) {
-          final s = AppLocalizations.of(context)!;
+          final s = context.strings;
           return CommonDialog(
             title: Text(s.caution),
             content: Padding(
@@ -466,7 +447,7 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop<bool>(context, false),
-                style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+                style: TextButton.styleFrom(foregroundColor: context.colours.error),
                 child: Text(s.cancelAction),
               ),
               TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text(s.continueAction)),

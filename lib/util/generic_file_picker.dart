@@ -26,7 +26,7 @@ final class GenericFilePicker {
       allowedExtensions: ["json"],
       bytes: data,
     );
-    return result;
+    return result?.path;
   }
 
   static const instance = GenericFilePicker();

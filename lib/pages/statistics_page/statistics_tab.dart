@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/pie.dart';
 import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
@@ -16,17 +16,14 @@ const _verticalSpacing = 20.0;
 final _dateFormat = DateFormat("d MMMM y, HH:mm");
 
 // TODO: This is just a mess, clean-up a little
-final class StatisticsTab extends StatelessWidget {
-  const StatisticsTab(this.statistics, {super.key, this.showLayout = true});
-
+final class const StatisticsTab(this.statistics, {super.key, final bool showLayout = true})
+    extends StatelessWidget {
   final Statistics statistics;
-  final bool showLayout;
-
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     final colours = theme.colorScheme;
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final best = statistics.bestGames;
     final last = statistics.lastGame;
     final divColour = colours.onSurface.withAlpha(50);
@@ -84,16 +81,12 @@ final class StatisticsTab extends StatelessWidget {
   }
 }
 
-class OverallStats extends StatelessWidget {
-  const OverallStats(this.statistics, {super.key});
-
-  final Statistics statistics;
-
+class const OverallStats(final Statistics statistics, {super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     final colours = theme.colorScheme;
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Stack(
       alignment: .center,
       children: [
@@ -155,25 +148,17 @@ class OverallStats extends StatelessWidget {
   }
 }
 
-class ScoreCard extends StatelessWidget {
-  const ScoreCard({
-    super.key,
-    required this.placement,
-    required this.title,
-    required this.value,
-    this.background,
-    this.foreground,
-  });
-
-  final String title;
-  final int value;
-  final Color? background;
-  final Color? foreground;
-  final Corner placement;
-
+class const ScoreCard({
+  super.key,
+  required final Corner placement,
+  required final String title,
+  required final int value,
+  final Color? background,
+  final Color? foreground,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     final colours = theme.colorScheme;
     final textColour = foreground ?? colours.onSurface;
     final gradient = background != null
@@ -235,16 +220,12 @@ class ScoreCard extends StatelessWidget {
 
 enum Corner { topLeft, topRight, bottomLeft, bottomRight }
 
-class LastGameEntry extends StatelessWidget {
-  const LastGameEntry(this.game, {super.key, required this.showLayout});
-
+class const LastGameEntry(this.game, {super.key, required final bool showLayout}) extends StatelessWidget {
   final SingleGameStatistics game;
-  final bool showLayout;
-
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final s = AppLocalizations.of(context)!;
+    final theme = context.theme;
+    final s = context.strings;
     return ListTile(
       minLeadingWidth: _leadingWidth,
       minTileHeight: 0.0,
@@ -273,17 +254,16 @@ class LastGameEntry extends StatelessWidget {
   }
 }
 
-class ScoreboardEntry extends StatelessWidget {
-  const ScoreboardEntry({super.key, required this.game, required this.place, required this.showLayout});
-
-  final SingleGameStatistics game;
-  final int place;
-  final bool showLayout;
-
+class const ScoreboardEntry({
+  super.key,
+  required final SingleGameStatistics game,
+  required final int place,
+  required final bool showLayout,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final s = AppLocalizations.of(context)!;
+    final theme = context.theme;
+    final s = context.strings;
     return Column(
       mainAxisSize: .min,
       spacing: 0,

@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
@@ -12,7 +13,7 @@ class ThemeModeSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Observer(
       builder: (context) {
         return SettingTile(
@@ -27,7 +28,7 @@ class ThemeModeSetting extends StatelessWidget {
   }
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,

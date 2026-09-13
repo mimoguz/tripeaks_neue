@@ -8,9 +8,10 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/landscape_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/portrait_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/drawer.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/overlay_style.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,52 +19,52 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
-    return SafeArea(
-      child: Shortcuts(
-        shortcuts: <ShortcutActivator, Intent>{
-          SingleActivator(LogicalKeyboardKey.keyD): const DrawIntent(),
-          SingleActivator(LogicalKeyboardKey.keyZ, control: true): const RollbackIntent(),
-          SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
-          SingleActivator(LogicalKeyboardKey.keyM): const ShowNavigationDrawerIntent(),
-          SingleActivator(LogicalKeyboardKey.f10): const ShowNavigationDrawerIntent(),
-          SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
-          SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
-          SingleActivator(LogicalKeyboardKey.period, control: true): const NavigateToSettingsIntent(),
-          SingleActivator(LogicalKeyboardKey.f1): const NavigateToInfoIntent(),
+    setOverlayStyleOf(context);
+    return Shortcuts(
+      shortcuts: <ShortcutActivator, Intent>{
+        SingleActivator(LogicalKeyboardKey.keyD): DrawIntent(),
+        SingleActivator(LogicalKeyboardKey.keyZ, control: true): const RollbackIntent(),
+        SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
+        SingleActivator(LogicalKeyboardKey.keyM): const ShowNavigationDrawerIntent(),
+        SingleActivator(LogicalKeyboardKey.f10): const ShowNavigationDrawerIntent(),
+        SingleActivator(LogicalKeyboardKey.escape): const GoBackIntent(),
+        SingleActivator(LogicalKeyboardKey.backspace): const GoBackIntent(),
+        SingleActivator(LogicalKeyboardKey.period, control: true): const NavigateToSettingsIntent(),
+        SingleActivator(LogicalKeyboardKey.f1): const NavigateToInfoIntent(),
+        SingleActivator(LogicalKeyboardKey.keyN, control: true, shift: true): const NewGameWithLayoutIntent(),
+      },
+      child: Actions(
+        actions: <Type, Action<Intent>>{
+          NewGameIntent: NewGameAction(),
+          NavigateToSettingsIntent: NavigateToSettingsAction(),
+          NavigateToStatisticsIntent: NavigateToStatisticsAction(),
+          NavigateToInfoIntent: NavigateToInfoAction(),
+          NewGameWithLayoutIntent: NewGameWithLayoutAction(),
+          RestartIntent: RestartAction(),
+          ImportStatsIntent: ImportStatsAction(),
+          ExportStatsIntent: ExportStatsAction(),
+          ExitIntent: ExitAction(),
+          ShowNavigationDrawerIntent: ShowNavigationDrawerAction(),
+          GoBackIntent: GoBackAction(),
         },
-        child: Actions(
-          actions: <Type, Action<Intent>>{
-            NewGameIntent: NewGameAction(),
-            NavigateToSettingsIntent: NavigateToSettingsAction(),
-            NavigateToStatisticsIntent: NavigateToStatisticsAction(),
-            NavigateToInfoIntent: NavigateToInfoAction(),
-            NewGameWithLayoutIntent: NewGameWithLayoutAction(),
-            RestartIntent: RestartAction(),
-            ImportStatsIntent: ImportStatsAction(),
-            ExportStatsIntent: ExportStatsAction(),
-            ExitIntent: ExitAction(),
-            ShowNavigationDrawerIntent: ShowNavigationDrawerAction(),
-            GoBackIntent: GoBackAction(),
+        child: Builder(
+          builder: (context) {
+            return Scaffold(
+              drawerScrimColor: Colors.transparent,
+              drawer: HomePageDrawer(),
+              body: Builder(
+                builder: (context) {
+                  return PopScope(
+                    canPop: false,
+                    onPopInvokedWithResult: (didPop, result) async {
+                      _onPopInvokedWithResult(context, didPop, result);
+                    },
+                    child: size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage(),
+                  );
+                },
+              ),
+            );
           },
-          child: Builder(
-            builder: (context) {
-              return Scaffold(
-                drawerScrimColor: Colors.transparent,
-                drawer: HomePageDrawer(),
-                body: Builder(
-                  builder: (context) {
-                    return PopScope(
-                      canPop: false,
-                      onPopInvokedWithResult: (didPop, result) async {
-                        _onPopInvokedWithResult(context, didPop, result);
-                      },
-                      child: size.width > size.height ? const LandscapeHomePage() : const PortraitHomePage(),
-                    );
-                  },
-                ),
-              );
-            },
-          ),
         ),
       ),
     );

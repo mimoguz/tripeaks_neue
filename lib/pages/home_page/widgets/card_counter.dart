@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 
 class CardCounter extends StatelessWidget {
   const CardCounter({super.key, required this.maxCount, required this.count, required this.chainLength});
@@ -9,7 +10,7 @@ class CardCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     final bold = colours.secondary;
     final thin = colours.outlineVariant;
     final group = colours.tertiary;
@@ -66,11 +67,7 @@ class CounterSegment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: _space),
-      child: Container(
-        width: width - 2.0 * _space,
-        height: 3.0,
-        color: Theme.of(context).colorScheme.tertiary,
-      ),
+      child: Container(width: width - 2.0 * _space, height: 3.0, color: context.colours.tertiary),
     );
   }
 }

@@ -1,21 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
-class DecorSetting extends StatelessWidget {
-  const DecorSetting({super.key});
-
+class const DecorSetting({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
-    final s = AppLocalizations.of(context)!;
-    final colours = Theme.of(context).colorScheme;
+    final s = context.strings;
+    final colours = context.colours;
     return Observer(
       builder: (context) {
         return SettingTile(
@@ -45,7 +43,7 @@ class DecorSetting extends StatelessWidget {
   }
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final result = await showDialog<int>(
       context: context,
       barrierColor: Colors.transparent,
@@ -71,7 +69,7 @@ class DecorSetting extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+            style: TextButton.styleFrom(foregroundColor: context.colours.error),
             child: Text(s.cancelAction),
           ),
         ],
@@ -123,7 +121,7 @@ class _DecorItemState extends State<DecorItem> {
 
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     _borderColour = _focus.hasFocus ? colours.onSurface : colours.surfaceBright;
     return SizedBox(
       width: _sideLength,
@@ -153,9 +151,7 @@ class _DecorItemState extends State<DecorItem> {
 
   void _onFocusChange() {
     setState(() {
-      _borderColour = _focus.hasFocus
-          ? Theme.of(context).colorScheme.onSurface
-          : Theme.of(context).colorScheme.surfaceContainer;
+      _borderColour = _focus.hasFocus ? context.colours.onSurface : context.colours.surfaceContainer;
     });
   }
 

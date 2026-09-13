@@ -1,12 +1,11 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_placeholder.dart';
@@ -21,6 +20,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class PortraitHomePage extends StatefulWidget {
@@ -73,45 +73,47 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
                 child: Container(
-                  color: Theme.of(context).colorScheme.surfaceContainerLow,
-                  child: Padding(
-                    padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
-                    child: Stack(
-                      children: [
-                        SwipeArea(intent: const DrawIntent()),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: (16.0 * scale).floorToDouble(),
-                          children: [
-                            PortraitHomePageBoard(game: game, scale: scale, back: back),
-                            PortraitHomePageCounter(game: game, scale: scale),
-                            PortraitHomePageRightArea(game: game, scale: scale, back: back),
-                          ],
-                        ),
-                        Center(
-                          child: Observer(
-                            builder: (context) {
-                              return ClearedCardAnimated(
-                                id: game.started.millisecondsSinceEpoch,
-                                score: game.score,
-                                show: game.isCleared,
-                              );
-                            },
+                  color: context.colours.surfaceContainerLow,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
+                      child: Stack(
+                        children: [
+                          SwipeArea(intent: const DrawIntent()),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            spacing: (16.0 * scale).floorToDouble(),
+                            children: [
+                              PortraitHomePageBoard(game: game, scale: scale, back: back),
+                              PortraitHomePageCounter(game: game, scale: scale),
+                              PortraitHomePageRightArea(game: game, scale: scale, back: back),
+                            ],
                           ),
-                        ),
-                        Center(
-                          child: Observer(
-                            builder: (context) {
-                              return StalledCardAnimated(
-                                score: game.score,
-                                id: game.started.millisecondsSinceEpoch + 1,
-                                show: game.isStalled,
-                              );
-                            },
+                          Center(
+                            child: Observer(
+                              builder: (context) {
+                                return ClearedCardAnimated(
+                                  id: game.started.millisecondsSinceEpoch,
+                                  score: game.score,
+                                  show: game.isCleared,
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                          Center(
+                            child: Observer(
+                              builder: (context) {
+                                return StalledCardAnimated(
+                                  score: game.score,
+                                  id: game.started.millisecondsSinceEpoch + 1,
+                                  show: game.isStalled,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -161,17 +163,16 @@ class PortraitHomePageCounter extends StatelessWidget {
       children: [
         Expanded(
           child: Observer(
-            builder:
-                (context) => IgnorePointer(
-                  child: RotatedBox(
-                    quarterTurns: 3,
-                    child: CardCounter(
-                      maxCount: game.layout.cardCount,
-                      count: game.remaining,
-                      chainLength: game.chain,
-                    ),
-                  ),
+            builder: (context) => IgnorePointer(
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: CardCounter(
+                  maxCount: game.layout.cardCount,
+                  count: game.remaining,
+                  chainLength: game.chain,
                 ),
+              ),
+            ),
           ),
         ),
       ],
@@ -188,7 +189,7 @@ class PortraitHomePageRightArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -203,47 +204,52 @@ class PortraitHomePageRightArea extends StatelessWidget {
           // onPressed: () => Navigator.of(context).push(createRoute(() => const MenuPage())),
         ),
         Observer(
-          builder:
-              (context) => CircleGameButton(
-                scale: scale,
-                icon: CustomIcons.undo,
-                smallIcon: CustomIcons.undo16,
-                tooltip: s.undoTooltip,
-                onPressed: Actions.handler(context, const RollbackIntent()),
-              ),
+          builder: (context) {
+            final a = Actions.find<RollbackIntent>(context);
+            return CircleGameButton(
+              scale: scale,
+              icon: CustomIcons.undo,
+              smallIcon: CustomIcons.undo16,
+              tooltip: s.undoTooltip,
+              onPressed: a.isActionEnabled ? () => Actions.invoke(context, const RollbackIntent()) : null,
+            );
+          },
         ),
         IgnorePointer(
           child: SizedBox(
             width: c.cardSize * scale,
             height: c.cardSize * scale,
             child: Observer(
-              builder:
-                  (context) =>
-                      game.discard.isEmpty
-                          ? CardPlaceHolder(scale: scale)
-                          : FittedBox(
-                            child: TileCard(
-                              game.discard.last
-                                ..open()
-                                ..put(),
-                              back: back,
-                              orientation: Orientation.portrait,
-                            ),
-                          ),
+              builder: (context) => game.discard.isEmpty
+                  ? CardPlaceHolder(scale: scale)
+                  : FittedBox(
+                      child: TileCard(
+                        game.discard.last
+                          ..open()
+                          ..put(),
+                        back: back,
+                        orientation: Orientation.portrait,
+                      ),
+                    ),
             ),
           ),
         ),
         Spacer(),
-        IgnorePointer(child: PortraitStock(game, scale: scale, back: back)),
+        IgnorePointer(
+          child: PortraitStock(game, scale: scale, back: back),
+        ),
         Observer(
-          builder:
-              (context) => GameButton.wide(
-                scale: scale,
-                icon: CustomIcons.draw,
-                smallIcon: CustomIcons.draw16,
-                tooltip: s.drawTooltip,
-                onPressed: Actions.handler(context, const DrawIntent()),
-              ),
+          builder: (context) {
+            final a = Actions.find<DrawIntent>(context);
+
+            return GameButton.wide(
+              scale: scale,
+              icon: CustomIcons.draw,
+              smallIcon: CustomIcons.draw16,
+              tooltip: s.drawTooltip,
+              onPressed: a.isActionEnabled ? () => Actions.invoke(context, const DrawIntent()) : null,
+            );
+          },
         ),
       ],
     );

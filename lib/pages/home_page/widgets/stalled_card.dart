@@ -1,18 +1,17 @@
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class StalledCardAnimated extends StatelessWidget {
-  const StalledCardAnimated({super.key, required this.score, required this.id, required this.show});
-
-  final int score;
-  final int id;
-  final bool show;
-
+class const StalledCardAnimated({
+  super.key,
+  required final int score,
+  required final int id,
+  required final bool show,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
@@ -23,21 +22,17 @@ class StalledCardAnimated extends StatelessWidget {
   }
 }
 
-final class StalledCard extends StatelessWidget {
-  const StalledCard({super.key, required this.score});
-
-  final int score;
-
+final class const StalledCard({super.key, required final int score}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
-    final colours = Theme.of(context).colorScheme;
+    final s = context.strings;
+    final theme = context.theme;
     return ClipRRect(
       borderRadius: c.commonBorderRadius,
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: Container(
-          color: colours.surfaceBright.withAlpha(200),
+          color: theme.colorScheme.surfaceBright.withAlpha(200),
           width: 300,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -55,7 +50,7 @@ final class StalledCard extends StatelessWidget {
                       child: Text(
                         s.stalledCardMessage(score),
                         softWrap: true,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.5),
+                        style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
                       ),
                     ),
                   ],
