@@ -8,6 +8,8 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
+import 'package:tripeaks_neue/util/overlay_style.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_vertical_tab_view.dart';
 
@@ -37,6 +39,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
   Widget build(BuildContext context) {
     final s = AppLocalizations.of(context)!;
     final useVertical = MediaQuery.sizeOf(context).height < c.verticalTabsThreshold;
+    setOverlayStyleOf(context);
     return Shortcuts(
       shortcuts: <ShortcutActivator, Intent>{
         SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -52,10 +55,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ClearStatsIntent: ClearStatsAction(),
         },
         child: SafeArea(
+          top: false,
+          bottom: false,
           child: Builder(
             builder: (context) {
-              final session = Provider.of<Session>(context);
-              final colours = Theme.of(context).colorScheme;
+              final session = context.watch<Session>();
+              final colours = context.colours;
               return Observer(
                 builder: (context) {
                   final statistics = session.statistics;
@@ -67,7 +72,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Scaffold(
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
-                        backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
+                        backgroundColor: colours.surfaceContainerLow,
                         actions: [
                           PopupMenuButton(
                             color: colours.surfaceBright,

@@ -17,6 +17,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
@@ -73,45 +74,47 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
                 child: Container(
-                  color: Theme.of(context).colorScheme.surfaceContainerLow,
-                  child: Padding(
-                    padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
-                    child: Stack(
-                      children: [
-                        SwipeArea(intent: DrawIntent()),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: (16.0 * scale).floorToDouble(),
-                          children: [
-                            LandscapeHomePageBoard(game: game, scale: scale, back: back),
-                            LandscapeHomePageCounter(game: game, scale: scale),
-                            LandscapeHomePageBottomArea(game: game, scale: scale, back: back),
-                          ],
-                        ),
-                        Center(
-                          child: Observer(
-                            builder: (context) {
-                              return ClearedCardAnimated(
-                                id: game.started.millisecondsSinceEpoch,
-                                score: game.score,
-                                show: game.isCleared,
-                              );
-                            },
+                  color: context.colours.surfaceContainerLow,
+                  child: SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
+                      child: Stack(
+                        children: [
+                          SwipeArea(intent: DrawIntent()),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            spacing: (16.0 * scale).floorToDouble(),
+                            children: [
+                              LandscapeHomePageBoard(game: game, scale: scale, back: back),
+                              LandscapeHomePageCounter(game: game, scale: scale),
+                              LandscapeHomePageBottomArea(game: game, scale: scale, back: back),
+                            ],
                           ),
-                        ),
-                        Center(
-                          child: Observer(
-                            builder: (context) {
-                              return StalledCardAnimated(
-                                score: game.score,
-                                id: game.started.millisecondsSinceEpoch + 1,
-                                show: game.isStalled,
-                              );
-                            },
+                          Center(
+                            child: Observer(
+                              builder: (context) {
+                                return ClearedCardAnimated(
+                                  id: game.started.millisecondsSinceEpoch,
+                                  score: game.score,
+                                  show: game.isCleared,
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                          Center(
+                            child: Observer(
+                              builder: (context) {
+                                return StalledCardAnimated(
+                                  score: game.score,
+                                  id: game.started.millisecondsSinceEpoch + 1,
+                                  show: game.isStalled,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

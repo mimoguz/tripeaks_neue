@@ -5,6 +5,8 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/info_page/about_tab.dart';
 import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
+import 'package:tripeaks_neue/util/overlay_style.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_vertical_tab_view.dart';
 
@@ -32,8 +34,9 @@ class _InfoPageState extends State<InfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final useVertical = MediaQuery.sizeOf(context).height < c.verticalTabsThreshold;
+    setOverlayStyleOf(context);
     return Shortcuts(
       shortcuts: <ShortcutActivator, Intent>{
         SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -43,21 +46,25 @@ class _InfoPageState extends State<InfoPage> {
       child: Actions(
         actions: <Type, Action<Intent>>{ExitIntent: ExitAction(), GoBackIntent: GoBackAction()},
         child: SafeArea(
+          top: false,
+          bottom: false,
           child: DefaultTabController(
             initialIndex: 0,
             length: 2,
             child: Scaffold(
               appBar: AppBar(
                 title: Text(s.infoPageTitle),
-                backgroundColor: Theme.of(context).colorScheme.surfaceContainerLow,
-                bottom:
-                    useVertical
-                        ? null
-                        : TabBar(
-                          tabAlignment: TabAlignment.center,
-                          dividerColor: Colors.transparent,
-                          tabs: <Widget>[Tab(text: s.howToPlayTabTitle), Tab(text: s.aboutTabTitle)],
-                        ),
+                backgroundColor: context.colours.surfaceContainerLow,
+                bottom: useVertical
+                    ? null
+                    : TabBar(
+                        tabAlignment: TabAlignment.center,
+                        dividerColor: Colors.transparent,
+                        tabs: <Widget>[
+                          Tab(text: s.howToPlayTabTitle),
+                          Tab(text: s.aboutTabTitle),
+                        ],
+                      ),
               ),
               body: Focus(
                 focusNode: _focusNode,
@@ -65,14 +72,16 @@ class _InfoPageState extends State<InfoPage> {
                 skipTraversal: true,
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
-                child:
-                    useVertical
-                        ? MyVerticalTabView(
-                          width: 180,
-                          tabs: <Tab>[Tab(text: s.howToPlayTabTitle), Tab(text: s.aboutTabTitle)],
-                          contents: <Widget>[HowtoTab(), AboutTab()],
-                        )
-                        : TabBarView(children: <Widget>[HowtoTab(), AboutTab()]),
+                child: useVertical
+                    ? MyVerticalTabView(
+                        width: 180,
+                        tabs: <Tab>[
+                          Tab(text: s.howToPlayTabTitle),
+                          Tab(text: s.aboutTabTitle),
+                        ],
+                        contents: <Widget>[HowtoTab(), AboutTab()],
+                      )
+                    : TabBarView(children: <Widget>[HowtoTab(), AboutTab()]),
               ),
             ),
           ),

@@ -1,10 +1,7 @@
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
-import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
@@ -74,19 +71,6 @@ class _MainAppState extends State<MainApp> {
         scrollBehavior: const MyCustomScrollBehavior(),
         home: Builder(
           builder: (context) {
-            final theme = Theme.of(context);
-            try {
-              if (!kIsWeb && !kIsWasm && Platform.isAndroid) {
-                SystemChrome.setSystemUIOverlayStyle(
-                  SystemUiOverlayStyle(
-                    statusBarColor: theme.colorScheme.surfaceContainerLow,
-                    systemStatusBarContrastEnforced: true,
-                    statusBarBrightness: theme.brightness,
-                    statusBarIconBrightness: theme.brightness == .light ? .dark : .light,
-                  ),
-                );
-              }
-            } catch (_) {}
             if (showWelcome) {
               showWelcome = false;
               WidgetsBinding.instance.addPostFrameCallback((_) {

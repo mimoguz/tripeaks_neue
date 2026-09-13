@@ -74,44 +74,46 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
                 descendantsAreTraversable: true,
                 child: Container(
                   color: Theme.of(context).colorScheme.surfaceContainerLow,
-                  child: Padding(
-                    padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
-                    child: Stack(
-                      children: [
-                        SwipeArea(intent: const DrawIntent()),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          spacing: (16.0 * scale).floorToDouble(),
-                          children: [
-                            PortraitHomePageBoard(game: game, scale: scale, back: back),
-                            PortraitHomePageCounter(game: game, scale: scale),
-                            PortraitHomePageRightArea(game: game, scale: scale, back: back),
-                          ],
-                        ),
-                        Center(
-                          child: Observer(
-                            builder: (context) {
-                              return ClearedCardAnimated(
-                                id: game.started.millisecondsSinceEpoch,
-                                score: game.score,
-                                show: game.isCleared,
-                              );
-                            },
+                  child: SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
+                      child: Stack(
+                        children: [
+                          SwipeArea(intent: const DrawIntent()),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            spacing: (16.0 * scale).floorToDouble(),
+                            children: [
+                              PortraitHomePageBoard(game: game, scale: scale, back: back),
+                              PortraitHomePageCounter(game: game, scale: scale),
+                              PortraitHomePageRightArea(game: game, scale: scale, back: back),
+                            ],
                           ),
-                        ),
-                        Center(
-                          child: Observer(
-                            builder: (context) {
-                              return StalledCardAnimated(
-                                score: game.score,
-                                id: game.started.millisecondsSinceEpoch + 1,
-                                show: game.isStalled,
-                              );
-                            },
+                          Center(
+                            child: Observer(
+                              builder: (context) {
+                                return ClearedCardAnimated(
+                                  id: game.started.millisecondsSinceEpoch,
+                                  score: game.score,
+                                  show: game.isCleared,
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                          Center(
+                            child: Observer(
+                              builder: (context) {
+                                return StalledCardAnimated(
+                                  score: game.score,
+                                  id: game.started.millisecondsSinceEpoch + 1,
+                                  show: game.isStalled,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
