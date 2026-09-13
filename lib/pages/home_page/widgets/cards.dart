@@ -102,10 +102,14 @@ final class const ActiveCardFace(final CardValue card, {super.key}) extends Stat
     return Padding(
       padding: const EdgeInsets.only(bottom: 4.0),
       child: Column(
-        spacing: 6.0,
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: .min,
-        children: [Spacer(), RankText(card), SuitImage(card), Spacer()],
+        children: [
+          Spacer(),
+          Padding(padding: const EdgeInsets.only(top: 4.0), child: RankText(card)),
+          SuitImage(card),
+          Spacer(),
+        ],
       ),
     );
   }
@@ -147,7 +151,7 @@ final class const HorizontalSmallFace(final CardValue cardValue, {super.key}) ex
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(11.0, 8.0, 12.0 - _suitCorrection(cardValue), 8.0),
+      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [RankTextSm(cardValue), SuitImageSm(cardValue)],
@@ -160,7 +164,7 @@ final class const HorizontalSmallFaceAlt(final CardValue cardValue, {super.key})
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(12.0 - _suitCorrection(cardValue), 8.0, 11.0, 8.0),
+      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [SuitImageSm(cardValue), RankTextSm(cardValue)],
@@ -214,30 +218,22 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   Widget build(BuildContext context) {
     final colours = context.colours;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
-    return Icon(_icon, color: colour, size: c.activeSuitSize);
+    return Text(
+      _suitChar(cardValue.suit),
+      style: TextStyle(fontFamily: "Peckish", fontWeight: .w500, fontSize: 32, color: colour),
+    );
   }
-
-  IconData get _icon => switch (cardValue.suit) {
-    Suit.clubs => CustomIcons.clubs,
-    Suit.diamonds => CustomIcons.diamonds,
-    Suit.hearts => CustomIcons.hearts,
-    Suit.spades => CustomIcons.spades,
-  };
 }
 
 final class const SuitImageSm(final CardValue cardValue, {super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colour = Colors.white54;
-    return Icon(_icon, color: colour, size: c.inactiveSuitSize);
+    return Text(
+      _suitChar(cardValue.suit),
+      style: TextStyle(fontFamily: "Peckish", fontWeight: .w400, fontSize: 20, color: colour),
+    );
   }
-
-  IconData get _icon => switch (cardValue.suit) {
-    Suit.clubs => CustomIcons.clubsSm,
-    Suit.diamonds => CustomIcons.diamondsSm,
-    Suit.hearts => CustomIcons.heartsSm,
-    Suit.spades => CustomIcons.spadesSm,
-  };
 }
 
 final class const TileShadow({super.key, final Alignment centre = Alignment.topRight})
@@ -265,4 +261,11 @@ double _suitCorrection(CardValue card) => switch (card.suit) {
   Suit.diamonds => 5.0,
   Suit.hearts => 2.0,
   Suit.spades => 2.0,
+};
+
+String _suitChar(Suit suit) => switch (suit) {
+  Suit.clubs => "\u2663",
+  Suit.diamonds => "\u2666",
+  Suit.hearts => "\u2665",
+  Suit.spades => "\u2660",
 };

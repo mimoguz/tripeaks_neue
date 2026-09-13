@@ -23,7 +23,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1789223100
+ModificationTime: 1789315775
 PfmFamily: 33
 TTFWeight: 400
 TTFWidth: 5
@@ -48,17 +48,17 @@ Lookup: 258 0 0 "HKern" { "HKern-10" [153,15,0] } ['kern' ('DFLT' <'dflt' > 'lat
 MarkAttachClasses: 1
 DEI: 91125
 LangName: 1033 "" "" "" "" "" "" "" "" "" "" "" "" "" "AGPL-3.0-only"
-Encoding: ISO8859-1
+Encoding: UnicodeFull
 UnicodeInterp: none
 NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 0 19 7
+WinInfo: 9709 19 7
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
-BeginChars: 263 27
+BeginChars: 1114112 31
 
 StartChar: A
 Encoding: 65 65 0
@@ -722,7 +722,7 @@ EndChar
 StartChar: hyphen
 Encoding: 45 45 26
 Width: 1024
-Flags: HO
+Flags: H
 LayerCount: 2
 Fore
 SplineSet
@@ -730,14 +730,107 @@ SplineSet
  1001 -9 l 5
  23 -9 l 5
  512 951 l 5
-320 432 m 5
+303 400 m 5
  124 48 l 5
  900 48 l 5
- 704 432 l 5
- 320 432 l 5
+ 721 400 l 5
+ 303 400 l 5
 EndSplineSet
 Validated: 1
 Kerns2: 26 180 "HKern-10"
+EndChar
+
+StartChar: spade
+Encoding: 9824 9824 27
+Width: 1024
+Flags: HO
+LayerCount: 2
+Fore
+SplineSet
+504 960 m 5
+ 893 535 l 6
+ 932 492 952 438 952 384 c 4
+ 952 323 927 263 879 219 c 4
+ 836 180 782 160 728 160 c 4
+ 667 160 607 185 563 233 c 6
+ 525 274 l 5
+ 600 -0 l 5
+ 408 -0 l 5
+ 483 274 l 5
+ 445 233 l 6
+ 401 185 341 160 280 160 c 4
+ 226 160 172 180 129 219 c 4
+ 81 263 56 323 56 384 c 4
+ 56 438 76 492 115 535 c 6
+ 504 960 l 5
+EndSplineSet
+EndChar
+
+StartChar: club
+Encoding: 9827 9827 28
+Width: 944
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+472 948 m 0
+ 597 948 696 848 696 724 c 0
+ 696 676 681 632 656 596 c 1
+ 659 596 661 596 664 596 c 0
+ 788 596 888 496 888 372 c 0
+ 888 248 788 148 664 148 c 0
+ 603 148 547 173 507 213 c 1
+ 568 -0 l 1
+ 376 -0 l 1
+ 437 213 l 1
+ 397 173 341 148 280 148 c 0
+ 156 148 56 248 56 372 c 0
+ 56 496 156 596 280 596 c 0
+ 283 596 285 596 288 596 c 1
+ 263 632 248 676 248 724 c 0
+ 248 848 348 948 472 948 c 0
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: heart
+Encoding: 9829 9829 29
+Width: 1024
+Flags: H
+LayerCount: 2
+Fore
+SplineSet
+149 908 m 4
+ 189 935 235 949 281 949 c 4
+ 354 949 426 915 472 848 c 6
+ 512 789 l 5
+ 552 848 l 6
+ 598 915 670 949 743 949 c 4
+ 789 949 835 935 875 908 c 4
+ 941 863 976 791 976 717 c 4
+ 976 672 963 626 935 586 c 6
+ 512 -32 l 5
+ 89 586 l 6
+ 61 626 48 672 48 717 c 4
+ 48 791 83 863 149 908 c 4
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: diamond
+Encoding: 9830 9830 30
+Width: 767
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+383 963 m 5
+ 711 464 l 5
+ 383 -35 l 5
+ 56 464 l 5
+ 383 963 l 5
+EndSplineSet
+Validated: 1
 EndChar
 EndChars
 EndSplineFont
