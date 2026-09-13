@@ -9,30 +9,26 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return ScrollIndicator(
-      child: DefaultTextStyle(
-        style: textTheme.bodyMedium!.copyWith(height: 1.8),
-        // TODO: Move to arb
-        child: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(
-            c.cardPaddingHorizontal,
-            0,
-            c.cardPaddingHorizontal,
-            c.cardPaddingVertical,
-          ),
-          child: LicenseEntry(
-            link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
-            title: "Tripeaks NEUE v$version",
-            description: "Oguz Tas, 2026.\nSolvable game algorithm was developed by Lykae.",
-            license: "GNU Affero General Public License (AGPL) Version\u00A03",
-            licenseLink: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt"),
-            exceptions: [
-              "fonts/actions.ttf: This file includes symbols derived from "
-                  "Material Icons, and therefore available under Apache License "
-                  "Version\u00A02.0 (same as Material Icons).",
-            ],
-          ),
+      // TODO: Move to arb
+      child: SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(
+          c.cardPaddingHorizontal,
+          0,
+          c.cardPaddingHorizontal,
+          c.cardPaddingVertical,
+        ),
+        child: LicenseEntry(
+          link: Uri.https("github.com", "mimoguz/tripeaks_neue"),
+          title: "Tripeaks NEUE v$version",
+          description: "Oguz Tas, 2026.\nSolvable game algorithm was developed by Lykae.",
+          license: "GNU Affero General Public License (AGPL) Version\u00A03",
+          licenseLink: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt"),
+          exceptions: [
+            "fonts/actions.ttf: This file includes symbols derived from "
+                "Material Icons, and therefore available under Apache License "
+                "Version\u00A02.0 (same as Material Icons).",
+          ],
         ),
       ),
     );
@@ -62,7 +58,7 @@ final class LicenseEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return DefaultTextStyle(
+    return DefaultTextStyle.merge(
       style: TextStyle(height: 2.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

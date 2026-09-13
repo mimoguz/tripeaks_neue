@@ -14,7 +14,7 @@ class Scoring extends StatelessWidget {
     final italic = paragraphStyle.copyWith(fontStyle: FontStyle.italic, color: theme.colorScheme.secondary);
     final s = AppLocalizations.of(context)!;
     return ScrollIndicator(
-      child: DefaultTextStyle(
+      child: DefaultTextStyle.merge(
         style: paragraphStyle,
         child: ListView(
           padding: const EdgeInsets.fromLTRB(

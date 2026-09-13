@@ -46,11 +46,10 @@ class _MyVerticalTabViewState extends State<MyVerticalTabView> {
                   color: backgroundColour,
                   child: AnimatedSwitcher(
                     duration: Durations.medium3,
-                    transitionBuilder:
-                        (child, animation) => SlideTransition(
-                          position: Tween(begin: const Offset(1, 0), end: Offset.zero).animate(animation),
-                          child: child,
-                        ),
+                    transitionBuilder: (child, animation) => SlideTransition(
+                      position: Tween(begin: const Offset(1, 0), end: Offset.zero).animate(animation),
+                      child: child,
+                    ),
                     child: widget.contents.isEmpty ? SizedBox() : widget.contents[_currentIndex],
                   ),
                 ),
@@ -96,10 +95,9 @@ class TabHeader extends StatelessWidget {
                 padding: const EdgeInsets.only(left: c.cardPaddingHorizontal, right: c.utilPageMargin),
                 child: DefaultTextStyle(
                   textAlign: TextAlign.left,
-                  style:
-                      isSelected
-                          ? theme.textTheme.bodyMedium!
-                          : theme.textTheme.bodyMedium!.copyWith(color: theme.hintColor),
+                  style: isSelected
+                      ? theme.textTheme.bodyMedium!
+                      : theme.textTheme.bodyMedium!.copyWith(color: theme.hintColor),
                   child: tab,
                 ),
               ),
