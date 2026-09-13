@@ -1,15 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 
-class KeyboardKey extends StatelessWidget {
-  const KeyboardKey({super.key, required this.keyboardKey});
-
-  final LogicalKeyboardKey keyboardKey;
-
+class const KeyboardKey({super.key, required final LogicalKeyboardKey keyboardKey}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     return Container(
       decoration: BoxDecoration(
         color: theme.colorScheme.surfaceBright,
@@ -28,15 +24,14 @@ class KeyboardKey extends StatelessWidget {
   static const _padding = EdgeInsets.symmetric(horizontal: 8, vertical: 4);
 }
 
-class ShortcutHint extends StatelessWidget {
-  const ShortcutHint({super.key, required this.shorcut, this.showLabel = true});
-
-  final List<LogicalKeyboardKey> shorcut;
-  final bool showLabel;
-
+class const ShortcutHint({
+  super.key,
+  required final List<LogicalKeyboardKey> shorcut,
+  final bool showLabel = true,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,

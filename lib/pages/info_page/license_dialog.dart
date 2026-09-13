@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -11,7 +11,7 @@ class LicenseDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return CommonDialog(
       title: Text(package.name),
       content: Padding(

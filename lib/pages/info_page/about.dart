@@ -1,12 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/src/version.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-class About extends StatelessWidget {
-  const About({super.key});
-
+class const About({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollIndicator(
@@ -37,27 +36,18 @@ class About extends StatelessWidget {
   static final version = packageVersion.split("+")[0];
 }
 
-final class LicenseEntry extends StatelessWidget {
-  const LicenseEntry({
-    super.key,
-    required this.title,
-    required this.license,
-    this.licenseLink,
-    this.link,
-    this.description,
-    this.exceptions = const <String>[],
-  });
-
-  final Uri? link;
-  final String title;
-  final String? description;
-  final String license;
-  final List<String> exceptions;
-  final Uri? licenseLink;
-
+final class const LicenseEntry({
+  super.key,
+  required final String title,
+  required final String license,
+  final Uri? licenseLink,
+  final Uri? link,
+  final String? description,
+  final List<String> exceptions = const <String>[],
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.styles;
     return DefaultTextStyle.merge(
       style: TextStyle(height: 2.0),
       child: Column(

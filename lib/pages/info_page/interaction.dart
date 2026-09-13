@@ -2,22 +2,20 @@ import 'package:fast_rich_text/fast_rich_text.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 import 'package:tripeaks_neue/widgets/shortcut_hint.dart';
 
-final class Interaction extends StatelessWidget {
-  const Interaction({super.key});
-
+final class const Interaction({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     final paragraphStyle = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
     final italic = paragraphStyle.copyWith(fontStyle: FontStyle.italic, color: theme.colorScheme.secondary);
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return ScrollIndicator(
       child: DefaultTextStyle(
         style: paragraphStyle,
@@ -75,9 +73,7 @@ final class Interaction extends StatelessWidget {
                 italicTextStyle: italic,
               ),
               image: Image.asset(
-                Theme.of(context).brightness == Brightness.light
-                    ? "images/card_counter_light.png"
-                    : "images/card_counter_dark.png",
+                theme.brightness == .light ? "images/card_counter_light.png" : "images/card_counter_dark.png",
                 width: 11,
                 height: 74,
               ),
@@ -172,13 +168,12 @@ final class Interaction extends StatelessWidget {
   static final _exitShortcut = <LogicalKeyboardKey>[.control, .keyQ];
 }
 
-class InteractionListCell extends StatelessWidget {
-  const InteractionListCell({super.key, required this.description, this.image, this.shorcut});
-
-  final Widget description;
-  final Widget? image;
-  final List<LogicalKeyboardKey>? shorcut;
-
+class const InteractionListCell({
+  super.key,
+  required final Widget description,
+  final Widget? image,
+  final List<LogicalKeyboardKey>? shorcut,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -206,13 +201,12 @@ class InteractionListCell extends StatelessWidget {
   }
 }
 
-class ShorcutListCell extends StatelessWidget {
-  const ShorcutListCell({super.key, required this.title, required this.shorcut, required this.textStyle});
-
-  final String title;
-  final List<LogicalKeyboardKey> shorcut;
-  final TextStyle textStyle;
-
+class const ShorcutListCell({
+  super.key,
+  required final String title,
+  required final List<LogicalKeyboardKey> shorcut,
+  required final TextStyle textStyle,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -229,9 +223,7 @@ class ShorcutListCell extends StatelessWidget {
   }
 }
 
-class InteractionListDivider extends StatelessWidget {
-  const InteractionListDivider({super.key});
-
+class const InteractionListDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const GroupTileDivider(padding: EdgeInsets.symmetric(vertical: 2));

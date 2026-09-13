@@ -1,15 +1,13 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class SelectLayoutDialog extends StatefulWidget {
-  const SelectLayoutDialog({super.key});
-
+class const SelectLayoutDialog({super.key}) extends StatefulWidget {
   @override
   State<SelectLayoutDialog> createState() => _SelectLayoutDialogState();
 }
@@ -42,7 +40,8 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
     final settings = Provider.of<Settings>(context);
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
+    final theme = context.theme;
 
     _showAll ??= session.showAll;
     _startEmpty ??= session.startEmpty;
@@ -58,7 +57,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           ListTileTheme(
             data: ListTileThemeData(
               visualDensity: .compact,
-              titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+              titleTextStyle: theme.textTheme.bodyMedium,
               controlAffinity: .leading,
               horizontalTitleGap: c.itemSpacing,
               contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
@@ -80,7 +79,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
           ListTileTheme(
             data: ListTileThemeData(
               visualDensity: .compact,
-              titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+              titleTextStyle: theme.textTheme.bodyMedium,
               controlAffinity: .leading,
               horizontalTitleGap: c.itemSpacing - c.checkBoxCorrection,
               contentPadding: EdgeInsets.fromLTRB(
@@ -97,10 +96,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Transform.translate(
                       offset: const Offset(c.checkBoxCorrection - c.radioCorrection, 0.0),
-                      child: Text(
-                        s.additionalOptionsGroupTitle,
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
+                      child: Text(s.additionalOptionsGroupTitle, style: theme.textTheme.titleSmall),
                     ),
                   ),
                 ),
@@ -130,7 +126,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
       actions: <Widget>[
         TextButton(
           onPressed: () => Navigator.pop(context),
-          style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.error),
+          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
           child: Text(s.selectDialogCancelAction),
         ),
         TextButton(

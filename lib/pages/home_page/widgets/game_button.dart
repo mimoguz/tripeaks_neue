@@ -1,26 +1,20 @@
 import 'dart:math';
 
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:material_ui/material_ui.dart';
 
-class CircleGameButton extends StatelessWidget {
-  const CircleGameButton({
-    super.key,
-    required this.scale,
-    required this.icon,
-    required this.tooltip,
-    this.smallIcon,
-    this.onPressed,
-  });
-  final double scale;
-  final IconData icon;
-  final String tooltip;
-  final IconData? smallIcon;
-  final VoidCallback? onPressed;
-
+class const CircleGameButton({
+  super.key,
+  required final double scale,
+  required final IconData icon,
+  required final String tooltip,
+  final IconData? smallIcon,
+  final VoidCallback? onPressed,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     final useSmall = scale < c.iconScaleThreshold;
     final size = min(c.buttonSize * scale, c.maxRealButtonSize);
     return SizedBox(
@@ -123,8 +117,7 @@ class _GameButtonState extends State<GameButton> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colours = theme.colorScheme;
+    final colours = context.colours;
     _buttonColour ??= colours.primaryContainer;
     _iconColor ??= colours.onPrimaryContainer;
     _primary ??= colours.primary;
@@ -171,15 +164,16 @@ class _GameButtonState extends State<GameButton> {
   }
 
   void _setColours() => setState(() {
+    final colours = context.colours;
     if (_focusNode.hasFocus) {
       setState(() {
-        _buttonColour = Theme.of(context).colorScheme.primary;
-        _iconColor = Theme.of(context).colorScheme.onPrimary;
+        _buttonColour = colours.primary;
+        _iconColor = colours.onPrimary;
       });
     } else {
       setState(() {
-        _buttonColour = Theme.of(context).colorScheme.primaryContainer;
-        _iconColor = Theme.of(context).colorScheme.onPrimaryContainer;
+        _buttonColour = colours.primaryContainer;
+        _iconColor = colours.onPrimaryContainer;
       });
     }
   });

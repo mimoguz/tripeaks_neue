@@ -1,28 +1,20 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
-final class SettingTile extends StatelessWidget {
-  const SettingTile({
-    super.key,
-    required this.title,
-    this.subtitle,
-    required this.location,
-    this.trailing,
-    this.showArrow = false,
-    this.onTap,
-  });
-
-  final String title;
-  final String? subtitle;
-  final Widget? trailing;
-  final bool showArrow;
-  final Location location;
-  final VoidCallback? onTap;
-
+final class const SettingTile({
+  super.key,
+  required final String title,
+  final String? subtitle,
+  required final Location location,
+  final Widget? trailing,
+  final bool showArrow = false,
+  final VoidCallback? onTap,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     final borderRadius = _borderRadius;
     final padding = showArrow ? _correctedPadding : c.cardPadding;
     final margin = location == Location.first || location == Location.only ? EdgeInsets.zero : _spacing;

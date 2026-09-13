@@ -2,7 +2,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/info_page/about_tab.dart';
 import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';

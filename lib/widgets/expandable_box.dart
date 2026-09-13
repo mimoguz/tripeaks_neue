@@ -1,25 +1,19 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
-class ExpandableBox extends StatelessWidget {
-  const ExpandableBox({
-    super.key,
-    required this.expanded,
-    required this.title,
-    this.onTap,
-    this.icon,
-    this.child,
-  });
-
-  final bool expanded;
-  final Widget? child;
-  final Widget title;
-  final Widget? icon;
-  final VoidCallback? onTap;
-
+class const ExpandableBox({
+  super.key,
+  required final bool expanded,
+  required final Widget title,
+  final VoidCallback? onTap,
+  final Widget? icon,
+  final Widget? child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
     return Expanded(
       flex: expanded ? 1 : 0,
       child: AnimatedSize(
@@ -27,7 +21,7 @@ class ExpandableBox extends StatelessWidget {
         child: ListItemContainer(
           child: Material(
             clipBehavior: Clip.antiAlias,
-            color: Theme.of(context).colorScheme.surfaceContainerHigh,
+            color: theme.colorScheme.surfaceContainerHigh,
             borderRadius: c.commonBorderRadius,
             elevation: 1.0,
             child: Column(
@@ -43,15 +37,12 @@ class ExpandableBox extends StatelessWidget {
                       children: [
                         ?icon,
                         Expanded(
-                          child: DefaultTextStyle(
-                            style: Theme.of(context).textTheme.titleMedium!,
-                            child: title,
-                          ),
+                          child: DefaultTextStyle(style: theme.textTheme.titleMedium!, child: title),
                         ),
                         Icon(
                           expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
                           size: 24.0,
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          color: theme.colorScheme.onSurfaceVariant,
                         ),
                       ],
                     ),

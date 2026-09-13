@@ -1,13 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/pages/info_page/dependencies.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/about.dart';
 import 'package:tripeaks_neue/pages/info_page/privacy_policy.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class AboutTab extends StatefulWidget {
-  const AboutTab({super.key});
-
+class const AboutTab({super.key}) extends StatefulWidget {
   @override
   State<AboutTab> createState() => _AboutTabState();
 }
@@ -21,7 +20,7 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     return Container(
       color: colours.surfaceContainerLow,
       child: Padding(

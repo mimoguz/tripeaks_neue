@@ -6,18 +6,16 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-class HomePageDrawer extends StatelessWidget {
-  const HomePageDrawer({super.key});
-
+class const HomePageDrawer({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    final s = AppLocalizations.of(context)!;
+    final colours = context.colours;
+    final s = context.strings;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
       surfaceTintColor: colours.surfaceTint,
@@ -104,12 +102,10 @@ class HomePageDrawer extends StatelessWidget {
   static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
 }
 
-class AppTitle extends StatelessWidget {
-  const AppTitle({super.key});
-
+class const AppTitle({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     final style = TextStyle(
       fontFamily: "Peckish",
       fontSize: 13,
@@ -152,7 +148,7 @@ class const DrawerListTile<T extends Intent>({
   Widget build(BuildContext context) {
     return ListTile(
       style: .drawer,
-      iconColor: Theme.of(context).colorScheme.onSurfaceVariant,
+      iconColor: context.colours.onSurfaceVariant,
       leading: Icon(icon),
       title: Text(title),
       shape: StadiumBorder(),

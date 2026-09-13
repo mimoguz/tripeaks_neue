@@ -1,10 +1,7 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 
-class ScrollIndicator extends StatefulWidget {
-  const ScrollIndicator({super.key, required this.child});
-
-  final Widget child;
-
+class const ScrollIndicator({super.key, required final Widget child}) extends StatefulWidget {
   @override
   State<ScrollIndicator> createState() => _ScrollIndicatorState();
 }
@@ -36,8 +33,7 @@ class _ScrollIndicatorState extends State<ScrollIndicator> {
           bottom: 8.0,
           child: AnimatedSwitcher(
             duration: Durations.medium3,
-            child:
-                _atEnd ? SizedBox() : Icon(Icons.more_horiz, color: Theme.of(context).colorScheme.secondary),
+            child: _atEnd ? SizedBox() : Icon(Icons.more_horiz, color: context.colours.secondary),
           ),
         ),
       ],

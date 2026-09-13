@@ -1,18 +1,18 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-class CommonDialog extends StatelessWidget {
-  const CommonDialog({super.key, this.actions, this.title, this.tint, required this.content});
-
-  final List<Widget>? actions;
-  final Widget? title;
-  final Widget content;
-  final Color? tint;
-
+class const CommonDialog({
+  super.key,
+  final List<Widget>? actions,
+  final Widget? title,
+  final Color? tint,
+  required final Widget content,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     return AlertDialog.adaptive(
       contentPadding: EdgeInsets.zero,
       titlePadding: const EdgeInsets.fromLTRB(

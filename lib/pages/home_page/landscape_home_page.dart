@@ -20,7 +20,6 @@ import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 
@@ -187,7 +186,7 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       spacing: 16.0 * scale,

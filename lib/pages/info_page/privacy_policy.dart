@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
@@ -10,7 +11,7 @@ class PrivacyPolicy extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScrollIndicator(
       child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.8),
+        style: context.styles.bodyMedium!.copyWith(height: 1.8),
         child: ListView(
           padding: const EdgeInsets.fromLTRB(
             c.cardPaddingHorizontal,

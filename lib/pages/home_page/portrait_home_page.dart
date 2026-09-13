@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/board.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_counter.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/card_placeholder.dart';
@@ -21,6 +20,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class PortraitHomePage extends StatefulWidget {
@@ -73,7 +73,7 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
                 child: Container(
-                  color: Theme.of(context).colorScheme.surfaceContainerLow,
+                  color: context.colours.surfaceContainerLow,
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
@@ -189,7 +189,7 @@ class PortraitHomePageRightArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,

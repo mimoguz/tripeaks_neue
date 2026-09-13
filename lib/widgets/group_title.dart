@@ -1,16 +1,13 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
-final class GroupTitle extends StatelessWidget {
-  const GroupTitle(this.title, {super.key, this.isFirst = false});
-
-  final String title;
-  final bool isFirst;
-
+final class const GroupTitle(final String title, {super.key, final bool isFirst = false})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     return ListItemContainer(
       child: Padding(
         padding: EdgeInsets.only(

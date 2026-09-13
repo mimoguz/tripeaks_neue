@@ -2,7 +2,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/ensure_solvable_setting.dart';

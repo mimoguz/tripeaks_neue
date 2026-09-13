@@ -1,13 +1,12 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/expandable_box.dart';
 import 'package:tripeaks_neue/pages/info_page/how_to_play.dart';
 import 'package:tripeaks_neue/pages/info_page/interaction.dart';
 import 'package:tripeaks_neue/pages/info_page/scoring.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class HowtoTab extends StatefulWidget {
-  const HowtoTab({super.key});
-
+class const HowtoTab({super.key}) extends StatefulWidget {
   @override
   State<HowtoTab> createState() => _HowtoTabState();
 }
@@ -21,7 +20,7 @@ class _HowtoTabState extends State<HowtoTab> with AutomaticKeepAliveClientMixin<
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final colours = Theme.of(context).colorScheme;
+    final colours = context.colours;
     return Container(
       color: colours.surfaceContainerLow,
       child: Padding(

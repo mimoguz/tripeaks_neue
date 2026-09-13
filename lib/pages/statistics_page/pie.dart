@@ -1,19 +1,16 @@
 import 'dart:math' as maths;
+
 import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class Pie extends StatelessWidget {
-  const Pie({super.key, required this.total, required this.slice, this.size = 80});
-
-  final int total;
-  final int slice;
-  final double size;
-
+class const Pie({super.key, required final int total, required final int slice, final double size = 80})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final theme = context.theme;
     return Stack(
       alignment: .center,
       children: [
@@ -42,23 +39,14 @@ class Pie extends StatelessWidget {
   static final f = NumberFormat("##0.#", "en_GB");
 }
 
-final class PiePainter extends CustomPainter {
-  PiePainter({
-    required this.total,
-    required this.slice,
-    this.ringColour = Colors.yellow,
-    this.sliceColour = Colors.deepOrange,
-    this.emptyColor = Colors.grey,
-    this.thickness = 8.0,
-  });
-
-  final int total;
-  final int slice;
-  final double thickness;
-  final Color ringColour;
-  final Color sliceColour;
-  final Color emptyColor;
-
+final class PiePainter({
+  required final int total,
+  required final int slice,
+  required final Color ringColour,
+  required final Color sliceColour,
+  required final Color emptyColor,
+  final double thickness = 8.0,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Rect.fromLTWH(

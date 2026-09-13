@@ -4,7 +4,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -37,7 +36,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
     final useVertical = MediaQuery.sizeOf(context).height < c.verticalTabsThreshold;
     setOverlayStyleOf(context);
     return Shortcuts(
@@ -59,7 +58,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           bottom: false,
           child: Builder(
             builder: (context) {
-              final session = context.watch<Session>();
+              final session = Provider.of<Session>(context);
               final colours = context.colours;
               return Observer(
                 builder: (context) {

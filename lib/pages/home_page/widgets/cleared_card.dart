@@ -2,16 +2,15 @@ import 'dart:ui';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class ClearedCardAnimated extends StatelessWidget {
-  const ClearedCardAnimated({super.key, required this.score, required this.id, required this.show});
-
-  final int score;
-  final int id;
-  final bool show;
-
+class const ClearedCardAnimated({
+  super.key,
+  required final int score,
+  required final int id,
+  required final bool show,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
@@ -22,20 +21,17 @@ class ClearedCardAnimated extends StatelessWidget {
   }
 }
 
-final class ClearedCard extends StatelessWidget {
-  const ClearedCard({super.key, required this.score});
-
-  final int score;
-
+final class const ClearedCard({super.key, required final int score}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = AppLocalizations.of(context)!;
+    final s = context.strings;
+    final theme = context.theme;
     return ClipRRect(
       borderRadius: c.commonBorderRadius,
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
         child: Container(
-          color: Theme.of(context).colorScheme.surfaceContainerLow.withAlpha(210),
+          color: theme.colorScheme.surfaceContainerLow.withAlpha(210),
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 240),
             child: Padding(
@@ -46,22 +42,18 @@ final class ClearedCard extends StatelessWidget {
                 spacing: 16.0,
                 children: [
                   Image.asset("images/tropy.png", width: 90, height: 90),
-                  Text(
-                    s.clearedCardMessage,
-                    style: Theme.of(context).textTheme.titleLarge,
-                    textAlign: TextAlign.center,
-                  ),
+                  Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 2,
                     children: [
-                      Icon(Icons.stars, size: 24.0, color: Theme.of(context).colorScheme.tertiary),
+                      Icon(Icons.stars, size: 24.0, color: theme.colorScheme.tertiary),
                       Text(
                         "$score",
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: Theme.of(context).colorScheme.tertiary,
+                        style: theme.textTheme.titleLarge!.copyWith(
+                          color: theme.colorScheme.tertiary,
                           fontVariations: [FontVariation("wght", 600)],
                         ),
                       ),
