@@ -1,0 +1,2 @@
+- Functioning edge-to-edge mode
+- Cosmetic changes

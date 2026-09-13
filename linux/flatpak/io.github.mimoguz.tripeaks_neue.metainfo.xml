@@ -68,6 +68,11 @@
             <image>
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen.png</image>
         </screenshot>
+        <screenshot type="default">
+            <caption>Game menu</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_menu.png</image>
+        </screenshot>
         <screenshot>
             <caption>Layout selection dialog</caption>
             <image>
@@ -86,6 +91,13 @@
     </screenshots>
 
     <releases>
+        <release version="0.9.62" date="2026-09-13">
+            <description>
+                <ul>
+                    <li>Cosmetic changes.</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.9.61" date="2026-09-01">
             <description>
                 <ul>
