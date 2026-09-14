@@ -57,6 +57,13 @@ static void my_application_activate(GApplication* application) {
 
   FlView* view = fl_view_new(project);
   // gtk_widget_show(GTK_WIDGET(view));
+  
+  GdkRGBA background_color;
+  // Background defaults to black, override it here if necessary, e.g. #00000000
+  // for transparent.
+  gdk_rgba_parse(&background_color, "#1a1c1f");
+  fl_view_set_background_color(view, &background_color);
+
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
@@ -122,6 +129,7 @@ static void my_application_class_init(MyApplicationClass* klass) {
 
 static void my_application_init(MyApplication* self) {}
 
+  
 MyApplication* my_application_new() {
   // Set the program name to the application ID, which helps various systems
   // like GTK and desktop environments map this running application to its
