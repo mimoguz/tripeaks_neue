@@ -11,6 +11,8 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 
 <a href="https://play.google.com/store/apps/details?id=io.github.mimoguz.tripeaksneue&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80"/></a>
 
+<a href="https://snapcraft.io/mzoguz-tripeaksneue"><img alt="Get it from the Snap Store" src=https://snapcraft.io/en/dark/install.svg /></a>
+
 <a href="https://mimoguz.itch.io/tripeaks-neue"> <img height="60" alt="Play on itch.io" src="./.github/readme/itch.io.png"/></a>
 
 <a href="https://buymeacoffee.com/mimoguz"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
