@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Game;
+Comment[en_GB]=A simple Tri Peaks game
+Comment=A simple Tri Peaks game
+Exec=mzoguz-tripeaksneue
+GenericName[en_GB]=
+GenericName=
+Icon=${SNAP}/meta/gui/icon.svg
+Keywords=cards,card-game,casual,solitaire,patience;
+MimeType=
+Name[en_GB]=TriPeaks NEUE
+Name=TriPeaks NEUE
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -12,6 +12,7 @@
 - [x] Flatpak screenshots
 - [x] Flatpak icon
 - [x] Flatpak metainfo lint
+- [x] Snapcraft release
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
 - [x] Readme images
