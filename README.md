@@ -5,28 +5,28 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 [Play online](https://mimoguz.github.io/tripeaks_neue/index.html)<br>
 
 <div align="center">
-<table style="border-collapse:collapse;border:none;">
-<tr style="border:none">
-<td style="border:none;text-align:center;">
+<table style="border-collapse:collapse;border:none !important;">
+<tr style="border:none !important">
+<td style="border:none !important;text-align:center;">
 <a href="https://f-droid.org/en/packages/io.github.mimoguz.tripeaksneue/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"></a>
 </td>
-<td style="border:none;text-align:center;">
+<td style="border:none !important;text-align:center;">
 <a href="https://play.google.com/store/apps/details?id=io.github.mimoguz.tripeaksneue&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="80"/></a>
 </td>
 </tr>
-<tr style="border:none">
-<td style="border:none;text-align:center;">
+<tr style="border:none !important">
+<td style="border:none !important;text-align:center;">
 <a href="https://flathub.org/apps/io.github.mimoguz.tripeaks_neue"> <img width="180" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
 </td>
-<td style="border:none;text-align:center;">
+<td style="border:none !important;text-align:center;">
 <a href="https://snapcraft.io/mzoguz-tripeaksneue"><img alt="Get it from the Snap Store" src=https://snapcraft.io/en/dark/install.svg /></a>
 </td>
 </tr>
-<tr style="border:none;">
-<td style="border:none;text-align:center;">
+<tr style="border:none !important;">
+<td style="border:none !important;text-align:center;">
 <a href="https://mimoguz.itch.io/tripeaks-neue"> <img height="60" alt="Play on itch.io" src="./.github/readme/itch.io.png"/></a>
 </td>
-<td style="border:none;text-align:center;">
+<td style="border:none !important;text-align:center;">
 <a href="https://buymeacoffee.com/mimoguz"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 </td>
 </tr>
