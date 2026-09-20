@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-const double activeRankSize = 28.0;
-const double activeSuitSize = 32.0;
+const double activeRankSize = 32.0;
+const double activeSuitSize = 40.0;
 const double buttonSize = 96.0;
 const double cardPaddingHorizontal = 12.0;
 const double cardPaddingVertical = 10.0;
