@@ -98,11 +98,17 @@ final class const ActiveCard(final Tile tile, {super.key}) extends StatelessWidg
 final class const ActiveCardFace(final CardValue card, {super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: c.cardSize,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 1.0),
-        child: Column(mainAxisAlignment: .center, spacing: 5.0, children: [RankText(card), SuitImage(card)]),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: .min,
+        children: [
+          Spacer(),
+          Padding(padding: const EdgeInsets.only(top: 4.0), child: RankText(card)),
+          SuitImage(card),
+          Spacer(),
+        ],
       ),
     );
   }
@@ -190,7 +196,6 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
         fontWeight: .w500,
         color: colour,
         letterSpacing: 1.0,
-        height: 1.0,
       ),
     );
   }
@@ -214,13 +219,7 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
     return Text(
       _suitChar(cardValue.suit),
-      style: TextStyle(
-        fontFamily: "Peckish",
-        fontWeight: .w500,
-        fontSize: c.activeSuitSize,
-        color: colour,
-        height: 1.0,
-      ),
+      style: TextStyle(fontFamily: "Peckish", fontWeight: .w500, fontSize: 32, color: colour),
     );
   }
 }
@@ -255,6 +254,13 @@ final class const TileShadow({super.key, final Alignment centre = Alignment.topR
     );
   }
 }
+
+double _suitCorrection(CardValue card) => switch (card.suit) {
+  Suit.clubs => 2.0,
+  Suit.diamonds => 5.0,
+  Suit.hearts => 2.0,
+  Suit.spades => 2.0,
+};
 
 String _suitChar(Suit suit) => switch (suit) {
   Suit.clubs => "\u2663",
