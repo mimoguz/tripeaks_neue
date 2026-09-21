@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
@@ -212,16 +213,17 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   Widget build(BuildContext context) {
     final colours = context.colours;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
-    return Text(
-      _suitChar(cardValue.suit),
-      style: TextStyle(
-        fontFamily: "Peckish",
-        fontWeight: .w500,
-        fontSize: c.activeSuitSize,
-        color: colour,
-        height: 1.0,
-      ),
-    );
+    return Icon(CustomIcons.suitIcon(cardValue.suit), size: 40.0, color: colour);
+    // return Text(
+    //   _suitChar(cardValue.suit),
+    //   style: TextStyle(
+    //     fontFamily: "Peckish",
+    //     fontWeight: .w500,
+    //     fontSize: c.activeSuitSize,
+    //     color: colour,
+    //     height: 1.0,
+    //   ),
+    // );
   }
 }
 

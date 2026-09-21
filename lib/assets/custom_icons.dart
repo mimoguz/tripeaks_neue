@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:tripeaks_neue/stores/data/card_value.dart';
 
 class CustomIcons {
   const CustomIcons._();
@@ -42,4 +43,11 @@ class CustomIcons {
 
   static const _actions = "Actions";
   static const _cards = "Cards";
+
+  static IconData suitIcon(Suit suit) => switch (suit) {
+    Suit.clubs => clubs,
+    Suit.diamonds => diamonds,
+    Suit.hearts => hearts,
+    Suit.spades => spades,
+  };
 }
