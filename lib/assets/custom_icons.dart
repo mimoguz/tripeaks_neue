@@ -8,10 +8,15 @@ class CustomIcons {
   static const diamonds = IconData(0xe901, fontFamily: _cards);
   static const spades = IconData(0xe902, fontFamily: _cards);
   static const clubs = IconData(0xe903, fontFamily: _cards);
+  static const clubsAlt = IconData(0xe90f, fontFamily: _cards);
+  static const diamondsAlt = IconData(0xe910, fontFamily: _cards);
+  static const heartsAlt = IconData(0xe911, fontFamily: _cards);
+  static const spadesAlt = IconData(0xe912, fontFamily: _cards);
   static const heartsSm = IconData(0xe904, fontFamily: _cards);
   static const diamondsSm = IconData(0xe905, fontFamily: _cards);
   static const spadesSm = IconData(0xe906, fontFamily: _cards);
   static const clubsSm = IconData(0xe907, fontFamily: _cards);
+
   static const backCheckered = IconData(0xe908, fontFamily: _cards);
   static const backDotMatrix = IconData(0xe909, fontFamily: _cards);
   static const backEnnui = IconData(0xe90a, fontFamily: _cards);
@@ -45,9 +50,9 @@ class CustomIcons {
   static const _cards = "Cards";
 
   static IconData suitIcon(Suit suit) => switch (suit) {
-    Suit.clubs => clubs,
-    Suit.diamonds => diamonds,
-    Suit.hearts => hearts,
-    Suit.spades => spades,
+    Suit.clubs => clubsAlt,
+    Suit.diamonds => diamondsAlt,
+    Suit.hearts => heartsAlt,
+    Suit.spades => spadesAlt,
   };
 }
