@@ -16,7 +16,7 @@ class const ColourSetting({super.key}) extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.decorColourControl,
+          titleText: s.decorColourControl,
           location: Location.centre,
           onTap: () => _showSelection(context, settings),
           subtitle: settings.decorColour.label(s),

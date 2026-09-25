@@ -16,7 +16,7 @@ final class EnsureSolvableSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.ensureSolvableControl,
+          titleText: s.ensureSolvableControl,
           location: Location.last,
           onTap: () => session.ensureSolvable = !session.ensureSolvable,
           subtitle: session.ensureSolvable ? s.ensureSolvableOnLabel : s.ensureSolvableOffLabel,

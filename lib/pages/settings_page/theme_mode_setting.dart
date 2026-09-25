@@ -17,7 +17,7 @@ class ThemeModeSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.themeModeControl,
+          titleText: s.themeModeControl,
           location: Location.centre,
           onTap: () => _showSelection(context, settings),
           subtitle: _valueLabel(settings.themeMode, s),
@@ -36,7 +36,7 @@ class ThemeModeSetting extends StatelessWidget {
       builder: (context) => SelectionDialog(
         title: s.themeModeControl,
         selected: settings.themeMode.index,
-        options: ThemeMode.values.map((e) => _valueLabel(e, s)).toList(),
+        options: ThemeMode.values.map((e) => Text(_valueLabel(e, s))).toList(),
       ),
     );
     if (result != null && result >= 0) {

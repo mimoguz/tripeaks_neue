@@ -60,6 +60,24 @@ mixin _$Settings on _Settings, Store {
     });
   }
 
+  late final _$suitIconThemeAtom = Atom(
+    name: '_Settings.suitIconTheme',
+    context: context,
+  );
+
+  @override
+  int get suitIconTheme {
+    _$suitIconThemeAtom.reportRead();
+    return super.suitIconTheme;
+  }
+
+  @override
+  set suitIconTheme(int value) {
+    _$suitIconThemeAtom.reportWrite(value, super.suitIconTheme, () {
+      super.suitIconTheme = value;
+    });
+  }
+
   late final _$_soundOnAtom = Atom(
     name: '_Settings._soundOn',
     context: context,
@@ -151,7 +169,8 @@ mixin _$Settings on _Settings, Store {
     return '''
 themeMode: ${themeMode},
 decor: ${decor},
-decorColour: ${decorColour}
+decorColour: ${decorColour},
+suitIconTheme: ${suitIconTheme}
     ''';
   }
 }

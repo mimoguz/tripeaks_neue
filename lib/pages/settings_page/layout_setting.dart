@@ -17,7 +17,7 @@ class LayoutSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.layoutControl,
+          titleText: s.layoutControl,
           location: Location.first,
           onTap: () => _showSelection(context, session),
           subtitle: session.layout.label(s),
@@ -36,7 +36,7 @@ class LayoutSetting extends StatelessWidget {
       builder: (context) => SelectionDialog(
         title: s.layoutControl,
         selected: session.layout.index,
-        options: Peaks.values.map((e) => e.label(s)).toList(),
+        options: Peaks.values.map((e) => Text(e.label(s))).toList(),
       ),
     );
     if (result != null && result >= 0) {

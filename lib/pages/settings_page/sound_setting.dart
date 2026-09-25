@@ -16,7 +16,7 @@ final class SoundSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.soundControl,
+          titleText: s.soundControl,
           location: Location.first,
           onTap: () => settings.setSoundOn(!settings.soundOn),
           subtitle: settings.soundOn ? s.soundOnLabel : s.soundMutedLabel,

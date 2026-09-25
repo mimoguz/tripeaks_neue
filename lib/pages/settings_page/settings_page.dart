@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/suit_icon_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -118,6 +119,7 @@ final class SettingsPageBody extends StatelessWidget {
                           GroupTitle(s.interfaceSettingGroupTitle),
                           const SoundSetting(),
                           const ThemeModeSetting(),
+                          const SuitIconSetting(),
                           const ColourSetting(),
                           const DecorSetting(),
                         ],

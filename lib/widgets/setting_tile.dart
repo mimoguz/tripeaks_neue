@@ -5,7 +5,8 @@ import 'package:tripeaks_neue/widgets/item_container.dart';
 
 final class const SettingTile({
   super.key,
-  required final String title,
+  final String? titleText,
+  final Widget? title,
   final String? subtitle,
   required final Location location,
   final Widget? trailing,
@@ -37,7 +38,15 @@ final class const SettingTile({
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title, style: theme.textTheme.titleMedium),
+                        title ??
+                            Text(
+                              titleText ??
+                                  (throw ArgumentError.value(
+                                    "titleText",
+                                    "Either 'title' or 'titleText' must not be null",
+                                  )),
+                              style: theme.textTheme.titleMedium,
+                            ),
                         if (subtitle != null)
                           Text(
                             subtitle!,

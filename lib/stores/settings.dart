@@ -15,6 +15,7 @@ class Settings extends _Settings with _$Settings {
   Settings()
     : super._(
         themeMode: ThemeMode.system,
+        suitIconTheme: 0,
         decor: Decor.values.first,
         decorColour: DecorColour.red,
         soundOn: true,
@@ -25,6 +26,7 @@ class Settings extends _Settings with _$Settings {
   Settings.fromJsonObject(JsonObject jsonObject)
     : super._(
         themeMode: ThemeMode.values[jsonObject.read<int>("themeMode")],
+        suitIconTheme: jsonObject.readDefault<int>("suitIconTheme", 0),
         decor: _readDecor(jsonObject),
         decorColour: _readDecorColour(jsonObject),
         soundOn: jsonObject.read<bool>("soundOn"),
@@ -37,6 +39,7 @@ class Settings extends _Settings with _$Settings {
 
   JsonObject toJsonObject() => {
     "themeMode": themeMode.index,
+    "suitIconTheme": suitIconTheme,
     "decor": decor.index,
     "decorColour": decorColour.index,
     "soundOn": _soundOn,
@@ -64,6 +67,7 @@ class Settings extends _Settings with _$Settings {
 abstract class _Settings with Store {
   _Settings._({
     required this.themeMode,
+    required this.suitIconTheme,
     required this.decor,
     required this.decorColour,
     required this._soundOn,
@@ -79,6 +83,9 @@ abstract class _Settings with Store {
 
   @observable
   DecorColour decorColour;
+
+  @observable
+  int suitIconTheme;
 
   @readonly
   bool _soundOn;

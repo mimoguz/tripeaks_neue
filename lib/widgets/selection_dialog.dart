@@ -5,7 +5,7 @@ import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
 class const SelectionDialog({
   super.key,
-  required final List<String> options,
+  required final List<Widget> options,
   required final int selected,
   final String? title,
 }) extends StatelessWidget {
@@ -28,8 +28,7 @@ class const SelectionDialog({
           ),
           child: Column(
             children: [
-              for (final (index, item) in options.indexed)
-                RadioListTile<int>(value: index, title: Text(item)),
+              for (final (index, item) in options.indexed) RadioListTile<int>(value: index, title: item),
             ],
           ),
         ),

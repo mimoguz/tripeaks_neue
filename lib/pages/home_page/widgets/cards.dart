@@ -213,7 +213,7 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   Widget build(BuildContext context) {
     final colours = context.colours;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
-    return Icon(CustomIcons.suitIcon(cardValue.suit), size: c.activeSuitSize, color: colour);
+    return Icon(CustomIcons.suitIcon(cardValue.suit, 2), size: c.activeSuitSize, color: colour);
   }
 }
 

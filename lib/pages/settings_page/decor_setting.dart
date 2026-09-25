@@ -17,7 +17,7 @@ class const DecorSetting({super.key}) extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.decorControl,
+          titleText: s.decorControl,
           location: Location.last,
           onTap: () => _showSelection(context, settings),
           subtitle: settings.decor.name(s),
