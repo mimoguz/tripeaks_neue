@@ -66,13 +66,13 @@ mixin _$Settings on _Settings, Store {
   );
 
   @override
-  int get suitIconTheme {
+  SuitIconTheme get suitIconTheme {
     _$suitIconThemeAtom.reportRead();
     return super.suitIconTheme;
   }
 
   @override
-  set suitIconTheme(int value) {
+  set suitIconTheme(SuitIconTheme value) {
     _$suitIconThemeAtom.reportWrite(value, super.suitIconTheme, () {
       super.suitIconTheme = value;
     });

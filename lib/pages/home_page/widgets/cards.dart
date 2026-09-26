@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -213,7 +215,16 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   Widget build(BuildContext context) {
     final colours = context.colours;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
-    return Icon(CustomIcons.suitIcon(cardValue.suit, 2), size: c.activeSuitSize, color: colour);
+    return Observer(
+      builder: (context) {
+        final settings = Provider.of<Settings>(context);
+        return Icon(
+          CustomIcons.suitIcon(cardValue.suit, settings.suitIconTheme),
+          size: c.activeSuitSize,
+          color: colour,
+        );
+      },
+    );
   }
 }
 

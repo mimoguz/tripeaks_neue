@@ -15,7 +15,7 @@ class Settings extends _Settings with _$Settings {
   Settings()
     : super._(
         themeMode: ThemeMode.system,
-        suitIconTheme: 0,
+        suitIconTheme: .variant1,
         decor: Decor.values.first,
         decorColour: DecorColour.red,
         soundOn: true,
@@ -26,7 +26,7 @@ class Settings extends _Settings with _$Settings {
   Settings.fromJsonObject(JsonObject jsonObject)
     : super._(
         themeMode: ThemeMode.values[jsonObject.read<int>("themeMode")],
-        suitIconTheme: jsonObject.readDefault<int>("suitIconTheme", 0),
+        suitIconTheme: _readSuitIconTheme(jsonObject),
         decor: _readDecor(jsonObject),
         decorColour: _readDecorColour(jsonObject),
         soundOn: jsonObject.read<bool>("soundOn"),
@@ -39,7 +39,7 @@ class Settings extends _Settings with _$Settings {
 
   JsonObject toJsonObject() => {
     "themeMode": themeMode.index,
-    "suitIconTheme": suitIconTheme,
+    "suitIconTheme": suitIconTheme.index,
     "decor": decor.index,
     "decorColour": decorColour.index,
     "soundOn": _soundOn,
@@ -60,6 +60,14 @@ class Settings extends _Settings with _$Settings {
       return DecorColour.values[jsonObject.read<int>("decorColour")];
     } on Error {
       return DecorColour.red;
+    }
+  }
+
+  static SuitIconTheme _readSuitIconTheme(JsonObject jsonObject) {
+    try {
+      return SuitIconTheme.values[jsonObject.read<int>("suitIconTheme")];
+    } on Error {
+      return .variant1;
     }
   }
 }
@@ -85,7 +93,7 @@ abstract class _Settings with Store {
   DecorColour decorColour;
 
   @observable
-  int suitIconTheme;
+  SuitIconTheme suitIconTheme;
 
   @readonly
   bool _soundOn;
@@ -110,3 +118,5 @@ abstract class _Settings with Store {
 
   void dispose() => _sounds.dispose();
 }
+
+enum SuitIconTheme { variant1, variant2, variant3 }

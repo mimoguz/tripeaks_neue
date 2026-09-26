@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 
 class CustomIcons {
   const CustomIcons._();
@@ -59,10 +60,10 @@ class CustomIcons {
   static const _spades = [spades, spadesAlt, spadesAlt2];
   static const _clubs = [clubs, clubsAlt, clubsAlt2];
 
-  static IconData suitIcon(Suit suit, int variant) => switch (suit) {
-    Suit.clubs => _clubs[variant],
-    Suit.diamonds => _diamonds[variant],
-    Suit.hearts => _hearts[variant],
-    Suit.spades => _spades[variant],
+  static IconData suitIcon(Suit suit, SuitIconTheme variant) => switch (suit) {
+    Suit.clubs => _clubs[variant.index],
+    Suit.diamonds => _diamonds[variant.index],
+    Suit.hearts => _hearts[variant.index],
+    Suit.spades => _spades[variant.index],
   };
 }
