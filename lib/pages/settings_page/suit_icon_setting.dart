@@ -69,9 +69,9 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   }
 
   String _valueLabel(SuitIconTheme value, AppLocalizations s) => switch (value) {
-    .variant1 => "Dark",
-    .variant2 => "Thin",
-    .variant3 => "Hair",
+    .variant1 => "Delicate Slab",
+    .variant2 => "Fashion Line",
+    .variant3 => "Tart Deco",
   };
 }
 
