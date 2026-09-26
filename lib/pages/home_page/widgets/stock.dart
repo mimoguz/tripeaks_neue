@@ -5,13 +5,13 @@ import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class LandscapeStock extends StatelessWidget {
-  const LandscapeStock(this.game, {super.key, required this.scale, required this.back});
-
+class const LandscapeStock(
+  this.game, {
+  super.key,
+  required final double scale,
+  required final BackOptions back,
+}) extends StatelessWidget {
   final Game game;
-  final double scale;
-  final BackOptions back;
-
   @override
   Widget build(BuildContext context) {
     return Observer(
@@ -43,13 +43,13 @@ class LandscapeStock extends StatelessWidget {
   static const _shadowOrigin = Alignment(1.0, -0.5);
 }
 
-class PortraitStock extends StatelessWidget {
-  const PortraitStock(this.game, {super.key, required this.scale, required this.back});
-
+class const PortraitStock(
+  this.game, {
+  super.key,
+  required final double scale,
+  required final BackOptions back,
+}) extends StatelessWidget {
   final Game game;
-  final double scale;
-  final BackOptions back;
-
   @override
   Widget build(BuildContext context) {
     return Observer(

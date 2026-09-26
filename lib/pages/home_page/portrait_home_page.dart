@@ -132,13 +132,12 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
   }
 }
 
-final class PortraitHomePageBoard extends StatelessWidget {
-  const PortraitHomePageBoard({super.key, required this.game, required this.scale, required this.back});
-
-  final Game game;
-  final double scale;
-  final BackOptions back;
-
+final class const PortraitHomePageBoard({
+  super.key,
+  required final Game game,
+  required final double scale,
+  required final BackOptions back,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -180,13 +179,12 @@ class PortraitHomePageCounter extends StatelessWidget {
   }
 }
 
-class PortraitHomePageRightArea extends StatelessWidget {
-  const PortraitHomePageRightArea({super.key, required this.game, required this.scale, required this.back});
-
-  final Game game;
-  final double scale;
-  final BackOptions back;
-
+class const PortraitHomePageRightArea({
+  super.key,
+  required final Game game,
+  required final double scale,
+  required final BackOptions back,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
@@ -228,6 +226,7 @@ class PortraitHomePageRightArea extends StatelessWidget {
                           ..open()
                           ..put(),
                         back: back,
+
                         orientation: Orientation.portrait,
                       ),
                     ),

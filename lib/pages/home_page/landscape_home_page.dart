@@ -132,13 +132,12 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
   }
 }
 
-final class LandscapeHomePageBoard extends StatelessWidget {
-  const LandscapeHomePageBoard({super.key, required this.game, required this.scale, required this.back});
-
-  final Game game;
-  final double scale;
-  final BackOptions back;
-
+final class const LandscapeHomePageBoard({
+  super.key,
+  required final Game game,
+  required final double scale,
+  required final BackOptions back,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -151,12 +150,8 @@ final class LandscapeHomePageBoard extends StatelessWidget {
   }
 }
 
-class LandscapeHomePageCounter extends StatelessWidget {
-  const LandscapeHomePageCounter({super.key, required this.game, required this.scale});
-
-  final Game game;
-  final double scale;
-
+class const LandscapeHomePageCounter({super.key, required final Game game, required final double scale})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -177,13 +172,12 @@ class LandscapeHomePageCounter extends StatelessWidget {
   }
 }
 
-class LandscapeHomePageBottomArea extends StatelessWidget {
-  const LandscapeHomePageBottomArea({super.key, required this.game, required this.scale, required this.back});
-
-  final Game game;
-  final double scale;
-  final BackOptions back;
-
+class const LandscapeHomePageBottomArea({
+  super.key,
+  required final Game game,
+  required final double scale,
+  required final BackOptions back,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
@@ -224,6 +218,7 @@ class LandscapeHomePageBottomArea extends StatelessWidget {
                           ..open()
                           ..put(),
                         back: back,
+
                         orientation: Orientation.landscape,
                       ),
                     ),
