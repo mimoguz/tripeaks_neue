@@ -3,12 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/stores/data/card_value.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 // TODO: Strings
@@ -20,7 +18,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          titleText: "Suit icons",
+          titleText: s.suitIconsControl,
           location: Location.centre,
           onTap: () => _showSelection(context, settings),
           subtitle: _valueLabel(settings.suitIconTheme, s),
@@ -30,7 +28,6 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
     );
   }
 
-  // TODO. Strings
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
     final result = await showDialog<int>(
@@ -38,7 +35,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
       barrierColor: Colors.transparent,
       barrierDismissible: true,
       builder: (context) => CommonDialog(
-        title: Text("Suit icons"),
+        title: Text(s.suitIconsControl),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),
           child: Wrap(
@@ -69,9 +66,9 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   }
 
   String _valueLabel(SuitIconTheme value, AppLocalizations s) => switch (value) {
-    .variant1 => "Delicate Slab",
-    .variant2 => "Fashion Line",
-    .variant3 => "Tart Deco",
+    .variant1 => s.suitIconVariant1Label,
+    .variant2 => s.suitIconVariant2Label,
+    .variant3 => s.suitIconVariant3Label,
   };
 }
 
@@ -135,27 +132,27 @@ class _SuitVariantItemState extends State<SuitVariantItem> {
                   right: _padding,
                   top: _padding,
                   child: Icon(
-                    CustomIcons.suitIcon(.spades, widget.variant),
-                    size: 40,
-                    color: widget.isSelected ? colours.onPrimary : colours.onSurfaceVariant,
-                  ),
-                ),
-                Positioned(
-                  bottom: _padding,
-                  left: _padding,
-                  child: Icon(
-                    CustomIcons.suitIcon(.clubs, widget.variant),
-                    size: 40,
-                    color: widget.isSelected ? colours.onPrimary : colours.onSurfaceVariant,
-                  ),
-                ),
-                Positioned(
-                  bottom: _padding,
-                  right: _padding,
-                  child: Icon(
                     CustomIcons.suitIcon(.diamonds, widget.variant),
                     size: 40,
                     color: widget.isSelected ? colours.onPrimary : colours.tertiary,
+                  ),
+                ),
+                Positioned(
+                  left: _padding,
+                  bottom: _padding,
+                  child: Icon(
+                    CustomIcons.suitIcon(.spades, widget.variant),
+                    size: 40,
+                    color: widget.isSelected ? colours.onPrimary : colours.onSecondaryContainer,
+                  ),
+                ),
+                Positioned(
+                  right: _padding,
+                  bottom: _padding,
+                  child: Icon(
+                    CustomIcons.suitIcon(.clubs, widget.variant),
+                    size: 40,
+                    color: widget.isSelected ? colours.onPrimary : colours.onSecondaryContainer,
                   ),
                 ),
               ],

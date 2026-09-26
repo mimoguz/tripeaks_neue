@@ -184,7 +184,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
+    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSecondaryContainer;
     return Text(
       cardValue.rank.character,
       style: TextStyle(
@@ -214,7 +214,7 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
+    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSecondaryContainer;
     return Observer(
       builder: (context) {
         final settings = Provider.of<Settings>(context);

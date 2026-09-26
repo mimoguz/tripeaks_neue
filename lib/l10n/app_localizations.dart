@@ -457,6 +457,30 @@ abstract class AppLocalizations {
   /// **'Violet'**
   String get violetColourLabel;
 
+  /// Label of a control that sets the suit icon theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Suit icons'**
+  String get suitIconsControl;
+
+  /// No description provided for @suitIconVariant1Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Delicate Slab'**
+  String get suitIconVariant1Label;
+
+  /// No description provided for @suitIconVariant2Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Fashion Line'**
+  String get suitIconVariant2Label;
+
+  /// No description provided for @suitIconVariant3Label.
+  ///
+  /// In en, this message translates to:
+  /// **'Tart Deco'**
+  String get suitIconVariant3Label;
+
   /// Title of the dialog that will open when 'New Game with Layout...' action is called.
   ///
   /// In en, this message translates to:
