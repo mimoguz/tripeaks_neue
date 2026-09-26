@@ -232,9 +232,20 @@ final class const SuitImageSm(final CardValue cardValue, {super.key}) extends St
   @override
   Widget build(BuildContext context) {
     final colour = Colors.white54;
-    return Text(
-      _suitChar(cardValue.suit),
-      style: TextStyle(fontFamily: "Peckish", fontWeight: .w400, fontSize: 20, color: colour),
+    return Observer(
+      builder: (context) {
+        final settings = Provider.of<Settings>(context);
+        return Text(
+          _suitChar(cardValue.suit),
+          style: TextStyle(
+            fontFamily: "Peckish",
+            fontWeight: .w400,
+            fontSize: 20,
+            color: colour,
+            fontFeatures: [FontFeature.stylisticSet(settings.suitIconTheme.index + 1)],
+          ),
+        );
+      },
     );
   }
 }
