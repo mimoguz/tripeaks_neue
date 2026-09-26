@@ -7,6 +7,7 @@ import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 // TODO: Strings
@@ -34,30 +35,12 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
       context: context,
       barrierColor: Colors.transparent,
       barrierDismissible: true,
-      builder: (context) => CommonDialog(
-        title: Text(s.suitIconsControl),
-        content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),
-          child: Wrap(
-            spacing: 16.0,
-            runSpacing: 16.0,
-            children: [
-              for (final (index, variant) in SuitIconTheme.values.indexed)
-                SuitVariantItem(
-                  variant: variant,
-                  isSelected: settings.suitIconTheme == variant,
-                  onTap: () => Navigator.pop(context, index),
-                ),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: context.colours.error),
-            child: Text(s.cancelAction),
-          ),
-        ],
+      builder: (context) => SelectionDialog(
+        title: s.suitIconsControl,
+        selected: settings.suitIconTheme.index,
+        options: SuitIconTheme.values
+            .map((variant) => SuitVariantRow(variant, variant == settings.suitIconTheme))
+            .toList(),
       ),
     );
     if (result != null && result >= 0 && result < SuitIconTheme.values.length) {
@@ -72,89 +55,31 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   };
 }
 
-class const SuitVariantItem({
-  super.key,
-  required final SuitIconTheme variant,
-  required final bool isSelected,
-  final VoidCallback? onTap,
-}) extends StatefulWidget {
-  @override
-  State<SuitVariantItem> createState() => _SuitVariantItemState();
-}
-
-class _SuitVariantItemState extends State<SuitVariantItem> {
-  final FocusNode _focus = FocusNode();
-  Color? _borderColour;
-
-  @override
-  void initState() {
-    super.initState();
-    _focus.addListener(_onFocusChange);
-  }
-
-  @override
-  void dispose() {
-    _focus.dispose();
-    super.dispose();
-  }
-
+class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {super.key})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    _borderColour = _focus.hasFocus ? colours.onSurface : colours.surfaceBright;
-    return SizedBox(
-      width: c.cardSize,
-      height: c.cardSize,
+    final black = selected ? colours.onPrimary : colours.onSecondaryContainer;
+    final red = selected ? colours.onPrimary : colours.tertiary;
+    return Padding(
+      padding: const EdgeInsets.only(right: 4.0),
       child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: widget.onTap,
-          borderRadius: c.commonBorderRadius,
-          focusNode: _focus,
-          child: Ink(
-            decoration: BoxDecoration(
-              border: Border.all(width: 2.0, color: _borderColour!),
-              borderRadius: c.commonBorderRadius,
-              color: widget.isSelected ? colours.primary : colours.secondaryContainer,
-            ),
-            child: Stack(
+        borderRadius: c.commonBorderRadius,
+        color: selected ? colours.primary : colours.secondaryContainer,
+        child: Ink(
+          child: Padding(
+            padding: c.cardPadding,
+            child: Row(
+              spacing: c.itemSpacing,
               children: [
-                Positioned(
-                  left: _padding,
-                  top: _padding,
-                  child: Icon(
-                    CustomIcons.suitIcon(.hearts, widget.variant),
-                    size: 40,
-                    color: widget.isSelected ? colours.onPrimary : colours.tertiary,
-                  ),
+                Icon(CustomIcons.suitIcon(.hearts, variant), size: 40, color: red),
+                Icon(CustomIcons.suitIcon(.diamonds, variant), size: 40, color: red),
+                Padding(
+                  padding: const EdgeInsets.only(right: 3.0),
+                  child: Icon(CustomIcons.suitIcon(.spades, variant), size: 40, color: black),
                 ),
-                Positioned(
-                  right: _padding,
-                  top: _padding,
-                  child: Icon(
-                    CustomIcons.suitIcon(.diamonds, widget.variant),
-                    size: 40,
-                    color: widget.isSelected ? colours.onPrimary : colours.tertiary,
-                  ),
-                ),
-                Positioned(
-                  left: _padding,
-                  bottom: _padding,
-                  child: Icon(
-                    CustomIcons.suitIcon(.spades, widget.variant),
-                    size: 40,
-                    color: widget.isSelected ? colours.onPrimary : colours.onSecondaryContainer,
-                  ),
-                ),
-                Positioned(
-                  right: _padding,
-                  bottom: _padding,
-                  child: Icon(
-                    CustomIcons.suitIcon(.clubs, widget.variant),
-                    size: 40,
-                    color: widget.isSelected ? colours.onPrimary : colours.onSecondaryContainer,
-                  ),
-                ),
+                Icon(CustomIcons.suitIcon(.clubs, variant), size: 40, color: black),
               ],
             ),
           ),
@@ -162,12 +87,4 @@ class _SuitVariantItemState extends State<SuitVariantItem> {
       ),
     );
   }
-
-  void _onFocusChange() {
-    setState(() {
-      _borderColour = _focus.hasFocus ? context.colours.onSurface : context.colours.surfaceContainer;
-    });
-  }
-
-  static const _padding = 12.0;
 }
