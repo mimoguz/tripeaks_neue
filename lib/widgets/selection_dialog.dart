@@ -22,7 +22,7 @@ class _SelectionDialogState() extends State<SelectionDialog> {
   void initState() {
     super.initState();
     selected = widget.selected;
-    _focus = FocusNode();
+    _focus = FocusNode(descendantsAreFocusable: false);
   }
 
   @override
@@ -58,7 +58,6 @@ class _SelectionDialogState() extends State<SelectionDialog> {
             children: [
               for (final (index, item) in widget.options.indexed)
                 InkWell(
-                  canRequestFocus: false,
                   onTap: () => Navigator.pop(context, index),
                   child: KeyboardListener(
                     focusNode: _focus,
@@ -66,7 +65,10 @@ class _SelectionDialogState() extends State<SelectionDialog> {
                       switch (e.logicalKey) {
                         case LogicalKeyboardKey.accept:
                         case LogicalKeyboardKey.enter:
-                          Navigator.pop(context, selected);
+                          setState(() {
+                            selected = index;
+                          });
+                          Navigator.pop(context, index);
                         default:
                           return;
                       }
@@ -82,6 +84,7 @@ class _SelectionDialogState() extends State<SelectionDialog> {
       ),
       actions: [
         TextButton(
+          autofocus: false,
           focusNode: _focus,
           onPressed: () => Navigator.pop(context, -1),
           style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
