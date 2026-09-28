@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -8,15 +9,42 @@ class const SelectionDialog({
   required final List<Widget> options,
   required final int selected,
   final String? title,
-}) extends StatelessWidget {
+}) extends StatefulWidget {
+  @override
+  State<SelectionDialog> createState() => _SelectionDialogState();
+}
+
+class _SelectionDialogState() extends State<SelectionDialog> {
+  var selected = -1;
+  late final FocusNode _focus;
+
+  @override
+  void initState() {
+    super.initState();
+    selected = widget.selected;
+    _focus = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _focus.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
     return CommonDialog(
-      title: title != null ? Text(title!) : null,
+      title: widget.title != null ? Text(widget.title!) : null,
       content: RadioGroup(
-        onChanged: (value) => Navigator.pop(context, value ?? -1),
+        onChanged: (value) {
+          if (value != null) {
+            setState(() {
+              selected = value;
+            });
+          }
+        },
         groupValue: selected,
         child: ListTileTheme(
           data: ListTileThemeData(
@@ -28,13 +56,33 @@ class const SelectionDialog({
           ),
           child: Column(
             children: [
-              for (final (index, item) in options.indexed) RadioListTile<int>(value: index, title: item),
+              for (final (index, item) in widget.options.indexed)
+                InkWell(
+                  canRequestFocus: false,
+                  onTap: () => Navigator.pop(context, index),
+                  child: KeyboardListener(
+                    focusNode: _focus,
+                    onKeyEvent: (e) {
+                      switch (e.logicalKey) {
+                        case LogicalKeyboardKey.accept:
+                        case LogicalKeyboardKey.enter:
+                          Navigator.pop(context, selected);
+                        default:
+                          return;
+                      }
+                    },
+                    child: IgnorePointer(
+                      child: RadioListTile<int>(value: index, title: item),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
       ),
       actions: [
         TextButton(
+          focusNode: _focus,
           onPressed: () => Navigator.pop(context, -1),
           style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
           child: Text(s.cancelAction),
