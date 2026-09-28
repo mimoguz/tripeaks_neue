@@ -24,12 +24,9 @@ class const ColourSetting({super.key}) extends StatelessWidget {
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: Container(
-              width: 64.0,
-              height: 24.0,
-              decoration: BoxDecoration(
-                color: settings.decorColour.background,
-                borderRadius: c.commonBorderRadius,
-              ),
+              width: 32.0,
+              height: 32.0,
+              decoration: BoxDecoration(color: settings.decorColour.background, shape: .circle),
             ),
           ),
         );

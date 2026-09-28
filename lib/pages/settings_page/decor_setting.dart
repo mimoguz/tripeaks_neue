@@ -24,8 +24,7 @@ class const DecorSetting({super.key}) extends StatelessWidget {
           showArrow: true,
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: ClipRRect(
-              borderRadius: c.commonBorderRadius,
+            child: ClipOval(
               child: Container(
                 width: _boxWidth,
                 height: _boxHeight,
@@ -83,8 +82,8 @@ class const DecorSetting({super.key}) extends StatelessWidget {
     }
   }
 
-  static const _boxWidth = 64.0;
-  static const _boxHeight = 24.0;
+  static const _boxWidth = 32.0;
+  static const _boxHeight = 32.0;
   static const _iconOffset = Offset((c.cardSize - _boxWidth) / -2.0, (c.cardSize - _boxHeight) / -2.0);
 }
 
