@@ -119,4 +119,4 @@ abstract class _Settings with Store {
   void dispose() => _sounds.dispose();
 }
 
-enum SuitIconTheme { variant1, variant2, variant3 }
+enum SuitIconTheme { variant1, variant2, variant3, variant4 }

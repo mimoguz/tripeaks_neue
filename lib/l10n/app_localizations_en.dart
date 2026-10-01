@@ -204,7 +204,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get suitIconVariant2Label => 'Fashion Line';
 
   @override
-  String get suitIconVariant3Label => 'Tart Deco';
+  String get suitIconVariant3Label => 'Mart Deco';
+
+  @override
+  String get suitIconVariant4Label => 'Old Skool';
 
   @override
   String get selectLayoutDialogTitle => 'Select Layout';

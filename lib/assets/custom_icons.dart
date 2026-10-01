@@ -17,6 +17,10 @@ class CustomIcons {
   static const diamondsAlt2 = IconData(0xe914, fontFamily: _cards);
   static const heartsAlt2 = IconData(0xe915, fontFamily: _cards);
   static const spadesAlt2 = IconData(0xe916, fontFamily: _cards);
+  static const clubsAlt3 = IconData(0xe904, fontFamily: _cards);
+  static const diamondsAlt3 = IconData(0xe905, fontFamily: _cards);
+  static const heartsAlt3 = IconData(0xe906, fontFamily: _cards);
+  static const spadesAlt3 = IconData(0xe907, fontFamily: _cards);
 
   static const heartsSm = IconData(0xe904, fontFamily: _cards);
   static const diamondsSm = IconData(0xe905, fontFamily: _cards);
@@ -55,10 +59,10 @@ class CustomIcons {
   static const _actions = "Actions";
   static const _cards = "Cards";
 
-  static const _hearts = [hearts, heartsAlt, heartsAlt2];
-  static const _diamonds = [diamonds, diamondsAlt, diamondsAlt2];
-  static const _spades = [spades, spadesAlt, spadesAlt2];
-  static const _clubs = [clubs, clubsAlt, clubsAlt2];
+  static const _hearts = [hearts, heartsAlt, heartsAlt2, heartsAlt3];
+  static const _diamonds = [diamonds, diamondsAlt, diamondsAlt2, diamondsAlt3];
+  static const _spades = [spades, spadesAlt, spadesAlt2, spadesAlt3];
+  static const _clubs = [clubs, clubsAlt, clubsAlt2, clubsAlt3];
 
   static IconData suitIcon(Suit suit, SuitIconTheme variant) => switch (suit) {
     Suit.clubs => _clubs[variant.index],

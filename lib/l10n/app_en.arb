@@ -393,22 +393,28 @@
         "description": "Label of a control that sets the suit icon theme."
     },
     "suitIconVariant1Label": "Delicate Slab",
-    "@variant1Label": {
+    "@suitIconVariant1Label": {
         "type": "text",
         "context": "settings",
         "description": "Label of the first icon theme variant."
     },
     "suitIconVariant2Label": "Fashion Line",
-    "@variant2Label": {
+    "@suitIconVariant2Label": {
         "type": "text",
         "context": "settings",
         "description": "Label of the second icon theme variant."
     },
-    "suitIconVariant3Label": "Tart Deco",
-    "@variant3Label": {
+    "suitIconVariant3Label": "Mart Deco",
+    "@suitIconVariant3Label": {
         "type": "text",
         "context": "settings",
         "description": "Label of the third icon theme variant."
+    },
+    "suitIconVariant4Label": "Old Skool",
+    "@suitIconVariant4Label": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of the fourth icon theme variant."
     },
     "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
