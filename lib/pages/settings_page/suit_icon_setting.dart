@@ -30,9 +30,9 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showDialog<int>(
+    final result = await showAdaptiveDialog<int>(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       barrierDismissible: true,
       builder: (context) => SelectionDialog(
         title: s.suitIconsControl,
@@ -46,13 +46,6 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
       settings.suitIconTheme = SuitIconTheme.values[result];
     }
   }
-
-  String _valueLabel(SuitIconTheme value, AppLocalizations s) => switch (value) {
-    .variant1 => s.suitIconVariant1Label,
-    .variant2 => s.suitIconVariant2Label,
-    .variant3 => s.suitIconVariant3Label,
-    .variant4 => s.suitIconVariant4Label,
-  };
 }
 
 class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {super.key})
@@ -60,31 +53,37 @@ class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {su
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final black = selected ? colours.onPrimary : colours.onSecondaryContainer;
-    final red = selected ? colours.onPrimary : colours.tertiary;
+    final black = selected ? colours.onSecondaryContainer : colours.onSurfaceVariant;
+    final red = selected ? colours.tertiary : colours.tertiary.withAlpha(240);
     return Padding(
       padding: const EdgeInsets.only(right: 4.0),
       child: Material(
         borderRadius: c.commonBorderRadius,
-        color: selected ? colours.primary : colours.secondaryContainer,
-        child: Ink(
-          child: Padding(
-            padding: c.cardPadding,
-            child: Row(
-              spacing: c.itemSpacing,
-              children: [
-                Icon(CustomIcons.suitIcon(.hearts, variant), size: 40, color: red),
-                Icon(CustomIcons.suitIcon(.diamonds, variant), size: 40, color: red),
-                Padding(
-                  padding: const EdgeInsets.only(right: 3.0),
-                  child: Icon(CustomIcons.suitIcon(.spades, variant), size: 40, color: black),
-                ),
-                Icon(CustomIcons.suitIcon(.clubs, variant), size: 40, color: black),
-              ],
-            ),
+        clipBehavior: .antiAlias,
+        color: selected ? colours.secondaryContainer : colours.surfaceContainerHigh,
+        child: Padding(
+          padding: c.cardPadding,
+          child: Row(
+            spacing: c.itemSpacing,
+            children: [
+              Icon(CustomIcons.suitIcon(.hearts, variant), size: 40, color: red),
+              Icon(CustomIcons.suitIcon(.diamonds, variant), size: 40, color: red),
+              Padding(
+                padding: const EdgeInsets.only(right: 3.0),
+                child: Icon(CustomIcons.suitIcon(.spades, variant), size: 40, color: black),
+              ),
+              Icon(CustomIcons.suitIcon(.clubs, variant), size: 40, color: black),
+            ],
           ),
         ),
       ),
     );
   }
 }
+
+String _valueLabel(SuitIconTheme value, AppLocalizations s) => switch (value) {
+  .variant1 => s.suitIconVariant1Label,
+  .variant2 => s.suitIconVariant2Label,
+  .variant3 => s.suitIconVariant3Label,
+  .variant4 => s.suitIconVariant4Label,
+};

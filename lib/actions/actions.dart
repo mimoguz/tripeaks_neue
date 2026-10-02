@@ -174,7 +174,7 @@ final class NewGameWithLayoutAction extends ContextAction<NewGameWithLayoutInten
       context: context,
       builder: (_) => SelectLayoutDialog(),
       barrierDismissible: true,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
     );
   }
 }
@@ -342,7 +342,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
         if (context.mounted) {
           final dialogResult = await showAdaptiveDialog<bool>(
             context: context,
-            barrierColor: Colors.transparent,
+            barrierColor: context.colours.barrier,
             barrierDismissible: true,
             builder: (context) {
               final s = context.strings;
@@ -434,7 +434,7 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
     if (context.mounted) {
       final dialogResult = await showAdaptiveDialog<bool>(
         context: context,
-        barrierColor: Colors.transparent,
+        barrierColor: context.colours.barrier,
         barrierDismissible: true,
         builder: (context) {
           final s = context.strings;

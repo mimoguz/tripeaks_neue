@@ -29,9 +29,9 @@ class LayoutSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Session session) async {
     final s = context.strings;
-    final result = await showDialog<int>(
+    final result = await showAdaptiveDialog<int>(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       barrierDismissible: true,
       builder: (context) => SelectionDialog(
         title: s.layoutControl,

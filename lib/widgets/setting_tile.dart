@@ -22,9 +22,11 @@ final class const SettingTile({
     return Padding(
       padding: margin,
       child: ListItemContainer(
+        minHeight: 70.0,
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,
+          surfaceTintColor: theme.colorScheme.secondaryContainer,
           shadowColor: theme.shadowColor,
           borderRadius: borderRadius,
           child: InkWell(

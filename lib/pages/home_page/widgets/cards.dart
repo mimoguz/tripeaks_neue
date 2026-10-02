@@ -105,7 +105,7 @@ final class const ActiveCardFace(final CardValue card, {super.key}) extends Stat
       height: c.cardSize,
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
-        child: Column(mainAxisAlignment: .center, spacing: 8.0, children: [RankText(card), SuitImage(card)]),
+        child: Column(mainAxisAlignment: .center, spacing: 9.0, children: [RankText(card), SuitImage(card)]),
       ),
     );
   }

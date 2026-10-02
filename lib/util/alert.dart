@@ -7,7 +7,7 @@ Future<void> alert(BuildContext context, {required String title, required String
     showAdaptiveDialog(
       context: context,
       barrierDismissible: true,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       builder: (context) => CommonDialog(
         title: Text(title),
         content: Padding(

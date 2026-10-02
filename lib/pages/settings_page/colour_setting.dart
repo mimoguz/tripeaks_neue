@@ -38,7 +38,7 @@ class const ColourSetting({super.key}) extends StatelessWidget {
     final s = context.strings;
     final result = await showAdaptiveDialog<int>(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       barrierDismissible: true,
       builder: (context) => CommonDialog(
         title: Text(s.decorColourControl),
