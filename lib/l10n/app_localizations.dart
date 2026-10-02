@@ -466,7 +466,7 @@ abstract class AppLocalizations {
   /// Label of the first icon theme variant.
   ///
   /// In en, this message translates to:
-  /// **'Delicate Slab'**
+  /// **'First Draft'**
   String get suitIconVariant1Label;
 
   /// Label of the second icon theme variant.
@@ -478,7 +478,7 @@ abstract class AppLocalizations {
   /// Label of the third icon theme variant.
   ///
   /// In en, this message translates to:
-  /// **'Mart Deco'**
+  /// **'Déco'**
   String get suitIconVariant3Label;
 
   /// Label of the fourth icon theme variant.

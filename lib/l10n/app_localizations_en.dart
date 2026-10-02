@@ -198,13 +198,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get suitIconsControl => 'Suit icons';
 
   @override
-  String get suitIconVariant1Label => 'Delicate Slab';
+  String get suitIconVariant1Label => 'First Draft';
 
   @override
   String get suitIconVariant2Label => 'Fashion Line';
 
   @override
-  String get suitIconVariant3Label => 'Mart Deco';
+  String get suitIconVariant3Label => 'Déco';
 
   @override
   String get suitIconVariant4Label => 'Old Skool';

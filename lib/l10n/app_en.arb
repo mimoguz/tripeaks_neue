@@ -392,7 +392,7 @@
         "context": "settings",
         "description": "Label of a control that sets the suit icon theme."
     },
-    "suitIconVariant1Label": "Delicate Slab",
+    "suitIconVariant1Label": "First Draft",
     "@suitIconVariant1Label": {
         "type": "text",
         "context": "settings",
@@ -404,7 +404,7 @@
         "context": "settings",
         "description": "Label of the second icon theme variant."
     },
-    "suitIconVariant3Label": "Mart Deco",
+    "suitIconVariant3Label": "Déco",
     "@suitIconVariant3Label": {
         "type": "text",
         "context": "settings",
