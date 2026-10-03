@@ -51,8 +51,8 @@ class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {su
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final black = selected ? colours.onSecondaryContainer : colours.onSurfaceVariant;
-    final red = selected ? colours.tertiary : colours.tertiary.withAlpha(240);
+    final black = colours.onSurfaceVariant;
+    final red = colours.tertiary;
     return Padding(
       padding: _padding,
       child: Row(
