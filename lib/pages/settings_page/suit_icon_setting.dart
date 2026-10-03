@@ -5,11 +5,9 @@ import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
-// TODO: Strings
 class const SuitIconSetting({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,29 +54,32 @@ class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {su
     final black = selected ? colours.onSecondaryContainer : colours.onSurfaceVariant;
     final red = selected ? colours.tertiary : colours.tertiary.withAlpha(240);
     return Padding(
-      padding: const EdgeInsets.only(right: 4.0),
-      child: Material(
-        borderRadius: c.commonBorderRadius,
-        clipBehavior: .antiAlias,
-        color: selected ? colours.secondaryContainer : colours.surfaceContainerHigh,
-        child: Padding(
-          padding: c.cardPadding,
-          child: Row(
-            spacing: c.itemSpacing,
-            children: [
-              Icon(CustomIcons.suitIcon(.hearts, variant), size: 40, color: red),
-              Icon(CustomIcons.suitIcon(.diamonds, variant), size: 40, color: red),
-              Padding(
-                padding: const EdgeInsets.only(right: 3.0),
-                child: Icon(CustomIcons.suitIcon(.spades, variant), size: 40, color: black),
-              ),
-              Icon(CustomIcons.suitIcon(.clubs, variant), size: 40, color: black),
-            ],
+      padding: _padding,
+      child: Row(
+        spacing: 3.0,
+        mainAxisAlignment: .start,
+        children: [
+          Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
+          Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
+          Padding(
+            padding: const EdgeInsets.only(right: _diamondFix),
+            child: Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
           ),
-        ),
+          Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Text(_valueLabel(variant, context.strings), overflow: .fade, maxLines: 1),
+            ),
+          ),
+        ],
       ),
     );
   }
+
+  static const _size = 30.0;
+  static const _diamondFix = 3.0;
+  static const _padding = EdgeInsets.symmetric(vertical: 2);
 }
 
 String _valueLabel(SuitIconTheme value, AppLocalizations s) => switch (value) {

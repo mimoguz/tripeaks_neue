@@ -22,7 +22,7 @@ final class const SettingTile({
     return Padding(
       padding: margin,
       child: ListItemContainer(
-        minHeight: 70.0,
+        minHeight: 68.0,
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,

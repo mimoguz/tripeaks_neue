@@ -59,7 +59,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               visualDensity: .compact,
               titleTextStyle: theme.textTheme.bodyMedium,
               controlAffinity: .leading,
-              horizontalTitleGap: c.itemSpacing,
+              horizontalTitleGap: c.itemSpacing - c.radioCorrection,
               contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
             ),
             child: RadioGroup(
