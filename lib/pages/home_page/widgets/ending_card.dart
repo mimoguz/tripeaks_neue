@@ -22,25 +22,37 @@ final class const EndingCard({
         child: Container(
           color: theme.colorScheme.surfaceContainerHigh.withAlpha(200),
           width: width,
-          child: Column(
-            mainAxisSize: .min,
-            spacing: 12,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
-                child: Column(
-                  mainAxisSize: .min,
-                  crossAxisAlignment: .stretch,
-                  spacing: 12,
-                  children: [content, ...actions],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: .min,
+              spacing: 10.0,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    c.cardPaddingHorizontal,
+                    c.cardPaddingVertical,
+                    c.cardPaddingHorizontal,
+                    0,
+                  ),
+                  child: Column(
+                    mainAxisSize: .min,
+                    crossAxisAlignment: .stretch,
+                    spacing: 0,
+                    children: [content, SizedBox(height: 6.0), ...actions],
+                  ),
                 ),
-              ),
-              Divider(height: 1, color: theme.colorScheme.onSurfaceVariant.withAlpha(20)),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
-                child: const EndingCardToolBar(),
-              ),
-            ],
+                Divider(height: 1, color: theme.colorScheme.onSurfaceVariant.withAlpha(20)),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    c.cardPaddingHorizontal,
+                    0,
+                    c.cardPaddingHorizontal,
+                    c.cardPaddingVertical,
+                  ),
+                  child: const EndingCardToolBar(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
