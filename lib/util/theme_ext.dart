@@ -9,5 +9,5 @@ extension ContextExt on BuildContext {
 }
 
 extension ColorSchemeExt on ColorScheme {
-  Color get barrier => surfaceContainerLow.withAlpha(120);
+  Color get barrier => Colors.transparent; // surfaceContainerLow.withAlpha(150);
 }
