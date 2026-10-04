@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/ending_card_tool_bar.dart';
+import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class const StalledCardAnimated({
   super.key,
@@ -28,64 +25,43 @@ final class const StalledCard({super.key, required final int score}) extends Sta
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
-    return ClipRRect(
-      borderRadius: c.commonBorderRadius,
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          color: theme.colorScheme.surfaceBright.withAlpha(200),
-          width: 300,
-          child: Column(
-            mainAxisSize: .min,
-            spacing: 12,
+    return EndingCard(
+      width: 300,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Image.asset("images/empty.png", width: 90, height: 90),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Image.asset("images/empty.png", width: 90, height: 90),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            s.stalledCardMessage(score),
-                            softWrap: true,
-                            style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 18),
-                    Observer(
-                      builder: (context) {
-                        return TextButton(
-                          onPressed: Actions.handler(context, const RollbackIntent()),
-                          child: Text(s.stalledCardRollbackAction),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 12),
-                    TextButton(
-                      onPressed: Actions.handler(context, const NewGameIntent()),
-                      child: Text(s.stalledCardNewGameAction),
-                    ),
-                  ],
+              Flexible(
+                child: Text(
+                  s.stalledCardMessage(score),
+                  softWrap: true,
+                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
                 ),
-              ),
-              Divider(height: 1, color: theme.colorScheme.onSurfaceVariant.withAlpha(30)),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
-                child: const EndingCardToolBar(),
               ),
             ],
           ),
-        ),
+        ],
       ),
+      actions: [
+        Observer(
+          builder: (context) {
+            return TextButton(
+              onPressed: Actions.handler(context, const RollbackIntent()),
+              child: Text(s.stalledCardRollbackAction),
+            );
+          },
+        ),
+        TextButton(
+          onPressed: Actions.handler(context, const NewGameIntent()),
+          child: Text(s.stalledCardNewGameAction),
+        ),
+      ],
     );
   }
 }
