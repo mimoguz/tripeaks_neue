@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class const StalledCardAnimated({
   super.key,
@@ -31,8 +32,8 @@ final class const StalledCard({super.key, required final int score}) extends Sta
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset("images/empty.png", width: 90, height: 90),
-          const SizedBox(height: 16),
+          Image.asset("images/empty72.png", width: 72, height: 72),
+          const SizedBox(height: c.cardPaddingVertical),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,

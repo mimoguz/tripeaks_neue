@@ -30,7 +30,7 @@ final class const ClearedCard({super.key, required final int score}) extends Sta
         mainAxisSize: .min,
         spacing: 12.0,
         children: [
-          Image.asset("images/tropy.png", width: 90, height: 90),
+          Image.asset("images/tropy72.png", width: 72, height: 72),
           Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
           Row(
             mainAxisSize: .min,

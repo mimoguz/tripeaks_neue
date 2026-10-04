@@ -44,8 +44,8 @@ flutter:
   generate: true
 
   assets:
-    - images/tropy.png
-    - images/empty.png
+    - images/tropy72.png
+    - images/empty72.png
     - images/welcome.png
     - images/card_counter_dark.png
     - images/card_counter_light.png

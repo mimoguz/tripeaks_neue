@@ -37,8 +37,8 @@ final class const EndingCard({
                   child: Column(
                     mainAxisSize: .min,
                     crossAxisAlignment: .stretch,
-                    spacing: 0,
-                    children: [content, SizedBox(height: 6.0), ...actions],
+                    spacing: 4.0,
+                    children: [content, SizedBox(height: 0.0), ...actions],
                   ),
                 ),
                 Divider(height: 1, color: theme.colorScheme.onSurfaceVariant.withAlpha(20)),
@@ -60,7 +60,7 @@ final class const EndingCard({
   }
 }
 
-class const EndingCardToolBar({super.key}) extends StatelessWidget {
+final class const EndingCardToolBar({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
