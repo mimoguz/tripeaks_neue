@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:material_ui/material_ui.dart';
 
 const double activeRankSize = 32.0;
