@@ -24,7 +24,7 @@ class const ExpandableBox({
             color: theme.colorScheme.surfaceContainerHigh,
             borderRadius: c.commonBorderRadius,
             elevation: 1.0,
-            shadowColor: Colors.black45,
+            shadowColor: c.faintShadowColour,
             surfaceTintColor: theme.colorScheme.secondaryContainer,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

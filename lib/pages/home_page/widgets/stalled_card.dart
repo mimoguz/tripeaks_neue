@@ -5,7 +5,7 @@ import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-class const StalledCardAnimated({
+final class const StalledCardAnimated({
   super.key,
   required final int score,
   required final int id,
@@ -27,16 +27,16 @@ final class const StalledCard({super.key, required final int score}) extends Sta
     final s = context.strings;
     final theme = context.theme;
     return EndingCard(
-      width: 300,
+      width: 290,
       content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: .min,
+        crossAxisAlignment: .stretch,
         children: [
           Image.asset("images/empty72.png", width: 72, height: 72),
           const SizedBox(height: c.cardPaddingVertical),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .center,
+            mainAxisSize: .min,
             children: [
               Flexible(
                 child: Text(

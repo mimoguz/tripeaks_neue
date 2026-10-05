@@ -27,7 +27,7 @@ final class const SettingTile({
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,
           surfaceTintColor: theme.colorScheme.secondaryContainer,
-          shadowColor: Colors.black45,
+          shadowColor: c.faintShadowColour,
           borderRadius: borderRadius,
           child: InkWell(
             borderRadius: borderRadius,

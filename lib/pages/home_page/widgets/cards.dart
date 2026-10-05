@@ -221,7 +221,7 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
         return Icon(
           CustomIcons.suitIcon(cardValue.suit, settings.suitIconTheme),
           size: c.activeSuitSize,
-          color: colour,
+          color: Color.lerp(colour, colours.secondaryContainer, 0.0667),
         );
       },
     );
