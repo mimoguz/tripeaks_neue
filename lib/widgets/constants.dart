@@ -37,4 +37,4 @@ const EdgeInsets utilPageInsetsHorizontal = EdgeInsets.symmetric(horizontal: uti
 const EdgeInsets utilPageInsets = EdgeInsets.all(utilPageMargin);
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
-const faintShadowColour = Colors.black54;
+const faintShadowColour = Colors.black87;
