@@ -18,7 +18,8 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     final s = context.strings;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
-      surfaceTintColor: colours.surfaceTint,
+      backgroundColor: colours.surfaceContainerHighest,
+      // surfaceTintColor: colours.surfaceTint,
       elevation: 10.0,
       shadowColor: colours.shadow,
       width: 340.0,

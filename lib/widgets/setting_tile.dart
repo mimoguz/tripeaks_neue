@@ -26,7 +26,7 @@ final class const SettingTile({
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,
-          surfaceTintColor: theme.colorScheme.secondaryContainer,
+          // surfaceTintColor: theme.colorScheme.secondaryContainer,
           shadowColor: c.faintShadowColour,
           borderRadius: borderRadius,
           child: InkWell(

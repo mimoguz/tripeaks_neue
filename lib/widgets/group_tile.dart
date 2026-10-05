@@ -15,7 +15,7 @@ final class GroupTile extends StatelessWidget {
     return ListItemContainer(
       child: Material(
         color: theme.colorScheme.surfaceContainerHigh,
-        surfaceTintColor: theme.colorScheme.secondaryContainer,
+        // surfaceTintColor: theme.colorScheme.secondaryContainer,
         elevation: 1.0,
         borderRadius: c.commonBorderRadius,
         shadowColor: c.faintShadowColour,
