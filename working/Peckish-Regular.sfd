@@ -22,7 +22,7 @@ OS2Version: 4
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1790943068
+ModificationTime: 1791234968
 PfmFamily: 17
 TTFWeight: 400
 TTFWidth: 5
@@ -97,10 +97,10 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 9804 19 7
+WinInfo: 0 19 7
 BeginPrivate: 0
 EndPrivate
-BeginChars: 65539 48
+BeginChars: 65539 40
 
 StartChar: .notdef
 Encoding: 65536 -1 0
@@ -544,7 +544,7 @@ SplineSet
  409 314 l 1,2,3
  379 308 379 308 348 308 c 0,4,5
  216 308 216 308 122 402 c 128,-1,6
- 28 496 28 496 28 628 c 128,-1,7
+ 28 496 28 496 28 628 c 132,-1,7
  28 760 28 760 122 854 c 128,-1,8
  216 948 216 948 348 948 c 128,-1,9
  480 948 480 948 574 854 c 128,-1,10
@@ -613,7 +613,7 @@ SplineSet
  42 936 l 1,0,-1
 EndSplineSet
 Validated: 1
-Kerns2: 23 108 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
+Kerns2: 21 108 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
 EndChar
 
 StartChar: J
@@ -695,99 +695,56 @@ Validated: 1
 Kerns2: 16 108 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
 EndChar
 
-StartChar: P
-Encoding: 80 80 20
-Width: 732
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-48 928 m 1,0,-1
- 420 928 l 2,1,2
- 537 928 537 928 620.5 844.5 c 128,-1,3
- 704 761 704 761 704 644 c 128,-1,4
- 704 527 704 527 620.5 443.5 c 128,-1,5
- 537 360 537 360 420 360 c 2,6,-1
- 160 360 l 1,7,-1
- 160 0 l 1,8,-1
- 48 0 l 1,9,-1
- 48 928 l 1,0,-1
-160 824 m 1,10,-1
- 160 464 l 1,11,-1
- 412 464 l 2,12,13
- 487 464 487 464 539.5 516.5 c 128,-1,14
- 592 569 592 569 592 644 c 128,-1,15
- 592 719 592 719 539.5 771.5 c 128,-1,16
- 487 824 487 824 412 824 c 2,17,-1
- 160 824 l 1,10,-1
-EndSplineSet
-Validated: 1
-Kerns2: 25 36 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
 StartChar: Q
-Encoding: 81 81 21
-Width: 1004
+Encoding: 81 81 20
+Width: 976
 GlyphClass: 1
-Flags: W
+Flags: WO
 LayerCount: 2
 Fore
 SplineSet
-489 948 m 128,-1,1
- 620 948 620 948 726.5 881.5 c 128,-1,2
- 833 815 833 815 891.5 703.5 c 128,-1,3
- 950 592 950 592 950 460 c 0,4,5
- 950 307 950 307 870 185 c 1,6,-1
- 1001 59 l 1,7,-1
- 927 -19 l 1,8,-1
- 800 102 l 1,9,10
- 672 -20 672 -20 489 -20 c 0,11,12
- 291 -20 291 -20 159.5 119.5 c 128,-1,13
- 28 259 28 259 28 460 c 0,14,15
- 28 592 28 592 86.5 703.5 c 128,-1,16
- 145 815 145 815 251.5 881.5 c 128,-1,0
- 358 948 358 948 489 948 c 128,-1,1
-489 848 m 128,-1,18
- 337 848 337 848 238.5 735 c 128,-1,19
- 140 622 140 622 140 460 c 128,-1,20
- 140 298 140 298 237.5 189 c 128,-1,21
- 335 80 335 80 489 80 c 0,22,23
- 629 80 629 80 725 173 c 1,24,-1
- 506 382 l 1,25,-1
- 581 460 l 1,26,-1
- 790 260 l 1,27,28
- 838 350 838 350 838 460 c 0,29,30
- 838 622 838 622 739.5 735 c 128,-1,17
- 641 848 641 848 489 848 c 128,-1,18
+488 948 m 128,-1,1
+ 582 948 582 948 667 909.5 c 128,-1,2
+ 752 871 752 871 813.5 806.5 c 128,-1,3
+ 875 742 875 742 911.5 652 c 128,-1,4
+ 948 562 948 562 948 464 c 4,5,6
+ 948 372 948 372 916.5 288 c 128,-1,7
+ 885 204 885 204 828 139 c 1,8,-1
+ 945 0 l 1,9,-1
+ 809 0 l 1,10,-1
+ 752 68 l 1,11,12
+ 633 -20 633 -20 488 -20 c 0,13,14
+ 394 -20 394 -20 309 18.5 c 128,-1,15
+ 224 57 224 57 162.5 121.5 c 128,-1,16
+ 101 186 101 186 64.5 276 c 128,-1,17
+ 28 366 28 366 28 464 c 128,-1,18
+ 28 562 28 562 64.5 652 c 128,-1,19
+ 101 742 101 742 162.5 806.5 c 128,-1,20
+ 224 871 224 871 309 909.5 c 128,-1,0
+ 394 948 394 948 488 948 c 128,-1,1
+488 848 m 128,-1,22
+ 418 848 418 848 355 820.5 c 128,-1,23
+ 292 793 292 793 245.5 743.5 c 128,-1,24
+ 199 694 199 694 172 621.5 c 128,-1,25
+ 145 549 145 549 145 464 c 128,-1,26
+ 145 379 145 379 172 306.5 c 128,-1,27
+ 199 234 199 234 245.5 184.5 c 128,-1,28
+ 292 135 292 135 355 107.5 c 128,-1,29
+ 418 80 418 80 488 80 c 0,30,31
+ 599 80 599 80 686 146 c 1,32,-1
+ 483 387 l 1,33,-1
+ 562 454 l 1,34,-1
+ 759 221 l 1,35,36
+ 831 323 831 323 831 464 c 0,37,38
+ 831 549 831 549 804 621.5 c 128,-1,39
+ 777 694 777 694 730 743.5 c 128,-1,40
+ 683 793 683 793 620.5 820.5 c 128,-1,21
+ 558 848 558 848 488 848 c 128,-1,22
 EndSplineSet
-Validated: 1
-EndChar
-
-StartChar: T
-Encoding: 84 84 22
-Width: 840
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-48 928 m 1,0,-1
- 792 928 l 1,1,-1
- 792 824 l 1,2,-1
- 476 824 l 1,3,-1
- 476 0 l 1,4,-1
- 364 0 l 1,5,-1
- 364 824 l 1,6,-1
- 48 824 l 1,7,-1
- 48 928 l 1,0,-1
-EndSplineSet
-Validated: 1
-Kerns2: 28 -32 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
 EndChar
 
 StartChar: U
-Encoding: 85 85 23
+Encoding: 85 85 21
 Width: 768
 GlyphClass: 1
 Flags: W
@@ -822,207 +779,8 @@ Validated: 1
 Kerns2: 16 108 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
 EndChar
 
-StartChar: a
-Encoding: 97 97 24
-Width: 704
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-342 628 m 0,0,1
- 401 628 401 628 457.5 604 c 128,-1,2
- 514 580 514 580 544 544 c 1,3,-1
- 544 608 l 1,4,-1
- 656 608 l 1,5,-1
- 656 0 l 1,6,-1
- 544 0 l 1,7,-1
- 544 64 l 1,8,9
- 514 28 514 28 457.5 4 c 128,-1,10
- 401 -20 401 -20 342 -20 c 0,11,12
- 203 -20 203 -20 115.5 75 c 128,-1,13
- 28 170 28 170 28 304 c 128,-1,14
- 28 438 28 438 115.5 533 c 128,-1,15
- 203 628 203 628 342 628 c 0,0,1
-342 523 m 0,16,17
- 250 523 250 523 195 460.5 c 128,-1,18
- 140 398 140 398 140 304 c 128,-1,19
- 140 210 140 210 195 147.5 c 128,-1,20
- 250 85 250 85 342 85 c 0,21,22
- 435 85 435 85 493.5 146.5 c 128,-1,23
- 552 208 552 208 552 304 c 128,-1,24
- 552 400 552 400 493.5 461.5 c 128,-1,25
- 435 523 435 523 342 523 c 0,16,17
-EndSplineSet
-Validated: 1
-Kerns2: 27 120 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
-StartChar: e
-Encoding: 101 101 25
-Width: 686
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-348 628 m 0,0,1
- 418 628 418 628 475 605.5 c 128,-1,2
- 532 583 532 583 567.5 546.5 c 128,-1,3
- 603 510 603 510 623.5 468.5 c 128,-1,4
- 644 427 644 427 650 383 c 0,5,6
- 656 336 656 336 656 280 c 1,7,-1
- 131 280 l 1,8,9
- 136 188 136 188 196 128 c 128,-1,10
- 256 68 256 68 352 68 c 0,11,12
- 470 68 470 68 551 160 c 1,13,-1
- 619 104 l 1,14,15
- 576 45 576 45 505.5 12.5 c 128,-1,16
- 435 -20 435 -20 352 -20 c 0,17,18
- 211 -20 211 -20 119.5 70 c 128,-1,19
- 28 160 28 160 28 304 c 0,20,21
- 28 444 28 444 120 536 c 128,-1,22
- 212 628 212 628 348 628 c 0,0,1
-348 540 m 0,23,24
- 270 540 270 540 214.5 497 c 128,-1,25
- 159 454 159 454 138 381 c 1,26,-1
- 552 381 l 1,27,28
- 543 428 543 428 519.5 461 c 128,-1,29
- 496 494 496 494 464.5 510 c 128,-1,30
- 433 526 433 526 404.5 533 c 128,-1,31
- 376 540 376 540 348 540 c 0,23,24
-EndSplineSet
-Validated: 1
-Kerns2: 24 100 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
-StartChar: i
-Encoding: 105 105 26
-Width: 208
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-104 876 m 128,-1,1
- 132 876 132 876 152 856 c 128,-1,2
- 172 836 172 836 172 808 c 128,-1,3
- 172 780 172 780 152 760 c 128,-1,4
- 132 740 132 740 104 740 c 128,-1,5
- 76 740 76 740 56 760 c 128,-1,6
- 36 780 36 780 36 808 c 128,-1,7
- 36 836 36 836 56 856 c 128,-1,0
- 76 876 76 876 104 876 c 128,-1,1
-48 608 m 1,8,-1
- 160 608 l 1,9,-1
- 160 0 l 1,10,-1
- 48 0 l 1,11,-1
- 48 608 l 1,8,-1
-EndSplineSet
-Validated: 1
-Kerns2: 20 120 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
-StartChar: k
-Encoding: 107 107 27
-Width: 650
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-48 928 m 1,0,-1
- 160 928 l 1,1,-1
- 160 322 l 1,2,-1
- 466 608 l 1,3,-1
- 624 608 l 1,4,-1
- 299 304 l 1,5,-1
- 624 0 l 1,6,-1
- 466 0 l 1,7,-1
- 160 286 l 1,8,-1
- 160 0 l 1,9,-1
- 48 0 l 1,10,-1
- 48 928 l 1,0,-1
-EndSplineSet
-Validated: 1
-Kerns2: 29 76 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
-StartChar: r
-Encoding: 114 114 28
-Width: 521
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-346 628 m 0,0,1
- 425 628 425 628 495 590 c 1,2,-1
- 445 499 l 1,3,4
- 398 524 398 524 346 524 c 0,5,6
- 264 524 264 524 212 474.5 c 128,-1,7
- 160 425 160 425 160 328 c 2,8,-1
- 160 0 l 1,9,-1
- 48 0 l 1,10,-1
- 48 608 l 1,11,-1
- 160 608 l 1,12,-1
- 160 561 l 1,13,14
- 238 628 238 628 346 628 c 0,0,1
-EndSplineSet
-Validated: 1
-Kerns2: 26 80 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
-StartChar: s
-Encoding: 115 115 29
-Width: 524
-GlyphClass: 1
-Flags: W
-LayerCount: 2
-Fore
-SplineSet
-271 628 m 0,0,1
- 343 628 343 628 402.5 601 c 128,-1,2
- 462 574 462 574 498 528 c 1,3,-1
- 406 463 l 1,4,5
- 356 526 356 526 271 526 c 0,6,7
- 225 526 225 526 188.5 503 c 128,-1,8
- 152 480 152 480 152 447 c 0,9,10
- 152 415 152 415 177 396 c 128,-1,11
- 202 377 202 377 276 357 c 0,12,13
- 279 356 279 356 300.5 350.5 c 128,-1,14
- 322 345 322 345 329.5 343 c 128,-1,15
- 337 341 337 341 354 335.5 c 128,-1,16
- 371 330 371 330 383.5 323.5 c 128,-1,17
- 396 317 396 317 409 309 c 0,18,19
- 444 287 444 287 465.5 248 c 128,-1,20
- 487 209 487 209 487 161 c 0,21,22
- 487 80 487 80 412 26 c 0,23,24
- 348 -20 348 -20 253 -20 c 0,25,26
- 181 -20 181 -20 121.5 7 c 128,-1,27
- 62 34 62 34 26 80 c 1,28,-1
- 118 145 l 1,29,30
- 168 82 168 82 253 82 c 0,31,32
- 298 82 298 82 335 105 c 128,-1,33
- 372 128 372 128 372 161 c 128,-1,34
- 372 194 372 194 347.5 212.5 c 128,-1,35
- 323 231 323 231 248 251 c 0,36,37
- 245 252 245 252 223.5 257.5 c 128,-1,38
- 202 263 202 263 194.5 265 c 128,-1,39
- 187 267 187 267 170 272.5 c 128,-1,40
- 153 278 153 278 140.5 284.5 c 128,-1,41
- 128 291 128 291 115 299 c 0,42,43
- 81 321 81 321 59.5 360 c 128,-1,44
- 38 399 38 399 38 447 c 0,45,46
- 38 529 38 529 112 582 c 0,47,48
- 176 628 176 628 271 628 c 0,0,1
-EndSplineSet
-Validated: 1
-Kerns2: 19 108 "'kern' Horizontal Kerning in Latin lookup 0 subtable"
-EndChar
-
 StartChar: spade
-Encoding: 9824 9824 30
+Encoding: 9824 9824 22
 Width: 1024
 GlyphClass: 1
 Flags: W
@@ -1053,7 +811,7 @@ Substitution2: "'ss01' Style Set 1 in Latin lookup 0 subtable" spade
 EndChar
 
 StartChar: uni2661
-Encoding: 9825 9825 31
+Encoding: 9825 9825 23
 Width: 1024
 GlyphClass: 1
 Flags: W
@@ -1063,7 +821,7 @@ Validated: 1
 EndChar
 
 StartChar: uni2662
-Encoding: 9826 9826 32
+Encoding: 9826 9826 24
 Width: 1024
 GlyphClass: 1
 Flags: W
@@ -1073,7 +831,7 @@ Validated: 1
 EndChar
 
 StartChar: club
-Encoding: 9827 9827 33
+Encoding: 9827 9827 25
 Width: 1024
 GlyphClass: 1
 Flags: W
@@ -1115,7 +873,7 @@ Substitution2: "'ss01' Style Set 1 in Latin lookup 0 subtable" club
 EndChar
 
 StartChar: heart
-Encoding: 9829 9829 34
+Encoding: 9829 9829 26
 Width: 1024
 GlyphClass: 1
 Flags: W
@@ -1148,7 +906,7 @@ Substitution2: "'ss01' Style Set 1 in Latin lookup 0 subtable" heart
 EndChar
 
 StartChar: diamond
-Encoding: 9830 9830 35
+Encoding: 9830 9830 27
 Width: 845
 GlyphClass: 1
 Flags: W
@@ -1169,7 +927,7 @@ Substitution2: "'ss01' Style Set 1 in Latin lookup 0 subtable" diamond
 EndChar
 
 StartChar: spade.v2
-Encoding: 57344 57344 36
+Encoding: 57344 57344 28
 Width: 922
 GlyphClass: 1
 Flags: W
@@ -1199,7 +957,7 @@ Validated: 1
 EndChar
 
 StartChar: club.v2
-Encoding: 57345 57345 37
+Encoding: 57345 57345 29
 Width: 922
 GlyphClass: 1
 Flags: W
@@ -1237,7 +995,7 @@ Validated: 1
 EndChar
 
 StartChar: heart.v2
-Encoding: 57346 57346 38
+Encoding: 57346 57346 30
 Width: 922
 GlyphClass: 1
 Flags: W
@@ -1266,7 +1024,7 @@ Validated: 1
 EndChar
 
 StartChar: diamond.v2
-Encoding: 57347 57347 39
+Encoding: 57347 57347 31
 Width: 794
 GlyphClass: 1
 InSpiro: 1
@@ -1291,7 +1049,7 @@ Validated: 1
 EndChar
 
 StartChar: spade.v3
-Encoding: 57348 57348 40
+Encoding: 57348 57348 32
 Width: 922
 GlyphClass: 1
 Flags: W
@@ -1323,7 +1081,7 @@ Validated: 1
 EndChar
 
 StartChar: club.v3
-Encoding: 57349 57349 41
+Encoding: 57349 57349 33
 Width: 922
 GlyphClass: 1
 Flags: W
@@ -1375,7 +1133,7 @@ Validated: 1
 EndChar
 
 StartChar: heart.v3
-Encoding: 57350 57350 42
+Encoding: 57350 57350 34
 Width: 922
 GlyphClass: 1
 Flags: W
@@ -1404,7 +1162,7 @@ Validated: 1
 EndChar
 
 StartChar: diamond.v3
-Encoding: 57351 57351 43
+Encoding: 57351 57351 35
 Width: 794
 GlyphClass: 1
 Flags: W
@@ -1428,7 +1186,7 @@ Validated: 1
 EndChar
 
 StartChar: spade.v4
-Encoding: 57352 57352 44
+Encoding: 57352 57352 36
 Width: 820
 Flags: W
 HStem: 29 51<205 300.666 519.463 615>
@@ -1478,7 +1236,7 @@ Validated: 1
 EndChar
 
 StartChar: club.v4
-Encoding: 57353 57353 45
+Encoding: 57353 57353 37
 Width: 836
 Flags: W
 HStem: 29 51<213 308.019 527.463 623> 182 350<170.5 332.5 501.5 627.5>
@@ -1539,7 +1297,7 @@ Validated: 1
 EndChar
 
 StartChar: heart.v4
-Encoding: 57354 57354 46
+Encoding: 57354 57354 38
 Width: 972
 Flags: W
 VStem: 26 922<520.26 768.332>
@@ -1580,7 +1338,7 @@ Validated: 1
 EndChar
 
 StartChar: diamond.v4
-Encoding: 57355 57355 47
+Encoding: 57355 57355 39
 Width: 896
 Flags: W
 LayerCount: 2
