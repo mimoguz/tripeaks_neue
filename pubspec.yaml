@@ -2,7 +2,7 @@ name: tripeaks_neue
 description: "A Tri Peaks patience (solitaire) game"
 publish_to: 'none'
 # Don't forget to increase version code (the number that comes after '+')
-version: 0.9.62+14
+version: 0.9.63+15
 
 environment:
   sdk: ^3.13.0
