@@ -30,9 +30,9 @@
      inkscape:document-units="px"
      showgrid="true"
      showguides="true"
-     inkscape:zoom="11.225"
-     inkscape:cx="1302.8062"
-     inkscape:cy="17.906458"
+     inkscape:zoom="15.874547"
+     inkscape:cx="1297.2653"
+     inkscape:cy="22.740806"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -580,6 +580,22 @@
   </sodipodi:namedview>
   <defs
      id="defs1">
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="1300,0"
+       end_point="1300,40"
+       center_point="1300,20"
+       id="path-effect4"
+       is_visible="true"
+       lpeversion="1.2"
+       lpesatellites=""
+       mode="vertical"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false"
+       link_styles="false" />
     <inkscape:path-effect
        effect="mirror_symmetry"
        start_point="1300,0"
@@ -1876,7 +1892,7 @@
     <path
        id="path41"
        style="fill:#ff0000;stroke-miterlimit:10"
-       d="M 1292.5352 2.5 C 1287.4662 2.5 1283 7 1283 14 C 1283 19.618718 1285.7477 23.442957 1289.3125 26.5625 C 1293.213 29.975805 1297.375 32.75 1300 38 C 1302.625 32.75 1306.787 29.975805 1310.6875 26.5625 C 1314.2523 23.442957 1317 19.618718 1317 14 C 1317 7 1312.5338 2.5 1307.4648 2.5 C 1303.9845 2.5 1301.6882 3.7416539 1300 6.3125 C 1298.3118 3.7416539 1296.0155 2.5 1292.5352 2.5 z " />
+       d="M 1292.5352 2.5 C 1287.4662 2.5 1283 7 1283 14 C 1283 19.618718 1285.7477 23.442957 1289.3125 26.5625 C 1293.213 29.975805 1297.375 32.75 1300 38 C 1302.625 32.75 1306.787 29.975805 1310.6875 26.5625 C 1314.2523 23.442957 1317 19.618718 1317 14 C 1317 7 1312.5338 2.5 1307.4648 2.5 C 1303.9845 2.5 1301.6882 4.4291539 1300 7 C 1298.3118 4.4291539 1296.0155 2.5 1292.5352 2.5 z " />
     <path
        id="path3"
        style="fill:#000000;stroke-width:1;stroke-miterlimit:10"
