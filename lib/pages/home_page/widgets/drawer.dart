@@ -38,6 +38,8 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
               actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
               title: AppTitle(),
               leading: const CloseButton(),
+              shadowColor: colours.shadow,
+              surfaceTintColor: colours.surfaceContainerLow,
               actions: [
                 IconButton(
                   icon: const Icon(Icons.help),

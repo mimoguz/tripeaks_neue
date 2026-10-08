@@ -72,6 +72,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: colours.surfaceContainerLow,
+                        surfaceTintColor: colours.surfaceContainerLow,
+                        shadowColor: context.colours.shadow,
                         actions: [
                           PopupMenuButton(
                             color: colours.surfaceBright,
