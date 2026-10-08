@@ -124,7 +124,7 @@ class _DecorItemState extends State<DecorItem> {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    _borderColour = _focus.hasFocus ? colours.primary : colours.surfaceContainerHighest;
+    _borderColour = _focus.hasFocus ? colours.primary : colours.surfaceBright;
     return SizedBox(
       width: _sideLength,
       height: _sideLength,
