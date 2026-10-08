@@ -1,6 +1,6 @@
 SplineFontDB: 3.2
-FontName: Peckish
-FullName: Peckish
+FontName: Peckish-Medium
+FullName: Peckish Medium
 FamilyName: Peckish
 Weight: Medium
 Copyright: Copyright (c) 2026, Oguz Tas
@@ -23,7 +23,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1791408900
+ModificationTime: 1791439206
 PfmFamily: 33
 TTFWeight: 500
 TTFWidth: 5
@@ -54,7 +54,7 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 57 19 9
+WinInfo: 0 19 9
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
@@ -63,8 +63,8 @@ BeginChars: 1114112 15
 StartChar: A
 Encoding: 65 65 0
 Width: 911
-Flags: W
-HStem: 0 21G<27 184.768 727.232 885> 224 136<317 595> 908 20G<379.241 532.759>
+Flags: MW
+HStem: 224 136<317 595>
 LayerCount: 2
 Fore
 SplineSet
@@ -88,9 +88,7 @@ EndChar
 StartChar: nine
 Encoding: 57 57 1
 Width: 696
-Flags: W
-HStem: 0 21G<179 357.357> 308 144<268.271 361.643> 804 144<266.013 429.987>
-VStem: 28 144<546.013 709.987> 524 144<543.133 709.987>
+Flags: MW
 LayerCount: 2
 Fore
 SplineSet
@@ -116,8 +114,7 @@ EndChar
 StartChar: J
 Encoding: 74 74 2
 Width: 720
-Flags: HW
-HStem: -20 136<241.091 399.685> 908 20G<464 608>
+Flags: MW
 VStem: 464 144<179.629 928>
 LayerCount: 2
 Fore
@@ -141,8 +138,7 @@ EndChar
 StartChar: K
 Encoding: 75 75 3
 Width: 872
-Flags: W
-HStem: 0 21G<64 208 640.175 852> 908 20G<64 208 640.175 852>
+Flags: MW
 VStem: 64 144<0 456 472 928>
 LayerCount: 2
 Fore
@@ -166,7 +162,7 @@ EndChar
 StartChar: Q
 Encoding: 81 81 4
 Width: 1032
-Flags: MWO
+Flags: MW
 LayerCount: 2
 Fore
 SplineSet
@@ -189,14 +185,13 @@ SplineSet
  804 288 832 370 832 464 c 0
  832 672 696 820 516 820 c 0
 EndSplineSet
+Validated: 1
 EndChar
 
 StartChar: zero
 Encoding: 48 48 5
 Width: 818
-Flags: W
-HStem: -20 129<315.165 502.835> 819 129<315.165 502.835>
-VStem: 28 144<300.352 627.648> 646 144<300.352 627.648>
+Flags: MW
 LayerCount: 2
 Fore
 SplineSet
@@ -221,14 +216,13 @@ EndChar
 StartChar: one
 Encoding: 49 49 6
 Width: 416
-Flags: W
-HStem: 0 21G<224 368> 908 20G<207.185 368>
+Flags: MW
 VStem: 224 144<0 772>
 LayerCount: 2
 Fore
 SplineSet
 247 928 m 1
- 368 928 l 5
+ 368 928 l 1
  368 0 l 1
  224 0 l 1
  224 772 l 1
@@ -243,9 +237,8 @@ EndChar
 StartChar: two
 Encoding: 50 50 7
 Width: 752
-Flags: W
-HStem: 0 136<314 704> 812 136<294.664 464.643>
-VStem: 559 145<543.183 717.497>
+Flags: MW
+HStem: 0 136<314 704>
 LayerCount: 2
 Fore
 SplineSet
@@ -270,9 +263,8 @@ EndChar
 StartChar: three
 Encoding: 51 51 8
 Width: 707
-Flags: W
-HStem: -20 136<270.664 444.275> 792 136<64 406>
-VStem: 535 144<210.68 382.645>
+Flags: MW
+HStem: 792 136<64 406>
 LayerCount: 2
 Fore
 SplineSet
@@ -299,8 +291,8 @@ EndChar
 StartChar: four
 Encoding: 52 52 9
 Width: 832
-Flags: W
-HStem: 0 21G<512 656> 224 136<236 512 656 784> 909 20G<399.098 574>
+Flags: MW
+HStem: 224 136<236 512 656 784>
 VStem: 512 144<0 224 360 608>
 LayerCount: 2
 Fore
@@ -328,9 +320,8 @@ EndChar
 StartChar: five
 Encoding: 53 53 10
 Width: 718
-Flags: W
-HStem: -20 136<270.664 444.275> 475 136<273.997 443.156> 792 136<257 648>
-VStem: 535 144<210.68 381.225>
+Flags: MW
+HStem: 792 136<257 648>
 LayerCount: 2
 Fore
 SplineSet
@@ -357,9 +348,7 @@ EndChar
 StartChar: six
 Encoding: 54 54 11
 Width: 696
-Flags: W
-HStem: -20 144<266.013 429.987> 476 144<334.357 427.729> 908 20G<339.593 517>
-VStem: 28 144<218.013 384.867> 524 144<218.013 381.987>
+Flags: MW
 LayerCount: 2
 Fore
 SplineSet
@@ -385,8 +374,8 @@ EndChar
 StartChar: seven
 Encoding: 55 55 12
 Width: 720
-Flags: W
-HStem: 0 21G<199 356.737> 792 136<48 505>
+Flags: MW
+HStem: 792 136<48 505>
 LayerCount: 2
 Fore
 SplineSet
@@ -404,38 +393,30 @@ EndChar
 
 StartChar: eight
 Encoding: 56 56 13
-Width: 757
-Flags: W
-HStem: -20 132<267.609 490.233> 424 124<281.885 475.863> 824 124<278.224 479.47>
-VStem: 28 144<193.053 342.947> 57 144<616.148 754.192> 556 144<616.148 754.192> 585 144<191.27 344.73>
+Width: 712
+Flags: MW
 LayerCount: 2
 Fore
 SplineSet
-379 948 m 0xe8
- 470 948 549 922 607 875 c 0
- 665 828 700 757 700 682 c 0xec
- 700 609 667 539 611 492 c 1
- 618 487 625 482 632 476 c 0
- 695 424 729 347 729 268 c 0
- 729 189 695 112 632 60 c 0
- 569 8 482 -20 379 -20 c 0
- 276 -20 189 8 126 60 c 0
- 63 112 28 189 28 268 c 0xf2
- 28 347 63 424 126 476 c 0
- 133 482 140 487 147 492 c 1
- 91 539 57 609 57 682 c 0
- 57 757 92 828 150 875 c 0
- 208 922 288 948 379 948 c 0xe8
-379 824 m 0
- 262 824 201 758 201 682 c 0
- 201 606 278 548 379 548 c 0
- 480 548 556 606 556 682 c 0
- 556 758 496 824 379 824 c 0
-379 424 m 0
- 278 424 172 376 172 268 c 0
- 172 160 278 112 379 112 c 0
- 480 112 585 160 585 268 c 0xf2
- 585 376 480 424 379 424 c 0
+356 948 m 0
+ 548 948 660 837 660 682 c 0
+ 660 604 627 536 572 489 c 1
+ 642 439 684 362 684 266 c 0
+ 684 94 548 -20 356 -20 c 0
+ 164 -20 28 94 28 266 c 0
+ 28 362 70 439 140 489 c 1
+ 85 536 52 604 52 682 c 0
+ 52 837 164 948 356 948 c 0
+356 812 m 0
+ 260 812 196 752 196 682 c 0
+ 196 612 268 552 356 552 c 0
+ 444 552 516 612 516 682 c 0
+ 516 752 452 812 356 812 c 0
+356 416 m 0
+ 252 416 172 352 172 266 c 0
+ 172 180 252 116 356 116 c 0
+ 460 116 540 180 540 266 c 0
+ 540 352 460 416 356 416 c 0
 EndSplineSet
 Validated: 1
 EndChar
