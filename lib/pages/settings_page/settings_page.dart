@@ -57,6 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
       },
       child: Builder(
         builder: (context) {
+          final colours = context.colours;
           return Shortcuts(
             shortcuts: <ShortcutActivator, Intent>{
               SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -69,7 +70,9 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: context.colours.surfaceContainerLow,
+                  backgroundColor: colours.surfaceContainerLow,
+                  surfaceTintColor: colours.surfaceContainerLow,
+                  shadowColor: context.colours.shadow,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
