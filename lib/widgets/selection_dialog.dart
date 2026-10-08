@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
@@ -51,7 +52,7 @@ class _SelectionDialogState() extends State<SelectionDialog> {
             visualDensity: .compact,
             titleTextStyle: theme.textTheme.bodyMedium,
             controlAffinity: .leading,
-            horizontalTitleGap: c.itemSpacing - c.radioCorrection,
+            horizontalTitleGap: c.itemSpacing - c.radioCorrection + (isDesktopOrWeb() ? 1 : 0),
             contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
           ),
           child: Column(

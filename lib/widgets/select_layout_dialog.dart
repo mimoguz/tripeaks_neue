@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -60,7 +61,12 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               titleTextStyle: theme.textTheme.bodyMedium,
               controlAffinity: .leading,
               horizontalTitleGap: c.itemSpacing - c.radioCorrection,
-              contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
+              contentPadding: EdgeInsets.fromLTRB(
+                c.itemSpacing - c.radioCorrection + (isDesktopOrWeb() ? 1 : 0),
+                0.0,
+                c.itemSpacing,
+                0.0,
+              ),
             ),
             child: RadioGroup(
               groupValue: _layout,

@@ -24,7 +24,7 @@ const double stockShift = 30.0;
 const double utilPageMargin = 6.0;
 const double dialogPadding = 20;
 const double verticalTabsThreshold = 500;
-const double radioCorrection = 4.0;
+const double radioCorrection = 5.0;
 const double checkBoxCorrection = 5.0;
 
 const commonBorderRadius = BorderRadius.all(Radius.circular(commonRadius));
