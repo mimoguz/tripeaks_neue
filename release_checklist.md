@@ -9,10 +9,11 @@
 - [ ] F-Droid screenshots
 - [x] F-Droid icon
 - [ ] Flatpak changelog
-- [ ] Flatpak screenshots
+- [x] Flatpak screenshots
 - [x] Flatpak icon
 - [ ] Flatpak metainfo lint
 - [ ] Snapcraft release
+- [ ] Snapcraft screenshots & metadata
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
 - [ ] Readme images
