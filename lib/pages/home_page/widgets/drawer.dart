@@ -7,6 +7,7 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart' show canExit;
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
@@ -16,7 +17,6 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = context.colours;
     final s = context.strings;
-    final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
       // surfaceTintColor: colours.surfaceTint,

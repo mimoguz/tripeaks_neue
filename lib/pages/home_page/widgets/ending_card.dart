@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -78,11 +79,12 @@ final class const EndingCardToolBar({super.key}) extends StatelessWidget {
           tooltip: s.restartGameAction,
           icon: Icon(Icons.restart_alt, color: colours.onSurfaceVariant),
         ),
-        IconButton(
-          onPressed: Actions.handler(context, const ExitIntent()),
-          tooltip: s.exitAction,
-          icon: Icon(Icons.exit_to_app, color: colours.tertiary),
-        ),
+        if (canExit)
+          IconButton(
+            onPressed: Actions.handler(context, const ExitIntent()),
+            tooltip: s.exitAction,
+            icon: Icon(Icons.exit_to_app, color: colours.tertiary),
+          ),
       ],
     );
   }
