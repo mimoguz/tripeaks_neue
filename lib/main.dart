@@ -8,6 +8,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/welcome_dialog.dart';
 
 void main() async {
@@ -78,7 +79,7 @@ class _MainAppState extends State<MainApp> {
                   context: context,
                   builder: (context) => const WelcomeDialog(),
                   barrierDismissible: true,
-                  barrierColor: Colors.transparent,
+                  barrierColor: context.colours.barrier,
                 );
               });
             }

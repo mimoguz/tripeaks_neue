@@ -12,6 +12,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return Scaffold(
-              drawerScrimColor: Colors.transparent,
+              drawerScrimColor: context.colours.barrier,
               drawer: HomePageDrawer(),
               body: Builder(
                 builder: (context) {

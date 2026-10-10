@@ -4,13 +4,12 @@ import 'package:tripeaks_neue/pages/home_page/widgets/cards.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:material_ui/material_ui.dart';
 
-class LandscapeBoard extends StatelessWidget {
-  const LandscapeBoard({super.key, required this.game, required this.back, required this.scale});
-
-  final Game game;
-  final double scale;
-  final BackOptions back;
-
+class const LandscapeBoard({
+  super.key,
+  required final Game game,
+  required final BackOptions back,
+  required final double scale,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cellSize = c.cardSize + c.cellPadding;
@@ -42,13 +41,12 @@ class LandscapeBoard extends StatelessWidget {
   }
 }
 
-class PortraitBoard extends StatelessWidget {
-  const PortraitBoard({super.key, required this.game, required this.back, required this.scale});
-
-  final Game game;
-  final double scale;
-  final BackOptions back;
-
+class const PortraitBoard({
+  super.key,
+  required final Game game,
+  required final BackOptions back,
+  required final double scale,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cellSize = c.cardSize + c.cellPadding;

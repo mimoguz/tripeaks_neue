@@ -27,7 +27,7 @@ class const CommonDialog({
         c.dialogPadding,
         c.dialogPadding - 6,
       ),
-      titleTextStyle: theme.textTheme.titleMedium?.copyWith(fontWeight: .w600),
+      titleTextStyle: theme.textTheme.titleMedium,
       surfaceTintColor: tint,
       scrollable: false,
       backgroundColor: theme.colorScheme.surfaceBright,

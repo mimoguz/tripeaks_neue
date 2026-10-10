@@ -120,7 +120,11 @@ final class const Interaction({super.key}) extends StatelessWidget {
                 textStyle: paragraphStyle,
                 italicTextStyle: italic,
               ),
-              image: Image.asset("images/tropy.png", width: c.maxRealButtonSize, height: c.maxRealButtonSize),
+              image: Image.asset(
+                "images/tropy72.png",
+                width: c.maxRealButtonSize,
+                height: c.maxRealButtonSize,
+              ),
             ),
             const InteractionListDivider(),
             InteractionListCell(

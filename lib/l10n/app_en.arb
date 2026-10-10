@@ -384,6 +384,38 @@
         "context": "settings",
         "description": "Label of a decoration colour variant."
     },
+
+    "@_SETTINGS_PAGE__SUIT_ICONS_SETTING": {},
+    "suitIconsControl": "Suit icons",
+    "@suitIconsControl": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of a control that sets the suit icon theme."
+    },
+    "suitIconVariant1Label": "First Draft",
+    "@suitIconVariant1Label": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of the first icon theme variant."
+    },
+    "suitIconVariant2Label": "Fashion Line",
+    "@suitIconVariant2Label": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of the second icon theme variant."
+    },
+    "suitIconVariant3Label": "Déco",
+    "@suitIconVariant3Label": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of the third icon theme variant."
+    },
+    "suitIconVariant4Label": "Old Skool",
+    "@suitIconVariant4Label": {
+        "type": "text",
+        "context": "settings",
+        "description": "Label of the fourth icon theme variant."
+    },
     "@_SELECT_LAYOUT_DIALOG": {},
     "selectLayoutDialogTitle": "Select Layout",
     "@selectLayoutDialogTitle": {

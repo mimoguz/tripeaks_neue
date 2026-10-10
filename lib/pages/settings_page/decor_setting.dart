@@ -17,15 +17,14 @@ class const DecorSetting({super.key}) extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.decorControl,
+          titleText: s.decorControl,
           location: Location.last,
           onTap: () => _showSelection(context, settings),
           subtitle: settings.decor.name(s),
           showArrow: true,
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: ClipRRect(
-              borderRadius: c.commonBorderRadius,
+            child: ClipOval(
               child: Container(
                 width: _boxWidth,
                 height: _boxHeight,
@@ -44,26 +43,29 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showDialog<int>(
+    final result = await showAdaptiveDialog<int>(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       barrierDismissible: true,
       builder: (context) => CommonDialog(
         title: Text(s.decorControl),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),
-          child: Wrap(
-            spacing: 16.0,
-            runSpacing: 16.0,
-            children: [
-              for (final (index, decor) in Decor.values.indexed)
-                DecorItem(
-                  decor: decor,
-                  isSelected: settings.decor == decor,
-                  onTap: () => Navigator.pop(context, index),
-                  selectedDecorColour: settings.decorColour,
-                ),
-            ],
+          child: ConstrainedBox(
+            constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + 36.0)),
+            child: Wrap(
+              spacing: 16.0,
+              runSpacing: 16.0,
+              children: [
+                for (final (index, decor) in Decor.values.indexed)
+                  DecorItem(
+                    decor: decor,
+                    isSelected: settings.decor == decor,
+                    onTap: () => Navigator.pop(context, index),
+                    selectedDecorColour: settings.decorColour,
+                  ),
+              ],
+            ),
           ),
         ),
         actions: [
@@ -80,8 +82,8 @@ class const DecorSetting({super.key}) extends StatelessWidget {
     }
   }
 
-  static const _boxWidth = 64.0;
-  static const _boxHeight = 24.0;
+  static const _boxWidth = 32.0;
+  static const _boxHeight = 32.0;
   static const _iconOffset = Offset((c.cardSize - _boxWidth) / -2.0, (c.cardSize - _boxHeight) / -2.0);
 }
 
@@ -122,26 +124,33 @@ class _DecorItemState extends State<DecorItem> {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    _borderColour = _focus.hasFocus ? colours.onSurface : colours.surfaceBright;
+    _borderColour = _focus.hasFocus ? colours.primary : colours.surfaceBright;
     return SizedBox(
       width: _sideLength,
       height: _sideLength,
       child: Material(
         color: Colors.transparent,
+        borderRadius: c.commonBorderRadius,
+        clipBehavior: .antiAlias,
         child: InkWell(
           onTap: widget.onTap,
           focusNode: _focus,
           child: Ink(
             decoration: BoxDecoration(
               border: Border.all(width: 2.0, color: _borderColour!),
+              borderRadius: c.commonBorderRadius,
               color: widget.isSelected
                   ? widget.selectedDecorColour.background
                   : colours.surfaceContainerHighest,
             ),
-            child: Icon(
-              widget.decor.icon,
-              size: _sideLength - 4,
-              color: widget.isSelected ? Colors.white70 : colours.onSurfaceVariant,
+
+            child: ClipRRect(
+              borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(2.0)),
+              child: Icon(
+                widget.decor.icon,
+                size: _sideLength - 4,
+                color: widget.isSelected ? Colors.white70 : colours.onSurfaceVariant,
+              ),
             ),
           ),
         ),
@@ -154,7 +163,7 @@ class _DecorItemState extends State<DecorItem> {
       _borderColour = _focus.hasFocus ? context.colours.onSurface : context.colours.surfaceContainer;
     });
   }
-
-  static const _scale = 0.75;
-  static const _sideLength = c.cardSize * _scale;
 }
+
+const _scale = 0.8;
+const _sideLength = c.cardSize * _scale;

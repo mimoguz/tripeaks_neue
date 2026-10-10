@@ -34,44 +34,41 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
           child: Container(
             color: colours.surfaceContainerLow,
             child: ScrollIndicator(
-              child: ListView(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(c.utilPageMargin),
-                    child: GroupTile(
-                      children: <Widget>[
-                        Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
-                        if (last != null)
-                          Padding(
-                            padding: const EdgeInsets.only(top: _verticalSpacing),
-                            child: Row(
-                              spacing: c.itemSpacing,
-                              children: [
-                                Text(s.lastGameStatistics, style: subtitleStyle),
-                                Expanded(child: Container(height: 1, color: divColour)),
-                              ],
-                            ),
-                          ),
-                        if (last != null) LastGameEntry(last, showLayout: showLayout),
-                        if (best.isNotEmpty)
-                          Padding(
-                            padding: const EdgeInsets.only(top: _verticalSpacing),
-                            child: Row(
-                              spacing: c.itemSpacing,
-                              children: [
-                                Text(s.bestGamesStatistics, style: subtitleStyle),
-                                Expanded(child: Container(color: divColour, height: 1)),
-                              ],
-                            ),
-                          ),
-                        if (best.isNotEmpty)
-                          for (final (index, game) in best.indexed)
-                            ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
-                        SizedBox(height: best.isNotEmpty ? 0 : 4),
-                      ],
-                    ),
-                  ),
-                ],
+              child: SingleChildScrollView(
+                primary: true,
+                padding: const EdgeInsets.all(c.utilPageMargin),
+                child: GroupTile(
+                  children: <Widget>[
+                    Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
+                    if (last != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: _verticalSpacing),
+                        child: Row(
+                          spacing: c.itemSpacing,
+                          children: [
+                            Text(s.lastGameStatistics, style: subtitleStyle),
+                            Expanded(child: Container(height: 1, color: divColour)),
+                          ],
+                        ),
+                      ),
+                    if (last != null) LastGameEntry(last, showLayout: showLayout),
+                    if (best.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: _verticalSpacing),
+                        child: Row(
+                          spacing: c.itemSpacing,
+                          children: [
+                            Text(s.bestGamesStatistics, style: subtitleStyle),
+                            Expanded(child: Container(color: divColour, height: 1)),
+                          ],
+                        ),
+                      ),
+                    if (best.isNotEmpty)
+                      for (final (index, game) in best.indexed)
+                        ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
+                    SizedBox(height: best.isNotEmpty ? 0 : 4),
+                  ],
+                ),
               ),
             ),
           ),

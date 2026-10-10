@@ -195,6 +195,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get violetColourLabel => 'Violet';
 
   @override
+  String get suitIconsControl => 'Suit icons';
+
+  @override
+  String get suitIconVariant1Label => 'First Draft';
+
+  @override
+  String get suitIconVariant2Label => 'Fashion Line';
+
+  @override
+  String get suitIconVariant3Label => 'Déco';
+
+  @override
+  String get suitIconVariant4Label => 'Old Skool';
+
+  @override
   String get selectLayoutDialogTitle => 'Select Layout';
 
   @override

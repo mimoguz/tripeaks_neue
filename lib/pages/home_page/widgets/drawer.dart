@@ -18,7 +18,8 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     final s = context.strings;
     final canExit = !(kIsWeb || kIsWasm || Platform.isIOS);
     return Drawer(
-      surfaceTintColor: colours.surfaceTint,
+      backgroundColor: colours.surfaceContainerHighest,
+      // surfaceTintColor: colours.surfaceTint,
       elevation: 10.0,
       shadowColor: colours.shadow,
       width: 340.0,
@@ -37,6 +38,8 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
               actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
               title: AppTitle(),
               leading: const CloseButton(),
+              shadowColor: colours.shadow,
+              surfaceTintColor: colours.surfaceContainerLow,
               actions: [
                 IconButton(
                   icon: const Icon(Icons.help),

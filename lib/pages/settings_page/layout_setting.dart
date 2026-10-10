@@ -17,7 +17,7 @@ class LayoutSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.layoutControl,
+          titleText: s.layoutControl,
           location: Location.first,
           onTap: () => _showSelection(context, session),
           subtitle: session.layout.label(s),
@@ -29,14 +29,14 @@ class LayoutSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Session session) async {
     final s = context.strings;
-    final result = await showDialog<int>(
+    final result = await showAdaptiveDialog<int>(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       barrierDismissible: true,
       builder: (context) => SelectionDialog(
         title: s.layoutControl,
         selected: session.layout.index,
-        options: Peaks.values.map((e) => e.label(s)).toList(),
+        options: Peaks.values.map((e) => Text(e.label(s))).toList(),
       ),
     );
     if (result != null && result >= 0) {

@@ -75,9 +75,9 @@ final class const DependencyEntry({
   }
 
   void _showLicense(BuildContext context) {
-    showDialog(
+    showAdaptiveDialog(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       builder: (context) => LicenseDialog(package: package),
     );
   }

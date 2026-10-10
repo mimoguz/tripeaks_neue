@@ -16,7 +16,7 @@ final class ShowAllSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.showAllControl,
+          titleText: s.showAllControl,
           location: Location.only,
           onTap: () => session.showAll = !session.showAll,
           subtitle: session.showAll ? s.showAllOnLabel : s.showAllOffLabel,

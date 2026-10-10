@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/data/card_value.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/stores/tile.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -98,17 +101,11 @@ final class const ActiveCard(final Tile tile, {super.key}) extends StatelessWidg
 final class const ActiveCardFace(final CardValue card, {super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: .min,
-        children: [
-          Spacer(),
-          Padding(padding: const EdgeInsets.only(top: 4.0), child: RankText(card)),
-          SuitImage(card),
-          Spacer(),
-        ],
+    return SizedBox(
+      height: c.cardSize,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 1.0),
+        child: Column(mainAxisAlignment: .center, spacing: 9.0, children: [RankText(card), SuitImage(card)]),
       ),
     );
   }
@@ -187,7 +184,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
+    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSecondaryContainer;
     return Text(
       cardValue.rank.character,
       style: TextStyle(
@@ -196,6 +193,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
         fontWeight: .w500,
         color: colour,
         letterSpacing: 1.0,
+        height: 1.0,
       ),
     );
   }
@@ -216,10 +214,16 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
-    return Text(
-      _suitChar(cardValue.suit),
-      style: TextStyle(fontFamily: "Peckish", fontWeight: .w500, fontSize: 32, color: colour),
+    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSecondaryContainer;
+    return Observer(
+      builder: (context) {
+        final settings = Provider.of<Settings>(context);
+        return Icon(
+          CustomIcons.suitIcon(cardValue.suit, settings.suitIconTheme),
+          size: c.activeSuitSize,
+          color: Color.lerp(colour, colours.secondaryContainer, 0.0667),
+        );
+      },
     );
   }
 }
@@ -228,9 +232,20 @@ final class const SuitImageSm(final CardValue cardValue, {super.key}) extends St
   @override
   Widget build(BuildContext context) {
     final colour = Colors.white54;
-    return Text(
-      _suitChar(cardValue.suit),
-      style: TextStyle(fontFamily: "Peckish", fontWeight: .w400, fontSize: 20, color: colour),
+    return Observer(
+      builder: (context) {
+        final settings = Provider.of<Settings>(context);
+        return Text(
+          _suitChar(cardValue.suit),
+          style: TextStyle(
+            fontFamily: "Peckish",
+            fontWeight: .w400,
+            fontSize: 20,
+            color: colour,
+            fontFeatures: [FontFeature.stylisticSet(settings.suitIconTheme.index + 1)],
+          ),
+        );
+      },
     );
   }
 }
@@ -254,13 +269,6 @@ final class const TileShadow({super.key, final Alignment centre = Alignment.topR
     );
   }
 }
-
-double _suitCorrection(CardValue card) => switch (card.suit) {
-  Suit.clubs => 2.0,
-  Suit.diamonds => 5.0,
-  Suit.hearts => 2.0,
-  Suit.spades => 2.0,
-};
 
 String _suitChar(Suit suit) => switch (suit) {
   Suit.clubs => "\u2663",

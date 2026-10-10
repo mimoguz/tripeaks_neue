@@ -7,3 +7,7 @@ extension ContextExt on BuildContext {
   TextTheme get styles => Theme.of(this).textTheme;
   AppLocalizations get strings => AppLocalizations.of(this)!;
 }
+
+extension ColorSchemeExt on ColorScheme {
+  Color get barrier => surfaceContainerLow.withAlpha(130);
+}

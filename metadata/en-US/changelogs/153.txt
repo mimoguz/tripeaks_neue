@@ -1,0 +1,3 @@
+- Suit icon themes
+- More actions on the ending cards
+- Cosmetic tweaks

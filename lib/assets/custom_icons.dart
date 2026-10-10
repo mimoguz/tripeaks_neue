@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:tripeaks_neue/stores/data/card_value.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 
 class CustomIcons {
   const CustomIcons._();
@@ -7,10 +9,24 @@ class CustomIcons {
   static const diamonds = IconData(0xe901, fontFamily: _cards);
   static const spades = IconData(0xe902, fontFamily: _cards);
   static const clubs = IconData(0xe903, fontFamily: _cards);
+  static const clubsAlt = IconData(0xe90f, fontFamily: _cards);
+  static const diamondsAlt = IconData(0xe910, fontFamily: _cards);
+  static const heartsAlt = IconData(0xe911, fontFamily: _cards);
+  static const spadesAlt = IconData(0xe912, fontFamily: _cards);
+  static const clubsAlt2 = IconData(0xe913, fontFamily: _cards);
+  static const diamondsAlt2 = IconData(0xe914, fontFamily: _cards);
+  static const heartsAlt2 = IconData(0xe915, fontFamily: _cards);
+  static const spadesAlt2 = IconData(0xe916, fontFamily: _cards);
+  static const clubsAlt3 = IconData(0xe904, fontFamily: _cards);
+  static const diamondsAlt3 = IconData(0xe905, fontFamily: _cards);
+  static const heartsAlt3 = IconData(0xe906, fontFamily: _cards);
+  static const spadesAlt3 = IconData(0xe907, fontFamily: _cards);
+
   static const heartsSm = IconData(0xe904, fontFamily: _cards);
   static const diamondsSm = IconData(0xe905, fontFamily: _cards);
   static const spadesSm = IconData(0xe906, fontFamily: _cards);
   static const clubsSm = IconData(0xe907, fontFamily: _cards);
+
   static const backCheckered = IconData(0xe908, fontFamily: _cards);
   static const backDotMatrix = IconData(0xe909, fontFamily: _cards);
   static const backEnnui = IconData(0xe90a, fontFamily: _cards);
@@ -42,4 +58,16 @@ class CustomIcons {
 
   static const _actions = "Actions";
   static const _cards = "Cards";
+
+  static const _hearts = [hearts, heartsAlt, heartsAlt2, heartsAlt3];
+  static const _diamonds = [diamonds, diamondsAlt, diamondsAlt2, diamondsAlt3];
+  static const _spades = [spades, spadesAlt, spadesAlt2, spadesAlt3];
+  static const _clubs = [clubs, clubsAlt, clubsAlt2, clubsAlt3];
+
+  static IconData suitIcon(Suit suit, SuitIconTheme variant) => switch (suit) {
+    Suit.clubs => _clubs[variant.index],
+    Suit.diamonds => _diamonds[variant.index],
+    Suit.hearts => _hearts[variant.index],
+    Suit.spades => _spades[variant.index],
+  };
 }

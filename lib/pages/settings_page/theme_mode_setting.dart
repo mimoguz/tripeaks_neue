@@ -17,7 +17,7 @@ class ThemeModeSetting extends StatelessWidget {
     return Observer(
       builder: (context) {
         return SettingTile(
-          title: s.themeModeControl,
+          titleText: s.themeModeControl,
           location: Location.centre,
           onTap: () => _showSelection(context, settings),
           subtitle: _valueLabel(settings.themeMode, s),
@@ -29,14 +29,14 @@ class ThemeModeSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showDialog<int>(
+    final result = await showAdaptiveDialog<int>(
       context: context,
-      barrierColor: Colors.transparent,
+      barrierColor: context.colours.barrier,
       barrierDismissible: true,
       builder: (context) => SelectionDialog(
         title: s.themeModeControl,
         selected: settings.themeMode.index,
-        options: ThemeMode.values.map((e) => _valueLabel(e, s)).toList(),
+        options: ThemeMode.values.map((e) => Text(_valueLabel(e, s))).toList(),
       ),
     );
     if (result != null && result >= 0) {

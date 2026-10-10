@@ -1,6 +1,6 @@
 # vNext
 
-## v0.9.62
+## v0.9.63
 
 - [x] Update version
 - [x] Run ```build_runner build```
@@ -12,12 +12,13 @@
 - [x] Flatpak screenshots
 - [x] Flatpak icon
 - [x] Flatpak metainfo lint
-- [x] Snapcraft release
+- [ ] Snapcraft release
+- [ ] Snapcraft screenshots & metadata
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
 - [x] Readme images
-- [x] Web release, base href "/tripeaks_neue/"
-- [x] For itch.io base href must be empty string
+- [ ] Web release, base href "/tripeaks_neue/"
+- [ ] For itch.io base href must be empty string
 - [ ] itch.io screenshots
 
 ## Post release:

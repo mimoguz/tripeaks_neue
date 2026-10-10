@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/pages/settings_page/layout_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/show_all_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/sound_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/start_empty_setting.dart';
+import 'package:tripeaks_neue/pages/settings_page/suit_icon_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -56,6 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
       },
       child: Builder(
         builder: (context) {
+          final colours = context.colours;
           return Shortcuts(
             shortcuts: <ShortcutActivator, Intent>{
               SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -68,7 +70,9 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: context.colours.surfaceContainerLow,
+                  backgroundColor: colours.surfaceContainerLow,
+                  surfaceTintColor: colours.surfaceContainerLow,
+                  shadowColor: context.colours.shadow,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
@@ -118,6 +122,7 @@ final class SettingsPageBody extends StatelessWidget {
                           GroupTitle(s.interfaceSettingGroupTitle),
                           const SoundSetting(),
                           const ThemeModeSetting(),
+                          const SuitIconSetting(),
                           const ColourSetting(),
                           const DecorSetting(),
                         ],

@@ -1,14 +1,14 @@
-import 'package:flutter/widgets.dart';
+import 'package:material_ui/material_ui.dart';
 
-const double activeRankSize = 28.0;
-const double activeSuitSize = 32.0;
+const double activeRankSize = 30.0;
+const double activeSuitSize = 40.0;
 const double buttonSize = 96.0;
-const double cardPaddingHorizontal = 12.0;
+const double cardPaddingHorizontal = 14.0;
 const double cardPaddingVertical = 10.0;
 const double cardSize = 116.0;
 const double cellPadding = 4.0;
 const double itemSpacing = 16;
-const double commonRadius = 12.0;
+const double commonRadius = 16.0;
 const double divPadding = 8;
 const double dropdownItemWidth = 120;
 const double iconScaleThreshold = 0.4;
@@ -24,7 +24,7 @@ const double stockShift = 30.0;
 const double utilPageMargin = 6.0;
 const double dialogPadding = 20;
 const double verticalTabsThreshold = 500;
-const double radioCorrection = 2.0;
+const double radioCorrection = 5.0;
 const double checkBoxCorrection = 5.0;
 
 const commonBorderRadius = BorderRadius.all(Radius.circular(commonRadius));
@@ -37,3 +37,4 @@ const EdgeInsets utilPageInsetsHorizontal = EdgeInsets.symmetric(horizontal: uti
 const EdgeInsets utilPageInsets = EdgeInsets.all(utilPageMargin);
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
+const faintShadowColour = Colors.black87;
