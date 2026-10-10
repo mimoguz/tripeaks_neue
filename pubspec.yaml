@@ -72,3 +72,7 @@ flutter:
           weight: 400
         - asset: fonts/Peckish-Medium.ttf
           weight: 500
+    - family: Peckish.N
+      fonts:
+        - asset: fonts/Peckish.N-Medium.ttf
+          weight: 500

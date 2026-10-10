@@ -188,7 +188,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
     return Text(
       cardValue.rank.character,
       style: TextStyle(
-        fontFamily: "Peckish",
+        fontFamily: "Peckish.N",
         fontSize: c.activeRankSize,
         fontWeight: .w500,
         color: colour,
