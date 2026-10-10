@@ -3,20 +3,20 @@
 ## v0.9.63
 
 - [x] Update version
-- [ ] Run ```build_runner build```
-- [ ] Run ```dart_pubspec_licenses:generate --output lib/generated/oss_licenses.dart```
+- [x] Run ```build_runner build```
+- [x] Run ```dart_pubspec_licenses:generate --output lib/generated/oss_licenses.dart```
 - [x] F-Droid changelog
-- [ ] F-Droid screenshots
+- [x] F-Droid screenshots
 - [x] F-Droid icon
-- [ ] Flatpak changelog
+- [x] Flatpak changelog
 - [x] Flatpak screenshots
 - [x] Flatpak icon
-- [ ] Flatpak metainfo lint
+- [x] Flatpak metainfo lint
 - [ ] Snapcraft release
 - [ ] Snapcraft screenshots & metadata
 - [x] Update the ```flutter-version``` file
 - [x] Google Play icon
-- [ ] Readme images
+- [x] Readme images
 - [ ] Web release, base href "/tripeaks_neue/"
 - [ ] For itch.io base href must be empty string
 - [ ] itch.io screenshots

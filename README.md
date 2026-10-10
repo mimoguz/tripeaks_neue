@@ -43,8 +43,8 @@ A simple [Tri Peaks game](https://en.wikipedia.org/wiki/Tri_Peaks_(game)), using
 - Portrait and landscape orientation support
 
 ## Screenshots
-![Portait](./.github/readme/screenshot_mobile_2026_09_13.png)
-![Landscape](./.github/readme/screenshot_desktop_2026_09_13.png)
+![Portait](./.github/readme/screenshot_mobile_2026_10_10.png)
+![Landscape](./.github/readme/screenshot_desktop_2026_10_10.png)
 
 ## Credit where credit is due
 

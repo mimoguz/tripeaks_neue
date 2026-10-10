@@ -929,14 +929,14 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// built_collection 5.1.1
+/// built_collection 5.1.2
 const _built_collection = Package(
     name: 'built_collection',
     description: '''Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
 ''',
-    homepage: 'https://github.com/google/built_collection.dart',
+    repository: 'https://github.com/dart-lang/build/tree/master/built_types/built_collection',
     authors: [],
-    version: '5.1.1',
+    version: '5.1.2',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -1393,13 +1393,13 @@ const _clock = Package(
    limitations under the License.''',
   );
 
-/// code_assets 2.0.0
+/// code_assets 2.1.0
 const _code_assets = Package(
     name: 'code_assets',
     description: 'This library contains the hook protocol specification for bundling native code with Dart packages.',
     repository: 'https://github.com/dart-lang/native/tree/main/pkgs/code_assets',
     authors: [],
-    version: '2.0.0',
+    version: '2.1.0',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -1678,13 +1678,13 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// cupertino_ui 1.0.2
+/// cupertino_ui 1.1.1
 const _cupertino_ui = Package(
     name: 'cupertino_ui',
     description: 'The official Flutter Cupertino Design Library, implementing the iOS design system.',
     repository: 'https://github.com/flutter/packages/tree/main/packages/cupertino_ui',
     authors: [],
-    version: '1.0.2',
+    version: '1.1.1',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -2845,13 +2845,13 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// flutter 3.47.4
+/// flutter 3.47.6
 const _flutter = Package(
     name: 'flutter',
     description: 'A framework for writing Flutter applications',
     homepage: 'https://flutter.dev',
     authors: [],
-    version: '3.47.4',
+    version: '3.47.6',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: true,
@@ -2996,24 +2996,23 @@ const _flutter_web_plugins = Package(
     devDependencies: [PackageRef('flutter_test')],
   );
 
-/// frontend_server_client 4.0.0
+/// frontend_server_client 4.1.0
 const _frontend_server_client = Package(
     name: 'frontend_server_client',
     description: 'Client code to start and interact with the frontend_server compiler from the Dart SDK.',
-    repository: 'https://github.com/dart-lang/webdev/tree/master/frontend_server_client',
+    repository: 'https://github.com/dart-lang/webdev/tree/main/frontend_server_client',
     authors: [],
-    version: '4.0.0',
+    version: '4.1.0',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
-    dependencies: [PackageRef('async'), PackageRef('path')],
-    devDependencies: [PackageRef('package_config'), PackageRef('shelf'), PackageRef('shelf_packages_handler'), PackageRef('shelf_static'), PackageRef('test'), PackageRef('vm_service')],
-    license: '''Copyright 2020, the Dart project authors.
+    dependencies: [PackageRef('async'), PackageRef('package_config'), PackageRef('path')],
+    devDependencies: [PackageRef('shelf'), PackageRef('shelf_packages_handler'), PackageRef('shelf_static'), PackageRef('test'), PackageRef('vm_service')],
+    license: '''Copyright 2012, the Dart project authors.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
-
     * Redistributions of source code must retain the above copyright
       notice, this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above
@@ -3792,13 +3791,13 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// jni 1.0.3
+/// jni 1.1.0
 const _jni = Package(
     name: 'jni',
     description: 'A library to access JNI from Dart and Flutter that acts as a support library for package:jnigen.',
     repository: 'https://github.com/dart-lang/native/tree/main/pkgs/jni',
     authors: [],
-    version: '1.0.3',
+    version: '1.1.0',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -4495,13 +4494,13 @@ const _material_color_utilities = Package(
    limitations under the License.''',
   );
 
-/// material_ui 1.2.0
+/// material_ui 1.5.0
 const _material_ui = Package(
     name: 'material_ui',
     description: "The official Flutter Material UI Library, implementing Google's Material Design design system.",
     repository: 'https://github.com/flutter/packages/tree/main/packages/material_ui',
     authors: [],
-    version: '1.2.0',
+    version: '1.5.0',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -4785,13 +4784,13 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// objective_c 9.6.0
+/// objective_c 9.6.2
 const _objective_c = Package(
     name: 'objective_c',
     description: 'A library to access Objective C from Flutter that acts as a support library for package:ffigen.',
     repository: 'https://github.com/dart-lang/native/tree/main/pkgs/objective_c',
     authors: [],
-    version: '9.6.0',
+    version: '9.6.2',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -5183,14 +5182,14 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// petitparser 7.0.2
+/// petitparser 7.1.0
 const _petitparser = Package(
     name: 'petitparser',
-    description: 'A dynamic parser framework to build efficient grammars and parsers quickly.',
+    description: 'Build fast, composable, and type-safe grammars and parsers in Dart.',
     homepage: 'https://petitparser.github.io',
     repository: 'https://github.com/petitparser/dart-petitparser',
     authors: [],
-    version: '7.0.2',
+    version: '7.1.0',
     spdxIdentifiers: ['MIT'],
     isMarkdown: false,
     isSdk: false,
@@ -5198,7 +5197,7 @@ const _petitparser = Package(
     devDependencies: [PackageRef('lints'), PackageRef('test')],
     license: '''The MIT License
 
-Copyright (c) 2006-2024 Lukas Renggli.
+Copyright (c) 2006-2026 Lukas Renggli.
 All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36540,13 +36539,13 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.''',
   );
 
-/// vector_math 2.4.2
+/// vector_math 2.4.3
 const _vector_math = Package(
     name: 'vector_math',
     description: 'A vector math library for 2D and 3D applications, supporting 2D, 3D, and 4D matrices.',
     repository: 'https://github.com/flutter/core-packages/tree/main/packages/vector_math',
     authors: [],
-    version: '2.4.2',
+    version: '2.4.3',
     spdxIdentifiers: ['BSD-3-Clause'],
     isMarkdown: false,
     isSdk: false,
@@ -37331,18 +37330,18 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
   );
 
-/// xml 7.0.1
+/// xml 7.1.0
 const _xml = Package(
     name: 'xml',
     description: 'Full-featured XML for Dart — DOM parsing, SAX streaming, XPath 3 querying, and a fluent builder API.',
     repository: 'https://github.com/renggli/dart-xml',
     authors: [],
-    version: '7.0.1',
+    version: '7.1.0',
     spdxIdentifiers: ['MIT'],
     isMarkdown: false,
     isSdk: false,
-    dependencies: [PackageRef('collection'), PackageRef('meta'), PackageRef('petitparser')],
-    devDependencies: [PackageRef('args'), PackageRef('lints'), PackageRef('test')],
+    dependencies: [PackageRef('args'), PackageRef('collection'), PackageRef('meta'), PackageRef('petitparser')],
+    devDependencies: [PackageRef('lints'), PackageRef('test')],
     license: '''The MIT License
 
 Copyright (c) 2006-2026 Lukas Renggli.
@@ -37401,12 +37400,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.''',
   );
 
-/// tripeaks_neue 0.9.62+14
+/// tripeaks_neue 0.9.63+15
 const _tripeaks_neue = Package(
     name: 'tripeaks_neue',
     description: 'A Tri Peaks patience (solitaire) game',
     authors: [],
-    version: '0.9.62+14',
+    version: '0.9.63+15',
     spdxIdentifiers: ['AGPL-3.0'],
     isMarkdown: false,
     isSdk: false,
