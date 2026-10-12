@@ -22,6 +22,23 @@ class CustomIcons {
   static const heartsAlt3 = IconData(0xe906, fontFamily: _cards);
   static const spadesAlt3 = IconData(0xe907, fontFamily: _cards);
 
+  static const club36v1 = IconData(0xe917, fontFamily: _cards);
+  static const club36v2 = IconData(0xe918, fontFamily: _cards);
+  static const club36v3 = IconData(0xe919, fontFamily: _cards);
+  static const club36v4 = IconData(0xe91a, fontFamily: _cards);
+  static const diamond36v1 = IconData(0xe91b, fontFamily: _cards);
+  static const diamond36v2 = IconData(0xe91c, fontFamily: _cards);
+  static const diamond36v3 = IconData(0xe91d, fontFamily: _cards);
+  static const diamond36v4 = IconData(0xe91e, fontFamily: _cards);
+  static const heart36v1 = IconData(0xe91f, fontFamily: _cards);
+  static const heart36v2 = IconData(0xe920, fontFamily: _cards);
+  static const heart36v3 = IconData(0xe921, fontFamily: _cards);
+  static const heart36v4 = IconData(0xe922, fontFamily: _cards);
+  static const spade36v1 = IconData(0xe923, fontFamily: _cards);
+  static const spade36v2 = IconData(0xe924, fontFamily: _cards);
+  static const spade36v3 = IconData(0xe926, fontFamily: _cards);
+  static const spade36v4 = IconData(0xe925, fontFamily: _cards);
+
   static const heartsSm = IconData(0xe904, fontFamily: _cards);
   static const diamondsSm = IconData(0xe905, fontFamily: _cards);
   static const spadesSm = IconData(0xe906, fontFamily: _cards);
@@ -59,10 +76,10 @@ class CustomIcons {
   static const _actions = "Actions";
   static const _cards = "Cards";
 
-  static const _hearts = [hearts, heartsAlt, heartsAlt2, heartsAlt3];
-  static const _diamonds = [diamonds, diamondsAlt, diamondsAlt2, diamondsAlt3];
-  static const _spades = [spades, spadesAlt, spadesAlt2, spadesAlt3];
-  static const _clubs = [clubs, clubsAlt, clubsAlt2, clubsAlt3];
+  static const _hearts = [heart36v1, heart36v2, heart36v3, heart36v4];
+  static const _diamonds = [diamond36v1, diamond36v2, diamond36v3, diamond36v4];
+  static const _spades = [spade36v1, spade36v2, spade36v3, spade36v4];
+  static const _clubs = [club36v1, club36v2, club36v3, club36v4];
 
   static IconData suitIcon(Suit suit, SuitIconTheme variant) => switch (suit) {
     Suit.clubs => _clubs[variant.index],

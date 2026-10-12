@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
 const double activeRankSize = 30.0;
-const double activeSuitSize = 40.0;
+const double activeSuitSize = 36.0;
 const double buttonSize = 96.0;
 const double cardPaddingHorizontal = 14.0;
 const double cardPaddingVertical = 10.0;
