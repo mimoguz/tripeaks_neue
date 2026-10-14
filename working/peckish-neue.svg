@@ -28,15 +28,15 @@
      showgrid="true"
      showguides="true"
      inkscape:lockguides="false"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="58.336308"
-     inkscape:cy="272.94321"
+     inkscape:zoom="0.3535534"
+     inkscape:cx="140.00714"
+     inkscape:cy="758.01845"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g23">
+     inkscape:current-layer="layer10">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -751,7 +751,7 @@
      inkscape:groupmode="layer"
      id="layer10"
      inkscape:label="2"
-     style="display:none">
+     style="display:inline">
     <rect
        style="display:inline;opacity:1;mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:none;stroke-width:68;stroke-miterlimit:10;stroke-dasharray:none"
        id="rect42"
@@ -1000,7 +1000,7 @@
      id="g23"
      inkscape:label="8.r"
      transform="translate(577.67578,3.98828)"
-     style="display:inline">
+     style="display:none">
     <rect
        style="display:inline;opacity:1;mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:none;stroke-width:68;stroke-miterlimit:10;stroke-dasharray:none"
        id="rect22"

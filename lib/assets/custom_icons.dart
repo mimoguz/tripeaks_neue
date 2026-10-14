@@ -5,6 +5,20 @@ import 'package:tripeaks_neue/stores/settings.dart';
 class CustomIcons {
   const CustomIcons._();
 
+  static const rank2 = IconData(0xe927, fontFamily: _cards);
+  static const rank3 = IconData(0xe928, fontFamily: _cards);
+  static const rank4 = IconData(0xe929, fontFamily: _cards);
+  static const rank5 = IconData(0xe92a, fontFamily: _cards);
+  static const rank6 = IconData(0xe92b, fontFamily: _cards);
+  static const rank7 = IconData(0xe92c, fontFamily: _cards);
+  static const rank8 = IconData(0xe92d, fontFamily: _cards);
+  static const rank9 = IconData(0xe92e, fontFamily: _cards);
+  static const rank10 = IconData(0xe92f, fontFamily: _cards);
+  static const rankA = IconData(0xe930, fontFamily: _cards);
+  static const rankJ = IconData(0xe931, fontFamily: _cards);
+  static const rankK = IconData(0xe932, fontFamily: _cards);
+  static const rankQ = IconData(0xe933, fontFamily: _cards);
+
   static const hearts = IconData(0xe900, fontFamily: _cards);
   static const diamonds = IconData(0xe901, fontFamily: _cards);
   static const spades = IconData(0xe902, fontFamily: _cards);
@@ -80,6 +94,21 @@ class CustomIcons {
   static const _diamonds = [diamond36v1, diamond36v2, diamond36v3, diamond36v4];
   static const _spades = [spade36v1, spade36v2, spade36v3, spade36v4];
   static const _clubs = [club36v1, club36v2, club36v3, club36v4];
+  static const _ranks = <Rank, IconData>{
+    .ace: rankA,
+    .two: rank2,
+    .three: rank3,
+    .four: rank4,
+    .five: rank5,
+    .six: rank6,
+    .seven: rank7,
+    .eight: rank8,
+    .nine: rank9,
+    .ten: rank10,
+    .jack: rankJ,
+    .queen: rankQ,
+    .king: rankK,
+  };
 
   static IconData suitIcon(Suit suit, SuitIconTheme variant) => switch (suit) {
     Suit.clubs => _clubs[variant.index],
@@ -87,4 +116,6 @@ class CustomIcons {
     Suit.hearts => _hearts[variant.index],
     Suit.spades => _spades[variant.index],
   };
+
+  static IconData rankIcon(Rank rank) => _ranks[rank]!;
 }

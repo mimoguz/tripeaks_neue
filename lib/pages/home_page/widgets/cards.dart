@@ -104,8 +104,8 @@ final class const ActiveCardFace(final CardValue card, {super.key}) extends Stat
     return SizedBox(
       height: c.cardSize,
       child: Padding(
-        padding: const EdgeInsets.only(top: 1.0),
-        child: Column(mainAxisAlignment: .center, spacing: 9.0, children: [RankText(card), SuitImage(card)]),
+        padding: const EdgeInsets.only(bottom: 1.0),
+        child: Column(mainAxisAlignment: .center, spacing: 5.0, children: [RankText(card), SuitImage(card)]),
       ),
     );
   }
@@ -185,17 +185,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
   Widget build(BuildContext context) {
     final colours = context.colours;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSecondaryContainer;
-    return Text(
-      cardValue.rank.character,
-      style: TextStyle(
-        fontFamily: "Peckish.N",
-        fontSize: c.activeRankSize,
-        fontWeight: .w500,
-        color: colour,
-        letterSpacing: 1.0,
-        height: 1.0,
-      ),
-    );
+    return Icon(CustomIcons.rankIcon(cardValue.rank), size: 40, color: colour);
   }
 }
 
