@@ -14,6 +14,7 @@ import 'package:tripeaks_neue/pages/home_page/widgets/stock.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/swipe_area.dart';
 import 'package:tripeaks_neue/stores/data/back_options.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
+import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
@@ -95,7 +96,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                               builder: (context) {
                                 return ClearedCardAnimated(
                                   id: game.started.millisecondsSinceEpoch,
-                                  score: game.score,
+                                  stats: SingleGameStatistics.of(game),
                                   show: game.isCleared,
                                 );
                               },
@@ -105,7 +106,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                             child: Observer(
                               builder: (context) {
                                 return StalledCardAnimated(
-                                  score: game.score,
+                                  stats: SingleGameStatistics.of(game),
                                   id: game.started.millisecondsSinceEpoch + 1,
                                   show: game.isStalled,
                                 );

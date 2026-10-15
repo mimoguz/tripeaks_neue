@@ -2,12 +2,12 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
+import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 final class const StalledCardAnimated({
   super.key,
-  required final int score,
+  required final SingleGameStatistics stats,
   required final int id,
   required final bool show,
 }) extends StatelessWidget {
@@ -16,25 +16,26 @@ final class const StalledCardAnimated({
     return AnimatedSwitcher(
       duration: Durations.medium1,
       transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
-      child: show ? StalledCard(key: ValueKey(id), score: score) : SizedBox(),
+      child: show ? StalledCard(key: ValueKey(id), stats: stats) : SizedBox(),
     );
   }
 }
 
-final class const StalledCard({super.key, required final int score}) extends StatelessWidget {
+final class const StalledCard({super.key, required final SingleGameStatistics stats})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
     return EndingCard(
-      width: 240,
+      width: 260,
       content: Column(
         crossAxisAlignment: .start,
         children: [
           Image.asset("images/empty72.png", width: 72, height: 72),
           // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
           SizedBox(height: 16.0),
-          Text("You ran out of moves...", style: theme.textTheme.titleMedium, textAlign: TextAlign.center),
+          Text("Ran out of moves…", style: theme.textTheme.titleLarge, textAlign: .start),
           SizedBox(height: 4.0),
           Row(
             spacing: 32.0,
@@ -43,14 +44,14 @@ final class const StalledCard({super.key, required final int score}) extends Sta
                 spacing: 6.0,
                 children: [
                   Icon(Icons.star_outline, size: 20.0, color: theme.colorScheme.onSurfaceVariant),
-                  Text("$score"),
+                  Text("${stats.score}"),
                 ],
               ),
               Row(
                 spacing: 6.0,
                 children: [
                   Icon(Icons.link, size: 20.0, color: theme.colorScheme.onSurfaceVariant),
-                  Text(16.toString()),
+                  Text("${stats.longestChain}"),
                 ],
               ),
             ],

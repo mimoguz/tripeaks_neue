@@ -22,14 +22,26 @@ final class const EndingCard({
         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: Container(
           color: theme.colorScheme.surfaceContainerHigh.withAlpha(200),
-          padding: c.cardPadding,
           width: width,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: .min,
               crossAxisAlignment: .stretch,
               spacing: 10.0,
-              children: [content, SizedBox(height: 0), ...actions, const EndingCardToolBar()],
+              children: [
+                Padding(padding: c.cardPadding, child: content),
+                Container(
+                  padding: c.cardPadding,
+                  color: theme.brightness == .dark
+                      ? theme.colorScheme.surfaceDim.withAlpha(50)
+                      : theme.colorScheme.primary.withAlpha(15),
+                  child: Column(
+                    spacing: 10.0,
+                    crossAxisAlignment: .stretch,
+                    children: [SizedBox(height: 0), ...actions, const EndingCardToolBar()],
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -49,15 +61,18 @@ final class const EndingCardToolBar({super.key}) extends StatelessWidget {
       children: [
         IconButton(
           onPressed: Actions.handler(context, const NewGameWithLayoutIntent()),
+          tooltip: s.newGameWithLayoutAction,
           icon: Icon(CustomIcons.pickAndPlay, size: 24, color: colours.onSurfaceVariant),
         ),
         IconButton(
           onPressed: Actions.handler(context, const RestartIntent()),
+          tooltip: s.restartGameAction,
           icon: Icon(Icons.restart_alt, size: 24, color: colours.onSurfaceVariant),
         ),
         if (canExit)
           IconButton(
             onPressed: Actions.handler(context, const ExitIntent()),
+            tooltip: s.exitAction,
             icon: Icon(Icons.exit_to_app, size: 24, color: colours.onSurfaceVariant),
           ),
       ],
