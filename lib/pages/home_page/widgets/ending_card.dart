@@ -22,37 +22,14 @@ final class const EndingCard({
         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: Container(
           color: theme.colorScheme.surfaceContainerHigh.withAlpha(200),
+          padding: c.cardPadding,
           width: width,
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: .min,
+              crossAxisAlignment: .stretch,
               spacing: 10.0,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    c.cardPaddingHorizontal,
-                    c.cardPaddingVertical,
-                    c.cardPaddingHorizontal,
-                    0,
-                  ),
-                  child: Column(
-                    mainAxisSize: .min,
-                    crossAxisAlignment: .stretch,
-                    spacing: 4.0,
-                    children: [content, SizedBox(height: 0.0), ...actions],
-                  ),
-                ),
-                Divider(height: 1, color: theme.colorScheme.onSurfaceVariant.withAlpha(20)),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    c.cardPaddingHorizontal,
-                    0,
-                    c.cardPaddingHorizontal,
-                    c.cardPaddingVertical,
-                  ),
-                  child: const EndingCardToolBar(),
-                ),
-              ],
+              children: [content, SizedBox(height: 0), ...actions, const EndingCardToolBar()],
             ),
           ),
         ),
@@ -67,23 +44,21 @@ final class const EndingCardToolBar({super.key}) extends StatelessWidget {
     final s = context.strings;
     final colours = context.colours;
     return Row(
-      mainAxisAlignment: .spaceAround,
+      mainAxisAlignment: .center,
+      spacing: c.itemSpacing,
       children: [
         IconButton(
           onPressed: Actions.handler(context, const NewGameWithLayoutIntent()),
-          tooltip: s.newGameWithLayoutAction,
-          icon: Icon(CustomIcons.pickAndPlay, color: colours.onSurfaceVariant),
+          icon: Icon(CustomIcons.pickAndPlay, size: 24, color: colours.onSurfaceVariant),
         ),
         IconButton(
           onPressed: Actions.handler(context, const RestartIntent()),
-          tooltip: s.restartGameAction,
-          icon: Icon(Icons.restart_alt, color: colours.onSurfaceVariant),
+          icon: Icon(Icons.restart_alt, size: 24, color: colours.onSurfaceVariant),
         ),
         if (canExit)
           IconButton(
             onPressed: Actions.handler(context, const ExitIntent()),
-            tooltip: s.exitAction,
-            icon: Icon(Icons.exit_to_app, color: colours.tertiary),
+            icon: Icon(Icons.exit_to_app, size: 24, color: colours.onSurfaceVariant),
           ),
       ],
     );

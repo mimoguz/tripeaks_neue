@@ -27,8 +27,39 @@ final class const StalledCard({super.key, required final int score}) extends Sta
     final s = context.strings;
     final theme = context.theme;
     return EndingCard(
-      width: 290,
+      width: 240,
       content: Column(
+        crossAxisAlignment: .start,
+        children: [
+          Image.asset("images/empty72.png", width: 72, height: 72),
+          // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
+          SizedBox(height: 16.0),
+          Text("You ran out of moves...", style: theme.textTheme.titleMedium, textAlign: TextAlign.center),
+          SizedBox(height: 4.0),
+          Row(
+            spacing: 32.0,
+            children: [
+              Row(
+                spacing: 6.0,
+                children: [
+                  Icon(Icons.star_outline, size: 20.0, color: theme.colorScheme.onSurfaceVariant),
+                  Text("$score"),
+                ],
+              ),
+              Row(
+                spacing: 6.0,
+                children: [
+                  Icon(Icons.link, size: 20.0, color: theme.colorScheme.onSurfaceVariant),
+                  Text(16.toString()),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+
+      /*
+      Column(
         mainAxisSize: .min,
         crossAxisAlignment: .stretch,
         children: [
@@ -49,17 +80,26 @@ final class const StalledCard({super.key, required final int score}) extends Sta
           ),
         ],
       ),
+      */
       actions: [
         Observer(
           builder: (context) {
-            return TextButton(
+            return FilledButton(
               onPressed: Actions.handler(context, const RollbackIntent()),
+              style: FilledButton.styleFrom(
+                shadowColor: Colors.transparent,
+                backgroundColor: theme.colorScheme.primary.withAlpha(200),
+              ),
               child: Text(s.stalledCardRollbackAction),
             );
           },
         ),
-        TextButton(
+        FilledButton(
           onPressed: Actions.handler(context, const NewGameIntent()),
+          style: FilledButton.styleFrom(
+            shadowColor: Colors.transparent,
+            backgroundColor: theme.colorScheme.primary.withAlpha(200),
+          ),
           child: Text(s.stalledCardNewGameAction),
         ),
       ],
