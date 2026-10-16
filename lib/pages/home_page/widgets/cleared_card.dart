@@ -27,34 +27,23 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
     final s = context.strings;
     final theme = context.theme;
     return EndingCard(
-      width: 260,
+      width: 250,
       content: Column(
         crossAxisAlignment: .start,
         children: [
           Image.asset("images/tropy72.png", width: 72, height: 72),
           // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
           SizedBox(height: 16.0),
-          Text("The board is clear!", style: theme.textTheme.titleLarge, textAlign: .start),
-          SizedBox(height: 4.0),
-          Row(
-            spacing: 32.0,
-            children: [
-              Row(
-                spacing: 6.0,
-                children: [
-                  Icon(Icons.star_outline, size: 20.0, color: theme.colorScheme.tertiary),
-                  Text("${stats.score}"),
-                ],
-              ),
-              Row(
-                spacing: 6.0,
-                children: [
-                  Icon(Icons.link, size: 20.0, color: theme.colorScheme.tertiary),
-                  Text("${stats.longestChain}"),
-                ],
-              ),
-            ],
+          Text(
+            "The board is clear!",
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: .w700,
+              color: theme.colorScheme.onSurface.withAlpha(220),
+            ),
+            textAlign: .start,
           ),
+          SizedBox(height: 4.0),
+          HighlightsLine(stats: stats, emphasis: true),
         ],
       ),
       actions: [

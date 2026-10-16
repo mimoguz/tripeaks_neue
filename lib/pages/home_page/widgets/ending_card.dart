@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -24,24 +25,28 @@ final class const EndingCard({
           color: theme.colorScheme.surfaceContainerHigh.withAlpha(200),
           width: width,
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: .min,
-              crossAxisAlignment: .stretch,
-              spacing: 10.0,
-              children: [
-                Padding(padding: c.cardPadding, child: content),
-                Container(
-                  padding: c.cardPadding,
-                  color: theme.brightness == .dark
-                      ? theme.colorScheme.surfaceDim.withAlpha(50)
-                      : theme.colorScheme.primary.withAlpha(15),
-                  child: Column(
-                    spacing: 10.0,
-                    crossAxisAlignment: .stretch,
-                    children: [SizedBox(height: 0), ...actions, const EndingCardToolBar()],
+            child: Padding(
+              padding: c.cardPadding,
+              child: Column(
+                mainAxisSize: .min,
+                crossAxisAlignment: .stretch,
+                spacing: 20.0,
+                children: [
+                  content,
+                  FilledButtonTheme(
+                    data: FilledButtonThemeData(
+                      style: FilledButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primary.withAlpha(150),
+                      ),
+                    ),
+                    child: Column(
+                      spacing: 8.0,
+                      crossAxisAlignment: .stretch,
+                      children: [...actions, const EndingCardToolBar()],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -75,6 +80,44 @@ final class const EndingCardToolBar({super.key}) extends StatelessWidget {
             tooltip: s.exitAction,
             icon: Icon(Icons.exit_to_app, size: 24, color: colours.onSurfaceVariant),
           ),
+      ],
+    );
+  }
+}
+
+final class const HighlightsLine({
+  super.key,
+  required final SingleGameStatistics stats,
+  final bool emphasis = false,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final colour = emphasis ? context.colours.tertiary : context.colours.onSurfaceVariant;
+    return Row(
+      spacing: 24.0,
+      children: [
+        Tooltip(
+          // TODO: strings
+          message: "Score",
+          child: Row(
+            spacing: 6.0,
+            children: [
+              Icon(Icons.star_outline, size: 20.0, color: colour),
+              Text("${stats.score}"),
+            ],
+          ),
+        ),
+        Tooltip(
+          // TODO: strings
+          message: "Longest chain",
+          child: Row(
+            spacing: 6.0,
+            children: [
+              Icon(Icons.link, size: 20.0, color: colour),
+              Text("${stats.longestChain}"),
+            ],
+          ),
+        ),
       ],
     );
   }
