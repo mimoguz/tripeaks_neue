@@ -28,23 +28,15 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
     final theme = context.theme;
     return EndingCard(
       width: 250,
-      content: Column(
-        crossAxisAlignment: .center,
-        children: [
-          Image.asset("images/tropy72.png", width: 72, height: 72),
-          // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
-          SizedBox(height: 16.0),
-          Text(
-            s.clearedCardMessage,
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: .w700,
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-            textAlign: .start,
-          ),
-          SizedBox(height: 4.0),
-          HighlightsLine(stats: stats, emphasis: true),
-        ],
+      stats: stats,
+      image: Image.asset("images/tropy72.png", width: 72, height: 72),
+      message: Text(
+        s.clearedCardMessage,
+        style: theme.textTheme.titleLarge?.copyWith(
+          fontWeight: .w700,
+          color: theme.colorScheme.onSurfaceVariant,
+        ),
+        textAlign: .start,
       ),
       actions: [
         FilledButton(

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -11,7 +12,9 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 final class const EndingCard({
   super.key,
   required final double width,
-  required final Widget content,
+  required final Widget image,
+  required final Widget message,
+  required final SingleGameStatistics stats,
   required final List<Widget> actions,
 }) extends StatelessWidget {
   @override
@@ -32,7 +35,16 @@ final class const EndingCard({
                 crossAxisAlignment: .stretch,
                 spacing: 20.0,
                 children: [
-                  content,
+                  Column(
+                    crossAxisAlignment: .start,
+                    children: [
+                      image,
+                      SizedBox(height: 16.0),
+                      message,
+                      SizedBox(height: 4.0),
+                      HighlightsLine(stats: stats),
+                    ],
+                  ),
                   FilledButtonTheme(
                     data: FilledButtonThemeData(
                       style: FilledButton.styleFrom(
@@ -85,17 +97,13 @@ final class const EndingCardToolBar({super.key}) extends StatelessWidget {
   }
 }
 
-final class const HighlightsLine({
-  super.key,
-  required final SingleGameStatistics stats,
-  final bool emphasis = false,
-}) extends StatelessWidget {
+final class const HighlightsLine({super.key, required final SingleGameStatistics stats})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colour = emphasis ? context.colours.tertiary : context.colours.onSurfaceVariant;
     final s = context.strings;
     return Row(
-      spacing: 16.0,
+      spacing: 24.0,
       mainAxisSize: .min,
       children: [
         Tooltip(
@@ -103,7 +111,7 @@ final class const HighlightsLine({
           child: Row(
             spacing: 4.0,
             children: [
-              Icon(CustomIcons.star16, size: 16.0, color: colour),
+              Icon(CustomIcons.star16, size: 16.0, color: DecorColour.amber.background),
               Text("${stats.score}"),
             ],
           ),
@@ -113,7 +121,7 @@ final class const HighlightsLine({
           child: Row(
             spacing: 6.0,
             children: [
-              Icon(CustomIcons.chain16, size: 16.0, color: colour),
+              Icon(CustomIcons.chain16, size: 16.0, color: context.colours.secondary),
               Text("${stats.longestChain}"),
             ],
           ),

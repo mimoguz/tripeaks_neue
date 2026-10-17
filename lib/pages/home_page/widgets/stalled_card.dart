@@ -4,7 +4,6 @@ import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 final class const StalledCardAnimated({
   super.key,
@@ -30,17 +29,9 @@ final class const StalledCard({super.key, required final SingleGameStatistics st
     final theme = context.theme;
     return EndingCard(
       width: 250,
-      content: Column(
-        crossAxisAlignment: .center,
-        children: [
-          Image.asset("images/empty72.png", width: 72, height: 72),
-          // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
-          SizedBox(height: 16.0),
-          Text(s.stalledCardMessage, style: theme.textTheme.titleMedium, textAlign: .start),
-          SizedBox(height: 4.0),
-          HighlightsLine(stats: stats),
-        ],
-      ),
+      stats: stats,
+      image: Image.asset("images/empty72.png", width: 72, height: 72),
+      message: Text(s.stalledCardMessage, style: theme.textTheme.titleMedium, textAlign: .start),
       actions: [
         Observer(
           builder: (context) {
@@ -53,7 +44,6 @@ final class const StalledCard({super.key, required final SingleGameStatistics st
         ),
         FilledButton(
           onPressed: Actions.handler(context, const NewGameIntent()),
-
           child: Text(s.stalledCardNewGameAction),
         ),
       ],
