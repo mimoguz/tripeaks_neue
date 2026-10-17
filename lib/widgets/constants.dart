@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
 const double activeRankSize = 30.0;
-const double activeSuitSize = 40.0;
+const double activeSuitSize = 36.0;
 const double buttonSize = 96.0;
 const double cardPaddingHorizontal = 14.0;
 const double cardPaddingVertical = 10.0;
@@ -34,7 +34,12 @@ const EdgeInsets cardPadding = EdgeInsets.symmetric(
   vertical: cardPaddingVertical,
 );
 const EdgeInsets utilPageInsetsHorizontal = EdgeInsets.symmetric(horizontal: utilPageMargin);
-const EdgeInsets utilPageInsets = EdgeInsets.all(utilPageMargin);
+const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
+  utilPageMargin,
+  utilPageMargin,
+  utilPageMargin,
+  utilPageMargin + 12,
+);
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
 const faintShadowColour = Colors.black87;

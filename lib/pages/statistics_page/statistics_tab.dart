@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:intl/intl.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/pages/statistics_page/pie.dart';
 import 'package:tripeaks_neue/pages/statistics_page/result_chip.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
@@ -11,9 +12,9 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
-const _leadingWidth = 22.0;
-const _verticalSpacing = 20.0;
-final _dateFormat = DateFormat("d MMMM y, HH:mm");
+const _leadingWidth = 18.0;
+const _verticalSpacing = 18.0;
+final _dateFormat = DateFormat("d MMM y, HH:mm");
 
 // TODO: This is just a mess, clean-up a little
 final class const StatisticsTab(this.statistics, {super.key, final bool showLayout = true})
@@ -36,11 +37,27 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
             child: ScrollIndicator(
               child: SingleChildScrollView(
                 primary: true,
-                padding: const EdgeInsets.all(c.utilPageMargin),
+                padding: c.utilPageInsets,
                 child: GroupTile(
                   children: <Widget>[
                     Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
-                    if (last != null)
+                    if (last != null) ...[
+                      Padding(
+                        padding: const EdgeInsets.only(top: _verticalSpacing + 12.0),
+                        child: Row(
+                          spacing: 6.0,
+                          mainAxisAlignment: .end,
+                          crossAxisAlignment: .baseline,
+                          textBaseline: .alphabetic,
+                          children: [
+                            ResultChipCompact(true),
+                            Text(s.gameClearedLabel),
+                            SizedBox(width: 16.0),
+                            ResultChipCompact(false),
+                            Text(s.gameNotClearedLabel),
+                          ],
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: _verticalSpacing),
                         child: Row(
@@ -51,8 +68,7 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
                           ],
                         ),
                       ),
-                    if (last != null) LastGameEntry(last, showLayout: showLayout),
-                    if (best.isNotEmpty)
+                      LastGameEntry(last, showLayout: showLayout),
                       Padding(
                         padding: const EdgeInsets.only(top: _verticalSpacing),
                         child: Row(
@@ -63,9 +79,9 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
                           ],
                         ),
                       ),
-                    if (best.isNotEmpty)
                       for (final (index, game) in best.indexed)
                         ScoreboardEntry(game: game, place: index + 1, showLayout: showLayout),
+                    ],
                     SizedBox(height: best.isNotEmpty ? 0 : 4),
                   ],
                 ),
@@ -166,7 +182,11 @@ class const ScoreCard({
             end: _gradientEnd,
           );
     return Container(
-      decoration: BoxDecoration(borderRadius: c.commonBorderRadius, color: background, gradient: gradient),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: background,
+        gradient: gradient,
+      ),
       padding: c.cardPadding,
       child: Column(
         crossAxisAlignment: _align,
@@ -221,32 +241,19 @@ class const LastGameEntry(this.game, {super.key, required final bool showLayout}
   final SingleGameStatistics game;
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
     final s = context.strings;
     return ListTile(
-      minLeadingWidth: _leadingWidth,
+      minLeadingWidth: 0.0,
+      horizontalTitleGap: 4.0,
       minTileHeight: 0.0,
       visualDensity: .compact,
       contentPadding: showLayout
           ? EdgeInsets.zero
           : const EdgeInsets.symmetric(horizontal: 0.0, vertical: 12.0),
       leading: SizedBox(),
-      trailing: Column(
-        mainAxisSize: .min,
-        crossAxisAlignment: .center,
-        children: [
-          Text(
-            game.score.toString(),
-            style: theme.textTheme.titleMedium?.copyWith(
-              fontWeight: .w800,
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
-          ResultChip(game),
-        ],
-      ),
-      title: showLayout ? Text(game.layout.label(s)) : Text(_dateFormat.format(game.ended)),
-      subtitle: showLayout ? Text(_dateFormat.format(game.ended)) : null,
+      trailing: Trailing(stats: game),
+      title: showLayout ? Text(game.layout.label(s)) : TimeLine(time: game.ended, isCleared: game.isCleared),
+      subtitle: showLayout ? TimeLine(time: game.ended, isCleared: game.isCleared) : null,
     );
   }
 }
@@ -279,25 +286,97 @@ class const ScoreboardEntry({
               ? EdgeInsets.zero
               : const EdgeInsets.symmetric(horizontal: 0.0, vertical: 12.0),
           leading: Text(place.toString(), style: theme.textTheme.labelMedium),
-          trailing: Column(
-            mainAxisSize: .min,
-            crossAxisAlignment: .center,
-            children: [
-              Text(
-                game.score.toString(),
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: .w800,
-                  color: theme.colorScheme.onSurfaceVariant,
+          trailing: Trailing(stats: game),
+          title: showLayout
+              ? Text(game.layout.label(s))
+              : TimeLine(time: game.ended, isCleared: game.isCleared),
+          subtitle: showLayout ? TimeLine(time: game.ended, isCleared: game.isCleared) : null,
+        ),
+      ],
+    );
+  }
+}
+
+final class const TimeLine({required final DateTime time, required final bool isCleared, super.key})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(_dateFormat.format(time));
+  }
+}
+
+class const Trailing({super.key, required final SingleGameStatistics stats}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    return Row(
+      crossAxisAlignment: .center,
+      mainAxisSize: .min,
+      spacing: 2.0,
+      children: [
+        ResultChipCompact(stats.isCleared),
+        TrailingChip(
+          text: stats.score.toString(),
+          tooltip: s.scoreTooltip,
+          icon: CustomIcons.star16,
+          width: 64,
+          backgroundColour: DecorColour.amber.background,
+        ),
+        TrailingChip(
+          text: stats.longestChain.toString(),
+          tooltip: s.chainTooltip,
+          icon: CustomIcons.chain16,
+          width: 52,
+          backgroundColour: context.colours.secondary,
+        ),
+      ],
+    );
+  }
+}
+
+final class const TrailingChip({
+  super.key,
+  required final String text,
+  required final String tooltip,
+  required final IconData icon,
+  required final Color backgroundColour,
+  required final double width,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final colours = context.colours;
+    return Tooltip(
+      message: tooltip,
+      child: Container(
+        decoration: BoxDecoration(color: backgroundColour, borderRadius: c.commonBorderRadius),
+        padding: EdgeInsets.all(2.0),
+        width: width,
+        child: Row(
+          mainAxisSize: .min,
+          mainAxisAlignment: .spaceBetween,
+          spacing: 4.0,
+          children: [
+            Container(
+              decoration: BoxDecoration(shape: BoxShape.circle, color: colours.onSecondary),
+              padding: EdgeInsets.all(1.0),
+              child: Icon(icon, size: 16, color: backgroundColour),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0, top: 1.0),
+              child: Text(
+                text,
+                textAlign: .start,
+                style: TextStyle(
+                  color: colours.onSecondary,
+                  fontSize: 13,
+                  fontWeight: .w400,
                   fontFeatures: c.fontFeatures,
                 ),
               ),
-              ResultChip(game),
-            ],
-          ),
-          title: showLayout ? Text(game.layout.label(s)) : Text(_dateFormat.format(game.ended)),
-          subtitle: showLayout ? Text(_dateFormat.format(game.ended)) : null,
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

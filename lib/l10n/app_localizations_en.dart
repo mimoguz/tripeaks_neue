@@ -19,6 +19,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueAction => 'Continue';
 
   @override
+  String get scoreTooltip => 'Score';
+
+  @override
+  String get chainTooltip => 'Longest chain';
+
+  @override
   String get drawTooltip => 'Draw';
 
   @override
@@ -28,15 +34,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get menuTooltip => 'Menu';
 
   @override
-  String get clearedCardMessage => 'Cleared!';
+  String get clearedCardMessage => 'The board is clear!';
 
   @override
   String get clearedCardNewGameAction => 'New game';
 
   @override
-  String stalledCardMessage(Object SCORE) {
-    return 'Unfortunately, you ran out of moves.\nYour score so far: $SCORE.\nHow do you want to proceed?';
-  }
+  String get stalledCardMessage => 'Ran out of moves…';
 
   @override
   String get stalledCardNewGameAction => 'New game';

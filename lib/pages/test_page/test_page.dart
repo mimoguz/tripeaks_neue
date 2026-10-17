@@ -1,5 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/pages/home_page/widgets/cleared_card.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
@@ -9,19 +8,8 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
-  int _id = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            ClearedCardAnimated(id: _id, score: 100, show: true),
-            FilledButton(onPressed: () => setState(() => _id++), child: Text("Set id")),
-          ],
-        ),
-      ),
-    );
+    return Scaffold();
   }
 }

@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
+import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -10,7 +12,9 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 final class const EndingCard({
   super.key,
   required final double width,
-  required final Widget content,
+  required final Widget image,
+  required final Widget message,
+  required final SingleGameStatistics stats,
   required final List<Widget> actions,
 }) extends StatelessWidget {
   @override
@@ -24,35 +28,37 @@ final class const EndingCard({
           color: theme.colorScheme.surfaceContainerHigh.withAlpha(200),
           width: width,
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: .min,
-              spacing: 10.0,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    c.cardPaddingHorizontal,
-                    c.cardPaddingVertical,
-                    c.cardPaddingHorizontal,
-                    0,
+            child: Padding(
+              padding: c.cardPadding,
+              child: Column(
+                mainAxisSize: .min,
+                crossAxisAlignment: .stretch,
+                spacing: 20.0,
+                children: [
+                  Column(
+                    crossAxisAlignment: .start,
+                    children: [
+                      image,
+                      SizedBox(height: 16.0),
+                      message,
+                      SizedBox(height: 4.0),
+                      HighlightsLine(stats: stats),
+                    ],
                   ),
-                  child: Column(
-                    mainAxisSize: .min,
-                    crossAxisAlignment: .stretch,
-                    spacing: 4.0,
-                    children: [content, SizedBox(height: 0.0), ...actions],
+                  FilledButtonTheme(
+                    data: FilledButtonThemeData(
+                      style: FilledButton.styleFrom(
+                        backgroundColor: theme.colorScheme.primary.withAlpha(150),
+                      ),
+                    ),
+                    child: Column(
+                      spacing: 8.0,
+                      crossAxisAlignment: .stretch,
+                      children: [...actions, const EndingCardToolBar()],
+                    ),
                   ),
-                ),
-                Divider(height: 1, color: theme.colorScheme.onSurfaceVariant.withAlpha(20)),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    c.cardPaddingHorizontal,
-                    0,
-                    c.cardPaddingHorizontal,
-                    c.cardPaddingVertical,
-                  ),
-                  child: const EndingCardToolBar(),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -67,24 +73,59 @@ final class const EndingCardToolBar({super.key}) extends StatelessWidget {
     final s = context.strings;
     final colours = context.colours;
     return Row(
-      mainAxisAlignment: .spaceAround,
+      mainAxisAlignment: .center,
+      spacing: c.itemSpacing,
       children: [
         IconButton(
           onPressed: Actions.handler(context, const NewGameWithLayoutIntent()),
           tooltip: s.newGameWithLayoutAction,
-          icon: Icon(CustomIcons.pickAndPlay, color: colours.onSurfaceVariant),
+          icon: Icon(CustomIcons.pickAndPlay, size: 24, color: colours.onSurfaceVariant),
         ),
         IconButton(
           onPressed: Actions.handler(context, const RestartIntent()),
           tooltip: s.restartGameAction,
-          icon: Icon(Icons.restart_alt, color: colours.onSurfaceVariant),
+          icon: Icon(Icons.restart_alt, size: 24, color: colours.onSurfaceVariant),
         ),
         if (canExit)
           IconButton(
             onPressed: Actions.handler(context, const ExitIntent()),
             tooltip: s.exitAction,
-            icon: Icon(Icons.exit_to_app, color: colours.tertiary),
+            icon: Icon(Icons.exit_to_app, size: 24, color: colours.onSurfaceVariant),
           ),
+      ],
+    );
+  }
+}
+
+final class const HighlightsLine({super.key, required final SingleGameStatistics stats})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    return Row(
+      spacing: 24.0,
+      mainAxisSize: .min,
+      children: [
+        Tooltip(
+          message: s.scoreTooltip,
+          child: Row(
+            spacing: 4.0,
+            children: [
+              Icon(CustomIcons.star16, size: 16.0, color: DecorColour.amber.background),
+              Text("${stats.score}"),
+            ],
+          ),
+        ),
+        Tooltip(
+          message: s.chainTooltip,
+          child: Row(
+            spacing: 6.0,
+            children: [
+              Icon(CustomIcons.chain16, size: 16.0, color: context.colours.secondary),
+              Text("${stats.longestChain}"),
+            ],
+          ),
+        ),
       ],
     );
   }

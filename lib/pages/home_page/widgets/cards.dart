@@ -104,8 +104,8 @@ final class const ActiveCardFace(final CardValue card, {super.key}) extends Stat
     return SizedBox(
       height: c.cardSize,
       child: Padding(
-        padding: const EdgeInsets.only(top: 1.0),
-        child: Column(mainAxisAlignment: .center, spacing: 9.0, children: [RankText(card), SuitImage(card)]),
+        padding: const EdgeInsets.only(bottom: 2.0),
+        child: Column(mainAxisAlignment: .center, spacing: 4.0, children: [RankText(card), SuitImage(card)]),
       ),
     );
   }
@@ -147,7 +147,7 @@ final class const HorizontalSmallFace(final CardValue cardValue, {super.key}) ex
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [RankTextSm(cardValue), SuitImageSm(cardValue)],
@@ -160,7 +160,7 @@ final class const HorizontalSmallFaceAlt(final CardValue cardValue, {super.key})
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [SuitImageSm(cardValue), RankTextSm(cardValue)],
@@ -185,17 +185,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
   Widget build(BuildContext context) {
     final colours = context.colours;
     final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSecondaryContainer;
-    return Text(
-      cardValue.rank.character,
-      style: TextStyle(
-        fontFamily: "Peckish",
-        fontSize: c.activeRankSize,
-        fontWeight: .w500,
-        color: colour,
-        letterSpacing: 1.0,
-        height: 1.0,
-      ),
-    );
+    return Icon(CustomIcons.rankIcon(cardValue.rank), size: 40, color: colour);
   }
 }
 
@@ -205,7 +195,12 @@ final class const RankTextSm(final CardValue cardValue, {super.key}) extends Sta
     final colour = Colors.white70;
     return Text(
       cardValue.rank.character,
-      style: TextStyle(fontFamily: "Peckish", fontSize: c.inactiveRankSize, color: colour, fontWeight: .w400),
+      style: TextStyle(
+        fontFamily: "Peckish.N",
+        fontSize: c.inactiveRankSize,
+        color: colour,
+        fontWeight: .w400,
+      ),
     );
   }
 }
