@@ -7,6 +7,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
@@ -321,7 +322,7 @@ class const Trailing({super.key, required final SingleGameStatistics stats}) ext
           text: stats.score.toString(),
           tooltip: s.scoreTooltip,
           icon: CustomIcons.star16,
-          width: 64,
+          width: 60,
           backgroundColour: DecorColour.amber.background,
         ),
         TrailingChip(
@@ -357,7 +358,6 @@ final class const TrailingChip({
         child: Row(
           mainAxisSize: .min,
           mainAxisAlignment: .spaceBetween,
-          spacing: 4.0,
           children: [
             Container(
               decoration: BoxDecoration(shape: BoxShape.circle, color: colours.onSecondary),
@@ -365,7 +365,9 @@ final class const TrailingChip({
               child: Icon(icon, size: 16, color: backgroundColour),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 8.0, top: 1.0),
+              padding: isDesktopOrWeb
+                  ? const EdgeInsets.only(right: 8.0)
+                  : const EdgeInsets.only(right: 8.0, top: 1.0),
               child: Text(
                 text,
                 textAlign: .start,
