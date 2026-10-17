@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 
-class const SwipeArea({super.key, required final Intent intent}) extends StatefulWidget {
+class const SwipeArea({super.key, required final Intent intent, final Intent? secondaryIntent})
+    extends StatefulWidget {
   @override
   State<SwipeArea> createState() => _SwipeAreaState();
 }
@@ -25,8 +26,19 @@ class _SwipeAreaState extends State<SwipeArea> {
       onVerticalDragEnd: (result) => _onDragEnd(context, result),
       onVerticalDragCancel: _onDragCancel,
       onVerticalDragUpdate: (d) => _onDragUpdate(d, fill, context),
+      onSecondaryTap: () => _onSecondaryTap(context),
       child: SizedBox.expand(),
     );
+  }
+
+  void _onSecondaryTap(BuildContext context) {
+    if (_watching) {
+      _onDragCancel();
+    }
+    final intent = widget.secondaryIntent;
+    if (intent != null) {
+      Actions.invoke(context, intent);
+    }
   }
 
   void _onDragStart(DragStartDetails details, BuildContext context) {

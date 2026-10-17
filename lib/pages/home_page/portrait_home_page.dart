@@ -80,7 +80,10 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
                       padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
                       child: Stack(
                         children: [
-                          SwipeArea(intent: const DrawIntent()),
+                          SwipeArea(
+                            intent: const DrawIntent(),
+                            secondaryIntent: ShowNavigationDrawerIntent(),
+                          ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             mainAxisAlignment: MainAxisAlignment.start,

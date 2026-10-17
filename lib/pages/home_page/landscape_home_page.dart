@@ -80,7 +80,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                       padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
                       child: Stack(
                         children: [
-                          SwipeArea(intent: DrawIntent()),
+                          SwipeArea(intent: DrawIntent(), secondaryIntent: ShowNavigationDrawerIntent()),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             mainAxisAlignment: MainAxisAlignment.start,
