@@ -43,14 +43,16 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
                     Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
                     if (last != null) ...[
                       Padding(
-                        padding: const EdgeInsets.only(top: _verticalSpacing + 8.0),
+                        padding: const EdgeInsets.only(top: _verticalSpacing + 12.0),
                         child: Row(
                           spacing: 6.0,
                           mainAxisAlignment: .end,
+                          crossAxisAlignment: .baseline,
+                          textBaseline: .alphabetic,
                           children: [
                             ResultChipCompact(true),
                             Text(s.gameClearedLabel),
-                            SizedBox(width: 12.0),
+                            SizedBox(width: 16.0),
                             ResultChipCompact(false),
                             Text(s.gameNotClearedLabel),
                           ],
@@ -310,7 +312,7 @@ class const Trailing({super.key, required final SingleGameStatistics stats}) ext
     return Row(
       crossAxisAlignment: .center,
       mainAxisSize: .min,
-      spacing: 3.0,
+      spacing: 2.0,
       children: [
         ResultChipCompact(stats.isCleared),
         TrailingChip(
@@ -360,7 +362,7 @@ final class const TrailingChip({
               child: Icon(icon, size: 16, color: backgroundColour),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(right: 8.0, top: 1.0),
               child: Text(
                 text,
                 textAlign: .start,
