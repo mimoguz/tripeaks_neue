@@ -14,7 +14,7 @@ import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 const _leadingWidth = 18.0;
 const _verticalSpacing = 18.0;
-final _dateFormat = DateFormat("d MMMM y, HH:mm");
+final _dateFormat = DateFormat("d MMM y, HH:mm");
 
 // TODO: This is just a mess, clean-up a little
 final class const StatisticsTab(this.statistics, {super.key, final bool showLayout = true})
@@ -46,6 +46,7 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
                         padding: const EdgeInsets.only(top: _verticalSpacing + 8.0),
                         child: Row(
                           spacing: 6.0,
+                          mainAxisAlignment: .end,
                           children: [
                             ResultChipCompact(true),
                             Text(s.gameClearedLabel),
@@ -179,7 +180,11 @@ class const ScoreCard({
             end: _gradientEnd,
           );
     return Container(
-      decoration: BoxDecoration(borderRadius: c.commonBorderRadius, color: background, gradient: gradient),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        color: background,
+        gradient: gradient,
+      ),
       padding: c.cardPadding,
       child: Column(
         crossAxisAlignment: _align,
@@ -294,50 +299,82 @@ final class const TimeLine({required final DateTime time, required final bool is
     extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: .min,
-      spacing: 6.0,
-      children: [ResultChipCompact(isCleared), Text(_dateFormat.format(time))],
-    );
+    return Text(_dateFormat.format(time));
   }
 }
 
 class const Trailing({super.key, required final SingleGameStatistics stats}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
-    final textStyle = theme.textTheme.bodyMedium?.copyWith(fontSize: 14.0, fontFeatures: c.fontFeatures);
     final s = context.strings;
-    return Column(
-      mainAxisAlignment: .center,
-      crossAxisAlignment: .end,
+    return Row(
+      crossAxisAlignment: .center,
+      mainAxisSize: .min,
+      spacing: 3.0,
       children: [
-        Tooltip(
-          // TODO: strings
-          message: s.scoreTooltip,
-          child: Row(
-            mainAxisSize: .min,
-            mainAxisAlignment: .end,
-            spacing: 4,
-            children: [
-              Icon(CustomIcons.star16, size: 16, color: DecorColour.amber.background),
-              Text(stats.score.toString(), style: textStyle),
-            ],
-          ),
+        ResultChipCompact(stats.isCleared),
+        TrailingChip(
+          text: stats.score.toString(),
+          tooltip: s.scoreTooltip,
+          icon: CustomIcons.star16,
+          width: 64,
+          backgroundColour: DecorColour.amber.background,
         ),
-        Tooltip(
-          message: s.chainTooltip,
-          child: Row(
-            mainAxisSize: .min,
-            mainAxisAlignment: .end,
-            spacing: 4,
-            children: [
-              Icon(CustomIcons.chain16, size: 16, color: theme.colorScheme.secondary),
-              Text(stats.longestChain.toString(), style: textStyle),
-            ],
-          ),
+        TrailingChip(
+          text: stats.longestChain.toString(),
+          tooltip: s.chainTooltip,
+          icon: CustomIcons.chain16,
+          width: 52,
+          backgroundColour: context.colours.secondary,
         ),
       ],
+    );
+  }
+}
+
+final class const TrailingChip({
+  super.key,
+  required final String text,
+  required final String tooltip,
+  required final IconData icon,
+  required final Color backgroundColour,
+  required final double width,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final colours = context.colours;
+    return Tooltip(
+      message: tooltip,
+      child: Container(
+        decoration: BoxDecoration(color: backgroundColour, borderRadius: c.commonBorderRadius),
+        padding: EdgeInsets.all(2.0),
+        width: width,
+        child: Row(
+          mainAxisSize: .min,
+          mainAxisAlignment: .spaceBetween,
+          spacing: 4.0,
+          children: [
+            Container(
+              decoration: BoxDecoration(shape: BoxShape.circle, color: colours.onSecondary),
+              padding: EdgeInsets.all(1.0),
+              child: Icon(icon, size: 16, color: backgroundColour),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text(
+                text,
+                textAlign: .start,
+                style: TextStyle(
+                  color: colours.onSecondary,
+                  fontSize: 13,
+                  fontWeight: .w400,
+                  fontFeatures: c.fontFeatures,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

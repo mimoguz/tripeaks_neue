@@ -30,8 +30,8 @@ final class const ResultChipCompact(final bool isCleared, {super.key}) extends S
     final fill = isCleared ? DecorColour.green.background : colours.secondary;
     return Container(
       decoration: BoxDecoration(color: fill, shape: BoxShape.circle),
-      width: 18,
-      height: 18,
+      width: 22,
+      height: 22,
       padding: EdgeInsets.all(2.0),
       child: Icon(
         isCleared ? CustomIcons.check12 : CustomIcons.cross12,
