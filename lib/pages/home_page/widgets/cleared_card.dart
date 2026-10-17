@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 
@@ -26,6 +27,12 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
+    final colours = theme.colorScheme;
+    final gradient = LinearGradient(
+      colors: <Color>[colours.primary, colours.tertiary],
+      begin: .bottomLeft,
+      end: .topRight,
+    ).createShader(Rect.fromLTWH(0, 0, 200, 20));
     return EndingCard(
       width: 250,
       stats: stats,
@@ -34,7 +41,8 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
         s.clearedCardMessage,
         style: theme.textTheme.titleLarge?.copyWith(
           fontWeight: .w700,
-          color: theme.colorScheme.onSurfaceVariant,
+          // color: theme.colorScheme.onSurfaceVariant,
+          foreground: Paint()..shader = gradient,
         ),
         textAlign: .start,
       ),
