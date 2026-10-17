@@ -350,6 +350,7 @@ final class const TrailingChip({
       child: Container(
         decoration: BoxDecoration(color: backgroundColour, borderRadius: c.commonBorderRadius),
         padding: EdgeInsets.all(2.0),
+        height: 22.0,
         width: width,
         child: Row(
           mainAxisSize: .min,
