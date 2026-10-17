@@ -45,7 +45,7 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
                       Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
                       if (last != null) ...[
                         Padding(
-                          padding: const EdgeInsets.only(top: _verticalSpacing + 12.0),
+                          padding: const EdgeInsets.only(top: _verticalSpacing + 8.0),
                           child: Row(
                             spacing: 6.0,
                             mainAxisAlignment: .end,
@@ -61,7 +61,7 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: _verticalSpacing),
+                          padding: const EdgeInsets.only(top: 0),
                           child: Row(
                             spacing: c.itemSpacing,
                             children: [
