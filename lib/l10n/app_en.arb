@@ -18,6 +18,18 @@
         "context": "general",
         "description": "Label of a control that give permission to run next action."
     },
+    "scoreTooltip": "Score",
+    "@scoreTooltip": {
+        "type": "text",
+        "context": "general",
+        "description": "Tooltip for the score icons."
+    },
+    "chainTooltip": "Longest chain",
+    "@chainTooltip": {
+        "type": "text",
+        "context": "general",
+        "description": "Tooltip for the longest-chain icons."
+    },
     "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {
@@ -38,7 +50,7 @@
         "description": "Tooltip of a control that opens the game drawer."
     },
     "@_HOME_PAGE__CLEARED_CARD": {},
-    "clearedCardMessage": "Cleared!",
+    "clearedCardMessage": "The board is clear!",
     "@clearedCardMessage": {
         "type": "text",
         "context": "homePage:clearedCard",
@@ -51,17 +63,11 @@
         "description": "Label of a control that starts a new game."
     },
     "@_HOME_PAGE__STALLED_CARD": {},
-    "stalledCardMessage": "Unfortunately, you ran out of moves.\nYour score so far: {SCORE}.\nHow do you want to proceed?",
+    "stalledCardMessage": "Ran out of moves…",
     "@stalledCardMessage": {
         "type": "text",
         "context": "homePage:stalledCard",
-        "description": "Card message",
-        "placeholders": {
-            "SCORE": {
-                "example": "128",
-                "description": "Game score"
-            }
-        }
+        "description": "Card message"
     },
     "stalledCardNewGameAction": "New game",
     "@stalledCardNewGameAction": {

@@ -35,7 +35,7 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
           // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
           SizedBox(height: 16.0),
           Text(
-            "The board is clear!",
+            s.clearedCardMessage,
             style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: .w700,
               color: theme.colorScheme.onSurface.withAlpha(220),

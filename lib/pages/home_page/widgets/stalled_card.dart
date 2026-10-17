@@ -36,35 +36,11 @@ final class const StalledCard({super.key, required final SingleGameStatistics st
           Image.asset("images/empty72.png", width: 72, height: 72),
           // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
           SizedBox(height: 16.0),
-          Text("Ran out of moves…", style: theme.textTheme.titleMedium, textAlign: .start),
+          Text(s.stalledCardMessage, style: theme.textTheme.titleMedium, textAlign: .start),
           SizedBox(height: 4.0),
           HighlightsLine(stats: stats),
         ],
       ),
-
-      /*
-      Column(
-        mainAxisSize: .min,
-        crossAxisAlignment: .stretch,
-        children: [
-          Image.asset("images/empty72.png", width: 72, height: 72),
-          const SizedBox(height: c.cardPaddingVertical),
-          Row(
-            mainAxisAlignment: .center,
-            mainAxisSize: .min,
-            children: [
-              Flexible(
-                child: Text(
-                  s.stalledCardMessage(score),
-                  softWrap: true,
-                  style: theme.textTheme.bodyMedium?.copyWith(height: 1.5),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-      */
       actions: [
         Observer(
           builder: (context) {

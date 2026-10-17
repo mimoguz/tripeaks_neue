@@ -67,7 +67,10 @@ class CustomIcons {
   static const backSolar = IconData(0xe90e, fontFamily: _cards);
 
   static const algorithm16 = IconData(0xe900, fontFamily: _actions);
+  static const chain16 = IconData(0xe917, fontFamily: _actions);
+  static const check12 = IconData(0xe90e, fontFamily: _actions);
   static const copy16 = IconData(0xe901, fontFamily: _actions);
+  static const cross12 = IconData(0xe90f, fontFamily: _actions);
   static const draw = IconData(0xe90c, fontFamily: _actions);
   static const draw16 = IconData(0xe902, fontFamily: _actions);
   static const empty16 = IconData(0xe903, fontFamily: _actions);

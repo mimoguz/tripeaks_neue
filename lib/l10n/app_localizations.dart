@@ -109,6 +109,18 @@ abstract class AppLocalizations {
   /// **'Continue'**
   String get continueAction;
 
+  /// Tooltip for the score icons.
+  ///
+  /// In en, this message translates to:
+  /// **'Score'**
+  String get scoreTooltip;
+
+  /// Tooltip for the longest-chain icons.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest chain'**
+  String get chainTooltip;
+
   /// Tooltip of a control that draws a card from the stock.
   ///
   /// In en, this message translates to:
@@ -130,7 +142,7 @@ abstract class AppLocalizations {
   /// Card message
   ///
   /// In en, this message translates to:
-  /// **'Cleared!'**
+  /// **'The board is clear!'**
   String get clearedCardMessage;
 
   /// Label of a control that starts a new game.
@@ -142,8 +154,8 @@ abstract class AppLocalizations {
   /// Card message
   ///
   /// In en, this message translates to:
-  /// **'Unfortunately, you ran out of moves.\nYour score so far: {SCORE}.\nHow do you want to proceed?'**
-  String stalledCardMessage(Object SCORE);
+  /// **'Ran out of moves…'**
+  String get stalledCardMessage;
 
   /// Label of a control that starts a new game.
   ///

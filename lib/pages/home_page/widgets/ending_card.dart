@@ -93,27 +93,26 @@ final class const HighlightsLine({
   @override
   Widget build(BuildContext context) {
     final colour = emphasis ? context.colours.tertiary : context.colours.onSurfaceVariant;
+    final s = context.strings;
     return Row(
       spacing: 24.0,
       children: [
         Tooltip(
-          // TODO: strings
-          message: "Score",
+          message: s.scoreTooltip,
           child: Row(
-            spacing: 6.0,
+            spacing: 4.0,
             children: [
-              Icon(Icons.star_outline, size: 20.0, color: colour),
+              Icon(CustomIcons.star16, size: 16.0, color: colour),
               Text("${stats.score}"),
             ],
           ),
         ),
         Tooltip(
-          // TODO: strings
-          message: "Longest chain",
+          message: s.chainTooltip,
           child: Row(
             spacing: 6.0,
             children: [
-              Icon(Icons.link, size: 20.0, color: colour),
+              Icon(CustomIcons.chain16, size: 16.0, color: colour),
               Text("${stats.longestChain}"),
             ],
           ),
