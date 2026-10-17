@@ -102,17 +102,17 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
   static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
 }
 
-class const AppTitle({super.key}) extends StatelessWidget {
+final class const AppTitle({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
     final style = TextStyle(
-      fontFamily: "Peckish",
+      fontFamily: "Peckish.N",
       fontSize: 13,
       color: colours.onSurfaceVariant,
       fontWeight: .w300,
     );
-    final peak = colours.brightness == .dark ? "-" : "*";
+    final peak = colours.brightness == .dark ? "\ue00c" : "\ue00d";
     final neue = style.copyWith(color: colours.tertiary);
     return Center(
       child: ConstrainedBox(

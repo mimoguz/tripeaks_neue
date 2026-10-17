@@ -28,15 +28,15 @@
      showgrid="true"
      showguides="true"
      inkscape:lockguides="false"
-     inkscape:zoom="1"
-     inkscape:cx="-65"
-     inkscape:cy="250"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="293.62609"
+     inkscape:cy="323.85491"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g64">
+     inkscape:current-layer="layer18">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -808,7 +808,7 @@
      inkscape:groupmode="layer"
      id="g64"
      inkscape:label="3.r"
-     style="display:inline;opacity:1">
+     style="display:none;opacity:1">
     <rect
        style="display:inline;opacity:1;mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:none;stroke-width:68;stroke-miterlimit:10;stroke-dasharray:none"
        id="rect64"
@@ -1149,7 +1149,7 @@
      inkscape:label="K.r"
      inkscape:groupmode="layer"
      id="g7"
-     style="display:inline;opacity:1;mix-blend-mode:normal">
+     style="display:none;opacity:1;mix-blend-mode:normal">
     <path
        id="rect5"
        style="display:inline;fill:#000000;fill-opacity:1;stroke-width:52;stroke-linejoin:round;stroke-miterlimit:10"
@@ -1163,6 +1163,56 @@
        x="0"
        y="0"
        inkscape:label="frame" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer14"
+     inkscape:label="N"
+     style="display:inline">
+    <path
+       id="rect2"
+       style="fill:#000000;stroke-width:1.8;stroke-miterlimit:10"
+       d="M 32,24 V 488 H 64 V 27.095703 L 319.41797,488 H 353.71484 384 V 24 H 352 V 484.9043 L 96.582031,24 H 62.285156 Z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer15"
+     inkscape:label="E"
+     style="display:inline">
+    <path
+       id="rect17"
+       style="fill:#000000;stroke:none;stroke-width:30;stroke-miterlimit:10;stroke-dasharray:none"
+       d="M 32,24 V 488 H 64 338 V 459.5 H 64 v -194 H 317.5 V 237 H 64 V 52.5 H 338 V 24 H 64 Z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer16"
+     inkscape:label="U"
+     style="display:inline">
+    <path
+       id="rect50"
+       style="fill:#000000;stroke:none;stroke-width:30;stroke-miterlimit:10;stroke-dasharray:none"
+       d="m 32,24 v 304 c 0,95.288 76.712,172 172,172 95.288,0 172,-76.712 172,-172 V 24 H 344 V 335 C 344,412.56 281.56,475 204,475 126.44,475 64,412.56 64,335 V 24 Z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer17"
+     inkscape:label="P1"
+     style="display:inline">
+    <path
+       id="path54"
+       style="fill:#000000;stroke:none;stroke-width:30;stroke-miterlimit:10;stroke-dasharray:none"
+       d="M 264,12 20,488 H 492 Z M 156.23438,288 H 362.9375 l 81.42969,170 H 69.089844 Z" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer18"
+     inkscape:label="P2"
+     style="display:inline">
+    <path
+       id="path57"
+       style="display:inline;fill:#000000;stroke:none;stroke-width:30;stroke-miterlimit:10;stroke-dasharray:none"
+       d="M 264,12 20,488 H 492 Z M 263.08984,79.544922 366.76953,296 H 152.13281 Z" />
   </g>
   <g
      inkscape:groupmode="layer"

@@ -22,7 +22,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1788715529
-ModificationTime: 1792249824
+ModificationTime: 1792253124
 PfmFamily: 33
 TTFWeight: 400
 TTFWidth: 5
@@ -57,11 +57,11 @@ NameList: AGL For New Fonts
 DisplaySize: -48
 AntiAlias: 1
 FitToEm: 0
-WinInfo: 46 23 10
+WinInfo: 57316 23 10
 BeginPrivate: 0
 EndPrivate
 TeXData: 1 0 0 346030 173015 115343 0 -1048576 115343 783286 444596 497025 792723 393216 433062 380633 303038 157286 324010 404750 52429 2506097 1059062 262144
-BeginChars: 1114112 30
+BeginChars: 1114112 35
 
 StartChar: A
 Encoding: 65 65 0
@@ -154,6 +154,7 @@ SplineSet
  128 0 l 5
  128 1856 l 5
 EndSplineSet
+Validated: 1
 EndChar
 
 StartChar: Q
@@ -246,6 +247,7 @@ SplineSet
     0 0 z
   EndSpiro
 EndSplineSet
+Validated: 1
 Kerns2: 5 96 "HKern-10"
 EndChar
 
@@ -278,7 +280,7 @@ EndChar
 StartChar: three
 Encoding: 51 51 8
 Width: 1344
-Flags: HMWO
+Flags: HMW
 LayerCount: 2
 Fore
 SplineSet
@@ -302,6 +304,7 @@ SplineSet
  128 1712 l 1
  128 1856 l 1
 EndSplineSet
+Validated: 1
 EndChar
 
 StartChar: four
@@ -872,6 +875,113 @@ Substitution2: "'ss04' Style Set 4 in Latin lookup 3-1" diamond.v4
 Substitution2: "'ss03' Style Set 3 in Latin lookup 2-1" diamond.v3
 Substitution2: "'ss02' Style Set 2 in Latin lookup 1-1" diamond.v2
 Substitution2: "'ss01' Style Set 1 in Latin lookup 0-1" diamond
+EndChar
+
+StartChar: E
+Encoding: 69 69 30
+Width: 1480
+Flags: HW
+LayerCount: 2
+Fore
+SplineSet
+128 1856 m 1
+ 1352 1856 l 1
+ 1352 1742 l 1
+ 256 1742 l 5
+ 256 1004 l 1
+ 1270 1004 l 1
+ 1270 890 l 1
+ 256 890 l 1
+ 256 114 l 1
+ 1352 114 l 1
+ 1352 0 l 1
+ 128 0 l 1
+ 128 1856 l 1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: N
+Encoding: 78 78 31
+Width: 2048
+Flags: H
+LayerCount: 2
+Fore
+SplineSet
+128 1856 m 1
+ 387 1856 l 1
+ 1409 12 l 1
+ 1409 1856 l 5
+ 1537 1856 l 5
+ 1537 0 l 1
+ 1278 0 l 1
+ 256 1844 l 1
+ 256 0 l 1
+ 128 0 l 1
+ 128 1856 l 1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: U
+Encoding: 85 85 32
+Width: 1632
+Flags: HWO
+LayerCount: 2
+Fore
+SplineSet
+128 1857 m 1
+ 256 1857 l 1
+ 256 612 l 2
+ 256 301 505 52 816 52 c 0
+ 1127 52 1376 301 1376 612 c 2
+ 1376 1857 l 1
+ 1504 1857 l 1
+ 1504 641 l 2
+ 1504 259 1198 -47 816 -47 c 0
+ 434 -47 128 259 128 641 c 2
+ 128 1857 l 1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: Peak.Dark
+Encoding: 57356 57356 33
+Width: 2048
+Flags: H
+LayerCount: 2
+Fore
+SplineSet
+1056 1904 m 1
+ 1969 -1 l 1
+ 80 -1 l 1
+ 1056 1904 l 1
+625 800 m 1
+ 277 119 l 1
+ 1778 119 l 1
+ 1452 800 l 1
+ 625 800 l 1
+EndSplineSet
+Validated: 1
+EndChar
+
+StartChar: Peak.Light
+Encoding: 57357 57357 34
+Width: 2048
+Flags: H
+LayerCount: 2
+Fore
+SplineSet
+1056 1904 m 5
+ 1969 -1 l 5
+ 80 -1 l 5
+ 1056 1904 l 5
+1053 1633 m 5
+ 609 767 l 5
+ 1468 767 l 5
+ 1053 1633 l 5
+EndSplineSet
+Validated: 1
 EndChar
 EndChars
 EndSplineFont

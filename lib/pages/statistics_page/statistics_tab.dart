@@ -176,7 +176,7 @@ class const ScoreCard({
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colours = theme.colorScheme;
-    final textColour = foreground ?? colours.onSurface;
+    final textColour = foreground ?? colours.onSurfaceVariant;
     final gradient = background != null
         ? null
         : LinearGradient(
