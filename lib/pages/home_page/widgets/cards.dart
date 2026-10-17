@@ -233,7 +233,7 @@ final class const SuitImageSm(final CardValue cardValue, {super.key}) extends St
         return Text(
           _suitChar(cardValue.suit),
           style: TextStyle(
-            fontFamily: "Peckish",
+            fontFamily: "Peckish.N",
             fontWeight: .w400,
             fontSize: 20,
             color: colour,

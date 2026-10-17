@@ -66,10 +66,6 @@ flutter:
     - family: Cards
       fonts:
         - asset: fonts/cards.ttf
-    - family: Peckish
-      fonts:
-        - asset: fonts/Peckish-Regular.ttf
-          weight: 400
     - family: Peckish.N
       fonts:
         - asset: fonts/Peckish.N.ttf
