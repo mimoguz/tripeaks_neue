@@ -109,7 +109,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
         Tooltip(
           message: s.scoreTooltip,
           child: Row(
-            spacing: 4.0,
+            spacing: 3.0,
             children: [
               Icon(CustomIcons.star16, size: 16.0, color: DecorColour.amber.background),
               Text("${stats.score}"),
@@ -119,7 +119,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
         Tooltip(
           message: s.chainTooltip,
           child: Row(
-            spacing: 6.0,
+            spacing: 3.0,
             children: [
               Icon(CustomIcons.chain16, size: 16.0, color: context.colours.secondary),
               Text("${stats.longestChain}"),
