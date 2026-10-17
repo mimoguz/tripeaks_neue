@@ -19,23 +19,6 @@ class CustomIcons {
   static const rankK = IconData(0xe932, fontFamily: _cards);
   static const rankQ = IconData(0xe933, fontFamily: _cards);
 
-  static const hearts = IconData(0xe900, fontFamily: _cards);
-  static const diamonds = IconData(0xe901, fontFamily: _cards);
-  static const spades = IconData(0xe902, fontFamily: _cards);
-  static const clubs = IconData(0xe903, fontFamily: _cards);
-  static const clubsAlt = IconData(0xe90f, fontFamily: _cards);
-  static const diamondsAlt = IconData(0xe910, fontFamily: _cards);
-  static const heartsAlt = IconData(0xe911, fontFamily: _cards);
-  static const spadesAlt = IconData(0xe912, fontFamily: _cards);
-  static const clubsAlt2 = IconData(0xe913, fontFamily: _cards);
-  static const diamondsAlt2 = IconData(0xe914, fontFamily: _cards);
-  static const heartsAlt2 = IconData(0xe915, fontFamily: _cards);
-  static const spadesAlt2 = IconData(0xe916, fontFamily: _cards);
-  static const clubsAlt3 = IconData(0xe904, fontFamily: _cards);
-  static const diamondsAlt3 = IconData(0xe905, fontFamily: _cards);
-  static const heartsAlt3 = IconData(0xe906, fontFamily: _cards);
-  static const spadesAlt3 = IconData(0xe907, fontFamily: _cards);
-
   static const club36v1 = IconData(0xe917, fontFamily: _cards);
   static const club36v2 = IconData(0xe918, fontFamily: _cards);
   static const club36v3 = IconData(0xe919, fontFamily: _cards);
