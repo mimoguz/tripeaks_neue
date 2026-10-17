@@ -28,15 +28,15 @@
      showgrid="true"
      showguides="true"
      inkscape:lockguides="false"
-     inkscape:zoom="4.0000001"
-     inkscape:cx="259.87499"
-     inkscape:cy="125.75"
+     inkscape:zoom="1"
+     inkscape:cx="117"
+     inkscape:cy="122"
      inkscape:window-width="1920"
      inkscape:window-height="1131"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g48">
+     inkscape:current-layer="g64">
     <inkscape:grid
        id="grid1"
        units="px"
@@ -808,7 +808,7 @@
      inkscape:groupmode="layer"
      id="g64"
      inkscape:label="3.r"
-     style="display:none;opacity:1">
+     style="display:inline;opacity:1">
     <rect
        style="display:inline;opacity:1;mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:none;stroke-width:68;stroke-miterlimit:10;stroke-dasharray:none"
        id="rect64"
@@ -820,8 +820,8 @@
     <path
        id="path65"
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:38;stroke-linecap:butt;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.836967"
-       d="M 31,24 V 60 H 237.56641 L 89.727478,230.51857 117.49023,256.53906 C 133.053,248.30462 150.39301,243.99995 168,244 c 59.64675,0 108,48.35325 108,108 0,59.64675 -48.35325,109.14062 -108,109.14062 C 108.35325,461.14062 60,411.64675 60,352 v -8 H 20.216797 c -0.144161,2.66374 -0.216832,5.33138 -0.216797,8 0,81.73814 66.26186,148 148,148 81.73814,0 148,-66.26186 148,-148 0,-81.73814 -66.26186,-148 -148,-148 -1.68005,4e-5 -3.35998,0.0287 -5.03906,0.0859 L 319.07617,24 Z"
-       sodipodi:nodetypes="ccccccssscccsssccc" />
+       d="M 31,24 V 60 H 237.56641 L 89.727478,230.51857 104.5,244 h 52.4777 c 9.531,-0.14849 19.63873,0.0413 28.48357,1.40427 C 236.8721,253.32631 276,298.29809 276,352 276,411.64675 227.64675,461.14062 168,461.14062 108.35325,461.14062 60,411.64675 60,352 v -8 H 20.216797 c -0.144161,2.66374 -0.216832,5.33138 -0.216797,8 0,81.73814 66.26186,148 148,148 81.73814,0 148,-66.26186 148,-148 0,-81.73814 -66.26186,-148 -148,-148 -1.68005,4e-5 -3.35998,0.0287 -5.03906,0.0859 L 319.07617,24 Z"
+       sodipodi:nodetypes="ccccccsssscccsssccc" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1039,7 +1039,7 @@
      inkscape:groupmode="layer"
      id="g15"
      inkscape:label="9.r"
-     style="display:inline">
+     style="display:none">
     <rect
        style="display:inline;opacity:1;mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:none;stroke-width:68;stroke-miterlimit:10;stroke-dasharray:none"
        id="rect15"
