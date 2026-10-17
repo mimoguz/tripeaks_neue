@@ -24,7 +24,7 @@ class _HowtoTabState extends State<HowtoTab> with AutomaticKeepAliveClientMixin<
     return Container(
       color: colours.surfaceContainerLow,
       child: Padding(
-        padding: const EdgeInsets.all(c.utilPageMargin),
+        padding: c.utilPageInsets,
         child: Column(
           spacing: c.utilPageMargin,
           children: [

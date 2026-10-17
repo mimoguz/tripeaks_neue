@@ -37,7 +37,7 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
             child: ScrollIndicator(
               child: SingleChildScrollView(
                 primary: true,
-                padding: const EdgeInsets.all(c.utilPageMargin),
+                padding: c.utilPageInsets,
                 child: GroupTile(
                   children: <Widget>[
                     Padding(padding: const EdgeInsets.only(top: 4), child: OverallStats(statistics)),
@@ -306,12 +306,11 @@ class const Trailing({super.key, required final SingleGameStatistics stats}) ext
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final textStyle = theme.textTheme.bodyMedium?.copyWith(fontSize: 13.0, fontFeatures: c.fontFeatures);
+    final textStyle = theme.textTheme.bodyMedium?.copyWith(fontSize: 14.0, fontFeatures: c.fontFeatures);
     final s = context.strings;
     return Column(
       mainAxisAlignment: .center,
       crossAxisAlignment: .end,
-      spacing: 2.0,
       children: [
         Tooltip(
           // TODO: strings

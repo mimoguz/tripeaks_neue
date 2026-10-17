@@ -31,7 +31,7 @@ final class const StalledCard({super.key, required final SingleGameStatistics st
     return EndingCard(
       width: 250,
       content: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: .center,
         children: [
           Image.asset("images/empty72.png", width: 72, height: 72),
           // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),

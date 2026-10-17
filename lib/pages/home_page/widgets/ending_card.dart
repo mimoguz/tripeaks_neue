@@ -95,7 +95,8 @@ final class const HighlightsLine({
     final colour = emphasis ? context.colours.tertiary : context.colours.onSurfaceVariant;
     final s = context.strings;
     return Row(
-      spacing: 24.0,
+      spacing: 16.0,
+      mainAxisSize: .min,
       children: [
         Tooltip(
           message: s.scoreTooltip,

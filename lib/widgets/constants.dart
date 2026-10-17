@@ -34,7 +34,12 @@ const EdgeInsets cardPadding = EdgeInsets.symmetric(
   vertical: cardPaddingVertical,
 );
 const EdgeInsets utilPageInsetsHorizontal = EdgeInsets.symmetric(horizontal: utilPageMargin);
-const EdgeInsets utilPageInsets = EdgeInsets.all(utilPageMargin);
+const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
+  utilPageMargin,
+  utilPageMargin,
+  utilPageMargin,
+  utilPageMargin + 12,
+);
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
 const faintShadowColour = Colors.black87;

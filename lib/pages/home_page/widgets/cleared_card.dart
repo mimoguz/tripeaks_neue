@@ -29,7 +29,7 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
     return EndingCard(
       width: 250,
       content: Column(
-        crossAxisAlignment: .start,
+        crossAxisAlignment: .center,
         children: [
           Image.asset("images/tropy72.png", width: 72, height: 72),
           // Text(s.clearedCardMessage, style: theme.textTheme.titleLarge, textAlign: TextAlign.center),
@@ -38,7 +38,7 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
             s.clearedCardMessage,
             style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: .w700,
-              color: theme.colorScheme.onSurface.withAlpha(220),
+              color: theme.colorScheme.onSurfaceVariant,
             ),
             textAlign: .start,
           ),
