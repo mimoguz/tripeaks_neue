@@ -1,0 +1,3 @@
+- Show the longest chain length on the ending cards and the statistics tables.
+- Open the navigation drawer on right click.
+- Tweaked suit and rank assets.

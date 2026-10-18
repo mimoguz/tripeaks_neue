@@ -91,6 +91,15 @@
     </screenshots>
 
     <releases>
+        <release version="0.9.64" date="2026-10-18">
+            <description>
+                <ul>
+                    <li>Show the longest chain length on the ending cards and the statistics tables</li>
+                    <li>Open the navigation drawer on right click</li>
+                    <li>Tweaked suit and rank assets</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.9.63" date="2026-10-07">
             <description>
                 <ul>

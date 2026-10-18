@@ -5,10 +5,10 @@
 - [x] Update version
 - [x] Run ```build_runner build```
 - [x] Run ```dart_pubspec_licenses:generate --output lib/generated/oss_licenses.dart```
-- [ ] F-Droid changelog
+- [x] F-Droid changelog
 - [ ] F-Droid screenshots
 - [x] F-Droid icon
-- [ ] Flatpak changelog
+- [x] Flatpak changelog
 - [ ] Flatpak screenshots
 - [x] Flatpak icon
 - [ ] Flatpak metainfo lint
