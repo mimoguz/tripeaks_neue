@@ -1,7 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/ending_card.dart';
-import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 
