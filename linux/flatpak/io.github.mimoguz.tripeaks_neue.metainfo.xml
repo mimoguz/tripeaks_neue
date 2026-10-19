@@ -91,7 +91,7 @@
     </screenshots>
 
     <releases>
-        <release version="0.9.64" date="2026-10-18">
+        <release version="0.9.64" date="2026-10-19">
             <description>
                 <ul>
                     <li>Show the longest chain length on the ending cards and the statistics tables</li>
