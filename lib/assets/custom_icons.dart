@@ -36,11 +36,6 @@ class CustomIcons {
   static const spade36v3 = IconData(0xe926, fontFamily: _cards);
   static const spade36v4 = IconData(0xe925, fontFamily: _cards);
 
-  static const heartsSm = IconData(0xe904, fontFamily: _cards);
-  static const diamondsSm = IconData(0xe905, fontFamily: _cards);
-  static const spadesSm = IconData(0xe906, fontFamily: _cards);
-  static const clubsSm = IconData(0xe907, fontFamily: _cards);
-
   static const backCheckered = IconData(0xe908, fontFamily: _cards);
   static const backDotMatrix = IconData(0xe909, fontFamily: _cards);
   static const backEnnui = IconData(0xe90a, fontFamily: _cards);

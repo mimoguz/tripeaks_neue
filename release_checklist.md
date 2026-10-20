@@ -20,7 +20,7 @@
 - [ ] For itch.io base href must be empty string
 - [ ] itch.io screenshots
 
-## Post release:
+### Post release:
 
-- [ ] Update Flathub build manifest 
-- [ ] Snapcraft release & info
+- [x] Update Flathub build manifest 
+- [x] Snapcraft release & info
