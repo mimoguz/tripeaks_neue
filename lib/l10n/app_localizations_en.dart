@@ -274,16 +274,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get statisticsSummary => 'Summary';
 
   @override
-  String get totalPlayedLabel => 'Total played';
+  String get totalPlayedLabel => 'TOTAL PLAYED';
 
   @override
-  String get totalClearedLabel => 'Total cleared';
+  String get totalClearedLabel => 'TOTAL CLEARED';
 
   @override
-  String get bestScoreLabel => 'Highest score';
+  String get bestScoreLabel => 'HIGHEST SCORE';
 
   @override
-  String get longestChainLabel => 'Longest chain';
+  String get longestChainLabel => 'LONGEST CHAIN';
 
   @override
   String get importAction => 'Import from file…';

@@ -546,25 +546,25 @@
         "context": "statisticsPage:summary",
         "description": "Title of the general statistics group (overal & per each layout)."
     },
-    "totalPlayedLabel": "Total played",
+    "totalPlayedLabel": "TOTAL PLAYED",
     "@totalPlayedLabel": {
         "type": "text",
         "context": "statisticsPage:summary",
         "description": "Label of the total games played statistic."
     },
-    "totalClearedLabel": "Total cleared",
+    "totalClearedLabel": "TOTAL CLEARED",
     "@totalClearedLabel": {
         "type": "text",
         "context": "statisticsPage:summary",
         "description": "Label of the total games cleared statistic."
     },
-    "bestScoreLabel": "Highest score",
+    "bestScoreLabel": "HIGHEST SCORE",
     "@bestScoreLabel": {
         "type": "text",
         "context": "statisticsPage:summary",
         "description": "Label of the best score statistic."
     },
-    "longestChainLabel": "Longest chain",
+    "longestChainLabel": "LONGEST CHAIN",
     "@longestChainLabel": {
         "type": "text",
         "context": "statisticsPage:summary",

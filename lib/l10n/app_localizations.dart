@@ -622,25 +622,25 @@ abstract class AppLocalizations {
   /// Label of the total games played statistic.
   ///
   /// In en, this message translates to:
-  /// **'Total played'**
+  /// **'TOTAL PLAYED'**
   String get totalPlayedLabel;
 
   /// Label of the total games cleared statistic.
   ///
   /// In en, this message translates to:
-  /// **'Total cleared'**
+  /// **'TOTAL CLEARED'**
   String get totalClearedLabel;
 
   /// Label of the best score statistic.
   ///
   /// In en, this message translates to:
-  /// **'Highest score'**
+  /// **'HIGHEST SCORE'**
   String get bestScoreLabel;
 
   /// Label of the longest chain statistic.
   ///
   /// In en, this message translates to:
-  /// **'Longest chain'**
+  /// **'LONGEST CHAIN'**
   String get longestChainLabel;
 
   /// Label of the import menu item.

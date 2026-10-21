@@ -190,14 +190,14 @@ class const ScoreCard({
         color: background,
         gradient: gradient,
       ),
-      padding: c.cardPadding,
+      padding: _padding,
       child: Column(
         crossAxisAlignment: _align,
         mainAxisAlignment: .center,
         children: [
           Text(
             title,
-            style: TextStyle(color: textColour.withAlpha(190)),
+            style: theme.textTheme.labelMedium?.copyWith(color: textColour.withAlpha(190)),
             softWrap: false,
             overflow: .fade,
           ),
@@ -214,6 +214,11 @@ class const ScoreCard({
       ),
     );
   }
+
+  static const _padding = EdgeInsets.symmetric(
+    horizontal: c.cardPaddingHorizontal,
+    vertical: c.cardPaddingVertical + 4.0,
+  );
 
   AlignmentGeometry get _gradientBegin => switch (placement) {
     .topLeft || .topRight => .topCenter,

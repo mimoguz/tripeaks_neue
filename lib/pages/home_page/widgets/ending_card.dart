@@ -96,7 +96,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
-    final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.secondary);
+    final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.hintColor);
     return Row(
       spacing: 32.0,
       mainAxisSize: .min,
@@ -109,7 +109,10 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
             Text(
               stats.score.toString(),
               semanticsLabel: s.scoreTooltip,
-              style: theme.textTheme.bodyLarge?.copyWith(color: DecorColour.amber.background),
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontFeatures: c.fontFeatures,
+                color: DecorColour.amber.background,
+              ),
             ),
           ],
         ),
@@ -121,7 +124,10 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
             Text(
               stats.longestChain.toString(),
               semanticsLabel: s.chainTooltip,
-              style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.tertiary),
+              style: theme.textTheme.bodyLarge?.copyWith(
+                fontFeatures: c.fontFeatures,
+                color: theme.colorScheme.tertiary,
+              ),
             ),
           ],
         ),
