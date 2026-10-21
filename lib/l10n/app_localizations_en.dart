@@ -25,6 +25,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chainTooltip => 'Longest chain';
 
   @override
+  String get scoreLabel => 'SCORE';
+
+  @override
+  String get chainLabel => 'LONGEST CHAIN';
+
+  @override
   String get drawTooltip => 'Draw';
 
   @override

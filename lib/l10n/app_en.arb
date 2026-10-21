@@ -30,6 +30,18 @@
         "context": "general",
         "description": "Tooltip for the longest-chain icons."
     },
+    "scoreLabel": "SCORE",
+    "@scoreLabel": {
+        "type": "text",
+        "context": "general",
+        "description": "For the ending cards."
+    },
+    "chainLabel": "LONGEST CHAIN",
+    "@chainLabel": {
+        "type": "text",
+        "context": "general",
+        "description": "For the ending cards."
+    },
     "@_HOME_PAGE": {},
     "drawTooltip": "Draw",
     "@drawTooltip": {

@@ -121,6 +121,18 @@ abstract class AppLocalizations {
   /// **'Longest chain'**
   String get chainTooltip;
 
+  /// For the ending cards.
+  ///
+  /// In en, this message translates to:
+  /// **'SCORE'**
+  String get scoreLabel;
+
+  /// For the ending cards.
+  ///
+  /// In en, this message translates to:
+  /// **'LONGEST CHAIN'**
+  String get chainLabel;
+
   /// Tooltip of a control that draws a card from the stock.
   ///
   /// In en, this message translates to:

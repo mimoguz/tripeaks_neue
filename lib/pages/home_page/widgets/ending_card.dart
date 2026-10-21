@@ -33,18 +33,11 @@ final class const EndingCard({
               child: Column(
                 mainAxisSize: .min,
                 crossAxisAlignment: .stretch,
-                spacing: 20.0,
+                spacing: 16.0,
                 children: [
-                  Column(
-                    crossAxisAlignment: .start,
-                    children: [
-                      image,
-                      SizedBox(height: 16.0),
-                      message,
-                      SizedBox(height: 4.0),
-                      HighlightsLine(stats: stats),
-                    ],
-                  ),
+                  Row(children: [image]),
+                  message,
+                  HighlightsLine(stats: stats),
                   FilledButtonTheme(
                     data: FilledButtonThemeData(
                       style: FilledButton.styleFrom(
@@ -102,29 +95,35 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
+    final theme = context.theme;
+    final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.secondary);
     return Row(
-      spacing: 24.0,
+      spacing: 32.0,
       mainAxisSize: .min,
       children: [
-        Tooltip(
-          message: s.scoreTooltip,
-          child: Row(
-            spacing: 3.0,
-            children: [
-              Icon(CustomIcons.star16, size: 16.0, color: DecorColour.amber.background),
-              Text("${stats.score}"),
-            ],
-          ),
+        Column(
+          spacing: 1.0,
+          crossAxisAlignment: .start,
+          children: [
+            Text(s.scoreLabel, style: labelStyle),
+            Text(
+              stats.score.toString(),
+              semanticsLabel: s.scoreTooltip,
+              style: theme.textTheme.bodyLarge?.copyWith(color: DecorColour.amber.background),
+            ),
+          ],
         ),
-        Tooltip(
-          message: s.chainTooltip,
-          child: Row(
-            spacing: 3.0,
-            children: [
-              Icon(CustomIcons.chain16, size: 16.0, color: context.colours.secondary),
-              Text("${stats.longestChain}"),
-            ],
-          ),
+        Column(
+          spacing: 1.0,
+          crossAxisAlignment: .start,
+          children: [
+            Text(s.chainLabel, style: labelStyle),
+            Text(
+              stats.longestChain.toString(),
+              semanticsLabel: s.chainTooltip,
+              style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.tertiary),
+            ),
+          ],
         ),
       ],
     );
