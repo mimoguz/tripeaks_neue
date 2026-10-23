@@ -30,6 +30,7 @@ dependencies:
 
   material_ui: any
   flex_seed_scheme: ^5.0.1
+  popover: ^0.5.1
 dev_dependencies:
   build_runner: ^2.16.1
   build_version: ^2.1.3

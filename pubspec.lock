@@ -790,6 +790,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.3"
+  popover:
+    dependency: "direct main"
+    description:
+      name: popover
+      sha256: "0bad70fe7dd7b182b8358719c1d50092a54f010e612fee1380c7f2302c6d3d3b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1"
   provider:
     dependency: "direct main"
     description:

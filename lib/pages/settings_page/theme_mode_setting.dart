@@ -3,8 +3,9 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/common_popover.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/selection_dialog.dart';
+import 'package:tripeaks_neue/widgets/radio_popover.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 class ThemeModeSetting extends StatelessWidget {
@@ -28,19 +29,16 @@ class ThemeModeSetting extends StatelessWidget {
   }
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
-    final s = context.strings;
-    final result = await showAdaptiveDialog<int>(
-      context: context,
-      barrierColor: context.colours.barrier,
-      barrierDismissible: true,
-      builder: (context) => SelectionDialog(
-        title: s.themeModeControl,
-        selected: settings.themeMode.index,
-        options: ThemeMode.values.map((e) => Text(_valueLabel(e, s))).toList(),
+    final result = await showCommonPopover(
+      context,
+      (context) => RadioPopover<ThemeMode>(
+        values: ThemeMode.values,
+        selected: settings.themeMode,
+        itemBuilder: (v, s) => Text(_valueLabel(v, s)),
       ),
     );
-    if (result != null && result >= 0) {
-      settings.themeMode = ThemeMode.values[result];
+    if (result != null) {
+      settings.themeMode = result;
     }
   }
 
