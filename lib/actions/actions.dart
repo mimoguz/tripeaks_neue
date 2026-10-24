@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
+import 'package:tripeaks_neue/stores/data/pin.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/game.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -64,7 +65,8 @@ final class DrawAction(final Game game, final SoundEffects sounds) extends Actio
 
 final class RollbackAction(final Game game, final SoundEffects sounds) extends Action<RollbackIntent> {
   @override
-  bool get isActionEnabled => game.history.isNotEmpty && !game.isCleared;
+  bool get isActionEnabled =>
+      game.history.isNotEmpty && game.history.last.pin.index != Pin.endIndex && !game.isCleared;
 
   @override
   void invoke(RollbackIntent intent) {

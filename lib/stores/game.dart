@@ -333,26 +333,27 @@ abstract class _Game with Store {
 
     _remaining--;
     _chain++;
+    history.add(Event(pin: pin, score: currentScore, chain: currentChain));
 
     if (_remaining == 0) {
+      history.add(Event(pin: Pin.gameEnd, score: _score, chain: _chain));
       _isCleared = true;
       _isEnded = true;
       // Clearing the game obviously ends a chain, so you get a score
       // Also a bonus for the number of cards of the current layout
       _score += _chain * _chain + layout.cardCount;
-      history.add(Event(pin: pin, score: currentScore, chain: currentChain));
       _logger.d("Take. Chain: $_chain, Score: $_score");
       return true;
     }
 
     if (stock.isEmpty && !_checkMoves(board: board, stock: stock, discard: discard)) {
+      history.add(Event(pin: Pin.gameEnd, score: _score, chain: _chain));
       _score += _chain * _chain;
       _isEnded = true;
       _isCleared = false;
       _isStalled = true;
     }
 
-    history.add(Event(pin: pin, score: currentScore, chain: currentChain));
     _logger.d("Take. Chain: $_chain, Score: $_score");
     return true;
   }
@@ -388,14 +389,16 @@ abstract class _Game with Store {
 
   @action
   void rollback() {
-    if (history.isEmpty) {
+    if (history.isEmpty && history.last.pin == Pin.gameEnd) {
       return;
     }
 
     _isEnded = false;
     _isStalled = false;
 
-    final event = history.removeLast();
+    final e = history.removeLast();
+    // Take the next item if the event was the end-game mark:
+    final event = e.pin.index != Pin.endIndex ? e : history.removeLast();
     final card = discard.removeLast().card;
 
     _score = event.score;
@@ -517,13 +520,7 @@ abstract class _Game with Store {
   static final _logger = Logger();
 }
 
-final class Event {
-  Event({required this.pin, required this.score, required this.chain});
-
-  final Pin pin;
-  final int score;
-  final int chain;
-
+final class Event({required final Pin pin, required final int score, required final int chain}) {
   JsonObject toJsonObject() => {"pin": pin.index, "score": score, "chain": chain};
 
   factory Event.fromJsonObject(Map<String, dynamic> jsonObject, Layout layout) {
