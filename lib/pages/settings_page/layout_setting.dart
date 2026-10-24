@@ -20,7 +20,7 @@ class LayoutSetting extends StatelessWidget {
         return SettingTile(
           titleText: s.layoutControl,
           location: Location.first,
-          onTap: () => _showSelection(context, session),
+          onTap: (context) => _showSelection(context, session),
           subtitle: session.layout.label(s),
           showArrow: true,
         );
@@ -31,6 +31,7 @@ class LayoutSetting extends StatelessWidget {
   Future<void> _showSelection(BuildContext context, Session session) async {
     final result = await showCommonPopover<Peaks>(
       context,
+      semanticsLabel: context.strings.layoutControl,
       (context) => RadioPopover<Peaks>(
         values: Peaks.values,
         selected: session.layout,

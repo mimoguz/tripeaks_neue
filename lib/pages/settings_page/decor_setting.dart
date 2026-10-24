@@ -3,10 +3,11 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
+import 'package:tripeaks_neue/util/common_popover.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/wrapping_popover.dart';
 
 class const DecorSetting({super.key}) extends StatelessWidget {
   @override
@@ -19,8 +20,8 @@ class const DecorSetting({super.key}) extends StatelessWidget {
         return SettingTile(
           titleText: s.decorControl,
           location: Location.last,
-          onTap: () => _showSelection(context, settings),
-          subtitle: settings.decor.name(s),
+          onTap: (context) => _showSelection(context, settings),
+          subtitle: settings.decor.label(s),
           showArrow: true,
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
@@ -42,43 +43,24 @@ class const DecorSetting({super.key}) extends StatelessWidget {
   }
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
-    final s = context.strings;
-    final result = await showAdaptiveDialog<int>(
-      context: context,
-      barrierColor: context.colours.barrier,
-      barrierDismissible: true,
-      builder: (context) => CommonDialog(
-        title: Text(s.decorControl),
-        content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),
-          child: ConstrainedBox(
-            constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + 36.0)),
-            child: Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
-              children: [
-                for (final (index, decor) in Decor.values.indexed)
-                  DecorItem(
-                    decor: decor,
-                    isSelected: settings.decor == decor,
-                    onTap: () => Navigator.pop(context, index),
-                    selectedDecorColour: settings.decorColour,
-                  ),
-              ],
-            ),
-          ),
+    final result = await showCommonPopover<Decor>(
+      context,
+      semanticsLabel: context.strings.decorControl,
+      width: 352,
+      (context) => WrappingPopover(
+        width: 352,
+        values: Decor.values,
+        selected: settings.decor,
+        itemBuilder: (v, s) => DecorItem(
+          decor: v,
+          isSelected: v == settings.decor,
+          selectedDecorColour: settings.decorColour,
+          onTap: () => Navigator.pop(context, v),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: context.colours.error),
-            child: Text(s.cancelAction),
-          ),
-        ],
       ),
     );
-    if (result != null && result >= 0) {
-      settings.decor = Decor.values[result];
+    if (result != null) {
+      settings.decor = result;
     }
   }
 
@@ -125,31 +107,35 @@ class _DecorItemState extends State<DecorItem> {
   Widget build(BuildContext context) {
     final colours = context.colours;
     _borderColour = _focus.hasFocus ? colours.primary : colours.surfaceBright;
-    return SizedBox(
-      width: _sideLength,
-      height: _sideLength,
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: c.commonBorderRadius,
-        clipBehavior: .antiAlias,
-        child: InkWell(
-          onTap: widget.onTap,
-          focusNode: _focus,
-          child: Ink(
-            decoration: BoxDecoration(
-              border: Border.all(width: 2.0, color: _borderColour!),
-              borderRadius: c.commonBorderRadius,
-              color: widget.isSelected
-                  ? widget.selectedDecorColour.background
-                  : colours.surfaceContainerHighest,
-            ),
+    final s = context.strings;
+    return Tooltip(
+      message: widget.decor.label(s),
+      child: SizedBox(
+        width: _sideLength,
+        height: _sideLength,
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: c.commonBorderRadius,
+          clipBehavior: .antiAlias,
+          child: InkWell(
+            onTap: widget.onTap,
+            focusNode: _focus,
+            child: Ink(
+              decoration: BoxDecoration(
+                border: Border.all(width: 2.0, color: _borderColour!),
+                borderRadius: c.commonBorderRadius,
+                color: widget.isSelected
+                    ? widget.selectedDecorColour.background
+                    : colours.surfaceContainerHighest,
+              ),
 
-            child: ClipRRect(
-              borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(2.0)),
-              child: Icon(
-                widget.decor.icon,
-                size: _sideLength - 4,
-                color: widget.isSelected ? Colors.white70 : colours.onSurfaceVariant,
+              child: ClipRRect(
+                borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(2.0)),
+                child: Icon(
+                  widget.decor.icon,
+                  size: _sideLength - 4,
+                  color: widget.isSelected ? Colors.white70 : colours.onSurfaceVariant,
+                ),
               ),
             ),
           ),

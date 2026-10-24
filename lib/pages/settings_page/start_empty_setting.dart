@@ -20,7 +20,7 @@ final class StartEmptySetting extends StatelessWidget {
         return SettingTile(
           titleText: s.startEmptyControl,
           location: Location.centre,
-          onTap: () => session.startEmpty = !session.startEmpty,
+          onTap: (_) => session.startEmpty = !session.startEmpty,
           subtitle: session.startEmpty ? s.startEmptyOnLabel : s.startEmptyOffLabel,
           trailing: Switch(
             value: session.startEmpty,

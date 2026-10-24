@@ -9,15 +9,20 @@ Future<T?> showCommonPopover<T>(
   BuildContext context,
   Widget Function(BuildContext) builder, {
   double? width,
+  String? semanticsLabel,
 }) => showPopover<T>(
   context: context,
+  semanticsLabel: semanticsLabel,
   style: PopoverStyle(
     radius: c.commonRadius,
     backgroundColor: context.colours.surfaceBright,
-    barrierColor: Colors.transparent,
+    barrierColor: context.colours.barrier,
     transitionDuration: _transitionDuration,
+    arrowHeight: 0.0,
   ),
   barrierDismissible: true,
   bodyBuilder: builder,
   width: width,
+  direction: .bottom,
+  contentDyOffset: -68,
 );

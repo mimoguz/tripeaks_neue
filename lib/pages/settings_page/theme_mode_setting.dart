@@ -20,7 +20,7 @@ class ThemeModeSetting extends StatelessWidget {
         return SettingTile(
           titleText: s.themeModeControl,
           location: Location.centre,
-          onTap: () => _showSelection(context, settings),
+          onTap: (context) => _showSelection(context, settings),
           subtitle: _valueLabel(settings.themeMode, s),
           showArrow: true,
         );
@@ -31,6 +31,7 @@ class ThemeModeSetting extends StatelessWidget {
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final result = await showCommonPopover(
       context,
+      semanticsLabel: context.strings.themeModeControl,
       (context) => RadioPopover<ThemeMode>(
         values: ThemeMode.values,
         selected: settings.themeMode,

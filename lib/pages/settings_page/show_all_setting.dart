@@ -18,7 +18,7 @@ final class ShowAllSetting extends StatelessWidget {
         return SettingTile(
           titleText: s.showAllControl,
           location: Location.only,
-          onTap: () => session.showAll = !session.showAll,
+          onTap: (_) => session.showAll = !session.showAll,
           subtitle: session.showAll ? s.showAllOnLabel : s.showAllOffLabel,
           trailing: Switch(
             value: session.showAll,

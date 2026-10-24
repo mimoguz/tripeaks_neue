@@ -18,7 +18,7 @@ final class SoundSetting extends StatelessWidget {
         return SettingTile(
           titleText: s.soundControl,
           location: Location.first,
-          onTap: () => settings.setSoundOn(!settings.soundOn),
+          onTap: (_) => settings.setSoundOn(!settings.soundOn),
           subtitle: settings.soundOn ? s.soundOnLabel : s.soundMutedLabel,
           trailing: Switch(
             value: settings.soundOn,

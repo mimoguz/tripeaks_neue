@@ -8,7 +8,7 @@ class const RadioPopover<T>({
   required final List<T> values,
   required final T selected,
   required final Widget Function(T, AppLocalizations) itemBuilder,
-  final double width = 220,
+  final double width = 250,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

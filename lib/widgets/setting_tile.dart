@@ -11,7 +11,7 @@ final class const SettingTile({
   required final Location location,
   final Widget? trailing,
   final bool showArrow = false,
-  final VoidCallback? onTap,
+  final void Function(BuildContext)? onTap,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,51 +19,54 @@ final class const SettingTile({
     final borderRadius = _borderRadius;
     final padding = showArrow ? _correctedPadding : c.cardPadding;
     final margin = location == Location.first || location == Location.only ? EdgeInsets.zero : _spacing;
-    return Padding(
+    return Container(
       padding: margin,
       child: ListItemContainer(
         minHeight: 68.0,
         child: Material(
           color: theme.colorScheme.surfaceContainerHigh,
           elevation: 1.0,
-          // surfaceTintColor: theme.colorScheme.secondaryContainer,
           shadowColor: c.faintShadowColour,
           borderRadius: borderRadius,
-          child: InkWell(
-            borderRadius: borderRadius,
-            onTap: onTap,
-            child: Padding(
-              padding: padding,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        title ??
-                            Text(
-                              titleText ??
-                                  (throw ArgumentError.value(
-                                    "titleText",
-                                    "Either 'title' or 'titleText' must not be null",
-                                  )),
-                              style: theme.textTheme.titleMedium,
-                            ),
-                        if (subtitle != null)
-                          Text(
-                            subtitle!,
-                            style: theme.textTheme.bodyMedium?.copyWith(
-                              color: theme.colorScheme.onSurfaceVariant,
-                            ),
-                          ),
-                      ],
-                    ),
+          child: Builder(
+            builder: (context) {
+              return InkWell(
+                borderRadius: borderRadius,
+                onTap: onTap != null ? () => onTap?.call(context) : null,
+                child: Padding(
+                  padding: padding,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            title ??
+                                Text(
+                                  titleText ??
+                                      (throw ArgumentError.value(
+                                        "titleText",
+                                        "Either 'title' or 'titleText' must not be null",
+                                      )),
+                                  style: theme.textTheme.titleMedium,
+                                ),
+                            if (subtitle != null)
+                              Text(
+                                subtitle!,
+                                style: theme.textTheme.bodyMedium?.copyWith(
+                                  color: theme.colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                      ?trailing,
+                      if (showArrow) Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
+                    ],
                   ),
-                  ?trailing,
-                  if (showArrow) Icon(Icons.chevron_right, color: theme.colorScheme.onSurfaceVariant),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),
