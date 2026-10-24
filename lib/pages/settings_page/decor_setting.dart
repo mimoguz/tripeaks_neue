@@ -43,11 +43,9 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showAdaptiveDialog<int>(
-      context: context,
-      barrierColor: context.colours.barrier,
-      barrierDismissible: true,
-      builder: (context) => CommonDialog(
+    final result = await showCommonDialog<int>(
+      context,
+      (context) => CommonDialog(
         title: Text(s.decorControl),
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),

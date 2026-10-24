@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/welcome_dialog.dart';
 
 void main() async {
@@ -75,12 +76,7 @@ class _MainAppState extends State<MainApp> {
             if (showWelcome) {
               showWelcome = false;
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                showAdaptiveDialog(
-                  context: context,
-                  builder: (context) => const WelcomeDialog(),
-                  barrierDismissible: true,
-                  barrierColor: context.colours.barrier,
-                );
+                showCommonDialog(context, (context) => const WelcomeDialog());
               });
             }
             return HomePage();

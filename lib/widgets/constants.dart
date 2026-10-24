@@ -42,4 +42,4 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
 );
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
-const faintShadowColour = Colors.black87;
+const faintShadowColour = Color(0x80100000);

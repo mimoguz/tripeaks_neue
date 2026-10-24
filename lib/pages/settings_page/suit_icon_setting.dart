@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
@@ -28,11 +29,9 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showAdaptiveDialog<int>(
-      context: context,
-      barrierColor: context.colours.barrier,
-      barrierDismissible: true,
-      builder: (context) => SelectionDialog(
+    final result = await showCommonDialog<int>(
+      context,
+      (context) => SelectionDialog(
         title: s.suitIconsControl,
         selected: settings.suitIconTheme.index,
         options: SuitIconTheme.values

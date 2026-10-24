@@ -103,7 +103,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
       fontFeatures: c.fontFeatures,
     );
     return Row(
-      spacing: 32.0,
+      spacing: 40.0,
       mainAxisSize: .min,
       children: [
         Column(

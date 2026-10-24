@@ -4,11 +4,9 @@ import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 Future<void> alert(BuildContext context, {required String title, required String message}) =>
-    showAdaptiveDialog(
-      context: context,
-      barrierDismissible: true,
-      barrierColor: context.colours.barrier,
-      builder: (context) => CommonDialog(
+    showCommonDialog(
+      context,
+      (context) => CommonDialog(
         title: Text(title),
         content: Padding(
           padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),

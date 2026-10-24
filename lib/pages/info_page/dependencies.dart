@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/pages/info_page/license_dialog.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
+import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/group_tile.dart';
@@ -75,11 +76,7 @@ final class const DependencyEntry({
   }
 
   void _showLicense(BuildContext context) {
-    showAdaptiveDialog(
-      context: context,
-      barrierColor: context.colours.barrier,
-      builder: (context) => LicenseDialog(package: package),
-    );
+    showCommonDialog(context, (context) => LicenseDialog(package: package));
   }
 }
 

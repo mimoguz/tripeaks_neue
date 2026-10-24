@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -73,7 +74,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: colours.surfaceContainerLow,
                         surfaceTintColor: colours.surfaceContainerLow,
-                        shadowColor: context.colours.shadow,
+                        shadowColor: c.faintShadowColour,
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
@@ -82,39 +83,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
-                            itemBuilder: (context) => [
-                              PopupMenuItem<Never>(
-                                onTap: Actions.handler(context, const ExportStatsIntent()),
-                                child: Row(
-                                  spacing: 16,
-                                  children: [
-                                    Icon(Icons.upload, color: colours.onSurfaceVariant),
-                                    Text(s.exportAction),
-                                  ],
-                                ),
-                              ),
-                              PopupMenuItem<Never>(
-                                onTap: Actions.handler(context, const ImportStatsIntent()),
-                                child: Row(
-                                  spacing: 16,
-                                  children: [
-                                    Icon(Icons.download, color: colours.onSurfaceVariant),
-                                    Text(s.importAction),
-                                  ],
-                                ),
-                              ),
-                              PopupMenuDivider(height: 1),
-                              PopupMenuItem<Never>(
-                                onTap: Actions.handler(context, const ClearStatsIntent()),
-                                child: Row(
-                                  spacing: 16,
-                                  children: [
-                                    Icon(Icons.delete, color: colours.error),
-                                    Text(s.clearAction, style: TextStyle(color: colours.error)),
-                                  ],
-                                ),
-                              ),
-                            ],
+                            itemBuilder: (context) => _popupItems(context, s),
                           ),
                         ],
                         bottom: useVertical
@@ -165,5 +134,42 @@ class _StatisticsPageState extends State<StatisticsPage> {
         ),
       ),
     );
+  }
+
+  List<PopupMenuEntry> _popupItems(BuildContext context, AppLocalizations s) {
+    final colours = context.colours;
+    return [
+      PopupMenuItem<Never>(
+        onTap: Actions.handler(context, const ExportStatsIntent()),
+        child: Row(
+          spacing: 16,
+          children: [
+            Icon(Icons.upload, color: colours.onSurfaceVariant),
+            Text(s.exportAction),
+          ],
+        ),
+      ),
+      PopupMenuItem<Never>(
+        onTap: Actions.handler(context, const ImportStatsIntent()),
+        child: Row(
+          spacing: 16,
+          children: [
+            Icon(Icons.download, color: colours.onSurfaceVariant),
+            Text(s.importAction),
+          ],
+        ),
+      ),
+      PopupMenuDivider(),
+      PopupMenuItem<Never>(
+        onTap: Actions.handler(context, const ClearStatsIntent()),
+        child: Row(
+          spacing: 16,
+          children: [
+            Icon(Icons.delete, color: colours.error),
+            Text(s.clearAction, style: TextStyle(color: colours.error)),
+          ],
+        ),
+      ),
+    ];
   }
 }

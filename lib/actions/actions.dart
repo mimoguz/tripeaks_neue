@@ -172,12 +172,7 @@ final class NewGameWithLayoutAction extends ContextAction<NewGameWithLayoutInten
       return;
     }
     _closeDrawer(context);
-    showAdaptiveDialog(
-      context: context,
-      builder: (_) => SelectLayoutDialog(),
-      barrierDismissible: true,
-      barrierColor: context.colours.barrier,
-    );
+    showCommonDialog(context, (_) => SelectLayoutDialog());
   }
 }
 
@@ -342,32 +337,27 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
         break;
       case ImportSucceeded<PlayerStatistics> succeded:
         if (context.mounted) {
-          final dialogResult = await showAdaptiveDialog<bool>(
-            context: context,
-            barrierColor: context.colours.barrier,
-            barrierDismissible: true,
-            builder: (context) {
-              final s = context.strings;
-              return CommonDialog(
-                title: Text(s.caution),
-                content: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
-                  child: Text(s.overwriteStatisticsWarning),
+          final dialogResult = await showCommonDialog<bool>(context, (context) {
+            final s = context.strings;
+            return CommonDialog(
+              title: Text(s.caution),
+              content: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+                child: Text(s.overwriteStatisticsWarning),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop<bool>(context, false),
+                  style: TextButton.styleFrom(foregroundColor: context.colours.error),
+                  child: Text(s.cancelAction),
                 ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop<bool>(context, false),
-                    style: TextButton.styleFrom(foregroundColor: context.colours.error),
-                    child: Text(s.cancelAction),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.pop<bool>(context, true),
-                    child: Text(s.continueAction),
-                  ),
-                ],
-              );
-            },
-          );
+                TextButton(
+                  onPressed: () => Navigator.pop<bool>(context, true),
+                  child: Text(s.continueAction),
+                ),
+              ],
+            );
+          });
           if (!(dialogResult ?? false)) {
             break;
           }
@@ -434,29 +424,24 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
       return;
     }
     if (context.mounted) {
-      final dialogResult = await showAdaptiveDialog<bool>(
-        context: context,
-        barrierColor: context.colours.barrier,
-        barrierDismissible: true,
-        builder: (context) {
-          final s = context.strings;
-          return CommonDialog(
-            title: Text(s.caution),
-            content: Padding(
-              padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),
-              child: Text(s.clearStatisticsWarning),
+      final dialogResult = await showCommonDialog<bool>(context, (context) {
+        final s = context.strings;
+        return CommonDialog(
+          title: Text(s.caution),
+          content: Padding(
+            padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),
+            child: Text(s.clearStatisticsWarning),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop<bool>(context, false),
+              style: TextButton.styleFrom(foregroundColor: context.colours.error),
+              child: Text(s.cancelAction),
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop<bool>(context, false),
-                style: TextButton.styleFrom(foregroundColor: context.colours.error),
-                child: Text(s.cancelAction),
-              ),
-              TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text(s.continueAction)),
-            ],
-          );
-        },
-      );
+            TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text(s.continueAction)),
+          ],
+        );
+      });
       if (!(dialogResult ?? false)) {
         return;
       }

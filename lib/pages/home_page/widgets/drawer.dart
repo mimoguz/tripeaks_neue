@@ -17,7 +17,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
       // surfaceTintColor: colours.surfaceTint,
-      elevation: 8.0,
+      elevation: 6.0,
       shadowColor: colours.shadow,
       width: 340.0,
       shape: RoundedRectangleBorder(borderRadius: _borderRadius),
@@ -83,7 +83,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
                   ),
                   const Divider(indent: 20, endIndent: 20),
                   DrawerListTile(
-                    icon: Icons.bar_chart,
+                    icon: CustomIcons.doughnutChart,
                     title: s.statisticsAction,
                     intent: const NavigateToStatisticsIntent(),
                   ),

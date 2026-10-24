@@ -49,6 +49,7 @@ class CustomIcons {
   static const check12 = IconData(0xe90e, fontFamily: _actions);
   static const copy16 = IconData(0xe901, fontFamily: _actions);
   static const cross12 = IconData(0xe90f, fontFamily: _actions);
+  static const doughnutChart = IconData(0xe910, fontFamily: _actions);
   static const draw = IconData(0xe90c, fontFamily: _actions);
   static const draw16 = IconData(0xe902, fontFamily: _actions);
   static const empty16 = IconData(0xe903, fontFamily: _actions);

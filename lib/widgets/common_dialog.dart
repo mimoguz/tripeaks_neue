@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -33,7 +35,7 @@ class const CommonDialog({
       backgroundColor: theme.colorScheme.surfaceBright,
       shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
       elevation: 4.0,
-      shadowColor: theme.colorScheme.shadow,
+      shadowColor: c.faintShadowColour,
       title: title,
       content: Material(
         color: Colors.transparent,
@@ -51,3 +53,16 @@ class const CommonDialog({
     );
   }
 }
+
+Future<T?> showCommonDialog<T>(BuildContext context, Widget Function(BuildContext) builder) =>
+    showGeneralDialog<T>(
+      context: context,
+      barrierColor: context.colours.barrier,
+      barrierDismissible: true,
+      barrierLabel: "",
+      transitionDuration: _transitionDuration,
+      pageBuilder: (context, _, _) => builder(context),
+      transitionBuilder: (context, animation, _, child) => FadeTransition(opacity: animation, child: child),
+    );
+
+const _transitionDuration = Duration(milliseconds: 150);
