@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
-import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -38,16 +37,19 @@ final class const EndingCard({
                   Row(children: [image]),
                   message,
                   HighlightsLine(stats: stats),
-                  FilledButtonTheme(
-                    data: FilledButtonThemeData(
-                      style: FilledButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primary.withAlpha(150),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 2.0),
+                    child: FilledButtonTheme(
+                      data: FilledButtonThemeData(
+                        style: FilledButton.styleFrom(
+                          backgroundColor: theme.colorScheme.primary.withAlpha(150),
+                        ),
                       ),
-                    ),
-                    child: Column(
-                      spacing: 8.0,
-                      crossAxisAlignment: .stretch,
-                      children: [...actions, const EndingCardToolBar()],
+                      child: Column(
+                        spacing: 8.0,
+                        crossAxisAlignment: .stretch,
+                        children: [...actions, const EndingCardToolBar()],
+                      ),
                     ),
                   ),
                 ],
