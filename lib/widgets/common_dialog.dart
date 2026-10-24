@@ -32,8 +32,8 @@ class const CommonDialog({
       scrollable: false,
       backgroundColor: theme.colorScheme.surfaceBright,
       shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
-      elevation: 10.0,
-      shadowColor: theme.colorScheme.shadow,
+      elevation: 4.0,
+      shadowColor: c.faintShadowColour,
       title: title,
       content: Material(
         color: Colors.transparent,

@@ -23,8 +23,8 @@ class const WrappingPopover<T>({
             child: Wrap(
               spacing: c.itemSpacing,
               runSpacing: c.itemSpacing,
-              alignment: .center,
-              runAlignment: .center,
+              runAlignment: .start,
+              alignment: .spaceBetween,
               children: [for (final v in values) itemBuilder(v, s)],
             ),
           ),

@@ -17,7 +17,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
       // surfaceTintColor: colours.surfaceTint,
-      elevation: 10.0,
+      elevation: 4.0,
       shadowColor: colours.shadow,
       width: 340.0,
       shape: RoundedRectangleBorder(borderRadius: _borderRadius),

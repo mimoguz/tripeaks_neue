@@ -66,7 +66,7 @@ final class DrawAction(final Game game, final SoundEffects sounds) extends Actio
 final class RollbackAction(final Game game, final SoundEffects sounds) extends Action<RollbackIntent> {
   @override
   bool get isActionEnabled =>
-      game.history.isNotEmpty && game.history.last.pin.index != Pin.endIndex && !game.isCleared;
+      game.history.isNotEmpty && !game.isCleared && game.history.any((i) => i.pin.index != Pin.endIndex);
 
   @override
   void invoke(RollbackIntent intent) {

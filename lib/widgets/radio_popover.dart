@@ -8,7 +8,7 @@ class const RadioPopover<T>({
   required final List<T> values,
   required final T selected,
   required final Widget Function(T, AppLocalizations) itemBuilder,
-  final double width = 250,
+  required final double width,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,11 @@ class const RadioPopover<T>({
           },
           groupValue: selected,
           child: ListTileTheme(
-            data: ListTileThemeData(titleTextStyle: context.theme.textTheme.bodyMedium),
+            data: ListTileThemeData(
+              titleTextStyle: context.theme.textTheme.bodyMedium,
+              visualDensity: .compact,
+              controlAffinity: .leading,
+            ),
             child: ListView.builder(
               padding: _padding,
               shrinkWrap: true,

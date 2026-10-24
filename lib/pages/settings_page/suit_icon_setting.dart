@@ -30,10 +30,10 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final result = await showCommonPopover<SuitIconTheme>(
       context,
-      width: 340,
+      width: 324,
       semanticsLabel: context.strings.suitIconsControl,
       (context) => RadioPopover<SuitIconTheme>(
-        width: 340,
+        width: 324,
         values: SuitIconTheme.values,
         selected: settings.suitIconTheme,
         itemBuilder: (v, s) => SuitVariantRow(v, s),
@@ -55,21 +55,24 @@ class const SuitVariantRow(final SuitIconTheme variant, final AppLocalizations s
     final red = colours.tertiary;
     return Padding(
       padding: _padding,
-      child: Row(
-        spacing: 3.0,
-        mainAxisAlignment: .start,
-        children: [
-          Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
-          Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
-          Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
-          Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 6.0),
-              child: Text(_valueLabel(variant, s), overflow: .fade, maxLines: 1),
+      child: Transform.translate(
+        offset: Offset(-6.0, 0.0),
+        child: Row(
+          spacing: 0.0,
+          mainAxisAlignment: .start,
+          children: [
+            Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
+            Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
+            Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
+            Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 6.0),
+                child: Text(_valueLabel(variant, s), overflow: .fade, maxLines: 1),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

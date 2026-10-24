@@ -32,7 +32,9 @@ class LayoutSetting extends StatelessWidget {
     final result = await showCommonPopover<Peaks>(
       context,
       semanticsLabel: context.strings.layoutControl,
+      width: 250,
       (context) => RadioPopover<Peaks>(
+        width: 250,
         values: Peaks.values,
         selected: session.layout,
         itemBuilder: (v, s) => Text(v.label(s)),

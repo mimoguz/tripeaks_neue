@@ -31,8 +31,10 @@ class ThemeModeSetting extends StatelessWidget {
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final result = await showCommonPopover(
       context,
+      width: 250,
       semanticsLabel: context.strings.themeModeControl,
       (context) => RadioPopover<ThemeMode>(
+        width: 250,
         values: ThemeMode.values,
         selected: settings.themeMode,
         itemBuilder: (v, s) => Text(_valueLabel(v, s)),
