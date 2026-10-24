@@ -336,19 +336,21 @@ abstract class _Game with Store {
     history.add(Event(pin: pin, score: currentScore, chain: currentChain));
 
     if (_remaining == 0) {
-      history.add(Event(pin: Pin.gameEnd, score: _score, chain: _chain));
-      _isCleared = true;
-      _isEnded = true;
       // Clearing the game obviously ends a chain, so you get a score
       // Also a bonus for the number of cards of the current layout
       _score += _chain * _chain + layout.cardCount;
+      // Add end-game event (to use during the longest chain search):
+      history.add(Event(pin: Pin.gameEnd, score: _score, chain: _chain));
+      _isCleared = true;
+      _isEnded = true;
       _logger.d("Take. Chain: $_chain, Score: $_score");
       return true;
     }
 
     if (stock.isEmpty && !_checkMoves(board: board, stock: stock, discard: discard)) {
-      history.add(Event(pin: Pin.gameEnd, score: _score, chain: _chain));
       _score += _chain * _chain;
+      // Add end-game event (to use during the longest chain search):
+      history.add(Event(pin: Pin.gameEnd, score: _score, chain: _chain));
       _isEnded = true;
       _isCleared = false;
       _isStalled = true;
