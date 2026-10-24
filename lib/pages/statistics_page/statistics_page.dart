@@ -74,10 +74,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         backgroundColor: colours.surfaceContainerLow,
                         surfaceTintColor: colours.surfaceContainerLow,
                         shadowColor: context.colours.shadow,
+                        actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
                             color: colours.surfaceBright,
-                            elevation: 10,
+                            elevation: 4.0,
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
@@ -102,7 +103,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   ],
                                 ),
                               ),
-                              PopupMenuDivider(),
+                              PopupMenuDivider(height: 1),
                               PopupMenuItem<Never>(
                                 onTap: Actions.handler(context, const ClearStatsIntent()),
                                 child: Row(

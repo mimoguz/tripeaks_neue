@@ -33,7 +33,7 @@ final class const EndingCard({
               child: Column(
                 mainAxisSize: .min,
                 crossAxisAlignment: .stretch,
-                spacing: 16.0,
+                spacing: 12.0,
                 children: [
                   Row(children: [image]),
                   message,
@@ -97,6 +97,11 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
     final s = context.strings;
     final theme = context.theme;
     final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.hintColor);
+    final numberStyle = theme.textTheme.bodyLarge?.copyWith(
+      color: theme.colorScheme.onSurfaceVariant,
+      fontWeight: .w500,
+      fontFeatures: c.fontFeatures,
+    );
     return Row(
       spacing: 32.0,
       mainAxisSize: .min,
@@ -106,14 +111,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
           crossAxisAlignment: .start,
           children: [
             Text(s.scoreLabel, style: labelStyle),
-            Text(
-              stats.score.toString(),
-              semanticsLabel: s.scoreTooltip,
-              style: theme.textTheme.bodyLarge?.copyWith(
-                fontFeatures: c.fontFeatures,
-                color: DecorColour.amber.background,
-              ),
-            ),
+            Text(stats.score.toString(), semanticsLabel: s.scoreTooltip, style: numberStyle),
           ],
         ),
         Column(
@@ -121,14 +119,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
           crossAxisAlignment: .start,
           children: [
             Text(s.chainLabel, style: labelStyle),
-            Text(
-              stats.longestChain.toString(),
-              semanticsLabel: s.chainTooltip,
-              style: theme.textTheme.bodyLarge?.copyWith(
-                fontFeatures: c.fontFeatures,
-                color: theme.colorScheme.tertiary,
-              ),
-            ),
+            Text(stats.longestChain.toString(), semanticsLabel: s.chainTooltip, style: numberStyle),
           ],
         ),
       ],
