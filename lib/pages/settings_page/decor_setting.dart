@@ -48,12 +48,12 @@ class const DecorSetting({super.key}) extends StatelessWidget {
       (context) => CommonDialog(
         title: Text(s.decorControl),
         content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding * 0.5),
+          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
           child: ConstrainedBox(
-            constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + 36.0)),
+            constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + c.itemSpacing * 2)),
             child: Wrap(
-              spacing: 16.0,
-              runSpacing: 16.0,
+              spacing: c.itemSpacing,
+              runSpacing: c.itemSpacing,
               children: [
                 for (final (index, decor) in Decor.values.indexed)
                   DecorItem(
@@ -147,7 +147,7 @@ class _DecorItemState extends State<DecorItem> {
               child: Icon(
                 widget.decor.icon,
                 size: _sideLength - 4,
-                color: widget.isSelected ? Colors.white70 : colours.onSurfaceVariant,
+                color: widget.isSelected ? widget.selectedDecorColour.controlForeground : colours.secondary,
               ),
             ),
           ),

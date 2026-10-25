@@ -35,7 +35,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
         title: s.suitIconsControl,
         selected: settings.suitIconTheme.index,
         options: SuitIconTheme.values
-            .map((variant) => SuitVariantRow(variant, variant == settings.suitIconTheme))
+            .map((variant) => SuitVariantRow(variant, variant == settings.suitIconTheme, s))
             .toList(),
       ),
     );
@@ -45,8 +45,12 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   }
 }
 
-class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {super.key})
-    extends StatelessWidget {
+class const SuitVariantRow(
+  final SuitIconTheme variant,
+  final bool selected,
+  final AppLocalizations s, {
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
@@ -55,20 +59,17 @@ class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {su
     return Padding(
       padding: _padding,
       child: Row(
-        spacing: 3.0,
         mainAxisAlignment: .start,
+        spacing: 2.0,
         children: [
           Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
           Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
-          Padding(
-            padding: const EdgeInsets.only(right: _diamondFix),
-            child: Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
-          ),
+          Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
           Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
           Flexible(
             child: Padding(
-              padding: const EdgeInsets.only(left: 6.0),
-              child: Text(_valueLabel(variant, context.strings), overflow: .fade, maxLines: 1),
+              padding: const EdgeInsets.only(left: 10.0, right: 4.0),
+              child: Text(_valueLabel(variant, s), overflow: .fade, maxLines: 1),
             ),
           ),
         ],
@@ -76,9 +77,8 @@ class const SuitVariantRow(final SuitIconTheme variant, final bool selected, {su
     );
   }
 
-  static const _size = 30.0;
-  static const _diamondFix = 3.0;
-  static const _padding = EdgeInsets.symmetric(vertical: 2);
+  static const _size = 36.0;
+  static const _padding = EdgeInsets.symmetric(vertical: 3);
 }
 
 String _valueLabel(SuitIconTheme value, AppLocalizations s) => switch (value) {

@@ -1,7 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class const CommonDialog({
   super.key,
@@ -15,18 +14,8 @@ class const CommonDialog({
     final theme = context.theme;
     return AlertDialog.adaptive(
       contentPadding: EdgeInsets.zero,
-      titlePadding: const EdgeInsets.fromLTRB(
-        c.dialogPadding,
-        c.dialogPadding,
-        c.dialogPadding,
-        c.itemSpacing,
-      ),
-      actionsPadding: const EdgeInsets.fromLTRB(
-        c.dialogPadding,
-        c.itemSpacing - 10,
-        c.dialogPadding,
-        c.dialogPadding - 6,
-      ),
+      titlePadding: _titlePadding,
+      actionsPadding: _actionsPadding,
       titleTextStyle: theme.textTheme.titleMedium,
       surfaceTintColor: tint,
       scrollable: false,
@@ -40,16 +29,26 @@ class const CommonDialog({
         child: Column(
           mainAxisSize: MainAxisSize.min,
           spacing: c.itemSpacing,
-          children: [
-            Flexible(
-              child: ScrollIndicator(child: SingleChildScrollView(child: content)),
-            ),
-          ],
+          children: [Flexible(child: SingleChildScrollView(child: content))],
         ),
       ),
       actions: actions,
     );
   }
+
+  static const _titlePadding = EdgeInsets.fromLTRB(
+    c.dialogPadding,
+    c.dialogPadding,
+    c.dialogPadding,
+    c.itemSpacing,
+  );
+
+  static const _actionsPadding = EdgeInsets.fromLTRB(
+    c.dialogPadding,
+    c.itemSpacing - 10,
+    c.dialogPadding,
+    c.dialogPadding - 6,
+  );
 }
 
 Future<T?> showCommonDialog<T>(BuildContext context, Widget Function(BuildContext) builder) =>
