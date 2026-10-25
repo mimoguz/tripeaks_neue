@@ -91,6 +91,14 @@
     </screenshots>
 
     <releases>
+        <release version="0.9.65" date="2026-10-25">
+            <description>
+                <ul>
+                    <li>Fixed an issue where the last link of the last chain was not included in the longest chain search</li>
+                    <li>UI tweaks</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.9.64" date="2026-10-19">
             <description>
                 <ul>
