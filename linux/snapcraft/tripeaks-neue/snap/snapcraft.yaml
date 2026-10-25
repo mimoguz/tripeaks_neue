@@ -2,7 +2,7 @@ name: mzoguz-tripeaksneue
 title: TriPeaks NEUE
 summary: Patience game 
 icon: snap/gui/icon.svg
-version: '0.9.64'
+version: '0.9.65'
 description: |
     A simple Tri Peaks patience (solitaire) game.
 
@@ -48,7 +48,7 @@ parts:
         plugin: flutter
         source-type: git
         source: https://github.com/mimoguz/tripeaks_neue
-        source-tag: v0.9.64
+        source-tag: v0.9.65
         flutter-target: lib/main.dart
         build-packages:
             - libgstreamer1.0-dev # audioplayers dependency
