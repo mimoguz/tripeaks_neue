@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
@@ -141,6 +142,9 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
             session.startEmpty = _startEmpty!;
             session.ensureSolvable = _ensureSolvable!;
             session.layout = _layout!;
+            if (kIsWeb || kIsWasm) {
+              session.write();
+            }
             session.newGame(settings.sounds.playStart);
             Navigator.pop(context);
           },
