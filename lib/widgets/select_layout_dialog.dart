@@ -8,6 +8,8 @@ import 'package:tripeaks_neue/util/platform_utils.dart' show isDesktopOrWeb;
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
+import 'package:tripeaks_neue/widgets/my_selection_tiles.dart';
 
 class const SelectLayoutDialog({super.key}) extends StatefulWidget {
   @override
@@ -50,93 +52,56 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
     _ensureSolvable ??= session.ensureSolvable;
     _layout ??= session.layout;
 
-    return CommonDialog(
+    return MyDialog(
       title: Text(s.selectLayoutDialogTitle),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTileTheme(
-            data: ListTileThemeData(
-              visualDensity: .compact,
-              titleTextStyle: theme.textTheme.bodyMedium,
-              controlAffinity: .leading,
-              horizontalTitleGap: c.itemSpacing - c.radioCorrection,
-              contentPadding: EdgeInsets.fromLTRB(
-                c.itemSpacing - c.radioCorrection + (isDesktopOrWeb ? 1 : 0),
-                0.0,
-                c.itemSpacing,
-                0.0,
-              ),
-            ),
-            child: RadioGroup(
-              groupValue: _layout,
-              onChanged: (value) => setState(() {
-                _layout = value;
+          for (final layout in Peaks.values)
+            MyRadioListTile<Peaks>(
+              value: layout,
+              label: Text(layout.label(s)),
+              isChecked: layout == _layout,
+              onTap: (v) => setState(() {
+                _layout = v;
               }),
-              child: Column(
-                children: [
-                  for (final layout in Peaks.values)
-                    RadioListTile<Peaks>(value: layout, title: Text(layout.label(s))),
-                ],
-              ),
             ),
-          ),
-          const Divider(),
-          ListTileTheme(
-            data: ListTileThemeData(
-              visualDensity: .compact,
-              titleTextStyle: theme.textTheme.bodyMedium,
-              controlAffinity: .leading,
-              horizontalTitleGap: c.itemSpacing - c.checkBoxCorrection,
-              contentPadding: EdgeInsets.fromLTRB(
-                c.itemSpacing - c.checkBoxCorrection,
-                0.0,
-                c.itemSpacing,
-                0.0,
-              ),
-            ),
+
+          Padding(
+            padding: c.DialogMetrics.subtitlePadding,
             child: Column(
+              spacing: c.DialogMetrics.sectionSpacing,
+              crossAxisAlignment: .start,
               children: [
-                ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Transform.translate(
-                      offset: const Offset(c.checkBoxCorrection - c.radioCorrection, 0.0),
-                      child: Text(s.additionalOptionsGroupTitle, style: theme.textTheme.titleSmall),
-                    ),
-                  ),
-                ),
-                CheckboxListTile(
-                  value: _showAll,
-                  onChanged: (value) => setState(() => _showAll = value!),
-                  title: Text(s.showAllOptionLabel),
-                ),
-                CheckboxListTile(
-                  value: _startEmpty,
-                  onChanged: (value) => setState(() => _startEmpty = value!),
-                  title: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Text(s.startsEmptyOptionLabel, softWrap: false),
-                  ),
-                ),
-                CheckboxListTile(
-                  value: _ensureSolvable,
-                  onChanged: (value) => setState(() => _ensureSolvable = value!),
-                  title: Text(s.ensureSolvableOnLabel),
-                ),
+                DialogDivider(),
+                Text(s.additionalOptionsGroupTitle, style: theme.textTheme.titleMedium),
               ],
             ),
+          ),
+
+          MyCheckBoxListTile(
+            isChecked: _showAll ?? false,
+            label: Text(s.showAllOptionLabel),
+            onTap: () => setState(() => _showAll = !(_showAll ?? false)),
+          ),
+
+          MyCheckBoxListTile(
+            isChecked: _startEmpty ?? false,
+            label: Text(s.startsEmptyOptionLabel, softWrap: false),
+            onTap: () => setState(() => _startEmpty = !(_startEmpty ?? false)),
+          ),
+
+          MyCheckBoxListTile(
+            isChecked: _ensureSolvable ?? false,
+            label: Text(s.ensureSolvableOnLabel),
+            onTap: () => setState(() => _ensureSolvable = !(_ensureSolvable ?? false)),
           ),
         ],
       ),
       actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
-          child: Text(s.selectDialogCancelAction),
-        ),
-        TextButton(
+        FilledButton(
+          style: FilledButton.styleFrom(shadowColor: Colors.transparent),
           onPressed: () {
             session.showAll = _showAll!;
             session.startEmpty = _startEmpty!;

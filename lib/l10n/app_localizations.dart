@@ -520,7 +520,7 @@ abstract class AppLocalizations {
   /// Title of the additional options section of the dialog.
   ///
   /// In en, this message translates to:
-  /// **'Additional Options'**
+  /// **'Options'**
   String get additionalOptionsGroupTitle;
 
   /// Label of the checkbox that sets if the discard pile should be empty at the beginning of the game.

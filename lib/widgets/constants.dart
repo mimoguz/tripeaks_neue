@@ -43,3 +43,31 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
 const faintShadowColour = Color(0x80100000);
+
+abstract final class DialogMetrics {
+  static const verticalPadding = 16.0;
+  static const horizontalPadding = 20.0;
+  static const sectionSpacing = 16.0;
+
+  static const titlePadding = EdgeInsets.fromLTRB(
+    horizontalPadding,
+    verticalPadding,
+    horizontalPadding,
+    sectionSpacing,
+  );
+  static const actionsPadding = EdgeInsets.fromLTRB(
+    horizontalPadding,
+    sectionSpacing,
+    horizontalPadding,
+    verticalPadding,
+  );
+  static const contentPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: sectionSpacing);
+  static const contentPaddingTight = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0.0);
+  static const subtitlePadding = EdgeInsets.fromLTRB(
+    horizontalPadding,
+    sectionSpacing,
+    horizontalPadding,
+    sectionSpacing / 2,
+  );
+  static const shape = RoundedRectangleBorder(borderRadius: commonBorderRadius);
+}

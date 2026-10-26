@@ -29,18 +29,17 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<int>(
+    final result = await showCommonDialog<SuitIconTheme>(
       context,
-      (context) => SelectionDialog(
-        title: s.suitIconsControl,
-        selected: settings.suitIconTheme.index,
-        options: SuitIconTheme.values
-            .map((variant) => SuitVariantRow(variant, variant == settings.suitIconTheme, s))
-            .toList(),
+      (context) => MySelectionDialog<SuitIconTheme>(
+        title: Text(s.suitIconsControl),
+        selected: settings.suitIconTheme,
+        values: SuitIconTheme.values,
+        itemBuilder: (v) => SuitVariantRow(v, v == settings.suitIconTheme, s),
       ),
     );
-    if (result != null && result >= 0 && result < SuitIconTheme.values.length) {
-      settings.suitIconTheme = SuitIconTheme.values[result];
+    if (result != null) {
+      settings.suitIconTheme = result;
     }
   }
 }

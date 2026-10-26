@@ -223,7 +223,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLayoutDialogTitle => 'Select Layout';
 
   @override
-  String get additionalOptionsGroupTitle => 'Additional Options';
+  String get additionalOptionsGroupTitle => 'Options';
 
   @override
   String get startsEmptyOptionLabel => 'Start with an empty discard pile';

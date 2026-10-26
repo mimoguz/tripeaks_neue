@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
@@ -38,37 +39,31 @@ class const ColourSetting({super.key}) extends StatelessWidget {
     final s = context.strings;
     final result = await showCommonDialog<int>(
       context,
-      (context) => CommonDialog(
+      (context) => MyDialog(
         title: Text(s.decorColourControl),
-        tint: settings.decorColour.background,
         content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+          padding: c.DialogMetrics.contentPadding,
           child: Row(
             children: [
               Expanded(
-                child: Wrap(
-                  spacing: c.itemSpacing,
-                  runSpacing: c.itemSpacing,
-                  children: [
-                    for (final (index, colour) in DecorColour.values.indexed)
-                      ColourSwatch(
-                        colour: colour,
-                        isSelected: settings.decorColour == colour,
-                        onTap: () => Navigator.pop(context, index),
-                      ),
-                  ],
+                child: Center(
+                  child: Wrap(
+                    spacing: c.itemSpacing,
+                    runSpacing: c.itemSpacing,
+                    children: [
+                      for (final (index, colour) in DecorColour.values.indexed)
+                        ColourSwatch(
+                          colour: colour,
+                          isSelected: settings.decorColour == colour,
+                          onTap: () => Navigator.pop(context, index),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: context.colours.error),
-            child: Text(s.cancelAction),
-          ),
-        ],
       ),
     );
     if (result != null && result >= 0) {

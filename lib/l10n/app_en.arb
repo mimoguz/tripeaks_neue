@@ -441,7 +441,7 @@
         "context": "selectLayoutDialog",
         "description": "Title of the dialog that will open when 'New Game with Layout...' action is called."
     },
-    "additionalOptionsGroupTitle": "Additional Options",
+    "additionalOptionsGroupTitle": "Options",
     "@additionalOptionsGroupTitle": {
         "type": "text",
         "context": "selectLayoutDialog",

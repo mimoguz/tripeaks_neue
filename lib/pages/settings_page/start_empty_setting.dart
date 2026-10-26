@@ -15,6 +15,7 @@ final class StartEmptySetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final session = Provider.of<Session>(context);
     final s = context.strings;
+    final colours = context.colours;
     return Observer(
       builder: (context) {
         return SettingTile(
@@ -25,8 +26,8 @@ final class StartEmptySetting extends StatelessWidget {
           trailing: Switch(
             value: session.startEmpty,
             onChanged: (v) => session.startEmpty = v,
-            thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.empty16),
+            thumbIcon: WidgetStateProperty.fromMap({
+              WidgetState.selected: Icon(CustomIcons.empty16, color: colours.primary),
               WidgetState.any: Icon(CustomIcons.filled16),
             }),
           ),

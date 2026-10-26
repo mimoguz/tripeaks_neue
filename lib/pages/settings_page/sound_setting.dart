@@ -13,6 +13,7 @@ final class SoundSetting extends StatelessWidget {
   Widget build(BuildContext context) {
     final settings = Provider.of<Settings>(context);
     final s = context.strings;
+    final colours = context.colours;
     return Observer(
       builder: (context) {
         return SettingTile(
@@ -23,8 +24,8 @@ final class SoundSetting extends StatelessWidget {
           trailing: Switch(
             value: settings.soundOn,
             onChanged: (v) => settings.setSoundOn(v),
-            thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.volumeOn16),
+            thumbIcon: WidgetStateProperty.fromMap({
+              WidgetState.selected: Icon(CustomIcons.volumeOn16, color: colours.primary),
               WidgetState.any: Icon(CustomIcons.volumeOff16),
             }),
           ),

@@ -102,7 +102,7 @@ class _MainAppState extends State<MainApp> {
       secondaryKey: _secondarySeed,
       tertiaryKey: _tertiarySeed,
       tertiary: Colors.red.shade500,
-      variant: .vividSurfaces,
+      variant: .fidelity,
     ),
   );
 
@@ -121,7 +121,7 @@ class _MainAppState extends State<MainApp> {
       secondaryKey: _secondarySeed,
       tertiaryKey: _tertiarySeed,
       tertiary: Colors.red.shade300,
-      variant: .vividSurfaces,
+      variant: .fidelity,
     ),
   );
 

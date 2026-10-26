@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 
@@ -45,10 +46,10 @@ class const DecorSetting({super.key}) extends StatelessWidget {
     final s = context.strings;
     final result = await showCommonDialog<int>(
       context,
-      (context) => CommonDialog(
+      (context) => MyDialog(
         title: Text(s.decorControl),
         content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+          padding: c.DialogMetrics.contentPadding,
           child: ConstrainedBox(
             constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + c.itemSpacing * 2)),
             child: Wrap(
@@ -66,13 +67,6 @@ class const DecorSetting({super.key}) extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: context.colours.error),
-            child: Text(s.cancelAction),
-          ),
-        ],
       ),
     );
     if (result != null && result >= 0) {
@@ -122,7 +116,7 @@ class _DecorItemState extends State<DecorItem> {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    _borderColour = _focus.hasFocus ? colours.primary : colours.surfaceBright;
+    _borderColour = _focus.hasFocus ? colours.primary : Colors.transparent;
     return SizedBox(
       width: _sideLength,
       height: _sideLength,
@@ -135,19 +129,19 @@ class _DecorItemState extends State<DecorItem> {
           focusNode: _focus,
           child: Ink(
             decoration: BoxDecoration(
-              border: Border.all(width: 2.0, color: _borderColour!),
+              border: Border.all(width: 4.0, color: _borderColour!),
               borderRadius: c.commonBorderRadius,
-              color: widget.isSelected
-                  ? widget.selectedDecorColour.background
-                  : colours.surfaceContainerHighest,
+              color: widget.isSelected ? widget.selectedDecorColour.background : colours.secondaryContainer,
             ),
 
             child: ClipRRect(
-              borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(2.0)),
+              borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
               child: Icon(
                 widget.decor.icon,
                 size: _sideLength - 4,
-                color: widget.isSelected ? widget.selectedDecorColour.controlForeground : colours.secondary,
+                color: widget.isSelected
+                    ? widget.selectedDecorColour.controlForeground
+                    : colours.onSecondaryContainer,
               ),
             ),
           ),
