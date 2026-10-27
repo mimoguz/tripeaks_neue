@@ -1,24 +1,17 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
-import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 
-class LicenseDialog extends StatelessWidget {
-  const LicenseDialog({super.key, required this.package});
-
-  final Package package;
-
+final class const LicenseDialog({super.key, required final Package package}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = context.strings;
-    return CommonDialog(
+    return MyDialog(
       title: Text(package.name),
       content: Padding(
-        padding: EdgeInsets.all(c.dialogPadding),
+        padding: c.DialogMetrics.contentPadding,
         child: Text(package.license ?? "License not found"),
       ),
-      actions: [TextButton(onPressed: () => Navigator.pop(context), child: Text(s.licenseDialogCloseAction))],
     );
   }
 }

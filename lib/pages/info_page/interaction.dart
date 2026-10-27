@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/pages/home_page/widgets/game_button.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 import 'package:tripeaks_neue/widgets/shortcut_hint.dart';
 
@@ -230,6 +231,9 @@ class const ShorcutListCell({
 class const InteractionListDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const GroupTileDivider(padding: EdgeInsets.symmetric(vertical: 2));
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: c.itemSpacing),
+      child: const DialogDivider(),
+    );
   }
 }

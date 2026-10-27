@@ -3,24 +3,27 @@ import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/item_container.dart';
 
-final class GroupTile extends StatelessWidget {
-  const GroupTile({super.key, required this.children, this.title});
-
-  final List<Widget> children;
-  final String? title;
-
+final class const GroupTile({
+  super.key,
+  required final List<Widget> children,
+  final String? title,
+  final EdgeInsets? padding,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
     return ListItemContainer(
-      child: Material(
-        color: theme.colorScheme.surfaceContainerHigh,
-        // surfaceTintColor: theme.colorScheme.secondaryContainer,
-        elevation: 1.0,
-        borderRadius: c.commonBorderRadius,
-        shadowColor: c.faintShadowColour,
+      child: Container(
+        decoration: BoxDecoration(
+          color: theme.brightness == .dark
+              ? theme.colorScheme.surfaceContainerHigh
+              : theme.colorScheme.surfaceContainerLowest,
+          borderRadius: c.commonBorderRadius,
+          boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 2.5, offset: Offset(0, 1))],
+        ),
+        clipBehavior: .antiAlias,
         child: Padding(
-          padding: c.cardPadding,
+          padding: padding ?? c.cardPadding,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

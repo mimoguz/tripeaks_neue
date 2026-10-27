@@ -3,6 +3,7 @@ import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class const About({super.key}) extends StatelessWidget {
@@ -57,7 +58,10 @@ final class const LicenseEntry({
           Text(title, style: textTheme.titleMedium),
           if (description != null) Text(description!),
           if (link != null) ExternalLink(uri: link!),
-          Divider(height: c.itemSpacing * 2.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: c.itemSpacing),
+            child: DialogDivider(),
+          ),
           Text("License", style: textTheme.titleMedium),
           Text("Available under $license."),
           if (licenseLink != null) ExternalLink(uri: licenseLink!),

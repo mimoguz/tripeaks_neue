@@ -14,7 +14,9 @@ import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/group_title.dart';
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 final class SettingsPage extends StatefulWidget {
@@ -57,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage> {
       },
       child: Builder(
         builder: (context) {
-          final colours = context.colours;
+          final theme = context.theme;
           return Shortcuts(
             shortcuts: <ShortcutActivator, Intent>{
               SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -70,9 +72,10 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: colours.surfaceContainerLow,
-                  surfaceTintColor: colours.surfaceContainerLow,
-                  shadowColor: context.colours.shadow,
+                  backgroundColor: theme.colorScheme.surfaceContainerLow,
+                  surfaceTintColor: theme.colorScheme.surfaceContainerLow,
+                  shadowColor: c.faintShadowColour,
+                  scrolledUnderElevation: 2.0,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
@@ -114,17 +117,35 @@ final class SettingsPageBody extends StatelessWidget {
                         shrinkWrap: true,
                         padding: c.utilPageInsets,
                         children: [
-                          const ShowAllSetting(),
+                          const GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
+
                           GroupTitle(s.nextGameSettingGroupTitle),
-                          const LayoutSetting(),
-                          const StartEmptySetting(),
-                          const EnsureSolvableSetting(),
+                          const GroupTile(
+                            padding: EdgeInsets.zero,
+                            children: [
+                              LayoutSetting(),
+                              DialogDivider(),
+                              StartEmptySetting(),
+                              DialogDivider(),
+                              EnsureSolvableSetting(),
+                            ],
+                          ),
+
                           GroupTitle(s.interfaceSettingGroupTitle),
-                          const SoundSetting(),
-                          const ThemeModeSetting(),
-                          const SuitIconSetting(),
-                          const ColourSetting(),
-                          const DecorSetting(),
+                          const GroupTile(
+                            padding: EdgeInsets.zero,
+                            children: [
+                              SoundSetting(),
+                              DialogDivider(),
+                              ThemeModeSetting(),
+                              DialogDivider(),
+                              SuitIconSetting(),
+                              DialogDivider(),
+                              ColourSetting(),
+                              DialogDivider(),
+                              DecorSetting(),
+                            ],
+                          ),
                         ],
                       ),
                     ),

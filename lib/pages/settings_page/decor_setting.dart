@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -21,7 +22,7 @@ class const DecorSetting({super.key}) extends StatelessWidget {
           titleText: s.decorControl,
           location: Location.last,
           onTap: () => _showSelection(context, settings),
-          subtitle: settings.decor.name(s),
+          subtitle: settings.decor.label(s),
           showArrow: true,
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
@@ -47,9 +48,9 @@ class const DecorSetting({super.key}) extends StatelessWidget {
     final result = await showCommonBottomSheet<int>(
       context,
       (context) => MyBottomSheet(
-        title: Text(s.decorTitle),
+        title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
         content: Padding(
-          padding: c.DialogMetrics.bottomSheetContentPadding,
+          padding: c.DialogMetrics.contentPadding,
           child: Wrap(
             spacing: 8.0,
             runSpacing: 8.0,
@@ -58,8 +59,9 @@ class const DecorSetting({super.key}) extends StatelessWidget {
                 DecorItem(
                   decor: decor,
                   isSelected: settings.decor == decor,
-                  onTap: () => Navigator.pop(context, index),
                   selectedDecorColour: settings.decorColour,
+                  strings: s,
+                  onTap: () => Navigator.pop(context, index),
                 ),
             ],
           ),
@@ -76,20 +78,14 @@ class const DecorSetting({super.key}) extends StatelessWidget {
   static const _iconOffset = Offset((c.cardSize - _boxWidth) / -2.0, (c.cardSize - _boxHeight) / -2.0);
 }
 
-class DecorItem extends StatefulWidget {
-  const DecorItem({
-    super.key,
-    required this.decor,
-    this.onTap,
-    required this.isSelected,
-    required this.selectedDecorColour,
-  });
-
-  final Decor decor;
-  final bool isSelected;
-  final VoidCallback? onTap;
-  final DecorColour selectedDecorColour;
-
+class const DecorItem({
+  super.key,
+  required final Decor decor,
+  required final bool isSelected,
+  required final DecorColour selectedDecorColour,
+  required final AppLocalizations strings,
+  final VoidCallback? onTap,
+}) extends StatefulWidget {
   @override
   State<DecorItem> createState() => _DecorItemState();
 }
@@ -114,31 +110,34 @@ class _DecorItemState extends State<DecorItem> {
   Widget build(BuildContext context) {
     final colours = context.colours;
     _borderColour = _focus.hasFocus ? colours.primary : Colors.transparent;
-    return SizedBox(
-      width: _sideLength,
-      height: _sideLength,
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: c.commonBorderRadius,
-        clipBehavior: .antiAlias,
-        child: InkWell(
-          onTap: widget.onTap,
-          focusNode: _focus,
-          child: Ink(
-            decoration: BoxDecoration(
-              border: Border.all(width: 4.0, color: _borderColour!),
-              borderRadius: c.commonBorderRadius,
-              color: widget.isSelected ? widget.selectedDecorColour.background : colours.secondaryContainer,
-            ),
+    return Tooltip(
+      message: widget.decor.label(widget.strings),
+      child: SizedBox(
+        width: _sideLength,
+        height: _sideLength,
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: c.commonBorderRadius,
+          clipBehavior: .antiAlias,
+          child: InkWell(
+            onTap: widget.onTap,
+            focusNode: _focus,
+            child: Ink(
+              decoration: BoxDecoration(
+                border: Border.all(width: 4.0, color: _borderColour!),
+                borderRadius: c.commonBorderRadius,
+                color: widget.isSelected ? widget.selectedDecorColour.background : colours.secondaryContainer,
+              ),
 
-            child: ClipRRect(
-              borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
-              child: Icon(
-                widget.decor.icon,
-                size: _sideLength - 8,
-                color: widget.isSelected
-                    ? widget.selectedDecorColour.controlForeground
-                    : colours.onSecondaryContainer,
+              child: ClipRRect(
+                borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
+                child: Icon(
+                  widget.decor.icon,
+                  size: _sideLength - 8,
+                  color: widget.isSelected
+                      ? widget.selectedDecorColour.controlForeground
+                      : colours.onSecondaryContainer,
+                ),
               ),
             ),
           ),

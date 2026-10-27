@@ -20,7 +20,7 @@ class WelcomeDialog extends StatelessWidget {
         ],
       ),
       content: Padding(
-        padding: c.DialogMetrics.contentPadding,
+        padding: c.DialogMetrics.contentPaddingSymmetrical,
         child: Column(
           crossAxisAlignment: .center,
           mainAxisAlignment: .start,

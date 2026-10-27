@@ -23,8 +23,8 @@ final class EnsureSolvableSetting extends StatelessWidget {
           trailing: Switch(
             value: session.ensureSolvable,
             onChanged: (v) => session.ensureSolvable = v,
-            thumbIcon: const WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.algorithm16),
+            thumbIcon: WidgetStateProperty.fromMap({
+              WidgetState.selected: Icon(CustomIcons.algorithm16, color: context.colours.primary),
               WidgetState.any: Icon(CustomIcons.random16),
             }),
           ),

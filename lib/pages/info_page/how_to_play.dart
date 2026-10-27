@@ -43,10 +43,10 @@ class HowToPlay extends StatelessWidget {
           const SizedBox(height: 12.0),
           FastRichText(text: s.howToP07, textStyle: paragraphStyle, italicTextStyle: italic),
           Row(
-            spacing: 6.0,
+            spacing: 12.0,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 4.0),
+              SizedBox(),
               FastRichText(text: "\u2022", textStyle: paragraphStyle, italicTextStyle: italic),
               Flexible(
                 child: FastRichText(text: s.howToP08, textStyle: paragraphStyle, italicTextStyle: italic),
@@ -54,10 +54,10 @@ class HowToPlay extends StatelessWidget {
             ],
           ),
           Row(
-            spacing: 6.0,
+            spacing: 12.0,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 4.0),
+              SizedBox(),
               FastRichText(text: "\u2022", textStyle: paragraphStyle, italicTextStyle: italic),
               Flexible(
                 child: FastRichText(text: s.howToP09, textStyle: paragraphStyle, italicTextStyle: italic),
@@ -65,10 +65,10 @@ class HowToPlay extends StatelessWidget {
             ],
           ),
           Row(
-            spacing: 6.0,
+            spacing: 12.0,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 4.0),
+              SizedBox(),
               FastRichText(text: "\u2022", textStyle: paragraphStyle, italicTextStyle: italic),
               Flexible(
                 child: FastRichText(text: s.howToP10, textStyle: paragraphStyle, italicTextStyle: italic),

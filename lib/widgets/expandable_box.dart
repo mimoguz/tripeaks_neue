@@ -19,34 +19,39 @@ class const ExpandableBox({
       child: AnimatedSize(
         duration: Durations.short3,
         child: ListItemContainer(
-          child: Material(
-            clipBehavior: Clip.antiAlias,
-            color: theme.colorScheme.surfaceContainerHigh,
-            borderRadius: c.commonBorderRadius,
-            elevation: 1.0,
-            shadowColor: c.faintShadowColour,
-            // surfaceTintColor: theme.colorScheme.secondaryContainer,
+          child: Container(
+            decoration: BoxDecoration(
+              color: theme.brightness == .dark
+                  ? theme.colorScheme.surfaceContainerHigh
+                  : theme.colorScheme.surfaceContainerLowest,
+              borderRadius: c.commonBorderRadius,
+              boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 2.5, offset: Offset(0, 1))],
+            ),
+            clipBehavior: .antiAlias,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
-                  onTap: onTap,
-                  borderRadius: c.commonBorderRadius,
-                  child: Padding(
-                    padding: c.cardPadding,
-                    child: Row(
-                      spacing: c.cardPaddingHorizontal,
-                      children: [
-                        ?icon,
-                        Expanded(
-                          child: DefaultTextStyle(style: theme.textTheme.titleMedium!, child: title),
-                        ),
-                        Icon(
-                          expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-                          size: 24.0,
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
-                      ],
+                Material(
+                  type: .transparency,
+                  child: InkWell(
+                    onTap: onTap,
+                    borderRadius: expanded ? _expandedRadius : c.commonBorderRadius,
+                    child: Padding(
+                      padding: c.cardPadding,
+                      child: Row(
+                        spacing: c.cardPaddingHorizontal,
+                        children: [
+                          ?icon,
+                          Expanded(
+                            child: DefaultTextStyle(style: theme.textTheme.titleMedium!, child: title),
+                          ),
+                          Icon(
+                            expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                            size: 24.0,
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -58,4 +63,9 @@ class const ExpandableBox({
       ),
     );
   }
+
+  static final _expandedRadius = c.commonBorderRadius.copyWith(
+    bottomLeft: Radius.zero,
+    bottomRight: Radius.zero,
+  );
 }

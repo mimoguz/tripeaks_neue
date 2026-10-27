@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -40,9 +41,9 @@ class const ColourSetting({super.key}) extends StatelessWidget {
     final result = await showCommonBottomSheet<DecorColour>(
       context,
       (context) => MyBottomSheet(
-        title: Text(s.decorColourTitle),
+        title: Text(s.decorColourTitle, overflow: .fade, softWrap: false, maxLines: 1),
         content: Padding(
-          padding: c.DialogMetrics.bottomSheetContentPadding,
+          padding: c.DialogMetrics.contentPadding,
           child: Row(
             children: [
               Expanded(
@@ -55,6 +56,7 @@ class const ColourSetting({super.key}) extends StatelessWidget {
                         ColourSwatch(
                           colour: colour,
                           isSelected: settings.decorColour == colour,
+                          strings: s,
                           onTap: () => Navigator.pop(context, colour),
                         ),
                     ],
@@ -76,6 +78,7 @@ class const ColourSwatch({
   super.key,
   required final DecorColour colour,
   required final bool isSelected,
+  required final AppLocalizations strings,
   final VoidCallback? onTap,
 }) extends StatefulWidget {
   @override
@@ -103,34 +106,45 @@ class _ColourSwatchState extends State<ColourSwatch> {
     final fill = widget.colour.background;
     final foreground = widget.colour.controlForeground;
     _borderColour = _focus.hasFocus ? context.colours.onSurface : Colors.transparent;
-    return Material(
-      type: MaterialType.transparency,
-      child: SizedBox(
-        width: 42,
-        height: 42,
-        child: Stack(
-          children: [
-            InkWell(
-              focusNode: _focus,
-              borderRadius: BorderRadius.circular(100),
-              onTap: widget.onTap,
-              child: Ink(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2.0, color: _borderColour!),
-                  color: fill,
-                ),
-                child: Center(
-                  child: AnimatedSwitcher(
-                    duration: Durations.medium1,
-                    child: widget.isSelected
-                        ? Icon(Icons.radio_button_checked, key: const ValueKey("selected"), color: foreground)
-                        : Icon(Icons.radio_button_off, key: const ValueKey("unselected"), color: foreground),
+    return Tooltip(
+      message: widget.colour.label(widget.strings),
+      child: Material(
+        type: MaterialType.transparency,
+        child: SizedBox(
+          width: 42,
+          height: 42,
+          child: Stack(
+            children: [
+              InkWell(
+                focusNode: _focus,
+                borderRadius: BorderRadius.circular(100),
+                onTap: widget.onTap,
+                child: Ink(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2.0, color: _borderColour!),
+                    color: fill,
+                  ),
+                  child: Center(
+                    child: AnimatedSwitcher(
+                      duration: Durations.medium1,
+                      child: widget.isSelected
+                          ? Icon(
+                              Icons.radio_button_checked,
+                              key: const ValueKey("selected"),
+                              color: foreground,
+                            )
+                          : Icon(
+                              Icons.radio_button_off,
+                              key: const ValueKey("unselected"),
+                              color: foreground,
+                            ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

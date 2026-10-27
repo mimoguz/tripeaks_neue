@@ -33,7 +33,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
     final result = await showCommonBottomSheet<SuitIconTheme>(
       context,
       (context) => MySelectionSheet<SuitIconTheme>(
-        title: Text(s.suitIconsTitle),
+        title: Text(s.suitIconsTitle, overflow: .fade, softWrap: false, maxLines: 1),
         selected: settings.suitIconTheme,
         values: SuitIconTheme.values,
         itemBuilder: (v) => SuitVariantRow(v, v == settings.suitIconTheme, s),
@@ -60,24 +60,13 @@ class const SuitVariantRow(
       padding: _padding,
       child: Row(
         mainAxisAlignment: .start,
+        spacing: 4.0,
         children: [
+          Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
+          Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
+          Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
+          Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
           Flexible(
-            flex: 3,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 192),
-              child: Row(
-                mainAxisAlignment: .spaceBetween,
-                children: [
-                  Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
-                  Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
-                  Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
-                  Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
-                ],
-              ),
-            ),
-          ),
-          Flexible(
-            flex: 2,
             child: Padding(
               padding: EdgeInsetsGeometry.only(left: 8.0),
               child: Text(_valueLabel(variant, s), overflow: .fade, maxLines: 1),

@@ -344,7 +344,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
             return MyDialog(
               title: Text(s.caution),
               content: Padding(
-                padding: c.DialogMetrics.contentPadding,
+                padding: c.DialogMetrics.contentPaddingSymmetrical,
                 child: Text(s.overwriteStatisticsWarning),
               ),
               actionsAlignment: .end,
@@ -437,7 +437,10 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
         final colours = context.colours;
         return MyDialog(
           title: Text(s.caution),
-          content: Padding(padding: c.DialogMetrics.contentPadding, child: Text(s.clearStatisticsWarning)),
+          content: Padding(
+            padding: c.DialogMetrics.contentPaddingSymmetrical,
+            child: Text(s.clearStatisticsWarning),
+          ),
           actionsAlignment: .end,
           actions: [
             FilledButton(

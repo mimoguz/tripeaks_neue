@@ -60,41 +60,48 @@ final class const MyBottomSheet({
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Material(
-      color: theme.colorScheme.dialogBackground,
-      shape: c.DialogMetrics.bottomSheetShape,
-      elevation: 6.0,
-      shadowColor: theme.shadowColor,
-      child: Column(
-        mainAxisSize: .min,
-        children: [
-          Padding(
-            padding: c.DialogMetrics.titlePadding,
-            child: Row(
-              mainAxisAlignment: .spaceBetween,
-              children: [
-                DefaultTextStyle(style: theme.textTheme.headlineSmall!, child: title),
-                CloseButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: theme.colorScheme.faintButtonBackground,
-                    foregroundColor: theme.colorScheme.faintButttonIcon,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          DialogDivider(),
-          Flexible(child: SingleChildScrollView(child: content)),
-          if (actions != null && actions!.isNotEmpty) ...[
-            DialogDivider(),
+    final height = (MediaQuery.heightOf(context) * 0.33).floorToDouble();
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: height),
+      child: Material(
+        color: theme.colorScheme.sheetBackground,
+        shape: c.DialogMetrics.bottomSheetShape,
+        elevation: 6.0,
+        shadowColor: theme.shadowColor,
+        child: Column(
+          mainAxisSize: .min,
+          children: [
             Padding(
-              padding: c.DialogMetrics.safeActionsPadding,
-              child: Row(mainAxisAlignment: .end, spacing: 16.0, children: actions!),
+              padding: c.DialogMetrics.titlePadding,
+              child: Row(
+                mainAxisAlignment: .spaceBetween,
+                spacing: 4.0,
+                children: [
+                  Flexible(
+                    child: DefaultTextStyle(style: theme.textTheme.headlineSmall!, child: title),
+                  ),
+                  CloseButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: theme.colorScheme.faintButtonBackground,
+                      foregroundColor: theme.colorScheme.faintButttonIcon,
+                    ),
+                  ),
+                ],
+              ),
             ),
+            DialogDivider(),
+            Flexible(child: SingleChildScrollView(child: content)),
+            if (actions != null && actions!.isNotEmpty) ...[
+              DialogDivider(),
+              Padding(
+                padding: c.DialogMetrics.safeActionsPadding,
+                child: Row(mainAxisAlignment: .end, spacing: 16.0, children: actions!),
+              ),
+            ],
+            if (actions == null || actions!.isEmpty)
+              SizedBox(height: c.DialogMetrics.safeActionsPadding.bottom),
           ],
-          if (actions == null || actions!.isEmpty)
-            SizedBox(height: c.DialogMetrics.safeActionsPadding.bottom),
-        ],
+        ),
       ),
     );
   }

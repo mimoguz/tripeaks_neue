@@ -36,8 +36,9 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
               actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
               title: AppTitle(),
               leading: const CloseButton(),
-              shadowColor: colours.shadow,
+              shadowColor: c.faintShadowColour,
               surfaceTintColor: colours.surfaceContainerLow,
+              scrolledUnderElevation: 2.0,
               actions: [
                 IconButton(
                   icon: const Icon(Icons.help),

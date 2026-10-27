@@ -33,7 +33,7 @@ class ThemeModeSetting extends StatelessWidget {
     final result = await showCommonBottomSheet<ThemeMode>(
       context,
       (context) => MySelectionSheet(
-        title: Text(s.themeModeTitle),
+        title: Text(s.themeModeTitle, overflow: .fade, softWrap: false, maxLines: 1),
         selected: settings.themeMode,
         values: ThemeMode.values,
         itemBuilder: (v) => Text(_valueLabel(v, s)),

@@ -67,14 +67,17 @@ abstract final class DialogMetrics {
     horizontalPadding,
     verticalPadding + 20.0,
   );
-  static const contentPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: sectionSpacing);
-  static const contentPaddingTight = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0.0);
-  static const bottomSheetContentPadding = EdgeInsets.fromLTRB(
+  static const contentPadding = EdgeInsets.fromLTRB(
     horizontalPadding,
     verticalPadding,
     horizontalPadding,
     0.0,
   );
+  static const contentPaddingSymmetrical = EdgeInsets.symmetric(
+    horizontal: horizontalPadding,
+    vertical: sectionSpacing,
+  );
+  static const contentPaddingTight = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0.0);
 
   static const subtitlePadding = EdgeInsets.fromLTRB(
     horizontalPadding,

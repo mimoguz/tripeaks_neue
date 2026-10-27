@@ -31,7 +31,7 @@ extension DecorExt on Decor {
     Decor.solar => CustomIcons.backSolar,
   };
 
-  String name(AppLocalizations s) => switch (this) {
+  String label(AppLocalizations s) => switch (this) {
     Decor.checkered => s.checkeredDecorLabel,
     Decor.dotMatrix => s.dotMatrixDecorLabel,
     Decor.ennui => s.ennuiDecorLabel,

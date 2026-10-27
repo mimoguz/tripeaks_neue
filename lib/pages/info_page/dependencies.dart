@@ -5,7 +5,7 @@ import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/external_link.dart';
-import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class const Dependencies({super.key}) extends StatelessWidget {
@@ -26,7 +26,10 @@ class const Dependencies({super.key}) extends StatelessWidget {
             package: _extendedDependencies[index],
             isDirectDependency: _directDependencies.contains(_extendedDependencies[index].name),
           ),
-          separatorBuilder: (context, index) => const GroupTileDivider(padding: EdgeInsets.zero),
+          separatorBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: c.itemSpacing * 0.5),
+            child: const DialogDivider(),
+          ),
         ),
       ),
     );
@@ -62,10 +65,7 @@ final class const DependencyEntry({
               children: [
                 DependencyStatusChip(isDirectDependency),
                 if (package.license != null)
-                  FilledButton.tonal(
-                    onPressed: () => _showLicense(context),
-                    child: Text(s.showLicenseAction),
-                  ),
+                  TextButton(onPressed: () => _showLicense(context), child: Text(s.showLicenseAction)),
               ],
             ),
           ],

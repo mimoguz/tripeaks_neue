@@ -33,7 +33,7 @@ class LayoutSetting extends StatelessWidget {
     final result = await showCommonBottomSheet<Peaks>(
       context,
       (context) => MySelectionSheet<Peaks>(
-        title: Text(s.layoutTitle),
+        title: Text(s.layoutTitle, overflow: .fade, softWrap: false, maxLines: 1),
         selected: session.layout,
         values: Peaks.values,
         itemBuilder: (v) => Text(v.label(s)),
