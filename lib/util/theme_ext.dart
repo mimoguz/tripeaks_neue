@@ -10,4 +10,9 @@ extension ContextExt on BuildContext {
 
 extension ColorSchemeExt on ColorScheme {
   Color get barrier => surfaceContainerLow.withAlpha(130);
+  Color get dialogBackground => surfaceContainerHighest;
+  Color get faintButtonBackground => onSurface.withAlpha(25);
+  Color get faintButtonForeground => onSurface;
+  Color get faintButttonIcon => onSurfaceVariant;
+  Color get faintDivider => onSurface.withAlpha(40);
 }

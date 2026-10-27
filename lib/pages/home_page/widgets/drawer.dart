@@ -14,6 +14,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
   Widget build(BuildContext context) {
     final colours = context.colours;
     final s = context.strings;
+    final div = colours.faintDivider;
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
       // surfaceTintColor: colours.surfaceTint,
@@ -81,13 +82,13 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
                     title: s.restartGameAction,
                     intent: const RestartIntent(),
                   ),
-                  const Divider(indent: 20, endIndent: 20),
+                  Divider(indent: 20, endIndent: 20, color: div),
                   DrawerListTile(
                     icon: CustomIcons.doughnutChart,
                     title: s.statisticsAction,
                     intent: const NavigateToStatisticsIntent(),
                   ),
-                  if (canExit) const Divider(indent: 20, endIndent: 20),
+                  if (canExit) Divider(indent: 20, endIndent: 20, color: div),
                   if (canExit)
                     DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
                 ],

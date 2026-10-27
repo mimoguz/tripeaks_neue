@@ -67,7 +67,7 @@ Future<T?> showCommonBottomSheet<T>(BuildContext context, Widget Function(BuildC
   return showModalBottomSheet<T>(
     context: context,
     barrierColor: colours.barrier,
-    backgroundColor: colours.surfaceContainerHighest,
+    backgroundColor: colours.dialogBackground,
     shape: c.DialogMetrics.bottomSheetShape,
     elevation: 4.0,
 

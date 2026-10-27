@@ -358,8 +358,8 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
                   onPressed: () => Navigator.pop<bool>(context, true),
                   style: TextButton.styleFrom(
                     shadowColor: Colors.transparent,
-                    backgroundColor: colours.outlineVariant,
-                    foregroundColor: colours.onSurface,
+                    backgroundColor: colours.faintButtonBackground,
+                    foregroundColor: colours.faintButtonForeground,
                   ),
                   child: Text(s.continueAction),
                 ),
@@ -449,8 +449,8 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
               onPressed: () => Navigator.pop<bool>(context, true),
               style: TextButton.styleFrom(
                 shadowColor: Colors.transparent,
-                backgroundColor: colours.outlineVariant,
-                foregroundColor: colours.onSurface,
+                backgroundColor: colours.faintButtonBackground,
+                foregroundColor: colours.faintButtonForeground,
               ),
               child: Text(s.continueAction),
             ),
