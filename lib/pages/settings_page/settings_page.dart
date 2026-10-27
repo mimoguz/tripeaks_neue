@@ -16,7 +16,7 @@ import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/group_title.dart';
-import 'package:tripeaks_neue/widgets/my_dialog.dart';
+import 'package:tripeaks_neue/widgets/panel_divider.dart';
 import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 final class SettingsPage extends StatefulWidget {
@@ -124,9 +124,9 @@ final class SettingsPageBody extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             children: [
                               LayoutSetting(),
-                              DialogDivider(),
+                              PanelDivider(),
                               StartEmptySetting(),
-                              DialogDivider(),
+                              PanelDivider(),
                               EnsureSolvableSetting(),
                             ],
                           ),
@@ -136,13 +136,13 @@ final class SettingsPageBody extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             children: [
                               SoundSetting(),
-                              DialogDivider(),
+                              PanelDivider(),
                               ThemeModeSetting(),
-                              DialogDivider(),
+                              PanelDivider(),
                               SuitIconSetting(),
-                              DialogDivider(),
+                              PanelDivider(),
                               ColourSetting(),
-                              DialogDivider(),
+                              PanelDivider(),
                               DecorSetting(),
                             ],
                           ),

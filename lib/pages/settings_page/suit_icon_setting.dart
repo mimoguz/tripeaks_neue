@@ -6,7 +6,6 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
-import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 

@@ -113,6 +113,6 @@ final class DialogDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = Theme.of(context).colorScheme;
-    return Divider(height: 1.0, color: colours.faintDivider);
+    return Divider(height: 1.0, color: colours.dialogDivider);
   }
 }

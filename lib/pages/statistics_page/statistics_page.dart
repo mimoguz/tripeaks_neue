@@ -78,7 +78,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
-                            color: colours.surfaceBright,
+                            color: colours.dialogBackground,
                             elevation: 4.0,
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
@@ -159,7 +159,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ],
         ),
       ),
-      PopupMenuDivider(color: colours.faintDivider),
+      PopupMenuDivider(color: colours.dialogDivider),
       PopupMenuItem<Never>(
         onTap: Actions.handler(context, const ClearStatsIntent()),
         child: Row(

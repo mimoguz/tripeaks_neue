@@ -15,5 +15,6 @@ extension ColorSchemeExt on ColorScheme {
   Color get faintButtonBackground => onSurface.withAlpha(25);
   Color get faintButtonForeground => onSurface;
   Color get faintButttonIcon => onSurfaceVariant;
-  Color get faintDivider => onSurface.withAlpha(40);
+  Color get dialogDivider => onSurface.withAlpha(40);
+  Color get panelDivider => surfaceDim;
 }

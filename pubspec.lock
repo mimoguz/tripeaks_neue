@@ -458,7 +458,7 @@ packages:
     description:
       path: "."
       ref: dialogs
-      resolved-ref: ac64b80a893b50caa7641be9c3e1ffcbd7ae81c6
+      resolved-ref: bd02e4722e97f480a46bf5cd16fc0c96b157e007
       url: "https://github.com/mimoguz/handy_window.dart"
     source: git
     version: "0.4.2"
