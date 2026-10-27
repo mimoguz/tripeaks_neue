@@ -5,7 +5,6 @@ import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
-import 'package:tripeaks_neue/widgets/my_selection_tiles.dart';
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
@@ -31,10 +30,10 @@ class LayoutSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Session session) async {
     final s = context.strings;
-    final result = await showCommonDialog<Peaks>(
+    final result = await showCommonBottomSheet<Peaks>(
       context,
-      (context) => MySelectionDialog<Peaks>(
-        title: Text(s.layoutControl),
+      (context) => MySelectionSheet<Peaks>(
+        title: Text(s.layoutTitle),
         selected: session.layout,
         values: Peaks.values,
         itemBuilder: (v) => Text(v.label(s)),

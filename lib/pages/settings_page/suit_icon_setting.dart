@@ -29,10 +29,10 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<SuitIconTheme>(
+    final result = await showCommonBottomSheet<SuitIconTheme>(
       context,
-      (context) => MySelectionDialog<SuitIconTheme>(
-        title: Text(s.suitIconsControl),
+      (context) => MySelectionSheet<SuitIconTheme>(
+        title: Text(s.suitIconsTitle),
         selected: settings.suitIconTheme,
         values: SuitIconTheme.values,
         itemBuilder: (v) => SuitVariantRow(v, v == settings.suitIconTheme, s),

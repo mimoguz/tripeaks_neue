@@ -121,6 +121,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeModeControl => 'Theme mode';
 
   @override
+  String get themeModeTitle => 'Theme Mode';
+
+  @override
   String get systemThemeModeLabel => 'System';
 
   @override
@@ -131,6 +134,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get layoutControl => 'Board layout';
+
+  @override
+  String get layoutTitle => 'Board Layout';
 
   @override
   String get threePeaksLayoutLabel => 'Three Peaks';
@@ -160,6 +166,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get decorControl => 'Card back decoration';
 
   @override
+  String get decorTitle => 'Card Back Decoration';
+
+  @override
   String get checkeredDecorLabel => 'Checkered';
 
   @override
@@ -184,6 +193,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get decorColourControl => 'Card back colour';
 
   @override
+  String get decorColourTitle => 'Card Back Colour';
+
+  @override
   String get redColourLabel => 'Red';
 
   @override
@@ -206,6 +218,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get suitIconsControl => 'Suit icons';
+
+  @override
+  String get suitIconsTitle => 'Suit Icons';
 
   @override
   String get suitIconVariant1Label => 'First Draft';

@@ -313,6 +313,12 @@ abstract class AppLocalizations {
   /// **'Theme mode'**
   String get themeModeControl;
 
+  /// Title of a control that selects application theme mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Mode'**
+  String get themeModeTitle;
+
   /// Value label of themeMode control when it is set to system.
   ///
   /// In en, this message translates to:
@@ -336,6 +342,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Board layout'**
   String get layoutControl;
+
+  /// Title of a control that selects game layout theme mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Board Layout'**
+  String get layoutTitle;
 
   /// Value label of layout selection control when it is set to 'threePeaks'.
   ///
@@ -391,6 +403,12 @@ abstract class AppLocalizations {
   /// **'Card back decoration'**
   String get decorControl;
 
+  /// Title of a control that sets the decoration that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Back Decoration'**
+  String get decorTitle;
+
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
@@ -439,6 +457,12 @@ abstract class AppLocalizations {
   /// **'Card back colour'**
   String get decorColourControl;
 
+  /// Title of a control that sets the colour that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Back Colour'**
+  String get decorColourTitle;
+
   /// Label of a decoration colour variant.
   ///
   /// In en, this message translates to:
@@ -486,6 +510,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Suit icons'**
   String get suitIconsControl;
+
+  /// Title of a control that sets the suit icon theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Suit Icons'**
+  String get suitIconsTitle;
 
   /// Label of the first icon theme variant.
   ///

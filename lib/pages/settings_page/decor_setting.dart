@@ -44,27 +44,24 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<int>(
+    final result = await showCommonBottomSheet<int>(
       context,
-      (context) => MyDialog(
-        title: Text(s.decorControl),
+      (context) => MyBottomSheet(
+        title: Text(s.decorTitle),
         content: Padding(
-          padding: c.DialogMetrics.contentPadding,
-          child: ConstrainedBox(
-            constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + c.itemSpacing * 2)),
-            child: Wrap(
-              spacing: c.itemSpacing,
-              runSpacing: c.itemSpacing,
-              children: [
-                for (final (index, decor) in Decor.values.indexed)
-                  DecorItem(
-                    decor: decor,
-                    isSelected: settings.decor == decor,
-                    onTap: () => Navigator.pop(context, index),
-                    selectedDecorColour: settings.decorColour,
-                  ),
-              ],
-            ),
+          padding: c.DialogMetrics.bottomSheetContentPadding,
+          child: Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: [
+              for (final (index, decor) in Decor.values.indexed)
+                DecorItem(
+                  decor: decor,
+                  isSelected: settings.decor == decor,
+                  onTap: () => Navigator.pop(context, index),
+                  selectedDecorColour: settings.decorColour,
+                ),
+            ],
           ),
         ),
       ),
@@ -138,7 +135,7 @@ class _DecorItemState extends State<DecorItem> {
               borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
               child: Icon(
                 widget.decor.icon,
-                size: _sideLength - 4,
+                size: _sideLength - 8,
                 color: widget.isSelected
                     ? widget.selectedDecorColour.controlForeground
                     : colours.onSecondaryContainer,

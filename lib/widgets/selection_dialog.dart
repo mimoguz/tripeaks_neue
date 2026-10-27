@@ -126,3 +126,29 @@ class const MySelectionDialog<T>({
     );
   }
 }
+
+class const MySelectionSheet<T>({
+  super.key,
+  required final List<T> values,
+  required final T selected,
+  required final Widget title,
+  required final Widget Function(T) itemBuilder,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MyBottomSheet(
+      title: title,
+      content: Column(
+        children: [
+          for (final v in values)
+            MyRadioListTile(
+              value: v,
+              isChecked: v == selected,
+              label: itemBuilder(v),
+              onTap: (v) => Navigator.pop(context, v),
+            ),
+        ],
+      ),
+    );
+  }
+}

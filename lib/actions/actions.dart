@@ -21,6 +21,7 @@ import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
@@ -339,20 +340,27 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
         if (context.mounted) {
           final dialogResult = await showCommonDialog<bool>(context, (context) {
             final s = context.strings;
-            return CommonDialog(
+            final colours = context.colours;
+            return MyDialog(
               title: Text(s.caution),
               content: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
+                padding: c.DialogMetrics.contentPadding,
                 child: Text(s.overwriteStatisticsWarning),
               ),
+              actionsAlignment: .end,
               actions: [
-                TextButton(
+                FilledButton(
                   onPressed: () => Navigator.pop<bool>(context, false),
-                  style: TextButton.styleFrom(foregroundColor: context.colours.error),
+                  style: FilledButton.styleFrom(shadowColor: Colors.transparent),
                   child: Text(s.cancelAction),
                 ),
-                TextButton(
+                FilledButton.tonal(
                   onPressed: () => Navigator.pop<bool>(context, true),
+                  style: TextButton.styleFrom(
+                    shadowColor: Colors.transparent,
+                    backgroundColor: colours.outlineVariant,
+                    foregroundColor: colours.onSurface,
+                  ),
                   child: Text(s.continueAction),
                 ),
               ],
@@ -426,19 +434,26 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
     if (context.mounted) {
       final dialogResult = await showCommonDialog<bool>(context, (context) {
         final s = context.strings;
-        return CommonDialog(
+        final colours = context.colours;
+        return MyDialog(
           title: Text(s.caution),
-          content: Padding(
-            padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),
-            child: Text(s.clearStatisticsWarning),
-          ),
+          content: Padding(padding: c.DialogMetrics.contentPadding, child: Text(s.clearStatisticsWarning)),
+          actionsAlignment: .end,
           actions: [
-            TextButton(
+            FilledButton(
               onPressed: () => Navigator.pop<bool>(context, false),
-              style: TextButton.styleFrom(foregroundColor: context.colours.error),
+              style: FilledButton.styleFrom(shadowColor: Colors.transparent),
               child: Text(s.cancelAction),
             ),
-            TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text(s.continueAction)),
+            FilledButton.tonal(
+              onPressed: () => Navigator.pop<bool>(context, true),
+              style: TextButton.styleFrom(
+                shadowColor: Colors.transparent,
+                backgroundColor: colours.outlineVariant,
+                foregroundColor: colours.onSurface,
+              ),
+              child: Text(s.continueAction),
+            ),
           ],
         );
       });

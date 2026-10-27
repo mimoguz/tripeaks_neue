@@ -37,12 +37,12 @@ class const ColourSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<int>(
+    final result = await showCommonBottomSheet<DecorColour>(
       context,
-      (context) => MyDialog(
-        title: Text(s.decorColourControl),
+      (context) => MyBottomSheet(
+        title: Text(s.decorColourTitle),
         content: Padding(
-          padding: c.DialogMetrics.contentPadding,
+          padding: c.DialogMetrics.bottomSheetContentPadding,
           child: Row(
             children: [
               Expanded(
@@ -51,11 +51,11 @@ class const ColourSetting({super.key}) extends StatelessWidget {
                     spacing: c.itemSpacing,
                     runSpacing: c.itemSpacing,
                     children: [
-                      for (final (index, colour) in DecorColour.values.indexed)
+                      for (final colour in DecorColour.values)
                         ColourSwatch(
                           colour: colour,
                           isSelected: settings.decorColour == colour,
-                          onTap: () => Navigator.pop(context, index),
+                          onTap: () => Navigator.pop(context, colour),
                         ),
                     ],
                   ),
@@ -66,8 +66,8 @@ class const ColourSetting({super.key}) extends StatelessWidget {
         ),
       ),
     );
-    if (result != null && result >= 0) {
-      settings.decorColour = DecorColour.values[result];
+    if (result != null) {
+      settings.decorColour = result;
     }
   }
 }

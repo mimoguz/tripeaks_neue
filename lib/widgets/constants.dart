@@ -61,8 +61,21 @@ abstract final class DialogMetrics {
     horizontalPadding,
     verticalPadding,
   );
+  static const safeActionsPadding = EdgeInsets.fromLTRB(
+    horizontalPadding,
+    sectionSpacing,
+    horizontalPadding,
+    verticalPadding + 20.0,
+  );
   static const contentPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: sectionSpacing);
   static const contentPaddingTight = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0.0);
+  static const bottomSheetContentPadding = EdgeInsets.fromLTRB(
+    horizontalPadding,
+    verticalPadding,
+    horizontalPadding,
+    0.0,
+  );
+
   static const subtitlePadding = EdgeInsets.fromLTRB(
     horizontalPadding,
     sectionSpacing,
@@ -70,4 +83,7 @@ abstract final class DialogMetrics {
     sectionSpacing / 2,
   );
   static const shape = RoundedRectangleBorder(borderRadius: commonBorderRadius);
+  static const bottomSheetShape = RoundedRectangleBorder(
+    borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(commonRadius)),
+  );
 }

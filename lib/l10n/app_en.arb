@@ -231,6 +231,12 @@
         "context": "settings:themeModeSetting",
         "description": "Label of a control that sets application theme mode."
     },
+    "themeModeTitle": "Theme Mode",
+    "@themeModeTitle": {
+        "type": "text",
+        "context": "settings:themeModeSetting",
+        "description": "Title of a control that selects application theme mode."
+    },
     "systemThemeModeLabel": "System",
     "@systemThemeModeLabel": {
         "type": "text",
@@ -255,6 +261,12 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets game layout theme mode."
+    },
+    "layoutTitle": "Board Layout",
+    "@layoutTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of a control that selects game layout theme mode."
     },
     "threePeaksLayoutLabel": "Three Peaks",
     "@threePeaksLayoutLabel": {
@@ -312,6 +324,12 @@
         "context": "settings",
         "description": "Label of a control that sets the decoration that is used on the back of the cards."
     },
+    "decorTitle": "Card Back Decoration",
+    "@decorTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of a control that sets the decoration that is used on the back of the cards."
+    },
     "checkeredDecorLabel": "Checkered",
     "@checkeredDecorLabel": {
         "type": "text",
@@ -359,6 +377,12 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets the colour that is used on the back of the cards."
+    },
+    "decorColourTitle": "Card Back Colour",
+    "@decorColourTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of a control that sets the colour that is used on the back of the cards."
     },
     "redColourLabel": "Red",
     "@redColourLabel": {
@@ -409,6 +433,12 @@
         "type": "text",
         "context": "settings",
         "description": "Label of a control that sets the suit icon theme."
+    },
+    "suitIconsTitle": "Suit Icons",
+    "@suitIconsTitle": {
+        "type": "text",
+        "context": "settings",
+        "description": "Title of a control that sets the suit icon theme."
     },
     "suitIconVariant1Label": "First Draft",
     "@suitIconVariant1Label": {

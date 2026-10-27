@@ -30,10 +30,10 @@ class ThemeModeSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<ThemeMode>(
+    final result = await showCommonBottomSheet<ThemeMode>(
       context,
-      (context) => MySelectionDialog(
-        title: Text(s.themeModeControl),
+      (context) => MySelectionSheet(
+        title: Text(s.themeModeTitle),
         selected: settings.themeMode,
         values: ThemeMode.values,
         itemBuilder: (v) => Text(_valueLabel(v, s)),

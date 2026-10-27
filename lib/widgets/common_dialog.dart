@@ -62,4 +62,17 @@ Future<T?> showCommonDialog<T>(BuildContext context, Widget Function(BuildContex
       transitionBuilder: (context, animation, _, child) => FadeTransition(opacity: animation, child: child),
     );
 
+Future<T?> showCommonBottomSheet<T>(BuildContext context, Widget Function(BuildContext) builder) {
+  final colours = context.colours;
+  return showModalBottomSheet<T>(
+    context: context,
+    barrierColor: colours.barrier,
+    backgroundColor: colours.surfaceContainerHighest,
+    shape: c.DialogMetrics.bottomSheetShape,
+    elevation: 4.0,
+
+    builder: (context) => builder(context),
+  );
+}
+
 const _transitionDuration = Duration(milliseconds: 150);
