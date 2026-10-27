@@ -2,8 +2,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 
 class WelcomeDialog extends StatelessWidget {
   const WelcomeDialog({super.key});
@@ -11,27 +11,23 @@ class WelcomeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
-    return CommonDialog(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 12.0,
+    return MyDialog(
+      title: Row(
+        spacing: 8.0,
         children: [
-          Center(child: Image.asset("images/welcome.png", width: 90, height: 90)),
-          Text(s.welcomeDialogTitle),
+          Image.asset("images/welcome72.png", width: 72, height: 72),
+          Flexible(child: Text(s.welcomeDialogTitle, maxLines: 2, softWrap: false, overflow: .fade)),
         ],
       ),
       content: Padding(
-        padding: const EdgeInsets.fromLTRB(c.dialogPadding, 0.0, c.dialogPadding, c.dialogPadding),
+        padding: c.DialogMetrics.contentPadding,
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: .center,
           mainAxisAlignment: .start,
           mainAxisSize: .min,
-          spacing: c.cellPadding,
+          spacing: c.itemSpacing,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: c.itemSpacing - c.cellPadding),
-              child: Row(children: [Text(s.welcomeDialogMessage)]),
-            ),
+            Text(s.welcomeDialogMessage),
             Row(
               children: [
                 Expanded(

@@ -46,7 +46,7 @@ flutter:
   assets:
     - images/tropy72.png
     - images/empty72.png
-    - images/welcome.png
+    - images/welcome72.png
     - images/card_counter_dark.png
     - images/card_counter_light.png
     - sounds/take1.mp3

@@ -580,7 +580,7 @@ abstract class AppLocalizations {
   /// Title of the welcome dialog.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to TriPeaks NEUE'**
+  /// **'Welcome to\nTriPeaks NEUE'**
   String get welcomeDialogTitle;
 
   /// Welcome dialog body.

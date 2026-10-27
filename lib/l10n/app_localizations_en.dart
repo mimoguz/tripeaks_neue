@@ -253,7 +253,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLayoutDialogNewGameAction => 'New game';
 
   @override
-  String get welcomeDialogTitle => 'Welcome to TriPeaks NEUE';
+  String get welcomeDialogTitle => 'Welcome to\nTriPeaks NEUE';
 
   @override
   String get welcomeDialogMessage => 'Would you like to...';

@@ -502,7 +502,7 @@
         "description": "Label of the new game button of the dialog."
     },
     "@_WELCOME_DIALOG": {},
-    "welcomeDialogTitle": "Welcome to TriPeaks NEUE",
+    "welcomeDialogTitle": "Welcome to\nTriPeaks NEUE",
     "@welcomeDialogTitle": {
         "type": "text",
         "context": "welcomeDialog",

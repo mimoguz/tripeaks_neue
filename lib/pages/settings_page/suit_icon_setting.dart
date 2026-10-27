@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
@@ -59,15 +60,26 @@ class const SuitVariantRow(
       padding: _padding,
       child: Row(
         mainAxisAlignment: .start,
-        spacing: 2.0,
         children: [
-          Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
-          Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
-          Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
-          Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
           Flexible(
+            flex: 3,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 192),
+              child: Row(
+                mainAxisAlignment: .spaceBetween,
+                children: [
+                  Icon(CustomIcons.suitIcon(.hearts, variant), size: _size, color: red),
+                  Icon(CustomIcons.suitIcon(.diamonds, variant), size: _size, color: red),
+                  Icon(CustomIcons.suitIcon(.spades, variant), size: _size, color: black),
+                  Icon(CustomIcons.suitIcon(.clubs, variant), size: _size, color: black),
+                ],
+              ),
+            ),
+          ),
+          Flexible(
+            flex: 2,
             child: Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 4.0),
+              padding: EdgeInsetsGeometry.only(left: 8.0),
               child: Text(_valueLabel(variant, s), overflow: .fade, maxLines: 1),
             ),
           ),

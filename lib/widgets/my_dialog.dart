@@ -15,10 +15,10 @@ class const MyDialog({
     return AlertDialog(
       titleTextStyle: theme.textTheme.headlineSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
       title: Row(
-        mainAxisAlignment: .spaceBetween,
         crossAxisAlignment: .center,
+        spacing: c.DialogMetrics.horizontalPadding,
         children: [
-          title,
+          Expanded(child: title),
           CloseButton(
             style: FilledButton.styleFrom(
               backgroundColor: theme.colorScheme.faintButtonBackground,
