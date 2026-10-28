@@ -102,7 +102,8 @@ class _MainAppState extends State<MainApp> {
       secondaryKey: _secondarySeed,
       tertiaryKey: _tertiarySeed,
       tertiary: Colors.red.shade500,
-      variant: .fidelity,
+      secondaryContainer: Color(0xffe0e6f2),
+      variant: .content,
     ),
   );
 
@@ -121,7 +122,7 @@ class _MainAppState extends State<MainApp> {
       secondaryKey: _secondarySeed,
       tertiaryKey: _tertiarySeed,
       tertiary: Colors.red.shade300,
-      variant: .fidelity,
+      variant: .vivid,
     ),
   );
 
@@ -142,6 +143,26 @@ class _MainAppState extends State<MainApp> {
   static const _primarySeed = Color(0xFF5090EB);
   static const _secondarySeed = Color(0xFF565E6F);
   static const _tertiarySeed = Color(0xFFE53935);
+
+  ThemeData themeFor(Color primaryKey, Brightness brightnes) => ThemeData(
+    useMaterial3: true,
+    tooltipTheme: _tooltipTheme,
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
+        TargetPlatform.values,
+        value: (_) => const FadeForwardsPageTransitionsBuilder(),
+      ),
+    ),
+    colorScheme: SeedColorScheme.fromSeeds(
+      brightness: brightnes,
+      primaryKey: primaryKey,
+      secondaryKey: _secondarySeed,
+      tertiaryKey: _tertiarySeed,
+      tertiary: brightnes == .dark ? Colors.red.shade300 : Colors.red.shade500,
+      secondaryContainer: Color(0xffe0e6f2),
+      variant: .content,
+    ),
+  );
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {

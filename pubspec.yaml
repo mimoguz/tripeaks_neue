@@ -19,7 +19,7 @@ dependencies:
   handy_window: 
     git: 
       url: https://github.com/mimoguz/handy_window.dart
-      ref: dialogs
+      ref: dd4378a2017805ce2be4d3cc4ce62583fce08165
   intl: any
   logger: ^2.8.0
   mobx: ^2.7.0

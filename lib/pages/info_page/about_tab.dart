@@ -22,7 +22,7 @@ class _AboutTabState extends State<AboutTab> with AutomaticKeepAliveClientMixin<
     super.build(context);
     final colours = context.colours;
     return Container(
-      color: colours.surfaceContainerLow,
+      color: colours.pageBackground,
       child: Padding(
         padding: c.utilPageInsets,
         child: Column(

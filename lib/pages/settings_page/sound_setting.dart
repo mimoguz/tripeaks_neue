@@ -25,7 +25,7 @@ final class SoundSetting extends StatelessWidget {
             value: settings.soundOn,
             onChanged: (v) => settings.setSoundOn(v),
             thumbIcon: WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.volumeOn16, color: colours.primary),
+              WidgetState.selected: Icon(CustomIcons.volumeOn16, color: colours.onSurfaceVariant),
               WidgetState.any: Icon(CustomIcons.volumeOff16),
             }),
           ),

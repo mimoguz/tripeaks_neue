@@ -25,7 +25,7 @@ final class ShowAllSetting extends StatelessWidget {
             value: session.showAll,
             onChanged: (v) => session.showAll = v,
             thumbIcon: WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.visible16, color: colours.primary),
+              WidgetState.selected: Icon(CustomIcons.visible16, color: colours.onSurfaceVariant),
               WidgetState.any: Icon(CustomIcons.invisible16),
             }),
           ),

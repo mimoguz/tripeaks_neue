@@ -72,8 +72,8 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: theme.colorScheme.surfaceContainerLow,
-                  surfaceTintColor: theme.colorScheme.surfaceContainerLow,
+                  backgroundColor: theme.colorScheme.pageBackground,
+                  surfaceTintColor: theme.colorScheme.pageBackground,
                   shadowColor: c.faintShadowColour,
                   scrolledUnderElevation: 2.0,
                   leading: BackButton(
@@ -107,7 +107,7 @@ final class SettingsPageBody extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            color: context.colours.surfaceContainerLow,
+            color: context.colours.pageBackground,
             child: Center(
               child: Column(
                 children: [

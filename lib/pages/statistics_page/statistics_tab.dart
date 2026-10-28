@@ -34,7 +34,7 @@ final class const StatisticsTab(this.statistics, {super.key, final bool showLayo
       children: [
         Expanded(
           child: Container(
-            color: colours.surfaceContainerLow,
+            color: colours.pageBackground,
             child: ScrollIndicator(
               child: ListView(
                 primary: true,
@@ -155,7 +155,7 @@ class const OverallStats(final Statistics statistics, {super.key}) extends State
           child: Container(
             width: 112,
             height: 112,
-            decoration: BoxDecoration(color: colours.surfaceContainerHigh, shape: BoxShape.circle),
+            decoration: BoxDecoration(color: colours.panelBackground, shape: BoxShape.circle),
             child: Pie(total: statistics.totalGames, slice: statistics.cleared, size: 96),
           ),
         ),
@@ -180,7 +180,7 @@ class const ScoreCard({
     final gradient = background != null
         ? null
         : LinearGradient(
-            colors: <Color>[colours.surfaceContainerHighest, colours.surfaceContainerHigh],
+            colors: <Color>[colours.surfaceContainerHighest, colours.panelBackground],
             begin: _gradientBegin,
             end: _gradientEnd,
           );

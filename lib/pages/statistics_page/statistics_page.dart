@@ -72,8 +72,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Scaffold(
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
-                        backgroundColor: colours.surfaceContainerLow,
-                        surfaceTintColor: colours.surfaceContainerLow,
+                        backgroundColor: colours.pageBackground,
+                        surfaceTintColor: colours.pageBackground,
                         shadowColor: c.faintShadowColour,
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [

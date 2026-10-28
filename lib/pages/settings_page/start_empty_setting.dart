@@ -27,7 +27,7 @@ final class StartEmptySetting extends StatelessWidget {
             value: session.startEmpty,
             onChanged: (v) => session.startEmpty = v,
             thumbIcon: WidgetStateProperty.fromMap({
-              WidgetState.selected: Icon(CustomIcons.empty16, color: colours.primary),
+              WidgetState.selected: Icon(CustomIcons.empty16, color: colours.onSurfaceVariant),
               WidgetState.any: Icon(CustomIcons.filled16),
             }),
           ),

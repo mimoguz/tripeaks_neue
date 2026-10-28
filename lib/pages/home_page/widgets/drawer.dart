@@ -28,16 +28,16 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
           slivers: [
             SliverAppBar.large(
               pinned: true,
-              backgroundColor: colours.surfaceContainerLow,
+              backgroundColor: colours.pageBackground,
               foregroundColor: colours.onSurfaceVariant,
+              surfaceTintColor: colours.pageBackground,
+              shadowColor: c.faintShadowColour,
               iconTheme: IconThemeData(color: colours.onSurfaceVariant),
               titleSpacing: 0,
               centerTitle: true,
               actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
               title: AppTitle(),
               leading: const CloseButton(),
-              shadowColor: c.faintShadowColour,
-              surfaceTintColor: colours.surfaceContainerLow,
               scrolledUnderElevation: 2.0,
               actions: [
                 IconButton(

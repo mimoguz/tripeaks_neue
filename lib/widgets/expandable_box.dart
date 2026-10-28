@@ -19,44 +19,45 @@ class const ExpandableBox({
       child: AnimatedSize(
         duration: Durations.short3,
         child: ListItemContainer(
-          child: Container(
-            decoration: BoxDecoration(
-              color: theme.brightness == .dark
-                  ? theme.colorScheme.surfaceContainerHigh
-                  : theme.colorScheme.surfaceContainerLowest,
-              borderRadius: c.commonBorderRadius,
-              boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 2.5, offset: Offset(0, 1))],
-            ),
+          child: Material(
+            color: theme.colorScheme.panelBackground,
+            borderRadius: c.commonBorderRadius,
+            shadowColor: c.faintShadowColour,
             clipBehavior: .antiAlias,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Material(
-                  type: .transparency,
-                  child: InkWell(
-                    onTap: onTap,
-                    borderRadius: expanded ? _expandedRadius : c.commonBorderRadius,
-                    child: Padding(
-                      padding: c.cardPadding,
-                      child: Row(
-                        spacing: c.cardPaddingHorizontal,
-                        children: [
-                          ?icon,
-                          Expanded(
-                            child: DefaultTextStyle(style: theme.textTheme.titleMedium!, child: title),
-                          ),
-                          Icon(
-                            expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
-                            size: 24.0,
-                            color: theme.colorScheme.onSurfaceVariant,
-                          ),
-                        ],
+            type: .card,
+            elevation: 1.667,
+            child: Ink(
+              decoration: c.faintPanelBorder,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Material(
+                    type: .transparency,
+                    child: InkWell(
+                      onTap: onTap,
+                      borderRadius: expanded ? _expandedRadius : c.commonBorderRadius,
+                      child: Padding(
+                        padding: c.cardPadding,
+                        child: Row(
+                          spacing: c.cardPaddingHorizontal,
+                          children: [
+                            ?icon,
+                            Expanded(
+                              child: DefaultTextStyle(style: theme.textTheme.titleMedium!, child: title),
+                            ),
+                            Icon(
+                              expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                              size: 24.0,
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                if (child != null && expanded) Flexible(child: child!),
-              ],
+                  if (child != null && expanded) Flexible(child: child!),
+                ],
+              ),
             ),
           ),
         ),

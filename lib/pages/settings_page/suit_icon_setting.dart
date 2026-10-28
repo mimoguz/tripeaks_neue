@@ -76,7 +76,7 @@ class const SuitVariantRow(
     );
   }
 
-  static const _size = 36.0;
+  static const _size = 24.0;
   static const _padding = EdgeInsets.symmetric(vertical: 3);
 }
 

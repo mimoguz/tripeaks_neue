@@ -12,8 +12,10 @@ final class const OnOffIcon({
     final theme = Theme.of(context);
     return AnimatedSwitcher(
       duration: Durations.medium1,
-      transitionBuilder: ((child, animation) =>
-          ScaleTransition(scale: Tween<double>(begin: 0.4, end: 1.0).animate(animation), child: child)),
+      transitionBuilder: ((child, animation) => FadeTransition(
+        opacity: animation,
+        child: ScaleTransition(scale: Tween<double>(begin: 0.4, end: 1.0).animate(animation), child: child),
+      )),
       child: Icon(
         isOn ? onIcon : offIcon,
         color: isOn ? theme.colorScheme.primary : theme.unselectedWidgetColor,

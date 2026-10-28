@@ -13,7 +13,7 @@ class const MyDialog({
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return AlertDialog(
-      titleTextStyle: theme.textTheme.headlineSmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+      titleTextStyle: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant),
       title: Row(
         crossAxisAlignment: .center,
         spacing: c.DialogMetrics.horizontalPadding,
@@ -23,6 +23,8 @@ class const MyDialog({
             style: FilledButton.styleFrom(
               backgroundColor: theme.colorScheme.faintButtonBackground,
               foregroundColor: theme.colorScheme.faintButttonIcon,
+              padding: EdgeInsets.all(2.0),
+              minimumSize: Size.square(32.0),
             ),
           ),
         ],
@@ -63,11 +65,13 @@ final class const MyBottomSheet({
     final height = (MediaQuery.heightOf(context) * 0.33).floorToDouble();
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: height),
-      child: Material(
-        color: theme.colorScheme.sheetBackground,
-        shape: c.DialogMetrics.bottomSheetShape,
-        elevation: 6.0,
-        shadowColor: theme.shadowColor,
+      child: Container(
+        decoration: BoxDecoration(
+          color: theme.colorScheme.sheetBackground,
+          borderRadius: c.DialogMetrics.bottomSheetBorderRadius,
+          border: Border.all(color: c.faintBorderColour),
+          boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 3, offset: Offset(0.0, 1.0))],
+        ),
         child: Column(
           mainAxisSize: .min,
           children: [
@@ -78,19 +82,28 @@ final class const MyBottomSheet({
                 spacing: 4.0,
                 children: [
                   Flexible(
-                    child: DefaultTextStyle(style: theme.textTheme.headlineSmall!, child: title),
+                    child: DefaultTextStyle(
+                      style: theme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                      child: title,
+                    ),
                   ),
                   CloseButton(
                     style: FilledButton.styleFrom(
                       backgroundColor: theme.colorScheme.faintButtonBackground,
                       foregroundColor: theme.colorScheme.faintButttonIcon,
+                      padding: EdgeInsets.all(2.0),
+                      minimumSize: Size.square(32.0),
                     ),
                   ),
                 ],
               ),
             ),
             DialogDivider(),
-            Flexible(child: SingleChildScrollView(child: content)),
+            Flexible(
+              child: SingleChildScrollView(
+                child: Material(type: .transparency, child: content),
+              ),
+            ),
             if (actions != null && actions!.isNotEmpty) ...[
               DialogDivider(),
               Padding(

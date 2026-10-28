@@ -74,7 +74,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
                 child: Container(
-                  color: context.colours.surfaceContainerLow,
+                  color: context.colours.pageBackground,
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all((24.0 * scale).floorToDouble()),

@@ -53,7 +53,7 @@ class _InfoPageState extends State<InfoPage> {
             child: Scaffold(
               appBar: AppBar(
                 title: Text(s.infoPageTitle),
-                backgroundColor: context.colours.surfaceContainerLow,
+                backgroundColor: context.colours.pageBackground,
                 bottom: useVertical
                     ? null
                     : TabBar(

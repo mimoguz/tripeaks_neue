@@ -13,31 +13,32 @@ final class const GroupTile({
   Widget build(BuildContext context) {
     final theme = context.theme;
     return ListItemContainer(
-      child: Container(
-        decoration: BoxDecoration(
-          color: theme.brightness == .dark
-              ? theme.colorScheme.surfaceContainerHigh
-              : theme.colorScheme.surfaceContainerLowest,
-          borderRadius: c.commonBorderRadius,
-          boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 2.5, offset: Offset(0, 1))],
-        ),
+      child: Material(
+        color: theme.colorScheme.panelBackground,
+        borderRadius: c.commonBorderRadius,
+        shadowColor: c.faintShadowColour,
         clipBehavior: .antiAlias,
-        child: Padding(
-          padding: padding ?? c.cardPadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (title != null)
-                Text(
-                  title!,
-                  style: theme.textTheme.titleSmall!.copyWith(
-                    color: theme.colorScheme.outline,
-                    fontWeight: FontWeight.w600,
+        type: .card,
+        elevation: 1.667,
+        child: Ink(
+          decoration: c.faintPanelBorder,
+          child: Padding(
+            padding: padding ?? c.cardPadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (title != null)
+                  Text(
+                    title!,
+                    style: theme.textTheme.titleSmall!.copyWith(
+                      color: theme.colorScheme.outline,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-              if (title != null) const SizedBox(height: 8.0),
-              ...children,
-            ],
+                if (title != null) const SizedBox(height: 8.0),
+                ...children,
+              ],
+            ),
           ),
         ),
       ),

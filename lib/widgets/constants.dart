@@ -21,7 +21,7 @@ const double pagePadding = 24.0;
 const double requiredHeight = 600;
 const double requiredWidth = 1260;
 const double stockShift = 30.0;
-const double utilPageMargin = 6.0;
+const double utilPageMargin = 8.0;
 const double dialogPadding = 20;
 const double verticalTabsThreshold = 500;
 const double radioCorrection = 5.0;
@@ -42,12 +42,22 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
 );
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
-const faintShadowColour = Color(0x80100000);
+const faintShadowColour = Color(0x60100000);
+const faintBorderColour = Color(0x09050505);
+const faintPanelBorder = BoxDecoration(
+  border: Border(
+    top: BorderSide(color: faintBorderColour),
+    bottom: BorderSide(color: faintBorderColour),
+    left: BorderSide(color: faintBorderColour),
+    right: BorderSide(color: faintBorderColour),
+  ),
+  borderRadius: commonBorderRadius,
+);
 
 abstract final class DialogMetrics {
-  static const verticalPadding = 16.0;
-  static const horizontalPadding = 20.0;
-  static const sectionSpacing = 16.0;
+  static const verticalPadding = 12.0;
+  static const horizontalPadding = 16.0;
+  static const sectionSpacing = 10.0;
 
   static const titlePadding = EdgeInsets.fromLTRB(
     horizontalPadding,
@@ -89,4 +99,5 @@ abstract final class DialogMetrics {
   static const bottomSheetShape = RoundedRectangleBorder(
     borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(commonRadius)),
   );
+  static const bottomSheetBorderRadius = BorderRadiusDirectional.vertical(top: Radius.circular(commonRadius));
 }
