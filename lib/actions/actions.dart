@@ -339,32 +339,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
       case ImportSucceeded<PlayerStatistics> succeded:
         if (context.mounted) {
           final dialogResult = await showCommonDialog<bool>(context, (context) {
-            final s = context.strings;
-            final colours = context.colours;
-            return MyDialog(
-              title: Text(s.caution),
-              content: Padding(
-                padding: c.DialogMetrics.contentPaddingSymmetrical,
-                child: Text(s.overwriteStatisticsWarning),
-              ),
-              actionsAlignment: .end,
-              actions: [
-                FilledButton(
-                  onPressed: () => Navigator.pop<bool>(context, false),
-                  style: FilledButton.styleFrom(shadowColor: Colors.transparent),
-                  child: Text(s.cancelAction),
-                ),
-                FilledButton.tonal(
-                  onPressed: () => Navigator.pop<bool>(context, true),
-                  style: TextButton.styleFrom(
-                    shadowColor: Colors.transparent,
-                    backgroundColor: colours.faintButtonBackground,
-                    foregroundColor: colours.faintButtonForeground,
-                  ),
-                  child: Text(s.continueAction),
-                ),
-              ],
-            );
+            return ImportStatsAlertDialog();
           });
           if (!(dialogResult ?? false)) {
             break;
@@ -432,34 +407,7 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
       return;
     }
     if (context.mounted) {
-      final dialogResult = await showCommonDialog<bool>(context, (context) {
-        final s = context.strings;
-        final colours = context.colours;
-        return MyDialog(
-          title: Text(s.caution),
-          content: Padding(
-            padding: c.DialogMetrics.contentPaddingSymmetrical,
-            child: Text(s.clearStatisticsWarning),
-          ),
-          actionsAlignment: .end,
-          actions: [
-            FilledButton(
-              onPressed: () => Navigator.pop<bool>(context, false),
-              style: FilledButton.styleFrom(shadowColor: Colors.transparent),
-              child: Text(s.cancelAction),
-            ),
-            FilledButton.tonal(
-              onPressed: () => Navigator.pop<bool>(context, true),
-              style: TextButton.styleFrom(
-                shadowColor: Colors.transparent,
-                backgroundColor: colours.faintButtonBackground,
-                foregroundColor: colours.faintButtonForeground,
-              ),
-              child: Text(s.continueAction),
-            ),
-          ],
-        );
-      });
+      final dialogResult = await showCommonDialog<bool>(context, (context) => ClearStatsAlertDialog());
       if (!(dialogResult ?? false)) {
         return;
       }
@@ -475,4 +423,80 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
   }
 
   final Logger _logger = Logger();
+}
+
+final class const ClearStatsAlertDialog({super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    final colours = context.colours;
+    return MyDialog(
+      title: Row(
+        spacing: 8.0,
+        children: [
+          Icon(Icons.warning, color: colours.onSurfaceVariant),
+          Text(s.caution),
+        ],
+      ),
+      content: Padding(
+        padding: c.DialogMetrics.contentPaddingSymmetrical,
+        child: Text(s.clearStatisticsWarning),
+      ),
+      actionsAlignment: .end,
+      actions: [
+        FilledButton(
+          onPressed: () => Navigator.pop<bool>(context, false),
+          style: FilledButton.styleFrom(shadowColor: Colors.transparent),
+          child: Text(s.cancelAction),
+        ),
+        FilledButton.tonal(
+          onPressed: () => Navigator.pop<bool>(context, true),
+          style: TextButton.styleFrom(
+            shadowColor: Colors.transparent,
+            backgroundColor: colours.faintButtonBackground,
+            foregroundColor: colours.faintButtonForeground,
+          ),
+          child: Text(s.continueAction),
+        ),
+      ],
+    );
+  }
+}
+
+final class const ImportStatsAlertDialog({super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    final colours = context.colours;
+    return MyDialog(
+      title: Row(
+        spacing: 8.0,
+        children: [
+          Icon(Icons.warning, color: colours.onSurfaceVariant),
+          Text(s.caution),
+        ],
+      ),
+      content: Padding(
+        padding: c.DialogMetrics.contentPaddingSymmetrical,
+        child: Text(s.overwriteStatisticsWarning),
+      ),
+      actionsAlignment: .end,
+      actions: [
+        FilledButton(
+          onPressed: () => Navigator.pop<bool>(context, false),
+          style: FilledButton.styleFrom(shadowColor: Colors.transparent),
+          child: Text(s.cancelAction),
+        ),
+        FilledButton.tonal(
+          onPressed: () => Navigator.pop<bool>(context, true),
+          style: TextButton.styleFrom(
+            shadowColor: Colors.transparent,
+            backgroundColor: colours.faintButtonBackground,
+            foregroundColor: colours.faintButtonForeground,
+          ),
+          child: Text(s.continueAction),
+        ),
+      ],
+    );
+  }
 }

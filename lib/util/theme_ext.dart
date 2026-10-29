@@ -12,8 +12,10 @@ extension ContextExt on BuildContext {
 extension ColorSchemeExt on ColorScheme {
   Color get pageBackground => surface;
   Color get barrier => isDesktop ? Colors.transparent : _barrier;
-  Color get dialogBackground => brightness == .dark ? surfaceContainerHighest : surfaceContainer;
-  Color get sheetBackground => brightness == .dark ? surfaceContainerHighest : surfaceContainer;
+  Color get dialogBackground => brightness == .dark ? surfaceContainerHigh : surfaceContainer;
+  Color get dialogHeader => surfaceContainerHighest;
+  Color get sheetBackground => brightness == .dark ? surfaceContainerHigh : surfaceContainer;
+  Color get sheetHeader => surfaceContainerHighest;
   Color get faintButtonBackground => onSurface.withAlpha(25);
   Color get faintButtonForeground => onSurface;
   Color get faintButttonIcon => onSurfaceVariant;

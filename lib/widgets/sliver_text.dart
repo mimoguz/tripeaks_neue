@@ -49,10 +49,10 @@ final class const HDelegate(final Widget child) extends SliverPersistentHeaderDe
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
   static const _maxHeight = 58.0;
-  static const _minHeight = 58.0;
+  static const _minHeight = 36.0;
 }
 
-final class const P(final Widget child, {super.key}) extends StatelessWidget {
+final class const P(final Widget child, {super.key, final bool spaceAfter = true}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -64,11 +64,11 @@ final class const P(final Widget child, {super.key}) extends StatelessWidget {
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
+              padding: EdgeInsets.fromLTRB(
                 c.cardPaddingHorizontal,
                 0,
                 c.cardPaddingHorizontal,
-                c.itemSpacing,
+                spaceAfter ? c.itemSpacing : 0,
               ),
               child: Row(children: [Flexible(child: child)]),
             ),

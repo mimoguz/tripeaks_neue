@@ -1,5 +1,5 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/pages/info_page/info_page.dart';
+import 'package:tripeaks_neue/pages/help_page/help_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -32,7 +32,7 @@ class WelcomeDialog extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextButton(
-                    onPressed: () => _navigateTo(context, (_) => InfoPage()),
+                    onPressed: () => _navigateTo(context, (_) => HelpPage()),
                     child: Text(s.welcomeDialogToInfoPageAction),
                   ),
                 ),
