@@ -26,7 +26,6 @@ dependencies:
   path_provider: ^2.1.6
   provider: ^6.1.5
   web: ^1.1.1
-  xdg_desktop_portal: ^0.1.14
 
   material_ui: any
   flex_seed_scheme: ^5.0.1

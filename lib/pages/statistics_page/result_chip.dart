@@ -27,7 +27,7 @@ final class const ResultChipCompact(final bool isCleared, {super.key}) extends S
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final fill = isCleared ? DecorColour.green.background : colours.secondary;
+    final fill = isCleared ? DecorColour.green.background : colours.tertiary;
     return Container(
       decoration: BoxDecoration(color: fill, shape: BoxShape.circle),
       width: 22,

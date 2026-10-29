@@ -15,6 +15,7 @@ const double iconScaleThreshold = 0.4;
 const double inactiveRankSize = 18.0;
 const double inactiveSuitSize = 20.0;
 const double maxListWidth = 700;
+const double maxParagraphWidth = 680;
 const double maxRadioWidth = maxListWidth - 32;
 const double maxRealButtonSize = 52.0;
 const double pagePadding = 24.0;
@@ -43,7 +44,7 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
 
 const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
 const faintShadowColour = Color(0x60100000);
-const faintBorderColour = Color(0x09050505);
+const faintBorderColour = Color(0x09020205);
 const faintPanelBorder = BoxDecoration(
   border: Border(
     top: BorderSide(color: faintBorderColour),

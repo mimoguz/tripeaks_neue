@@ -17,7 +17,7 @@ class _MyVerticalTabViewState extends State<MyVerticalTabView> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColour = context.colours.surfaceContainerLow;
+    final backgroundColour = context.colours.pageBackground;
     return Column(
       children: [
         Expanded(
@@ -88,8 +88,8 @@ class const TabHeader({
                 child: DefaultTextStyle(
                   textAlign: TextAlign.left,
                   style: isSelected
-                      ? theme.textTheme.bodyMedium!
-                      : theme.textTheme.bodyMedium!.copyWith(color: theme.hintColor),
+                      ? theme.textTheme.bodyMedium!.copyWith(color: theme.colorScheme.primary)
+                      : theme.textTheme.bodyMedium!,
                   child: tab,
                 ),
               ),

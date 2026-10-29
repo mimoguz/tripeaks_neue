@@ -16,10 +16,10 @@ final class const GroupTile({
       child: Material(
         color: theme.colorScheme.panelBackground,
         borderRadius: c.commonBorderRadius,
-        shadowColor: c.faintShadowColour,
+        shadowColor: theme.shadowColor,
         clipBehavior: .antiAlias,
         type: .card,
-        elevation: 1.667,
+        elevation: 1.5,
         child: Ink(
           decoration: c.faintPanelBorder,
           child: Padding(

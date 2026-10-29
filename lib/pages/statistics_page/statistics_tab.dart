@@ -118,7 +118,7 @@ class const OverallStats(final Statistics statistics, {super.key}) extends State
                     placement: .topLeft,
                     title: s.totalPlayedLabel,
                     value: statistics.totalGames,
-                    background: statistics.totalGames > 0 ? colours.onSurface.withAlpha(50) : null,
+                    background: statistics.totalGames > 0 ? colours.onSurfaceVariant.withAlpha(50) : null,
                   ),
                   ScoreCard(
                     placement: .bottomLeft,
@@ -180,7 +180,10 @@ class const ScoreCard({
     final gradient = background != null
         ? null
         : LinearGradient(
-            colors: <Color>[colours.surfaceContainerHighest, colours.panelBackground],
+            colors: <Color>[
+              Color.lerp(colours.onSurfaceVariant, colours.panelBackground, 0.88)!,
+              colours.panelBackground,
+            ],
             begin: _gradientBegin,
             end: _gradientEnd,
           );

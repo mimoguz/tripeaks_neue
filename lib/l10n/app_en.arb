@@ -699,7 +699,7 @@
         "context": "howToPlay",
         "description": "How to play text, contains formatting."
     },
-    "howToRichP03": "The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.",
+    "howToRichP03": "The player can move in any direction, forming sequences such as _Ace\u00A0→ 2\u00A0→ 3\u00A0→ 2\u00A0→ Ace\u00A0→ King\u00A0→ Queen\u00A0→ King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.",
     "@howToRichP03": {
         "type": "text",
         "context": "howToPlay",
@@ -741,32 +741,32 @@
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP10": "An option to start with an empty discard pile, allowing the player to choose any starting card.",
+    "howToP10": "An option to start with an empty discard pile, allowing the player to choose any starting\u00A0card.",
     "@howToP10": {
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text."
     },
     "@_INTERACTION": {},
-    "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.",
+    "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble\u00A0momentarily.",
     "@interactionP01": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionRichP02": "This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.",
+    "interactionRichP02": "This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard\u00A0pile.",
     "@interactionRichP02": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP03": "This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.",
+    "interactionP03": "This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the\u00A0game.",
     "@interactionP03": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP04": "Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.",
+    "interactionP04": "Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current\u00A0chain.",
     "@interactionP04": {
         "type": "text",
         "context": "howToPlay",
@@ -778,7 +778,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP06": "From the menu, different game modes can be selected by visiting the settings page,",
+    "interactionP06": "From the menu, different game modes can be selected by visiting the settings\u00A0page,",
     "@interactionP06": {
         "type": "text",
         "context": "howToPlay",
@@ -790,7 +790,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP08": "When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don't block interaction with the other parts of the interface.",
+    "interactionP08": "When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don't block interaction with the other parts of the\u00A0interface.",
     "@interactionP08": {
         "type": "text",
         "context": "howToPlay",
@@ -802,7 +802,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP10": "You can export, import, or clear your statistics using the top-right menu on the statistics page.",
+    "interactionP10": "You can export, import, or clear your statistics using the top-right menu on the statistics\u00A0page.",
     "@interactionP10": {
         "type": "text",
         "context": "howToPlay",

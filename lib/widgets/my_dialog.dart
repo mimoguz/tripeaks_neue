@@ -62,9 +62,12 @@ final class const MyBottomSheet({
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final height = (MediaQuery.heightOf(context) * 0.33).floorToDouble();
+    final height = MediaQuery.heightOf(context);
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: height),
+      constraints: BoxConstraints(
+        minHeight: (height * 0.33).floorToDouble(),
+        maxHeight: (height * 0.80).floorToDouble(),
+      ),
       child: Container(
         decoration: BoxDecoration(
           color: theme.colorScheme.sheetBackground,

@@ -352,7 +352,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToRichP03 =>
-      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
+      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
 
   @override
   String get howToP04 =>
@@ -376,44 +376,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToP10 =>
-      'An option to start with an empty discard pile, allowing the player to choose any starting card.';
+      'An option to start with an empty discard pile, allowing the player to choose any starting card.';
 
   @override
   String get interactionP01 =>
-      'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
+      'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
 
   @override
   String get interactionRichP02 =>
-      'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
+      'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
 
   @override
   String get interactionP03 =>
-      'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.';
+      'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.';
 
   @override
   String get interactionP04 =>
-      'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
+      'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
 
   @override
   String get interactionP05 => 'This is the menu button.';
 
   @override
   String get interactionP06 =>
-      'From the menu, different game modes can be selected by visiting the settings page,';
+      'From the menu, different game modes can be selected by visiting the settings page,';
 
   @override
   String get interactionP07 => 'or by using \"New Game with Layout...\" option.';
 
   @override
   String get interactionP08 =>
-      'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
+      'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
 
   @override
   String get interactionP09 => 'The game supports both portrait and landscape orientations.';
 
   @override
   String get interactionP10 =>
-      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
+      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
 
   @override
   String get interactionP11 => 'Other Shortcuts';

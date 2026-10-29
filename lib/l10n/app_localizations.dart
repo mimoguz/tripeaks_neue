@@ -772,7 +772,7 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
+  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
   String get howToRichP03;
 
   /// How to play text.
@@ -814,31 +814,31 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
+  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
   String get howToP10;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
+  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
   String get interactionP01;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
+  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
   String get interactionRichP02;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.'**
+  /// **'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.'**
   String get interactionP03;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
+  /// **'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
   String get interactionP04;
 
   /// UI & interaction text.
@@ -850,7 +850,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
+  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
   String get interactionP06;
 
   /// UI & interaction text.
@@ -862,7 +862,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
+  /// **'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
   String get interactionP08;
 
   /// UI & interaction text.
@@ -874,7 +874,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
+  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
   String get interactionP10;
 
   /// UI & interaction text.

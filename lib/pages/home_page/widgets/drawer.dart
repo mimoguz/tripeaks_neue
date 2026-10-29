@@ -12,14 +12,15 @@ import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 class const HomePageDrawer({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = context.colours;
+    final theme = context.theme;
+    final colours = theme.colorScheme;
     final s = context.strings;
     final div = colours.dialogDivider;
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
       // surfaceTintColor: colours.surfaceTint,
       elevation: 6.0,
-      shadowColor: colours.shadow,
+      shadowColor: theme.shadowColor,
       width: 340.0,
       shape: RoundedRectangleBorder(borderRadius: _borderRadius),
       clipBehavior: Clip.antiAlias,
@@ -29,9 +30,9 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
             SliverAppBar.large(
               pinned: true,
               backgroundColor: colours.pageBackground,
-              foregroundColor: colours.onSurfaceVariant,
               surfaceTintColor: colours.pageBackground,
-              shadowColor: c.faintShadowColour,
+              foregroundColor: colours.onSurfaceVariant,
+              shadowColor: theme.shadowColor,
               iconTheme: IconThemeData(color: colours.onSurfaceVariant),
               titleSpacing: 0,
               centerTitle: true,

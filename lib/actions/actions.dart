@@ -5,8 +5,8 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/pages/help_page/help_page.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
-import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
@@ -158,10 +158,10 @@ final class NavigateToInfoAction extends ContextAction<NavigateToInfoIntent> {
     }
     final navigator = Navigator.of(context);
     if (intent.replace) {
-      navigator.pushReplacement(MaterialPageRoute(builder: (_) => InfoPage()));
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => HelpPage()));
     } else {
       _closeDrawer(context);
-      navigator.push(MaterialPageRoute(builder: (_) => InfoPage()));
+      navigator.push(MaterialPageRoute(builder: (_) => HelpPage()));
     }
   }
 }

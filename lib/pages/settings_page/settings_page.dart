@@ -74,7 +74,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: Text(s.settingsTitle),
                   backgroundColor: theme.colorScheme.pageBackground,
                   surfaceTintColor: theme.colorScheme.pageBackground,
-                  shadowColor: c.faintShadowColour,
+                  shadowColor: theme.shadowColor,
                   scrolledUnderElevation: 2.0,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
