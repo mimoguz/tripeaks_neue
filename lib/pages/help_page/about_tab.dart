@@ -84,7 +84,7 @@ class AboutTab extends StatelessWidget {
               H(Text("Dependencies")),
               SliverList.separated(
                 itemCount: _extendedDependencies.length,
-                separatorBuilder: (_, _) => Line(),
+                separatorBuilder: (_, _) => Line(verticalPadding: 4),
                 itemBuilder: (_, index) {
                   final package = _extendedDependencies[index];
                   return Dependency(

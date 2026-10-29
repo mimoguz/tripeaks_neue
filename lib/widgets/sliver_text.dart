@@ -127,7 +127,8 @@ class const SliverLine({super.key}) extends StatelessWidget {
   Widget build(BuildContext context) => const SliverToBoxAdapter(child: Line());
 }
 
-class const Line({super.key}) extends StatelessWidget {
+class const Line({super.key, final double verticalPadding = c.DialogMetrics.sectionSpacing})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -138,10 +139,7 @@ class const Line({super.key}) extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: c.cardPaddingHorizontal,
-              vertical: c.DialogMetrics.sectionSpacing,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal, vertical: verticalPadding),
             child: Container(color: context.colours.dialogDivider, height: 1),
           ),
         ),
