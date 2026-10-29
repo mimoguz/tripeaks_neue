@@ -122,24 +122,27 @@ final class const Li({super.key, final Widget? title, required final List<Widget
   }
 }
 
+class const SliverLine({super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => const SliverToBoxAdapter(child: Line());
+}
+
 class const Line({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
-        clipBehavior: .none,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: c.cardPaddingHorizontal,
-                vertical: c.DialogMetrics.sectionSpacing,
-              ),
-              child: Container(color: context.colours.dialogDivider, height: 1),
+    return Material(
+      elevation: 0,
+      color: Colors.transparent,
+      clipBehavior: .none,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: c.cardPaddingHorizontal,
+              vertical: c.DialogMetrics.sectionSpacing,
             ),
+            child: Container(color: context.colours.dialogDivider, height: 1),
           ),
         ),
       ),

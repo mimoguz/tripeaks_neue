@@ -27,7 +27,7 @@ class UiTab extends StatelessWidget {
                 description: FastRichText(text: s.interactionP01, textStyle: normal, italicTextStyle: italic),
                 image: Icon(Icons.touch_app, color: theme.colorScheme.onSurfaceVariant),
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP04, textStyle: normal, italicTextStyle: italic),
                 image: Image.asset(
@@ -38,7 +38,7 @@ class UiTab extends StatelessWidget {
                   height: 74,
                 ),
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(
                   text: s.interactionRichP02,
@@ -56,7 +56,7 @@ class UiTab extends StatelessWidget {
                 ),
                 shorcut: _drawShortcut,
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP03, textStyle: normal, italicTextStyle: italic),
                 image: Container(
@@ -70,7 +70,7 @@ class UiTab extends StatelessWidget {
                 ),
                 shorcut: _undoShortcut,
               ),
-              Line(),
+              SliverLine(),
 
               UiHelpTile(
                 description: FastRichText(text: s.interactionP05, textStyle: normal, italicTextStyle: italic),
@@ -85,34 +85,34 @@ class UiTab extends StatelessWidget {
                 ),
                 shorcut: _menuShortcut,
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP06, textStyle: normal, italicTextStyle: italic),
                 image: Icon(Icons.settings, color: theme.colorScheme.onSurfaceVariant),
                 shorcut: _settingsShortcut,
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP07, textStyle: normal, italicTextStyle: italic),
                 image: Icon(CustomIcons.pickAndPlay, color: theme.colorScheme.onSurfaceVariant),
                 shorcut: _newGameWithLayoutShortcut,
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP08, textStyle: normal, italicTextStyle: italic),
                 image: Image.asset("images/tropy72.png", width: 72, height: 72),
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP09, textStyle: normal, italicTextStyle: italic),
                 image: Icon(Icons.screen_rotation_rounded, color: theme.colorScheme.onSurfaceVariant),
               ),
-              Line(),
+              SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP10, textStyle: normal, italicTextStyle: italic),
                 image: Icon(Icons.more_vert, color: theme.colorScheme.onSurfaceVariant),
               ),
-              Line(),
+              SliverLine(),
             ],
           ),
           SliverMainAxisGroup(

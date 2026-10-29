@@ -82,15 +82,20 @@ class AboutTab extends StatelessWidget {
           SliverMainAxisGroup(
             slivers: [
               H(Text("Dependencies")),
-              for (final (index, package) in _extendedDependencies.indexed)
-                Dependency(
-                  package: package,
-                  index: index,
-                  isDirectDependency: _directDependencies.contains(package.name),
-                ),
-              SliverPadding(padding: const EdgeInsets.only(bottom: 8.0)),
+              SliverList.separated(
+                itemCount: _extendedDependencies.length,
+                separatorBuilder: (_, _) => Line(),
+                itemBuilder: (_, index) {
+                  final package = _extendedDependencies[index];
+                  return Dependency(
+                    package: package,
+                    isDirectDependency: _directDependencies.contains(package.name),
+                  );
+                },
+              ),
             ],
           ),
+          SliverPadding(padding: const EdgeInsets.only(bottom: 8.0)),
         ],
       ),
     );
@@ -107,42 +112,31 @@ final class const Dependency({
   super.key,
   required final Package package,
   required final bool isDirectDependency,
-  required final int index,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final labelStyle = context.styles.labelSmall;
-    return SliverToBoxAdapter(
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
-        clipBehavior: .none,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 0.0, c.cardPaddingHorizontal, 8.0),
-              child: Column(
-                mainAxisSize: .min,
-                spacing: 8.0,
-                children: [
-                  if (index > 0) DialogDivider(),
-                  Row(
-                    spacing: 4.0,
-                    children: [
-                      Text(isDirectDependency ? "Direct:" : "Indirect:", textAlign: .end, style: labelStyle),
-                      Expanded(child: Text(package.name, maxLines: 1, softWrap: false, overflow: .fade)),
-                      if (package.homepage != null)
-                        TextButton(onPressed: () => _copy(context, package.homepage!), child: Text("Link")),
-                      if (package.license != null)
-                        TextButton(
-                          onPressed: () => showCommonDialog(context, (_) => LicenseDialog(package: package)),
-                          child: Text("License"),
-                        ),
-                    ],
+    return Material(
+      elevation: 0,
+      color: Colors.transparent,
+      clipBehavior: .none,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
+            child: Row(
+              children: [
+                Text(isDirectDependency ? "Direct:" : "Indirect:", textAlign: .end, style: labelStyle),
+                Expanded(child: Text(package.name, maxLines: 1, softWrap: false, overflow: .fade)),
+                if (package.homepage != null)
+                  TextButton(onPressed: () => _copy(context, package.homepage!), child: Text("Link")),
+                if (package.license != null)
+                  TextButton(
+                    onPressed: () => showCommonDialog(context, (_) => LicenseDialog(package: package)),
+                    child: Text("License"),
                   ),
-                ],
-              ),
+              ],
             ),
           ),
         ),
