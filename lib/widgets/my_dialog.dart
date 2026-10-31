@@ -46,7 +46,7 @@ class _MyDialogState extends State<MyDialog> {
             CloseButton(
               style: FilledButton.styleFrom(
                 backgroundColor: theme.colorScheme.faintButtonBackground,
-                foregroundColor: theme.colorScheme.faintButttonIcon,
+                foregroundColor: theme.colorScheme.faintButtonIcon,
                 padding: EdgeInsets.all(2.0),
                 minimumSize: Size.square(32.0),
               ),
@@ -145,7 +145,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                   CloseButton(
                     style: FilledButton.styleFrom(
                       backgroundColor: theme.colorScheme.faintButtonBackground,
-                      foregroundColor: theme.colorScheme.faintButttonIcon,
+                      foregroundColor: theme.colorScheme.faintButtonIcon,
                       padding: EdgeInsets.all(2.0),
                       minimumSize: Size.square(32.0),
                     ),

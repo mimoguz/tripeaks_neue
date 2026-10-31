@@ -2,13 +2,26 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
-final class const H(final Widget child, {super.key}) extends StatelessWidget {
+final class const H(
+  final Widget child, {
+  super.key,
+  final double maxWidth = c.maxListWidth,
+  final double horizontalPadding = c.cardPaddingHorizontal,
+  final bool pinned = true,
+}) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      SliverPersistentHeader(delegate: HDelegate(child), pinned: true, floating: false);
+  Widget build(BuildContext context) => SliverPersistentHeader(
+    delegate: HDelegate(child, maxWidth: maxWidth, horizontalPadding: horizontalPadding),
+    pinned: pinned,
+    floating: false,
+  );
 }
 
-final class const HDelegate(final Widget child) extends SliverPersistentHeaderDelegate {
+final class const HDelegate(
+  final Widget child, {
+  required final double maxWidth,
+  required final double horizontalPadding,
+}) extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     final elevated = overlapsContent || shrinkOffset > 0;
@@ -21,9 +34,9 @@ final class const HDelegate(final Widget child) extends SliverPersistentHeaderDe
         elevation: elevated ? 2 : 0,
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+            constraints: BoxConstraints(maxWidth: maxWidth),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: Row(
                 children: [
                   DefaultTextStyle(
@@ -62,7 +75,7 @@ final class const P(final Widget child, {super.key, final bool spaceAfter = true
         clipBehavior: .none,
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+            constraints: BoxConstraints(maxWidth: c.maxListWidth),
             child: Padding(
               padding: EdgeInsets.fromLTRB(
                 c.cardPaddingHorizontal,
@@ -90,7 +103,7 @@ final class const Li({super.key, final Widget? title, required final List<Widget
         clipBehavior: .none,
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+            constraints: BoxConstraints(maxWidth: c.maxListWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 c.cardPaddingHorizontal,
@@ -127,8 +140,12 @@ class const SliverLine({super.key}) extends StatelessWidget {
   Widget build(BuildContext context) => const SliverToBoxAdapter(child: Line());
 }
 
-class const Line({super.key, final double verticalPadding = c.DialogMetrics.sectionSpacing})
-    extends StatelessWidget {
+class const Line({
+  super.key,
+  final double verticalPadding = c.DialogMetrics.sectionSpacing,
+  final double horizontalPadding = c.cardPaddingHorizontal,
+  final double maxWidth = c.maxListWidth,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -137,9 +154,9 @@ class const Line({super.key, final double verticalPadding = c.DialogMetrics.sect
       clipBehavior: .none,
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+          constraints: BoxConstraints(maxWidth: maxWidth),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal, vertical: verticalPadding),
+            padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
             child: Container(color: context.colours.dialogDivider, height: 1),
           ),
         ),

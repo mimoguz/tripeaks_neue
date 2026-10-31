@@ -122,7 +122,7 @@ final class const Dependency({
       clipBehavior: .none,
       child: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+          constraints: BoxConstraints(maxWidth: c.maxListWidth),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
             child: Row(

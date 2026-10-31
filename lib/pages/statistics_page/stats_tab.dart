@@ -1,303 +1,382 @@
-import 'package:flutter/services.dart';
+import 'package:intl/intl.dart' show NumberFormat, DateFormat;
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
+import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/sliver_text.dart';
+
+final _dateFormat = DateFormat("d MMM y, HH:mm");
 
 class const StatsTab(final Statistics statistics, {super.key, final bool showLayout = true})
     extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: c.maxListWidth, maxHeight: 146),
-        child: Material(
-          color: Colors.grey.shade50,
-          borderRadius: BorderRadius.all(Radius.circular(20)),
-          shadowColor: Colors.black87,
-          elevation: 3,
-          child: Ink(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              border: Border.all(color: Color(0x09000000), width: 1),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                spacing: 4,
-                children: [
-                  Expanded(
-                    child: Column(
-                      spacing: 4.0,
-                      crossAxisAlignment: .stretch,
-                      children: [
-                        Container(
-                          height: 48,
-                          padding: EdgeInsets.only(left: 20, right: 8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(12)),
-                            color: Colors.blueGrey.shade400,
-                          ),
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: .start,
-                              crossAxisAlignment: .baseline,
-                              textBaseline: .alphabetic,
-                              spacing: 8,
-                              children: [
-                                SizedBox(
-                                  width: 56,
-                                  child: Text(
-                                    "PLAYED",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: .w300,
-                                      color: Colors.blueGrey.shade50,
-                                      leadingDistribution: .proportional,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  "500",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: .w600,
-                                    color: Colors.blueGrey.shade50,
-                                    leadingDistribution: .proportional,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Row(
-                          spacing: 8.0,
-                          children: [
-                            Text(
-                              "40%",
-                              style: TextStyle(fontSize: 16, fontWeight: .w600, color: Colors.grey.shade800),
-                            ),
-                            Expanded(
-                              child: SizedBox(height: 24, child: CustomPaint(painter: BarChart(0.4))),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 48,
-                          padding: EdgeInsets.only(left: 20, right: 8),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12)),
-                            color: Colors.lightGreen.shade500,
-                          ),
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: .start,
-                              crossAxisAlignment: .baseline,
-                              textBaseline: .alphabetic,
-                              spacing: 8,
-                              children: [
-                                SizedBox(
-                                  width: 56,
-                                  child: Text(
-                                    "CLEARED",
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: .w300,
-                                      color: Colors.blueGrey.shade50,
-                                      leadingDistribution: .proportional,
-                                    ),
-                                  ),
-                                ),
-                                Text(
-                                  "200",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: .w600,
-                                    color: Colors.blueGrey.shade50,
-                                    leadingDistribution: .proportional,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 150,
-                    child: Column(
-                      spacing: 4,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(topRight: Radius.circular(12)),
-                              color: Colors.grey.shade300,
-                            ),
-                            padding: EdgeInsets.only(left: 8, right: 20),
-                            child: Row(
-                              mainAxisAlignment: .end,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: .end,
-                                  mainAxisAlignment: .center,
-                                  children: [
-                                    Text(
-                                      "HIGHEST SCORE",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: .w300,
-                                        color: Colors.grey.shade900,
-                                      ),
-                                    ),
-                                    Text(
-                                      "999",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: .w600,
-                                        color: Colors.grey.shade900,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(bottomRight: Radius.circular(12)),
-                              color: Colors.grey.shade300,
-                            ),
-                            padding: EdgeInsets.only(left: 8, right: 20),
-                            child: Row(
-                              mainAxisAlignment: .end,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: .end,
-                                  mainAxisAlignment: .center,
-                                  children: [
-                                    Text(
-                                      "999",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: .w600,
-                                        color: Colors.grey.shade900,
-                                      ),
-                                    ),
-                                    Text(
-                                      "LONGEST CHAIN",
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: .w300,
-                                        color: Colors.grey.shade900,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+    final s = context.strings;
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(c.utilPageMargin, c.utilPageMargin, c.utilPageMargin, 0),
+          sliver: OverallStatsTile(statistics),
+        ),
+        if (statistics.lastGame != null)
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: c.DialogMetrics.sectionSpacing),
+            sliver: SliverMainAxisGroup(
+              slivers: <Widget>[
+                H(
+                  Text(s.lastGameStatistics),
+                  pinned: false,
+                  maxWidth: c.maxListWidth,
+                  horizontalPadding: c.utilPageMargin,
+                ),
+                SliverToBoxAdapter(child: SingleGameTile(game: statistics.lastGame!, rank: -1)),
+              ],
             ),
           ),
-        ),
-      ),
+        if (statistics.bestGames.isNotEmpty)
+          SliverMainAxisGroup(
+            slivers: <Widget>[
+              H(Text(s.bestGamesStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
+              SliverList.separated(
+                itemCount: statistics.bestGames.length,
+                itemBuilder: (context, index) =>
+                    SingleGameTile(game: statistics.bestGames[index], rank: index + 1),
+                separatorBuilder: (_, _) =>
+                    Line(verticalPadding: 8, horizontalPadding: c.utilPageMargin, maxWidth: c.maxListWidth),
+              ),
+            ],
+          ),
+      ],
     );
   }
 }
 
-final class const BarChart(final double ratio, {final double shift = 4}) extends CustomPainter {
+class const OverallStatsTile(final Statistics statistics, {super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => SliverToBoxAdapter(
+    child: Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: c.maxListWidth),
+        child: Column(
+          spacing: 8,
+          children: [
+            ChartCard(played: statistics.totalGames, cleared: statistics.cleared),
+            Row(
+              spacing: 8,
+              children: [
+                Expanded(
+                  child: ScoreCard(
+                    score: statistics.bestGames.firstOrNull?.score ?? 0,
+                    label: "HIGHEST SCORE",
+                    icon: CustomIcons.scoreMedal30,
+                  ),
+                ),
+                Expanded(
+                  child: ScoreCard(
+                    score: statistics.longestChain,
+                    label: "LONGEST CHAIN",
+                    icon: CustomIcons.chainMedal30,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+final class const BarChart(
+  final double ratio, {
+  final double shift = 3.6,
+  required final Color filled1,
+  required final Color filled2,
+  required final Color empty,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final p = Paint();
     final leftWidth = (size.width * ratio).roundToDouble();
     final rightWidth = size.width - leftWidth;
-    _drawLeft(canvas, Size(leftWidth, size.height), p);
-    _drawRight(canvas, Size(rightWidth, size.height), Offset(leftWidth, 0), false, p);
+    canvas.clipRRect(RRect.fromRectAndRadius(Offset.zero & size, _radius));
+    _drawRight(canvas, Size(rightWidth, size.height), Offset(leftWidth - _radius.x, 0), false, p);
+    if (ratio > 0) {
+      _drawLeft(canvas, Size(leftWidth, size.height), p);
+    }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(BarChart oldDelegate) => oldDelegate.empty != empty;
 
   void _drawLeft(Canvas canvas, Size size, Paint paint) {
     final rect = Offset.zero & size;
     paint
-      ..color = Colors.lightGreen
+      ..shader = LinearGradient(colors: <Color>[filled1, filled2]).createShader(rect)
       ..style = .fill;
-    canvas.drawRRect(RRect.fromRectAndCorners(rect, topLeft: _radius, bottomLeft: _radius), paint);
+    canvas.drawRRect(RRect.fromRectAndCorners(rect, topRight: _radius, bottomRight: _radius), paint);
   }
 
   void _drawRight(Canvas canvas, Size size, Offset offset, bool full, Paint paint) {
-    final rect = offset & size;
     final h = size.height;
     final d = size.height * 0.5;
-    final steps = ((size.width + d) / shift).ceil();
-    final x0 = offset.dx;
+    final right = offset.dx + size.width + d;
 
     paint
-      ..color = Colors.grey.shade500
+      ..color = empty
       ..style = .stroke
       ..strokeWidth = 1.2;
 
-    canvas.save();
-    canvas.clipRRect(RRect.fromRectAndCorners(rect, topRight: _radius, bottomRight: _radius));
-    for (var i = 0; i < steps; i++) {
-      canvas.drawLine(Offset(x0 + i * shift - d, h), Offset(x0 + i * shift, 0), paint);
+    var x = offset.dx - d;
+    while (x <= right) {
+      canvas.drawLine(Offset(x, h), Offset(x + d, 0), paint);
+      x += shift;
     }
-    canvas.restore();
   }
 
   static const _radius = Radius.circular(12);
 }
 
-final class const GameTile({
+final class const SingleGameTile({
   super.key,
-  required final Widget description,
-  required final Widget image,
-  final List<LogicalKeyboardKey>? shorcut,
+  required final SingleGameStatistics game,
+  required final int rank,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
-        clipBehavior: .none,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
-              child: Row(
-                spacing: 24.0,
-                children: [
-                  SizedBox(
-                    width: 64,
-                    child: Row(mainAxisAlignment: .center, children: [image]),
+    final s = context.strings;
+    final theme = context.theme;
+    return Material(
+      elevation: 0,
+      color: Colors.transparent,
+      clipBehavior: .none,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: c.maxListWidth),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: c.utilPageMargin),
+            child: Row(
+              children: [
+                if (rank > 0)
+                  SizedBox(width: 32, child: Text(rank.toString(), style: theme.textTheme.labelMedium)),
+                Expanded(
+                  child: Row(
+                    spacing: 4,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: .start,
+                          mainAxisSize: .min,
+                          children: [
+                            Text(game.layout.label(s), style: theme.textTheme.titleMedium),
+                            Text(_dateFormat.format(game.ended), style: theme.textTheme.bodyMedium),
+                          ],
+                        ),
+                      ),
+                      Result(game.isCleared),
+                      MiniScoreCard(score: game.score, icon: CustomIcons.star16),
+                      MiniScoreCard(score: game.longestChain, icon: CustomIcons.chain16),
+                    ],
                   ),
-                  Expanded(
-                    child: shorcut == null
-                        ? description
-                        : Column(
-                            mainAxisSize: .min,
-                            crossAxisAlignment: .start,
-                            spacing: c.cellPadding,
-                            children: [description],
-                          ),
-                  ),
-                ],
-              ),
+                ),
+                Row(),
+              ],
             ),
           ),
         ),
       ),
     );
   }
+}
+
+final class const ScoreCard({
+  super.key,
+  required final int score,
+  required final String label,
+  required final IconData icon,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    return Material(
+      borderRadius: c.commonBorderRadius,
+      color: theme.colorScheme.panelBackground,
+      shadowColor: theme.shadowColor,
+      elevation: 2,
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: c.commonBorderRadius,
+          border: Border.all(color: theme.colorScheme.faintBorder, width: 1),
+        ),
+        child: Padding(
+          padding: c.cardPadding,
+          child: Row(
+            mainAxisAlignment: .spaceBetween,
+            children: [
+              Flexible(
+                child: Column(
+                  mainAxisAlignment: .center,
+                  crossAxisAlignment: .start,
+                  children: [
+                    Text(
+                      score.toString(),
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontFeatures: c.fontFeatures,
+                        color: theme.colorScheme.onSurfaceVariant,
+                        fontWeight: .w700,
+                      ),
+                    ),
+                    Text(
+                      label,
+                      style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline),
+                      overflow: .fade,
+                      softWrap: false,
+                    ),
+                  ],
+                ),
+              ),
+              Icon(icon, color: theme.colorScheme.onSurfaceVariant, size: 30),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+final class const Result(final bool result, {super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    return Container(
+      decoration: BoxDecoration(
+        shape: .circle,
+        color: result ? Colors.lightGreen.shade500 : theme.colorScheme.tertiary,
+      ),
+      width: 24,
+      height: 24,
+      child: Center(
+        child: Icon(
+          result ? CustomIcons.check12 : CustomIcons.cross12,
+          color: result ? theme.colorScheme.onSecondary : theme.colorScheme.onTertiary,
+          size: 12,
+        ),
+      ),
+    );
+  }
+}
+
+final class const MiniScoreCard({super.key, required final int score, required final IconData icon})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: c.commonBorderRadius,
+        color: theme.colorScheme.onSurfaceVariant,
+      ),
+      padding: EdgeInsets.fromLTRB(8, 0, 6, 0),
+      width: 58,
+      height: 24,
+      child: Row(
+        mainAxisAlignment: .spaceBetween,
+        children: [
+          Text(
+            score.toString(),
+            style: theme.textTheme.labelMedium?.copyWith(
+              fontFeatures: c.fontFeatures,
+              color: theme.colorScheme.panelBackground,
+              fontWeight: .w700,
+            ),
+          ),
+          Icon(icon, color: theme.colorScheme.panelBackground, size: 16),
+        ],
+      ),
+    );
+  }
+}
+
+final class const ChartCard({super.key, required final int played, required final int cleared})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final numberStyle = theme.textTheme.titleLarge?.copyWith(
+      fontFeatures: c.fontFeatures,
+      color: theme.colorScheme.onSurfaceVariant,
+      fontWeight: .w700,
+    );
+    final labelStyle = theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline);
+    return Material(
+      color: theme.colorScheme.panelBackground,
+      elevation: 2,
+      shadowColor: theme.shadowColor,
+      borderRadius: c.commonBorderRadius,
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: c.commonBorderRadius,
+          border: Border.all(color: theme.colorScheme.faintBorder, width: 1),
+        ),
+        child: Padding(
+          padding: c.cardPadding,
+          child: Column(
+            mainAxisSize: .min,
+            crossAxisAlignment: .stretch,
+            spacing: 4,
+            children: [
+              Row(
+                mainAxisAlignment: .center,
+                spacing: 3,
+                textBaseline: .alphabetic,
+                crossAxisAlignment: .baseline,
+                children: [
+                  Text(played.toString(), textAlign: .center, style: numberStyle),
+                  Text("PLAYED", textAlign: .center, style: labelStyle),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: .center,
+                spacing: 8,
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      height: 24,
+                      child: CustomPaint(
+                        painter: BarChart(
+                          played > 0 ? cleared.toDouble() / played : 0,
+                          filled1: Colors.lightGreen.shade500,
+                          filled2: Colors.lightGreen.shade300,
+                          empty: theme.colorScheme.dialogDivider,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    played > 0 ? "${f.format((cleared.toDouble() / played) * 100)}%" : "None yet",
+                    style: numberStyle?.copyWith(fontSize: 18),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: .start,
+                spacing: 3,
+                textBaseline: .alphabetic,
+                crossAxisAlignment: .baseline,
+                children: [
+                  Text(cleared.toString(), textAlign: .center, style: numberStyle),
+                  Text("CLEARED", textAlign: .center, style: labelStyle),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  static final f = NumberFormat("##0.#", "en_GB");
 }

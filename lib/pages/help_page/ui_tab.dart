@@ -119,9 +119,9 @@ class UiTab extends StatelessWidget {
             slivers: [
               H(Text(s.interactionP11, style: TextStyle(fontSize: 16))),
               UiShortcutTile(title: s.infoTooltip, shorcut: _infoShortcut, textStyle: normal),
+              UiShortcutTile(title: s.interactionP12, shorcut: _menuShortcutAlt, textStyle: normal),
               UiShortcutTile(title: s.interactionP13, shorcut: _backShortcut, textStyle: normal),
               UiShortcutTile(title: s.interactionP14, shorcut: _backShortcutAlt, textStyle: normal),
-              UiShortcutTile(title: s.interactionP12, shorcut: _menuShortcutAlt, textStyle: normal),
               SliverPadding(
                 padding: EdgeInsetsGeometry.only(bottom: c.utilPageInsets.bottom),
                 sliver: UiShortcutTile(title: s.exitAction, shorcut: _exitShortcut, textStyle: normal),
@@ -149,7 +149,7 @@ final class const UiHelpTile({
         clipBehavior: .none,
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+            constraints: BoxConstraints(maxWidth: c.maxListWidth),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
               child: Row(
@@ -197,7 +197,7 @@ final class const UiShortcutTile({
         clipBehavior: .none,
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxParagraphWidth),
+            constraints: BoxConstraints(maxWidth: c.maxListWidth),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: c.cardPaddingHorizontal,

@@ -43,6 +43,8 @@ class CustomIcons {
   static const backItsKnot = IconData(0xe90c, fontFamily: _cards);
   static const backNeue = IconData(0xe90d, fontFamily: _cards);
   static const backSolar = IconData(0xe90e, fontFamily: _cards);
+  static const chainMedal30 = IconData(0xe900, fontFamily: _cards);
+  static const scoreMedal30 = IconData(0xe901, fontFamily: _cards);
 
   static const algorithm16 = IconData(0xe900, fontFamily: _actions);
   static const chain16 = IconData(0xe917, fontFamily: _actions);

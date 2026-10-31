@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
 import 'package:tripeaks_neue/pages/statistics_page/stats_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -113,16 +112,16 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                   for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
                                 ],
                                 contents: <Widget>[
-                                  StatisticsTab(statistics.overallStatistics, key: ValueKey("overall")),
+                                  StatsTab(statistics.overallStatistics, key: ValueKey("overall")),
                                   for (final layout in perLayoutStats)
-                                    StatisticsTab(layout.value, showLayout: false, key: Key(layout.key.name)),
+                                    StatsTab(layout.value, showLayout: false, key: Key(layout.key.name)),
                                 ],
                               )
                             : TabBarView(
                                 children: <Widget>[
                                   StatsTab(statistics.overallStatistics),
                                   for (final layout in perLayoutStats)
-                                    StatisticsTab(layout.value, showLayout: false),
+                                    StatsTab(layout.value, showLayout: false),
                                 ],
                               ),
                       ),
