@@ -18,9 +18,8 @@ const _verticalSpacing = 18.0;
 final _dateFormat = DateFormat("d MMM y, HH:mm");
 
 // TODO: This is just a mess, clean-up a little
-final class const StatisticsTab(this.statistics, {super.key, final bool showLayout = true})
+final class const StatisticsTab(final Statistics statistics, {super.key, final bool showLayout = true})
     extends StatelessWidget {
-  final Statistics statistics;
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;

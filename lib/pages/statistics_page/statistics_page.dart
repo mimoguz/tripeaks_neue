@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
+import 'package:tripeaks_neue/pages/statistics_page/stats_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
@@ -119,7 +120,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                               )
                             : TabBarView(
                                 children: <Widget>[
-                                  StatisticsTab(statistics.overallStatistics),
+                                  StatsTab(statistics.overallStatistics),
                                   for (final layout in perLayoutStats)
                                     StatisticsTab(layout.value, showLayout: false),
                                 ],

@@ -46,8 +46,8 @@ class UiTab extends StatelessWidget {
                   italicTextStyle: italic,
                 ),
                 image: Container(
-                  height: 72,
-                  width: 72,
+                  height: 64,
+                  width: 64,
                   decoration: BoxDecoration(
                     color: theme.colorScheme.primaryContainer,
                     borderRadius: c.commonBorderRadius,
@@ -100,7 +100,7 @@ class UiTab extends StatelessWidget {
               SliverLine(),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP08, textStyle: normal, italicTextStyle: italic),
-                image: Image.asset("images/tropy72.png", width: 72, height: 72),
+                image: Image.asset("images/tropy72.png", width: 64, height: 64),
               ),
               SliverLine(),
               UiHelpTile(
@@ -134,7 +134,7 @@ class UiTab extends StatelessWidget {
   }
 }
 
-class const UiHelpTile({
+final class const UiHelpTile({
   super.key,
   required final Widget description,
   required final Widget image,
@@ -153,8 +153,12 @@ class const UiHelpTile({
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
               child: Row(
-                spacing: c.itemSpacing,
+                spacing: 24.0,
                 children: [
+                  SizedBox(
+                    width: 64,
+                    child: Row(mainAxisAlignment: .center, children: [image]),
+                  ),
                   Expanded(
                     child: shorcut == null
                         ? description
@@ -167,10 +171,6 @@ class const UiHelpTile({
                               ShortcutHint(shorcut: shorcut!),
                             ],
                           ),
-                  ),
-                  SizedBox(
-                    width: 72,
-                    child: Row(mainAxisAlignment: .center, children: [image]),
                   ),
                 ],
               ),
