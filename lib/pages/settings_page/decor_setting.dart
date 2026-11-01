@@ -8,7 +8,7 @@ import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 
 class const DecorSetting({super.key}) extends StatelessWidget {
   @override
@@ -108,37 +108,48 @@ class _DecorItemState extends State<DecorItem> {
 
   @override
   Widget build(BuildContext context) {
-    final colours = context.colours;
+    final theme = context.theme;
+    final colours = theme.colorScheme;
+    final name = widget.decor.label(widget.strings);
     _borderColour = _focus.hasFocus ? colours.primary : Colors.transparent;
-    return Tooltip(
-      message: widget.decor.label(widget.strings),
-      child: SizedBox(
-        width: _sideLength,
-        height: _sideLength,
-        child: Material(
-          color: Colors.transparent,
-          borderRadius: c.commonBorderRadius,
-          clipBehavior: .antiAlias,
-          child: InkWell(
-            onTap: widget.onTap,
-            focusNode: _focus,
-            child: Ink(
-              decoration: BoxDecoration(
-                border: Border.all(width: 4.0, color: _borderColour!),
-                borderRadius: c.commonBorderRadius,
-                color: widget.isSelected ? widget.selectedDecorColour.background : colours.secondaryContainer,
-              ),
+    return SizedBox(
+      width: _sideLength,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: c.commonBorderRadius,
+        clipBehavior: .antiAlias,
+        child: InkWell(
+          onTap: widget.onTap,
+          focusNode: _focus,
+          child: Ink(
+            decoration: BoxDecoration(
+              border: Border.all(width: 4.0, color: _borderColour!),
+              borderRadius: c.commonBorderRadius,
+              color: widget.isSelected ? widget.selectedDecorColour.background : colours.sheetHeader,
+            ),
 
-              child: ClipRRect(
-                borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
-                child: Icon(
-                  widget.decor.icon,
-                  size: _sideLength - 8,
-                  color: widget.isSelected
-                      ? widget.selectedDecorColour.controlForeground
-                      : colours.onSecondaryContainer,
+            child: Column(
+              spacing: c.cellPadding,
+              children: [
+                ClipRRect(
+                  borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
+                  child: Icon(
+                    widget.decor.icon,
+                    size: _sideLength - 8,
+                    color: widget.isSelected
+                        ? widget.selectedDecorColour.controlForeground
+                        : colours.onSurfaceVariant,
+                  ),
                 ),
-              ),
+                Text(
+                  name,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: widget.isSelected
+                        ? widget.selectedDecorColour.controlForeground
+                        : colours.onSurfaceVariant,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
