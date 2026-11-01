@@ -30,7 +30,7 @@ class const Pie({super.key, required final int total, required final int slice, 
         ),
         Text(
           total == 0 ? "" : "${f.format(slice / total.toDouble() * 100.0)}%",
-          style: theme.textTheme.titleMedium?.copyWith(fontWeight: .w800, fontFeatures: c.fontFeatures),
+          style: theme.textTheme.titleMedium?.copyWith(fontWeight: .w800, fontFeatures: c.fontFeaturesNumber),
         ),
       ],
     );

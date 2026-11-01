@@ -102,7 +102,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
     final numberStyle = theme.textTheme.bodyLarge?.copyWith(
       color: theme.colorScheme.onSurfaceVariant,
       fontWeight: .w500,
-      fontFeatures: c.fontFeatures,
+      fontFeatures: c.fontFeaturesNumber,
     );
     return Row(
       spacing: 40.0,

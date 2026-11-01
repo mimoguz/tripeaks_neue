@@ -12,7 +12,7 @@ final class const GroupTitle(final String title, {super.key, final bool isFirst 
       padding: EdgeInsets.only(
         left: c.utilPageMargin,
         right: c.utilPageMargin,
-        top: isFirst ? c.utilPageMargin : c.itemSpacing * 2,
+        top: isFirst ? c.utilPageMargin : 28,
         bottom: c.DialogMetrics.sectionSpacing,
       ),
       child: Row(

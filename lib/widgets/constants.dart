@@ -42,7 +42,7 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
   utilPageMargin + 12,
 );
 
-const fontFeatures = <FontFeature>[.liningFigures(), .proportionalFigures()];
+const fontFeaturesNumber = <FontFeature>[.liningFigures(), .proportionalFigures()];
 const faintShadowColour = Color(0x60100000);
 const faintBorderColour = Color(0x09020205);
 const faintPanelBorder = BoxDecoration(

@@ -209,7 +209,7 @@ class const ScoreCard({
             style: theme.textTheme.headlineSmall?.copyWith(
               color: textColour,
               fontWeight: .w800,
-              fontFeatures: c.fontFeatures,
+              fontFeatures: c.fontFeaturesNumber,
             ),
           ),
         ],
@@ -382,7 +382,7 @@ final class const TrailingChip({
                   color: colours.onSecondary,
                   fontSize: 13,
                   fontWeight: .w400,
-                  fontFeatures: c.fontFeatures,
+                  fontFeatures: c.fontFeaturesNumber,
                 ),
               ),
             ),

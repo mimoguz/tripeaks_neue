@@ -26,12 +26,7 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
         if (statistics.lastGame != null)
           SliverMainAxisGroup(
             slivers: <Widget>[
-              H(
-                Text(s.lastGameStatistics),
-                pinned: false,
-                maxWidth: c.maxListWidth,
-                horizontalPadding: c.utilPageMargin,
-              ),
+              H(Text(s.lastGameStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
               SliverPadding(
                 padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
                 sliver: SliverToBoxAdapter(
@@ -167,7 +162,7 @@ final class const ScoreCard({
                 Text(
                   score.toString(),
                   style: theme.textTheme.titleLarge?.copyWith(
-                    fontFeatures: c.fontFeatures,
+                    fontFeatures: c.fontFeaturesNumber,
                     color: theme.colorScheme.onSurfaceVariant,
                     fontWeight: .w700,
                   ),
@@ -199,7 +194,7 @@ class const ScoreTable({
     final theme = context.theme;
     final borderColour = theme.colorScheme.dialogDivider;
     final borderSide = BorderSide(color: borderColour, width: 1);
-    final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeatures);
+    final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
     final headerStyle = theme.textTheme.bodyMedium;
     return ConstrainedItem(
       child: Table(
@@ -344,7 +339,7 @@ final class const ChartCard({super.key, required final int played, required fina
   Widget build(BuildContext context) {
     final theme = context.theme;
     final numberStyle = theme.textTheme.titleLarge?.copyWith(
-      fontFeatures: c.fontFeatures,
+      fontFeatures: c.fontFeaturesNumber,
       color: theme.colorScheme.onSurfaceVariant,
       fontWeight: .w700,
     );
@@ -373,19 +368,12 @@ final class const ChartCard({super.key, required final int played, required fina
                 child: SizedBox(
                   height: 24,
                   child: CustomPaint(
-                    painter: played > 0 && played > cleared
-                        ? BarChart(
-                            played > 0 ? cleared.toDouble() / played : 0,
-                            filled1: Colors.lightGreen.shade500,
-                            filled2: Colors.lightGreen.shade300,
-                            empty: theme.colorScheme.dialogDivider,
-                          )
-                        : BarChart(
-                            played > 0 ? cleared.toDouble() / played : 0,
-                            filled1: Colors.orange.shade500,
-                            filled2: Colors.amber.shade300,
-                            empty: theme.colorScheme.dialogDivider,
-                          ),
+                    painter: BarChart(
+                      played > 0 ? cleared.toDouble() / played : 0,
+                      filled1: Colors.lightGreen.shade500,
+                      filled2: Colors.lightGreen.shade300,
+                      empty: theme.colorScheme.dialogDivider,
+                    ),
                   ),
                 ),
               ),
