@@ -44,7 +44,9 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
 
 const fontFeaturesNumber = <FontFeature>[.liningFigures(), .proportionalFigures()];
 const faintShadowColour = Color(0x60100000);
-const faintBorderColour = Color(0x09020205);
+const faintBorderColour = Color(0x09000000);
+const darkModeGlow = Color(0x350060f0);
+const darkModeShadow = Color(0xff085bd8);
 const faintPanelBorder = BoxDecoration(
   border: Border(
     top: BorderSide(color: faintBorderColour),

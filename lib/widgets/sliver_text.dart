@@ -40,7 +40,7 @@ final class const HDelegate(
             DefaultTextStyle(
               style: theme.textTheme.titleMedium!.copyWith(
                 fontWeight: .w700,
-                color: theme.colorScheme.secondary,
+                color: theme.colorScheme.onSurfaceVariant,
               ),
               child: child,
             ),

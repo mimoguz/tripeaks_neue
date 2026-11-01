@@ -84,7 +84,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
                 ),
                 Divider(indent: 20, endIndent: 20, color: div),
                 DrawerListTile(
-                  icon: CustomIcons.doughnutChart,
+                  icon: Icons.bar_chart,
                   title: s.statisticsAction,
                   intent: const NavigateToStatisticsIntent(),
                 ),

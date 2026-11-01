@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 class const ScrollShadow({
   super.key,
@@ -88,7 +89,7 @@ class _ScrollShadowState extends State<ScrollShadow> {
                     height: 12,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: <Color>[Color(0x350060f0), Colors.transparent],
+                        colors: <Color>[c.darkModeGlow, Colors.transparent],
                         begin: .bottomCenter,
                         end: .topCenter,
                       ),

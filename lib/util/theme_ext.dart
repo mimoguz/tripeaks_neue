@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
 extension ContextExt on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -11,7 +12,7 @@ extension ContextExt on BuildContext {
 
 extension ColorSchemeExt on ColorScheme {
   Color get pageBackground => surface;
-  Color get headerShadow => brightness == .dark ? primary : shadow;
+  Color get headerShadow => brightness == .dark ? c.darkModeShadow : shadow;
   Color get barrier => isDesktop ? Colors.transparent : _barrier;
   Color get dialogBackground => brightness == .dark ? surfaceContainerHigh : surfaceContainer;
   Color get dialogHeader => surfaceContainerHighest;
@@ -20,7 +21,7 @@ extension ColorSchemeExt on ColorScheme {
   Color get faintButtonBackground => onSurface.withAlpha(25);
   Color get faintButtonForeground => onSurface;
   Color get faintButtonIcon => onSurfaceVariant;
-  Color get faintBorder => Color(0x09000000);
+  Color get faintBorder => c.faintBorderColour;
   Color get dialogDivider => outlineVariant;
   Color get panelDivider => surfaceDim;
   Color get panelBackground => brightness == .dark ? surfaceContainerHigh : surfaceContainerLowest;
