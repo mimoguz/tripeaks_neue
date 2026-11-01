@@ -15,8 +15,8 @@ import 'package:tripeaks_neue/util/overlay_style.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
-import 'package:tripeaks_neue/widgets/group_title.dart';
 import 'package:tripeaks_neue/widgets/panel_divider.dart';
+import 'package:tripeaks_neue/widgets/sliver_text.dart';
 
 final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -73,8 +73,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   title: Text(s.settingsTitle),
                   backgroundColor: theme.colorScheme.pageBackground,
                   surfaceTintColor: theme.colorScheme.pageBackground,
-                  shadowColor: theme.shadowColor,
-                  scrolledUnderElevation: 2.0,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
@@ -104,37 +102,57 @@ final class SettingsPageBody extends StatelessWidget {
     final s = context.strings;
     return Container(
       color: context.colours.pageBackground,
-      child: ListView(
-        shrinkWrap: true,
-        padding: c.utilPageInsets,
-        children: [
-          const GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
-
-          GroupTitle(s.nextGameSettingGroupTitle),
-          const GroupTile(
-            padding: EdgeInsets.zero,
-            children: [
-              LayoutSetting(),
-              PanelDivider(),
-              StartEmptySetting(),
-              PanelDivider(),
-              EnsureSolvableSetting(),
+      child: CustomScrollView(
+        slivers: <Widget>[
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.itemSpacing),
+              child: GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
+            ),
+          ),
+          SliverMainAxisGroup(
+            slivers: <Widget>[
+              H(Text(s.nextGameSettingGroupTitle)),
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: c.itemSpacing),
+                  child: GroupTile(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      LayoutSetting(),
+                      PanelDivider(),
+                      StartEmptySetting(),
+                      PanelDivider(),
+                      EnsureSolvableSetting(),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
 
-          GroupTitle(s.interfaceSettingGroupTitle),
-          const GroupTile(
-            padding: EdgeInsets.zero,
-            children: [
-              SoundSetting(),
-              PanelDivider(),
-              ThemeModeSetting(),
-              PanelDivider(),
-              SuitIconSetting(),
-              PanelDivider(),
-              ColourSetting(),
-              PanelDivider(),
-              DecorSetting(),
+          SliverMainAxisGroup(
+            slivers: <Widget>[
+              H(Text(s.interfaceSettingGroupTitle)),
+              SliverPadding(
+                padding: EdgeInsets.only(bottom: c.utilPageInsets.bottom),
+                sliver: const SliverToBoxAdapter(
+                  child: GroupTile(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      SoundSetting(),
+                      PanelDivider(),
+                      ThemeModeSetting(),
+                      PanelDivider(),
+                      SuitIconSetting(),
+                      PanelDivider(),
+                      ColourSetting(),
+                      PanelDivider(),
+                      DecorSetting(),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ],

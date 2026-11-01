@@ -33,7 +33,7 @@ final class const HDelegate(
       elevation: elevated ? 2 : 0,
       child: ConstrainedItem(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-        heightConstraint: _maxHeight,
+        maxHeight: _maxHeight,
         child: Row(
           children: [
             DefaultTextStyle(
@@ -55,7 +55,7 @@ final class const HDelegate(
   @override
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
-  static const _maxHeight = 58.0;
+  static const _maxHeight = 48.0;
   static const _minHeight = 36.0;
 }
 

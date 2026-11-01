@@ -20,16 +20,16 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
     return CustomScrollView(
       slivers: <Widget>[
         SliverPadding(
-          padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
+          padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.itemSpacing),
           sliver: OverallStatsTile(statistics),
         ),
         if (statistics.lastGame != null)
           SliverMainAxisGroup(
             slivers: <Widget>[
               H(Text(s.lastGameStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
-              SliverPadding(
-                padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
-                sliver: SliverToBoxAdapter(
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: c.itemSpacing),
                   child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
               ),

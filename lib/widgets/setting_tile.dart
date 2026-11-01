@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/item_container.dart';
+import 'package:tripeaks_neue/widgets/constrained.dart';
 
 final class const SettingTile({
   super.key,
@@ -17,8 +17,9 @@ final class const SettingTile({
   Widget build(BuildContext context) {
     final theme = context.theme;
     final padding = showArrow ? _correctedPadding : c.cardPadding;
-    return ListItemContainer(
+    return ConstrainedItem(
       minHeight: 68.0,
+      padding: EdgeInsets.zero,
       child: Material(
         type: .transparency,
         child: InkWell(
