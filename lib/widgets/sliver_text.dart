@@ -29,15 +29,19 @@ final class const HDelegate(
     final theme = context.theme;
     return Material(
       color: theme.colorScheme.pageBackground,
-      shadowColor: theme.shadowColor,
+      shadowColor: theme.colorScheme.headerShadow,
       elevation: elevated ? 2 : 0,
       child: ConstrainedItem(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         maxHeight: _maxHeight,
         child: Row(
+          crossAxisAlignment: .end,
           children: [
             DefaultTextStyle(
-              style: theme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.primary),
+              style: theme.textTheme.titleMedium!.copyWith(
+                fontWeight: .w700,
+                color: theme.colorScheme.secondary,
+              ),
               child: child,
             ),
           ],

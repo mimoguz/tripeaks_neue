@@ -28,7 +28,7 @@ class AboutTab extends StatelessWidget {
               P(
                 Text(
                   "Tripeaks NEUE version $version.\n"
-                  "Developed by Oguz Tas, 2026.\n"
+                  "Copyright © 2026 Oguz Tas.\n"
                   "Solvable game algorithm was developed by Lykae.",
                   style: normal,
                 ),

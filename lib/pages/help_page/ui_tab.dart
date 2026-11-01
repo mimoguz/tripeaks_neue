@@ -178,7 +178,7 @@ final class const UiShortcutTile({
   @override
   Widget build(BuildContext context) {
     return ConstrainedSliver(
-      padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal, vertical: c.cellPadding),
+      padding: const EdgeInsets.symmetric(horizontal: c.utilPageMargin, vertical: c.cellPadding),
       child: Row(
         children: [
           Expanded(

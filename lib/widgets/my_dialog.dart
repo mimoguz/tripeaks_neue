@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_neue/widgets/scroll_shadow.dart';
 
 class const MyDialog({
   super.key,
@@ -34,7 +34,10 @@ class _MyDialogState extends State<MyDialog> {
     final theme = Theme.of(context);
     return AlertDialog(
       clipBehavior: .antiAlias,
-      titleTextStyle: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+      titleTextStyle: theme.textTheme.titleMedium!.copyWith(
+        color: theme.colorScheme.onSurfaceVariant,
+        fontSize: 20,
+      ),
       title: Container(
         color: theme.colorScheme.dialogHeader,
         padding: c.DialogMetrics.titlePadding,
@@ -138,7 +141,10 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 children: [
                   Flexible(
                     child: DefaultTextStyle(
-                      style: theme.textTheme.titleLarge!.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                      style: theme.textTheme.titleMedium!.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                        fontSize: 20,
+                      ),
                       child: widget.title,
                     ),
                   ),

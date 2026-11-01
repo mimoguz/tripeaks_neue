@@ -838,7 +838,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
+  /// **'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
   String get interactionP04;
 
   /// UI & interaction text.
@@ -856,13 +856,13 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'or by using \"New Game with Layout...\" option.'**
+  /// **'or by using _\"New Game with Layout...\"_ option.'**
   String get interactionP07;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
+  /// **'When a game ends, you will see an _ending card_. They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
   String get interactionP08;
 
   /// UI & interaction text.
@@ -910,13 +910,13 @@ abstract class AppLocalizations {
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'Removing cards from the board one after the other creates a _chain_.'**
+  /// **'Removing cards from the board one after the other creates a _chain_.'**
   String get scoringRichP01;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. '**
+  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.'**
   String get scoringP02;
 
   /// Scoring description.

@@ -11,6 +11,7 @@ extension ContextExt on BuildContext {
 
 extension ColorSchemeExt on ColorScheme {
   Color get pageBackground => surface;
+  Color get headerShadow => brightness == .dark ? primary : shadow;
   Color get barrier => isDesktop ? Colors.transparent : _barrier;
   Color get dialogBackground => brightness == .dark ? surfaceContainerHigh : surfaceContainer;
   Color get dialogHeader => surfaceContainerHighest;

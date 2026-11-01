@@ -392,7 +392,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get interactionP04 =>
-      'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
+      'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
 
   @override
   String get interactionP05 => 'This is the menu button.';
@@ -402,11 +402,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'From the menu, different game modes can be selected by visiting the settings page,';
 
   @override
-  String get interactionP07 => 'or by using \"New Game with Layout...\" option.';
+  String get interactionP07 => 'or by using _\"New Game with Layout...\"_ option.';
 
   @override
   String get interactionP08 =>
-      'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
+      'When a game ends, you will see an _ending card_. They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
 
   @override
   String get interactionP09 => 'The game supports both portrait and landscape orientations.';
@@ -431,11 +431,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shortcutTitle => 'Shortcut: ';
 
   @override
-  String get scoringRichP01 => 'Removing cards from the board one after the other creates a _chain_.';
+  String get scoringRichP01 => 'Removing cards from the board one after the other creates a _chain_.';
 
   @override
   String get scoringP02 =>
-      'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. ';
+      'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.';
 
   @override
   String get scoringRichP03 =>

@@ -766,7 +766,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP04": "Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current\u00A0chain.",
+    "interactionP04": "Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current\u00A0chain.",
     "@interactionP04": {
         "type": "text",
         "context": "howToPlay",
@@ -784,13 +784,13 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP07": "or by using \"New Game with Layout...\" option.",
+    "interactionP07": "or by using _\"New Game with Layout...\"_ option.",
     "@interactionP07": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP08": "When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don't block interaction with the other parts of the\u00A0interface.",
+    "interactionP08": "When a game ends, you will see an _ending card_. They are not modal dialogs, and they don't block interaction with the other parts of the\u00A0interface.",
     "@interactionP08": {
         "type": "text",
         "context": "howToPlay",
@@ -839,13 +839,13 @@
         "description": "Shortcut hint title"
     },
     "@_SCORING": {},
-    "scoringRichP01": "Removing cards from the board one after the other creates a _chain_.",
+    "scoringRichP01": "Removing cards from the board one after the other creates a\u00A0_chain_.",
     "@scoringRichP01": {
         "type": "text",
         "context": "scoring",
         "description": "Scoring description."
     },
-    "scoringP02": "A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain's length, it will not end it. ",
+    "scoringP02": "A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain's length, it will not end it.",
     "@scoringP02": {
         "type": "text",
         "context": "scoring",
