@@ -5,6 +5,7 @@ import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/common_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/constrained.dart';
 import 'package:tripeaks_neue/widgets/external_link.dart';
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/sliver_text.dart';
@@ -116,30 +117,19 @@ final class const Dependency({
   @override
   Widget build(BuildContext context) {
     final labelStyle = context.styles.labelSmall;
-    return Material(
-      elevation: 0,
-      color: Colors.transparent,
-      clipBehavior: .none,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: c.maxListWidth),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
-            child: Row(
-              children: [
-                Text(isDirectDependency ? "Direct:" : "Indirect:", textAlign: .end, style: labelStyle),
-                Expanded(child: Text(package.name, maxLines: 1, softWrap: false, overflow: .fade)),
-                if (package.homepage != null)
-                  TextButton(onPressed: () => _copy(context, package.homepage!), child: Text("Link")),
-                if (package.license != null)
-                  TextButton(
-                    onPressed: () => showCommonDialog(context, (_) => LicenseDialog(package: package)),
-                    child: Text("License"),
-                  ),
-              ],
+    return ConstrainedItem(
+      child: Row(
+        children: [
+          Text(isDirectDependency ? "Direct:" : "Indirect:", textAlign: .end, style: labelStyle),
+          Expanded(child: Text(package.name, maxLines: 1, softWrap: false, overflow: .fade)),
+          if (package.homepage != null)
+            TextButton(onPressed: () => _copy(context, package.homepage!), child: Text("Link")),
+          if (package.license != null)
+            TextButton(
+              onPressed: () => showCommonDialog(context, (_) => LicenseDialog(package: package)),
+              child: Text("License"),
             ),
-          ),
-        ),
+        ],
       ),
     );
   }

@@ -6,6 +6,8 @@ import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/constrained.dart';
+import 'package:tripeaks_neue/widgets/my_card.dart';
 import 'package:tripeaks_neue/widgets/sliver_text.dart';
 
 final _dateFormat = DateFormat("d MMM y, HH:mm");
@@ -18,34 +20,35 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
     return CustomScrollView(
       slivers: <Widget>[
         SliverPadding(
-          padding: const EdgeInsets.fromLTRB(c.utilPageMargin, c.utilPageMargin, c.utilPageMargin, 0),
+          padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
           sliver: OverallStatsTile(statistics),
         ),
         if (statistics.lastGame != null)
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(vertical: c.DialogMetrics.sectionSpacing),
-            sliver: SliverMainAxisGroup(
-              slivers: <Widget>[
-                H(
-                  Text(s.lastGameStatistics),
-                  pinned: false,
-                  maxWidth: c.maxListWidth,
-                  horizontalPadding: c.utilPageMargin,
+          SliverMainAxisGroup(
+            slivers: <Widget>[
+              H(
+                Text(s.lastGameStatistics),
+                pinned: false,
+                maxWidth: c.maxListWidth,
+                horizontalPadding: c.utilPageMargin,
+              ),
+              SliverPadding(
+                padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
+                sliver: SliverToBoxAdapter(
+                  child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
-                SliverToBoxAdapter(child: SingleGameTile(game: statistics.lastGame!, rank: -1)),
-              ],
-            ),
+              ),
+            ],
           ),
         if (statistics.bestGames.isNotEmpty)
           SliverMainAxisGroup(
             slivers: <Widget>[
               H(Text(s.bestGamesStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
-              SliverList.separated(
-                itemCount: statistics.bestGames.length,
-                itemBuilder: (context, index) =>
-                    SingleGameTile(game: statistics.bestGames[index], rank: index + 1),
-                separatorBuilder: (_, _) =>
-                    Line(verticalPadding: 8, horizontalPadding: c.utilPageMargin, maxWidth: c.maxListWidth),
+              SliverPadding(
+                padding: EdgeInsetsGeometry.only(bottom: c.utilPageInsets.bottom),
+                sliver: SliverToBoxAdapter(
+                  child: ScoreTable(games: statistics.bestGames, showLayout: showLayout),
+                ),
               ),
             ],
           ),
@@ -60,30 +63,33 @@ class const OverallStatsTile(final Statistics statistics, {super.key}) extends S
     child: Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: c.maxListWidth),
-        child: Column(
-          spacing: 8,
-          children: [
-            ChartCard(played: statistics.totalGames, cleared: statistics.cleared),
-            Row(
-              spacing: 8,
-              children: [
-                Expanded(
-                  child: ScoreCard(
-                    score: statistics.bestGames.firstOrNull?.score ?? 0,
-                    label: "HIGHEST SCORE",
-                    icon: CustomIcons.scoreMedal30,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: c.utilPageMargin),
+          child: Column(
+            spacing: 8,
+            children: [
+              ChartCard(played: statistics.totalGames, cleared: statistics.cleared),
+              Row(
+                spacing: 8,
+                children: [
+                  Expanded(
+                    child: ScoreCard(
+                      score: statistics.bestGames.firstOrNull?.score ?? 0,
+                      label: "HIGHEST SCORE",
+                      icon: CustomIcons.scoreMedal30,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ScoreCard(
-                    score: statistics.longestChain,
-                    label: "LONGEST CHAIN",
-                    icon: CustomIcons.chainMedal30,
+                  Expanded(
+                    child: ScoreCard(
+                      score: statistics.longestChain,
+                      label: "LONGEST CHAIN",
+                      icon: CustomIcons.chainMedal30,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     ),
@@ -140,58 +146,6 @@ final class const BarChart(
   static const _radius = Radius.circular(12);
 }
 
-final class const SingleGameTile({
-  super.key,
-  required final SingleGameStatistics game,
-  required final int rank,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final s = context.strings;
-    final theme = context.theme;
-    return Material(
-      elevation: 0,
-      color: Colors.transparent,
-      clipBehavior: .none,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: c.maxListWidth),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: c.utilPageMargin),
-            child: Row(
-              children: [
-                if (rank > 0)
-                  SizedBox(width: 32, child: Text(rank.toString(), style: theme.textTheme.labelMedium)),
-                Expanded(
-                  child: Row(
-                    spacing: 4,
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: .start,
-                          mainAxisSize: .min,
-                          children: [
-                            Text(game.layout.label(s), style: theme.textTheme.titleMedium),
-                            Text(_dateFormat.format(game.ended), style: theme.textTheme.bodyMedium),
-                          ],
-                        ),
-                      ),
-                      Result(game.isCleared),
-                      MiniScoreCard(score: game.score, icon: CustomIcons.star16),
-                      MiniScoreCard(score: game.longestChain, icon: CustomIcons.chain16),
-                    ],
-                  ),
-                ),
-                Row(),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 final class const ScoreCard({
   super.key,
   required final int score,
@@ -201,50 +155,165 @@ final class const ScoreCard({
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    return Material(
-      borderRadius: c.commonBorderRadius,
-      color: theme.colorScheme.panelBackground,
-      shadowColor: theme.shadowColor,
-      elevation: 2,
-      child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: c.commonBorderRadius,
-          border: Border.all(color: theme.colorScheme.faintBorder, width: 1),
-        ),
-        child: Padding(
-          padding: c.cardPadding,
-          child: Row(
-            mainAxisAlignment: .spaceBetween,
-            children: [
-              Flexible(
-                child: Column(
-                  mainAxisAlignment: .center,
-                  crossAxisAlignment: .start,
-                  children: [
-                    Text(
-                      score.toString(),
-                      style: theme.textTheme.titleLarge?.copyWith(
-                        fontFeatures: c.fontFeatures,
-                        color: theme.colorScheme.onSurfaceVariant,
-                        fontWeight: .w700,
-                      ),
-                    ),
-                    Text(
-                      label,
-                      style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline),
-                      overflow: .fade,
-                      softWrap: false,
-                    ),
-                  ],
+    return MyCard(
+      child: Row(
+        mainAxisAlignment: .spaceBetween,
+        children: [
+          Flexible(
+            child: Column(
+              mainAxisAlignment: .center,
+              crossAxisAlignment: .start,
+              children: [
+                Text(
+                  score.toString(),
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontFeatures: c.fontFeatures,
+                    color: theme.colorScheme.onSurfaceVariant,
+                    fontWeight: .w700,
+                  ),
                 ),
-              ),
-              Icon(icon, color: theme.colorScheme.onSurfaceVariant, size: 30),
-            ],
+                Text(
+                  label,
+                  style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline),
+                  overflow: .fade,
+                  softWrap: false,
+                ),
+              ],
+            ),
           ),
-        ),
+          Icon(icon, color: theme.colorScheme.onSurfaceVariant, size: 30),
+        ],
       ),
     );
   }
+}
+
+class const ScoreTable({
+  super.key,
+  required final List<SingleGameStatistics> games,
+  final bool showRank = true,
+  final bool showLayout = true,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final borderColour = theme.colorScheme.dialogDivider;
+    final borderSide = BorderSide(color: borderColour, width: 1);
+    final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeatures);
+    final headerStyle = theme.textTheme.bodyMedium;
+    return ConstrainedItem(
+      child: Table(
+        columnWidths: showRank ? _widthsShowRank : _widthsHideRank,
+        defaultVerticalAlignment: .middle,
+        children: <TableRow>[
+          TableRow(
+            key: ValueKey(0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surfaceContainerLow,
+              border: Border.fromBorderSide(borderSide),
+              borderRadius: BorderRadius.vertical(top: c.commonRadius),
+            ),
+            children: <Widget>[
+              if (showRank) ...[
+                Padding(
+                  padding: _cellPadding,
+                  child: Text("#", style: headerStyle),
+                ),
+                Container(color: borderColour, height: _cellHeight, width: 1),
+              ],
+              Padding(
+                padding: _cellPadding,
+                child: Text("GAME", style: headerStyle),
+              ),
+              Container(color: borderColour, height: _cellHeight, width: 1),
+              Padding(
+                padding: _cellPadding,
+                child: Row(
+                  mainAxisAlignment: .end,
+                  children: [Icon(CustomIcons.star, size: 24, color: theme.colorScheme.onSurfaceVariant)],
+                ),
+              ),
+              Container(color: borderColour, height: _cellHeight, width: 1),
+              Padding(
+                padding: _cellPadding,
+                child: Row(
+                  mainAxisAlignment: .end,
+                  children: [Icon(CustomIcons.chain, size: 24, color: theme.colorScheme.onSurfaceVariant)],
+                ),
+              ),
+            ],
+          ),
+          for (final (index, game) in games.indexed)
+            TableRow(
+              key: ValueKey(index + 1),
+              decoration: BoxDecoration(
+                color: index & 1 == 1
+                    ? theme.colorScheme.surfaceContainerLow
+                    : theme.colorScheme.panelBackground,
+                border: Border(left: borderSide, right: borderSide, bottom: borderSide),
+                borderRadius: index == games.length - 1
+                    ? BorderRadius.vertical(bottom: c.commonRadius)
+                    : null,
+              ),
+              children: <Widget>[
+                if (showRank) ...[
+                  Padding(padding: _cellPadding, child: Text((index + 1).toString())),
+                  Container(color: borderColour, height: _cellHeight, width: 1),
+                ],
+                Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    Padding(
+                      padding: _cellPadding,
+                      child: Column(
+                        crossAxisAlignment: .start,
+                        mainAxisAlignment: .center,
+                        children: [
+                          if (showLayout) Text(game.layout.label(context.strings)),
+                          Text(_dateFormat.format(game.ended)),
+                        ],
+                      ),
+                    ),
+                    Padding(padding: const EdgeInsets.only(right: 8.0), child: Result(game.isCleared)),
+                  ],
+                ),
+                Container(color: borderColour, height: _cellHeight, width: 1),
+                Padding(
+                  padding: _cellPadding,
+                  child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
+                ),
+                Container(color: borderColour, height: _cellHeight, width: 1),
+                Padding(
+                  padding: _cellPadding,
+                  child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+                ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+
+  static const _cellPadding = EdgeInsets.symmetric(horizontal: 12);
+  static const _cellHeight = 52.0;
+
+  static const _widthsShowRank = <int, TableColumnWidth>{
+    0: FixedColumnWidth(40),
+    1: FixedColumnWidth(1),
+    2: FlexColumnWidth(),
+    3: FixedColumnWidth(1),
+    4: FixedColumnWidth(68),
+    5: FixedColumnWidth(1),
+    6: FixedColumnWidth(68),
+  };
+
+  static const _widthsHideRank = <int, TableColumnWidth>{
+    0: FlexColumnWidth(),
+    1: FixedColumnWidth(1),
+    2: FixedColumnWidth(68),
+    3: FixedColumnWidth(1),
+    4: FixedColumnWidth(68),
+  };
 }
 
 final class const Result(final bool result, {super.key}) extends StatelessWidget {
@@ -254,47 +323,16 @@ final class const Result(final bool result, {super.key}) extends StatelessWidget
     return Container(
       decoration: BoxDecoration(
         shape: .circle,
-        color: result ? Colors.lightGreen.shade500 : theme.colorScheme.tertiary,
+        color: result ? Colors.lightGreen.shade500 : theme.colorScheme.outline,
       ),
       width: 24,
       height: 24,
       child: Center(
         child: Icon(
           result ? CustomIcons.check12 : CustomIcons.cross12,
-          color: result ? theme.colorScheme.onSecondary : theme.colorScheme.onTertiary,
+          color: theme.colorScheme.panelBackground,
           size: 12,
         ),
-      ),
-    );
-  }
-}
-
-final class const MiniScoreCard({super.key, required final int score, required final IconData icon})
-    extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: c.commonBorderRadius,
-        color: theme.colorScheme.onSurfaceVariant,
-      ),
-      padding: EdgeInsets.fromLTRB(8, 0, 6, 0),
-      width: 58,
-      height: 24,
-      child: Row(
-        mainAxisAlignment: .spaceBetween,
-        children: [
-          Text(
-            score.toString(),
-            style: theme.textTheme.labelMedium?.copyWith(
-              fontFeatures: c.fontFeatures,
-              color: theme.colorScheme.panelBackground,
-              fontWeight: .w700,
-            ),
-          ),
-          Icon(icon, color: theme.colorScheme.panelBackground, size: 16),
-        ],
       ),
     );
   }
@@ -311,69 +349,63 @@ final class const ChartCard({super.key, required final int played, required fina
       fontWeight: .w700,
     );
     final labelStyle = theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline);
-    return Material(
-      color: theme.colorScheme.panelBackground,
-      elevation: 2,
-      shadowColor: theme.shadowColor,
-      borderRadius: c.commonBorderRadius,
-      child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: c.commonBorderRadius,
-          border: Border.all(color: theme.colorScheme.faintBorder, width: 1),
-        ),
-        child: Padding(
-          padding: c.cardPadding,
-          child: Column(
-            mainAxisSize: .min,
-            crossAxisAlignment: .stretch,
-            spacing: 4,
+    return MyCard(
+      child: Column(
+        mainAxisSize: .min,
+        crossAxisAlignment: .stretch,
+        spacing: 4,
+        children: [
+          Row(
+            mainAxisAlignment: .center,
+            spacing: 3,
+            textBaseline: .alphabetic,
+            crossAxisAlignment: .baseline,
             children: [
-              Row(
-                mainAxisAlignment: .center,
-                spacing: 3,
-                textBaseline: .alphabetic,
-                crossAxisAlignment: .baseline,
-                children: [
-                  Text(played.toString(), textAlign: .center, style: numberStyle),
-                  Text("PLAYED", textAlign: .center, style: labelStyle),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: .center,
-                spacing: 8,
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      height: 24,
-                      child: CustomPaint(
-                        painter: BarChart(
-                          played > 0 ? cleared.toDouble() / played : 0,
-                          filled1: Colors.lightGreen.shade500,
-                          filled2: Colors.lightGreen.shade300,
-                          empty: theme.colorScheme.dialogDivider,
-                        ),
-                      ),
-                    ),
+              Text(played.toString(), textAlign: .center, style: numberStyle),
+              Text("PLAYED", textAlign: .center, style: labelStyle),
+            ],
+          ),
+          Row(
+            crossAxisAlignment: .center,
+            spacing: 8,
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: 24,
+                  child: CustomPaint(
+                    painter: played > 0 && played > cleared
+                        ? BarChart(
+                            played > 0 ? cleared.toDouble() / played : 0,
+                            filled1: Colors.lightGreen.shade500,
+                            filled2: Colors.lightGreen.shade300,
+                            empty: theme.colorScheme.dialogDivider,
+                          )
+                        : BarChart(
+                            played > 0 ? cleared.toDouble() / played : 0,
+                            filled1: Colors.orange.shade500,
+                            filled2: Colors.amber.shade300,
+                            empty: theme.colorScheme.dialogDivider,
+                          ),
                   ),
-                  Text(
-                    played > 0 ? "${f.format((cleared.toDouble() / played) * 100)}%" : "None yet",
-                    style: numberStyle?.copyWith(fontSize: 18),
-                  ),
-                ],
+                ),
               ),
-              Row(
-                mainAxisAlignment: .start,
-                spacing: 3,
-                textBaseline: .alphabetic,
-                crossAxisAlignment: .baseline,
-                children: [
-                  Text(cleared.toString(), textAlign: .center, style: numberStyle),
-                  Text("CLEARED", textAlign: .center, style: labelStyle),
-                ],
+              Text(
+                played > 0 ? "${f.format((cleared.toDouble() / played) * 100)}%" : "None yet",
+                style: numberStyle?.copyWith(fontSize: 18),
               ),
             ],
           ),
-        ),
+          Row(
+            mainAxisAlignment: .start,
+            spacing: 3,
+            textBaseline: .alphabetic,
+            crossAxisAlignment: .baseline,
+            children: [
+              Text(cleared.toString(), textAlign: .center, style: numberStyle),
+              Text("CLEARED", textAlign: .center, style: labelStyle),
+            ],
+          ),
+        ],
       ),
     );
   }

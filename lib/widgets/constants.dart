@@ -8,7 +8,7 @@ const double cardPaddingVertical = 10.0;
 const double cardSize = 116.0;
 const double cellPadding = 4.0;
 const double itemSpacing = 16;
-const double commonRadius = 16.0;
+const double commonRadiusValue = 16.0;
 const double divPadding = 8;
 const double dropdownItemWidth = 120;
 const double iconScaleThreshold = 0.4;
@@ -27,7 +27,8 @@ const double verticalTabsThreshold = 500;
 const double radioCorrection = 5.0;
 const double checkBoxCorrection = 5.0;
 
-const commonBorderRadius = BorderRadius.all(Radius.circular(commonRadius));
+const commonRadius = Radius.circular(commonRadiusValue);
+const commonBorderRadius = BorderRadius.all(commonRadius);
 
 const EdgeInsets cardPadding = EdgeInsets.symmetric(
   horizontal: cardPaddingHorizontal,
@@ -87,7 +88,7 @@ abstract final class DialogMetrics {
     horizontal: horizontalPadding,
     vertical: sectionSpacing,
   );
-  static const contentPaddingTight = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: 0.0);
+  static const contentPaddingHorizontal = EdgeInsets.symmetric(horizontal: horizontalPadding);
 
   static const subtitlePadding = EdgeInsets.fromLTRB(
     horizontalPadding,
@@ -97,7 +98,9 @@ abstract final class DialogMetrics {
   );
   static const shape = RoundedRectangleBorder(borderRadius: commonBorderRadius);
   static const bottomSheetShape = RoundedRectangleBorder(
-    borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(commonRadius)),
+    borderRadius: BorderRadiusDirectional.vertical(top: Radius.circular(commonRadiusValue)),
   );
-  static const bottomSheetBorderRadius = BorderRadiusDirectional.vertical(top: Radius.circular(commonRadius));
+  static const bottomSheetBorderRadius = BorderRadiusDirectional.vertical(
+    top: Radius.circular(commonRadiusValue),
+  );
 }

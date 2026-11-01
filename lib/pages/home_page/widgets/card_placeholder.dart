@@ -15,7 +15,7 @@ class CardPlaceHolder extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: colours.outlineVariant, width: 2),
-        borderRadius: BorderRadius.all(Radius.circular(c.commonRadius * scale)),
+        borderRadius: BorderRadius.all(Radius.circular(c.commonRadiusValue * scale)),
       ),
       width: c.cardSize * scale,
       height: c.cardSize * scale,

@@ -174,7 +174,7 @@ class const CardBack({super.key, required final BackOptions back, final double t
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(c.commonRadius - 2.0)),
+      borderRadius: const BorderRadius.all(Radius.circular(c.commonRadiusValue - 2.0)),
       child: Icon(back.decor, size: c.cardSize, color: back.decorColour.foreground),
     );
   }

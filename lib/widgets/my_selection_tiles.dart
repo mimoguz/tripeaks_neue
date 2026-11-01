@@ -41,7 +41,7 @@ final class const MyRadioListTile<T>({
       visualDensity: .compact,
       minLeadingWidth: 24,
       horizontalTitleGap: c.DialogMetrics.horizontalPadding,
-      contentPadding: c.DialogMetrics.contentPaddingTight,
+      contentPadding: c.DialogMetrics.contentPaddingHorizontal,
       onTap: onTap != null ? (() => onTap?.call(value)) : null,
       leading: OnOffIcon(
         onIcon: Icons.radio_button_checked,
@@ -68,7 +68,7 @@ class const MyCheckBoxListTile({
       onTap: onTap,
       minLeadingWidth: 24,
       horizontalTitleGap: c.DialogMetrics.horizontalPadding,
-      contentPadding: c.DialogMetrics.contentPaddingTight,
+      contentPadding: c.DialogMetrics.contentPaddingHorizontal,
       leading: OnOffIcon(onIcon: Icons.check_box, offIcon: Icons.check_box_outline_blank, isOn: isChecked),
     );
   }

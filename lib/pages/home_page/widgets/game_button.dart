@@ -136,12 +136,12 @@ class _GameButtonState extends State<GameButton> {
           children: [
             Material(
               type: MaterialType.button,
-              borderRadius: BorderRadius.circular(c.commonRadius * widget.scale),
+              borderRadius: BorderRadius.circular(c.commonRadiusValue * widget.scale),
               color: widget.onPressed != null ? _buttonColour : colours.outlineVariant,
               child: InkWell(
                 focusNode: _focusNode,
                 onTap: widget.onPressed,
-                borderRadius: BorderRadius.circular(c.commonRadius * widget.scale),
+                borderRadius: BorderRadius.circular(c.commonRadiusValue * widget.scale),
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: SizedBox(width: widget.width, height: widget.height),

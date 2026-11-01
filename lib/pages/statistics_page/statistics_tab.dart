@@ -328,14 +328,14 @@ class const Trailing({super.key, required final SingleGameStatistics stats}) ext
         TrailingChip(
           text: stats.score.toString(),
           tooltip: s.scoreTooltip,
-          icon: CustomIcons.star16,
+          icon: CustomIcons.star,
           width: 60,
           backgroundColour: DecorColour.amber.background,
         ),
         TrailingChip(
           text: stats.longestChain.toString(),
           tooltip: s.chainTooltip,
-          icon: CustomIcons.chain16,
+          icon: CustomIcons.chain,
           width: 52,
           backgroundColour: context.colours.secondary,
         ),

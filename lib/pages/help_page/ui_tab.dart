@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/constrained.dart';
 import 'package:tripeaks_neue/widgets/shortcut_hint.dart';
 import 'package:tripeaks_neue/widgets/sliver_text.dart';
 
@@ -71,7 +72,6 @@ class UiTab extends StatelessWidget {
                 shorcut: _undoShortcut,
               ),
               SliverLine(),
-
               UiHelpTile(
                 description: FastRichText(text: s.interactionP05, textStyle: normal, italicTextStyle: italic),
                 image: Container(
@@ -142,41 +142,28 @@ final class const UiHelpTile({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
-        clipBehavior: .none,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxListWidth),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal),
-              child: Row(
-                spacing: 24.0,
-                children: [
-                  SizedBox(
-                    width: 64,
-                    child: Row(mainAxisAlignment: .center, children: [image]),
-                  ),
-                  Expanded(
-                    child: shorcut == null
-                        ? description
-                        : Column(
-                            mainAxisSize: .min,
-                            crossAxisAlignment: .start,
-                            spacing: c.cellPadding,
-                            children: [
-                              description,
-                              ShortcutHint(shorcut: shorcut!),
-                            ],
-                          ),
-                  ),
-                ],
-              ),
-            ),
+    return ConstrainedSliver(
+      child: Row(
+        spacing: 24.0,
+        children: [
+          SizedBox(
+            width: 64,
+            child: Row(mainAxisAlignment: .center, children: [image]),
           ),
-        ),
+          Expanded(
+            child: shorcut == null
+                ? description
+                : Column(
+                    mainAxisSize: .min,
+                    crossAxisAlignment: .start,
+                    spacing: c.cellPadding,
+                    children: [
+                      description,
+                      ShortcutHint(shorcut: shorcut!),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }
@@ -190,30 +177,15 @@ final class const UiShortcutTile({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
-        clipBehavior: .none,
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: c.maxListWidth),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: c.cardPaddingHorizontal,
-                vertical: c.cellPadding,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: FastRichText(text: title, textStyle: textStyle),
-                  ),
-                  ShortcutHint(shorcut: shorcut, showLabel: false),
-                ],
-              ),
-            ),
+    return ConstrainedSliver(
+      padding: const EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal, vertical: c.cellPadding),
+      child: Row(
+        children: [
+          Expanded(
+            child: FastRichText(text: title, textStyle: textStyle),
           ),
-        ),
+          ShortcutHint(shorcut: shorcut, showLabel: false),
+        ],
       ),
     );
   }

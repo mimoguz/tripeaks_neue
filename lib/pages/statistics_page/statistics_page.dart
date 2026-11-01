@@ -74,13 +74,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         title: Text(s.statisticsPageTitle),
                         backgroundColor: colours.pageBackground,
                         surfaceTintColor: colours.pageBackground,
-                        shadowColor: c.faintShadowColour,
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
                             color: colours.dialogBackground,
                             elevation: 4.0,
-                            menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
+                            menuPadding: EdgeInsets.symmetric(vertical: c.commonRadiusValue),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
                             itemBuilder: (context) => _popupItems(context, s),

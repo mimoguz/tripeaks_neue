@@ -102,7 +102,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     );
   }
 
-  static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
+  static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadiusValue));
 }
 
 final class const AppTitle({super.key}) extends StatelessWidget {
