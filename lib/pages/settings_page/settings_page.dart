@@ -17,7 +17,6 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/group_tile.dart';
 import 'package:tripeaks_neue/widgets/group_title.dart';
 import 'package:tripeaks_neue/widgets/panel_divider.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -103,59 +102,43 @@ final class SettingsPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            color: context.colours.pageBackground,
-            child: Center(
-              child: Column(
-                children: [
-                  Flexible(
-                    child: ScrollIndicator(
-                      child: ListView(
-                        shrinkWrap: true,
-                        padding: c.utilPageInsets,
-                        children: [
-                          const GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
+    return Container(
+      color: context.colours.pageBackground,
+      child: ListView(
+        shrinkWrap: true,
+        padding: c.utilPageInsets,
+        children: [
+          const GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
 
-                          GroupTitle(s.nextGameSettingGroupTitle),
-                          const GroupTile(
-                            padding: EdgeInsets.zero,
-                            children: [
-                              LayoutSetting(),
-                              PanelDivider(),
-                              StartEmptySetting(),
-                              PanelDivider(),
-                              EnsureSolvableSetting(),
-                            ],
-                          ),
-
-                          GroupTitle(s.interfaceSettingGroupTitle),
-                          const GroupTile(
-                            padding: EdgeInsets.zero,
-                            children: [
-                              SoundSetting(),
-                              PanelDivider(),
-                              ThemeModeSetting(),
-                              PanelDivider(),
-                              SuitIconSetting(),
-                              PanelDivider(),
-                              ColourSetting(),
-                              PanelDivider(),
-                              DecorSetting(),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          GroupTitle(s.nextGameSettingGroupTitle),
+          const GroupTile(
+            padding: EdgeInsets.zero,
+            children: [
+              LayoutSetting(),
+              PanelDivider(),
+              StartEmptySetting(),
+              PanelDivider(),
+              EnsureSolvableSetting(),
+            ],
           ),
-        ),
-      ],
+
+          GroupTitle(s.interfaceSettingGroupTitle),
+          const GroupTile(
+            padding: EdgeInsets.zero,
+            children: [
+              SoundSetting(),
+              PanelDivider(),
+              ThemeModeSetting(),
+              PanelDivider(),
+              SuitIconSetting(),
+              PanelDivider(),
+              ColourSetting(),
+              PanelDivider(),
+              DecorSetting(),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

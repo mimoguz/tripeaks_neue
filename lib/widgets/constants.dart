@@ -62,9 +62,9 @@ abstract final class DialogMetrics {
 
   static const titlePadding = EdgeInsets.fromLTRB(
     horizontalPadding,
-    verticalPadding,
+    verticalPadding - 4,
     horizontalPadding,
-    sectionSpacing,
+    verticalPadding - 4,
   );
   static const actionsPadding = EdgeInsets.fromLTRB(
     horizontalPadding,

@@ -11,6 +11,8 @@ final class const MyCard({super.key, required final Widget child, final EdgeInse
       borderRadius: c.commonBorderRadius,
       color: theme.colorScheme.panelBackground,
       shadowColor: theme.shadowColor,
+      type: .card,
+      clipBehavior: .antiAlias,
       elevation: 2,
       child: Ink(
         decoration: BoxDecoration(
