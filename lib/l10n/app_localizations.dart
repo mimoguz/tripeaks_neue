@@ -652,13 +652,13 @@ abstract class AppLocalizations {
   /// Label of the total games played statistic.
   ///
   /// In en, this message translates to:
-  /// **'TOTAL PLAYED'**
+  /// **'PLAYED'**
   String get totalPlayedLabel;
 
   /// Label of the total games cleared statistic.
   ///
   /// In en, this message translates to:
-  /// **'TOTAL CLEARED'**
+  /// **'CLEARED'**
   String get totalClearedLabel;
 
   /// Label of the best score statistic.
@@ -760,43 +760,43 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
+  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
   String get howToP01;
 
   /// How to play text, contains formatting.
   ///
   /// In en, this message translates to:
-  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
+  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
   String get howToRichP02;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
+  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
   String get howToRichP03;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
+  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
   String get howToP04;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
+  /// **'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
   String get howToP05;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The game ends when the board is cleared or no more moves are possible.'**
+  /// **'The game ends when the board is cleared or no more moves are possible.'**
   String get howToP06;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'In addition to the standard game, this app offers:'**
+  /// **'In addition to the standard game, this app offers:'**
   String get howToP07;
 
   /// How to play text.
@@ -808,7 +808,7 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'An option to show the values of face-down cards,'**
+  /// **'An option to show the values of face-down cards,'**
   String get howToP09;
 
   /// How to play text.
@@ -916,25 +916,25 @@ abstract class AppLocalizations {
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.'**
+  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.'**
   String get scoringP02;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.'**
+  /// **'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.'**
   String get scoringRichP03;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. '**
+  /// **'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. '**
   String get scoringRichP04;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
+  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
   String get scoringP05;
 
   /// Alert dialog message.

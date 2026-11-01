@@ -144,7 +144,7 @@ final class const UiHelpTile({
   Widget build(BuildContext context) {
     return ConstrainedSliver(
       child: Row(
-        spacing: 24.0,
+        spacing: c.itemSpacing,
         children: [
           SizedBox(
             width: 64,

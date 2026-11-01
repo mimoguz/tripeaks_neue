@@ -289,10 +289,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get statisticsSummary => 'Summary';
 
   @override
-  String get totalPlayedLabel => 'TOTAL PLAYED';
+  String get totalPlayedLabel => 'PLAYED';
 
   @override
-  String get totalClearedLabel => 'TOTAL CLEARED';
+  String get totalClearedLabel => 'CLEARED';
 
   @override
   String get bestScoreLabel => 'HIGHEST SCORE';
@@ -344,35 +344,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToP01 =>
-      'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
+      'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
 
   @override
   String get howToRichP02 =>
-      'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
+      'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
 
   @override
   String get howToRichP03 =>
-      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
+      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
 
   @override
   String get howToP04 =>
-      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
+      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
 
   @override
   String get howToP05 =>
-      'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
+      'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
 
   @override
-  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
+  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
 
   @override
-  String get howToP07 => 'In addition to the standard game, this app offers:';
+  String get howToP07 => 'In addition to the standard game, this app offers:';
 
   @override
   String get howToP08 => 'Three additional board layouts,';
 
   @override
-  String get howToP09 => 'An option to show the values of face-down cards,';
+  String get howToP09 => 'An option to show the values of face-down cards,';
 
   @override
   String get howToP10 =>
@@ -435,19 +435,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scoringP02 =>
-      'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.';
+      'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.';
 
   @override
   String get scoringRichP03 =>
-      'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.';
+      'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.';
 
   @override
   String get scoringRichP04 =>
-      'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ';
+      'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ';
 
   @override
   String get scoringP05 =>
-      'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
+      'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
 
   @override
   String get importFailedPrompt => 'Import failed';

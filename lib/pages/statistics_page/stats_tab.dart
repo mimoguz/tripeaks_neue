@@ -1,16 +1,14 @@
-import 'package:intl/intl.dart' show NumberFormat, DateFormat;
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
+import 'package:tripeaks_neue/util/format_ext.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
 import 'package:tripeaks_neue/widgets/my_card.dart';
 import 'package:tripeaks_neue/widgets/sliver_text.dart';
-
-final _dateFormat = DateFormat("d MMM y, HH:mm");
 
 class const StatsTab(final Statistics statistics, {super.key, final bool showLayout = true})
     extends StatelessWidget {
@@ -103,8 +101,8 @@ final class const BarChart(
     final p = Paint();
     final leftWidth = (size.width * ratio).roundToDouble();
     final rightWidth = size.width - leftWidth;
-    canvas.clipRRect(RRect.fromRectAndRadius(Offset.zero & size, _radius));
-    _drawRight(canvas, Size(rightWidth, size.height), Offset(leftWidth - _radius.x, 0), false, p);
+    canvas.clipRRect(RRect.fromRectAndRadius(Offset.zero & size, c.commonRadius));
+    _drawRight(canvas, Size(rightWidth, size.height), Offset(leftWidth - c.commonRadius.x, 0), false, p);
     if (ratio > 0) {
       _drawLeft(canvas, Size(leftWidth, size.height), p);
     }
@@ -118,7 +116,10 @@ final class const BarChart(
     paint
       ..shader = LinearGradient(colors: <Color>[filled1, filled2]).createShader(rect)
       ..style = .fill;
-    canvas.drawRRect(RRect.fromRectAndCorners(rect, topRight: _radius, bottomRight: _radius), paint);
+    canvas.drawRRect(
+      RRect.fromRectAndCorners(rect, topRight: c.commonRadius, bottomRight: c.commonRadius),
+      paint,
+    );
   }
 
   void _drawRight(Canvas canvas, Size size, Offset offset, bool full, Paint paint) {
@@ -137,8 +138,6 @@ final class const BarChart(
       x += shift;
     }
   }
-
-  static const _radius = Radius.circular(12);
 }
 
 final class const ScoreCard({
@@ -195,6 +194,7 @@ class const ScoreTable({
     final borderColour = theme.colorScheme.dialogDivider;
     final borderSide = BorderSide(color: borderColour, width: 1);
     final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
+    final rankStyle = theme.textTheme.labelMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
     final headerStyle = theme.textTheme.bodyMedium;
     return ConstrainedItem(
       child: Table(
@@ -222,7 +222,7 @@ class const ScoreTable({
               ),
               Container(color: borderColour, height: _cellHeight, width: 1),
               Padding(
-                padding: _cellPadding,
+                padding: _iconCellPadding,
                 child: Row(
                   mainAxisAlignment: .end,
                   children: [Icon(CustomIcons.star, size: 24, color: theme.colorScheme.onSurfaceVariant)],
@@ -230,7 +230,7 @@ class const ScoreTable({
               ),
               Container(color: borderColour, height: _cellHeight, width: 1),
               Padding(
-                padding: _cellPadding,
+                padding: _iconCellPadding,
                 child: Row(
                   mainAxisAlignment: .end,
                   children: [Icon(CustomIcons.chain, size: 24, color: theme.colorScheme.onSurfaceVariant)],
@@ -252,7 +252,10 @@ class const ScoreTable({
               ),
               children: <Widget>[
                 if (showRank) ...[
-                  Padding(padding: _cellPadding, child: Text((index + 1).toString())),
+                  Padding(
+                    padding: _cellPadding,
+                    child: Text((index + 1).toString(), style: rankStyle),
+                  ),
                   Container(color: borderColour, height: _cellHeight, width: 1),
                 ],
                 Row(
@@ -265,7 +268,7 @@ class const ScoreTable({
                         mainAxisAlignment: .center,
                         children: [
                           if (showLayout) Text(game.layout.label(context.strings)),
-                          Text(_dateFormat.format(game.ended)),
+                          Text(game.ended.formatted),
                         ],
                       ),
                     ),
@@ -289,7 +292,8 @@ class const ScoreTable({
     );
   }
 
-  static const _cellPadding = EdgeInsets.symmetric(horizontal: 12);
+  static const _cellPadding = EdgeInsets.symmetric(horizontal: 10);
+  static const _iconCellPadding = EdgeInsets.symmetric(horizontal: 8);
   static const _cellHeight = 52.0;
 
   static const _widthsShowRank = <int, TableColumnWidth>{
@@ -344,6 +348,7 @@ final class const ChartCard({super.key, required final int played, required fina
       fontWeight: .w700,
     );
     final labelStyle = theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline);
+    final s = context.strings;
     return MyCard(
       child: Column(
         mainAxisSize: .min,
@@ -357,7 +362,7 @@ final class const ChartCard({super.key, required final int played, required fina
             crossAxisAlignment: .baseline,
             children: [
               Text(played.toString(), textAlign: .center, style: numberStyle),
-              Text("PLAYED", textAlign: .center, style: labelStyle),
+              Text(s.totalPlayedLabel, textAlign: .center, style: labelStyle),
             ],
           ),
           Row(
@@ -378,7 +383,7 @@ final class const ChartCard({super.key, required final int played, required fina
                 ),
               ),
               Text(
-                played > 0 ? "${f.format((cleared.toDouble() / played) * 100)}%" : "None yet",
+                played > 0 ? (cleared.toDouble() / played).percent : "None yet",
                 style: numberStyle?.copyWith(fontSize: 18),
               ),
             ],
@@ -390,13 +395,11 @@ final class const ChartCard({super.key, required final int played, required fina
             crossAxisAlignment: .baseline,
             children: [
               Text(cleared.toString(), textAlign: .center, style: numberStyle),
-              Text("CLEARED", textAlign: .center, style: labelStyle),
+              Text(s.totalClearedLabel, textAlign: .center, style: labelStyle),
             ],
           ),
         ],
       ),
     );
   }
-
-  static final f = NumberFormat("##0.#", "en_GB");
 }

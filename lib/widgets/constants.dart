@@ -21,7 +21,7 @@ const double pagePadding = 24.0;
 const double requiredHeight = 600;
 const double requiredWidth = 1260;
 const double stockShift = 30.0;
-const double utilPageMargin = 8.0;
+const double utilPageMargin = 10.0;
 const double dialogPadding = 20;
 const double verticalTabsThreshold = 500;
 const double radioCorrection = 5.0;
@@ -39,10 +39,10 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
   utilPageMargin,
   utilPageMargin,
   utilPageMargin,
-  utilPageMargin + 12,
+  utilPageMargin + 10,
 );
 
-const fontFeaturesNumber = <FontFeature>[.liningFigures(), .proportionalFigures()];
+const fontFeaturesNumber = <FontFeature>[.liningFigures(), .proportionalFigures(), .ordinalForms()];
 const faintShadowColour = Color(0x60100000);
 const faintBorderColour = Color(0x09000000);
 const darkModeGlow = Color(0x350060f0);
