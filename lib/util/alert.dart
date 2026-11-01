@@ -1,5 +1,5 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 

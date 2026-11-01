@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
 import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
 import 'package:tripeaks_neue/widgets/external_link.dart';

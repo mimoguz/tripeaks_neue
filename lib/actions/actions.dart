@@ -19,7 +19,7 @@ import 'package:tripeaks_neue/util/alert.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';

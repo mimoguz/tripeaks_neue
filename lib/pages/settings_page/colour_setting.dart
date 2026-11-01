@@ -8,7 +8,7 @@ import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 
 class const ColourSetting({super.key}) extends StatelessWidget {
   @override
