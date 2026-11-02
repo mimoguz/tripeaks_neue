@@ -38,10 +38,7 @@ class _MyDialogState extends State<MyDialog> {
     final colourExt = theme.extension<MyColourThemeExt>()!;
     return AlertDialog(
       clipBehavior: .antiAlias,
-      titleTextStyle: theme.textTheme.titleMedium!.copyWith(
-        color: theme.colorScheme.onSurfaceVariant,
-        fontSize: 20,
-      ),
+      titleTextStyle: theme.textTheme.titleMedium!.copyWith(fontSize: 20),
       title: Column(
         children: [
           Padding(
@@ -149,10 +146,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 children: [
                   Flexible(
                     child: DefaultTextStyle(
-                      style: theme.textTheme.titleMedium!.copyWith(
-                        color: colours.onSurfaceVariant,
-                        fontSize: 20,
-                      ),
+                      style: theme.textTheme.titleMedium!.copyWith(fontSize: 20),
                       child: widget.title,
                     ),
                   ),
