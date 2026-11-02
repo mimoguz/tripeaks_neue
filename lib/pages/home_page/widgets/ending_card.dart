@@ -42,7 +42,8 @@ final class const EndingCard({
                     child: FilledButtonTheme(
                       data: FilledButtonThemeData(
                         style: FilledButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primary.withAlpha(150),
+                          backgroundColor: theme.colorScheme.primary.withAlpha(180),
+                          foregroundColor: theme.colorScheme.onPrimary,
                         ),
                       ),
                       child: Column(

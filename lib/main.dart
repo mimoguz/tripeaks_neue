@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +9,8 @@ import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/welcome_dialog.dart';
+
+import 'my_theme.dart' as my_theme;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,8 +68,8 @@ class _MainAppState extends State<MainApp> {
         title: "TriPeaks NEUE",
         supportedLocales: [Locale("en")],
         themeMode: settings.themeMode,
-        theme: _defaultLight,
-        darkTheme: _defaultDark,
+        theme: my_theme.light(),
+        darkTheme: my_theme.dark(),
         scrollBehavior: const MyCustomScrollBehavior(),
         home: Builder(
           builder: (context) {
@@ -85,47 +86,6 @@ class _MainAppState extends State<MainApp> {
     );
   }
 
-  static final _tooltipTheme = TooltipThemeData(waitDuration: Durations.long4, preferBelow: false);
-
-  static final _defaultLight = ThemeData(
-    useMaterial3: true,
-    tooltipTheme: _tooltipTheme,
-    pageTransitionsTheme: PageTransitionsTheme(
-      builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
-        TargetPlatform.values,
-        value: (_) => const FadeForwardsPageTransitionsBuilder(),
-      ),
-    ),
-    colorScheme: SeedColorScheme.fromSeeds(
-      brightness: .light,
-      primaryKey: _primarySeed,
-      secondaryKey: _secondarySeed,
-      tertiaryKey: _tertiarySeed,
-      tertiary: Colors.red.shade500,
-      secondaryContainer: Color(0xffe0e6f2),
-      variant: .content,
-    ),
-  );
-
-  static final _defaultDark = ThemeData(
-    useMaterial3: true,
-    tooltipTheme: _tooltipTheme,
-    pageTransitionsTheme: PageTransitionsTheme(
-      builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
-        TargetPlatform.values,
-        value: (_) => const FadeForwardsPageTransitionsBuilder(),
-      ),
-    ),
-    colorScheme: SeedColorScheme.fromSeeds(
-      brightness: .dark,
-      primaryKey: _primarySeed,
-      secondaryKey: _secondarySeed,
-      tertiaryKey: _tertiarySeed,
-      tertiary: Colors.red.shade300,
-      variant: .vivid,
-    ),
-  );
-
   void _onPause() => _onPauseAsync();
 
   Future<void> _onPauseAsync() async {
@@ -140,29 +100,9 @@ class _MainAppState extends State<MainApp> {
     return AppExitResponse.exit;
   }
 
-  static const _primarySeed = Color(0xFF5090EB);
-  static const _secondarySeed = Color(0xFF565E6F);
-  static const _tertiarySeed = Color(0xFFE53935);
-
-  ThemeData themeFor(Color primaryKey, Brightness brightnes) => ThemeData(
-    useMaterial3: true,
-    tooltipTheme: _tooltipTheme,
-    pageTransitionsTheme: PageTransitionsTheme(
-      builders: Map<TargetPlatform, PageTransitionsBuilder>.fromIterable(
-        TargetPlatform.values,
-        value: (_) => const FadeForwardsPageTransitionsBuilder(),
-      ),
-    ),
-    colorScheme: SeedColorScheme.fromSeeds(
-      brightness: brightnes,
-      primaryKey: primaryKey,
-      secondaryKey: _secondarySeed,
-      tertiaryKey: _tertiarySeed,
-      tertiary: brightnes == .dark ? Colors.red.shade300 : Colors.red.shade500,
-      secondaryContainer: Color(0xffe0e6f2),
-      variant: .content,
-    ),
-  );
+  // static const _primarySeed = Color(0xFF5090EB);
+  // static const _secondarySeed = Color(0xFF565E6F);
+  // static const _tertiarySeed = Color(0xFFE53935);
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {

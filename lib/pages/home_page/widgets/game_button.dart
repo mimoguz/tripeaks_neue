@@ -31,7 +31,7 @@ class const CircleGameButton({
               // color: colours.surfaceContainerLow,
               child: Ink(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(100.0)),
+                  shape: .circle,
                   border: Border.all(
                     color: onPressed == null ? colours.outlineVariant : colours.secondary,
                     width: 2.0,

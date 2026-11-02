@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/dividers.dart';
@@ -33,6 +34,8 @@ class _MyDialogState extends State<MyDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colours = theme.colorScheme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return AlertDialog(
       clipBehavior: .antiAlias,
       titleTextStyle: theme.textTheme.titleMedium!.copyWith(
@@ -50,8 +53,8 @@ class _MyDialogState extends State<MyDialog> {
                 Expanded(child: widget.title),
                 CloseButton(
                   style: FilledButton.styleFrom(
-                    backgroundColor: theme.colorScheme.faintButtonBackground,
-                    foregroundColor: theme.colorScheme.faintButtonIcon,
+                    backgroundColor: colourExt.faintButtonBackground,
+                    foregroundColor: colourExt.faintButtonIcon,
                     padding: EdgeInsets.all(2.0),
                     minimumSize: Size.square(32.0),
                   ),
@@ -59,14 +62,14 @@ class _MyDialogState extends State<MyDialog> {
               ],
             ),
           ),
-          DialogDivider(),
+          DialogHeaderDivider(),
         ],
       ),
       titlePadding: EdgeInsets.zero,
       contentPadding: EdgeInsets.zero,
       actionsPadding: c.DialogMetrics.actionsPadding,
-      backgroundColor: theme.colorScheme.dialogBackground,
-      shadowColor: theme.shadowColor,
+      backgroundColor: colourExt.dialogBackground,
+      shadowColor: colours.shadow,
       actionsAlignment: widget.actionsAlignment ?? .center,
       elevation: 4.0,
       content: Column(
@@ -118,6 +121,8 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colours = theme.colorScheme;
+    final coluorExt = theme.extension<MyColourThemeExt>()!;
     final height = MediaQuery.heightOf(context);
     return ConstrainedBox(
       constraints: BoxConstraints(
@@ -126,9 +131,9 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: theme.colorScheme.sheetBackground,
+          color: coluorExt.sheetBackground,
           borderRadius: c.DialogMetrics.bottomSheetBorderRadius,
-          border: Border.all(color: c.faintBorderColour),
+          border: Border.all(color: coluorExt.faintBorder),
           boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 3, offset: Offset(0.0, 1.0))],
         ),
         clipBehavior: .antiAlias,
@@ -145,7 +150,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                   Flexible(
                     child: DefaultTextStyle(
                       style: theme.textTheme.titleMedium!.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
+                        color: colours.onSurfaceVariant,
                         fontSize: 20,
                       ),
                       child: widget.title,
@@ -153,8 +158,8 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                   ),
                   CloseButton(
                     style: FilledButton.styleFrom(
-                      backgroundColor: theme.colorScheme.faintButtonBackground,
-                      foregroundColor: theme.colorScheme.faintButtonIcon,
+                      backgroundColor: coluorExt.faintButtonBackground,
+                      foregroundColor: coluorExt.faintButtonIcon,
                       padding: EdgeInsets.all(2.0),
                       minimumSize: Size.square(32.0),
                     ),
@@ -162,7 +167,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 ],
               ),
             ),
-            DialogDivider(),
+            SheetHeaderDivider(),
             Flexible(
               child: ScrollShadow(
                 controller: _controller,

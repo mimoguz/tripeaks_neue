@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart' show canExit;
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -13,11 +14,11 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colours = theme.colorScheme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     final s = context.strings;
-    final div = colours.cardDivider;
+    final div = colourExt.dialogDivider;
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
-      // surfaceTintColor: colours.surfaceTint,
       elevation: 6.0,
       shadowColor: theme.shadowColor,
       width: 340.0,
@@ -27,10 +28,10 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
         slivers: [
           SliverAppBar.large(
             pinned: true,
-            backgroundColor: colours.pageBackground,
-            surfaceTintColor: colours.pageBackground,
+            backgroundColor: colours.surface,
+            surfaceTintColor: colours.surface,
             foregroundColor: colours.onSurfaceVariant,
-            shadowColor: theme.colorScheme.headerShadow,
+            shadowColor: colours.shadow,
             iconTheme: IconThemeData(color: colours.onSurfaceVariant),
             titleSpacing: 0,
             centerTitle: true,
@@ -82,13 +83,13 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
                   title: s.restartGameAction,
                   intent: const RestartIntent(),
                 ),
-                Divider(indent: 20, endIndent: 20, color: div),
+                Divider(indent: 20, endIndent: 20, color: div, thickness: 1),
                 DrawerListTile(
                   icon: Icons.bar_chart,
                   title: s.statisticsAction,
                   intent: const NavigateToStatisticsIntent(),
                 ),
-                if (canExit) Divider(indent: 20, endIndent: 20, color: div),
+                if (canExit) Divider(indent: 20, endIndent: 20, color: div, thickness: 1),
                 if (canExit)
                   DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
               ],

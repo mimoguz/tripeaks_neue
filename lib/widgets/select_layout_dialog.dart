@@ -73,7 +73,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               spacing: c.DialogMetrics.sectionSpacing,
               crossAxisAlignment: .start,
               children: [
-                CardDivider(),
+                DialogDivider(),
                 Text(s.additionalOptionsGroupTitle, style: theme.textTheme.titleMedium),
               ],
             ),

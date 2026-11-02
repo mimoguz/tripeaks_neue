@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -37,18 +38,19 @@ class _VariantCardState extends State<VariantCard> {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colours = theme.colorScheme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     final background = widget.isSelected
         ? (widget.selectedBackground ?? colours.primaryContainer)
-        : colours.sheetHeader;
+        : colourExt.faintButtonBackground;
     final borderColour = widget.isSelected
         ? (widget.selectedBackground ?? colours.primaryContainer)
-        : colours.outlineVariant;
+        : colourExt.faintBorder;
     final foreground = widget.isSelected
         ? (widget.selectedForeground ?? colours.onPrimaryContainer)
-        : colours.onSurfaceVariant;
+        : colourExt.faintButtonIcon;
     final labelForeground = widget.isSelected
         ? (widget.selectedForeground ?? colours.onPrimaryContainer)
-        : colours.onSurface;
+        : colourExt.faintButtonForeground;
     return Material(
       color: _focused ? colours.primary : Colors.transparent,
       borderRadius: _outerRadius,
@@ -76,7 +78,7 @@ class _VariantCardState extends State<VariantCard> {
                       child: Ink(
                         decoration: BoxDecoration(
                           borderRadius: _innerRadius,
-                          color: colours.brightness == .dark ? Colors.white12 : Colors.white24,
+                          color: colourExt.translucentHighlight,
                         ),
                         child: IconTheme(
                           data: IconThemeData(color: foreground),

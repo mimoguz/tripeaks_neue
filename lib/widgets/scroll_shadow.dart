@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -45,7 +46,7 @@ class _ScrollShadowState extends State<ScrollShadow> {
 
   @override
   Widget build(BuildContext context) {
-    final colours = context.colours;
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
     return Stack(
       children: [
         NotificationListener<ScrollMetricsNotification>(
@@ -69,7 +70,7 @@ class _ScrollShadowState extends State<ScrollShadow> {
                     height: 4,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: <Color>[colours.headerShadow, Colors.transparent],
+                        colors: <Color>[colourExt.scrollShadow, colourExt.scrollShadow.withAlpha(0)],
                         begin: .topCenter,
                         end: .bottomCenter,
                       ),
@@ -89,7 +90,7 @@ class _ScrollShadowState extends State<ScrollShadow> {
                     height: 12,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: <Color>[c.darkModeGlow, Colors.transparent],
+                        colors: <Color>[colourExt.scrollGlow, colourExt.scrollGlow.withAlpha(0)],
                         begin: .bottomCenter,
                         end: .topCenter,
                       ),
