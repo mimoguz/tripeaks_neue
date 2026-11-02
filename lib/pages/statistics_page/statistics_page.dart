@@ -158,7 +158,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ],
         ),
       ),
-      PopupMenuDivider(color: colours.dialogDivider),
+      PopupMenuDivider(color: colours.cardDivider),
       PopupMenuItem<Never>(
         onTap: Actions.handler(context, const ClearStatsIntent()),
         child: Row(

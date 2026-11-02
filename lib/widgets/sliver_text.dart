@@ -99,22 +99,7 @@ final class const Li({super.key, final Widget? title, required final List<Widget
   }
 }
 
-class const Line({
-  super.key,
-  final double verticalPadding = c.DialogMetrics.sectionSpacing,
-  final double horizontalPadding = c.utilPageMargin,
-  final double maxWidth = c.maxListWidth,
-}) extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedItem(
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Container(color: context.colours.dialogDivider, height: 1),
-    );
-  }
-}
-
-class const SliverLine({
+class const SliverDivider({
   super.key,
   final double verticalPadding = c.DialogMetrics.sectionSpacing,
   final double horizontalPadding = c.utilPageMargin,
@@ -124,7 +109,7 @@ class const SliverLine({
   Widget build(BuildContext context) {
     return ConstrainedSliver(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Container(color: context.colours.dialogDivider, height: 1),
+      child: Container(color: context.colours.cardDivider, height: 1),
     );
   }
 }

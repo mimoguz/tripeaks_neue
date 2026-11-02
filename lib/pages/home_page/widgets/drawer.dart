@@ -14,7 +14,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     final theme = context.theme;
     final colours = theme.colorScheme;
     final s = context.strings;
-    final div = colours.dialogDivider;
+    final div = colours.cardDivider;
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
       // surfaceTintColor: colours.surfaceTint,

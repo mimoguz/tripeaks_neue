@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/dividers.dart';
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/my_selection_tiles.dart';
 
@@ -72,7 +73,7 @@ class _SelectLayoutDialogState extends State<SelectLayoutDialog> {
               spacing: c.DialogMetrics.sectionSpacing,
               crossAxisAlignment: .start,
               children: [
-                DialogDivider(),
+                CardDivider(),
                 Text(s.additionalOptionsGroupTitle, style: theme.textTheme.titleMedium),
               ],
             ),

@@ -191,7 +191,7 @@ class const ScoreTable({
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final borderColour = theme.colorScheme.dialogDivider;
+    final borderColour = theme.colorScheme.tableBorder;
     final borderSide = BorderSide(color: borderColour, width: 1);
     final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
     final rankStyle = theme.textTheme.labelMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
@@ -377,7 +377,7 @@ final class const ChartCard({super.key, required final int played, required fina
                       played > 0 ? cleared.toDouble() / played : 0,
                       filled1: Colors.lightGreen.shade500,
                       filled2: Colors.lightGreen.shade300,
-                      empty: theme.colorScheme.dialogDivider,
+                      empty: theme.colorScheme.cardDivider,
                     ),
                   ),
                 ),

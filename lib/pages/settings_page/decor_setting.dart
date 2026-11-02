@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 import 'package:tripeaks_neue/widgets/show_dialog.dart';
+import 'package:tripeaks_neue/widgets/variant_card.dart';
 
 class const DecorSetting({super.key}) extends StatelessWidget {
   @override
@@ -52,12 +53,13 @@ class const DecorSetting({super.key}) extends StatelessWidget {
         content: Padding(
           padding: c.DialogMetrics.contentPadding,
           child: Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
+            runSpacing: 4,
+            spacing: 4,
             children: [
               for (final (index, decor) in Decor.values.indexed)
-                DecorItem(
+                DecorVariantCard(
                   decor: decor,
+                  colour: settings.decorColour,
                   isSelected: settings.decor == decor,
                   selectedDecorColour: settings.decorColour,
                   strings: s,
@@ -78,91 +80,25 @@ class const DecorSetting({super.key}) extends StatelessWidget {
   static const _iconOffset = Offset((c.cardSize - _boxWidth) / -2.0, (c.cardSize - _boxHeight) / -2.0);
 }
 
-class const DecorItem({
+final class const DecorVariantCard({
   super.key,
   required final Decor decor,
+  required final DecorColour colour,
   required final bool isSelected,
   required final DecorColour selectedDecorColour,
   required final AppLocalizations strings,
-  final VoidCallback? onTap,
-}) extends StatefulWidget {
-  @override
-  State<DecorItem> createState() => _DecorItemState();
-}
-
-class _DecorItemState extends State<DecorItem> {
-  final FocusNode _focus = FocusNode();
-  Color? _borderColour;
-
-  @override
-  void initState() {
-    super.initState();
-    _focus.addListener(_onFocusChange);
-  }
-
-  @override
-  void dispose() {
-    _focus.dispose();
-    super.dispose();
-  }
-
+  required final VoidCallback onTap,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
-    final colours = theme.colorScheme;
-    final name = widget.decor.label(widget.strings);
-    _borderColour = _focus.hasFocus ? colours.primary : Colors.transparent;
-    return SizedBox(
-      width: _sideLength,
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: c.commonBorderRadius,
-        clipBehavior: .antiAlias,
-        child: InkWell(
-          onTap: widget.onTap,
-          focusNode: _focus,
-          child: Ink(
-            decoration: BoxDecoration(
-              border: Border.all(width: 4.0, color: _borderColour!),
-              borderRadius: c.commonBorderRadius,
-              color: widget.isSelected ? widget.selectedDecorColour.background : colours.sheetHeader,
-            ),
-
-            child: Column(
-              spacing: c.cellPadding,
-              children: [
-                ClipRRect(
-                  borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(4.0)),
-                  child: Icon(
-                    widget.decor.icon,
-                    size: _sideLength - 8,
-                    color: widget.isSelected
-                        ? widget.selectedDecorColour.controlForeground
-                        : colours.onSurfaceVariant,
-                  ),
-                ),
-                Text(
-                  name,
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    color: widget.isSelected
-                        ? widget.selectedDecorColour.controlForeground
-                        : colours.onSurfaceVariant,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return VariantCard<Decor>(
+      variant: decor,
+      selectedBackground: colour.background,
+      selectedForeground: colour.controlForeground,
+      isSelected: isSelected,
+      label: decor.label(strings),
+      onTap: onTap,
+      child: Icon(decor.icon, size: 80),
     );
   }
-
-  void _onFocusChange() {
-    setState(() {
-      _borderColour = _focus.hasFocus ? context.colours.onSurface : context.colours.surfaceContainer;
-    });
-  }
 }
-
-const _scale = 0.8;
-const _sideLength = c.cardSize * _scale;

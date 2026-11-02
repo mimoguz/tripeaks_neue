@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/dividers.dart';
 import 'package:tripeaks_neue/widgets/scroll_shadow.dart';
 
 class const MyDialog({
@@ -38,29 +39,32 @@ class _MyDialogState extends State<MyDialog> {
         color: theme.colorScheme.onSurfaceVariant,
         fontSize: 20,
       ),
-      title: Container(
-        color: theme.colorScheme.dialogHeader,
-        padding: c.DialogMetrics.titlePadding,
-        child: Row(
-          crossAxisAlignment: .center,
-          spacing: c.DialogMetrics.horizontalPadding,
-          children: [
-            Expanded(child: widget.title),
-            CloseButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: theme.colorScheme.faintButtonBackground,
-                foregroundColor: theme.colorScheme.faintButtonIcon,
-                padding: EdgeInsets.all(2.0),
-                minimumSize: Size.square(32.0),
-              ),
+      title: Column(
+        children: [
+          Padding(
+            padding: c.DialogMetrics.titlePadding,
+            child: Row(
+              crossAxisAlignment: .center,
+              spacing: c.DialogMetrics.horizontalPadding,
+              children: [
+                Expanded(child: widget.title),
+                CloseButton(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: theme.colorScheme.faintButtonBackground,
+                    foregroundColor: theme.colorScheme.faintButtonIcon,
+                    padding: EdgeInsets.all(2.0),
+                    minimumSize: Size.square(32.0),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          DialogDivider(),
+        ],
       ),
       titlePadding: EdgeInsets.zero,
       contentPadding: EdgeInsets.zero,
       actionsPadding: c.DialogMetrics.actionsPadding,
-      surfaceTintColor: theme.colorScheme.dialogBackground,
       backgroundColor: theme.colorScheme.dialogBackground,
       shadowColor: theme.shadowColor,
       actionsAlignment: widget.actionsAlignment ?? .center,
@@ -69,7 +73,6 @@ class _MyDialogState extends State<MyDialog> {
         mainAxisSize: .min,
         crossAxisAlignment: .start,
         children: [
-          // const DialogDivider(),
           Flexible(
             child: ScrollShadow(
               controller: _controller,
@@ -132,8 +135,8 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
         child: Column(
           mainAxisSize: .min,
           children: [
-            Container(
-              color: theme.colorScheme.sheetHeader,
+            Padding(
+              // color: theme.colorScheme.sheetHeader,
               padding: c.DialogMetrics.titlePadding,
               child: Row(
                 mainAxisAlignment: .spaceBetween,
@@ -159,7 +162,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 ],
               ),
             ),
-            // DialogDivider(),
+            DialogDivider(),
             Flexible(
               child: ScrollShadow(
                 controller: _controller,
@@ -171,7 +174,6 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
               ),
             ),
             if (widget.actions != null && widget.actions!.isNotEmpty) ...[
-              DialogDivider(),
               Padding(
                 padding: c.DialogMetrics.safeActionsPadding,
                 child: Row(mainAxisAlignment: .end, spacing: 16.0, children: widget.actions!),
@@ -183,15 +185,5 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
         ),
       ),
     );
-  }
-}
-
-final class DialogDivider extends StatelessWidget {
-  const new({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    return Divider(height: 1.0, color: colours.dialogDivider);
   }
 }

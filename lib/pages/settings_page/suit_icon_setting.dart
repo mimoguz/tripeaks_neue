@@ -9,6 +9,7 @@ import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
+import 'package:tripeaks_neue/widgets/variant_card.dart';
 
 class const SuitIconSetting({super.key}) extends StatelessWidget {
   @override
@@ -41,7 +42,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
             runSpacing: 8.0,
             children: [
               for (final variant in SuitIconTheme.values)
-                VariantItem(
+                SuitVariantCard(
                   variant: variant,
                   isSelected: settings.suitIconTheme == variant,
                   strings: s,
@@ -58,88 +59,35 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   }
 }
 
-class const VariantItem({
+class const SuitVariantCard({
   super.key,
   required final SuitIconTheme variant,
   required final bool isSelected,
   required final AppLocalizations strings,
-  final VoidCallback? onTap,
-}) extends StatefulWidget {
-  @override
-  State<VariantItem> createState() => _VariantItemState();
-}
-
-class _VariantItemState extends State<VariantItem> {
-  final FocusNode _focus = FocusNode();
-  Color? _borderColour;
-
-  @override
-  void initState() {
-    super.initState();
-    _focus.addListener(_onFocusChange);
-  }
-
-  @override
-  void dispose() {
-    _focus.dispose();
-    super.dispose();
-  }
-
+  required final VoidCallback onTap,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
-    final colours = theme.colorScheme;
-    final name = widget.variant.label(widget.strings);
-    final textColour = widget.isSelected ? colours.onPrimaryContainer : colours.onSurfaceVariant;
-    final red = widget.isSelected ? colours.onPrimaryContainer : colours.tertiary;
-    _borderColour = _focus.hasFocus ? colours.primary : Colors.transparent;
-    return Material(
-      color: Colors.transparent,
-      borderRadius: c.commonBorderRadius,
-      clipBehavior: .antiAlias,
-      child: InkWell(
-        onTap: widget.onTap,
-        focusNode: _focus,
-        child: Ink(
-          decoration: BoxDecoration(
-            border: Border.all(width: 4.0, color: _borderColour!),
-            borderRadius: c.commonBorderRadius,
-            color: widget.isSelected ? colours.primaryContainer : colours.sheetHeader,
-          ),
-
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(c.cellPadding, c.cellPadding, c.cellPadding, 0),
-            child: Column(
-              spacing: 8,
-              children: [
-                Row(
-                  mainAxisSize: .min,
-                  spacing: c.cellPadding,
-                  children: [
-                    Icon(CustomIcons.suitIcon(.hearts, widget.variant), size: 36, color: red),
-                    Icon(CustomIcons.suitIcon(.spades, widget.variant), size: 36, color: textColour),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: .min,
-                  spacing: c.cellPadding,
-                  children: [
-                    Icon(CustomIcons.suitIcon(.clubs, widget.variant), size: 36, color: textColour),
-                    Icon(CustomIcons.suitIcon(.diamonds, widget.variant), size: 36, color: red),
-                  ],
-                ),
-                Text(name, style: theme.textTheme.labelMedium?.copyWith(color: textColour)),
-              ],
-            ),
+    return VariantCard<SuitIconTheme>(
+      variant: variant,
+      isSelected: isSelected,
+      label: variant.label(strings),
+      onTap: onTap,
+      child: SizedBox(
+        width: 80,
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Wrap(
+            runSpacing: 1,
+            children: [
+              Icon(CustomIcons.suitIcon(.hearts, variant), size: 36),
+              Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36),
+              Icon(CustomIcons.suitIcon(.spades, variant), size: 36),
+              Icon(CustomIcons.suitIcon(.clubs, variant), size: 36),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  void _onFocusChange() {
-    setState(() {
-      _borderColour = _focus.hasFocus ? context.colours.onSurface : context.colours.surfaceContainer;
-    });
   }
 }
