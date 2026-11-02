@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
@@ -27,9 +28,10 @@ final class const HDelegate(
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     final elevated = overlapsContent || shrinkOffset > 0;
     final theme = context.theme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return Material(
       color: theme.colorScheme.pageBackground,
-      shadowColor: theme.colorScheme.headerShadow,
+      shadowColor: colourExt.headerShadow,
       elevation: elevated ? 2 : 0,
       child: ConstrainedItem(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -109,7 +111,7 @@ class const SliverDivider({
   Widget build(BuildContext context) {
     return ConstrainedSliver(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Container(color: context.colours.cardDivider, height: 1),
+      child: Container(color: context.theme.extension<MyColourThemeExt>()!.cardDivider, height: 1),
     );
   }
 }

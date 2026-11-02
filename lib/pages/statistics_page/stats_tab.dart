@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
@@ -191,7 +192,8 @@ class const ScoreTable({
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final borderColour = theme.colorScheme.tableBorder;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
+    final borderColour = colourExt.cardDivider;
     final borderSide = BorderSide(color: borderColour, width: 1);
     final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
     final rankStyle = theme.textTheme.labelMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
@@ -242,9 +244,7 @@ class const ScoreTable({
             TableRow(
               key: ValueKey(index + 1),
               decoration: BoxDecoration(
-                color: index & 1 == 1
-                    ? theme.colorScheme.surfaceContainerLow
-                    : theme.colorScheme.panelBackground,
+                color: index & 1 == 1 ? theme.colorScheme.surfaceContainerLow : colourExt.cardBackground,
                 border: Border(left: borderSide, right: borderSide, bottom: borderSide),
                 borderRadius: index == games.length - 1
                     ? BorderRadius.vertical(bottom: c.commonRadius)
@@ -319,6 +319,7 @@ final class const Result(final bool result, {super.key}) extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return Container(
       decoration: BoxDecoration(
         shape: .circle,
@@ -329,7 +330,7 @@ final class const Result(final bool result, {super.key}) extends StatelessWidget
       child: Center(
         child: Icon(
           result ? CustomIcons.check12 : CustomIcons.cross12,
-          color: theme.colorScheme.panelBackground,
+          color: colourExt.cardBackground,
           size: 12,
         ),
       ),

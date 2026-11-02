@@ -8,6 +8,6 @@ Future<void> alert(BuildContext context, {required String title, required String
       context,
       (context) => MyDialog(
         title: Text(title),
-        content: Padding(padding: c.DialogMetrics.contentPaddingSymmetrical, child: Text(message)),
+        content: Padding(padding: c.DialogMetrics.contentPaddingSymmetricalTall, child: Text(message)),
       ),
     );

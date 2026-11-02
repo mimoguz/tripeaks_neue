@@ -439,7 +439,7 @@ final class const ClearStatsAlertDialog({super.key}) extends StatelessWidget {
         ],
       ),
       content: Padding(
-        padding: c.DialogMetrics.contentPaddingSymmetrical,
+        padding: c.DialogMetrics.contentPaddingSymmetricalTall,
         child: Text(s.clearStatisticsWarning),
       ),
       actionsAlignment: .end,
@@ -477,7 +477,7 @@ final class const ImportStatsAlertDialog({super.key}) extends StatelessWidget {
         ],
       ),
       content: Padding(
-        padding: c.DialogMetrics.contentPaddingSymmetrical,
+        padding: c.DialogMetrics.contentPaddingSymmetricalTall,
         child: Text(s.overwriteStatisticsWarning),
       ),
       actionsAlignment: .end,

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/pages/statistics_page/stats_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
@@ -60,7 +61,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
           child: Builder(
             builder: (context) {
               final session = Provider.of<Session>(context);
-              final colours = context.colours;
+              final theme = context.theme;
+              final colours = theme.colorScheme;
+              final colourExt = theme.extension<MyColourThemeExt>()!;
               return Observer(
                 builder: (context) {
                   final statistics = session.statistics;
@@ -72,12 +75,11 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Scaffold(
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
-                        backgroundColor: colours.pageBackground,
-                        surfaceTintColor: colours.pageBackground,
+                        backgroundColor: colours.surface,
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
-                            color: colours.dialogBackground,
+                            color: colourExt.dialogBackground,
                             elevation: 4.0,
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadiusValue),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
@@ -136,7 +138,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
   }
 
   List<PopupMenuEntry> _popupItems(BuildContext context, AppLocalizations s) {
-    final colours = context.colours;
+    final theme = context.theme;
+    final colours = theme.colorScheme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return [
       PopupMenuItem<Never>(
         onTap: Actions.handler(context, const ExportStatsIntent()),
@@ -158,7 +162,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ],
         ),
       ),
-      PopupMenuDivider(color: colours.cardDivider),
+      PopupMenuDivider(color: colourExt.dialogDivider),
       PopupMenuItem<Never>(
         onTap: Actions.handler(context, const ClearStatsIntent()),
         child: Row(

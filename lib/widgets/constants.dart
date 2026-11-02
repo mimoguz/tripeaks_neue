@@ -90,6 +90,7 @@ abstract final class DialogMetrics {
     horizontal: horizontalPadding,
     vertical: sectionSpacing,
   );
+  static const contentPaddingSymmetricalTall = EdgeInsets.all(horizontalPadding);
   static const contentPaddingHorizontal = EdgeInsets.symmetric(horizontal: horizontalPadding);
 
   static const subtitlePadding = EdgeInsets.fromLTRB(
