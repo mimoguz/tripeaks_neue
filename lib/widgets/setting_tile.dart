@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
@@ -42,12 +43,7 @@ final class const SettingTile({
                             style: theme.textTheme.titleMedium,
                           ),
                       if (subtitle != null)
-                        Text(
-                          subtitle!,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: theme.colorScheme.onSurfaceVariant,
-                          ),
-                        ),
+                        Text(subtitle!, style: theme.extension<MyTextThemeExt>()!.listItemSubtitle),
                     ],
                   ),
                 ),

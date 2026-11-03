@@ -1,6 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 
 class ExternalLink extends StatelessWidget {
@@ -13,6 +14,7 @@ class ExternalLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final style = theme.extension<MyTextThemeExt>()!.link;
     return Semantics(
       label: alt ?? label ?? uri.toString(),
       child: Tooltip(
@@ -32,7 +34,7 @@ class ExternalLink extends StatelessWidget {
                     label ?? uri.toString().replaceAll("data:,", ""),
                     softWrap: false,
                     overflow: .fade,
-                    style: theme.textTheme.bodyMedium!.copyWith(color: theme.colorScheme.primary),
+                    style: style,
                   ),
                 ),
                 Icon(CustomIcons.copy16, color: theme.colorScheme.outline, size: 16.0),
