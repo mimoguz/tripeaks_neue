@@ -147,53 +147,49 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   @override
   ThemeExtension<MyColourThemeExt> lerp(covariant ThemeExtension<MyColourThemeExt>? other, double t) => this;
 
-  new light()
-    : faintBorder = _lightScheme.onSurface.withAlpha(12), // onSurface with alpha
-      faintButtonBackground = Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.9)!,
-      faintButtonForeground = _lightScheme.onSurface,
-      faintButtonIcon = _lightScheme.onSurfaceVariant,
-      dialogBackground = _lightScheme.surfaceContainerHigh,
-      dialogDivider = Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.8)!,
-      sheetBackground = _lightScheme.surfaceContainerHigh,
-      cardBackground = _lightScheme.surfaceContainerLowest,
-      cardDivider = Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerLowest, 0.8)!, // mix
-      dialogHeaderDivider = Color.lerp(
-        _lightScheme.onSurface,
-        _lightScheme.surfaceContainerHigh,
-        0.9,
-      )!, // mix
-      sheetHeaderDivider = Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.9)!, // mix
-      settingItemDivider = _lightScheme.outlineVariant,
+  const new light()
+    // onSurface with alpha
+    : faintBorder = const Color(0x0C202226),
+      // Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.9)!,
+      faintButtonBackground = const Color(0xFFD1D4D9),
+      faintButtonForeground = _Colours.onSurfaceLight,
+      faintButtonIcon = _Colours.onSurfaceVariantLight,
+      dialogBackground = _Colours.surfaceContainerLight,
+      // onSurface with alpha
+      dialogDivider = const Color(0x28202226),
+      sheetBackground = _Colours.surfaceContainerLight,
+      cardBackground = _Colours.surfaceContainerLowestLight,
+      // onSurface with alpha
+      cardDivider = const Color(0x28202226),
+      // onSurface with alpha
+      dialogHeaderDivider = const Color(0x10202226),
+      // onSurface with alpha
+      sheetHeaderDivider = const Color(0x10202226),
+      settingItemDivider = _Colours.outlineVariantLight,
       translucentHighlight = Colors.white24,
       scrollShadow = Colors.black38,
-      scrollGlow = _lightScheme.primary.withAlpha(35),
-      headerShadow = _lightScheme.shadow;
+      // primary with alpha
+      scrollGlow = const Color(0x230068A4),
+      headerShadow = Colors.black87;
 
-  new dark()
-    : faintBorder = _darkScheme.onInverseSurface.withAlpha(10),
-      faintButtonBackground = Color.lerp(_darkScheme.onSurface, _darkScheme.surfaceContainerHigh, 0.85)!,
-      faintButtonForeground = _darkScheme.onSurface,
-      faintButtonIcon = _darkScheme.onSurfaceVariant,
-      dialogBackground = _darkScheme.surfaceContainerHighest,
-      dialogDivider = Color.lerp(_darkScheme.onSurface, _darkScheme.surfaceContainerHighest, 0.8)!,
-      sheetBackground = _darkScheme.surfaceContainerHighest,
-      cardBackground = _darkScheme.surfaceContainerHigh,
-      cardDivider = Color.lerp(_darkScheme.onSurface, _darkScheme.surfaceContainerHigh, 0.8)!, // mix
-      dialogHeaderDivider = Color.lerp(
-        _darkScheme.onSurface,
-        _darkScheme.surfaceContainerHighest,
-        0.9,
-      )!, // mix
-      sheetHeaderDivider = Color.lerp(
-        _darkScheme.onSurface,
-        _darkScheme.surfaceContainerHighest,
-        0.9,
-      )!, // mix
-      settingItemDivider = _darkScheme.outlineVariant,
+  const new dark()
+    : faintBorder = Colors.black12,
+      // Color.lerp(_darkScheme.onSurface, _darkScheme.surfaceContainerHigh, 0.85)!,
+      faintButtonBackground = const Color(0xFF3A3E42),
+      faintButtonForeground = _Colours.onSurfaceDark,
+      faintButtonIcon = _Colours.onSurfaceVariantDark,
+      dialogBackground = _Colours.surfaceContainerHighestDark,
+      dialogDivider = const Color(0x25E1E6EC),
+      sheetBackground = _Colours.surfaceBrightDark,
+      cardBackground = _Colours.surfaceContainerHighDark,
+      cardDivider = const Color(0x40E1E6EC),
+      dialogHeaderDivider = const Color(0x0CE1E6EC), // mix
+      sheetHeaderDivider = const Color(0x0FE1E6EC),
+      settingItemDivider = _Colours.outlineVariantDark,
       translucentHighlight = Colors.white12,
-      scrollShadow = _lightScheme.primary.withAlpha(100),
-      scrollGlow = _lightScheme.primary.withAlpha(50),
-      headerShadow = _lightScheme.primary;
+      scrollShadow = const Color(0x500068A4),
+      scrollGlow = const Color(0x500068A4),
+      headerShadow = _Colours.primaryLight;
 }
 
 ThemeData light() => ThemeData(
@@ -215,99 +211,96 @@ ThemeData dark() => ThemeData(
 );
 
 abstract final class _Colours {
-  // Light colours
-  // Primaries
-  static const primaryLight = Color(0xFF006190);
-  static const onPrimaryLight = Color(0xFFFFFFFF);
-  static const primaryContainerLight = Color(0xFF007BB5);
-  static const onPrimaryContainerLight = Color(0xFFFCFCFF);
-  static const inversePrimaryLight = Color(0xFF8ECDFF);
-  static const primaryFixedLight = Color(0xFFCAE6FF);
-  static const primaryFixedDimLight = Color(0xFF8ECDFF);
-  static const onPrimaryFixedLight = Color(0xFF001E30);
-  static const onPrimaryFixedVariantLight = Color(0xFF004B70);
-  // Others
-  static const secondaryLight = Color(0xFF5C5F66);
-  static const onSecondaryLight = Color(0xFFF7F9FF);
-  static const secondaryContainerLight = Color(0xFFDEDFE8); // Color(0xFFE0E2EA);
-  static const onSecondaryContainerLight = Color(0xFF202026); // Color(0xFF4E5258);
-  static const tertiaryLight = Color(0xFFC62638); // Color(0xFFB62435);
-  static const onTertiaryLight = Color(0xFFFFF7F6);
-  static const tertiaryContainerLight = Color(0xFFFE5A63);
-  static const onTertiaryContainerLight = Color(0xFF310005);
-  static const surfaceLight = Color(0xFFF9F9FA); // Color(0xFFFAF9FA);
-  static const onSurfaceLight = Color(0xFF202026); //Color(0xFF303335);
-  static const onSurfaceVariantLight = Color(0xFF303335); // Color(0xFF5D5F61);
-  static const surfaceTintLight = Color(0xFF006595);
-  static const inverseSurfaceLight = Color(0xFF0C0F10);
-  static const errorLight = Color(0xFFA23E37);
-  static const onErrorLight = Color(0xFFFFF7F6);
-  static const errorContainerLight = Color(0xFFF97F75);
-  static const onErrorContainerLight = Color(0xFF520205);
-  static const outlineLight = Color(0xFF797B7D);
-  static const outlineVariantLight = Color(0xFFB1B2B4);
-  static const scrimLight = Color(0xFF000000);
-  static const surfaceBrightLight = Color(0xFFFAF9FA);
-  static const surfaceContainerLight = Color(0xFFEEEEEF);
-  static const surfaceContainerHighLight = Color(0xFFE8E8EA);
-  static const surfaceContainerHighestLight = Color(0xFFE1E2E5);
-  static const surfaceContainerLowLight = Color(0xFFF4F3F5);
-  static const surfaceContainerLowestLight = Color(0xFFFFFFFF);
-  static const surfaceDimLight = Color(0xFFD9DADC);
-  static const secondaryFixedLight = Color(0xFFE0E2EA);
-  static const secondaryFixedDimLight = Color(0xFFD2D4DC);
-  static const onSecondaryFixedLight = Color(0xFF3C3F46);
-  static const onSecondaryFixedVariantLight = Color(0xFF585C62);
-  static const tertiaryFixedLight = Color(0xFFFE5A63);
-  static const tertiaryFixedDimLight = Color(0xFFEC4D58);
-  static const onTertiaryFixedLight = Color(0xFF000000);
-  static const onTertiaryFixedVariantLight = Color(0xFF47000A);
+  // Generated by MaterialKolor Builder 2.0.0 with colors from MaterialKolor 6.0.0.
+  // Open this theme in the builder at https://materialkolor.com/t/AQCu-iEAABM1P7L_8l5Rdnd5eHd34213C0J1cm50IEVtYmVyIA
 
-  // Dark colours
-  // Primaries
-  static const primaryDark = Color(0xFF8ECDFF);
-  static const onPrimaryDark = Color(0xFF00344F);
-  static const primaryContainerDark = Color(0xFF1599DD);
-  static const onPrimaryContainerDark = Color(0xFF00283E);
-  static const inversePrimaryDark = Color(0xFF006494);
-  static const primaryFixedDark = Color(0xFFCAE6FF);
-  static const primaryFixedDimDark = Color(0xFF8ECDFF);
-  static const onPrimaryFixedDark = Color(0xFF001E30);
-  static const onPrimaryFixedVariantDark = Color(0xFF004B70);
-  // Others
-  static const secondaryDark = Color(0xFF9B9EA5);
-  static const onSecondaryDark = Color(0xFF1D2026);
-  static const secondaryContainerDark = Color(0xFF2F3338); // Color(0xFF2D3136);
-  static const onSecondaryContainerDark = Color(0xFFE0E2E5); // Color(0xFFAEB0B8);
-  static const tertiaryDark = Color(0xFFFF7579);
-  static const onTertiaryDark = Color(0xFF4E000C);
-  static const tertiaryContainerDark = Color(0xFFFE5A63);
-  static const onTertiaryContainerDark = Color(0xFF310005);
-  static const surfaceDark = Color(0xFF121418); // Color(0xFF0D0E0F);
-  static const onSurfaceDark = Color(0xFFE4E5E8);
-  static const onSurfaceVariantDark = Color(0xFFAAABAD);
-  static const surfaceTintDark = Color(0xFF35A9EE);
+  static const primaryLight = Color(0xFF0068A4); // Color(0xFF006397);
+  static const onPrimaryLight = Color(0xFFF4F8FF);
+  static const primaryContainerLight = Color(0xFFCCE5FF);
+  static const onPrimaryContainerLight = Color(0xFF005690); //Color(0xFF005684);
+  static const inversePrimaryLight = Color(0xFF34ABF8);
+  static const secondaryLight = Color(0xFF5D5F62);
+  static const onSecondaryLight = Color(0xFFF8F9FC);
+  static const secondaryContainerLight = Color(0xFFE2E2E5);
+  static const onSecondaryContainerLight = Color(0xFF2D3338); //Color(0xFF505254);
+  static const tertiaryLight = Color(0xFFC02C22); // Color(0xFFB02F27);
+  static const onTertiaryLight = Color(0xFFFFF7F6);
+  static const tertiaryContainerLight = Color(0xFFF45F52);
+  static const onTertiaryContainerLight = Color(0xFF290001);
+  static const surfaceLight = Color(0xFFF9F9FB);
+  static const onSurfaceLight = Color(0xFF202226); // Color(0xFF2D3338);
+  static const onSurfaceVariantLight = Color(0xFF505258); // Color(0xFF5A6065);
+  static const surfaceTintLight = Color(0xFF006397);
+  static const inverseSurfaceLight = Color(0xFF0D0E10);
+  static const errorLight = Color(0xFF9F403D);
+  static const onErrorLight = Color(0xFFFFF7F6);
+  static const errorContainerLight = Color(0xFFFE8983);
+  static const onErrorContainerLight = Color(0xFF752121);
+  static const outlineLight = Color(0xFF767B81);
+  static const outlineVariantLight = Color(0xFFADB2B8);
+  static const scrimLight = Color(0xFF000000);
+  static const surfaceBrightLight = Color(0xFFF9F9FB);
+  static const surfaceContainerLight = Color(0xFFECEEF2);
+  static const surfaceContainerHighLight = Color(0xFFE5E8ED);
+  static const surfaceContainerHighestLight = Color(0xFFDEE3E9);
+  static const surfaceContainerLowLight = Color(0xFFF3F3F6);
+  static const surfaceContainerLowestLight = Color(0xFFFFFFFF);
+  static const surfaceDimLight = Color(0xFFD4DBE2);
+  static const primaryFixedLight = Color(0xFFCCE5FF);
+  static const primaryFixedDimLight = Color(0xFFB0D9FF);
+  static const onPrimaryFixedLight = Color(0xFF004368);
+  static const onPrimaryFixedVariantLight = Color(0xFF006093);
+  static const secondaryFixedLight = Color(0xFFE2E2E5);
+  static const secondaryFixedDimLight = Color(0xFFD4D4D7);
+  static const onSecondaryFixedLight = Color(0xFF3D3F42);
+  static const onSecondaryFixedVariantLight = Color(0xFF5A5C5E);
+  static const tertiaryFixedLight = Color(0xFFF45F52);
+  static const tertiaryFixedDimLight = Color(0xFFE35347);
+  static const onTertiaryFixedLight = Color(0xFF000000);
+  static const onTertiaryFixedVariantLight = Color(0xFF420002);
+
+  static const primaryDark = Color(0xFF92CCFF);
+  static const onPrimaryDark = Color(0xFF004469);
+  static const primaryContainerDark = Color(0xFF004884); // Color(0xFF004B73);
+  static const onPrimaryContainerDark = Color(0xFFA8D5FF);
+  static const inversePrimaryDark = Color(0xFF006498);
+  static const secondaryDark = Color(0xFF9D9EA1);
+  static const onSecondaryDark = Color(0xFF1E2023);
+  static const secondaryContainerDark = Color(0xFF404248); // Color(0xFF393C3E);
+  static const onSecondaryContainerDark = Color(0xFFE1E6EC); // Color(0xFFBEBFC2);
+  static const tertiaryDark = Color(0xFFFF8880); // Color(0xFFFF7163);
+  static const onTertiaryDark = Color(0xFF4A0002);
+  static const tertiaryContainerDark = Color(0xFFF45F52);
+  static const onTertiaryContainerDark = Color(0xFF290001);
+  static const surfaceDark = Color(0xFF0D0E10);
+  static const onSurfaceDark = Color(0xFFE1E6EC);
+  static const onSurfaceVariantDark = Color(0xFFCACCCF); // Color(0xFFA6ACB1);
+  static const surfaceTintDark = Color(0xFF92CCFF);
   static const inverseSurfaceDark = Color(0xFFF9F9FB);
-  static const errorDark = Color(0xFFF97F75);
-  static const onErrorDark = Color(0xFF520205);
-  static const errorContainerDark = Color(0xFF530205);
-  static const onErrorContainerDark = Color(0xFFFA8076);
-  static const outlineDark = Color(0xFF747678);
-  static const outlineVariantDark = Color(0xFF46484A);
+  static const errorDark = Color(0xFFEE7D77);
+  static const onErrorDark = Color(0xFF490106);
+  static const errorContainerDark = Color(0xFF7F2927);
+  static const onErrorContainerDark = Color(0xFFFF9993);
+  static const outlineDark = Color(0xFF70767B);
+  static const outlineVariantDark = Color(0xFF43494E);
   static const scrimDark = Color(0xFF000000);
-  static const surfaceBrightDark = Color(0xFF2A2C2E);
-  static const surfaceContainerDark = Color(0xFF181A1B);
-  static const surfaceContainerHighDark = Color(0xFF1E2021);
-  static const surfaceContainerHighestDark = Color(0xFF242628);
-  static const surfaceContainerLowDark = Color(0xFF121415);
+  static const surfaceBrightDark = Color(0xFF272C30); // Color(0xFF262D32);
+  static const surfaceContainerDark = Color(0xFF161A1D);
+  static const surfaceContainerHighDark = Color(0xFF1C2024);
+  static const surfaceContainerHighestDark = Color(0xFF21262B);
+  static const surfaceContainerLowDark = Color(0xFF111416);
   static const surfaceContainerLowestDark = Color(0xFF000000);
-  static const surfaceDimDark = Color(0xFF0D0E0F);
-  static const secondaryFixedDark = Color(0xFFE0E2EA);
-  static const secondaryFixedDimDark = Color(0xFFD2D4DC);
-  static const onSecondaryFixedDark = Color(0xFF3C3F46);
-  static const onSecondaryFixedVariantDark = Color(0xFF585C62);
-  static const tertiaryFixedDark = Color(0xFFFE5A63);
-  static const tertiaryFixedDimDark = Color(0xFFEC4D58);
+  static const surfaceDimDark = Color(0xFF0D0E10);
+  static const primaryFixedDark = Color(0xFFCCE5FF);
+  static const primaryFixedDimDark = Color(0xFFB0D9FF);
+  static const onPrimaryFixedDark = Color(0xFF004368);
+  static const onPrimaryFixedVariantDark = Color(0xFF006093);
+  static const secondaryFixedDark = Color(0xFFE2E2E5);
+  static const secondaryFixedDimDark = Color(0xFFD4D4D7);
+  static const onSecondaryFixedDark = Color(0xFF3D3F42);
+  static const onSecondaryFixedVariantDark = Color(0xFF5A5C5E);
+  static const tertiaryFixedDark = Color(0xFFF45F52);
+  static const tertiaryFixedDimDark = Color(0xFFE35347);
   static const onTertiaryFixedDark = Color(0xFF000000);
-  static const onTertiaryFixedVariantDark = Color(0xFF47000A);
+  static const onTertiaryFixedVariantDark = Color(0xFF420002);
 }

@@ -54,7 +54,7 @@ class const ConstrainedDivider({
   Widget build(BuildContext context) {
     return ConstrainedItem(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Container(color: context.colours.cardDivider, height: 1),
+      child: Container(color: context.theme.extension<MyColourThemeExt>()!.cardDivider, height: 1),
     );
   }
 }
