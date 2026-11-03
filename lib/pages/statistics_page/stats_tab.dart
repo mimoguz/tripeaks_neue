@@ -28,7 +28,7 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
               H(Text(s.lastGameStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: c.itemSpacing),
+                  padding: const EdgeInsets.only(bottom: c.itemSpacing, top: c.cellPadding),
                   child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
               ),
@@ -38,9 +38,9 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
           SliverMainAxisGroup(
             slivers: <Widget>[
               H(Text(s.bestGamesStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
-              SliverPadding(
-                padding: EdgeInsetsGeometry.only(bottom: c.utilPageInsets.bottom),
-                sliver: SliverToBoxAdapter(
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsetsGeometry.only(bottom: c.utilPageMarginBottom, top: c.cellPadding),
                   child: ScoreTable(games: statistics.bestGames, showLayout: showLayout),
                 ),
               ),
@@ -151,6 +151,7 @@ final class const ScoreCard({
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final textExt = theme.extension<MyTextThemeExt>()!;
     return MyCard(
       child: Row(
         mainAxisAlignment: .spaceBetween,
@@ -160,20 +161,8 @@ final class const ScoreCard({
               mainAxisAlignment: .center,
               crossAxisAlignment: .start,
               children: [
-                Text(
-                  score.toString(),
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontFeatures: c.fontFeaturesNumber,
-                    color: theme.colorScheme.onSurfaceVariant,
-                    fontWeight: .w700,
-                  ),
-                ),
-                Text(
-                  label,
-                  style: theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline),
-                  overflow: .fade,
-                  softWrap: false,
-                ),
+                Text(score.toString(), style: textExt.numericLarge),
+                Text(label, style: textExt.faintLabelMedium, overflow: .fade, softWrap: false),
               ],
             ),
           ),

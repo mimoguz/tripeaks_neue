@@ -99,6 +99,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
+    // TODO: ThemeExtension
     final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.hintColor);
     final numberStyle = theme.textTheme.bodyLarge?.copyWith(
       color: theme.colorScheme.onSurfaceVariant,

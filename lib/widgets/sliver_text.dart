@@ -38,7 +38,6 @@ final class const HDelegate(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         maxHeight: _maxHeight,
         child: Row(
-          crossAxisAlignment: .center,
           children: [DefaultTextStyle(style: textExt.sectionTitle, child: child)],
         ),
       ),
@@ -54,7 +53,7 @@ final class const HDelegate(
   @override
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
-  static const _maxHeight = 42.0;
+  static const _maxHeight = 38.0;
   static const _minHeight = 28.0;
 }
 
