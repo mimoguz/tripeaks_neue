@@ -193,7 +193,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
         fontFamily: "Roboto",
         fontSize: 16,
         fontWeight: .w700,
-        color: _Colours.primaryLight,
+        color: _Colours.primaryDark,
         height: 1.8,
       ),
       dialogTitle = const TextStyle(
