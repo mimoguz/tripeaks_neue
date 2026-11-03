@@ -1,13 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 
-// TODO: Light tertiary is too harsh -updated
-// TODO: Light onSecondaryContainer is too light -updated
-// TODO: Dark onSecondaryContainer is too dark
-// TODO: Make onSurfaceVariant closer to onSurface -updated
-// TODO: Desaturate dark tertiary a bit
-// TODO: Dark secondaryContainer is too green?
-
 const _lightScheme = ColorScheme(
   brightness: Brightness.light,
   primary: _Colours.primaryLight,
@@ -118,7 +111,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
   final TextStyle dialogTitle;
   final TextStyle listItemSubtitle;
   final TextStyle faintLabelMedium;
-  final TextStyle faintLabelLarge;
+  final TextStyle faintLabelSmall;
   final TextStyle paragraphText;
   final TextStyle paragraphTextItalic;
   final TextStyle numericBody;
@@ -132,7 +125,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
   @override
   ThemeExtension<MyTextThemeExt> lerp(covariant ThemeExtension<MyTextThemeExt>? other, double t) => this;
 
-  const MyTextThemeExt.light()
+  const new light()
     : sectionTitle = const TextStyle(
         fontSize: 16,
         fontWeight: .w700,
@@ -151,8 +144,18 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
         fontSize: 14,
         color: _Colours.onSurfaceVariantLight,
       ),
-      faintLabelMedium = const TextStyle(fontFamily: "Roboto", fontSize: 12, color: _Colours.outlineLight),
-      faintLabelLarge = const TextStyle(fontFamily: "Roboto", fontSize: 16, color: _Colours.outlineLight),
+      faintLabelMedium = const TextStyle(
+        fontFamily: "Roboto",
+        fontWeight: .w500,
+        fontSize: 12,
+        color: _Colours.outlineLight,
+      ),
+      faintLabelSmall = const TextStyle(
+        fontFamily: "Roboto",
+        fontWeight: .w500,
+        fontSize: 11,
+        color: _Colours.outlineLight,
+      ),
       paragraphText = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 14,
@@ -188,7 +191,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
       ),
       link = const TextStyle(fontFamily: "Roboto", fontSize: 14, color: _Colours.primaryLight, height: 1.8);
 
-  const MyTextThemeExt.dark()
+  const new dark()
     : sectionTitle = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 16,
@@ -207,8 +210,18 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
         fontSize: 14,
         color: _Colours.onSurfaceVariantDark,
       ),
-      faintLabelMedium = const TextStyle(fontFamily: "Roboto", fontSize: 12, color: _Colours.outlineDark),
-      faintLabelLarge = const TextStyle(fontFamily: "Roboto", fontSize: 16, color: _Colours.outlineDark),
+      faintLabelMedium = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 12,
+        fontWeight: .w500,
+        color: _Colours.onSurfaceVariantDark,
+      ),
+      faintLabelSmall = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 11,
+        fontWeight: .w500,
+        color: _Colours.onSurfaceVariantDark,
+      ),
       paragraphText = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 14,
@@ -279,7 +292,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
 
   const new light()
     // onSurface with alpha
-    : faintBorder = const Color(0x0C202226),
+    : faintBorder = const Color(0x0D202226),
       // Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.9)!,
       faintButtonBackground = const Color(0xFFD1D4D9),
       faintButtonForeground = _Colours.onSurfaceLight,
