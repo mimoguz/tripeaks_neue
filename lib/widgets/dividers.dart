@@ -7,23 +7,23 @@ import 'package:tripeaks_neue/widgets/constrained.dart';
 final class const SettingDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    return Divider(height: 1.0, color: colours.settingDivider);
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
+    return Divider(height: 1.0, color: colourExt.settingItemDivider);
   }
 }
 
 final class const CardDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = Theme.of(context).colorScheme;
-    return Divider(height: 1.0, color: colours.cardDivider);
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
+    return Divider(height: 1.0, color: colourExt.cardDivider);
   }
 }
 
 final class const DialogHeaderDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colourExt = Theme.of(context).extension<MyColourThemeExt>()!;
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
     return Divider(height: 1.0, color: colourExt.dialogHeaderDivider);
   }
 }
@@ -31,7 +31,7 @@ final class const DialogHeaderDivider({super.key}) extends StatelessWidget {
 final class const DialogDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colourExt = Theme.of(context).extension<MyColourThemeExt>()!;
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
     return Divider(height: 1.0, color: colourExt.dialogDivider);
   }
 }
@@ -39,7 +39,7 @@ final class const DialogDivider({super.key}) extends StatelessWidget {
 final class const SheetHeaderDivider({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colourExt = Theme.of(context).extension<MyColourThemeExt>()!;
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
     return Divider(height: 1.0, color: colourExt.sheetHeaderDivider);
   }
 }
@@ -52,9 +52,10 @@ class const ConstrainedDivider({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final colourExt = context.theme.extension<MyColourThemeExt>()!;
     return ConstrainedItem(
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Container(color: context.theme.extension<MyColourThemeExt>()!.cardDivider, height: 1),
+      child: Container(color: colourExt.cardDivider, height: 1),
     );
   }
 }

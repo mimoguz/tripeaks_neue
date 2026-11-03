@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/pages/help_page/help_page.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
@@ -429,12 +430,13 @@ final class const ClearStatsAlertDialog({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
-    final colours = context.colours;
+    final theme = context.theme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return MyDialog(
       title: Row(
         spacing: 8.0,
         children: [
-          Icon(Icons.warning, color: colours.onSurfaceVariant),
+          Icon(Icons.warning, color: theme.colorScheme.onSurfaceVariant),
           Text(s.caution),
         ],
       ),
@@ -453,8 +455,8 @@ final class const ClearStatsAlertDialog({super.key}) extends StatelessWidget {
           onPressed: () => Navigator.pop<bool>(context, true),
           style: TextButton.styleFrom(
             shadowColor: Colors.transparent,
-            backgroundColor: colours.faintButtonBackground,
-            foregroundColor: colours.faintButtonForeground,
+            backgroundColor: colourExt.faintButtonBackground,
+            foregroundColor: colourExt.faintButtonForeground,
           ),
           child: Text(s.continueAction),
         ),
@@ -467,12 +469,13 @@ final class const ImportStatsAlertDialog({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
-    final colours = context.colours;
+    final theme = context.theme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return MyDialog(
       title: Row(
         spacing: 8.0,
         children: [
-          Icon(Icons.warning, color: colours.onSurfaceVariant),
+          Icon(Icons.warning, color: theme.colorScheme.onSurfaceVariant),
           Text(s.caution),
         ],
       ),
@@ -491,8 +494,8 @@ final class const ImportStatsAlertDialog({super.key}) extends StatelessWidget {
           onPressed: () => Navigator.pop<bool>(context, true),
           style: TextButton.styleFrom(
             shadowColor: Colors.transparent,
-            backgroundColor: colours.faintButtonBackground,
-            foregroundColor: colours.faintButtonForeground,
+            backgroundColor: colourExt.faintButtonBackground,
+            foregroundColor: colourExt.faintButtonForeground,
           ),
           child: Text(s.continueAction),
         ),

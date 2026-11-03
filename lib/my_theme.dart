@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart';
 
 // TODO: Light tertiary is too harsh -updated
 // TODO: Light onSecondaryContainer is too light -updated
@@ -113,14 +114,141 @@ final _pageTransitionTheme = PageTransitionsTheme(
 final _tooltipTheme = TooltipThemeData(waitDuration: Durations.long4, preferBelow: false);
 
 final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
+  final TextStyle sectionTitle;
+  final TextStyle dialogTitle;
+  final TextStyle listItemSubtitle;
+  final TextStyle faintLabelMedium;
+  final TextStyle faintLabelLarge;
+  final TextStyle paragraphText;
+  final TextStyle paragraphTextItalic;
+  final TextStyle numericBody;
+  final TextStyle numericLarge;
+  final TextStyle numericMedium;
+  final TextStyle link;
+
   @override
   ThemeExtension<MyTextThemeExt> copyWith() => this;
 
   @override
   ThemeExtension<MyTextThemeExt> lerp(covariant ThemeExtension<MyTextThemeExt>? other, double t) => this;
 
-  MyTextThemeExt.light();
-  MyTextThemeExt.dark();
+  const MyTextThemeExt.light()
+    : sectionTitle = const TextStyle(
+        fontSize: 16,
+        fontWeight: .w700,
+        color: _Colours.primaryLight,
+        height: 1.8,
+      ),
+      dialogTitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 20,
+        fontWeight: .w500,
+        height: 1.8,
+        color: _Colours.onSurfaceLight,
+      ),
+      listItemSubtitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.onSurfaceVariantLight,
+      ),
+      faintLabelMedium = const TextStyle(fontFamily: "Roboto", fontSize: 12, color: _Colours.outlineLight),
+      faintLabelLarge = const TextStyle(fontFamily: "Roboto", fontSize: 16, color: _Colours.outlineLight),
+      paragraphText = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.onSurfaceLight,
+        height: 1.8,
+      ),
+      paragraphTextItalic = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.primaryLight,
+        height: 1.8,
+        fontStyle: .italic,
+      ),
+      numericBody = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.onSurfaceLight,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
+      numericLarge = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 22,
+        color: _Colours.onSurfaceVariantLight,
+        fontWeight: .w700,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
+      numericMedium = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 18,
+        color: _Colours.onSurfaceVariantLight,
+        fontWeight: .w700,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
+      link = const TextStyle(fontFamily: "Roboto", fontSize: 14, color: _Colours.primaryLight, height: 1.8);
+
+  const MyTextThemeExt.dark()
+    : sectionTitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 16,
+        fontWeight: .w700,
+        color: _Colours.primaryLight,
+        height: 1.8,
+      ),
+      dialogTitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 20,
+        fontWeight: .w500,
+        color: _Colours.onSurfaceDark,
+      ),
+      listItemSubtitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.onSurfaceVariantDark,
+      ),
+      faintLabelMedium = const TextStyle(fontFamily: "Roboto", fontSize: 12, color: _Colours.outlineDark),
+      faintLabelLarge = const TextStyle(fontFamily: "Roboto", fontSize: 16, color: _Colours.outlineDark),
+      paragraphText = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.onSurfaceDark,
+        height: 1.8,
+      ),
+      paragraphTextItalic = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.primaryDark,
+        height: 1.8,
+        fontStyle: .italic,
+      ),
+      numericBody = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        color: _Colours.onSurfaceDark,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
+      numericLarge = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 22,
+        color: _Colours.onSurfaceVariantDark,
+        fontWeight: .w700,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
+      numericMedium = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 18,
+        color: _Colours.onSurfaceVariantDark,
+        fontWeight: .w700,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
+      link = const TextStyle(fontFamily: "Roboto", fontSize: 14, color: _Colours.primaryLight, height: 1.8);
+
+  static const _fontFeaturesNumeric = <FontFeature>[
+    .liningFigures(),
+    .proportionalFigures(),
+    .ordinalForms(),
+  ];
 }
 
 final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
@@ -141,6 +269,8 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   final Color sheetHeaderDivider;
   final Color translucentHighlight;
 
+  Color get barrier => isDesktop ? Colors.transparent : _barrier;
+
   @override
   ThemeExtension<MyColourThemeExt> copyWith() => this;
 
@@ -160,12 +290,13 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetBackground = _Colours.surfaceContainerLight,
       cardBackground = _Colours.surfaceContainerLowestLight,
       // onSurface with alpha
-      cardDivider = const Color(0x28202226),
+      cardDivider = const Color(0x2C202226),
       // onSurface with alpha
       dialogHeaderDivider = const Color(0x10202226),
       // onSurface with alpha
       sheetHeaderDivider = const Color(0x10202226),
-      settingItemDivider = _Colours.outlineVariantLight,
+      // onSurface with alpha
+      settingItemDivider = const Color(0x24202226),
       translucentHighlight = Colors.white24,
       scrollShadow = Colors.black38,
       // primary with alpha
@@ -185,11 +316,13 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       cardDivider = const Color(0x40E1E6EC),
       dialogHeaderDivider = const Color(0x0CE1E6EC), // mix
       sheetHeaderDivider = const Color(0x0FE1E6EC),
-      settingItemDivider = _Colours.outlineVariantDark,
+      settingItemDivider = _Colours.surfaceDark,
       translucentHighlight = Colors.white12,
       scrollShadow = const Color(0x500068A4),
       scrollGlow = const Color(0x500068A4),
       headerShadow = _Colours.primaryLight;
+
+  static const _barrier = Color(0x70000003);
 }
 
 ThemeData light() => ThemeData(
@@ -221,7 +354,7 @@ abstract final class _Colours {
   static const inversePrimaryLight = Color(0xFF34ABF8);
   static const secondaryLight = Color(0xFF5D5F62);
   static const onSecondaryLight = Color(0xFFF8F9FC);
-  static const secondaryContainerLight = Color(0xFFE2E2E5);
+  static const secondaryContainerLight = Color(0xFFE1E2E7); // Color(0xFFE2E2E5);
   static const onSecondaryContainerLight = Color(0xFF2D3338); //Color(0xFF505254);
   static const tertiaryLight = Color(0xFFC02C22); // Color(0xFFB02F27);
   static const onTertiaryLight = Color(0xFFFFF7F6);
@@ -240,7 +373,7 @@ abstract final class _Colours {
   static const outlineVariantLight = Color(0xFFADB2B8);
   static const scrimLight = Color(0xFF000000);
   static const surfaceBrightLight = Color(0xFFF9F9FB);
-  static const surfaceContainerLight = Color(0xFFECEEF2);
+  static const surfaceContainerLight = Color(0xFFEDEEF2); // Color(0xFFECEEF2);
   static const surfaceContainerHighLight = Color(0xFFE5E8ED);
   static const surfaceContainerHighestLight = Color(0xFFDEE3E9);
   static const surfaceContainerLowLight = Color(0xFFF3F3F6);

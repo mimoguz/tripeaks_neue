@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/my_theme.dart';
-import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/dividers.dart';
 import 'package:tripeaks_neue/widgets/scroll_shadow.dart';
@@ -38,7 +37,7 @@ class _MyDialogState extends State<MyDialog> {
     final colourExt = theme.extension<MyColourThemeExt>()!;
     return AlertDialog(
       clipBehavior: .antiAlias,
-      titleTextStyle: theme.textTheme.titleMedium!.copyWith(fontSize: 20),
+      titleTextStyle: theme.extension<MyTextThemeExt>()!.dialogTitle,
       title: Column(
         children: [
           Padding(
@@ -118,8 +117,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colours = theme.colorScheme;
-    final coluorExt = theme.extension<MyColourThemeExt>()!;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     final height = MediaQuery.heightOf(context);
     return ConstrainedBox(
       constraints: BoxConstraints(
@@ -128,9 +126,9 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
       ),
       child: Container(
         decoration: BoxDecoration(
-          color: coluorExt.sheetBackground,
+          color: colourExt.sheetBackground,
           borderRadius: c.DialogMetrics.bottomSheetBorderRadius,
-          border: Border.all(color: coluorExt.faintBorder),
+          border: Border.all(color: colourExt.faintBorder),
           boxShadow: <BoxShadow>[BoxShadow(color: Colors.black12, blurRadius: 3, offset: Offset(0.0, 1.0))],
         ),
         clipBehavior: .antiAlias,
@@ -146,14 +144,14 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 children: [
                   Flexible(
                     child: DefaultTextStyle(
-                      style: theme.textTheme.titleMedium!.copyWith(fontSize: 20),
+                      style: theme.extension<MyTextThemeExt>()!.dialogTitle,
                       child: widget.title,
                     ),
                   ),
                   CloseButton(
                     style: FilledButton.styleFrom(
-                      backgroundColor: coluorExt.faintButtonBackground,
-                      foregroundColor: coluorExt.faintButtonIcon,
+                      backgroundColor: colourExt.faintButtonBackground,
+                      foregroundColor: colourExt.faintButtonIcon,
                       padding: EdgeInsets.all(2.0),
                       minimumSize: Size.square(32.0),
                     ),

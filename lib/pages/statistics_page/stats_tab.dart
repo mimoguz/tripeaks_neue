@@ -115,6 +115,7 @@ final class const BarChart(
   void _drawLeft(Canvas canvas, Size size, Paint paint) {
     final rect = Offset.zero & size;
     paint
+      ..color = filled1
       ..shader = LinearGradient(colors: <Color>[filled1, filled2]).createShader(rect)
       ..style = .fill;
     canvas.drawRRect(
@@ -193,10 +194,11 @@ class const ScoreTable({
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
+    final textExt = theme.extension<MyTextThemeExt>()!;
     final borderColour = colourExt.cardDivider;
     final borderSide = BorderSide(color: borderColour, width: 1);
-    final numberStyle = theme.textTheme.bodyMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
-    final rankStyle = theme.textTheme.labelMedium?.copyWith(fontFeatures: c.fontFeaturesNumber);
+    final numberStyle = textExt.numericBody;
+    final rankStyle = numberStyle;
     final headerStyle = theme.textTheme.bodyMedium;
     return ConstrainedItem(
       child: Table(
@@ -343,12 +345,11 @@ final class const ChartCard({super.key, required final int played, required fina
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final numberStyle = theme.textTheme.titleLarge?.copyWith(
-      fontFeatures: c.fontFeaturesNumber,
-      color: theme.colorScheme.onSurfaceVariant,
-      fontWeight: .w700,
-    );
-    final labelStyle = theme.textTheme.labelMedium?.copyWith(color: theme.colorScheme.outline);
+    final colourExt = theme.extension<MyColourThemeExt>()!;
+    final textExt = theme.extension<MyTextThemeExt>()!;
+    final numberStyle = textExt.numericLarge;
+    final percentStyle = textExt.numericMedium;
+    final labelStyle = textExt.faintLabelMedium;
     final s = context.strings;
     return MyCard(
       child: Column(
@@ -378,15 +379,12 @@ final class const ChartCard({super.key, required final int played, required fina
                       played > 0 ? cleared.toDouble() / played : 0,
                       filled1: Colors.lightGreen.shade500,
                       filled2: Colors.lightGreen.shade300,
-                      empty: theme.colorScheme.cardDivider,
+                      empty: colourExt.cardDivider,
                     ),
                   ),
                 ),
               ),
-              Text(
-                played > 0 ? (cleared.toDouble() / played).percent : "None yet",
-                style: numberStyle?.copyWith(fontSize: 18),
-              ),
+              Text(played > 0 ? (cleared.toDouble() / played).percent : "None yet", style: percentStyle),
             ],
           ),
           Row(

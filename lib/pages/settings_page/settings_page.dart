@@ -71,8 +71,8 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: theme.colorScheme.pageBackground,
-                  surfaceTintColor: theme.colorScheme.pageBackground,
+                  backgroundColor: theme.colorScheme.surface,
+                  surfaceTintColor: theme.colorScheme.surface,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
@@ -101,7 +101,7 @@ final class SettingsPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = context.strings;
     return Container(
-      color: context.colours.pageBackground,
+      color: context.colours.surface,
       child: CustomScrollView(
         slivers: <Widget>[
           const SliverToBoxAdapter(

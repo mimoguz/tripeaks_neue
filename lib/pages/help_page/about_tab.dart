@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/dividers.dart';
@@ -18,9 +19,9 @@ class AboutTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final s = context.strings;
-    final normal = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
+    final normal = theme.extension<MyTextThemeExt>()!.paragraphText;
     return Container(
-      color: theme.colorScheme.pageBackground,
+      color: theme.colorScheme.surface,
       child: CustomScrollView(
         slivers: <Widget>[
           SliverMainAxisGroup(

@@ -19,6 +19,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     final div = colourExt.dialogDivider;
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
+      surfaceTintColor: colours.surfaceContainerHighest,
       elevation: 6.0,
       shadowColor: theme.shadowColor,
       width: 340.0,

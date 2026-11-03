@@ -2,6 +2,7 @@ import 'package:fast_rich_text/fast_rich_text.dart';
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
@@ -14,11 +15,12 @@ class UiTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final textExt = theme.extension<MyTextThemeExt>()!;
     final s = context.strings;
-    final normal = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
-    final italic = normal.copyWith(fontStyle: .italic, color: theme.colorScheme.primary);
+    final normal = textExt.paragraphText;
+    final italic = textExt.paragraphTextItalic;
     return Container(
-      color: theme.colorScheme.pageBackground,
+      color: theme.colorScheme.surface,
       child: CustomScrollView(
         slivers: <Widget>[
           SliverMainAxisGroup(

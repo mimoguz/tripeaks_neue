@@ -29,24 +29,17 @@ final class const HDelegate(
     final elevated = overlapsContent || shrinkOffset > 0;
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
+    final textExt = theme.extension<MyTextThemeExt>()!;
     return Material(
-      color: theme.colorScheme.pageBackground,
+      color: theme.colorScheme.surface,
       shadowColor: colourExt.headerShadow,
       elevation: elevated ? 2 : 0,
       child: ConstrainedItem(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         maxHeight: _maxHeight,
         child: Row(
-          crossAxisAlignment: .end,
-          children: [
-            DefaultTextStyle(
-              style: theme.textTheme.titleMedium!.copyWith(
-                fontWeight: .w700,
-                color: theme.colorScheme.primary,
-              ),
-              child: child,
-            ),
-          ],
+          crossAxisAlignment: .center,
+          children: [DefaultTextStyle(style: textExt.sectionTitle, child: child)],
         ),
       ),
     );
@@ -61,8 +54,8 @@ final class const HDelegate(
   @override
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
-  static const _maxHeight = 36.0;
-  static const _minHeight = 24.0;
+  static const _maxHeight = 42.0;
+  static const _minHeight = 28.0;
 }
 
 final class const P(final Widget child, {super.key, final bool spaceAfter = true}) extends StatelessWidget {

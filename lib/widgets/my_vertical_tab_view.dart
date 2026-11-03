@@ -17,7 +17,7 @@ class _MyVerticalTabViewState extends State<MyVerticalTabView> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColour = context.colours.pageBackground;
+    final backgroundColour = context.colours.surface;
     return Column(
       children: [
         Expanded(

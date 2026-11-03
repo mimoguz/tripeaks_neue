@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/pages/home_page/landscape_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/portrait_home_page.dart';
 import 'package:tripeaks_neue/pages/home_page/widgets/drawer.dart';
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return Scaffold(
-              drawerScrimColor: context.colours.barrier,
+              drawerScrimColor: context.theme.extension<MyColourThemeExt>()!.barrier,
               drawer: HomePageDrawer(),
               body: Builder(
                 builder: (context) {

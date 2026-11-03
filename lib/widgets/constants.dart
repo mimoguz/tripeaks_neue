@@ -43,19 +43,6 @@ const EdgeInsets utilPageInsets = EdgeInsets.fromLTRB(
 );
 
 const fontFeaturesNumber = <FontFeature>[.liningFigures(), .proportionalFigures(), .ordinalForms()];
-const faintShadowColour = Color(0x60100000);
-const faintBorderColour = Color(0x09000000);
-const darkModeGlow = Color(0x350060f0);
-const darkModeShadow = Color(0xff085bd8);
-const faintPanelBorder = BoxDecoration(
-  border: Border(
-    top: BorderSide(color: faintBorderColour),
-    bottom: BorderSide(color: faintBorderColour),
-    left: BorderSide(color: faintBorderColour),
-    right: BorderSide(color: faintBorderColour),
-  ),
-  borderRadius: commonBorderRadius,
-);
 
 abstract final class DialogMetrics {
   static const verticalPadding = 12.0;
@@ -65,7 +52,7 @@ abstract final class DialogMetrics {
   static const titlePadding = EdgeInsets.fromLTRB(
     horizontalPadding,
     verticalPadding - 4,
-    horizontalPadding,
+    horizontalPadding - 2,
     verticalPadding - 4,
   );
   static const actionsPadding = EdgeInsets.fromLTRB(

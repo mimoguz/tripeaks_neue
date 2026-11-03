@@ -36,7 +36,7 @@ class _HelpPageState extends State<HelpPage> {
   Widget build(BuildContext context) {
     final s = context.strings;
     final useVertical = MediaQuery.sizeOf(context).height < c.verticalTabsThreshold;
-    final background = context.colours.pageBackground;
+    final background = context.colours.surface;
     setOverlayStyleOf(context);
     return Shortcuts(
       shortcuts: <ShortcutActivator, Intent>{
