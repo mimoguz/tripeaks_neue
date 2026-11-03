@@ -18,7 +18,7 @@ class AboutTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final s = context.strings;
-    final normal = theme.textTheme.bodyMedium!.copyWith(height: 2);
+    final normal = theme.textTheme.bodyMedium!.copyWith(height: 1.8);
     return Container(
       color: theme.colorScheme.pageBackground,
       child: CustomScrollView(

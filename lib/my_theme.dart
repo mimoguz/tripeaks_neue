@@ -1,5 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
+// TODO: Light tertiary is too harsh -updated
+// TODO: Light onSecondaryContainer is too light -updated
+// TODO: Dark onSecondaryContainer is too dark
+// TODO: Make onSurfaceVariant closer to onSurface -updated
+// TODO: Desaturate dark tertiary a bit
+// TODO: Dark secondaryContainer is too green?
+
 const _lightScheme = ColorScheme(
   brightness: Brightness.light,
   primary: _Colours.primaryLight,
@@ -184,8 +191,8 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       )!, // mix
       settingItemDivider = _darkScheme.outlineVariant,
       translucentHighlight = Colors.white12,
-      scrollShadow = _lightScheme.primary.withAlpha(150),
-      scrollGlow = _lightScheme.primary.withAlpha(35),
+      scrollShadow = _lightScheme.primary.withAlpha(100),
+      scrollGlow = _lightScheme.primary.withAlpha(50),
       headerShadow = _lightScheme.primary;
 }
 
@@ -222,15 +229,15 @@ abstract final class _Colours {
   // Others
   static const secondaryLight = Color(0xFF5C5F66);
   static const onSecondaryLight = Color(0xFFF7F9FF);
-  static const secondaryContainerLight = Color(0xFFE0E2EA);
-  static const onSecondaryContainerLight = Color(0xFF4E5258);
-  static const tertiaryLight = Color(0xFFB62435);
+  static const secondaryContainerLight = Color(0xFFDEDFE8); // Color(0xFFE0E2EA);
+  static const onSecondaryContainerLight = Color(0xFF202026); // Color(0xFF4E5258);
+  static const tertiaryLight = Color(0xFFC62638); // Color(0xFFB62435);
   static const onTertiaryLight = Color(0xFFFFF7F6);
   static const tertiaryContainerLight = Color(0xFFFE5A63);
   static const onTertiaryContainerLight = Color(0xFF310005);
-  static const surfaceLight = Color(0xFFFAF9FA);
-  static const onSurfaceLight = Color(0xFF303335);
-  static const onSurfaceVariantLight = Color(0xFF5D5F61);
+  static const surfaceLight = Color(0xFFF9F9FA); // Color(0xFFFAF9FA);
+  static const onSurfaceLight = Color(0xFF202026); //Color(0xFF303335);
+  static const onSurfaceVariantLight = Color(0xFF303335); // Color(0xFF5D5F61);
   static const surfaceTintLight = Color(0xFF006595);
   static const inverseSurfaceLight = Color(0xFF0C0F10);
   static const errorLight = Color(0xFFA23E37);
