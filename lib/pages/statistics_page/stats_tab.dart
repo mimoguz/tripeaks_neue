@@ -28,7 +28,7 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
               H(Text(s.lastGameStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: c.itemSpacing, top: c.cellPadding),
+                  padding: const EdgeInsets.only(bottom: c.itemSpacing),
                   child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
               ),
@@ -40,7 +40,7 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
               H(Text(s.bestGamesStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsetsGeometry.only(bottom: c.utilPageMarginBottom, top: c.cellPadding),
+                  padding: const EdgeInsetsGeometry.only(bottom: c.utilPageMarginBottom),
                   child: ScoreTable(games: statistics.bestGames, showLayout: showLayout),
                 ),
               ),

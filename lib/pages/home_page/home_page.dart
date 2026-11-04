@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return Scaffold(
-              drawerScrimColor: context.theme.extension<MyColourThemeExt>()!.barrier,
+              drawerScrimColor: context.theme.extension<MyColourThemeExt>()!.platformBarrier,
               drawer: HomePageDrawer(),
               body: Builder(
                 builder: (context) {

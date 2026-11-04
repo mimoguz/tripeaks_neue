@@ -23,7 +23,7 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
       elevation: 6.0,
       shadowColor: theme.shadowColor,
       width: 340.0,
-      shape: RoundedRectangleBorder(borderRadius: _borderRadius),
+      shape: _shape,
       clipBehavior: Clip.antiAlias,
       child: CustomScrollView(
         slivers: [
@@ -101,7 +101,9 @@ class const HomePageDrawer({super.key}) extends StatelessWidget {
     );
   }
 
-  static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadiusValue));
+  static final _shape = RoundedRectangleBorder(
+    borderRadius: BorderRadiusDirectional.horizontal(end: c.commonRadius),
+  );
 }
 
 final class const AppTitle({super.key}) extends StatelessWidget {

@@ -1,12 +1,14 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/my_theme.dart';
+import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 
 Future<T?> showCommonDialog<T>(BuildContext context, Widget Function(BuildContext) builder) =>
     showGeneralDialog<T>(
       context: context,
-      barrierColor: context.theme.extension<MyColourThemeExt>()!.barrier,
+      barrierColor: context.theme.extension<MyColourThemeExt>()!.platformBarrier,
       barrierDismissible: true,
       barrierLabel: "",
       transitionDuration: _transitionDuration,
@@ -18,7 +20,7 @@ Future<T?> showCommonBottomSheet<T>(BuildContext context, Widget Function(BuildC
   final colourExt = context.theme.extension<MyColourThemeExt>()!;
   return showModalBottomSheet<T>(
     context: context,
-    barrierColor: colourExt.barrier,
+    barrierColor: colourExt.platformBarrier,
     backgroundColor: colourExt.dialogBackground,
     shape: c.DialogMetrics.bottomSheetShape,
     isScrollControlled: true,
@@ -26,5 +28,13 @@ Future<T?> showCommonBottomSheet<T>(BuildContext context, Widget Function(BuildC
     builder: (context) => builder(context),
   );
 }
+
+Future<T?> showPlatformPopover<T>(
+  BuildContext context, {
+  required Widget title,
+  required Widget Function(BuildContext) builder,
+}) => isDesktopOrWeb
+    ? showCommonDialog<T>(context, (context) => MyDialog(title: title, content: builder(context)))
+    : showCommonBottomSheet<T>(context, (context) => MyBottomSheet(title: title, content: builder(context)));
 
 const _transitionDuration = Duration(milliseconds: 150);

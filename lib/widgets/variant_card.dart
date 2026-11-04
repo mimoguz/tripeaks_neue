@@ -41,45 +41,43 @@ class _VariantCardState extends State<VariantCard> {
     final colourExt = theme.extension<MyColourThemeExt>()!;
     final background = widget.isSelected
         ? (widget.selectedBackground ?? colours.primaryContainer)
-        : colourExt.faintButtonBackground;
-    final borderColour = widget.isSelected
-        ? (widget.selectedBackground ?? colours.primaryContainer)
-        : colourExt.faintBorder;
+        : colourExt.cardBackground;
     final foreground = widget.isSelected
         ? (widget.selectedForeground ?? colours.onPrimaryContainer)
         : colourExt.faintButtonIcon;
     final labelForeground = widget.isSelected
         ? (widget.selectedForeground ?? colours.onPrimaryContainer)
-        : colourExt.faintButtonForeground;
+        : colours.primary;
     return Material(
       color: _focused ? colours.primary : Colors.transparent,
       borderRadius: _outerRadius,
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
-        child: InkWell(
-          focusNode: _focus,
-          onTap: widget.onTap,
-          borderRadius: c.commonBorderRadius,
-          child: Ink(
-            decoration: BoxDecoration(
-              borderRadius: c.commonBorderRadius,
-              color: background,
-              border: Border.all(color: borderColour, width: 1),
-            ),
+        padding: const EdgeInsets.all(_borderWidth),
+        child: Card(
+          margin: EdgeInsets.zero,
+          elevation: 1.4,
+          color: background,
+          shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+          shadowColor: colours.brightness == .light ? colours.shadow : Colors.transparent,
+          clipBehavior: .antiAlias,
+          child: InkWell(
+            focusNode: _focus,
+            onTap: widget.onTap,
+            borderRadius: c.commonBorderRadius,
             child: Padding(
-              padding: const EdgeInsets.all(4),
+              padding: const EdgeInsets.all(_padding),
               child: Column(
                 mainAxisSize: .min,
                 spacing: 4,
                 children: [
                   Flexible(
-                    child: ClipRRect(
-                      borderRadius: _innerRadius,
-                      child: Ink(
-                        decoration: BoxDecoration(
-                          borderRadius: _innerRadius,
-                          color: colourExt.translucentHighlight,
-                        ),
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        borderRadius: _innerRadius,
+                        color: colourExt.translucentHighlight,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: _innerRadius,
                         child: IconTheme(
                           data: IconThemeData(color: foreground),
                           child: widget.child,
@@ -103,6 +101,8 @@ class _VariantCardState extends State<VariantCard> {
     });
   }
 
-  static const _outerRadius = BorderRadius.all(Radius.circular(c.commonRadiusValue + 2));
-  static const _innerRadius = BorderRadius.all(Radius.circular(c.commonRadiusValue - 4));
+  static const _padding = 6.0;
+  static const _borderWidth = 2.0;
+  static const _innerRadius = BorderRadius.all(Radius.circular(c.commonRadiusValue - _padding));
+  static const _outerRadius = BorderRadius.all(Radius.circular(c.commonRadiusValue + _borderWidth));
 }

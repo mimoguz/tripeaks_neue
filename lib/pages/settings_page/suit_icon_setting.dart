@@ -59,7 +59,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
   }
 }
 
-class const SuitVariantCard({
+final class const SuitVariantCard({
   super.key,
   required final SuitIconTheme variant,
   required final bool isSelected,
@@ -67,27 +67,25 @@ class const SuitVariantCard({
   required final VoidCallback onTap,
 }) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return VariantCard<SuitIconTheme>(
-      variant: variant,
-      isSelected: isSelected,
-      label: variant.label(strings),
-      onTap: onTap,
-      child: SizedBox(
-        width: 80,
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Wrap(
-            runSpacing: 1,
-            children: [
-              Icon(CustomIcons.suitIcon(.hearts, variant), size: 36),
-              Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36),
-              Icon(CustomIcons.suitIcon(.spades, variant), size: 36),
-              Icon(CustomIcons.suitIcon(.clubs, variant), size: 36),
-            ],
-          ),
+  Widget build(BuildContext context) => VariantCard<SuitIconTheme>(
+    variant: variant,
+    isSelected: isSelected,
+    label: variant.label(strings),
+    onTap: onTap,
+    child: SizedBox(
+      width: 80,
+      child: Padding(
+        padding: const EdgeInsets.all(4),
+        child: Wrap(
+          runSpacing: 1,
+          children: [
+            Icon(CustomIcons.suitIcon(.hearts, variant), size: 36),
+            Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36),
+            Icon(CustomIcons.suitIcon(.spades, variant), size: 36),
+            Icon(CustomIcons.suitIcon(.clubs, variant), size: 36),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
 }

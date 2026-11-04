@@ -115,7 +115,7 @@ final class SettingsPageBody extends StatelessWidget {
               H(Text(s.nextGameSettingGroupTitle)),
               const SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: c.itemSpacing, top: c.cellPadding),
+                  padding: EdgeInsets.only(bottom: c.itemSpacing),
                   child: GroupTile(
                     padding: EdgeInsets.zero,
                     children: [
@@ -134,9 +134,9 @@ final class SettingsPageBody extends StatelessWidget {
           SliverMainAxisGroup(
             slivers: <Widget>[
               H(Text(s.interfaceSettingGroupTitle)),
-              SliverPadding(
-                padding: EdgeInsets.only(bottom: c.utilPageInsets.bottom, top: c.cellPadding),
-                sliver: const SliverToBoxAdapter(
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: c.utilPageMarginBottom),
                   child: GroupTile(
                     padding: EdgeInsets.zero,
                     children: [

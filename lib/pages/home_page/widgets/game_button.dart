@@ -33,7 +33,7 @@ class const CircleGameButton({
                 decoration: BoxDecoration(
                   shape: .circle,
                   border: Border.all(
-                    color: onPressed == null ? colours.outlineVariant : colours.secondary,
+                    color: onPressed == null ? colours.outlineVariant : colours.outline,
                     width: 2.0,
                   ),
                 ),

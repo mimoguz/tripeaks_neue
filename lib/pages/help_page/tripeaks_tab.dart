@@ -28,6 +28,7 @@ class TriPeaksTab extends StatelessWidget {
                   alt: s.wikiLinkAlt,
                   label: s.wikiLinkText,
                 ),
+                spaceAfter: false,
               ),
               P(FastRichText(text: s.howToP01, textStyle: normal, italicTextStyle: italic)),
               P(FastRichText(text: s.howToRichP02, textStyle: normal, italicTextStyle: italic)),

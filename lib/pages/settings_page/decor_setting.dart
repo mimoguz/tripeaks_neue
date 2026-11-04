@@ -46,32 +46,34 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonBottomSheet<int>(
+    final result = await showCommonBottomSheet<Decor>(
       context,
       (context) => MyBottomSheet(
         title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
         content: Padding(
           padding: c.DialogMetrics.contentPadding,
-          child: Wrap(
-            runSpacing: 4,
-            spacing: 4,
-            children: [
-              for (final (index, decor) in Decor.values.indexed)
-                DecorVariantCard(
-                  decor: decor,
-                  colour: settings.decorColour,
-                  isSelected: settings.decor == decor,
-                  selectedDecorColour: settings.decorColour,
-                  strings: s,
-                  onTap: () => Navigator.pop(context, index),
-                ),
-            ],
+          child: Center(
+            child: Wrap(
+              runSpacing: 4,
+              spacing: 4,
+              children: [
+                for (final variant in Decor.values)
+                  DecorVariantCard(
+                    variant: variant,
+                    colour: settings.decorColour,
+                    isSelected: settings.decor == variant,
+                    selectedDecorColour: settings.decorColour,
+                    strings: s,
+                    onTap: () => Navigator.pop(context, variant),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
     );
-    if (result != null && result >= 0) {
-      settings.decor = Decor.values[result];
+    if (result != null) {
+      settings.decor = result;
     }
   }
 
@@ -82,7 +84,7 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
 final class const DecorVariantCard({
   super.key,
-  required final Decor decor,
+  required final Decor variant,
   required final DecorColour colour,
   required final bool isSelected,
   required final DecorColour selectedDecorColour,
@@ -90,15 +92,13 @@ final class const DecorVariantCard({
   required final VoidCallback onTap,
 }) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return VariantCard<Decor>(
-      variant: decor,
-      selectedBackground: colour.background,
-      selectedForeground: colour.controlForeground,
-      isSelected: isSelected,
-      label: decor.label(strings),
-      onTap: onTap,
-      child: Icon(decor.icon, size: 80),
-    );
-  }
+  Widget build(BuildContext context) => VariantCard<Decor>(
+    variant: variant,
+    selectedBackground: colour.background,
+    selectedForeground: colour.controlForeground,
+    isSelected: isSelected,
+    label: variant.label(strings),
+    onTap: onTap,
+    child: Icon(variant.icon, size: 78),
+  );
 }

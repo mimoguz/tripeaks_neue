@@ -115,6 +115,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
   final TextStyle paragraphText;
   final TextStyle paragraphTextItalic;
   final TextStyle numericBody;
+  final TextStyle numericTitle;
   final TextStyle numericLarge;
   final TextStyle numericMedium;
   final TextStyle link;
@@ -127,16 +128,18 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
 
   const new light()
     : sectionTitle = const TextStyle(
+        fontFamily: "Roboto",
         fontSize: 16,
+        letterSpacing: 0.15,
+        height: 1.8,
         fontWeight: .w700,
         color: _Colours.primaryLight,
-        height: 1.8,
       ),
       dialogTitle = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 20,
-        fontWeight: .w500,
         height: 1.8,
+        fontWeight: .w500,
         color: _Colours.onSurfaceLight,
       ),
       listItemSubtitle = const TextStyle(
@@ -146,14 +149,16 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
       ),
       faintLabelMedium = const TextStyle(
         fontFamily: "Roboto",
-        fontWeight: .w500,
         fontSize: 12,
+        letterSpacing: 0.5,
+        fontWeight: .w500,
         color: _Colours.outlineLight,
       ),
       faintLabelSmall = const TextStyle(
         fontFamily: "Roboto",
-        fontWeight: .w500,
         fontSize: 11,
+        letterSpacing: 0.5,
+        fontWeight: .w500,
         color: _Colours.outlineLight,
       ),
       paragraphText = const TextStyle(
@@ -175,16 +180,24 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
         color: _Colours.onSurfaceLight,
         fontFeatures: _fontFeaturesNumeric,
       ),
+      numericTitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        fontWeight: .w700,
+        color: _Colours.onSurfaceVariantLight,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
       numericLarge = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 22,
-        color: _Colours.onSurfaceVariantLight,
         fontWeight: .w700,
+        color: _Colours.onSurfaceVariantLight,
         fontFeatures: _fontFeaturesNumeric,
       ),
       numericMedium = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 18,
+        letterSpacing: 0.15,
         color: _Colours.onSurfaceVariantLight,
         fontWeight: .w700,
         fontFeatures: _fontFeaturesNumeric,
@@ -195,9 +208,10 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     : sectionTitle = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 16,
+        letterSpacing: 0.15,
+        height: 1.8,
         fontWeight: .w700,
         color: _Colours.primaryDark,
-        height: 1.8,
       ),
       dialogTitle = const TextStyle(
         fontFamily: "Roboto",
@@ -213,12 +227,14 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
       faintLabelMedium = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 12,
+        letterSpacing: 0.5,
         fontWeight: .w500,
         color: _Colours.onSurfaceVariantDark,
       ),
       faintLabelSmall = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 11,
+        letterSpacing: 0.5,
         fontWeight: .w500,
         color: _Colours.onSurfaceVariantDark,
       ),
@@ -241,6 +257,13 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
         color: _Colours.onSurfaceDark,
         fontFeatures: _fontFeaturesNumeric,
       ),
+      numericTitle = const TextStyle(
+        fontFamily: "Roboto",
+        fontSize: 14,
+        fontWeight: .w700,
+        color: _Colours.onSurfaceVariantDark,
+        fontFeatures: _fontFeaturesNumeric,
+      ),
       numericLarge = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 22,
@@ -251,8 +274,9 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
       numericMedium = const TextStyle(
         fontFamily: "Roboto",
         fontSize: 18,
-        color: _Colours.onSurfaceVariantDark,
+        letterSpacing: 0.15,
         fontWeight: .w700,
+        color: _Colours.onSurfaceVariantDark,
         fontFeatures: _fontFeaturesNumeric,
       ),
       link = const TextStyle(fontFamily: "Roboto", fontSize: 14, color: _Colours.primaryLight, height: 1.8);
@@ -265,6 +289,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
 }
 
 final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
+  final Brightness brightness;
   final Color cardBackground;
   final Color cardDivider;
   final Color dialogBackground;
@@ -281,8 +306,9 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   final Color sheetBackground;
   final Color sheetHeaderDivider;
   final Color translucentHighlight;
+  final Color barrier;
 
-  Color get barrier => isDesktop ? Colors.transparent : _barrier;
+  Color get platformBarrier => isDesktop && brightness == .light ? Colors.transparent : barrier;
 
   @override
   ThemeExtension<MyColourThemeExt> copyWith() => this;
@@ -292,7 +318,8 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
 
   const new light()
     // onSurface with alpha
-    : faintBorder = const Color(0x0D202226),
+    : brightness = .light,
+      faintBorder = const Color(0x0D202226),
       // Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.9)!,
       faintButtonBackground = const Color(0xFFD1D4D9),
       faintButtonForeground = _Colours.onSurfaceLight,
@@ -310,14 +337,16 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetHeaderDivider = const Color(0x10202226),
       // onSurface with alpha
       settingItemDivider = const Color(0x24202226),
-      translucentHighlight = Colors.white24,
+      translucentHighlight = const Color(0x1A202226),
       scrollShadow = Colors.black38,
       // primary with alpha
       scrollGlow = const Color(0x230068A4),
-      headerShadow = Colors.black87;
+      headerShadow = Colors.black87,
+      barrier = const Color(0x70000006);
 
   const new dark()
-    : faintBorder = Colors.black12,
+    : brightness = .dark,
+      faintBorder = Colors.black12,
       // Color.lerp(_darkScheme.onSurface, _darkScheme.surfaceContainerHigh, 0.85)!,
       faintButtonBackground = const Color(0xFF3A3E42),
       faintButtonForeground = _Colours.onSurfaceDark,
@@ -333,9 +362,8 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       translucentHighlight = Colors.white12,
       scrollShadow = const Color(0x500068A4),
       scrollGlow = const Color(0x500068A4),
-      headerShadow = _Colours.primaryLight;
-
-  static const _barrier = Color(0x70000003);
+      headerShadow = _Colours.primaryLight,
+      barrier = const Color.fromRGBO(13, 14, 16, 0.51);
 }
 
 ThemeData light() => ThemeData(

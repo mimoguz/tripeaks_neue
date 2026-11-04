@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -99,13 +100,9 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
-    // TODO: ThemeExtension
-    final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.hintColor);
-    final numberStyle = theme.textTheme.bodyLarge?.copyWith(
-      color: theme.colorScheme.onSurfaceVariant,
-      fontWeight: .w500,
-      fontFeatures: c.fontFeaturesNumber,
-    );
+    final textExt = theme.extension<MyTextThemeExt>()!;
+    final labelStyle = textExt.faintLabelSmall;
+    final numberStyle = textExt.numericTitle;
     return Row(
       spacing: 40.0,
       mainAxisSize: .min,

@@ -28,7 +28,7 @@ class ExternalLink extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 8.0,
               children: [
-                Icon(CustomIcons.link20, color: theme.colorScheme.primary, size: 20.0),
+                // Icon(CustomIcons.link20, color: theme.colorScheme.primary, size: 20.0),
                 Flexible(
                   child: Text(
                     label ?? uri.toString().replaceAll("data:,", ""),

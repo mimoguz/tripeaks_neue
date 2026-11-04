@@ -42,6 +42,7 @@ class AboutTab extends StatelessWidget {
                   alt: "Source repository",
                   label: "Source repository",
                 ),
+                spaceAfter: true,
               ),
             ],
           ),
@@ -55,7 +56,7 @@ class AboutTab extends StatelessWidget {
                 ),
                 spaceAfter: false,
               ),
-              P(ExternalLink(uri: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt"))),
+              P(ExternalLink(uri: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt")), spaceAfter: true),
               P(
                 Text(
                   "Except "
@@ -71,7 +72,7 @@ class AboutTab extends StatelessWidget {
           ),
           SliverMainAxisGroup(
             slivers: [
-              H(Text("Privacy Policiy")),
+              H(Text("Privacy Policy")),
               P(
                 Text(
                   "This game is open source and free software. First-party distrubutions "
