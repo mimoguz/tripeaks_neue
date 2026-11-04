@@ -55,15 +55,15 @@ class _VariantCardState extends State<VariantCard> {
         padding: const EdgeInsets.all(_borderWidth),
         child: Card(
           margin: EdgeInsets.zero,
-          elevation: 1.4,
+          elevation: 0.03,
           color: background,
-          shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
+          shape: RoundedRectangleBorder(borderRadius: _raidus),
           shadowColor: colours.brightness == .light ? colours.shadow : Colors.transparent,
           clipBehavior: .antiAlias,
           child: InkWell(
             focusNode: _focus,
             onTap: widget.onTap,
-            borderRadius: c.commonBorderRadius,
+            borderRadius: _raidus,
             child: Padding(
               padding: const EdgeInsets.all(_padding),
               child: Column(
@@ -101,8 +101,10 @@ class _VariantCardState extends State<VariantCard> {
     });
   }
 
-  static const _padding = 6.0;
   static const _borderWidth = 2.0;
-  static const _innerRadius = BorderRadius.all(Radius.circular(c.commonRadiusValue - _padding));
-  static const _outerRadius = BorderRadius.all(Radius.circular(c.commonRadiusValue + _borderWidth));
+  static const _padding = 5.0;
+  static const _radiusVal = 10.0;
+  static const _raidus = BorderRadius.all(Radius.circular(_radiusVal));
+  static const _outerRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderWidth));
+  static const _innerRadius = BorderRadius.all(Radius.circular(_radiusVal - _padding));
 }

@@ -308,13 +308,58 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   final Color translucentHighlight;
   final Color barrier;
 
+  new _({
+    required this.brightness,
+    required this.cardBackground,
+    required this.cardDivider,
+    required this.dialogBackground,
+    required this.dialogDivider,
+    required this.dialogHeaderDivider,
+    required this.faintBorder,
+    required this.faintButtonBackground,
+    required this.faintButtonForeground,
+    required this.faintButtonIcon,
+    required this.headerShadow,
+    required this.scrollGlow,
+    required this.scrollShadow,
+    required this.settingItemDivider,
+    required this.sheetBackground,
+    required this.sheetHeaderDivider,
+    required this.translucentHighlight,
+    required this.barrier,
+  });
+
   Color get platformBarrier => isDesktop && brightness == .light ? Colors.transparent : barrier;
 
   @override
   ThemeExtension<MyColourThemeExt> copyWith() => this;
 
   @override
-  ThemeExtension<MyColourThemeExt> lerp(covariant ThemeExtension<MyColourThemeExt>? other, double t) => this;
+  ThemeExtension<MyColourThemeExt> lerp(MyColourThemeExt? other, double t) {
+    if (other == null) {
+      return this;
+    }
+    return MyColourThemeExt._(
+      brightness: brightness,
+      cardBackground: Color.lerp(cardBackground, other.cardBackground, t)!,
+      cardDivider: Color.lerp(cardDivider, other.cardDivider, t)!,
+      dialogBackground: Color.lerp(dialogBackground, other.dialogBackground, t)!,
+      dialogDivider: Color.lerp(dialogDivider, other.dialogDivider, t)!,
+      dialogHeaderDivider: Color.lerp(dialogHeaderDivider, other.dialogHeaderDivider, t)!,
+      faintBorder: Color.lerp(faintBorder, other.faintBorder, t)!,
+      faintButtonBackground: Color.lerp(faintButtonBackground, other.faintButtonBackground, t)!,
+      faintButtonForeground: Color.lerp(faintButtonForeground, other.faintButtonForeground, t)!,
+      faintButtonIcon: Color.lerp(faintButtonIcon, other.faintButtonIcon, t)!,
+      headerShadow: Color.lerp(headerShadow, other.headerShadow, t)!,
+      scrollGlow: Color.lerp(scrollGlow, other.scrollGlow, t)!,
+      scrollShadow: Color.lerp(scrollShadow, other.scrollShadow, t)!,
+      settingItemDivider: Color.lerp(settingItemDivider, other.settingItemDivider, t)!,
+      sheetBackground: Color.lerp(sheetBackground, other.sheetBackground, t)!,
+      sheetHeaderDivider: Color.lerp(sheetHeaderDivider, other.sheetHeaderDivider, t)!,
+      translucentHighlight: Color.lerp(translucentHighlight, other.translucentHighlight, t)!,
+      barrier: Color.lerp(barrier, other.barrier, t)!,
+    );
+  }
 
   const new light()
     // onSurface with alpha

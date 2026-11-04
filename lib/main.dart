@@ -99,10 +99,6 @@ class _MainAppState extends State<MainApp> {
     widget.settings.dispose();
     return AppExitResponse.exit;
   }
-
-  // static const _primarySeed = Color(0xFF5090EB);
-  // static const _secondarySeed = Color(0xFF565E6F);
-  // static const _tertiarySeed = Color(0xFFE53935);
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
