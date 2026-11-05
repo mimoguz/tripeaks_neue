@@ -62,11 +62,10 @@ class _HelpPageState extends State<HelpPage> {
                     : TabBar(
                         tabAlignment: TabAlignment.center,
                         dividerColor: Colors.transparent,
-                        // TODO: Strings
                         tabs: <Widget>[
-                          Tab(text: "Tri Peaks"),
-                          Tab(text: "Interaction"),
-                          Tab(text: "About"),
+                          Tab(text: s.howToPlayTabTitle),
+                          Tab(text: s.uiTabTitle),
+                          Tab(text: s.aboutTabTitle),
                         ],
                       ),
               ),

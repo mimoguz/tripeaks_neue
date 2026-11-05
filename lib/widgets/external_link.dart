@@ -20,6 +20,7 @@ class ExternalLink extends StatelessWidget {
       child: Tooltip(
         message: uri.toString(),
         child: InkWell(
+          mouseCursor: SystemMouseCursors.click,
           onTap: () => _copy(context),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -28,7 +29,6 @@ class ExternalLink extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               spacing: 8.0,
               children: [
-                // Icon(CustomIcons.link20, color: theme.colorScheme.primary, size: 20.0),
                 Flexible(
                   child: Text(
                     label ?? uri.toString().replaceAll("data:,", ""),
@@ -37,7 +37,7 @@ class ExternalLink extends StatelessWidget {
                     style: style,
                   ),
                 ),
-                Icon(CustomIcons.copy16, color: theme.colorScheme.outline, size: 16.0),
+                Icon(CustomIcons.copy16, color: theme.colorScheme.onSurfaceVariant, size: 16.0),
               ],
             ),
           ),

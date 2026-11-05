@@ -182,7 +182,8 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
       ),
       numericTitle = const TextStyle(
         fontFamily: "Roboto",
-        fontSize: 14,
+        fontSize: 16,
+        letterSpacing: 0.15,
         fontWeight: .w700,
         color: _Colours.onSurfaceVariantLight,
         fontFeatures: _fontFeaturesNumeric,
@@ -259,7 +260,8 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
       ),
       numericTitle = const TextStyle(
         fontFamily: "Roboto",
-        fontSize: 14,
+        fontSize: 16,
+        letterSpacing: 0.15,
         fontWeight: .w700,
         color: _Colours.onSurfaceVariantDark,
         fontFeatures: _fontFeaturesNumeric,
@@ -279,7 +281,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
         color: _Colours.onSurfaceVariantDark,
         fontFeatures: _fontFeaturesNumeric,
       ),
-      link = const TextStyle(fontFamily: "Roboto", fontSize: 14, color: _Colours.primaryLight, height: 1.8);
+      link = const TextStyle(fontFamily: "Roboto", fontSize: 14, color: _Colours.primaryDark, height: 1.8);
 
   static const _fontFeaturesNumeric = <FontFeature>[
     .liningFigures(),
@@ -364,28 +366,28 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   const new light()
     // onSurface with alpha
     : brightness = .light,
-      faintBorder = const Color(0x0D202226),
+      faintBorder = const Color.fromRGBO(32, 34, 38, 0.05),
       // Color.lerp(_lightScheme.onSurface, _lightScheme.surfaceContainerHigh, 0.9)!,
       faintButtonBackground = const Color(0xFFD1D4D9),
       faintButtonForeground = _Colours.onSurfaceLight,
       faintButtonIcon = _Colours.onSurfaceVariantLight,
       dialogBackground = _Colours.surfaceContainerLight,
       // onSurface with alpha
-      dialogDivider = const Color(0x28202226),
+      dialogDivider = const Color.fromRGBO(32, 34, 38, 0.16),
       sheetBackground = _Colours.surfaceContainerLight,
       cardBackground = _Colours.surfaceContainerLowestLight,
       // onSurface with alpha
-      cardDivider = const Color(0x2C202226),
+      cardDivider = const Color.fromRGBO(32, 34, 38, 0.2),
       // onSurface with alpha
-      dialogHeaderDivider = const Color(0x10202226),
+      dialogHeaderDivider = const Color.fromRGBO(32, 34, 38, 0.07),
       // onSurface with alpha
-      sheetHeaderDivider = const Color(0x10202226),
+      sheetHeaderDivider = const Color.fromRGBO(32, 34, 38, 0.07),
       // onSurface with alpha
-      settingItemDivider = const Color(0x24202226),
-      translucentHighlight = const Color(0x1A202226),
+      settingItemDivider = const Color.fromRGBO(32, 34, 38, 0.14),
+      translucentHighlight = const Color.fromRGBO(32, 34, 38, 0.1),
       scrollShadow = Colors.black38,
       // primary with alpha
-      scrollGlow = const Color(0x230068A4),
+      scrollGlow = const Color.fromRGBO(0, 104, 164, 0.14),
       headerShadow = Colors.black87,
       barrier = const Color(0x70000006);
 
@@ -397,16 +399,16 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       faintButtonForeground = _Colours.onSurfaceDark,
       faintButtonIcon = _Colours.onSurfaceVariantDark,
       dialogBackground = _Colours.surfaceContainerHighestDark,
-      dialogDivider = const Color(0x25E1E6EC),
+      dialogDivider = const Color.fromRGBO(225, 230, 236, 0.15),
       sheetBackground = _Colours.surfaceBrightDark,
       cardBackground = _Colours.surfaceContainerHighDark,
-      cardDivider = const Color(0x40E1E6EC),
-      dialogHeaderDivider = const Color(0x0CE1E6EC), // mix
-      sheetHeaderDivider = const Color(0x0FE1E6EC),
+      cardDivider = const Color.fromRGBO(225, 230, 236, 0.25),
+      dialogHeaderDivider = const Color.fromRGBO(225, 230, 236, 0.052),
+      sheetHeaderDivider = const Color.fromRGBO(225, 230, 236, 0.05),
       settingItemDivider = _Colours.surfaceDark,
       translucentHighlight = Colors.white12,
-      scrollShadow = const Color(0x500068A4),
-      scrollGlow = const Color(0x500068A4),
+      scrollShadow = const Color.fromRGBO(0, 104, 164, 0.32),
+      scrollGlow = const Color.fromRGBO(0, 104, 164, 0.32),
       headerShadow = _Colours.primaryLight,
       barrier = const Color.fromRGBO(13, 14, 16, 0.51);
 }

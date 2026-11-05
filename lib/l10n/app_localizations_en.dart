@@ -22,7 +22,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scoreTooltip => 'Score';
 
   @override
-  String get chainTooltip => 'Longest chain';
+  String get chainTooltip => 'Longest chain length';
 
   @override
   String get scoreLabel => 'SCORE';
@@ -301,6 +301,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get longestChainLabel => 'LONGEST CHAIN';
 
   @override
+  String get gameLabel => 'GAME';
+
+  @override
   String get importAction => 'Import from file…';
 
   @override
@@ -319,22 +322,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get infoPageTitle => 'How to & About';
 
   @override
-  String get howToPlayTabTitle => 'How to Play';
+  String get howToPlayTabTitle => 'Tri Peaks';
 
   @override
-  String get aboutTabTitle => 'About the Game';
+  String get uiTabTitle => 'Interaction';
 
   @override
-  String get showLicenseAction => 'Show License';
+  String get aboutTabTitle => 'About';
 
   @override
-  String get directDependencyLabel => 'Direct';
-
-  @override
-  String get indirectDependencyLabel => 'Indirect';
-
-  @override
-  String get licenseDialogCloseAction => 'Close';
+  String get howToPlaySectionTitle => 'How to Play Tri Peaks';
 
   @override
   String get wikiLinkAlt => 'Tri Peaks on Wikipedia';
@@ -377,6 +374,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get howToP10 =>
       'An option to start with an empty discard pile, allowing the player to choose any starting card.';
+
+  @override
+  String get usageTitle => 'How to Use This Application';
 
   @override
   String get interactionP01 =>
@@ -431,6 +431,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shortcutTitle => 'Shortcut: ';
 
   @override
+  String get scoringTitle => 'Scoring';
+
+  @override
   String get scoringRichP01 => 'Removing cards from the board one after the other creates a _chain_.';
 
   @override
@@ -448,6 +451,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get scoringP05 =>
       'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
+
+  @override
+  String get aboutTheGameTitle => 'About the Game';
+
+  @override
+  String aboutText(String version) {
+    return 'Tripeaks NEUE version $version.\nCopyright © 2026 Oguz Tas.\nSolvable game algorithm was developed by Lykae.';
+  }
+
+  @override
+  String get repoLink => 'Source repository';
+
+  @override
+  String get licenseTitle => 'License';
+
+  @override
+  String get licenseText => 'Available under GNU Affero General Public License (AGPL) Version 3.';
+
+  @override
+  String get licenseExceptionText =>
+      'Except fonts/actions.ttf: This file includes symbols derived from Material Icons, and therefore available under Apache License Version 2.0 (same as Material Icons).';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyText =>
+      'This game is open source and free software. First-party distrubutions of it are compiled unchanged from the source codes available at the repository linked above. It does not collect any user data.';
+
+  @override
+  String get dependenciesTitle => 'Dependencies';
+
+  @override
+  String get indirectDependency => 'Indirect:';
+
+  @override
+  String get directDependency => 'Direct:';
+
+  @override
+  String get copyLinkAction => 'Link';
+
+  @override
+  String get showLicenseAction => 'License';
 
   @override
   String get importFailedPrompt => 'Import failed';

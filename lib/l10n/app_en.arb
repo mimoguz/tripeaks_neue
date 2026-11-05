@@ -24,7 +24,7 @@
         "context": "general",
         "description": "Tooltip for the score icons."
     },
-    "chainTooltip": "Longest chain",
+    "chainTooltip": "Longest chain length",
     "@chainTooltip": {
         "type": "text",
         "context": "general",
@@ -600,6 +600,12 @@
         "context": "statisticsPage:summary",
         "description": "Label of the longest chain statistic."
     },
+    "gameLabel": "GAME",
+    "@gameLabel": {
+        "type": "text",
+        "context": "statisticsPage:summary",
+        "description": "Title of the 'game' column."
+    },
     "importAction": "Import from file…",
     "@importAction": {
         "type": "text",
@@ -637,44 +643,31 @@
         "context": "infoPage",
         "description": "Info page title."
     },
-    "howToPlayTabTitle": "How to Play",
+    "howToPlayTabTitle": "Tri Peaks",
     "@howToPlayTabTitle": {
         "type": "text",
         "context": "infoPage",
         "description": "'How to play' tab title."
     },
-    "aboutTabTitle": "About the Game",
+    "uiTabTitle": "Interaction",
+    "@uiTabTitle": {
+        "type": "text",
+        "context": "infoPage",
+        "description": "UI tab title."
+    },
+    "aboutTabTitle": "About",
     "@aboutTabTitle": {
         "type": "text",
         "context": "infoPage",
         "description": "'About' tab title."
     },
-    "showLicenseAction": "Show License",
-    "@showLicenseAction": {
-        "type": "text",
-        "context": "infoPage",
-        "description": "Label of a button that displays the license of a dependency."
-    },
-    "directDependencyLabel": "Direct",
-    "@directDependencyLabel": {
-        "type": "text",
-        "context": "infoPage",
-        "description": "If the dependency is direct."
-    },
-    "indirectDependencyLabel": "Indirect",
-    "@indirectDependencyLabel": {
-        "type": "text",
-        "context": "infoPage",
-        "description": "If the dependency is a dependency of a direct dependency."
-    },
-    "@_LICENSE_DIALOG": {},
-    "licenseDialogCloseAction": "Close",
-    "@licenseDialogCloseAction": {
-        "type": "text",
-        "context": "licenseDialog",
-        "description": "Label of a button that closes the license dialog."
-    },
     "@_HOW_TO_PLAY": {},
+    "howToPlaySectionTitle": "How to Play Tri Peaks",
+    "@wikiLhowToTitle": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "Section title."
+    },
     "wikiLinkAlt": "Tri Peaks on Wikipedia",
     "@wikiLinkAlt": {
         "type": "text",
@@ -748,6 +741,12 @@
         "description": "How to play text."
     },
     "@_INTERACTION": {},
+    "usageTitle": "How to Use This Application",
+    "@usageTitle": {
+        "type": "text",
+        "context": "howToPlay",
+        "description": "Section title."
+    },
     "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble\u00A0momentarily.",
     "@interactionP01": {
         "type": "text",
@@ -839,6 +838,12 @@
         "description": "Shortcut hint title"
     },
     "@_SCORING": {},
+    "scoringTitle": "Scoring",
+    "@scoringTitle": {
+        "type": "text",
+        "context": "scoring",
+        "description": "Section title."
+    },
     "scoringRichP01": "Removing cards from the board one after the other creates a\u00A0_chain_.",
     "@scoringRichP01": {
         "type": "text",
@@ -868,6 +873,91 @@
         "type": "text",
         "context": "scoring",
         "description": "Scoring description."
+    },
+     "@_ABOUT": {},
+    "aboutTheGameTitle": "About the Game",
+    "@aboutTheGameTitle": {
+        "type": "text",
+        "context": "about",
+        "description": "Section title."
+    },
+    "aboutText": "Tripeaks NEUE version {version}.\nCopyright © 2026 Oguz Tas.\nSolvable game algorithm was developed by Lykae.",
+    "@aboutText": {
+        "type": "text",
+        "context": "about",
+        "description": "Section text.",
+        "placeholders": {
+            "version": {
+                "type": "String",
+                "example": "0.9.10"
+            }
+        }
+    },
+    "repoLink": "Source repository",
+    "@repoLink": {
+        "type": "text",
+        "context": "about",
+        "description": "Link text."
+    },
+    "licenseTitle": "License",
+    "@licenseTitle": {
+        "type": "text",
+        "context": "about",
+        "description": "Section title."
+    },
+    "licenseText": "Available under GNU Affero General Public License (AGPL) Version\u00A03.",
+    "@licenseText": {
+        "type": "text",
+        "context": "about",
+        "description": "Section text."
+    },
+    "licenseExceptionText": "Except fonts/actions.ttf: This file includes symbols derived from Material Icons, and therefore available under Apache License Version\u00A02.0 (same as Material Icons).",
+    "@licenseExceptionText": {
+        "type": "text",
+        "context": "about",
+        "description": "Section text."
+    },
+    "privacyPolicyTitle": "Privacy Policy",
+    "@privacyPolicyTitle": {
+        "type": "text",
+        "context": "about",
+        "description": "Section title."
+    },
+    "privacyPolicyText": "This game is open source and free software. First-party distrubutions of it are compiled unchanged from the source codes available at the repository linked above. It does not collect any user data.",
+    "@privacyPolicyText": {
+        "type": "text",
+        "context": "about",
+        "description": "Section text."
+    },
+    "dependenciesTitle": "Dependencies",
+    "@dependenciesTitle": {
+        "type": "text",
+        "context": "about",
+        "description": "Section title."
+    },
+    "indirectDependency": "Indirect:",
+    "@dependenciesText": {
+        "type": "text",
+        "context": "about",
+        "description": "Label"
+    },
+    "directDependency": "Direct:",
+    "@dependenciesText": {
+        "type": "text",
+        "context": "about",
+        "description": "Label"
+    },
+    "copyLinkAction": "Link",
+    "@copyLinkAction": {
+        "type": "text",
+        "context": "about",
+        "description": "Label of a button that copies the web page link of a dependency to the clipboard."
+    },
+    "showLicenseAction": "License",
+    "@showLicenseAction": {
+        "type": "text",
+        "context": "about",
+        "description": "Label of a button that displays the license of a dependency."
     },
     "@_ACTIONS": {},
     "importFailedPrompt": "Import failed",

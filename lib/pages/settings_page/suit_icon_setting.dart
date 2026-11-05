@@ -38,8 +38,8 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
         content: Padding(
           padding: c.DialogMetrics.contentPadding,
           child: Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
+            spacing: c.cellPadding,
+            runSpacing: c.cellPadding,
             children: [
               for (final variant in SuitIconTheme.values)
                 SuitVariantCard(
@@ -72,12 +72,13 @@ final class const SuitVariantCard({
     isSelected: isSelected,
     label: variant.label(strings),
     onTap: onTap,
-    child: SizedBox(
-      width: 80,
-      child: Padding(
-        padding: const EdgeInsets.all(4),
+    child: Padding(
+      padding: const EdgeInsets.all(2),
+      child: SizedBox(
+        width: 74,
         child: Wrap(
-          runSpacing: 1,
+          spacing: 2,
+          runSpacing: 2,
           children: [
             Icon(CustomIcons.suitIcon(.hearts, variant), size: 36),
             Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36),

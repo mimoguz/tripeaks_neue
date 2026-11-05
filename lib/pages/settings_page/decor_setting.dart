@@ -54,8 +54,8 @@ class const DecorSetting({super.key}) extends StatelessWidget {
           padding: c.DialogMetrics.contentPadding,
           child: Center(
             child: Wrap(
-              runSpacing: 4,
-              spacing: 4,
+              runSpacing: c.cellPadding,
+              spacing: c.cellPadding,
               children: [
                 for (final variant in Decor.values)
                   DecorVariantCard(

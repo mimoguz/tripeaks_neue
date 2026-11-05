@@ -118,7 +118,7 @@ abstract class AppLocalizations {
   /// Tooltip for the longest-chain icons.
   ///
   /// In en, this message translates to:
-  /// **'Longest chain'**
+  /// **'Longest chain length'**
   String get chainTooltip;
 
   /// For the ending cards.
@@ -673,6 +673,12 @@ abstract class AppLocalizations {
   /// **'LONGEST CHAIN'**
   String get longestChainLabel;
 
+  /// Title of the 'game' column.
+  ///
+  /// In en, this message translates to:
+  /// **'GAME'**
+  String get gameLabel;
+
   /// Label of the import menu item.
   ///
   /// In en, this message translates to:
@@ -712,38 +718,26 @@ abstract class AppLocalizations {
   /// 'How to play' tab title.
   ///
   /// In en, this message translates to:
-  /// **'How to Play'**
+  /// **'Tri Peaks'**
   String get howToPlayTabTitle;
+
+  /// UI tab title.
+  ///
+  /// In en, this message translates to:
+  /// **'Interaction'**
+  String get uiTabTitle;
 
   /// 'About' tab title.
   ///
   /// In en, this message translates to:
-  /// **'About the Game'**
+  /// **'About'**
   String get aboutTabTitle;
 
-  /// Label of a button that displays the license of a dependency.
+  /// No description provided for @howToPlaySectionTitle.
   ///
   /// In en, this message translates to:
-  /// **'Show License'**
-  String get showLicenseAction;
-
-  /// If the dependency is direct.
-  ///
-  /// In en, this message translates to:
-  /// **'Direct'**
-  String get directDependencyLabel;
-
-  /// If the dependency is a dependency of a direct dependency.
-  ///
-  /// In en, this message translates to:
-  /// **'Indirect'**
-  String get indirectDependencyLabel;
-
-  /// Label of a button that closes the license dialog.
-  ///
-  /// In en, this message translates to:
-  /// **'Close'**
-  String get licenseDialogCloseAction;
+  /// **'How to Play Tri Peaks'**
+  String get howToPlaySectionTitle;
 
   /// Alt text for Wikipedia link.
   ///
@@ -816,6 +810,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
   String get howToP10;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Use This Application'**
+  String get usageTitle;
 
   /// UI & interaction text.
   ///
@@ -907,6 +907,12 @@ abstract class AppLocalizations {
   /// **'Shortcut: '**
   String get shortcutTitle;
 
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Scoring'**
+  String get scoringTitle;
+
   /// Scoring description.
   ///
   /// In en, this message translates to:
@@ -936,6 +942,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
   String get scoringP05;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'About the Game'**
+  String get aboutTheGameTitle;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'Tripeaks NEUE version {version}.\nCopyright © 2026 Oguz Tas.\nSolvable game algorithm was developed by Lykae.'**
+  String aboutText(String version);
+
+  /// Link text.
+  ///
+  /// In en, this message translates to:
+  /// **'Source repository'**
+  String get repoLink;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'License'**
+  String get licenseTitle;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'Available under GNU Affero General Public License (AGPL) Version 3.'**
+  String get licenseText;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'Except fonts/actions.ttf: This file includes symbols derived from Material Icons, and therefore available under Apache License Version 2.0 (same as Material Icons).'**
+  String get licenseExceptionText;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyTitle;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'This game is open source and free software. First-party distrubutions of it are compiled unchanged from the source codes available at the repository linked above. It does not collect any user data.'**
+  String get privacyPolicyText;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Dependencies'**
+  String get dependenciesTitle;
+
+  /// No description provided for @indirectDependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect:'**
+  String get indirectDependency;
+
+  /// No description provided for @directDependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct:'**
+  String get directDependency;
+
+  /// Label of a button that copies the web page link of a dependency to the clipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Link'**
+  String get copyLinkAction;
+
+  /// Label of a button that displays the license of a dependency.
+  ///
+  /// In en, this message translates to:
+  /// **'License'**
+  String get showLicenseAction;
 
   /// Alert dialog message.
   ///

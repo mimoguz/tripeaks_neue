@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/generated/oss_licenses.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/src/version.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -26,21 +27,13 @@ class AboutTab extends StatelessWidget {
         slivers: <Widget>[
           SliverMainAxisGroup(
             slivers: [
-              H(Text(s.aboutTabTitle)),
-              P(
-                Text(
-                  "Tripeaks NEUE version $version.\n"
-                  "Copyright © 2026 Oguz Tas.\n"
-                  "Solvable game algorithm was developed by Lykae.",
-                  style: normal,
-                ),
-                spaceAfter: false,
-              ),
+              H(Text(s.aboutTheGameTitle)),
+              P(Text(s.aboutText(_version), style: normal), spaceAfter: false),
               P(
                 ExternalLink(
                   uri: Uri.https("github.com", "mimoguz/tripeaks_neue"),
-                  alt: "Source repository",
-                  label: "Source repository",
+                  alt: s.repoLink,
+                  label: s.repoLink,
                 ),
                 spaceAfter: true,
               ),
@@ -48,39 +41,17 @@ class AboutTab extends StatelessWidget {
           ),
           SliverMainAxisGroup(
             slivers: [
-              H(Text("License")),
-              P(
-                Text(
-                  "Available under GNU Affero General Public License (AGPL) Version\u00A03.",
-                  style: normal,
-                ),
-                spaceAfter: false,
-              ),
+              H(Text(s.licenseTitle)),
+              P(Text(s.licenseText, style: normal), spaceAfter: false),
               P(ExternalLink(uri: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt")), spaceAfter: true),
-              P(
-                Text(
-                  "Except "
-                  "fonts/actions.ttf: This file includes symbols derived from "
-                  "Material Icons, and therefore available under Apache License "
-                  "Version\u00A02.0 (same as Material Icons).",
-                  style: normal,
-                ),
-                spaceAfter: false,
-              ),
+              P(Text(s.licenseExceptionText, style: normal), spaceAfter: false),
               P(ExternalLink(uri: Uri.https("www.apache.org", "/licenses/LICENSE-2.0.txt"))),
             ],
           ),
           SliverMainAxisGroup(
             slivers: [
-              H(Text("Privacy Policy")),
-              P(
-                Text(
-                  "This game is open source and free software. First-party distrubutions "
-                  "of it are compiled unchanged from the source codes available at the "
-                  "repository linked above. It does not collect any user data.",
-                  style: normal,
-                ),
-              ),
+              H(Text(s.privacyPolicyTitle)),
+              P(Text(s.privacyPolicyText, style: normal)),
             ],
           ),
           SliverMainAxisGroup(
@@ -94,6 +65,7 @@ class AboutTab extends StatelessWidget {
                   return Dependency(
                     package: package,
                     isDirectDependency: _directDependencies.contains(package.name),
+                    strings: s,
                   );
                 },
               ),
@@ -105,9 +77,9 @@ class AboutTab extends StatelessWidget {
     );
   }
 
-  static final version = packageVersion.split("+")[0];
+  static final _version = packageVersion.split("+")[0];
   static final _extendedDependencies = allDependencies
-      .where((it) => !it.isSdk || it.name == "flutter")
+      //.where((it) => !(it.isSdk || it.name == "flutter"))
       .toList();
   static final _directDependencies = (dependencies + devDependencies).map((it) => it.name).toSet();
 }
@@ -116,6 +88,7 @@ final class const Dependency({
   super.key,
   required final Package package,
   required final bool isDirectDependency,
+  required final AppLocalizations strings,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -123,14 +96,21 @@ final class const Dependency({
     return ConstrainedItem(
       child: Row(
         children: [
-          Text(isDirectDependency ? "Direct:" : "Indirect:", textAlign: .end, style: labelStyle),
+          Text(
+            isDirectDependency ? strings.directDependency : strings.indirectDependency,
+            textAlign: .end,
+            style: labelStyle,
+          ),
           Expanded(child: Text(package.name, maxLines: 1, softWrap: false, overflow: .fade)),
           if (package.homepage != null)
-            TextButton(onPressed: () => _copy(context, package.homepage!), child: Text("Link")),
+            TextButton(
+              onPressed: () => _copy(context, package.homepage!),
+              child: Text(strings.copyLinkAction),
+            ),
           if (package.license != null)
             TextButton(
               onPressed: () => showCommonDialog(context, (_) => LicenseDialog(package: package)),
-              child: Text("License"),
+              child: Text(strings.showLicenseAction),
             ),
         ],
       ),

@@ -118,6 +118,7 @@ class _ColourSwatchState extends State<ColourSwatch> {
               InkWell(
                 focusNode: _focus,
                 borderRadius: BorderRadius.circular(100),
+                mouseCursor: SystemMouseCursors.click,
                 onTap: widget.onTap,
                 child: Ink(
                   decoration: BoxDecoration(
