@@ -157,37 +157,51 @@ final class const ScoreCard({
   Widget build(BuildContext context) {
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
+    final colours = theme.colorScheme;
     return MyCard(
-      padding: _padding,
+      padding: EdgeInsets.zero,
       child: Row(
         mainAxisAlignment: .spaceBetween,
         children: [
           Flexible(
-            child: Column(
-              mainAxisAlignment: .center,
-              crossAxisAlignment: .start,
-              children: [
-                Transform.translate(
-                  offset: _offset,
-                  child: Text(label, style: textExt.faintLabelMedium, overflow: .fade, softWrap: false),
-                ),
-                Text(score.toString(), style: textExt.numericLarge),
-              ],
+            child: Padding(
+              padding: _padding,
+              child: Column(
+                mainAxisAlignment: .center,
+                crossAxisAlignment: .start,
+                children: [
+                  Transform.translate(
+                    offset: _offset,
+                    child: Text(label, style: textExt.faintLabelMedium, overflow: .fade, softWrap: false),
+                  ),
+                  Text(score.toString(), style: textExt.numericLarge),
+                ],
+              ),
             ),
           ),
-          Icon(icon, color: theme.colorScheme.onSurfaceVariant, size: 30),
+          Container(
+            height: 64,
+            width: 64,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [colourExt.cardBackground, colours.secondaryContainer],
+                begin: .bottomLeft,
+                end: .topRight,
+              ),
+              borderRadius: _rightRadius,
+              border: Border(left: BorderSide(color: colourExt.faintBorder)),
+            ),
+            child: Icon(icon, color: colours.onSurfaceVariant, size: 30),
+          ),
         ],
       ),
     );
   }
 
   static const _offset = Offset(0, 3);
-  static const _padding = EdgeInsets.fromLTRB(
-    c.cardPaddingHorizontal,
-    c.cardPaddingVertical + 2,
-    c.cardPaddingHorizontal,
-    c.cardPaddingVertical,
-  );
+  static const _padding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 2, c.cardPaddingHorizontal, 0);
+  static const _rightRadius = BorderRadius.horizontal(right: c.commonRadius);
 }
 
 class const ScoreTable({
@@ -201,103 +215,106 @@ class const ScoreTable({
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
     final textExt = theme.extension<MyTextThemeExt>()!;
-    final borderColour = colourExt.cardDivider;
+    final borderColour = colourExt.settingItemDivider;
     final borderSide = BorderSide(color: borderColour, width: 1);
     final numberStyle = textExt.numericBody;
     final rankStyle = numberStyle;
     final headerStyle = theme.textTheme.bodyMedium;
     final s = context.strings;
     return ConstrainedItem(
-      child: Table(
-        columnWidths: showRank ? _widthsShowRank : _widthsHideRank,
-        defaultVerticalAlignment: .middle,
-        children: <TableRow>[
-          TableRow(
-            key: ValueKey(0),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainer,
-              border: Border.fromBorderSide(borderSide),
-              borderRadius: BorderRadius.vertical(top: c.commonRadius),
-            ),
-            children: <Widget>[
-              if (showRank) ...[
-                Padding(
-                  padding: _cellPadding,
-                  child: Text("#", style: headerStyle),
-                ),
-                Container(color: borderColour, height: _cellHeight, width: 1),
-              ],
-              Padding(
-                padding: _cellPadding,
-                child: Text(s.gameLabel, style: headerStyle),
-              ),
-              Container(color: borderColour, height: _cellHeight, width: 1),
-              _HeaderIcon(
-                key: _starKey,
-                padding: _iconCellPadding,
-                tooltip: s.scoreTooltip,
-                icon: CustomIcons.star16,
-              ),
-              Container(color: borderColour, height: _cellHeight, width: 1),
-              _HeaderIcon(
-                key: _chainKey,
-                padding: _iconCellPadding,
-                tooltip: s.chainTooltip,
-                icon: CustomIcons.chain16,
-              ),
-            ],
-          ),
-          for (final (index, game) in games.indexed)
+      child: MyCard(
+        padding: EdgeInsets.zero,
+        child: Table(
+          columnWidths: showRank ? _widthsShowRank : _widthsHideRank,
+          defaultVerticalAlignment: .middle,
+          children: <TableRow>[
             TableRow(
-              key: ValueKey(index + 1),
+              key: ValueKey(0),
               decoration: BoxDecoration(
-                color: index & 1 == 1 ? theme.colorScheme.surfaceContainer : theme.colorScheme.surface,
-                border: Border(left: borderSide, right: borderSide, bottom: borderSide),
-                borderRadius: index == games.length - 1
-                    ? BorderRadius.vertical(bottom: c.commonRadius)
-                    : null,
+                color: colourExt.cardBackground,
+                // border: Border(bottom: borderSide),
+                borderRadius: BorderRadius.vertical(top: c.commonRadius),
               ),
               children: <Widget>[
                 if (showRank) ...[
                   Padding(
                     padding: _cellPadding,
-                    child: Text((index + 1).toString(), style: rankStyle),
+                    child: Text("#", style: headerStyle),
                   ),
                   Container(color: borderColour, height: _cellHeight, width: 1),
                 ],
-                Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Padding(
-                        padding: _cellPadding,
-                        child: Column(
-                          crossAxisAlignment: .start,
-                          mainAxisAlignment: .center,
-                          children: [
-                            if (showLayout)
-                              Text(game.layout.label(context.strings), overflow: .fade, softWrap: false),
-                            Text(game.ended.formatted, overflow: .fade, softWrap: false),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(padding: const EdgeInsets.only(right: 8.0), child: Result(game.isCleared, s)),
-                  ],
-                ),
-                Container(color: borderColour, height: _cellHeight, width: 1),
                 Padding(
                   padding: _cellPadding,
-                  child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
+                  child: Text(s.gameLabel, style: headerStyle),
                 ),
                 Container(color: borderColour, height: _cellHeight, width: 1),
-                Padding(
-                  padding: _cellPadding,
-                  child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+                _HeaderIcon(
+                  key: _starKey,
+                  padding: _iconCellPadding,
+                  tooltip: s.scoreTooltip,
+                  icon: CustomIcons.star,
+                ),
+                Container(color: borderColour, height: _cellHeight, width: 1),
+                _HeaderIcon(
+                  key: _chainKey,
+                  padding: _iconCellPadding,
+                  tooltip: s.chainTooltip,
+                  icon: CustomIcons.chain,
                 ),
               ],
             ),
-        ],
+            for (final (index, game) in games.indexed)
+              TableRow(
+                key: ValueKey(index + 1),
+                decoration: BoxDecoration(
+                  color: index & 1 == 0 ? theme.colorScheme.surfaceContainerHigh : null,
+                  border: Border(top: borderSide),
+                  borderRadius: index == games.length - 1
+                      ? BorderRadius.vertical(bottom: c.commonRadius)
+                      : null,
+                ),
+                children: <Widget>[
+                  if (showRank) ...[
+                    Padding(
+                      padding: _cellPadding,
+                      child: Text((index + 1).toString(), style: rankStyle),
+                    ),
+                    Container(color: borderColour, height: _cellHeight, width: 1),
+                  ],
+                  Row(
+                    mainAxisAlignment: .spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Padding(
+                          padding: _cellPadding,
+                          child: Column(
+                            crossAxisAlignment: .start,
+                            mainAxisAlignment: .center,
+                            children: [
+                              if (showLayout)
+                                Text(game.layout.label(context.strings), overflow: .fade, softWrap: false),
+                              Text(game.ended.formatted, overflow: .fade, softWrap: false),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.only(right: 8.0), child: Result(game.isCleared, s)),
+                    ],
+                  ),
+                  Container(color: borderColour, height: _cellHeight, width: 1),
+                  Padding(
+                    padding: _cellPadding,
+                    child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
+                  ),
+                  Container(color: borderColour, height: _cellHeight, width: 1),
+                  Padding(
+                    padding: _cellPadding,
+                    child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+                  ),
+                ],
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -341,17 +358,9 @@ class const _HeaderIcon({
       child: Row(
         mainAxisAlignment: .end,
         children: [
-          Container(
-            width: 24,
-            height: 24,
-            decoration: BoxDecoration(
-              shape: .circle,
-              border: Border.all(color: colours.outline, width: 1),
-            ),
-            child: Tooltip(
-              message: tooltip,
-              child: Icon(icon, size: 16, color: colours.onSurfaceVariant),
-            ),
+          Tooltip(
+            message: tooltip,
+            child: Icon(icon, size: 24, color: colours.onSurfaceVariant),
           ),
         ],
       ),

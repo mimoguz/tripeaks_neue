@@ -47,6 +47,7 @@ class CustomIcons {
   static const scoreMedal30 = IconData(0xe901, fontFamily: _cards);
 
   static const algorithm16 = IconData(0xe900, fontFamily: _actions);
+  static const chain = IconData(0xe918, fontFamily: _actions);
   static const chain16 = IconData(0xe917, fontFamily: _actions);
   static const check12 = IconData(0xe90e, fontFamily: _actions);
   static const copy16 = IconData(0xe901, fontFamily: _actions);
@@ -64,6 +65,7 @@ class CustomIcons {
   static const overwrite = IconData(0xe913, fontFamily: _actions);
   static const pickAndPlay = IconData(0xe914, fontFamily: _actions);
   static const random16 = IconData(0xe907, fontFamily: _actions);
+  static const star = IconData(0xe919, fontFamily: _actions);
   static const star16 = IconData(0xe90d, fontFamily: _actions);
   static const undo = IconData(0xe915, fontFamily: _actions);
   static const undo16 = IconData(0xe908, fontFamily: _actions);

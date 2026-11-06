@@ -27,17 +27,22 @@ final class MyValueExt extends ThemeExtension<MyValueExt> {
         ],
         borderRadius: c.commonBorderRadius,
       ),
-      sheetShadow = [BoxShadow(color: Color(0x15050008), blurRadius: 5, offset: Offset(0.0, 1.0))];
+      sheetShadow = const [
+        // Primary soft diffuse shadow
+        BoxShadow(color: Color(0x0A000006), blurRadius: 3.0, spreadRadius: 0.0),
+        // Secondary structural depth shadow
+        BoxShadow(color: Color(0x0F000006), blurRadius: 8.0, spreadRadius: -1.0, offset: Offset(0.0, 1.0)),
+      ];
 
   new mobile()
     : utilPageMarginBottom = 20,
       utilPageMargins = const EdgeInsets.fromLTRB(10, 10, 10, 20),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 12, 8),
       cardDecoration = BoxDecoration(
-        boxShadow: <BoxShadow>[BoxShadow(color: Color(0x05050008), blurRadius: 6, offset: Offset(0, 2))],
+        boxShadow: const [BoxShadow(color: Color(0x05050008), blurRadius: 6, offset: Offset(0, 2))],
         borderRadius: c.commonBorderRadius,
       ),
-      sheetShadow = [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0.0, 1.0))];
+      sheetShadow = const [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0.0, 1.0))];
 
   @override
   ThemeExtension<MyValueExt> copyWith() => this;
@@ -70,88 +75,96 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     primary: _Colours.primaryLight,
     onSurface: _Colours.onSurfaceLight,
     onSurfaceVariant: _Colours.onSurfaceVariantLight,
+    faintFg: _Colours.outlineLight,
   );
 
   factory dark() => MyTextThemeExt._make(
     primary: _Colours.primaryDark,
     onSurface: _Colours.onSurfaceDark,
     onSurfaceVariant: _Colours.onSurfaceVariantDark,
+    faintFg: _Colours.outlineDark,
   );
 
   factory adwLight() => MyTextThemeExt._make(
     primary: _AdwColours.accentLight,
     onSurface: _AdwColours.windowFgLight,
     onSurfaceVariant: _AdwColours.dark3,
+    faintFg: _AdwColours.dark1,
   );
 
   factory adwDark() => MyTextThemeExt._make(
     primary: _AdwColours.accentDark,
     onSurface: _AdwColours.windowFgDark,
     onSurfaceVariant: _AdwColours.light2,
+    faintFg: _AdwColours.light3,
   );
 
-  new _make({required Color primary, required Color onSurface, required Color onSurfaceVariant})
-    : sectionTitle = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 16,
-        letterSpacing: 0.15,
-        fontWeight: .w700,
-        color: primary,
-      ),
-      dialogTitle = TextStyle(fontFamily: "Roboto", fontSize: 20, fontWeight: .w500, color: onSurface),
-      listItemSubtitle = TextStyle(fontFamily: "Roboto", fontSize: 14, color: onSurfaceVariant),
-      faintLabelMedium = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 12,
-        letterSpacing: 0.5,
-        fontWeight: .w500,
-        color: onSurfaceVariant,
-      ),
-      faintLabelSmall = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 11,
-        letterSpacing: 0.5,
-        fontWeight: .w500,
-        color: onSurfaceVariant,
-      ),
-      paragraphText = TextStyle(fontFamily: "Roboto", fontSize: 14, color: onSurface, height: 1.8),
-      paragraphTextItalic = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 14,
-        color: primary,
-        height: 1.8,
-        fontStyle: .italic,
-      ),
-      numericBody = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 14,
-        color: onSurface,
-        fontFeatures: _fontFeaturesNumeric,
-      ),
-      numericTitle = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 16,
-        letterSpacing: 0.15,
-        fontWeight: .w700,
-        color: onSurfaceVariant,
-        fontFeatures: _fontFeaturesNumeric,
-      ),
-      numericLarge = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 22,
-        color: onSurfaceVariant,
-        fontWeight: .w700,
-        fontFeatures: _fontFeaturesNumeric,
-      ),
-      numericMedium = TextStyle(
-        fontFamily: "Roboto",
-        fontSize: 18,
-        letterSpacing: 0.15,
-        fontWeight: .w700,
-        color: onSurfaceVariant,
-        fontFeatures: _fontFeaturesNumeric,
-      ),
-      link = TextStyle(fontFamily: "Roboto", fontSize: 14, color: primary, height: 1.8);
+  new _make({
+    required Color primary,
+    required Color onSurface,
+    required Color onSurfaceVariant,
+    required Color faintFg,
+  }) : sectionTitle = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 16,
+         letterSpacing: 0.15,
+         fontWeight: .w700,
+         color: primary,
+       ),
+       dialogTitle = TextStyle(fontFamily: "Roboto", fontSize: 20, fontWeight: .w500, color: onSurface),
+       listItemSubtitle = TextStyle(fontFamily: "Roboto", fontSize: 14, color: onSurfaceVariant),
+       faintLabelMedium = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 12,
+         letterSpacing: 0.5,
+         fontWeight: .w500,
+         color: faintFg,
+       ),
+       faintLabelSmall = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 11,
+         letterSpacing: 0.5,
+         fontWeight: .w500,
+         color: faintFg,
+       ),
+       paragraphText = TextStyle(fontFamily: "Roboto", fontSize: 14, color: onSurface, height: 1.8),
+       paragraphTextItalic = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 14,
+         color: primary,
+         height: 1.8,
+         fontStyle: .italic,
+       ),
+       numericBody = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 14,
+         color: onSurface,
+         fontFeatures: _fontFeaturesNumeric,
+       ),
+       numericTitle = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 16,
+         letterSpacing: 0.15,
+         fontWeight: .w700,
+         color: onSurfaceVariant,
+         fontFeatures: _fontFeaturesNumeric,
+       ),
+       numericLarge = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 22,
+         color: onSurfaceVariant,
+         fontWeight: .w700,
+         fontFeatures: _fontFeaturesNumeric,
+       ),
+       numericMedium = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 18,
+         letterSpacing: 0.15,
+         fontWeight: .w700,
+         color: onSurfaceVariant,
+         fontFeatures: _fontFeaturesNumeric,
+       ),
+       link = TextStyle(fontFamily: "Roboto", fontSize: 14, color: primary, height: 1.8);
 
   static const _fontFeaturesNumeric = <FontFeature>[
     .liningFigures(),
@@ -312,7 +325,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   const new adwDark()
     : brightness = .light,
       // onSurface with alpha
-      faintBorder = const Color.fromRGBO(255, 255, 255, 0.02),
+      faintBorder = const Color.fromRGBO(255, 255, 255, 0.04),
       faintButtonBackground = const Color(0xFF464649),
       faintButtonForeground = _AdwColours.windowFgDark,
       faintButtonIcon = _AdwColours.light2,
