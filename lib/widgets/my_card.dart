@@ -8,20 +8,23 @@ final class const MyCard({super.key, required final Widget child, final EdgeInse
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final myColours = theme.extension<MyColourThemeExt>()!;
-    return Material(
-      borderRadius: c.commonBorderRadius,
-      color: myColours.cardBackground,
-      shadowColor: theme.colorScheme.shadow,
-      type: .card,
-      clipBehavior: .antiAlias,
-      elevation: 1.5,
-      child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: c.commonBorderRadius,
-          border: Border.all(color: myColours.faintBorder, width: 1),
+    final colourExt = theme.extension<MyColourThemeExt>()!;
+    final valueExt = theme.extension<MyValueExt>()!;
+    return DecoratedBox(
+      decoration: valueExt.cardDecoration,
+      child: Material(
+        borderRadius: c.commonBorderRadius,
+        color: colourExt.cardBackground,
+        shadowColor: theme.colorScheme.shadow,
+        type: .card,
+        clipBehavior: .antiAlias,
+        child: Ink(
+          decoration: BoxDecoration(
+            borderRadius: c.commonBorderRadius,
+            border: Border.all(color: colourExt.faintBorder, width: 1),
+          ),
+          child: Padding(padding: padding, child: child),
         ),
-        child: Padding(padding: padding, child: child),
       ),
     );
   }

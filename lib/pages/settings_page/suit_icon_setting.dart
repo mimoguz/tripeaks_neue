@@ -75,10 +75,10 @@ final class const SuitVariantCard({
     child: Padding(
       padding: const EdgeInsets.all(2),
       child: SizedBox(
-        width: 74,
+        width: 72,
         child: Wrap(
-          spacing: 2,
-          runSpacing: 2,
+          spacing: 0,
+          runSpacing: 1,
           children: [
             Icon(CustomIcons.suitIcon(.hearts, variant), size: 36),
             Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36),

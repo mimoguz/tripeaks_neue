@@ -935,13 +935,13 @@
         "context": "about",
         "description": "Section title."
     },
-    "indirectDependency": "Indirect:",
+    "indirectDependency": "Indirect: ",
     "@dependenciesText": {
         "type": "text",
         "context": "about",
         "description": "Label"
     },
-    "directDependency": "Direct:",
+    "directDependency": "Direct: ",
     "@dependenciesText": {
         "type": "text",
         "context": "about",

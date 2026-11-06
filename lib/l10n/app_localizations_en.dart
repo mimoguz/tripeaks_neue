@@ -484,10 +484,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dependenciesTitle => 'Dependencies';
 
   @override
-  String get indirectDependency => 'Indirect:';
+  String get indirectDependency => 'Indirect: ';
 
   @override
-  String get directDependency => 'Direct:';
+  String get directDependency => 'Direct: ';
 
   @override
   String get copyLinkAction => 'Link';

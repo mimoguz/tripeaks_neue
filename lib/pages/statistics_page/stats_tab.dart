@@ -17,10 +17,11 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
+    final valueExt = context.theme.extension<MyValueExt>()!;
     return CustomScrollView(
       slivers: <Widget>[
         SliverPadding(
-          padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.itemSpacing),
+          padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
           sliver: OverallStatsTile(statistics),
         ),
         if (statistics.lastGame != null)
@@ -29,7 +30,7 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
               H(Text(s.lastGameStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: c.itemSpacing),
+                  padding: const EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
                   child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
               ),
@@ -41,7 +42,7 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
               H(Text(s.bestGamesStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsetsGeometry.only(bottom: c.utilPageMarginBottom),
+                  padding: EdgeInsetsGeometry.only(bottom: valueExt.utilPageMarginBottom),
                   child: ScoreTable(games: statistics.bestGames, showLayout: showLayout),
                 ),
               ),
@@ -138,7 +139,7 @@ final class const BarChart(
 
     // Start from right, so the right end will look good.
     // 2 is just a magic number, just like the default shift value :shrug:
-    var x = right + 2;
+    var x = right + 2.6;
     while (x >= left) {
       canvas.drawLine(Offset(x, h), Offset(x + d, 0), paint);
       x -= shift;
@@ -157,6 +158,7 @@ final class const ScoreCard({
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
     return MyCard(
+      padding: _padding,
       child: Row(
         mainAxisAlignment: .spaceBetween,
         children: [
@@ -165,8 +167,8 @@ final class const ScoreCard({
               mainAxisAlignment: .center,
               crossAxisAlignment: .start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 3),
+                Transform.translate(
+                  offset: _offset,
                   child: Text(label, style: textExt.faintLabelMedium, overflow: .fade, softWrap: false),
                 ),
                 Text(score.toString(), style: textExt.numericLarge),
@@ -178,6 +180,14 @@ final class const ScoreCard({
       ),
     );
   }
+
+  static const _offset = Offset(0, 3);
+  static const _padding = EdgeInsets.fromLTRB(
+    c.cardPaddingHorizontal,
+    c.cardPaddingVertical + 2,
+    c.cardPaddingHorizontal,
+    c.cardPaddingVertical,
+  );
 }
 
 class const ScoreTable({
@@ -205,7 +215,7 @@ class const ScoreTable({
           TableRow(
             key: ValueKey(0),
             decoration: BoxDecoration(
-              color: theme.colorScheme.surfaceContainerLow,
+              color: theme.colorScheme.surfaceContainer,
               border: Border.fromBorderSide(borderSide),
               borderRadius: BorderRadius.vertical(top: c.commonRadius),
             ),
@@ -222,30 +232,18 @@ class const ScoreTable({
                 child: Text(s.gameLabel, style: headerStyle),
               ),
               Container(color: borderColour, height: _cellHeight, width: 1),
-              Padding(
+              _HeaderIcon(
+                key: _starKey,
                 padding: _iconCellPadding,
-                child: Row(
-                  mainAxisAlignment: .end,
-                  children: [
-                    Tooltip(
-                      message: s.scoreTooltip,
-                      child: Icon(CustomIcons.star, size: 24, color: theme.colorScheme.onSurfaceVariant),
-                    ),
-                  ],
-                ),
+                tooltip: s.scoreTooltip,
+                icon: CustomIcons.star16,
               ),
               Container(color: borderColour, height: _cellHeight, width: 1),
-              Padding(
+              _HeaderIcon(
+                key: _chainKey,
                 padding: _iconCellPadding,
-                child: Row(
-                  mainAxisAlignment: .end,
-                  children: [
-                    Tooltip(
-                      message: s.chainTooltip,
-                      child: Icon(CustomIcons.chain, size: 24, color: theme.colorScheme.onSurfaceVariant),
-                    ),
-                  ],
-                ),
+                tooltip: s.chainTooltip,
+                icon: CustomIcons.chain16,
               ),
             ],
           ),
@@ -253,7 +251,7 @@ class const ScoreTable({
             TableRow(
               key: ValueKey(index + 1),
               decoration: BoxDecoration(
-                color: index & 1 == 1 ? theme.colorScheme.surfaceContainerLow : colourExt.cardBackground,
+                color: index & 1 == 1 ? theme.colorScheme.surfaceContainer : theme.colorScheme.surface,
                 border: Border(left: borderSide, right: borderSide, bottom: borderSide),
                 borderRadius: index == games.length - 1
                     ? BorderRadius.vertical(bottom: c.commonRadius)
@@ -304,9 +302,11 @@ class const ScoreTable({
     );
   }
 
+  static const _chainKey = ValueKey("chain");
+  static const _starKey = ValueKey("start");
   static const _cellPadding = EdgeInsets.symmetric(horizontal: 10);
   static const _iconCellPadding = EdgeInsets.symmetric(horizontal: 8);
-  static const _cellHeight = 52.0;
+  static const _cellHeight = 48.0;
 
   static const _widthsShowRank = <int, TableColumnWidth>{
     0: FixedColumnWidth(40),
@@ -325,6 +325,38 @@ class const ScoreTable({
     3: FixedColumnWidth(1),
     4: FixedColumnWidth(68),
   };
+}
+
+class const _HeaderIcon({
+  super.key,
+  required final EdgeInsets padding,
+  required final String tooltip,
+  required final IconData icon,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final colours = context.colours;
+    return Padding(
+      padding: padding,
+      child: Row(
+        mainAxisAlignment: .end,
+        children: [
+          Container(
+            width: 24,
+            height: 24,
+            decoration: BoxDecoration(
+              shape: .circle,
+              border: Border.all(color: colours.outline, width: 1),
+            ),
+            child: Tooltip(
+              message: tooltip,
+              child: Icon(icon, size: 16, color: colours.onSurfaceVariant),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 final class const Result(final bool result, final AppLocalizations strings, {super.key})

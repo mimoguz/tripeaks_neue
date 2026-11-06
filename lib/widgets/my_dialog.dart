@@ -35,13 +35,14 @@ class _MyDialogState extends State<MyDialog> {
     final theme = Theme.of(context);
     final colours = theme.colorScheme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
+    final valueExt = theme.extension<MyValueExt>()!;
     return AlertDialog(
       clipBehavior: .antiAlias,
       titleTextStyle: theme.extension<MyTextThemeExt>()!.dialogTitle,
       title: Column(
         children: [
           Padding(
-            padding: c.DialogMetrics.titlePadding,
+            padding: valueExt.dialogTitlePadding,
             child: Row(
               crossAxisAlignment: .center,
               spacing: c.DialogMetrics.horizontalPadding,
@@ -118,6 +119,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colourExt = theme.extension<MyColourThemeExt>()!;
+    final valueExt = theme.extension<MyValueExt>()!;
     final height = MediaQuery.heightOf(context);
     return ConstrainedBox(
       constraints: BoxConstraints(
@@ -137,9 +139,10 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
           children: [
             Padding(
               // color: theme.colorScheme.sheetHeader,
-              padding: c.DialogMetrics.titlePadding,
+              padding: valueExt.dialogTitlePadding,
               child: Row(
                 mainAxisAlignment: .spaceBetween,
+                crossAxisAlignment: .center,
                 spacing: 4.0,
                 children: [
                   Flexible(

@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/ensure_solvable_setting.dart';
@@ -100,13 +101,14 @@ final class SettingsPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
+    final valueExt = context.theme.extension<MyValueExt>()!;
     return Container(
       color: context.colours.surface,
       child: CustomScrollView(
         slivers: <Widget>[
           const SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.itemSpacing),
+              padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
               child: GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
             ),
           ),
@@ -115,7 +117,7 @@ final class SettingsPageBody extends StatelessWidget {
               H(Text(s.nextGameSettingGroupTitle)),
               const SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: c.itemSpacing),
+                  padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
                   child: GroupTile(
                     padding: EdgeInsets.zero,
                     children: [
@@ -134,10 +136,10 @@ final class SettingsPageBody extends StatelessWidget {
           SliverMainAxisGroup(
             slivers: <Widget>[
               H(Text(s.interfaceSettingGroupTitle)),
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: c.utilPageMarginBottom),
-                  child: GroupTile(
+                  padding: EdgeInsets.only(bottom: valueExt.utilPageMarginBottom),
+                  child: const GroupTile(
                     padding: EdgeInsets.zero,
                     children: [
                       SoundSetting(),

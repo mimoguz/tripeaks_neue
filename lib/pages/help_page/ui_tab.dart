@@ -16,6 +16,7 @@ class UiTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
+    final valueExt = theme.extension<MyValueExt>()!;
     final s = context.strings;
     final normal = textExt.paragraphText;
     final italic = textExt.paragraphTextItalic;
@@ -125,7 +126,7 @@ class UiTab extends StatelessWidget {
               UiShortcutTile(title: s.interactionP13, shorcut: _backShortcut, textStyle: normal),
               UiShortcutTile(title: s.interactionP14, shorcut: _backShortcutAlt, textStyle: normal),
               SliverPadding(
-                padding: EdgeInsetsGeometry.only(bottom: c.utilPageInsets.bottom),
+                padding: EdgeInsetsGeometry.only(bottom: valueExt.utilPageMarginBottom),
                 sliver: UiShortcutTile(title: s.exitAction, shorcut: _exitShortcut, textStyle: normal),
               ),
             ],

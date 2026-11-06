@@ -38,6 +38,7 @@ final class const HDelegate(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         maxHeight: _maxHeight,
         child: Column(
+          mainAxisAlignment: .center,
           children: [
             Row(
               children: [DefaultTextStyle(style: textExt.sectionTitle, child: child)],
@@ -57,8 +58,8 @@ final class const HDelegate(
   @override
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
-  static const _maxHeight = 34.0;
-  static const _minHeight = 28.0;
+  static const _maxHeight = 36.0;
+  static const _minHeight = 24.0;
 }
 
 final class const P(final Widget child, {super.key, final bool spaceAfter = true}) extends StatelessWidget {

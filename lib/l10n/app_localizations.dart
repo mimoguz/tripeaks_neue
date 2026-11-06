@@ -1000,13 +1000,13 @@ abstract class AppLocalizations {
   /// No description provided for @indirectDependency.
   ///
   /// In en, this message translates to:
-  /// **'Indirect:'**
+  /// **'Indirect: '**
   String get indirectDependency;
 
   /// No description provided for @directDependency.
   ///
   /// In en, this message translates to:
-  /// **'Direct:'**
+  /// **'Direct: '**
   String get directDependency;
 
   /// Label of a button that copies the web page link of a dependency to the clipboard.

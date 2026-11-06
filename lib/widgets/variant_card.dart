@@ -60,7 +60,7 @@ class _VariantCardState extends State<VariantCard> {
             child: Padding(
               padding: const EdgeInsets.all(_padding),
               child: Column(
-                spacing: 3,
+                spacing: 5,
                 mainAxisSize: .min,
                 children: [
                   Flexible(
@@ -96,7 +96,7 @@ class _VariantCardState extends State<VariantCard> {
   }
 
   static const _borderWidth = 2.0;
-  static const _padding = 4.0;
+  static const _padding = 5.0;
   static const _radiusVal = 12.0;
   static const _raidus = BorderRadius.all(Radius.circular(_radiusVal));
   static const _outerRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderWidth));
