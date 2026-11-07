@@ -39,7 +39,9 @@ final class MyValueExt extends ThemeExtension<MyValueExt> {
       utilPageMargins = const EdgeInsets.fromLTRB(10, 10, 10, 20),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 12, 8),
       cardDecoration = BoxDecoration(
-        boxShadow: const [BoxShadow(color: Color(0x05050008), blurRadius: 5, offset: Offset(0, 2))],
+        boxShadow: const [
+          BoxShadow(color: Color.fromRGBO(101, 59, 140, 0.05), blurRadius: 8, offset: Offset(0, 1)),
+        ],
         borderRadius: c.commonBorderRadius,
       ),
       sheetShadow = const [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0.0, 1.0))];
