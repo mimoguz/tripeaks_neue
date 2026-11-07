@@ -30,14 +30,12 @@ class ThemeModeSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonBottomSheet<ThemeMode>(
+    final result = await showPlatformSelectionPopover<ThemeMode>(
       context,
-      (context) => MySelectionSheet(
-        title: Text(s.themeModeTitle, overflow: .fade, softWrap: false, maxLines: 1),
-        selected: settings.themeMode,
-        values: ThemeMode.values,
-        itemBuilder: (v) => Text(_valueLabel(v, s)),
-      ),
+      title: Text(s.themeModeTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      selected: settings.themeMode,
+      values: ThemeMode.values,
+      itemBuilder: (v) => Text(_valueLabel(v, s)),
     );
     if (result != null) {
       settings.themeMode = result;

@@ -325,7 +325,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetHeaderDivider = const Color.fromRGBO(0, 0, 6, 0.06),
       // onSurface with alpha
       settingItemDivider = const Color.fromRGBO(0, 0, 6, 0.12),
-      translucentHighlight = Colors.white24,
+      translucentHighlight = const Color.fromRGBO(0, 0, 6, 0.1),
       scrollShadow = Colors.black38,
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
@@ -333,12 +333,12 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       barrier = Colors.transparent,
       cardDecor = _AdwColours.sidebarBgLight,
       // sidebarBgLight with alpha
-      tableStrip = const Color.fromRGBO(235, 235, 237, 0.5);
+      tableStrip = const Color.fromRGBO(235, 235, 237, 0.7);
 
   const new adwDark()
     : brightness = .light,
       // onSurface with alpha
-      faintBorder = const Color.fromRGBO(255, 255, 255, 0.04),
+      faintBorder = const Color.fromRGBO(255, 255, 255, 0.025),
       faintButtonBackground = const Color(0xFF464649),
       faintButtonForeground = _AdwColours.windowFgDark,
       faintButtonIcon = _AdwColours.light2,

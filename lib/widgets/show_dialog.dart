@@ -4,6 +4,7 @@ import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_dialog.dart';
+import 'package:tripeaks_neue/widgets/selection_dialog.dart';
 
 Future<T?> showCommonDialog<T>(BuildContext context, Widget Function(BuildContext) builder) =>
     showGeneralDialog<T>(
@@ -33,8 +34,18 @@ Future<T?> showPlatformPopover<T>(
   BuildContext context, {
   required Widget title,
   required Widget Function(BuildContext) builder,
-}) => isDesktopOrWeb
-    ? showCommonDialog<T>(context, (context) => MyDialog(title: title, content: builder(context)))
-    : showCommonBottomSheet<T>(context, (context) => MyBottomSheet(title: title, content: builder(context)));
+}) => showCommonBottomSheet<T>(context, (context) => MyBottomSheet(title: title, content: builder(context)));
+
+Future<T?> showPlatformSelectionPopover<T>(
+  BuildContext context, {
+  required Widget title,
+  required Widget Function(T) itemBuilder,
+  required List<T> values,
+  required T selected,
+}) => showCommonBottomSheet<T>(
+  context,
+  (context) =>
+      MySelectionSheet<T>(title: title, itemBuilder: itemBuilder, selected: selected, values: values),
+);
 
 const _transitionDuration = Duration(milliseconds: 150);

@@ -38,33 +38,32 @@ class const ColourSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonBottomSheet<DecorColour>(
+    final result = await showPlatformPopover<DecorColour>(
       context,
-      (context) => MyBottomSheet(
-        title: Text(s.decorColourTitle, overflow: .fade, softWrap: false, maxLines: 1),
-        content: Padding(
-          padding: c.DialogMetrics.contentPadding,
-          child: Row(
-            children: [
-              Expanded(
-                child: Center(
-                  child: Wrap(
-                    spacing: c.itemSpacing,
-                    runSpacing: c.itemSpacing,
-                    children: [
-                      for (final colour in DecorColour.values)
-                        ColourSwatch(
-                          colour: colour,
-                          isSelected: settings.decorColour == colour,
-                          strings: s,
-                          onTap: () => Navigator.pop(context, colour),
-                        ),
-                    ],
-                  ),
+      title: Text(s.decorColourTitle, overflow: .fade, softWrap: false, maxLines: 1),
+
+      builder: (context) => Padding(
+        padding: c.DialogMetrics.contentPadding,
+        child: Row(
+          children: [
+            Expanded(
+              child: Center(
+                child: Wrap(
+                  spacing: c.itemSpacing,
+                  runSpacing: c.itemSpacing,
+                  children: [
+                    for (final colour in DecorColour.values)
+                      ColourSwatch(
+                        colour: colour,
+                        isSelected: settings.decorColour == colour,
+                        strings: s,
+                        onTap: () => Navigator.pop(context, colour),
+                      ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

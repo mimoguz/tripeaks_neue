@@ -46,28 +46,26 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonBottomSheet<Decor>(
+    final result = await showPlatformPopover<Decor>(
       context,
-      (context) => MyBottomSheet(
-        title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
-        content: Padding(
-          padding: c.DialogMetrics.contentPadding,
-          child: Center(
-            child: Wrap(
-              runSpacing: c.cellPadding,
-              spacing: c.cellPadding,
-              children: [
-                for (final variant in Decor.values)
-                  DecorVariantCard(
-                    variant: variant,
-                    colour: settings.decorColour,
-                    isSelected: settings.decor == variant,
-                    selectedDecorColour: settings.decorColour,
-                    strings: s,
-                    onTap: () => Navigator.pop(context, variant),
-                  ),
-              ],
-            ),
+      title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      builder: (context) => Padding(
+        padding: c.DialogMetrics.contentPadding,
+        child: Center(
+          child: Wrap(
+            runSpacing: c.cellPadding,
+            spacing: c.cellPadding,
+            children: [
+              for (final variant in Decor.values)
+                DecorVariantCard(
+                  variant: variant,
+                  colour: settings.decorColour,
+                  isSelected: settings.decor == variant,
+                  selectedDecorColour: settings.decorColour,
+                  strings: s,
+                  onTap: () => Navigator.pop(context, variant),
+                ),
+            ],
           ),
         ),
       ),

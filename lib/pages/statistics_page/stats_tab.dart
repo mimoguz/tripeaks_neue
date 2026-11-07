@@ -217,8 +217,6 @@ class const ScoreTable({
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
     final textExt = theme.extension<MyTextThemeExt>()!;
-    final borderColour = colourExt.settingItemDivider;
-    final borderSide = BorderSide(color: borderColour, width: 1);
     final numberStyle = textExt.numericBody;
     final rankStyle = numberStyle;
     final headerStyle = theme.textTheme.bodyMedium;
@@ -232,34 +230,31 @@ class const ScoreTable({
           children: <TableRow>[
             TableRow(
               key: ValueKey(0),
-              // decoration: BoxDecoration(
-              //   color: colourExt.tableStrip,
-              //   border: Border(bottom: borderSide),
-              //   borderRadius: BorderRadius.vertical(top: c.commonRadius),
-              // ),
               children: <Widget>[
                 if (showRank) ...[
                   Padding(
-                    padding: _cellPadding,
+                    padding: _firstColumnCellPadding,
                     child: Text("#", style: headerStyle),
                   ),
-                  Container(color: borderColour, height: _cellHeight, width: 1),
                 ],
-                Padding(
-                  padding: _cellPadding,
-                  child: Text(s.gameLabel, style: headerStyle),
+                Container(
+                  height: _rowHeight,
+                  padding: showRank ? _cellPadding : _firstColumnCellPadding,
+                  child: Center(
+                    child: Row(children: [Text(s.gameLabel, style: headerStyle)]),
+                  ),
                 ),
-                Container(color: borderColour, height: _cellHeight, width: 1),
+
                 _HeaderIcon(
                   key: _starKey,
-                  padding: _iconCellPadding,
+                  padding: _cellPadding,
                   tooltip: s.scoreTooltip,
-                  icon: CustomIcons.star,
+                  icon: Icons.star_border_outlined,
                 ),
-                Container(color: borderColour, height: _cellHeight, width: 1),
+
                 _HeaderIcon(
                   key: _chainKey,
-                  padding: _iconCellPadding,
+                  padding: _lastColumnCellPadding,
                   tooltip: s.chainTooltip,
                   icon: CustomIcons.chain,
                 ),
@@ -278,17 +273,16 @@ class const ScoreTable({
                 children: <Widget>[
                   if (showRank) ...[
                     Padding(
-                      padding: _cellPadding,
+                      padding: _firstColumnCellPadding,
                       child: Text((index + 1).toString(), style: rankStyle),
                     ),
-                    Container(color: borderColour, height: _cellHeight, width: 1),
                   ],
                   Row(
                     mainAxisAlignment: .spaceBetween,
                     children: [
                       Flexible(
                         child: Padding(
-                          padding: _cellPadding,
+                          padding: showRank ? _cellPadding : _firstColumnCellPadding,
                           child: Column(
                             crossAxisAlignment: .start,
                             mainAxisAlignment: .center,
@@ -303,15 +297,22 @@ class const ScoreTable({
                       Padding(padding: const EdgeInsets.only(right: 8.0), child: Result(game.isCleared, s)),
                     ],
                   ),
-                  Container(color: borderColour, height: _cellHeight, width: 1),
+
                   Padding(
                     padding: _cellPadding,
                     child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
                   ),
-                  Container(color: borderColour, height: _cellHeight, width: 1),
+
                   Padding(
-                    padding: _cellPadding,
-                    child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+                    padding: _lastColumnCellPadding,
+                    child: Row(
+                      mainAxisAlignment: .spaceBetween,
+                      children: [
+                        // Force row height
+                        SizedBox(height: _rowHeight),
+                        Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -323,26 +324,22 @@ class const ScoreTable({
 
   static const _chainKey = ValueKey("chain");
   static const _starKey = ValueKey("start");
-  static const _cellPadding = EdgeInsets.symmetric(horizontal: 10);
-  static const _iconCellPadding = EdgeInsets.symmetric(horizontal: 8);
-  static const _cellHeight = 48.0;
+  static const _cellPadding = EdgeInsets.only(right: 8);
+  static const _firstColumnCellPadding = EdgeInsets.only(left: c.DialogMetrics.horizontalPadding, right: 8);
+  static const _lastColumnCellPadding = EdgeInsets.only(right: c.DialogMetrics.horizontalPadding);
+  static const _rowHeight = 48.0;
 
   static const _widthsShowRank = <int, TableColumnWidth>{
     0: FixedColumnWidth(40),
-    1: FixedColumnWidth(1),
-    2: FlexColumnWidth(),
-    3: FixedColumnWidth(1),
-    4: FixedColumnWidth(68),
-    5: FixedColumnWidth(1),
-    6: FixedColumnWidth(68),
+    1: FlexColumnWidth(),
+    2: FixedColumnWidth(68),
+    3: FixedColumnWidth(68),
   };
 
   static const _widthsHideRank = <int, TableColumnWidth>{
     0: FlexColumnWidth(),
-    1: FixedColumnWidth(1),
+    1: FixedColumnWidth(68),
     2: FixedColumnWidth(68),
-    3: FixedColumnWidth(1),
-    4: FixedColumnWidth(68),
   };
 }
 

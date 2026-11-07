@@ -30,14 +30,12 @@ class LayoutSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Session session) async {
     final s = context.strings;
-    final result = await showCommonBottomSheet<Peaks>(
+    final result = await showPlatformSelectionPopover<Peaks>(
       context,
-      (context) => MySelectionSheet<Peaks>(
-        title: Text(s.layoutTitle, overflow: .fade, softWrap: false, maxLines: 1),
-        selected: session.layout,
-        values: Peaks.values,
-        itemBuilder: (v) => Text(v.label(s)),
-      ),
+      title: Text(s.layoutTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      selected: session.layout,
+      values: Peaks.values,
+      itemBuilder: (v) => Text(v.label(s)),
     );
     if (result != null) {
       session.layout = result;

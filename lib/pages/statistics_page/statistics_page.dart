@@ -63,7 +63,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
               final session = Provider.of<Session>(context);
               final theme = context.theme;
               final colours = theme.colorScheme;
-              final colourExt = theme.extension<MyColourThemeExt>()!;
               return Observer(
                 builder: (context) {
                   final statistics = session.statistics;
@@ -80,8 +79,6 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
-                            color: colourExt.dialogBackground,
-                            elevation: 4.0,
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadiusValue),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),

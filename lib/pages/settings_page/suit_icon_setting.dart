@@ -31,12 +31,12 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonBottomSheet<SuitIconTheme>(
+    final result = await showPlatformPopover<SuitIconTheme>(
       context,
-      (context) => MyBottomSheet(
-        title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
-        content: Padding(
-          padding: c.DialogMetrics.contentPadding,
+      title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      builder: (context) => Padding(
+        padding: c.DialogMetrics.contentPadding,
+        child: Center(
           child: Wrap(
             spacing: c.cellPadding,
             runSpacing: c.cellPadding,

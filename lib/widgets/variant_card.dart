@@ -51,7 +51,11 @@ class _VariantCardState extends State<VariantCard> {
       child: Padding(
         padding: const EdgeInsets.all(_borderWidth),
         child: Ink(
-          decoration: BoxDecoration(color: cardBackground, borderRadius: _raidus),
+          decoration: BoxDecoration(
+            color: cardBackground,
+            borderRadius: _raidus,
+            border: BoxBorder.all(color: colourExt.faintBorder),
+          ),
           child: InkWell(
             focusNode: _focus,
             onTap: widget.onTap,
