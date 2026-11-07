@@ -183,9 +183,10 @@ final class const ScoreCard({
           Container(
             height: 64,
             width: 64,
+            padding: _iconPadding,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [colourExt.cardBackground, colours.secondaryContainer],
+                colors: [colourExt.cardBackground, colourExt.cardDecor],
                 begin: .bottomLeft,
                 end: .topRight,
               ),
@@ -200,6 +201,7 @@ final class const ScoreCard({
   }
 
   static const _offset = Offset(0, 3);
+  static const _iconPadding = EdgeInsets.only(top: 2);
   static const _padding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 2, c.cardPaddingHorizontal, 0);
   static const _rightRadius = BorderRadius.horizontal(right: c.commonRadius);
 }
@@ -230,11 +232,11 @@ class const ScoreTable({
           children: <TableRow>[
             TableRow(
               key: ValueKey(0),
-              decoration: BoxDecoration(
-                color: colourExt.cardBackground,
-                // border: Border(bottom: borderSide),
-                borderRadius: BorderRadius.vertical(top: c.commonRadius),
-              ),
+              // decoration: BoxDecoration(
+              //   color: colourExt.tableStrip,
+              //   border: Border(bottom: borderSide),
+              //   borderRadius: BorderRadius.vertical(top: c.commonRadius),
+              // ),
               children: <Widget>[
                 if (showRank) ...[
                   Padding(
@@ -267,8 +269,8 @@ class const ScoreTable({
               TableRow(
                 key: ValueKey(index + 1),
                 decoration: BoxDecoration(
-                  color: index & 1 == 0 ? theme.colorScheme.surfaceContainerHigh : null,
-                  border: Border(top: borderSide),
+                  color: index & 1 == 0 ? colourExt.tableStrip : null,
+                  // border: Border(top: borderSide),
                   borderRadius: index == games.length - 1
                       ? BorderRadius.vertical(bottom: c.commonRadius)
                       : null,
@@ -381,8 +383,8 @@ final class const Result(final bool result, final AppLocalizations strings, {sup
           shape: .circle,
           color: result ? Colors.lightGreen.shade500 : theme.colorScheme.outline,
         ),
-        width: 24,
-        height: 24,
+        width: 22,
+        height: 22,
         child: Center(
           child: Icon(
             result ? CustomIcons.check12 : CustomIcons.cross12,

@@ -39,7 +39,7 @@ final class MyValueExt extends ThemeExtension<MyValueExt> {
       utilPageMargins = const EdgeInsets.fromLTRB(10, 10, 10, 20),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 12, 8),
       cardDecoration = BoxDecoration(
-        boxShadow: const [BoxShadow(color: Color(0x05050008), blurRadius: 6, offset: Offset(0, 2))],
+        boxShadow: const [BoxShadow(color: Color(0x05050008), blurRadius: 5, offset: Offset(0, 2))],
         borderRadius: c.commonBorderRadius,
       ),
       sheetShadow = const [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0.0, 1.0))];
@@ -175,7 +175,9 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
 
 final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   final Brightness brightness;
+  final Color barrier;
   final Color cardBackground;
+  final Color cardDecor;
   final Color cardDivider;
   final Color dialogBackground;
   final Color dialogDivider;
@@ -190,12 +192,14 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
   final Color settingItemDivider;
   final Color sheetBackground;
   final Color sheetHeaderDivider;
+  final Color tableStrip;
   final Color translucentHighlight;
-  final Color barrier;
 
   new _({
     required this.brightness,
+    required this.barrier,
     required this.cardBackground,
+    required this.cardDecor,
     required this.cardDivider,
     required this.dialogBackground,
     required this.dialogDivider,
@@ -210,8 +214,8 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
     required this.settingItemDivider,
     required this.sheetBackground,
     required this.sheetHeaderDivider,
+    required this.tableStrip,
     required this.translucentHighlight,
-    required this.barrier,
   });
 
   Color get platformBarrier => barrier;
@@ -226,7 +230,9 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
     }
     return MyColourThemeExt._(
       brightness: brightness,
+      barrier: Color.lerp(barrier, other.barrier, t)!,
       cardBackground: Color.lerp(cardBackground, other.cardBackground, t)!,
+      cardDecor: Color.lerp(cardDecor, other.cardBackground, t)!,
       cardDivider: Color.lerp(cardDivider, other.cardDivider, t)!,
       dialogBackground: Color.lerp(dialogBackground, other.dialogBackground, t)!,
       dialogDivider: Color.lerp(dialogDivider, other.dialogDivider, t)!,
@@ -241,8 +247,8 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       settingItemDivider: Color.lerp(settingItemDivider, other.settingItemDivider, t)!,
       sheetBackground: Color.lerp(sheetBackground, other.sheetBackground, t)!,
       sheetHeaderDivider: Color.lerp(sheetHeaderDivider, other.sheetHeaderDivider, t)!,
+      tableStrip: Color.lerp(tableStrip, other.tableStrip, t)!,
       translucentHighlight: Color.lerp(translucentHighlight, other.translucentHighlight, t)!,
-      barrier: Color.lerp(barrier, other.barrier, t)!,
     );
   }
 
@@ -272,7 +278,9 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       // primary with alpha
       scrollGlow = const Color.fromRGBO(0, 104, 164, 0.14),
       headerShadow = Colors.black87,
-      barrier = const Color(0x70000006);
+      barrier = const Color(0x70000006),
+      cardDecor = _Colours.surfaceContainerHighestLight,
+      tableStrip = const Color.fromRGBO(229, 232, 237, 0.7);
 
   const new dark()
     : brightness = .dark,
@@ -293,7 +301,9 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       scrollShadow = const Color.fromRGBO(0, 104, 164, 0.32),
       scrollGlow = const Color.fromRGBO(0, 104, 164, 0.32),
       headerShadow = _Colours.primaryLight,
-      barrier = const Color.fromRGBO(13, 14, 16, 0.51);
+      barrier = const Color.fromRGBO(13, 14, 16, 0.51),
+      cardDecor = _AdwColours.dark3,
+      tableStrip = const Color.fromRGBO(225, 230, 236, 0.04);
 
   const new adwLight()
     : brightness = .light,
@@ -320,7 +330,10 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
       headerShadow = Colors.black87,
-      barrier = Colors.transparent;
+      barrier = Colors.transparent,
+      cardDecor = _AdwColours.sidebarBgLight,
+      // sidebarBgLight with alpha
+      tableStrip = const Color.fromRGBO(235, 235, 237, 0.5);
 
   const new adwDark()
     : brightness = .light,
@@ -343,11 +356,13 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       // onSurface with alpha
       settingItemDivider = const Color.fromRGBO(0, 0, 6, 0.20),
       translucentHighlight = Colors.white24,
-      scrollShadow = const Color.fromRGBO(4, 97, 190, 0.3),
+      scrollShadow = const Color.fromRGBO(0, 0, 6, 0.25),
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
-      headerShadow = const Color.fromRGBO(4, 97, 190, 0.4),
-      barrier = const Color.fromRGBO(34, 34, 38, 0.4);
+      headerShadow = const Color.fromRGBO(0, 0, 6, 1),
+      barrier = const Color.fromRGBO(34, 34, 38, 0.4),
+      cardDecor = const Color(0xFF49484E),
+      tableStrip = const Color.fromRGBO(250, 250, 255, 0.05);
 }
 
 final ThemeData _light = ThemeData(
