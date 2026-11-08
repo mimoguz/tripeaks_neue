@@ -14,21 +14,19 @@ final class const MyCard({
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
     final valueExt = theme.extension<MyValueExt>()!;
-    return DecoratedBox(
-      decoration: valueExt.cardDecoration,
-      child: Material(
-        borderRadius: c.commonBorderRadius,
-        color: background ?? colourExt.cardBackground,
-        shadowColor: theme.colorScheme.shadow,
-        type: .card,
-        clipBehavior: .antiAlias,
-        child: Ink(
-          decoration: BoxDecoration(
-            borderRadius: c.commonBorderRadius,
-            border: Border.all(color: colourExt.faintBorder, width: 1),
-          ),
-          child: Padding(padding: padding, child: child),
+    return Material(
+      borderRadius: c.commonBorderRadius,
+      color: background ?? colourExt.cardBackground,
+      elevation: valueExt.cardElevation,
+      shadowColor: Colors.black26,
+      type: .card,
+      clipBehavior: .antiAlias,
+      child: Ink(
+        decoration: BoxDecoration(
+          borderRadius: c.commonBorderRadius,
+          border: Border.all(color: colourExt.faintBorder, width: 1),
         ),
+        child: Padding(padding: padding, child: child),
       ),
     );
   }

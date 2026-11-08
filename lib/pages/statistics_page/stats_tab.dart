@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/my_theme.dart';
+import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
@@ -55,57 +56,62 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
 
 class const OverallStatsTile(final Statistics statistics, {super.key}) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => SliverToBoxAdapter(
-    child: Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: c.maxListWidth),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: c.utilPageMargin),
-          child: Column(
-            spacing: 8,
-            children: [
-              ChartCard(played: statistics.totalGames, cleared: statistics.cleared),
-              Row(
-                spacing: 8,
-                children: [
-                  Expanded(
-                    child: ScoreCard(
-                      score: statistics.bestGames.firstOrNull?.score ?? 0,
-                      label: "HIGHEST SCORE",
-                      icon: CustomIcons.scoreMedal30,
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    final isDark = context.theme.brightness == .dark;
+    return SliverToBoxAdapter(
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: c.maxListWidth),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: c.utilPageMargin),
+            child: Column(
+              spacing: 8,
+              children: [
+                ChartCard(played: statistics.totalGames, cleared: statistics.cleared),
+                Row(
+                  spacing: 8,
+                  children: [
+                    Expanded(
+                      child: ScoreCard(
+                        score: statistics.bestGames.firstOrNull?.score ?? 0,
+                        label: "HIGHEST SCORE",
+                        icon: isDark ? CustomIcons.starDark48 : CustomIcons.star48,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: ScoreCard(
-                      score: statistics.longestChain,
-                      label: "LONGEST CHAIN",
-                      icon: CustomIcons.chainMedal30,
+                    Expanded(
+                      child: ScoreCard(
+                        score: statistics.longestChain,
+                        label: "LONGEST CHAIN",
+                        icon: CustomIcons.chain48,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
-final class const BarChart(
-  final double ratio, {
-  final double shift = 3.652,
-  required final Color filled1,
-  required final Color filled2,
-  required final Color empty,
-}) extends CustomPainter {
+final class const BarChart(final double ratio, {final double shift = 3.652, required final Color empty})
+    extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final p = Paint();
+    if (ratio == 1) {
+      canvas.clipRect(Offset.zero & size);
+      _draw100percent(canvas, size, p);
+      return;
+    }
+
     final leftWidth = (size.width * ratio).roundToDouble();
     final rightWidth = size.width - leftWidth;
     canvas.clipRRect(RRect.fromRectAndRadius(Offset.zero & size, c.commonRadius));
-    _drawRight(canvas, Size(rightWidth, size.height), Offset(leftWidth - c.commonRadius.x, 0), false, p);
+    _drawRight(canvas, Size(rightWidth, size.height), Offset(leftWidth - c.commonRadius.x, 0), p);
     if (ratio > 0) {
       _drawLeft(canvas, Size(leftWidth, size.height), p);
     }
@@ -117,8 +123,9 @@ final class const BarChart(
   void _drawLeft(Canvas canvas, Size size, Paint paint) {
     final rect = Offset.zero & size;
     paint
-      ..color = filled1
-      ..shader = LinearGradient(colors: <Color>[filled1, filled2]).createShader(rect)
+      ..color = Colors.green.shade400
+      ..shader = LinearGradient(colors: <Color>[Colors.green.shade400, Colors.lightGreen.shade300])
+          .createShader(rect)
       ..style = .fill;
     canvas.drawRRect(
       RRect.fromRectAndCorners(rect, topRight: c.commonRadius, bottomRight: c.commonRadius),
@@ -126,7 +133,7 @@ final class const BarChart(
     );
   }
 
-  void _drawRight(Canvas canvas, Size size, Offset offset, bool full, Paint paint) {
+  void _drawRight(Canvas canvas, Size size, Offset offset, Paint paint) {
     final h = size.height;
     final d = size.height * 0.5;
     final right = offset.dx + size.width + d;
@@ -145,6 +152,29 @@ final class const BarChart(
       x -= shift;
     }
   }
+
+  void _draw100percent(Canvas canvas, Size size, Paint paint) {
+    paint
+      ..color = Colors.green.shade500
+      ..shader = LinearGradient(
+        colors: <Color>[Colors.green.shade400, Colors.lightGreen.shade400, Colors.lime.shade300],
+      ).createShader(Offset.zero & size)
+      ..style = .stroke
+      ..strokeWidth = 8;
+    final hHeight = size.height / 2;
+    final dy = 6.0;
+    final step = 20.0;
+    final hStep = 10.0;
+    final path = Path()..moveTo(0, hHeight);
+    var x = -step;
+    var sign = -1;
+    while (x < size.width + step) {
+      path.quadraticBezierTo(x + hStep, hHeight + sign * dy, x + step, hHeight);
+      x += step;
+      sign *= -1;
+    }
+    canvas.drawPath(path, paint);
+  }
 }
 
 final class const ScoreCard({
@@ -156,44 +186,40 @@ final class const ScoreCard({
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final colours = theme.colorScheme;
     final textExt = theme.extension<MyTextThemeExt>()!;
     final colourExt = theme.extension<MyColourThemeExt>()!;
-    final colours = theme.colorScheme;
     return MyCard(
-      padding: EdgeInsets.zero,
       child: Row(
         mainAxisAlignment: .spaceBetween,
+        crossAxisAlignment: .center,
         children: [
           Flexible(
-            child: Padding(
-              padding: _padding,
-              child: Column(
-                mainAxisAlignment: .center,
-                crossAxisAlignment: .start,
-                children: [
-                  Transform.translate(
-                    offset: _offset,
-                    child: Text(label, style: textExt.faintLabelMedium, overflow: .fade, softWrap: false),
+            child: Column(
+              mainAxisAlignment: .center,
+              crossAxisAlignment: .start,
+              children: [
+                Transform.translate(
+                  offset: _offset,
+                  child: Text(
+                    label,
+                    style: textExt.faintLabelMedium,
+                    overflow: .fade,
+                    softWrap: true,
+                    maxLines: 2,
                   ),
-                  Text(score.toString(), style: textExt.numericLarge),
-                ],
-              ),
+                ),
+                Text(score.toString(), style: textExt.numericLarge),
+              ],
             ),
           ),
           Container(
             height: 64,
-            width: 64,
             padding: _iconPadding,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [colourExt.cardBackground, colourExt.cardDecor],
-                begin: .bottomLeft,
-                end: .topRight,
-              ),
-              borderRadius: _rightRadius,
-              border: Border(left: BorderSide(color: colourExt.faintBorder)),
+              border: Border(left: BorderSide(color: colourExt.cardDivider)),
             ),
-            child: Icon(icon, color: colours.onSurfaceVariant, size: 30),
+            child: Icon(icon, size: 48, color: colours.onSurfaceVariant),
           ),
         ],
       ),
@@ -201,9 +227,7 @@ final class const ScoreCard({
   }
 
   static const _offset = Offset(0, 3);
-  static const _iconPadding = EdgeInsets.only(top: 2);
-  static const _padding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 2, c.cardPaddingHorizontal, 0);
-  static const _rightRadius = BorderRadius.horizontal(right: c.commonRadius);
+  static const _iconPadding = EdgeInsets.only(top: 2, left: c.cardPaddingHorizontal);
 }
 
 class const ScoreTable({
@@ -220,10 +244,11 @@ class const ScoreTable({
     final numberStyle = textExt.numericBody;
     final rankStyle = numberStyle;
     final headerStyle = theme.textTheme.bodyMedium;
+    final borderSide = BorderSide(color: colourExt.cardDivider);
     final s = context.strings;
     return ConstrainedItem(
       child: MyCard(
-        padding: EdgeInsets.zero,
+        padding: _tablePadding,
         child: Table(
           columnWidths: showRank ? _widthsShowRank : _widthsHideRank,
           defaultVerticalAlignment: .middle,
@@ -249,7 +274,7 @@ class const ScoreTable({
                   key: _starKey,
                   padding: _cellPadding,
                   tooltip: s.scoreTooltip,
-                  icon: Icons.star_border_outlined,
+                  icon: CustomIcons.star,
                 ),
 
                 _HeaderIcon(
@@ -264,8 +289,7 @@ class const ScoreTable({
               TableRow(
                 key: ValueKey(index + 1),
                 decoration: BoxDecoration(
-                  color: index & 1 == 0 ? colourExt.tableStrip : null,
-                  // border: Border(top: borderSide),
+                  border: Border(top: borderSide),
                   borderRadius: index == games.length - 1
                       ? BorderRadius.vertical(bottom: c.commonRadius)
                       : null,
@@ -279,6 +303,7 @@ class const ScoreTable({
                   ],
                   Row(
                     mainAxisAlignment: .spaceBetween,
+                    crossAxisAlignment: .center,
                     children: [
                       Flexible(
                         child: Padding(
@@ -294,7 +319,7 @@ class const ScoreTable({
                           ),
                         ),
                       ),
-                      Padding(padding: const EdgeInsets.only(right: 8.0), child: Result(game.isCleared, s)),
+                      Result(game.isCleared, s),
                     ],
                   ),
 
@@ -324,22 +349,23 @@ class const ScoreTable({
 
   static const _chainKey = ValueKey("chain");
   static const _starKey = ValueKey("start");
-  static const _cellPadding = EdgeInsets.only(right: 8);
-  static const _firstColumnCellPadding = EdgeInsets.only(left: c.DialogMetrics.horizontalPadding, right: 8);
-  static const _lastColumnCellPadding = EdgeInsets.only(right: c.DialogMetrics.horizontalPadding);
-  static const _rowHeight = 48.0;
+  static const _cellPadding = EdgeInsets.only(top: 2);
+  static const _firstColumnCellPadding = EdgeInsets.only(top: 2);
+  static const _lastColumnCellPadding = EdgeInsets.only(top: 2);
+  static const _tablePadding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 0, c.cardPaddingHorizontal, 2);
+  static const _rowHeight = 50.0;
 
   static const _widthsShowRank = <int, TableColumnWidth>{
-    0: FixedColumnWidth(40),
+    0: FixedColumnWidth(36),
     1: FlexColumnWidth(),
-    2: FixedColumnWidth(68),
-    3: FixedColumnWidth(68),
+    2: FixedColumnWidth(60),
+    3: FixedColumnWidth(60),
   };
 
   static const _widthsHideRank = <int, TableColumnWidth>{
     0: FlexColumnWidth(),
-    1: FixedColumnWidth(68),
-    2: FixedColumnWidth(68),
+    1: FixedColumnWidth(60),
+    2: FixedColumnWidth(60),
   };
 }
 
@@ -357,14 +383,19 @@ class const _HeaderIcon({
       child: Row(
         mainAxisAlignment: .end,
         children: [
-          Tooltip(
-            message: tooltip,
-            child: Icon(icon, size: 24, color: colours.onSurfaceVariant),
+          Transform.translate(
+            offset: _offset,
+            child: Tooltip(
+              message: tooltip,
+              child: Icon(icon, size: 24, color: colours.onSurfaceVariant),
+            ),
           ),
         ],
       ),
     );
   }
+
+  static const _offset = Offset(1, 0);
 }
 
 final class const Result(final bool result, final AppLocalizations strings, {super.key})
@@ -406,6 +437,7 @@ final class const ChartCard({super.key, required final int played, required fina
     final labelStyle = textExt.faintLabelMedium;
     final s = context.strings;
     return MyCard(
+      padding: _padding,
       child: Column(
         mainAxisSize: .min,
         crossAxisAlignment: .stretch,
@@ -438,8 +470,6 @@ final class const ChartCard({super.key, required final int played, required fina
                   child: CustomPaint(
                     painter: BarChart(
                       played > 0 ? cleared.toDouble() / played : 0,
-                      filled1: Colors.lightGreen.shade500,
-                      filled2: Colors.lightGreen.shade300,
                       empty: colourExt.cardDivider,
                     ),
                   ),
@@ -461,4 +491,9 @@ final class const ChartCard({super.key, required final int played, required fina
       ),
     );
   }
+
+  static const _padding = EdgeInsets.symmetric(
+    horizontal: c.cardPaddingHorizontal,
+    vertical: c.cardPaddingVertical + 4,
+  );
 }
