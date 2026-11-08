@@ -70,7 +70,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     primary: _Colours.primaryDark,
     onSurface: _Colours.onSurfaceDark,
     onSurfaceVariant: _Colours.onSurfaceVariantDark,
-    faintFg: _Colours.outlineDark,
+    faintFg: _Colours.onSurfaceVariantDark,
   );
 
   factory adwLight() => MyTextThemeExt._make(
@@ -270,10 +270,10 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       faintButtonForeground = _Colours.onSurfaceDark,
       faintButtonIcon = _Colours.onSurfaceVariantDark,
       dialogBackground = _Colours.surfaceContainerHighestDark,
-      dialogDivider = const Color.fromRGBO(225, 230, 236, 0.15),
+      dialogDivider = const Color.fromRGBO(225, 230, 236, 0.14),
       sheetBackground = _Colours.surfaceBrightDark,
       cardBackground = _Colours.surfaceContainerHighDark,
-      cardDivider = const Color.fromRGBO(225, 230, 236, 0.15),
+      cardDivider = const Color.fromRGBO(225, 230, 236, 0.14),
       dialogHeaderDivider = const Color.fromRGBO(225, 230, 236, 0.052),
       sheetHeaderDivider = const Color.fromRGBO(225, 230, 236, 0.05),
       settingItemDivider = _Colours.surfaceDark,
@@ -303,7 +303,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetHeaderDivider = const Color.fromRGBO(0, 0, 6, 0.06),
       // onSurface with alpha
       settingItemDivider = const Color.fromRGBO(0, 0, 6, 0.10),
-      translucentHighlight = const Color.fromRGBO(0, 0, 6, 0.1),
+      translucentHighlight = const Color.fromRGBO(61, 56, 70, 0.1),
       scrollShadow = Colors.black38,
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
@@ -450,7 +450,7 @@ abstract final class _Colours {
   static const onTertiaryContainerDark = Color(0xFF290001);
   static const surfaceDark = Color(0xFF0D0E10);
   static const onSurfaceDark = Color(0xFFE1E6EC);
-  static const onSurfaceVariantDark = Color(0xFFCACCCF); // Color(0xFFA6ACB1);
+  static const onSurfaceVariantDark = Color(0xFFAAACBA); // Color(0xFFA6ACB1);
   static const surfaceTintDark = Color(0xFF92CCFF);
   static const inverseSurfaceDark = Color(0xFFF9F9FB);
   static const errorDark = Color(0xFFEE7D77);

@@ -7,6 +7,7 @@ final class const MyCard({
   super.key,
   required final Widget child,
   final EdgeInsets padding = c.cardPadding,
+  final BorderRadius borderRadius = c.commonBorderRadius,
   final Color? background,
 }) extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ final class const MyCard({
     final colourExt = theme.extension<MyColourThemeExt>()!;
     final valueExt = theme.extension<MyValueExt>()!;
     return Material(
-      borderRadius: c.commonBorderRadius,
+      borderRadius: borderRadius,
       color: background ?? colourExt.cardBackground,
       elevation: valueExt.cardElevation,
       shadowColor: Colors.black26,
@@ -23,7 +24,7 @@ final class const MyCard({
       clipBehavior: .antiAlias,
       child: Ink(
         decoration: BoxDecoration(
-          borderRadius: c.commonBorderRadius,
+          borderRadius: borderRadius,
           border: Border.all(color: colourExt.faintBorder, width: 1),
         ),
         child: Padding(padding: padding, child: child),

@@ -214,7 +214,7 @@ final class const ScoreCard({
             ),
           ),
           Container(
-            height: 64,
+            height: 52,
             padding: _iconPadding,
             decoration: BoxDecoration(
               border: Border(left: BorderSide(color: colourExt.cardDivider)),
