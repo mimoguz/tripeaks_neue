@@ -115,6 +115,8 @@ class GameButton extends StatelessWidget {
               child: InkWell(
                 onTap: onPressed,
                 borderRadius: BorderRadius.circular(c.commonRadiusValue * scale),
+                focusColor: colours.outlineVariant,
+                hoverColor: decorColour.foreground,
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: SizedBox(width: width, height: height),

@@ -42,17 +42,13 @@ extension DecorExt on Decor {
 }
 
 enum DecorColour {
-  red(background: Color(0xfff44336), foreground: Color(0x40ffcdd2), controlForeground: Color(0xFFFCD8DB)),
-  orange(background: Color(0xffff5e00), foreground: Color(0x40fffca0), controlForeground: Color(0xFFFAE4C4)),
-  amber(background: Color(0xffffa000), foreground: Color(0x40fff9c4), controlForeground: Color(0xfffff4d2)),
-  green(
-    background: Color(0xff4caa4f),
-    foreground: Color(0x40bee9bf),
-    controlForeground: Color.fromARGB(255, 214, 238, 215),
-  ),
-  cyan(background: Color(0xff04c4dd), foreground: Color(0x40d3f4f8), controlForeground: Color(0xffc8eaee)),
-  blue(background: Color(0xff2087db), foreground: Color(0x40b3e5fc), controlForeground: Color(0xffb3e5fc)),
-  violet(background: Color(0xff8f16cf), foreground: Color(0x40fdd0ff), controlForeground: Color(0xffe1bee7));
+  red(background: Color(0xfff44336), foreground: Color(0x40ffcdd2), controlForeground: Color(0xEEFFFFFF)),
+  orange(background: Color(0xffff5e00), foreground: Color(0x40fffca0), controlForeground: Color(0xEEFFFFFF)),
+  amber(background: Color(0xffffa000), foreground: Color(0x40fff9c4), controlForeground: Color(0xEEFFFFFF)),
+  green(background: Color(0xff4caa4f), foreground: Color(0x40bee9bf), controlForeground: Color(0xEEFFFFFF)),
+  cyan(background: Color(0xff04c4dd), foreground: Color(0x40d3f4f8), controlForeground: Color(0xEEFFFFFF)),
+  blue(background: Color(0xff2087db), foreground: Color(0x40b3e5fc), controlForeground: Color(0xEEFFFFFF)),
+  violet(background: Color(0xff8f16cf), foreground: Color(0x40fdd0ff), controlForeground: Color(0xEEFFFFFF));
 
   const DecorColour({required this.background, required this.foreground, required this.controlForeground});
 
