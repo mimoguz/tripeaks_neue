@@ -7,6 +7,10 @@ final class const VariantCard<T>({
   super.key,
   final Color? selectedBackground,
   final Color? selectedForeground,
+  final Color? background,
+  final Color? foreground,
+  final double frameWidth = 80,
+  final double frameHeight = 80,
   required final T variant,
   required final bool isSelected,
   required final String label,
@@ -39,101 +43,69 @@ class _VariantCardState extends State<VariantCard> {
     final theme = context.theme;
     final colours = theme.colorScheme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
-    final (cardBackground, frameForeground, labelColour, dividerColour, elevation) = widget.isSelected
+    final (cardBackground, frameForeground, labelColour, borderColour) = widget.isSelected
         ? (
-            widget.selectedBackground ?? colourExt.cardBackground,
-            widget.selectedForeground ?? colours.onSurfaceVariant,
-            widget.selectedForeground ?? colours.onSurface,
-            widget.selectedForeground ?? colourExt.cardDivider,
-            2.0,
+            widget.selectedBackground ?? widget.background ?? colours.primaryContainer,
+            widget.selectedForeground ?? widget.foreground ?? colours.onPrimaryContainer,
+            widget.selectedForeground ?? colours.onPrimaryContainer,
+            widget.selectedBackground ?? colours.primary,
           )
         : (
-            colourExt.cardBackground,
-            colours.onSurfaceVariant,
-            colours.onSurfaceVariant,
-            colourExt.cardDivider,
-            0.1,
+            widget.background ?? colours.surfaceContainer,
+            widget.foreground ?? colours.onSurfaceVariant,
+            colours.onSurface,
+            Colors.transparent,
           );
-    return Stack(
-      alignment: .center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 14.0),
-          child: Material(
-            color: _focused ? colours.primary : Colors.transparent,
-            borderRadius: _outerRadius,
-            child: Padding(
-              padding: const EdgeInsets.all(_borderWidth),
-              child: Material(
-                borderRadius: _raidus,
-                elevation: elevation,
-                color: cardBackground,
-                shadowColor: Colors.black38,
-                type: .card,
-                child: InkWell(
-                  focusNode: _focus,
-                  onTap: widget.onTap,
-                  borderRadius: _raidus,
-                  mouseCursor: SystemMouseCursors.click,
-                  child: Padding(
-                    padding: const EdgeInsets.all(_padding),
-                    child: Row(
-                      mainAxisSize: .min,
-                      children: [
-                        Column(
-                          spacing: 3,
-                          mainAxisSize: .min,
-                          children: [
-                            Flexible(
-                              child: Ink(
-                                decoration: BoxDecoration(
-                                  border: Border(bottom: BorderSide(color: dividerColour)),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 5.0),
-                                  child: ClipRRect(
-                                    borderRadius: _innerRadius,
-                                    child: IconTheme(
-                                      data: IconThemeData(color: frameForeground),
-                                      child: widget.child,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Text(
-                              widget.label,
-                              style: theme.textTheme.labelMedium?.copyWith(color: labelColour),
-                            ),
-                          ],
+    return TapRegion(
+      onTapInside: (_) => widget.onTap(),
+      child: Material(
+        type: .transparency,
+        child: Column(
+          mainAxisSize: .min,
+          spacing: 3,
+          children: [
+            InkWell(
+              onTap: widget.onTap,
+              focusNode: _focus,
+              borderRadius: _focusRadius,
+              child: Ink(
+                decoration: BoxDecoration(
+                  border: Border.all(color: borderColour, width: _borderWidth),
+                  borderRadius: _selectionRadius,
+                ),
+                child: Padding(
+                  padding: _borderPadding,
+                  child: SizedBox(
+                    width: widget.frameWidth,
+                    height: widget.frameHeight,
+                    child: Ink(
+                      decoration: BoxDecoration(
+                        borderRadius: _raidus,
+                        color: cardBackground,
+                        border: Border.all(
+                          color: colourExt.faintBorder,
+                          strokeAlign: BorderSide.strokeAlignOutside,
                         ),
-                      ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: _raidus,
+                        clipBehavior: .antiAlias,
+                        child: Center(
+                          child: IconTheme(
+                            data: IconThemeData(color: frameForeground),
+                            child: widget.child,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          ),
+            Text(widget.label, style: theme.textTheme.labelMedium),
+          ],
         ),
-        Positioned(
-          bottom: 0,
-          child: AnimatedSwitcher(
-            duration: Durations.medium3,
-            child: Material(
-              key: ValueKey(widget.isSelected),
-              color: colours.primary,
-              elevation: 3,
-              type: .circle,
-              child: widget.isSelected
-                  ? Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Icon(CustomIcons.check12, color: colours.onPrimary, size: 12),
-                    )
-                  : SizedBox(key: ValueKey(widget.isSelected)),
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 
@@ -144,9 +116,10 @@ class _VariantCardState extends State<VariantCard> {
   }
 
   static const _borderWidth = 2.0;
-  static const _padding = 5.0;
+  static const _borderPaddingVal = 4.0;
   static const _radiusVal = 12.0;
+  static const _borderPadding = EdgeInsets.all(_borderPaddingVal);
   static const _raidus = BorderRadius.all(Radius.circular(_radiusVal));
-  static const _outerRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderWidth));
-  static const _innerRadius = BorderRadius.all(Radius.circular(_radiusVal - _padding));
+  static const _selectionRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderPaddingVal));
+  static const _focusRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderPaddingVal));
 }

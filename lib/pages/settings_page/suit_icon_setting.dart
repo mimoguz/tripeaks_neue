@@ -32,23 +32,23 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
     final s = context.strings;
     final result = await showPlatformPopover<SuitIconTheme>(
       context,
-      title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      title: Text(s.suitIconsTitle, overflow: .fade, softWrap: false, maxLines: 1),
       builder: (context) => Padding(
         padding: c.DialogMetrics.contentPadding,
-        child: Center(
-          child: Wrap(
-            spacing: c.cellPadding,
-            runSpacing: c.cellPadding,
-            children: [
-              for (final variant in SuitIconTheme.values)
-                SuitVariantCard(
-                  variant: variant,
-                  isSelected: settings.suitIconTheme == variant,
-                  strings: s,
-                  onTap: () => Navigator.pop(context, variant),
-                ),
-            ],
-          ),
+        child: Wrap(
+          spacing: 2,
+          runSpacing: 6,
+          runAlignment: .center,
+          alignment: .center,
+          children: [
+            for (final variant in SuitIconTheme.values)
+              SuitVariantCard(
+                variant: variant,
+                isSelected: settings.suitIconTheme == variant,
+                strings: s,
+                onTap: () => Navigator.pop(context, variant),
+              ),
+          ],
         ),
       ),
     );
@@ -66,26 +66,27 @@ final class const SuitVariantCard({
   required final VoidCallback onTap,
 }) extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => VariantCard<SuitIconTheme>(
-    variant: variant,
-    isSelected: isSelected,
-    label: variant.label(strings),
-    onTap: onTap,
-    child: Padding(
-      padding: const EdgeInsets.all(2),
-      child: SizedBox(
-        width: 72,
-        child: Wrap(
-          spacing: 0,
-          runSpacing: 1,
-          children: [
-            Icon(CustomIcons.suitIcon(.hearts, variant), size: 36),
-            Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36),
-            Icon(CustomIcons.suitIcon(.spades, variant), size: 36),
-            Icon(CustomIcons.suitIcon(.clubs, variant), size: 36),
-          ],
-        ),
+  Widget build(BuildContext context) {
+    final colours = context.colours;
+    return VariantCard<SuitIconTheme>(
+      variant: variant,
+      isSelected: isSelected,
+      foreground: colours.onSecondaryContainer,
+      background: colours.secondaryContainer,
+      label: variant.label(strings),
+      frameWidth: 84,
+      frameHeight: 84,
+      onTap: onTap,
+      child: Wrap(
+        spacing: 2,
+        runSpacing: 2,
+        children: [
+          Icon(CustomIcons.suitIcon(.hearts, variant), size: 36, color: colours.tertiary),
+          Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36, color: colours.tertiary),
+          Icon(CustomIcons.suitIcon(.spades, variant), size: 36),
+          Icon(CustomIcons.suitIcon(.clubs, variant), size: 36),
+        ],
       ),
-    ),
-  );
+    );
+  }
 }

@@ -50,22 +50,22 @@ class const DecorSetting({super.key}) extends StatelessWidget {
       title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
       builder: (context) => Padding(
         padding: c.DialogMetrics.contentPadding,
-        child: Center(
-          child: Wrap(
-            runSpacing: c.cellPadding,
-            spacing: c.cellPadding,
-            children: [
-              for (final variant in Decor.values)
-                DecorVariantCard(
-                  variant: variant,
-                  colour: settings.decorColour,
-                  isSelected: settings.decor == variant,
-                  selectedDecorColour: settings.decorColour,
-                  strings: s,
-                  onTap: () => Navigator.pop(context, variant),
-                ),
-            ],
-          ),
+        child: Wrap(
+          spacing: 2,
+          runSpacing: 6,
+          runAlignment: .center,
+          alignment: .center,
+          children: [
+            for (final variant in Decor.values)
+              DecorVariantCard(
+                variant: variant,
+                colour: settings.decorColour,
+                isSelected: settings.decor == variant,
+                selectedDecorColour: settings.decorColour,
+                strings: s,
+                onTap: () => Navigator.pop(context, variant),
+              ),
+          ],
         ),
       ),
     );
@@ -91,11 +91,15 @@ final class const DecorVariantCard({
   @override
   Widget build(BuildContext context) => VariantCard<Decor>(
     variant: variant,
+    background: colour.background,
+    foreground: colour.controlForeground,
     selectedBackground: colour.background,
-    selectedForeground: colour.controlForeground,
+    selectedForeground: colour.foreground,
+    frameWidth: 84,
+    frameHeight: 84,
     isSelected: isSelected,
     label: variant.label(strings),
     onTap: onTap,
-    child: Icon(variant.icon, size: 78),
+    child: Icon(variant.icon, size: 84),
   );
 }
