@@ -1,5 +1,4 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 
@@ -16,48 +15,27 @@ final class const VariantCard<T>({
   required final String label,
   required final VoidCallback onTap,
   required final Widget child,
-}) extends StatefulWidget {
-  @override
-  State<VariantCard> createState() => _VariantCardState();
-}
-
-class _VariantCardState extends State<VariantCard> {
-  late final FocusNode _focus;
-  var _focused = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _focus = FocusNode();
-    _focus.addListener(_onFocusChange);
-  }
-
-  @override
-  void dispose() {
-    _focus.dispose();
-    super.dispose();
-  }
-
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colours = theme.colorScheme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
-    final (cardBackground, frameForeground, labelColour, borderColour) = widget.isSelected
+    final (cardBackground, frameForeground, labelColour, borderColour) = isSelected
         ? (
-            widget.selectedBackground ?? widget.background ?? colours.primaryContainer,
-            widget.selectedForeground ?? widget.foreground ?? colours.onPrimaryContainer,
-            widget.selectedForeground ?? colours.onPrimaryContainer,
-            widget.selectedBackground ?? colours.primary,
+            selectedBackground ?? background ?? colours.primaryContainer,
+            selectedForeground ?? foreground ?? colours.onPrimaryContainer,
+            selectedForeground ?? colours.onPrimaryContainer,
+            selectedBackground ?? colours.primary,
           )
         : (
-            widget.background ?? colours.surfaceContainer,
-            widget.foreground ?? colours.onSurfaceVariant,
+            background ?? colours.surfaceContainer,
+            foreground ?? colours.onSurfaceVariant,
             colours.onSurface,
             Colors.transparent,
           );
     return TapRegion(
-      onTapInside: (_) => widget.onTap(),
+      onTapInside: (_) => onTap(),
       child: Material(
         type: .transparency,
         child: Column(
@@ -65,8 +43,7 @@ class _VariantCardState extends State<VariantCard> {
           spacing: 3,
           children: [
             InkWell(
-              onTap: widget.onTap,
-              focusNode: _focus,
+              onTap: onTap,
               borderRadius: _focusRadius,
               child: Ink(
                 decoration: BoxDecoration(
@@ -76,8 +53,8 @@ class _VariantCardState extends State<VariantCard> {
                 child: Padding(
                   padding: _borderPadding,
                   child: SizedBox(
-                    width: widget.frameWidth,
-                    height: widget.frameHeight,
+                    width: frameWidth,
+                    height: frameHeight,
                     child: Ink(
                       decoration: BoxDecoration(
                         borderRadius: _raidus,
@@ -93,7 +70,7 @@ class _VariantCardState extends State<VariantCard> {
                         child: Center(
                           child: IconTheme(
                             data: IconThemeData(color: frameForeground),
-                            child: widget.child,
+                            child: child,
                           ),
                         ),
                       ),
@@ -102,17 +79,11 @@ class _VariantCardState extends State<VariantCard> {
                 ),
               ),
             ),
-            Text(widget.label, style: theme.textTheme.labelMedium),
+            Text(label, style: theme.textTheme.labelMedium),
           ],
         ),
       ),
     );
-  }
-
-  void _onFocusChange() {
-    setState(() {
-      _focused = _focus.hasFocus;
-    });
   }
 
   static const _borderWidth = 2.0;
