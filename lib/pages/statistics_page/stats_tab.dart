@@ -2,7 +2,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/my_theme.dart';
-import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
