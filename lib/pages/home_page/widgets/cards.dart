@@ -184,7 +184,7 @@ final class const RankText(final CardValue cardValue, {super.key}) extends State
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
+    final colour = cardValue.suit.isRed ? colours.error : colours.onSurfaceVariant;
     return Icon(CustomIcons.rankIcon(cardValue.rank), size: 40, color: colour);
   }
 }
@@ -209,7 +209,7 @@ final class const SuitImage(final CardValue cardValue, {super.key}) extends Stat
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    final colour = cardValue.suit.isRed ? colours.tertiary : colours.onSurfaceVariant;
+    final colour = cardValue.suit.isRed ? colours.error : colours.onSurfaceVariant;
     return Observer(
       builder: (context) {
         final settings = Provider.of<Settings>(context);
@@ -255,14 +255,17 @@ final class const TileShadow({super.key, final Alignment centre = Alignment.topR
       decoration: BoxDecoration(
         borderRadius: c.commonBorderRadius,
         gradient: RadialGradient(
-          colors: <Color>[context.colours.tertiaryContainer.withAlpha(80), Colors.transparent],
-          stops: [0.0, 1.0],
+          colors: _gradientColours,
+          stops: _gradientStops,
           center: centre,
           radius: 1.0,
         ),
       ),
     );
   }
+
+  static final _gradientColours = <Color>[Colors.deepOrange.withAlpha(80), Colors.transparent];
+  static final _gradientStops = <double>[0, 1];
 }
 
 String _suitChar(Suit suit) => switch (suit) {

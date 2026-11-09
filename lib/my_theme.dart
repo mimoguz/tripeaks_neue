@@ -3,8 +3,8 @@ import 'package:tripeaks_neue/util/platform_utils.dart';
 
 // ignore_for_file: unused_field, unused_element
 
-ThemeData light() => isDesktop ? _desktopLight : _light;
-ThemeData dark() => isDesktop ? _desktopDark : _dark;
+ThemeData light() => isDesktop ? _light : _light;
+ThemeData dark() => isDesktop ? _dark : _dark;
 
 final class MyValueExt extends ThemeExtension<MyValueExt> {
   final double utilPageMarginBottom;
@@ -399,19 +399,19 @@ abstract final class _Colours {
   static const onSecondaryLight = Color(0xFFF8F9FC);
   static const secondaryContainerLight = Color(0xFFE3E4E8); // Color(0xFFE2E2E5);
   static const onSecondaryContainerLight = Color(0xFF2D3338); //Color(0xFF505254);
-  static const tertiaryLight = Color(0xFFC02C22); // Color(0xFFB02F27);
-  static const onTertiaryLight = Color(0xFFFFF7F6);
-  static const tertiaryContainerLight = Color(0xFFF45F52);
-  static const onTertiaryContainerLight = Color(0xFF290001);
+  static const tertiaryLight = Color(0xFF595C85);
+  static const onTertiaryLight = Color(0xFFFBF8FF);
+  static const tertiaryContainerLight = Color(0xFFCCCEFE);
+  static const onTertiaryContainerLight = Color(0xFF41446C);
   static const surfaceLight = Color(0xFFF9F9FB);
   static const onSurfaceLight = Color(0xFF202226); // Color(0xFF2D3338);
   static const onSurfaceVariantLight = Color(0xFF505258); // Color(0xFF5A6065);
   static const surfaceTintLight = Color(0xFF006397);
   static const inverseSurfaceLight = Color(0xFF0D0E10);
-  static const errorLight = Color(0xFF9F403D);
-  static const onErrorLight = Color(0xFFFFF7F6);
-  static const errorContainerLight = Color(0xFFFE8983);
-  static const onErrorContainerLight = Color(0xFF752121);
+  static const errorLight = Color(0xFFC02C22); // Color(0xFFB02F27); // Color(0xFF9F403D)
+  static const onErrorLight = Color(0xFFFFF7F6); // Color(0xFFFFF7F6)
+  static const errorContainerLight = Color(0xFFF45F52); // Color(0xFFFE8983)
+  static const onErrorContainerLight = Color(0xFF290001); // Color(0xFF752121)
   static const outlineLight = Color(0xFF767B81);
   static const outlineVariantLight = Color(0xFFADB2B8);
   static const scrimLight = Color(0xFF000000);
@@ -430,10 +430,10 @@ abstract final class _Colours {
   static const secondaryFixedDimLight = Color(0xFFD4D4D7);
   static const onSecondaryFixedLight = Color(0xFF3D3F42);
   static const onSecondaryFixedVariantLight = Color(0xFF5A5C5E);
-  static const tertiaryFixedLight = Color(0xFFF45F52);
-  static const tertiaryFixedDimLight = Color(0xFFE35347);
-  static const onTertiaryFixedLight = Color(0xFF000000);
-  static const onTertiaryFixedVariantLight = Color(0xFF420002);
+  static const tertiaryFixedLight = Color(0xFFCCCEFE);
+  static const tertiaryFixedDimLight = Color(0xFFBEC0EF);
+  static const onTertiaryFixedLight = Color(0xFF2E3157);
+  static const onTertiaryFixedVariantLight = Color(0xFF4A4D76);
 
   static const primaryDark = Color(0xFF92CCFF);
   static const onPrimaryDark = Color(0xFF004469);
@@ -444,19 +444,19 @@ abstract final class _Colours {
   static const onSecondaryDark = Color(0xFF1E2023);
   static const secondaryContainerDark = Color(0xFF404248); // Color(0xFF393C3E);
   static const onSecondaryContainerDark = Color(0xFFE1E6EC); // Color(0xFFBEBFC2);
-  static const tertiaryDark = Color(0xFFFF8880); // Color(0xFFFF7163);
-  static const onTertiaryDark = Color(0xFF4A0002);
-  static const tertiaryContainerDark = Color(0xFFF45F52);
-  static const onTertiaryContainerDark = Color(0xFF290001);
+  static const tertiaryDark = Color(0xFFDCDDFF);
+  static const onTertiaryDark = Color(0xFF494D75);
+  static const tertiaryContainerDark = Color(0xFFCCCEFE);
+  static const onTertiaryContainerDark = Color(0xFF41446C);
   static const surfaceDark = Color(0xFF0D0E10);
   static const onSurfaceDark = Color(0xFFE1E6EC);
   static const onSurfaceVariantDark = Color(0xFFAAACBA); // Color(0xFFA6ACB1);
   static const surfaceTintDark = Color(0xFF92CCFF);
   static const inverseSurfaceDark = Color(0xFFF9F9FB);
-  static const errorDark = Color(0xFFEE7D77);
-  static const onErrorDark = Color(0xFF490106);
-  static const errorContainerDark = Color(0xFF7F2927);
-  static const onErrorContainerDark = Color(0xFFFF9993);
+  static const errorDark = Color(0xFFFF8880); // Color(0xFFEE7D77);
+  static const onErrorDark = Color(0xFF4A0002); // Color(0xFF490106);
+  static const errorContainerDark = Color(0xFFF45F52); // Color(0xFF7F2927);
+  static const onErrorContainerDark = Color(0xFF290001); // Color(0xFFFF9993);
   static const outlineDark = Color(0xFF70767B);
   static const outlineVariantDark = Color(0xFF43494E);
   static const scrimDark = Color(0xFF000000);
@@ -475,10 +475,10 @@ abstract final class _Colours {
   static const secondaryFixedDimDark = Color(0xFFD4D4D7);
   static const onSecondaryFixedDark = Color(0xFF3D3F42);
   static const onSecondaryFixedVariantDark = Color(0xFF5A5C5E);
-  static const tertiaryFixedDark = Color(0xFFF45F52);
-  static const tertiaryFixedDimDark = Color(0xFFE35347);
-  static const onTertiaryFixedDark = Color(0xFF000000);
-  static const onTertiaryFixedVariantDark = Color(0xFF420002);
+  static const tertiaryFixedDark = Color(0xFFCCCEFE);
+  static const tertiaryFixedDimDark = Color(0xFFBEC0EF);
+  static const onTertiaryFixedDark = Color(0xFF2E3157);
+  static const onTertiaryFixedVariantDark = Color(0xFF4A4D76);
 }
 
 abstract final class _AdwColours {

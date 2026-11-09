@@ -81,8 +81,8 @@ final class const SuitVariantCard({
         spacing: 2,
         runSpacing: 2,
         children: [
-          Icon(CustomIcons.suitIcon(.hearts, variant), size: 36, color: colours.tertiary),
-          Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36, color: colours.tertiary),
+          Icon(CustomIcons.suitIcon(.hearts, variant), size: 36, color: colours.error),
+          Icon(CustomIcons.suitIcon(.diamonds, variant), size: 36, color: colours.error),
           Icon(CustomIcons.suitIcon(.spades, variant), size: 36),
           Icon(CustomIcons.suitIcon(.clubs, variant), size: 36),
         ],
