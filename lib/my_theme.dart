@@ -3,8 +3,8 @@ import 'package:tripeaks_neue/util/platform_utils.dart';
 
 // ignore_for_file: unused_field, unused_element
 
-ThemeData light() => isDesktop ? _light : _light;
-ThemeData dark() => isDesktop ? _dark : _dark;
+ThemeData light() => isDesktop ? _desktopLight : _light;
+ThemeData dark() => isDesktop ? _desktopDark : _dark;
 
 final class MyValueExt extends ThemeExtension<MyValueExt> {
   final double utilPageMarginBottom;
@@ -542,6 +542,13 @@ abstract final class _AdwColours {
   static const onRed = Color(0xffffffff);
   static const redLight = Color(0xffc00023);
   static const redDark = Color(0xffff888c);
+
+  static const purple0 = Color(0xFFEFBFF0);
+  static const purple1 = Color(0xffdc8add);
+  static const purple2 = Color(0xffc061cb);
+  static const purple3 = Color(0xff9141ac);
+  static const purple4 = Color(0xff813d9c);
+  static const purple5 = Color(0xff613583);
 }
 
 const _lightScheme = ColorScheme(
@@ -651,20 +658,20 @@ const _adwLightScheme = ColorScheme(
   onSecondary: _AdwColours.light1,
   secondaryContainer: Color(0xFFEAEAEC),
   onSecondaryContainer: _AdwColours.dark4,
-  tertiary: _AdwColours.redLight,
-  onTertiary: _AdwColours.onRed,
-  tertiaryContainer: _AdwColours.redBg,
-  onTertiaryContainer: _AdwColours.onRed,
+  tertiary: _AdwColours.purple3,
+  onTertiary: _AdwColours.light2,
+  tertiaryContainer: _AdwColours.purple0,
+  onTertiaryContainer: _AdwColours.dark3,
   surface: _AdwColours.windowBgLight,
   onSurface: _AdwColours.windowFgLight,
   onSurfaceVariant: _AdwColours.dark3,
   surfaceTint: _AdwColours.accentLight,
   inverseSurface: _AdwColours.windowBgDark,
   onInverseSurface: _AdwColours.windowFgLight,
-  error: _AdwColours.destructiveLight,
-  onError: _AdwColours.destructiveFgLight,
-  errorContainer: _AdwColours.destructiveBgLight,
-  onErrorContainer: _AdwColours.destructiveFgLight,
+  error: _AdwColours.redLight,
+  onError: _AdwColours.onRed,
+  errorContainer: _AdwColours.redBg,
+  onErrorContainer: _AdwColours.onRed,
   outline: Color.fromRGBO(0, 0, 6, 0.6),
   outlineVariant: Color.fromRGBO(0, 0, 6, 0.3),
   scrim: _AdwColours.dark5,
@@ -700,20 +707,20 @@ const _adwDarkScheme = ColorScheme(
   onSecondary: _AdwColours.dark3,
   secondaryContainer: _AdwColours.dark3,
   onSecondaryContainer: _AdwColours.light1,
-  tertiary: _AdwColours.redDark,
-  onTertiary: _AdwColours.onRed,
-  tertiaryContainer: _AdwColours.redBg,
-  onTertiaryContainer: _AdwColours.onRed,
+  tertiary: _AdwColours.purple3,
+  onTertiary: _AdwColours.light1,
+  tertiaryContainer: _AdwColours.purple1,
+  onTertiaryContainer: _AdwColours.light2,
   surface: _AdwColours.windowBgDark,
   onSurface: _AdwColours.windowFgDark,
   onSurfaceVariant: _AdwColours.light3,
   surfaceTint: _AdwColours.accentDark,
   inverseSurface: _AdwColours.windowBgDark,
   onInverseSurface: _AdwColours.windowFgDark,
-  error: _AdwColours.destructiveDark,
-  onError: _AdwColours.destructiveFgDark,
-  errorContainer: _AdwColours.destructiveBgDark,
-  onErrorContainer: _AdwColours.destructiveFgDark,
+  error: _AdwColours.redDark,
+  onError: _AdwColours.onRed,
+  errorContainer: _AdwColours.redBg,
+  onErrorContainer: _AdwColours.onRed,
   outline: Color.fromRGBO(255, 255, 255, 0.6),
   outlineVariant: Color.fromRGBO(255, 255, 255, 0.4),
   scrim: _AdwColours.dark5,
