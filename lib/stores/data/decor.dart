@@ -42,19 +42,60 @@ extension DecorExt on Decor {
 }
 
 enum DecorColour {
-  red(background: Color(0xfff44336), foreground: Color(0x40ffcdd2), controlForeground: Color(0xEEFFFFFF)),
-  orange(background: Color(0xffff5e00), foreground: Color(0x40fffca0), controlForeground: Color(0xEEFFFFFF)),
-  amber(background: Color(0xffffa000), foreground: Color(0x40fff9c4), controlForeground: Color(0xEEFFFFFF)),
-  green(background: Color(0xff4caa4f), foreground: Color(0x40bee9bf), controlForeground: Color(0xEEFFFFFF)),
-  cyan(background: Color(0xff04c4dd), foreground: Color(0x40d3f4f8), controlForeground: Color(0xEEFFFFFF)),
-  blue(background: Color(0xff2087db), foreground: Color(0x40b3e5fc), controlForeground: Color(0xEEFFFFFF)),
-  violet(background: Color(0xff8f16cf), foreground: Color(0x40fdd0ff), controlForeground: Color(0xEEFFFFFF));
+  red(
+    background: Color(0xfff44336),
+    foreground: Color(0x40ffcdd2),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xffe96f66),
+  ),
+  orange(
+    background: Color(0xffff5e00),
+    foreground: Color(0x40fffca0),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xffed7e3e),
+  ),
+  amber(
+    background: Color(0xffffa000),
+    foreground: Color(0x40fff9c4),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xffedac3e),
+  ),
+  green(
+    background: Color(0xff4caa4f),
+    foreground: Color(0x40bee9bf),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff71b274),
+  ),
+  cyan(
+    background: Color(0xff04c4dd),
+    foreground: Color(0x40d3f4f8),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff3fc2d4),
+  ),
+  blue(
+    background: Color(0xff2087db),
+    foreground: Color(0x40b3e5fc),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff549ad4),
+  ),
+  violet(
+    background: Color(0xff8f16cf),
+    foreground: Color(0x40fdd0ff),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff9f4cca),
+  );
 
-  const DecorColour({required this.background, required this.foreground, required this.controlForeground});
+  const DecorColour({
+    required this.background,
+    required this.foreground,
+    required this.controlForeground,
+    required this.onSurface,
+  });
 
   final Color background;
   final Color foreground;
   final Color controlForeground;
+  final Color onSurface;
 
   String label(AppLocalizations s) => switch (this) {
     DecorColour.red => s.redColourLabel,

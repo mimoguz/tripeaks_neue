@@ -55,7 +55,7 @@ class const CircleGameButton({
                 child: Icon(
                   useSmall && smallIcon != null ? smallIcon : icon,
                   size: useSmall ? 16.0 : 24.0,
-                  color: onPressed == null ? colours.outlineVariant : decorColour.background,
+                  color: onPressed == null ? colours.outlineVariant : decorColour.onSurface,
                 ),
               ),
             ),

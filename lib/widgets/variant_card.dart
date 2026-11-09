@@ -44,7 +44,7 @@ final class const VariantCard<T>({
           children: [
             InkWell(
               onTap: onTap,
-              borderRadius: _focusRadius,
+              borderRadius: _selectionRadius,
               child: Ink(
                 decoration: BoxDecoration(
                   border: Border.all(color: borderColour, width: _borderWidth),
@@ -87,10 +87,11 @@ final class const VariantCard<T>({
   }
 
   static const _borderWidth = 2.0;
-  static const _borderPaddingVal = 4.0;
+  static const _borderPaddingVal = 3.0;
   static const _radiusVal = 12.0;
   static const _borderPadding = EdgeInsets.all(_borderPaddingVal);
   static const _raidus = BorderRadius.all(Radius.circular(_radiusVal));
-  static const _selectionRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderPaddingVal));
-  static const _focusRadius = BorderRadius.all(Radius.circular(_radiusVal + _borderPaddingVal));
+  static const _selectionRadius = BorderRadius.all(
+    Radius.circular(_radiusVal + _borderPaddingVal + _borderWidth),
+  );
 }

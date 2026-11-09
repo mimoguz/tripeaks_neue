@@ -74,15 +74,15 @@ class const OverallStatsTile(final Statistics statistics, {super.key}) extends S
                     Expanded(
                       child: ScoreCard(
                         score: statistics.bestGames.firstOrNull?.score ?? 0,
-                        label: "HIGHEST SCORE",
-                        icon: isDark ? CustomIcons.starDark48 : CustomIcons.star48,
+                        label: s.bestScoreLabel,
+                        icon: isDark ? CustomIcons.starDark40 : CustomIcons.star40,
                       ),
                     ),
                     Expanded(
                       child: ScoreCard(
                         score: statistics.longestChain,
-                        label: "LONGEST CHAIN",
-                        icon: CustomIcons.chain48,
+                        label: s.longestChainLabel,
+                        icon: CustomIcons.chain40,
                       ),
                     ),
                   ],
@@ -198,6 +198,7 @@ final class const ScoreCard({
               mainAxisAlignment: .center,
               crossAxisAlignment: .start,
               children: [
+                SizedBox(height: 2),
                 Transform.translate(
                   offset: _offset,
                   child: Text(
@@ -213,12 +214,12 @@ final class const ScoreCard({
             ),
           ),
           Container(
-            height: 52,
+            height: 48,
             padding: _iconPadding,
             decoration: BoxDecoration(
               border: Border(left: BorderSide(color: colourExt.cardDivider)),
             ),
-            child: Icon(icon, size: 48, color: colours.onSurfaceVariant),
+            child: Icon(icon, size: 40, color: colours.onSurfaceVariant),
           ),
         ],
       ),
@@ -226,7 +227,7 @@ final class const ScoreCard({
   }
 
   static const _offset = Offset(0, 3);
-  static const _iconPadding = EdgeInsets.only(top: 2, left: c.cardPaddingHorizontal);
+  static const _iconPadding = EdgeInsets.only(left: c.cardPaddingHorizontal);
 }
 
 class const ScoreTable({
@@ -408,20 +409,21 @@ final class const Result(final bool result, final AppLocalizations strings, {sup
       child: Container(
         decoration: BoxDecoration(
           shape: .circle,
-          color: result ? Colors.lightGreen.shade500 : theme.colorScheme.outline,
+          color: result ? Colors.lightGreen.shade500 : theme.colorScheme.onSurfaceVariant,
         ),
         width: 22,
         height: 22,
-        child: Center(
-          child: Icon(
-            result ? CustomIcons.check12 : CustomIcons.cross12,
-            color: colourExt.cardBackground,
-            size: 12,
-          ),
+        padding: _padding,
+        child: Icon(
+          result ? CustomIcons.check12 : CustomIcons.cross12,
+          color: colourExt.cardBackground,
+          size: 12,
         ),
       ),
     );
   }
+
+  static const _padding = EdgeInsets.all(5);
 }
 
 final class const ChartCard({super.key, required final int played, required final int cleared})
