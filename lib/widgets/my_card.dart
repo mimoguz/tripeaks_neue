@@ -19,7 +19,7 @@ final class const MyCard({
       borderRadius: borderRadius,
       color: background ?? colourExt.cardBackground,
       elevation: valueExt.cardElevation,
-      shadowColor: Colors.black26,
+      shadowColor: Colors.black54,
       type: .card,
       clipBehavior: .antiAlias,
       child: Ink(

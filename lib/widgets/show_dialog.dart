@@ -24,7 +24,6 @@ Future<T?> showCommonBottomSheet<T>(BuildContext context, Widget Function(BuildC
     backgroundColor: colourExt.dialogBackground,
     shape: c.DialogMetrics.bottomSheetShape,
     isScrollControlled: true,
-    elevation: 4.0,
     builder: (context) => builder(context),
   );
 }
