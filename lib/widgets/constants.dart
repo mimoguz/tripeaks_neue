@@ -1,26 +1,18 @@
 import 'package:material_ui/material_ui.dart';
 
-const double activeRankSize = 30.0;
 const double activeSuitSize = 36.0;
 const double buttonSize = 96.0;
 const double cardPaddingHorizontal = 14.0;
 const double cardPaddingVertical = 10.0;
 const double cardSize = 116.0;
 const double cellPadding = 4.0;
-const double checkBoxCorrection = 5.0;
 const double commonRadiusValue = 18.0;
-const double dialogPadding = 20;
-const double divPadding = 8;
-const double dropdownItemWidth = 120;
 const double iconScaleThreshold = 0.4;
 const double inactiveRankSize = 18.0;
-const double inactiveSuitSize = 20.0;
 const double itemSpacing = 16;
 const double maxListWidth = 680;
-const double maxRadioWidth = maxListWidth - 32;
 const double maxRealButtonSize = 52.0;
-const double pagePadding = 24.0;
-const double radioCorrection = 5.0;
+const double homePadding = 24.0;
 const double requiredHeight = 600;
 const double requiredWidth = 1260;
 const double stockShift = 30.0;

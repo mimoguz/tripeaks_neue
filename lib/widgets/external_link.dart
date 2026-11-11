@@ -46,7 +46,6 @@ class ExternalLink extends StatelessWidget {
     );
   }
 
-  // TODO: Snackbar looks weird on desktop
   Future<void> _copy(BuildContext context) async {
     await Clipboard.setData(ClipboardData(text: uri.toString()));
     if (context.mounted) {

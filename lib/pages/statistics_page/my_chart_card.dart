@@ -1,6 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/my_theme.dart';
-import 'package:tripeaks_neue/pages/statistics_page/pie_chart.dart';
+import 'package:tripeaks_neue/pages/statistics_page/my_pie_painter.dart';
 import 'package:tripeaks_neue/util/format_ext.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
@@ -39,7 +39,7 @@ final class const MyChartCard({super.key, required final int played, required fi
                     top: 0,
                     bottom: 0,
                     child: CustomPaint(
-                      painter: PiePainter(ratio: ratio, circleColour: colours.onTertiaryContainer),
+                      painter: MyPiePainter(ratio: ratio, circleColour: colours.onTertiaryContainer),
                     ),
                   ),
                   Column(

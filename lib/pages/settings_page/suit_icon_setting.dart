@@ -38,7 +38,7 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
         child: Center(
           child: Wrap(
             spacing: 2,
-            runSpacing: 6,
+            runSpacing: 8,
             children: [
               for (final variant in SuitIconTheme.values)
                 SuitVariantCard(

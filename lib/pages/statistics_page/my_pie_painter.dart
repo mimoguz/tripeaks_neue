@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:material_ui/material_ui.dart';
 
-final class const PiePainter({
+final class const MyPiePainter({
   required final double ratio,
   required final Color circleColour,
   final double thickness = 22,
@@ -25,7 +25,7 @@ final class const PiePainter({
   }
 
   @override
-  bool shouldRepaint(PiePainter oldDelegate) => circleColour != oldDelegate.circleColour;
+  bool shouldRepaint(MyPiePainter oldDelegate) => circleColour != oldDelegate.circleColour;
 
   void _drawRatio(Canvas canvas, Rect outerRect) {
     final halfThickness = thickness * 0.5;
@@ -67,7 +67,7 @@ final class const PiePainter({
     shadowPnt
       ..strokeWidth = thickness
       ..strokeCap = drawRound ? .round : .butt;
-    canvas.drawArc(rect, startAngle, sweepAngle, false, shadowPnt);
+    canvas.drawArc(rect.shift(_shadowOffset), startAngle, sweepAngle, false, shadowPnt);
 
     canvas.restore();
 
@@ -77,8 +77,7 @@ final class const PiePainter({
       ..strokeWidth = thickness + 1
       ..color = Colors.green
       ..shader = SweepGradient(
-        colors: <Color>[Colors.green, Colors.lightGreen, Colors.lightGreen.shade400],
-        // startAngle: math.pi * 3 / 4.0,
+        colors: _gradientColours,
         stops: <double>[0, ratio * 0.5, ratio + 0.01],
         transform: GradientRotation(zeroAngle - 0.01),
       ).createShader(outerRect);
@@ -117,9 +116,7 @@ final class const PiePainter({
       ..addOval(innerRect)
       ..fillType = .evenOdd;
 
-    final shader = RadialGradient(
-      colors: <Color>[Colors.green, Colors.lightGreen.shade400, Colors.lightGreen.shade300],
-    ).createShader(outerRect);
+    final shader = RadialGradient(colors: _gradientColours).createShader(outerRect);
     final arcPnt = Paint()
       ..style = .fill
       ..color = Colors.green
@@ -137,4 +134,7 @@ final class const PiePainter({
     canvas.drawPath(path.shift(const Offset(0, 2)), shadowPnt);
     canvas.restore();
   }
+
+  static const _shadowOffset = Offset(0, 2);
+  static const _gradientColours = <Color>[Colors.green, Colors.lightGreen, Color(0xFF9CCC65)];
 }

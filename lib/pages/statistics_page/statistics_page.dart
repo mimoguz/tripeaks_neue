@@ -6,7 +6,7 @@ import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/my_theme.dart';
-import 'package:tripeaks_neue/pages/statistics_page/stats_tab.dart';
+import 'package:tripeaks_neue/pages/statistics_page/my_statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
@@ -115,13 +115,13 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                     for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
                                   ],
                                   contents: <Widget>[
-                                    StatsTab(
+                                    MyStatisticsTab(
                                       statistics.overallStatistics,
                                       isNarrow: useVertical,
                                       key: ValueKey("overall"),
                                     ),
                                     for (final layout in perLayoutStats)
-                                      StatsTab(
+                                      MyStatisticsTab(
                                         layout.value,
                                         showLayout: false,
                                         isNarrow: useVertical,
@@ -131,9 +131,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                 )
                               : TabBarView(
                                   children: <Widget>[
-                                    StatsTab(statistics.overallStatistics, isNarrow: useVertical),
+                                    MyStatisticsTab(statistics.overallStatistics, isNarrow: useVertical),
                                     for (final layout in perLayoutStats)
-                                      StatsTab(
+                                      MyStatisticsTab(
                                         layout.value,
                                         showLayout: false,
                                         isNarrow: useVertical,
