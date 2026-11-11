@@ -10,10 +10,16 @@ final class const H(
   final double maxWidth = c.maxListWidth,
   final double horizontalPadding = c.utilPageMargin,
   final bool pinned = true,
+  final Color? background,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SliverPersistentHeader(
-    delegate: HDelegate(child, maxWidth: maxWidth, horizontalPadding: horizontalPadding),
+    delegate: HDelegate(
+      child,
+      maxWidth: maxWidth,
+      horizontalPadding: horizontalPadding,
+      background: background,
+    ),
     pinned: pinned,
     floating: false,
   );
@@ -23,6 +29,7 @@ final class const HDelegate(
   final Widget child, {
   required final double maxWidth,
   required final double horizontalPadding,
+  final Color? background,
 }) extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -31,14 +38,14 @@ final class const HDelegate(
     final colourExt = theme.extension<MyColourThemeExt>()!;
     final textExt = theme.extension<MyTextThemeExt>()!;
     return Material(
-      color: theme.colorScheme.surface,
+      color: background ?? theme.colorScheme.surface,
       shadowColor: colourExt.headerShadow,
       elevation: elevated ? 2 : 0,
       child: ConstrainedItem(
-        padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+        padding: EdgeInsets.fromLTRB(horizontalPadding, 0, horizontalPadding, 6),
         maxHeight: _maxHeight,
         child: Column(
-          mainAxisAlignment: .center,
+          mainAxisAlignment: .end,
           children: [
             Row(
               children: [DefaultTextStyle(style: textExt.sectionTitle, child: child)],
@@ -59,7 +66,7 @@ final class const HDelegate(
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
   static const _maxHeight = 36.0;
-  static const _minHeight = 24.0;
+  static const _minHeight = 26.0;
 }
 
 final class const P(final Widget child, {super.key, final bool spaceAfter = true}) extends StatelessWidget {

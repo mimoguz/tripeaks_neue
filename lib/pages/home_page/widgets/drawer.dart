@@ -117,7 +117,7 @@ final class const AppTitle({super.key}) extends StatelessWidget {
       fontWeight: .w300,
     );
     final peak = colours.brightness == .dark ? "\ue00c" : "\ue00d";
-    final neue = style.copyWith(color: colours.tertiary);
+    final neue = style.copyWith(color: colours.error);
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints.loose(Size.fromWidth(170.0)),

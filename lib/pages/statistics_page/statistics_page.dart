@@ -74,8 +74,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Scaffold(
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
-                        backgroundColor: colours.surface,
-                        surfaceTintColor: colours.surface,
+                        backgroundColor: colours.surfaceContainer,
+                        surfaceTintColor: colours.surfaceContainer,
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
@@ -97,32 +97,50 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                 ],
                               ),
                       ),
-                      body: Focus(
-                        focusNode: _focusNode,
-                        autofocus: true,
-                        skipTraversal: true,
-                        descendantsAreFocusable: true,
-                        descendantsAreTraversable: true,
-                        child: useVertical
-                            ? MyVerticalTabView(
-                                width: 180,
-                                tabs: <Tab>[
-                                  Tab(text: s.overallStatisticsTitle),
-                                  for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
-                                ],
-                                contents: <Widget>[
-                                  StatsTab(statistics.overallStatistics, key: ValueKey("overall")),
-                                  for (final layout in perLayoutStats)
-                                    StatsTab(layout.value, showLayout: false, key: Key(layout.key.name)),
-                                ],
-                              )
-                            : TabBarView(
-                                children: <Widget>[
-                                  StatsTab(statistics.overallStatistics),
-                                  for (final layout in perLayoutStats)
-                                    StatsTab(layout.value, showLayout: false),
-                                ],
-                              ),
+                      body: Container(
+                        color: colours.surfaceContainer,
+                        child: Focus(
+                          focusNode: _focusNode,
+                          autofocus: true,
+                          skipTraversal: true,
+                          descendantsAreFocusable: true,
+                          descendantsAreTraversable: true,
+                          child: useVertical
+                              ? MyVerticalTabView(
+                                  background: colours.surfaceContainer,
+                                  width: 180,
+                                  tabs: <Tab>[
+                                    Tab(text: s.overallStatisticsTitle),
+                                    for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
+                                  ],
+                                  contents: <Widget>[
+                                    StatsTab(
+                                      statistics.overallStatistics,
+                                      isNarrow: useVertical,
+                                      key: ValueKey("overall"),
+                                    ),
+                                    for (final layout in perLayoutStats)
+                                      StatsTab(
+                                        layout.value,
+                                        showLayout: false,
+                                        isNarrow: useVertical,
+                                        key: Key(layout.key.name),
+                                      ),
+                                  ],
+                                )
+                              : TabBarView(
+                                  children: <Widget>[
+                                    StatsTab(statistics.overallStatistics, isNarrow: useVertical),
+                                    for (final layout in perLayoutStats)
+                                      StatsTab(
+                                        layout.value,
+                                        showLayout: false,
+                                        isNarrow: useVertical,
+                                        key: Key(layout.key.name),
+                                      ),
+                                  ],
+                                ),
+                        ),
                       ),
                     ),
                   );

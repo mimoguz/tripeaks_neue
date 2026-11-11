@@ -43,9 +43,9 @@ class CustomIcons {
   static const backItsKnot = IconData(0xe90c, fontFamily: _cards);
   static const backNeue = IconData(0xe90d, fontFamily: _cards);
   static const backSolar = IconData(0xe90e, fontFamily: _cards);
-  static const chain40 = IconData(0xe900, fontFamily: _cards);
-  static const star40 = IconData(0xe901, fontFamily: _cards);
-  static const starDark40 = IconData(0xe902, fontFamily: _cards);
+  static const chain32 = IconData(0xe900, fontFamily: _cards);
+  static const starDark32 = IconData(0xe901, fontFamily: _cards);
+  static const starLight32 = IconData(0xe902, fontFamily: _cards);
 
   static const algorithm16 = IconData(0xe900, fontFamily: _actions);
   static const chain = IconData(0xe918, fontFamily: _actions);

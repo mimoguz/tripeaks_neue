@@ -72,8 +72,8 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: theme.colorScheme.surface,
-                  surfaceTintColor: theme.colorScheme.surface,
+                  backgroundColor: theme.colorScheme.surfaceContainer,
+                  surfaceTintColor: theme.colorScheme.surfaceContainer,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
@@ -102,8 +102,9 @@ final class SettingsPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = context.strings;
     final valueExt = context.theme.extension<MyValueExt>()!;
+    final bg = context.colours.surfaceContainer;
     return Container(
-      color: context.colours.surface,
+      color: bg,
       child: CustomScrollView(
         slivers: <Widget>[
           const SliverToBoxAdapter(
@@ -114,10 +115,10 @@ final class SettingsPageBody extends StatelessWidget {
           ),
           SliverMainAxisGroup(
             slivers: <Widget>[
-              H(Text(s.nextGameSettingGroupTitle)),
+              H(Text(s.nextGameSettingGroupTitle), background: bg),
               const SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
+                  padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing, top: 4),
                   child: GroupTile(
                     padding: EdgeInsets.zero,
                     children: [
@@ -135,10 +136,10 @@ final class SettingsPageBody extends StatelessWidget {
 
           SliverMainAxisGroup(
             slivers: <Widget>[
-              H(Text(s.interfaceSettingGroupTitle)),
+              H(Text(s.interfaceSettingGroupTitle), background: bg),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: valueExt.utilPageMarginBottom),
+                  padding: EdgeInsets.only(bottom: valueExt.utilPageMarginBottom, top: 4),
                   child: const GroupTile(
                     padding: EdgeInsets.zero,
                     children: [

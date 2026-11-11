@@ -43,14 +43,16 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
   final TextStyle sectionTitle;
   final TextStyle dialogTitle;
   final TextStyle listItemSubtitle;
-  final TextStyle faintLabelMedium;
-  final TextStyle faintLabelSmall;
+  final TextStyle faintLabelS;
+  final TextStyle faintLabelM;
+  final TextStyle faintLabelL;
   final TextStyle paragraphText;
   final TextStyle paragraphTextItalic;
   final TextStyle numericBody;
-  final TextStyle numericTitle;
-  final TextStyle numericLarge;
-  final TextStyle numericMedium;
+  final TextStyle numericM;
+  final TextStyle numericML;
+  final TextStyle numericL;
+  final TextStyle numericXL;
   final TextStyle link;
 
   @override
@@ -63,6 +65,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     primary: _Colours.primaryLight,
     onSurface: _Colours.onSurfaceLight,
     onSurfaceVariant: _Colours.onSurfaceVariantLight,
+    tertiary: _Colours.tertiaryLight,
     faintFg: _Colours.outlineLight,
   );
 
@@ -70,6 +73,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     primary: _Colours.primaryDark,
     onSurface: _Colours.onSurfaceDark,
     onSurfaceVariant: _Colours.onSurfaceVariantDark,
+    tertiary: _Colours.tertiaryDark,
     faintFg: _Colours.onSurfaceVariantDark,
   );
 
@@ -77,6 +81,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     primary: _AdwColours.accentLight,
     onSurface: _AdwColours.windowFgLight,
     onSurfaceVariant: _AdwColours.dark3,
+    tertiary: _Colours.tertiaryLight,
     faintFg: _AdwColours.dark1,
   );
 
@@ -84,6 +89,7 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     primary: _AdwColours.accentDark,
     onSurface: _AdwColours.windowFgDark,
     onSurfaceVariant: _AdwColours.light2,
+    tertiary: _Colours.tertiaryDark,
     faintFg: _AdwColours.light3,
   );
 
@@ -91,27 +97,38 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
     required Color primary,
     required Color onSurface,
     required Color onSurfaceVariant,
+    required Color tertiary,
     required Color faintFg,
   }) : sectionTitle = TextStyle(
          fontFamily: "Roboto",
          fontSize: 16,
          letterSpacing: 0.15,
-         fontWeight: .w700,
-         color: primary,
+         fontWeight: .w800,
+         color: onSurfaceVariant,
        ),
        dialogTitle = TextStyle(fontFamily: "Roboto", fontSize: 20, fontWeight: .w500, color: onSurface),
        listItemSubtitle = TextStyle(fontFamily: "Roboto", fontSize: 14, color: onSurfaceVariant),
-       faintLabelMedium = TextStyle(
+       faintLabelS = TextStyle(
          fontFamily: "Roboto",
-         fontSize: 12,
+         fontSize: 11,
+         height: 1,
          letterSpacing: 0.5,
          fontWeight: .w500,
          color: faintFg,
        ),
-       faintLabelSmall = TextStyle(
+       faintLabelM = TextStyle(
          fontFamily: "Roboto",
-         fontSize: 11,
+         fontSize: 12,
+         height: 1,
          letterSpacing: 0.5,
+         fontWeight: .w500,
+         color: faintFg,
+       ),
+       faintLabelL = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 14,
+         height: 1,
+         letterSpacing: 0.1,
          fontWeight: .w500,
          color: faintFg,
        ),
@@ -128,29 +145,41 @@ final class MyTextThemeExt extends ThemeExtension<MyTextThemeExt> {
          fontSize: 14,
          color: onSurface,
          fontFeatures: _fontFeaturesNumeric,
+         height: 1,
        ),
-       numericTitle = TextStyle(
+       numericM = TextStyle(
          fontFamily: "Roboto",
          fontSize: 16,
          letterSpacing: 0.15,
          fontWeight: .w700,
          color: onSurfaceVariant,
          fontFeatures: _fontFeaturesNumeric,
+         height: 1,
        ),
-       numericLarge = TextStyle(
-         fontFamily: "Roboto",
-         fontSize: 22,
-         color: onSurfaceVariant,
-         fontWeight: .w700,
-         fontFeatures: _fontFeaturesNumeric,
-       ),
-       numericMedium = TextStyle(
+       numericML = TextStyle(
          fontFamily: "Roboto",
          fontSize: 18,
          letterSpacing: 0.15,
-         fontWeight: .w700,
+         fontWeight: .w400,
          color: onSurfaceVariant,
          fontFeatures: _fontFeaturesNumeric,
+         height: 1,
+       ),
+       numericL = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 24,
+         color: onSurfaceVariant,
+         fontWeight: .w400,
+         fontFeatures: _fontFeaturesNumeric,
+         height: 1,
+       ),
+       numericXL = TextStyle(
+         fontFamily: "Roboto",
+         fontSize: 32,
+         color: onSurfaceVariant,
+         fontWeight: .w400,
+         fontFeatures: _fontFeaturesNumeric,
+         height: 1,
        ),
        link = TextStyle(fontFamily: "Roboto", fontSize: 14, color: primary, height: 1.8);
 
@@ -416,7 +445,7 @@ abstract final class _Colours {
   static const outlineVariantLight = Color(0xFFADB2B8);
   static const scrimLight = Color(0xFF000000);
   static const surfaceBrightLight = Color(0xFFF9F9FB);
-  static const surfaceContainerLight = Color(0xFFEDEEF2); // Color(0xFFECEEF2);
+  static const surfaceContainerLight = Color(0xFFF0F2F5); // Color(0xFFECEEF2);
   static const surfaceContainerHighLight = Color(0xFFE5E8ED);
   static const surfaceContainerHighestLight = Color(0xFFDEE3E9);
   static const surfaceContainerLowLight = Color(0xFFF3F3F6);
@@ -542,13 +571,6 @@ abstract final class _AdwColours {
   static const onRed = Color(0xffffffff);
   static const redLight = Color(0xffc00023);
   static const redDark = Color(0xffff888c);
-
-  static const purple0 = Color(0xFFEFBFF0);
-  static const purple1 = Color(0xffdc8add);
-  static const purple2 = Color(0xffc061cb);
-  static const purple3 = Color(0xff9141ac);
-  static const purple4 = Color(0xff813d9c);
-  static const purple5 = Color(0xff613583);
 }
 
 const _lightScheme = ColorScheme(
@@ -627,7 +649,7 @@ const _darkScheme = ColorScheme(
   outlineVariant: _Colours.outlineVariantDark,
   scrim: _Colours.scrimDark,
   surfaceBright: _Colours.surfaceBrightDark,
-  surfaceContainer: _Colours.surfaceContainerDark,
+  surfaceContainer: _Colours.surfaceDark, // _Colours.surfaceContainerDark,
   surfaceContainerHigh: _Colours.surfaceContainerHighDark,
   surfaceContainerHighest: _Colours.surfaceContainerHighestDark,
   surfaceContainerLow: _Colours.surfaceContainerLowDark,
@@ -658,10 +680,10 @@ const _adwLightScheme = ColorScheme(
   onSecondary: _AdwColours.light1,
   secondaryContainer: Color(0xFFEAEAEC),
   onSecondaryContainer: _AdwColours.dark4,
-  tertiary: _AdwColours.purple3,
-  onTertiary: _AdwColours.light2,
-  tertiaryContainer: _AdwColours.purple0,
-  onTertiaryContainer: _AdwColours.dark3,
+  tertiary: _Colours.tertiaryLight,
+  onTertiary: _Colours.onTertiaryLight,
+  tertiaryContainer: _Colours.tertiaryContainerLight,
+  onTertiaryContainer: _Colours.onTertiaryContainerLight,
   surface: _AdwColours.windowBgLight,
   onSurface: _AdwColours.windowFgLight,
   onSurfaceVariant: _AdwColours.dark3,
@@ -676,7 +698,7 @@ const _adwLightScheme = ColorScheme(
   outlineVariant: Color.fromRGBO(0, 0, 6, 0.3),
   scrim: _AdwColours.dark5,
   surfaceBright: _AdwColours.viewBgLight,
-  surfaceContainer: _AdwColours.viewBgLight,
+  surfaceContainer: _AdwColours.windowBgLight, // _AdwColours.viewBgLight,
   surfaceContainerHigh: _AdwColours.secondarySidebarBgLight,
   surfaceContainerHighest: _AdwColours.sidebarBgLight,
   surfaceContainerLow: _AdwColours.light2,
@@ -707,10 +729,10 @@ const _adwDarkScheme = ColorScheme(
   onSecondary: _AdwColours.dark3,
   secondaryContainer: _AdwColours.dark3,
   onSecondaryContainer: _AdwColours.light1,
-  tertiary: _AdwColours.purple3,
-  onTertiary: _AdwColours.light1,
-  tertiaryContainer: _AdwColours.purple1,
-  onTertiaryContainer: _AdwColours.light2,
+  tertiary: _Colours.tertiaryDark,
+  onTertiary: _Colours.onTertiaryDark,
+  tertiaryContainer: _Colours.tertiaryContainerDark,
+  onTertiaryContainer: _Colours.onTertiaryContainerDark,
   surface: _AdwColours.windowBgDark,
   onSurface: _AdwColours.windowFgDark,
   onSurfaceVariant: _AdwColours.light3,
@@ -725,7 +747,7 @@ const _adwDarkScheme = ColorScheme(
   outlineVariant: Color.fromRGBO(255, 255, 255, 0.4),
   scrim: _AdwColours.dark5,
   surfaceBright: _AdwColours.viewBgDark,
-  surfaceContainer: _AdwColours.viewBgDark,
+  surfaceContainer: _AdwColours.windowBgDark, // _AdwColours.viewBgDark,
   surfaceContainerHigh: _AdwColours.sidebarBgDark,
   surfaceContainerHighest: _AdwColours.secondarySidebarBgDark,
   surfaceContainerLow: Color.fromRGBO(48, 48, 52, 1),

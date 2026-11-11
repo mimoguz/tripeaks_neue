@@ -9,4 +9,5 @@ extension DateFormatExt on DateTime {
 
 extension NumberFormatExt on double {
   String get percent => "${_numberFormat.format(this * 100)}%";
+  String get asPercent => _numberFormat.format(this * 100);
 }

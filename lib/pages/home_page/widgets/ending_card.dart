@@ -40,18 +40,10 @@ final class const EndingCard({
                   HighlightsLine(stats: stats),
                   Padding(
                     padding: const EdgeInsets.only(top: 2.0),
-                    child: FilledButtonTheme(
-                      data: FilledButtonThemeData(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primary.withAlpha(180),
-                          foregroundColor: theme.colorScheme.onPrimary,
-                        ),
-                      ),
-                      child: Column(
-                        spacing: 8.0,
-                        crossAxisAlignment: .stretch,
-                        children: [...actions, const EndingCardToolBar()],
-                      ),
+                    child: Column(
+                      spacing: 8.0,
+                      crossAxisAlignment: .stretch,
+                      children: [...actions, const EndingCardToolBar()],
                     ),
                   ),
                 ],
@@ -101,8 +93,8 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
     final s = context.strings;
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
-    final labelStyle = textExt.faintLabelSmall;
-    final numberStyle = textExt.numericTitle;
+    final labelStyle = textExt.faintLabelS;
+    final numberStyle = textExt.numericM;
     return Row(
       spacing: 40.0,
       mainAxisSize: .min,

@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/my_theme.dart';
+import 'package:tripeaks_neue/pages/statistics_page/my_overview.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/player_statistics.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
@@ -9,28 +10,42 @@ import 'package:tripeaks_neue/util/format_ext.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
+import 'package:tripeaks_neue/widgets/dividers.dart';
 import 'package:tripeaks_neue/widgets/my_card.dart';
 import 'package:tripeaks_neue/widgets/sliver_text.dart';
 
-class const StatsTab(final Statistics statistics, {super.key, final bool showLayout = true})
-    extends StatelessWidget {
+class const StatsTab(
+  final Statistics statistics, {
+  super.key,
+  final bool isNarrow = false,
+  final bool showLayout = true,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
-    final valueExt = context.theme.extension<MyValueExt>()!;
+    final theme = context.theme;
+    final valueExt = theme.extension<MyValueExt>()!;
+    final bg = theme.colorScheme.surfaceContainer;
     return CustomScrollView(
       slivers: <Widget>[
-        SliverPadding(
-          padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
-          sliver: OverallStatsTile(statistics),
+        ConstrainedSliver(
+          child: Padding(
+            padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
+            child: MyOverview(stats: statistics, isNarrow: isNarrow),
+          ),
         ),
         if (statistics.lastGame != null)
           SliverMainAxisGroup(
             slivers: <Widget>[
-              H(Text(s.lastGameStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
+              H(
+                Text(s.lastGameStatistics),
+                maxWidth: c.maxListWidth,
+                horizontalPadding: c.utilPageMargin,
+                background: bg,
+              ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing),
+                  padding: const EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing, top: 4),
                   child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
               ),
@@ -39,10 +54,15 @@ class const StatsTab(final Statistics statistics, {super.key, final bool showLay
         if (statistics.bestGames.isNotEmpty)
           SliverMainAxisGroup(
             slivers: <Widget>[
-              H(Text(s.bestGamesStatistics), maxWidth: c.maxListWidth, horizontalPadding: c.utilPageMargin),
+              H(
+                Text(s.bestGamesStatistics),
+                maxWidth: c.maxListWidth,
+                horizontalPadding: c.utilPageMargin,
+                background: bg,
+              ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsetsGeometry.only(bottom: valueExt.utilPageMarginBottom),
+                  padding: EdgeInsetsGeometry.only(bottom: valueExt.utilPageMarginBottom, top: 4),
                   child: ScoreTable(games: statistics.bestGames, showLayout: showLayout),
                 ),
               ),
@@ -75,14 +95,14 @@ class const OverallStatsTile(final Statistics statistics, {super.key}) extends S
                       child: ScoreCard(
                         score: statistics.bestGames.firstOrNull?.score ?? 0,
                         label: s.bestScoreLabel,
-                        icon: isDark ? CustomIcons.starDark40 : CustomIcons.star40,
+                        icon: isDark ? CustomIcons.starDark32 : CustomIcons.starLight32,
                       ),
                     ),
                     Expanded(
                       child: ScoreCard(
                         score: statistics.longestChain,
                         label: s.longestChainLabel,
-                        icon: CustomIcons.chain40,
+                        icon: CustomIcons.chain32,
                       ),
                     ),
                   ],
@@ -203,13 +223,13 @@ final class const ScoreCard({
                   offset: _offset,
                   child: Text(
                     label,
-                    style: textExt.faintLabelMedium,
+                    style: textExt.faintLabelM,
                     overflow: .fade,
                     softWrap: true,
                     maxLines: 2,
                   ),
                 ),
-                Text(score.toString(), style: textExt.numericLarge),
+                Text(score.toString(), style: textExt.numericL),
               ],
             ),
           ),
@@ -238,148 +258,36 @@ class const ScoreTable({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
-    final colourExt = theme.extension<MyColourThemeExt>()!;
-    final textExt = theme.extension<MyTextThemeExt>()!;
-    final numberStyle = textExt.numericBody;
-    final rankStyle = numberStyle;
-    final headerStyle = theme.textTheme.bodyMedium;
-    final borderSide = BorderSide(color: colourExt.cardDivider);
-    final s = context.strings;
     return ConstrainedItem(
       child: MyCard(
-        padding: _tablePadding,
-        child: Table(
-          columnWidths: showRank ? _widthsShowRank : _widthsHideRank,
-          defaultVerticalAlignment: .middle,
-          children: <TableRow>[
-            TableRow(
-              key: ValueKey(0),
-              children: <Widget>[
-                if (showRank) ...[
-                  Padding(
-                    padding: _firstColumnCellPadding,
-                    child: Text("#", style: headerStyle),
-                  ),
-                ],
-                Container(
-                  height: _rowHeight,
-                  padding: showRank ? _cellPadding : _firstColumnCellPadding,
-                  child: Center(
-                    child: Row(children: [Text(s.gameLabel, style: headerStyle)]),
-                  ),
-                ),
-
-                _HeaderIcon(
-                  key: _starKey,
-                  padding: _cellPadding,
-                  tooltip: s.scoreTooltip,
-                  icon: CustomIcons.star,
-                ),
-
-                _HeaderIcon(
-                  key: _chainKey,
-                  padding: _lastColumnCellPadding,
-                  tooltip: s.chainTooltip,
-                  icon: CustomIcons.chain,
-                ),
-              ],
-            ),
-            for (final (index, game) in games.indexed)
-              TableRow(
-                key: ValueKey(index + 1),
-                decoration: BoxDecoration(
-                  border: Border(top: borderSide),
-                  borderRadius: index == games.length - 1
-                      ? BorderRadius.vertical(bottom: c.commonRadius)
-                      : null,
-                ),
-                children: <Widget>[
-                  if (showRank) ...[
-                    Padding(
-                      padding: _firstColumnCellPadding,
-                      child: Text((index + 1).toString(), style: rankStyle),
-                    ),
-                  ],
-                  Row(
-                    mainAxisAlignment: .spaceBetween,
-                    crossAxisAlignment: .center,
-                    children: [
-                      Flexible(
-                        child: Padding(
-                          padding: showRank ? _cellPadding : _firstColumnCellPadding,
-                          child: Column(
-                            crossAxisAlignment: .start,
-                            mainAxisAlignment: .center,
-                            children: [
-                              if (showLayout)
-                                Text(game.layout.label(context.strings), overflow: .fade, softWrap: false),
-                              Text(game.ended.formatted, overflow: .fade, softWrap: false),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Result(game.isCleared, s),
-                    ],
-                  ),
-
-                  Padding(
-                    padding: _cellPadding,
-                    child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
-                  ),
-
-                  Padding(
-                    padding: _lastColumnCellPadding,
-                    child: Row(
-                      mainAxisAlignment: .spaceBetween,
-                      children: [
-                        // Force row height
-                        SizedBox(height: _rowHeight),
-                        Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+        child: Column(
+          spacing: 6,
+          children: [
+            _Th(key: _headingKey, game: games.last, showRank: showRank),
+            for (final (i, game) in games.indexed) ...[
+              CardDivider(),
+              _Td(key: ValueKey(i), game: game, rank: i + 1, showRank: showRank, showLayout: showLayout),
+            ],
           ],
         ),
       ),
     );
   }
 
-  static const _chainKey = ValueKey("chain");
-  static const _starKey = ValueKey("start");
-  static const _cellPadding = EdgeInsets.only(top: 2);
-  static const _firstColumnCellPadding = EdgeInsets.only(top: 2);
-  static const _lastColumnCellPadding = EdgeInsets.only(top: 2);
-  static const _tablePadding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 0, c.cardPaddingHorizontal, 2);
-  static const _rowHeight = 50.0;
-
-  static const _widthsShowRank = <int, TableColumnWidth>{
-    0: FixedColumnWidth(36),
-    1: FlexColumnWidth(),
-    2: FixedColumnWidth(60),
-    3: FixedColumnWidth(60),
-  };
-
-  static const _widthsHideRank = <int, TableColumnWidth>{
-    0: FlexColumnWidth(),
-    1: FixedColumnWidth(60),
-    2: FixedColumnWidth(60),
-  };
+  static const _headingKey = ValueKey("th");
 }
 
 class const _HeaderIcon({
   super.key,
-  required final EdgeInsets padding,
+  required final double width,
   required final String tooltip,
   required final IconData icon,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    return Padding(
-      padding: padding,
+    return SizedBox(
+      width: width,
       child: Row(
         mainAxisAlignment: .end,
         children: [
@@ -431,11 +339,10 @@ final class const ChartCard({super.key, required final int played, required fina
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final colourExt = theme.extension<MyColourThemeExt>()!;
     final textExt = theme.extension<MyTextThemeExt>()!;
-    final numberStyle = textExt.numericLarge;
-    final percentStyle = textExt.numericMedium;
-    final labelStyle = textExt.faintLabelMedium;
+    final numberStyle = textExt.numericXL;
+    final percentStyle = textExt.numericML;
+    final labelStyle = textExt.faintLabelL;
     final s = context.strings;
     return MyCard(
       padding: _padding,
@@ -446,7 +353,7 @@ final class const ChartCard({super.key, required final int played, required fina
         children: [
           Row(
             mainAxisAlignment: .center,
-            spacing: 2,
+            spacing: 4,
             textBaseline: .alphabetic,
             crossAxisAlignment: .baseline,
             children: [
@@ -471,7 +378,7 @@ final class const ChartCard({super.key, required final int played, required fina
                   child: CustomPaint(
                     painter: BarChart(
                       played > 0 ? cleared.toDouble() / played : 0,
-                      empty: colourExt.cardDivider,
+                      empty: theme.colorScheme.outlineVariant,
                     ),
                   ),
                 ),
@@ -480,7 +387,7 @@ final class const ChartCard({super.key, required final int played, required fina
             ],
           ),
           Row(
-            spacing: 2,
+            spacing: 4,
             textBaseline: .alphabetic,
             crossAxisAlignment: .baseline,
             children: [
@@ -498,3 +405,95 @@ final class const ChartCard({super.key, required final int played, required fina
     vertical: c.cardPaddingVertical + 4,
   );
 }
+
+final class const _Th({super.key, required final SingleGameStatistics game, final bool showRank = true})
+    extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final style = theme.textTheme.titleSmall;
+    final s = context.strings;
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: _rowHeight),
+      child: Row(
+        spacing: _cellSpacing,
+        children: <Widget>[
+          if (showRank)
+            SizedBox(
+              width: _col1Width,
+              child: Text("#", style: style),
+            ),
+          Expanded(child: Text(s.gameLabel, style: style)),
+          _HeaderIcon(key: _starKey, width: _col3Width, tooltip: s.scoreTooltip, icon: CustomIcons.star),
+          _HeaderIcon(key: _chainKey, width: _col4Width, tooltip: s.chainTooltip, icon: CustomIcons.chain),
+        ],
+      ),
+    );
+  }
+
+  static const _chainKey = ValueKey("chain");
+  static const _starKey = ValueKey("star");
+}
+
+final class const _Td({
+  super.key,
+  required final SingleGameStatistics game,
+  required final int rank,
+  final bool showRank = true,
+  final bool showLayout = true,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final textExt = theme.extension<MyTextThemeExt>()!;
+    final textStyle = theme.textTheme.bodyMedium;
+    final numberStyle = textExt.numericBody;
+    final rankStyle = textExt.numericBody;
+    final s = context.strings;
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: _rowHeight),
+      child: Row(
+        spacing: _cellSpacing,
+        children: <Widget>[
+          if (showRank) ...[
+            SizedBox(
+              width: _col1Width,
+              child: Text(rank.toString(), style: rankStyle),
+            ),
+          ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: .start,
+              mainAxisAlignment: .center,
+              children: [
+                if (showLayout)
+                  Text(
+                    game.layout.label(context.strings),
+                    overflow: .fade,
+                    softWrap: false,
+                    style: textStyle,
+                  ),
+                Text(game.ended.formatted, overflow: .fade, softWrap: false, style: textStyle),
+              ],
+            ),
+          ),
+          Result(game.isCleared, s),
+          SizedBox(
+            width: _col3Width,
+            child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
+          ),
+          SizedBox(
+            width: _col4Width,
+            child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+const _rowHeight = 32.0;
+const _col1Width = 24.0;
+const _col3Width = 40.0;
+const _col4Width = 40.0;
+const _cellSpacing = 8.0;
