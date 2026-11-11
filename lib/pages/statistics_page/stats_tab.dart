@@ -45,7 +45,7 @@ class const StatsTab(
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing, top: 4),
+                  padding: const EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing, top: 6),
                   child: ScoreTable(games: [statistics.lastGame!], showRank: false, showLayout: showLayout),
                 ),
               ),
@@ -62,7 +62,7 @@ class const StatsTab(
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsetsGeometry.only(bottom: valueExt.utilPageMarginBottom, top: 4),
+                  padding: EdgeInsetsGeometry.only(bottom: valueExt.utilPageMarginBottom, top: 6),
                   child: ScoreTable(games: statistics.bestGames, showLayout: showLayout),
                 ),
               ),

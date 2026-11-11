@@ -35,20 +35,20 @@ class const SuitIconSetting({super.key}) extends StatelessWidget {
       title: Text(s.suitIconsTitle, overflow: .fade, softWrap: false, maxLines: 1),
       builder: (context) => Padding(
         padding: c.DialogMetrics.contentPadding,
-        child: Wrap(
-          spacing: 2,
-          runSpacing: 6,
-          runAlignment: .center,
-          alignment: .center,
-          children: [
-            for (final variant in SuitIconTheme.values)
-              SuitVariantCard(
-                variant: variant,
-                isSelected: settings.suitIconTheme == variant,
-                strings: s,
-                onTap: () => Navigator.pop(context, variant),
-              ),
-          ],
+        child: Center(
+          child: Wrap(
+            spacing: 2,
+            runSpacing: 6,
+            children: [
+              for (final variant in SuitIconTheme.values)
+                SuitVariantCard(
+                  variant: variant,
+                  isSelected: settings.suitIconTheme == variant,
+                  strings: s,
+                  onTap: () => Navigator.pop(context, variant),
+                ),
+            ],
+          ),
         ),
       ),
     );

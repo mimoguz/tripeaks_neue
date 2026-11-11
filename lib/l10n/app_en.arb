@@ -576,7 +576,7 @@
         "context": "statisticsPage:summary",
         "description": "Title of the general statistics group (overal & per each layout)."
     },
-    "totalPlayedLabel": "PLAYED",
+    "totalPlayedLabel": "ROUNDS",
     "@totalPlayedLabel": {
         "type": "text",
         "context": "statisticsPage:summary",

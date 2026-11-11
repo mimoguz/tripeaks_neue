@@ -42,7 +42,7 @@ final class const HDelegate(
       shadowColor: colourExt.headerShadow,
       elevation: elevated ? 2 : 0,
       child: ConstrainedItem(
-        padding: EdgeInsets.fromLTRB(horizontalPadding, 0, horizontalPadding, 6),
+        padding: EdgeInsets.fromLTRB(horizontalPadding, 0, horizontalPadding, 4),
         maxHeight: _maxHeight,
         child: Column(
           mainAxisAlignment: .end,
@@ -66,7 +66,7 @@ final class const HDelegate(
   bool shouldRebuild(HDelegate oldDelegate) => true;
 
   static const _maxHeight = 36.0;
-  static const _minHeight = 26.0;
+  static const _minHeight = 24.0;
 }
 
 final class const P(final Widget child, {super.key, final bool spaceAfter = true}) extends StatelessWidget {

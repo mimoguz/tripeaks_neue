@@ -289,7 +289,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get statisticsSummary => 'Summary';
 
   @override
-  String get totalPlayedLabel => 'PLAYED';
+  String get totalPlayedLabel => 'ROUNDS';
 
   @override
   String get totalClearedLabel => 'CLEARED';

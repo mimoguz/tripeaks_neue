@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/my_theme.dart';
-import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 
@@ -24,11 +23,7 @@ final class const MyCard({
       type: .card,
       clipBehavior: .antiAlias,
       child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: borderRadius,
-          // TODO: MyValueExt
-          border: isDesktop ? Border.all(color: colourExt.faintBorder, width: 1) : null,
-        ),
+        decoration: BoxDecoration(borderRadius: borderRadius, border: valueExt.cardBorder),
         child: Padding(padding: padding, child: child),
       ),
     );

@@ -22,11 +22,11 @@ class const MyOverview({super.key, required final Statistics stats, required fin
               spacing: 8,
               children: [
                 Flexible(
-                  flex: 3,
+                  flex: 5,
                   child: MyChartCard(played: stats.totalGames, cleared: stats.cleared),
                 ),
                 Flexible(
-                  flex: 2,
+                  flex: 3,
                   child: Column(
                     spacing: 8,
                     children: [

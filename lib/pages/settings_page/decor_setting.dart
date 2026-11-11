@@ -50,22 +50,22 @@ class const DecorSetting({super.key}) extends StatelessWidget {
       title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
       builder: (context) => Padding(
         padding: c.DialogMetrics.contentPadding,
-        child: Wrap(
-          spacing: 2,
-          runSpacing: 6,
-          runAlignment: .center,
-          alignment: .center,
-          children: [
-            for (final variant in Decor.values)
-              DecorVariantCard(
-                variant: variant,
-                colour: settings.decorColour,
-                isSelected: settings.decor == variant,
-                selectedDecorColour: settings.decorColour,
-                strings: s,
-                onTap: () => Navigator.pop(context, variant),
-              ),
-          ],
+        child: Center(
+          child: Wrap(
+            spacing: 2,
+            runSpacing: 6,
+            children: [
+              for (final variant in Decor.values)
+                DecorVariantCard(
+                  variant: variant,
+                  colour: settings.decorColour,
+                  isSelected: settings.decor == variant,
+                  selectedDecorColour: settings.decorColour,
+                  strings: s,
+                  onTap: () => Navigator.pop(context, variant),
+                ),
+            ],
+          ),
         ),
       ),
     );

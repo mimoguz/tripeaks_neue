@@ -43,9 +43,11 @@ final class const PiePainter({
     canvas.drawPath(doughnut, doughnutPaint);
 
     final r = outerRect.height * 0.5 - halfThickness;
-    final zeroAngle = math.pi * -0.5;
     final arcAngle = math.pi * 2 * ratio;
-    final angleCorrection = math.atan2(halfThickness + 0.5, r);
+    final roundnessLimit = math.atan2(thickness, r) + 0.1;
+    final drawRound = arcAngle > roundnessLimit;
+    final zeroAngle = math.pi * -0.5;
+    final angleCorrection = drawRound ? math.atan2(halfThickness + 0.5, r) : 0;
     final sweepAngle = arcAngle - angleCorrection * 2;
     final startAngle = zeroAngle + angleCorrection;
     final rect = Rect.fromLTWH(halfThickness, halfThickness, 2 * r, 2 * r);
@@ -64,14 +66,14 @@ final class const PiePainter({
 
     shadowPnt
       ..strokeWidth = thickness
-      ..strokeCap = .round;
+      ..strokeCap = drawRound ? .round : .butt;
     canvas.drawArc(rect, startAngle, sweepAngle, false, shadowPnt);
 
     canvas.restore();
 
     final arcPnt = Paint()
       ..style = .stroke
-      ..strokeCap = .round
+      ..strokeCap = drawRound ? .round : .butt
       ..strokeWidth = thickness + 1
       ..color = Colors.green
       ..shader = SweepGradient(
@@ -106,7 +108,7 @@ final class const PiePainter({
       ..addPath(
         StarBorder(
           points: 12,
-          innerRadiusRatio: (outerRect.width - width * 2) / outerRect.width,
+          innerRadiusRatio: (outerRect.width - width * 2) / outerRect.width + 0.05,
           pointRounding: 0,
           valleyRounding: 0,
         ).getOuterPath(outerRect),

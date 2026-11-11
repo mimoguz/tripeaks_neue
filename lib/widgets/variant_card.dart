@@ -40,7 +40,7 @@ final class const VariantCard<T>({
         type: .transparency,
         child: Column(
           mainAxisSize: .min,
-          spacing: 3,
+          spacing: 2,
           children: [
             InkWell(
               onTap: onTap,

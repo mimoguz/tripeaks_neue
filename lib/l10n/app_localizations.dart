@@ -652,7 +652,7 @@ abstract class AppLocalizations {
   /// Label of the total games played statistic.
   ///
   /// In en, this message translates to:
-  /// **'PLAYED'**
+  /// **'ROUNDS'**
   String get totalPlayedLabel;
 
   /// Label of the total games cleared statistic.

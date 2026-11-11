@@ -46,20 +46,20 @@ class const ColourSetting({super.key}) extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Wrap(
-                spacing: c.itemSpacing,
-                runSpacing: c.itemSpacing,
-                runAlignment: .center,
-                alignment: .center,
-                children: [
-                  for (final colour in DecorColour.values)
-                    ColourSwatch(
-                      colour: colour,
-                      isSelected: settings.decorColour == colour,
-                      strings: s,
-                      onTap: () => Navigator.pop(context, colour),
-                    ),
-                ],
+              child: Center(
+                child: Wrap(
+                  spacing: c.itemSpacing,
+                  runSpacing: c.itemSpacing,
+                  children: [
+                    for (final colour in DecorColour.values)
+                      ColourSwatch(
+                        colour: colour,
+                        isSelected: settings.decorColour == colour,
+                        strings: s,
+                        onTap: () => Navigator.pop(context, colour),
+                      ),
+                  ],
+                ),
               ),
             ),
           ],

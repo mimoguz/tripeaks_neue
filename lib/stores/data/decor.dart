@@ -46,43 +46,43 @@ enum DecorColour {
     background: Color(0xfff44336),
     foreground: Color(0x40ffcdd2),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xffe96f66),
+    onSurface: Color(0xffe66157),
   ),
   orange(
     background: Color(0xffff5e00),
     foreground: Color(0x40fffca0),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xffed7e3e),
+    onSurface: Color(0xffeb722b),
   ),
   amber(
     background: Color(0xffffa000),
     foreground: Color(0x40fff9c4),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xffedac3e),
+    onSurface: Color(0xffeba42b),
   ),
   green(
     background: Color(0xff4caa4f),
     foreground: Color(0x40bee9bf),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xff71b274),
+    onSurface: Color(0xff63aa66),
   ),
   cyan(
     background: Color(0xff04c4dd),
     foreground: Color(0x40d3f4f8),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xff3fc2d4),
+    onSurface: Color(0xff2bbccf),
   ),
   blue(
     background: Color(0xff2087db),
     foreground: Color(0x40b3e5fc),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xff549ad4),
+    onSurface: Color(0xff4390d0),
   ),
   violet(
     background: Color(0xff8f16cf),
     foreground: Color(0x40fdd0ff),
     controlForeground: Color(0xEEFFFFFF),
-    onSurface: Color(0xff9f4cca),
+    onSurface: Color(0xff9539c5),
   );
 
   const DecorColour({

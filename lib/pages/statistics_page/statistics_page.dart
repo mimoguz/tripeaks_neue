@@ -82,6 +82,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                             menuPadding: EdgeInsets.symmetric(vertical: c.commonRadiusValue),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
+                            color: theme.extension<MyColourThemeExt>()!.dialogBackground,
                             itemBuilder: (context) => _popupItems(context, s),
                           ),
                         ],

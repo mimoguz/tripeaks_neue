@@ -9,28 +9,51 @@ ThemeData dark() => isDesktop ? _desktopDark : _dark;
 final class MyValueExt extends ThemeExtension<MyValueExt> {
   final double utilPageMarginBottom;
   final double cardElevation;
+  final Border cardBorder;
   final EdgeInsets utilPageMargins;
   final EdgeInsets dialogTitlePadding;
   final List<BoxShadow> sheetShadow;
 
-  new desktop()
+  new desktop(Brightness brightness)
     : utilPageMarginBottom = 10,
       utilPageMargins = const EdgeInsets.all(10),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 14, 8),
       cardElevation = 3,
-      sheetShadow = const [
-        // Primary soft diffuse shadow
-        BoxShadow(color: Color(0x0A000006), blurRadius: 3.0, spreadRadius: 0.0),
-        // Secondary structural depth shadow
-        BoxShadow(color: Color(0x0F000006), blurRadius: 8.0, spreadRadius: -1.0, offset: Offset(0.0, 1.0)),
-      ];
+      cardBorder = Border.all(
+        color: brightness == .light
+            ? const Color.fromRGBO(0, 0, 6, 0.072)
+            : const Color.fromRGBO(255, 255, 255, 0.025),
+        width: 1,
+      ),
+      sheetShadow = brightness == .light
+          ? const [
+              BoxShadow(color: Color(0x0A000006), blurRadius: 3.0, spreadRadius: 0.0),
+              BoxShadow(
+                color: Color(0x0F000006),
+                blurRadius: 8.0,
+                spreadRadius: -1.0,
+                offset: Offset(0.0, 1.0),
+              ),
+            ]
+          : const [
+              BoxShadow(color: Color(0x20000006), blurRadius: 3.0, spreadRadius: 0.0),
+              BoxShadow(
+                color: Color(0x20000006),
+                blurRadius: 8.0,
+                spreadRadius: -1.0,
+                offset: Offset(0.0, 1.0),
+              ),
+            ];
 
-  new mobile()
+  new mobile(Brightness brightness)
     : utilPageMarginBottom = 20,
       utilPageMargins = const EdgeInsets.fromLTRB(10, 10, 10, 20),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 12, 8),
       cardElevation = 0,
-      sheetShadow = const [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0.0, 1.0))];
+      cardBorder = Border(),
+      sheetShadow = brightness == .light
+          ? const [BoxShadow(color: Colors.black12, blurRadius: 5, offset: Offset(0.0, 1.0))]
+          : const [BoxShadow(color: Colors.black54, blurRadius: 5, offset: Offset(0.0, 1.0))];
 
   @override
   ThemeExtension<MyValueExt> copyWith() => this;
@@ -376,7 +399,7 @@ final ThemeData _light = ThemeData(
   extensions: <ThemeExtension<dynamic>>[
     MyColourThemeExt.light(),
     MyTextThemeExt.light(),
-    MyValueExt.mobile(),
+    MyValueExt.mobile(.light),
   ],
 );
 
@@ -386,7 +409,11 @@ final ThemeData _dark = ThemeData(
   pageTransitionsTheme: _pageTransitionTheme,
   tooltipTheme: _tooltipTheme,
   useMaterial3: true,
-  extensions: <ThemeExtension<dynamic>>[MyColourThemeExt.dark(), MyTextThemeExt.dark(), MyValueExt.mobile()],
+  extensions: <ThemeExtension<dynamic>>[
+    MyColourThemeExt.dark(),
+    MyTextThemeExt.dark(),
+    MyValueExt.mobile(.dark),
+  ],
 );
 
 final ThemeData _desktopLight = ThemeData(
@@ -398,7 +425,7 @@ final ThemeData _desktopLight = ThemeData(
   extensions: <ThemeExtension<dynamic>>[
     MyColourThemeExt.adwLight(),
     MyTextThemeExt.adwLight(),
-    MyValueExt.desktop(),
+    MyValueExt.desktop(.light),
   ],
 );
 
@@ -411,7 +438,7 @@ final ThemeData _desktopDark = ThemeData(
   extensions: <ThemeExtension<dynamic>>[
     MyColourThemeExt.adwDark(),
     MyTextThemeExt.adwDark(),
-    MyValueExt.desktop(),
+    MyValueExt.desktop(.dark),
   ],
 );
 

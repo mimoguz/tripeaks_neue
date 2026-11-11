@@ -58,30 +58,42 @@ final class const MyChartCard({super.key, required final int played, required fi
               crossAxisAlignment: .center,
               children: [
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Column(
                     crossAxisAlignment: .end,
                     mainAxisAlignment: .center,
                     spacing: 5,
                     children: [
-                      Text(played.toString(), style: numberStyle, textAlign: .end),
+                      Text(
+                        played.toString(),
+                        style: numberStyle,
+                        textAlign: .end,
+                        overflow: .fade,
+                        softWrap: false,
+                      ),
                       Text(s.totalPlayedLabel, style: labelStyle, textAlign: .end),
                     ],
                   ),
                 ),
-                Expanded(
-                  flex: 1,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Center(child: Container(width: 1, height: 54, color: labelColour)),
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Column(
                     crossAxisAlignment: .start,
                     mainAxisAlignment: .center,
                     spacing: 5,
                     children: [
-                      Text(cleared.toString(), style: numberStyle, textAlign: .end),
-                      Text(s.totalClearedLabel, style: labelStyle, textAlign: .end),
+                      Text(
+                        cleared.toString(),
+                        style: numberStyle,
+                        textAlign: .start,
+                        overflow: .fade,
+                        softWrap: false,
+                      ),
+                      Text(s.totalClearedLabel, style: labelStyle, textAlign: .start),
                     ],
                   ),
                 ),
@@ -93,10 +105,5 @@ final class const MyChartCard({super.key, required final int played, required fi
     );
   }
 
-  static const _padding = EdgeInsets.fromLTRB(
-    c.cardPaddingHorizontal,
-    c.cardPaddingVertical + 6,
-    c.cardPaddingHorizontal,
-    c.cardPaddingVertical + 4,
-  );
+  static const _padding = EdgeInsets.fromLTRB(4, c.cardPaddingVertical + 6, 4, c.cardPaddingVertical + 4);
 }

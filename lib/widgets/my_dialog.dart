@@ -59,7 +59,7 @@ class _MyDialogState extends State<MyDialog> {
               ],
             ),
           ),
-          DialogHeaderDivider(),
+          // DialogHeaderDivider(),
         ],
       ),
       titlePadding: EdgeInsets.zero,
