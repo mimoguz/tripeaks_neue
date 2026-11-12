@@ -72,26 +72,39 @@ final class const _ResultIcon(final bool result, final AppLocalizations strings,
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
+    final (diameter, background, foreground, icon, message) = result
+        ? (
+            22.0,
+            Colors.lightGreen.shade500,
+            colourExt.cardBackground,
+            CustomIcons.check12,
+            strings.gameClearedLabel,
+          )
+        : (
+            21.0,
+            theme.colorScheme.onSurfaceVariant,
+            colourExt.cardBackground,
+            CustomIcons.cross12,
+            strings.gameNotClearedLabel,
+          );
     return Tooltip(
-      message: result ? strings.gameClearedLabel : strings.gameNotClearedLabel,
-      child: Container(
-        decoration: BoxDecoration(
-          shape: .circle,
-          color: result ? Colors.lightGreen.shade500 : theme.colorScheme.onSurfaceVariant,
-        ),
+      message: message,
+      child: SizedBox(
         width: 22,
         height: 22,
-        padding: _padding,
-        child: Icon(
-          result ? CustomIcons.check12 : CustomIcons.cross12,
-          color: colourExt.cardBackground,
-          size: 12,
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(shape: .circle, color: background),
+            width: diameter,
+            height: diameter,
+            child: Icon(icon, color: foreground, size: 12),
+          ),
         ),
       ),
     );
   }
 
-  static const _padding = EdgeInsets.all(5);
+  // static const _padding = EdgeInsets.all(5);
 }
 
 final class const _Th({super.key, required final SingleGameStatistics game, final bool showRank = true})

@@ -19,9 +19,9 @@ class const MyStatCard({
     return MyCard(
       padding: _padding,
       child: ConstrainedBox(
-        constraints: BoxConstraints(minHeight: 82),
+        constraints: BoxConstraints(minHeight: 108),
         child: Column(
-          mainAxisAlignment: .spaceBetween,
+          mainAxisAlignment: .spaceEvenly,
           crossAxisAlignment: .center,
           children: [
             Icon(icon, size: 32, color: colours.onSurfaceVariant),
@@ -47,10 +47,5 @@ class const MyStatCard({
     );
   }
 
-  static const _padding = EdgeInsets.fromLTRB(
-    c.cardPaddingHorizontal,
-    c.cardPaddingVertical + 4,
-    c.cardPaddingHorizontal,
-    c.cardPaddingVertical + 6,
-  );
+  static const _padding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 4, c.cardPaddingHorizontal, 6);
 }
