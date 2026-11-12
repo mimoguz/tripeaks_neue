@@ -6,6 +6,7 @@ import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/format_ext.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
+import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
 import 'package:tripeaks_neue/widgets/dividers.dart';
 import 'package:tripeaks_neue/widgets/my_card.dart';
@@ -20,10 +21,10 @@ class const MyScoreTable({
   Widget build(BuildContext context) {
     return ConstrainedItem(
       child: MyCard(
+        padding: _tablePadding,
         child: Column(
-          spacing: 6,
           children: [
-            _Th(key: _headingKey, game: games.last, showRank: showRank),
+            _Th(key: _headingKey, game: games.last, showRank: showRank, showLayout: showLayout),
             for (final (i, game) in games.indexed) ...[
               CardDivider(),
               _Td(key: ValueKey(i), game: game, rank: i + 1, showRank: showRank, showLayout: showLayout),
@@ -103,32 +104,39 @@ final class const _ResultIcon(final bool result, final AppLocalizations strings,
   // static const _padding = EdgeInsets.all(5);
 }
 
-final class const _Th({super.key, required final SingleGameStatistics game, final bool showRank = true})
-    extends StatelessWidget {
+final class const _Th({
+  super.key,
+  required final SingleGameStatistics game,
+  final bool showRank = true,
+  final bool showLayout = true,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
     final style = theme.textTheme.titleSmall;
     final s = context.strings;
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: _rowHeight - 1),
-      child: Row(
-        spacing: _cellSpacing,
-        children: <Widget>[
-          if (showRank)
-            SizedBox(
-              width: _col1Width,
-              child: Text("#", style: style),
+      constraints: BoxConstraints(minHeight: showLayout ? _rowHeight : _rowHeightSansLayout),
+      child: Padding(
+        padding: _rowPadding,
+        child: Row(
+          spacing: _cellSpacing,
+          children: <Widget>[
+            if (showRank)
+              SizedBox(
+                width: _col1Width,
+                child: Text("#", style: style),
+              ),
+            Expanded(child: Text(s.gameLabel, style: style)),
+            _HeaderIcon(key: _starKey, width: _col3Width, tooltip: s.scoreTooltip, icon: CustomIcons.star),
+            _HeaderIcon(
+              key: _chainKey,
+              width: _col4Width - 2,
+              tooltip: s.chainTooltip,
+              icon: CustomIcons.chain,
             ),
-          Expanded(child: Text(s.gameLabel, style: style)),
-          _HeaderIcon(key: _starKey, width: _col3Width, tooltip: s.scoreTooltip, icon: CustomIcons.star),
-          _HeaderIcon(
-            key: _chainKey,
-            width: _col4Width - 2,
-            tooltip: s.chainTooltip,
-            icon: CustomIcons.chain,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -149,59 +157,66 @@ final class const _Td({
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
     final titleStyle = theme.textTheme.bodyMedium;
-    final subtitleStyle = theme.textTheme.bodySmall;
+    final subtitleStyle = textExt.faintLabelM;
     final numberStyle = textExt.numericBody;
     final rankStyle = textExt.numericBody;
     final s = context.strings;
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: _rowHeight),
-      child: Row(
-        spacing: _cellSpacing,
-        children: <Widget>[
-          if (showRank) ...[
-            SizedBox(
-              width: _col1Width,
-              child: Text(rank.toString(), style: rankStyle),
-            ),
-          ],
-          Expanded(
-            child: Column(
-              crossAxisAlignment: .start,
-              mainAxisAlignment: .center,
-              children: [
-                if (showLayout)
+      constraints: BoxConstraints(minHeight: showLayout ? _rowHeight : _rowHeightSansLayout),
+      child: Padding(
+        padding: _rowPadding,
+        child: Row(
+          spacing: _cellSpacing,
+          children: <Widget>[
+            if (showRank) ...[
+              SizedBox(
+                width: _col1Width,
+                child: Text(rank.toString(), style: rankStyle),
+              ),
+            ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: .start,
+                mainAxisAlignment: .center,
+                spacing: 4,
+                children: [
+                  if (showLayout)
+                    Text(
+                      game.layout.label(context.strings),
+                      overflow: .fade,
+                      softWrap: false,
+                      style: titleStyle,
+                    ),
                   Text(
-                    game.layout.label(context.strings),
+                    game.ended.formatted,
                     overflow: .fade,
                     softWrap: false,
-                    style: titleStyle,
+                    style: showLayout ? subtitleStyle : titleStyle,
                   ),
-                Text(
-                  game.ended.formatted,
-                  overflow: .fade,
-                  softWrap: false,
-                  style: showLayout ? subtitleStyle : titleStyle,
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          _ResultIcon(game.isCleared, s, key: ValueKey(rank)),
-          SizedBox(
-            width: _col3Width,
-            child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
-          ),
-          SizedBox(
-            width: _col4Width,
-            child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
-          ),
-        ],
+            _ResultIcon(game.isCleared, s, key: ValueKey(rank)),
+            SizedBox(
+              width: _col3Width,
+              child: Text(game.score.toString(), textAlign: .right, style: numberStyle),
+            ),
+            SizedBox(
+              width: _col4Width,
+              child: Text(game.longestChain.toString(), textAlign: .right, style: numberStyle),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-const _rowHeight = 36.0;
+const _rowHeight = 56.0;
+const _rowHeightSansLayout = 48.0;
 const _col1Width = 24.0;
 const _col3Width = 44.0;
 const _col4Width = 40.0;
 const _cellSpacing = 8.0;
+const _rowPadding = EdgeInsets.symmetric(vertical: 4);
+const _tablePadding = EdgeInsets.symmetric(horizontal: c.DialogMetrics.horizontalPadding);

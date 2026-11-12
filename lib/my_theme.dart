@@ -457,7 +457,7 @@ abstract final class _Colours {
   static const onSecondaryContainerLight = Color(0xFF2D3338); //Color(0xFF505254);
   static const tertiaryLight = Color(0xFF595C85);
   static const onTertiaryLight = Color(0xFFFBF8FF);
-  static const tertiaryContainerLight = Color(0xFFCCCEFE);
+  static const tertiaryContainerLight = Color(0xFFCFC4FF); // Color(0xFFCCCEFE);
   static const onTertiaryContainerLight = Color(0xFF41446C);
   static const surfaceLight = Color(0xFFF9F9FB);
   static const onSurfaceLight = Color(0xFF202226); // Color(0xFF2D3338);
@@ -502,7 +502,7 @@ abstract final class _Colours {
   static const onSecondaryContainerDark = Color(0xFFE1E6EC); // Color(0xFFBEBFC2);
   static const tertiaryDark = Color(0xFFDCDDFF);
   static const onTertiaryDark = Color(0xFF494D75);
-  static const tertiaryContainerDark = Color(0xFFCCCEFE);
+  static const tertiaryContainerDark = Color(0xFFD4BDFF); // Color(0xFFD0CEFE);
   static const onTertiaryContainerDark = Color(0xFF41446C);
   static const surfaceDark = Color(0xFF0D0E10);
   static const onSurfaceDark = Color(0xFFE1E6EC);
