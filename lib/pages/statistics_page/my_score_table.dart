@@ -72,16 +72,14 @@ final class const _ResultIcon(final bool result, final AppLocalizations strings,
   Widget build(BuildContext context) {
     final theme = context.theme;
     final colourExt = theme.extension<MyColourThemeExt>()!;
-    final (diameter, background, foreground, icon, message) = result
+    final (background, foreground, icon, message) = result
         ? (
-            22.0,
             Colors.lightGreen.shade500,
             colourExt.cardBackground,
             CustomIcons.check12,
             strings.gameClearedLabel,
           )
         : (
-            21.0,
             theme.colorScheme.onSurfaceVariant,
             colourExt.cardBackground,
             CustomIcons.cross12,
@@ -90,13 +88,11 @@ final class const _ResultIcon(final bool result, final AppLocalizations strings,
     return Tooltip(
       message: message,
       child: SizedBox(
-        width: 22,
-        height: 22,
         child: Center(
           child: Container(
             decoration: BoxDecoration(shape: .circle, color: background),
-            width: diameter,
-            height: diameter,
+            width: 22,
+            height: 22,
             child: Icon(icon, color: foreground, size: 12),
           ),
         ),
@@ -115,7 +111,7 @@ final class const _Th({super.key, required final SingleGameStatistics game, fina
     final style = theme.textTheme.titleSmall;
     final s = context.strings;
     return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: _rowHeight),
+      constraints: BoxConstraints(minHeight: _rowHeight - 1),
       child: Row(
         spacing: _cellSpacing,
         children: <Widget>[
@@ -126,7 +122,12 @@ final class const _Th({super.key, required final SingleGameStatistics game, fina
             ),
           Expanded(child: Text(s.gameLabel, style: style)),
           _HeaderIcon(key: _starKey, width: _col3Width, tooltip: s.scoreTooltip, icon: CustomIcons.star),
-          _HeaderIcon(key: _chainKey, width: _col4Width, tooltip: s.chainTooltip, icon: CustomIcons.chain),
+          _HeaderIcon(
+            key: _chainKey,
+            width: _col4Width - 2,
+            tooltip: s.chainTooltip,
+            icon: CustomIcons.chain,
+          ),
         ],
       ),
     );
@@ -147,7 +148,8 @@ final class const _Td({
   Widget build(BuildContext context) {
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
-    final textStyle = theme.textTheme.bodyMedium;
+    final titleStyle = theme.textTheme.bodyMedium;
+    final subtitleStyle = theme.textTheme.bodySmall;
     final numberStyle = textExt.numericBody;
     final rankStyle = textExt.numericBody;
     final s = context.strings;
@@ -172,9 +174,14 @@ final class const _Td({
                     game.layout.label(context.strings),
                     overflow: .fade,
                     softWrap: false,
-                    style: textStyle,
+                    style: titleStyle,
                   ),
-                Text(game.ended.formatted, overflow: .fade, softWrap: false, style: textStyle),
+                Text(
+                  game.ended.formatted,
+                  overflow: .fade,
+                  softWrap: false,
+                  style: showLayout ? subtitleStyle : titleStyle,
+                ),
               ],
             ),
           ),
@@ -193,7 +200,7 @@ final class const _Td({
   }
 }
 
-const _rowHeight = 32.0;
+const _rowHeight = 36.0;
 const _col1Width = 24.0;
 const _col3Width = 44.0;
 const _col4Width = 40.0;
