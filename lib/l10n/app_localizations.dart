@@ -754,25 +754,25 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
+  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
   String get howToP01;
 
   /// How to play text, contains formatting.
   ///
   /// In en, this message translates to:
-  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
+  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
   String get howToRichP02;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
+  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
   String get howToRichP03;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
+  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
   String get howToP04;
 
   /// How to play text.
@@ -784,13 +784,13 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The game ends when the board is cleared or no more moves are possible.'**
+  /// **'The game ends when the board is cleared or no more moves are possible.'**
   String get howToP06;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'In addition to the standard game, this app offers:'**
+  /// **'In addition to the standard game, this app offers:'**
   String get howToP07;
 
   /// How to play text.
@@ -802,13 +802,13 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'An option to show the values of face-down cards,'**
+  /// **'An option to show the values of face-down cards,'**
   String get howToP09;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
+  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
   String get howToP10;
 
   /// Section title.
@@ -820,13 +820,13 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
+  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
   String get interactionP01;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
+  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
   String get interactionRichP02;
 
   /// UI & interaction text.
@@ -838,7 +838,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
+  /// **'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
   String get interactionP04;
 
   /// UI & interaction text.
@@ -850,7 +850,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
+  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
   String get interactionP06;
 
   /// UI & interaction text.
@@ -874,7 +874,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
+  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
   String get interactionP10;
 
   /// UI & interaction text.
@@ -940,7 +940,7 @@ abstract class AppLocalizations {
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
+  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
   String get scoringP05;
 
   /// Section title.

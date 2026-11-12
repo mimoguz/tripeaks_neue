@@ -341,50 +341,50 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToP01 =>
-      'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
+      'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
 
   @override
   String get howToRichP02 =>
-      'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
+      'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
 
   @override
   String get howToRichP03 =>
-      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
+      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
 
   @override
   String get howToP04 =>
-      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
+      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
 
   @override
   String get howToP05 =>
       'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
 
   @override
-  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
+  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
 
   @override
-  String get howToP07 => 'In addition to the standard game, this app offers:';
+  String get howToP07 => 'In addition to the standard game, this app offers:';
 
   @override
   String get howToP08 => 'Three additional board layouts,';
 
   @override
-  String get howToP09 => 'An option to show the values of face-down cards,';
+  String get howToP09 => 'An option to show the values of face-down cards,';
 
   @override
   String get howToP10 =>
-      'An option to start with an empty discard pile, allowing the player to choose any starting card.';
+      'An option to start with an empty discard pile, allowing the player to choose any starting card.';
 
   @override
   String get usageTitle => 'How to Use This Application';
 
   @override
   String get interactionP01 =>
-      'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
+      'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
 
   @override
   String get interactionRichP02 =>
-      'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
+      'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
 
   @override
   String get interactionP03 =>
@@ -392,14 +392,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get interactionP04 =>
-      'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
+      'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
 
   @override
   String get interactionP05 => 'This is the menu button.';
 
   @override
   String get interactionP06 =>
-      'From the menu, different game modes can be selected by visiting the settings page,';
+      'From the menu, different game modes can be selected by visiting the settings page,';
 
   @override
   String get interactionP07 => 'or by using _\"New Game with Layout...\"_ option.';
@@ -413,7 +413,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get interactionP10 =>
-      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
+      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
 
   @override
   String get interactionP11 => 'Other Shortcuts';
@@ -450,7 +450,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scoringP05 =>
-      'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
+      'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
 
   @override
   String get aboutTheGameTitle => 'About the Game';

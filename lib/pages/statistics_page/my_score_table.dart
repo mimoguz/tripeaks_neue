@@ -212,11 +212,11 @@ final class const _Td({
   }
 }
 
-const _rowHeight = 56.0;
-const _rowHeightSansLayout = 48.0;
+const _rowHeight = 52.0;
+const _rowHeightSansLayout = 46.0;
 const _col1Width = 24.0;
 const _col3Width = 44.0;
 const _col4Width = 40.0;
 const _cellSpacing = 8.0;
-const _rowPadding = EdgeInsets.symmetric(vertical: 4);
-const _tablePadding = EdgeInsets.symmetric(horizontal: c.DialogMetrics.horizontalPadding);
+const _rowPadding = EdgeInsets.symmetric(vertical: 2);
+const _tablePadding = EdgeInsets.symmetric(horizontal: c.DialogMetrics.horizontalPadding, vertical: 4);

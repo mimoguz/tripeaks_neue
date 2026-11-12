@@ -680,25 +680,25 @@
         "context": "howToPlay",
         "description": "Text for Wikipedia link."
     },
-    "howToP01": "In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard\u00A0pile.",
+    "howToP01": "In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.",
     "@howToP01": {
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToRichP02": "The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its\u00A0suit._",
+    "howToRichP02": "The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._",
     "@howToRichP02": {
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text, contains formatting."
     },
-    "howToRichP03": "The player can move in any direction, forming sequences such as _Ace\u00A0→ 2\u00A0→ 3\u00A0→ 2\u00A0→ Ace\u00A0→ King\u00A0→ Queen\u00A0→ King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is\u00A0possible.",
+    "howToRichP03": "The player can move in any direction, forming sequences such as _Ace\u00A0→ 2\u00A0→ 3\u00A0→ 2\u00A0→ Ace\u00A0→ King\u00A0→ Queen\u00A0→ King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.",
     "@howToRichP03": {
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP04": "When a face-down card is no longer blocked by other cards, it will be flipped\u00A0face-up.",
+    "howToP04": "When a face-down card is no longer blocked by other cards, it will be flipped face-up.",
     "@howToP04": {
         "type": "text",
         "context": "howToPlay",
@@ -710,13 +710,13 @@
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP06": "The game ends when the board is cleared or no more moves are\u00A0possible.",
+    "howToP06": "The game ends when the board is cleared or no more moves are possible.",
     "@howToP06": {
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP07": "In addition to the standard game, this app\u00A0offers:",
+    "howToP07": "In addition to the standard game, this app offers:",
     "@howToP07": {
         "type": "text",
         "context": "howToPlay",
@@ -728,13 +728,13 @@
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP09": "An option to show the values of face-down\u00A0cards,",
+    "howToP09": "An option to show the values of face-down cards,",
     "@howToP09": {
         "type": "text",
         "context": "howToPlay",
         "description": "How to play text."
     },
-    "howToP10": "An option to start with an empty discard pile, allowing the player to choose any starting\u00A0card.",
+    "howToP10": "An option to start with an empty discard pile, allowing the player to choose any starting card.",
     "@howToP10": {
         "type": "text",
         "context": "howToPlay",
@@ -747,13 +747,13 @@
         "context": "howToPlay",
         "description": "Section title."
     },
-    "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble\u00A0momentarily.",
+    "interactionP01": "To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.",
     "@interactionP01": {
         "type": "text",
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionRichP02": "This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard\u00A0pile.",
+    "interactionRichP02": "This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.",
     "@interactionRichP02": {
         "type": "text",
         "context": "howToPlay",
@@ -765,7 +765,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP04": "Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current\u00A0chain.",
+    "interactionP04": "Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.",
     "@interactionP04": {
         "type": "text",
         "context": "howToPlay",
@@ -777,7 +777,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP06": "From the menu, different game modes can be selected by visiting the settings\u00A0page,",
+    "interactionP06": "From the menu, different game modes can be selected by visiting the settings page,",
     "@interactionP06": {
         "type": "text",
         "context": "howToPlay",
@@ -801,7 +801,7 @@
         "context": "howToPlay",
         "description": "UI & interaction text."
     },
-    "interactionP10": "You can export, import, or clear your statistics using the top-right menu on the statistics\u00A0page.",
+    "interactionP10": "You can export, import, or clear your statistics using the top-right menu on the statistics page.",
     "@interactionP10": {
         "type": "text",
         "context": "howToPlay",
@@ -868,7 +868,7 @@
         "context": "scoring",
         "description": "Scoring description."
     },
-    "scoringP05": "While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can't clear it. Play any way you\u00A0want.",
+    "scoringP05": "While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can't clear it. Play any way you want.",
     "@scoringP05": {
         "type": "text",
         "context": "scoring",
