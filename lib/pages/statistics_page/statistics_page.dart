@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
-import 'package:tripeaks_neue/pages/statistics_page/statistics_tab.dart';
+import 'package:tripeaks_neue/my_theme.dart';
+import 'package:tripeaks_neue/pages/statistics_page/my_statistics_tab.dart';
 import 'package:tripeaks_neue/stores/data/layout.dart';
 import 'package:tripeaks_neue/stores/session.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
@@ -60,7 +61,8 @@ class _StatisticsPageState extends State<StatisticsPage> {
           child: Builder(
             builder: (context) {
               final session = Provider.of<Session>(context);
-              final colours = context.colours;
+              final theme = context.theme;
+              final colours = theme.colorScheme;
               return Observer(
                 builder: (context) {
                   final statistics = session.statistics;
@@ -72,17 +74,15 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: Scaffold(
                       appBar: AppBar(
                         title: Text(s.statisticsPageTitle),
-                        backgroundColor: colours.surfaceContainerLow,
-                        surfaceTintColor: colours.surfaceContainerLow,
-                        shadowColor: c.faintShadowColour,
+                        backgroundColor: colours.surfaceContainer,
+                        surfaceTintColor: colours.surfaceContainer,
                         actionsPadding: EdgeInsets.only(right: 2.0),
                         actions: [
                           PopupMenuButton(
-                            color: colours.surfaceBright,
-                            elevation: 4.0,
-                            menuPadding: EdgeInsets.symmetric(vertical: c.commonRadius),
+                            menuPadding: EdgeInsets.symmetric(vertical: c.commonRadiusValue),
                             shape: RoundedRectangleBorder(borderRadius: c.commonBorderRadius),
                             icon: Icon(Icons.more_vert, color: colours.onSurfaceVariant),
+                            color: theme.extension<MyColourThemeExt>()!.dialogBackground,
                             itemBuilder: (context) => _popupItems(context, s),
                           ),
                         ],
@@ -98,32 +98,50 @@ class _StatisticsPageState extends State<StatisticsPage> {
                                 ],
                               ),
                       ),
-                      body: Focus(
-                        focusNode: _focusNode,
-                        autofocus: true,
-                        skipTraversal: true,
-                        descendantsAreFocusable: true,
-                        descendantsAreTraversable: true,
-                        child: useVertical
-                            ? MyVerticalTabView(
-                                width: 180,
-                                tabs: <Tab>[
-                                  Tab(text: s.overallStatisticsTitle),
-                                  for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
-                                ],
-                                contents: <Widget>[
-                                  StatisticsTab(statistics.overallStatistics, key: ValueKey("overall")),
-                                  for (final layout in perLayoutStats)
-                                    StatisticsTab(layout.value, showLayout: false, key: Key(layout.key.name)),
-                                ],
-                              )
-                            : TabBarView(
-                                children: <Widget>[
-                                  StatisticsTab(statistics.overallStatistics),
-                                  for (final layout in perLayoutStats)
-                                    StatisticsTab(layout.value, showLayout: false),
-                                ],
-                              ),
+                      body: Container(
+                        color: colours.surfaceContainer,
+                        child: Focus(
+                          focusNode: _focusNode,
+                          autofocus: true,
+                          skipTraversal: true,
+                          descendantsAreFocusable: true,
+                          descendantsAreTraversable: true,
+                          child: useVertical
+                              ? MyVerticalTabView(
+                                  background: colours.surfaceContainer,
+                                  width: 180,
+                                  tabs: <Tab>[
+                                    Tab(text: s.overallStatisticsTitle),
+                                    for (final entry in perLayoutStats) Tab(text: entry.key.label(s)),
+                                  ],
+                                  contents: <Widget>[
+                                    MyStatisticsTab(
+                                      statistics.overallStatistics,
+                                      isNarrow: useVertical,
+                                      key: ValueKey("overall"),
+                                    ),
+                                    for (final layout in perLayoutStats)
+                                      MyStatisticsTab(
+                                        layout.value,
+                                        showLayout: false,
+                                        isNarrow: useVertical,
+                                        key: Key(layout.key.name),
+                                      ),
+                                  ],
+                                )
+                              : TabBarView(
+                                  children: <Widget>[
+                                    MyStatisticsTab(statistics.overallStatistics, isNarrow: useVertical),
+                                    for (final layout in perLayoutStats)
+                                      MyStatisticsTab(
+                                        layout.value,
+                                        showLayout: false,
+                                        isNarrow: useVertical,
+                                        key: Key(layout.key.name),
+                                      ),
+                                  ],
+                                ),
+                        ),
                       ),
                     ),
                   );
@@ -137,7 +155,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
   }
 
   List<PopupMenuEntry> _popupItems(BuildContext context, AppLocalizations s) {
-    final colours = context.colours;
+    final theme = context.theme;
+    final colours = theme.colorScheme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     return [
       PopupMenuItem<Never>(
         onTap: Actions.handler(context, const ExportStatsIntent()),
@@ -159,7 +179,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           ],
         ),
       ),
-      PopupMenuDivider(),
+      PopupMenuDivider(color: colourExt.dialogDivider),
       PopupMenuItem<Never>(
         onTap: Actions.handler(context, const ClearStatsIntent()),
         child: Row(

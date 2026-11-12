@@ -74,7 +74,7 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
                 child: Container(
-                  color: context.colours.surfaceContainerLow,
+                  color: context.colours.surface,
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
@@ -127,8 +127,8 @@ class _LandscapeHomePageState extends State<LandscapeHomePage> {
   }
 
   double _scale(Size mediaSize) {
-    final sx = (mediaSize.width - 2 * c.pagePadding) / c.requiredWidth;
-    final sy = (mediaSize.height - 2 * c.pagePadding) / c.requiredHeight;
+    final sx = (mediaSize.width - 2 * c.homePadding) / c.requiredWidth;
+    final sy = (mediaSize.height - 2 * c.homePadding) / c.requiredHeight;
     return min(1.0, min(sx, sy));
   }
 }

@@ -8,10 +8,10 @@ class const KeyboardKey({super.key, required final LogicalKeyboardKey keyboardKe
     final theme = context.theme;
     return Container(
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceBright,
+        color: theme.colorScheme.surfaceContainer,
         borderRadius: _borderRadius,
         boxShadow: <BoxShadow>[
-          BoxShadow(color: theme.colorScheme.surfaceDim, blurRadius: 0, offset: _shadowOffset),
+          BoxShadow(color: theme.colorScheme.outlineVariant, blurRadius: 0, offset: _shadowOffset),
         ],
       ),
       padding: _padding,
@@ -24,7 +24,7 @@ class const KeyboardKey({super.key, required final LogicalKeyboardKey keyboardKe
   static const _padding = EdgeInsets.symmetric(horizontal: 8, vertical: 4);
 }
 
-class const ShortcutHint({
+final class const ShortcutHint({
   super.key,
   required final List<LogicalKeyboardKey> shorcut,
   final bool showLabel = true,
@@ -32,12 +32,13 @@ class const ShortcutHint({
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
+    final theme = context.theme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       spacing: 6,
       children: [
-        if (showLabel) Text(s.shortcutTitle, style: const TextStyle(fontStyle: FontStyle.italic)),
+        if (showLabel) Text(s.shortcutTitle, style: theme.textTheme.labelMedium),
         for (final k in shorcut) KeyboardKey(keyboardKey: k),
       ],
     );

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:material_ui/material_ui.dart';
@@ -14,6 +16,7 @@ class const CircleGameButton({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final decorColour = Provider.of<Settings>(context).decorColour;
     final colours = context.colours;
     final useSmall = scale < c.iconScaleThreshold;
     final size = min(c.buttonSize * scale, c.maxRealButtonSize);
@@ -31,9 +34,9 @@ class const CircleGameButton({
               // color: colours.surfaceContainerLow,
               child: Ink(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(100.0)),
+                  shape: .circle,
                   border: Border.all(
-                    color: onPressed == null ? colours.outlineVariant : colours.secondary,
+                    color: onPressed == null ? colours.outlineVariant : colours.outline,
                     width: 2.0,
                   ),
                 ),
@@ -52,7 +55,7 @@ class const CircleGameButton({
                 child: Icon(
                   useSmall && smallIcon != null ? smallIcon : icon,
                   size: useSmall ? 16.0 : 24.0,
-                  color: onPressed == null ? colours.outlineVariant : colours.primary,
+                  color: onPressed == null ? colours.outlineVariant : decorColour.onSurface,
                 ),
               ),
             ),
@@ -63,7 +66,7 @@ class const CircleGameButton({
   }
 }
 
-class GameButton extends StatefulWidget {
+class GameButton extends StatelessWidget {
   const GameButton.narrow({
     super.key,
     required this.scale,
@@ -93,67 +96,39 @@ class GameButton extends StatefulWidget {
   final String tooltip;
 
   @override
-  State<GameButton> createState() => _GameButtonState();
-}
-
-class _GameButtonState extends State<GameButton> {
-  final _focusNode = FocusNode();
-  Color? _buttonColour;
-  Color? _iconColor;
-  Color? _primary;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode.addListener(_setColours);
-  }
-
-  @override
-  void dispose() {
-    _focusNode.removeListener(_setColours);
-    _focusNode.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final colours = context.colours;
-    _buttonColour ??= colours.primaryContainer;
-    _iconColor ??= colours.onPrimaryContainer;
-    _primary ??= colours.primary;
-    if (colours.primary != _primary) {
-      _setColours();
-      _primary = colours.primary;
-    }
-    final useSmall = widget.scale < c.iconScaleThreshold;
+    final decorColour = Provider.of<Settings>(context).decorColour;
+    final useSmall = scale < c.iconScaleThreshold;
     return SizedBox(
-      width: widget.width * widget.scale,
-      height: widget.height * widget.scale,
+      width: width * scale,
+      height: height * scale,
       child: Tooltip(
-        message: widget.tooltip,
-        verticalOffset: widget.height * widget.scale / 2.0 + 4.0,
+        message: tooltip,
+        verticalOffset: height * scale / 2.0 + 4.0,
         child: Stack(
           children: [
             Material(
               type: MaterialType.button,
-              borderRadius: BorderRadius.circular(c.commonRadius * widget.scale),
-              color: widget.onPressed != null ? _buttonColour : colours.outlineVariant,
+              borderRadius: BorderRadius.circular(c.commonRadiusValue * scale),
+              color: onPressed != null ? decorColour.background : colours.outlineVariant,
               child: InkWell(
-                focusNode: _focusNode,
-                onTap: widget.onPressed,
-                borderRadius: BorderRadius.circular(c.commonRadius * widget.scale),
+                onTap: onPressed,
+                borderRadius: BorderRadius.circular(c.commonRadiusValue * scale),
+                focusColor: colours.outlineVariant,
+                hoverColor: decorColour.foreground,
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: SizedBox(width: widget.width, height: widget.height),
+                  child: SizedBox(width: width, height: height),
                 ),
               ),
             ),
             IgnorePointer(
               child: Center(
                 child: Icon(
-                  useSmall && widget.smallIcon != null ? widget.smallIcon : widget.icon,
+                  useSmall && smallIcon != null ? smallIcon : icon,
                   size: useSmall ? 16.0 : 24.0,
-                  color: widget.onPressed != null ? _iconColor : colours.surface,
+                  color: onPressed != null ? decorColour.controlForeground : colours.surface,
                 ),
               ),
             ),
@@ -162,19 +137,4 @@ class _GameButtonState extends State<GameButton> {
       ),
     );
   }
-
-  void _setColours() => setState(() {
-    final colours = context.colours;
-    if (_focusNode.hasFocus) {
-      setState(() {
-        _buttonColour = colours.primary;
-        _iconColor = colours.onPrimary;
-      });
-    } else {
-      setState(() {
-        _buttonColour = colours.primaryContainer;
-        _iconColor = colours.onPrimaryContainer;
-      });
-    }
-  });
 }

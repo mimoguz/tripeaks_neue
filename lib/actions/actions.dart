@@ -5,8 +5,9 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/my_theme.dart';
+import 'package:tripeaks_neue/pages/help_page/help_page.dart';
 import 'package:tripeaks_neue/pages/home_page/home_page.dart';
-import 'package:tripeaks_neue/pages/info_page/info_page.dart';
 import 'package:tripeaks_neue/pages/settings_page/settings_page.dart';
 import 'package:tripeaks_neue/pages/statistics_page/statistics_page.dart';
 import 'package:tripeaks_neue/stores/data/pin.dart';
@@ -19,8 +20,9 @@ import 'package:tripeaks_neue/util/alert.dart';
 import 'package:tripeaks_neue/util/export_result.dart';
 import 'package:tripeaks_neue/util/import_result.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
 import 'package:tripeaks_neue/widgets/select_layout_dialog.dart';
 import 'package:tripeaks_neue/util/get_io.dart'
     // ignore: uri_does_not_exist
@@ -157,10 +159,10 @@ final class NavigateToInfoAction extends ContextAction<NavigateToInfoIntent> {
     }
     final navigator = Navigator.of(context);
     if (intent.replace) {
-      navigator.pushReplacement(MaterialPageRoute(builder: (_) => InfoPage()));
+      navigator.pushReplacement(MaterialPageRoute(builder: (_) => HelpPage()));
     } else {
       _closeDrawer(context);
-      navigator.push(MaterialPageRoute(builder: (_) => InfoPage()));
+      navigator.push(MaterialPageRoute(builder: (_) => HelpPage()));
     }
   }
 }
@@ -338,25 +340,7 @@ final class ImportStatsAction extends ContextAction<ImportStatsIntent> {
       case ImportSucceeded<PlayerStatistics> succeded:
         if (context.mounted) {
           final dialogResult = await showCommonDialog<bool>(context, (context) {
-            final s = context.strings;
-            return CommonDialog(
-              title: Text(s.caution),
-              content: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
-                child: Text(s.overwriteStatisticsWarning),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop<bool>(context, false),
-                  style: TextButton.styleFrom(foregroundColor: context.colours.error),
-                  child: Text(s.cancelAction),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop<bool>(context, true),
-                  child: Text(s.continueAction),
-                ),
-              ],
-            );
+            return ImportStatsAlertDialog();
           });
           if (!(dialogResult ?? false)) {
             break;
@@ -424,24 +408,7 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
       return;
     }
     if (context.mounted) {
-      final dialogResult = await showCommonDialog<bool>(context, (context) {
-        final s = context.strings;
-        return CommonDialog(
-          title: Text(s.caution),
-          content: Padding(
-            padding: const EdgeInsets.fromLTRB(c.dialogPadding, 4, c.dialogPadding, 8),
-            child: Text(s.clearStatisticsWarning),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop<bool>(context, false),
-              style: TextButton.styleFrom(foregroundColor: context.colours.error),
-              child: Text(s.cancelAction),
-            ),
-            TextButton(onPressed: () => Navigator.pop<bool>(context, true), child: Text(s.continueAction)),
-          ],
-        );
-      });
+      final dialogResult = await showCommonDialog<bool>(context, (context) => ClearStatsAlertDialog());
       if (!(dialogResult ?? false)) {
         return;
       }
@@ -457,4 +424,82 @@ final class ClearStatsAction extends ContextAction<ClearStatsIntent> {
   }
 
   final Logger _logger = Logger();
+}
+
+final class const ClearStatsAlertDialog({super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    final theme = context.theme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
+    return MyDialog(
+      title: Row(
+        spacing: 8.0,
+        children: [
+          Icon(Icons.warning, color: theme.colorScheme.onSurfaceVariant),
+          Text(s.caution),
+        ],
+      ),
+      content: Padding(
+        padding: c.DialogMetrics.contentPaddingSymmetricalTall,
+        child: Text(s.clearStatisticsWarning),
+      ),
+      actionsAlignment: .end,
+      actions: [
+        FilledButton(
+          onPressed: () => Navigator.pop<bool>(context, false),
+          style: FilledButton.styleFrom(shadowColor: Colors.transparent),
+          child: Text(s.cancelAction),
+        ),
+        FilledButton.tonal(
+          onPressed: () => Navigator.pop<bool>(context, true),
+          style: TextButton.styleFrom(
+            shadowColor: Colors.transparent,
+            backgroundColor: colourExt.faintButtonBackground,
+            foregroundColor: colourExt.faintButtonForeground,
+          ),
+          child: Text(s.continueAction),
+        ),
+      ],
+    );
+  }
+}
+
+final class const ImportStatsAlertDialog({super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final s = context.strings;
+    final theme = context.theme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
+    return MyDialog(
+      title: Row(
+        spacing: 8.0,
+        children: [
+          Icon(Icons.warning, color: theme.colorScheme.onSurfaceVariant),
+          Text(s.caution),
+        ],
+      ),
+      content: Padding(
+        padding: c.DialogMetrics.contentPaddingSymmetricalTall,
+        child: Text(s.overwriteStatisticsWarning),
+      ),
+      actionsAlignment: .end,
+      actions: [
+        FilledButton(
+          onPressed: () => Navigator.pop<bool>(context, false),
+          style: FilledButton.styleFrom(shadowColor: Colors.transparent),
+          child: Text(s.cancelAction),
+        ),
+        FilledButton.tonal(
+          onPressed: () => Navigator.pop<bool>(context, true),
+          style: TextButton.styleFrom(
+            shadowColor: Colors.transparent,
+            backgroundColor: colourExt.faintButtonBackground,
+            foregroundColor: colourExt.faintButtonForeground,
+          ),
+          child: Text(s.continueAction),
+        ),
+      ],
+    );
+  }
 }

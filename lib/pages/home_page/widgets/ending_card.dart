@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:material_ui/material_ui.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/stores/data/single_game_statistics.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
@@ -39,17 +40,10 @@ final class const EndingCard({
                   HighlightsLine(stats: stats),
                   Padding(
                     padding: const EdgeInsets.only(top: 2.0),
-                    child: FilledButtonTheme(
-                      data: FilledButtonThemeData(
-                        style: FilledButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primary.withAlpha(150),
-                        ),
-                      ),
-                      child: Column(
-                        spacing: 8.0,
-                        crossAxisAlignment: .stretch,
-                        children: [...actions, const EndingCardToolBar()],
-                      ),
+                    child: Column(
+                      spacing: 8.0,
+                      crossAxisAlignment: .stretch,
+                      children: [...actions, const EndingCardToolBar()],
                     ),
                   ),
                 ],
@@ -98,12 +92,9 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
   Widget build(BuildContext context) {
     final s = context.strings;
     final theme = context.theme;
-    final labelStyle = theme.textTheme.labelSmall?.copyWith(color: theme.hintColor);
-    final numberStyle = theme.textTheme.bodyLarge?.copyWith(
-      color: theme.colorScheme.onSurfaceVariant,
-      fontWeight: .w500,
-      fontFeatures: c.fontFeatures,
-    );
+    final textExt = theme.extension<MyTextThemeExt>()!;
+    final labelStyle = textExt.faintLabelS;
+    final numberStyle = textExt.numericM;
     return Row(
       spacing: 40.0,
       mainAxisSize: .min,

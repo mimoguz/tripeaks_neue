@@ -19,7 +19,7 @@ class _SwipeAreaState extends State<SwipeArea> {
 
   @override
   Widget build(BuildContext context) {
-    final fill = context.colours.tertiary;
+    final fill = context.colours.errorContainer;
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onVerticalDragStart: (d) => _onDragStart(d, context),

@@ -2,7 +2,7 @@ name: tripeaks_neue
 description: "A Tri Peaks patience (solitaire) game"
 publish_to: 'none'
 # Don't forget to increase version code (the number that comes after '+')
-version: 0.9.65+17
+version: 0.9.66+18
 
 environment:
   sdk: ^3.13.0
@@ -19,14 +19,13 @@ dependencies:
   handy_window: 
     git: 
       url: https://github.com/mimoguz/handy_window.dart
-      ref: "35b816812218f014d0ab213629a6e18a251798df"
+      ref: 827e017bed6a12382f72b383a5b596a67ba136a1
   intl: any
   logger: ^2.8.0
   mobx: ^2.7.0
   path_provider: ^2.1.6
   provider: ^6.1.5
   web: ^1.1.1
-  xdg_desktop_portal: ^0.1.14
 
   material_ui: any
   flex_seed_scheme: ^5.0.1
@@ -46,7 +45,7 @@ flutter:
   assets:
     - images/tropy72.png
     - images/empty72.png
-    - images/welcome.png
+    - images/welcome72.png
     - images/card_counter_dark.png
     - images/card_counter_light.png
     - sounds/take1.mp3

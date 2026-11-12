@@ -28,7 +28,7 @@ final class const ClearedCard({super.key, required final SingleGameStatistics st
     final theme = context.theme;
     final colours = theme.colorScheme;
     final gradient = LinearGradient(
-      colors: <Color>[colours.primary, colours.tertiary],
+      colors: <Color>[colours.primary, colours.error],
       begin: .bottomLeft,
       end: .topRight,
     ).createShader(Rect.fromLTWH(0, 0, 200, 20));

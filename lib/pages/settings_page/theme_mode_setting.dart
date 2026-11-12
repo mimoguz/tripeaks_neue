@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
-import 'package:tripeaks_neue/widgets/selection_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
 
 class ThemeModeSetting extends StatelessWidget {
@@ -30,16 +29,15 @@ class ThemeModeSetting extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<int>(
+    final result = await showPlatformSelectionPopover<ThemeMode>(
       context,
-      (context) => SelectionDialog(
-        title: s.themeModeControl,
-        selected: settings.themeMode.index,
-        options: ThemeMode.values.map((e) => Text(_valueLabel(e, s))).toList(),
-      ),
+      title: Text(s.themeModeTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      selected: settings.themeMode,
+      values: ThemeMode.values,
+      itemBuilder: (v) => Text(_valueLabel(v, s)),
     );
-    if (result != null && result >= 0) {
-      settings.themeMode = ThemeMode.values[result];
+    if (result != null) {
+      settings.themeMode = result;
     }
   }
 

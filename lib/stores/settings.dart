@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:mobx/mobx.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/sound_effects.dart';
 import 'package:tripeaks_neue/util/json_object.dart';
@@ -119,4 +120,16 @@ abstract class _Settings with Store {
   void dispose() => _sounds.dispose();
 }
 
-enum SuitIconTheme { variant1, variant2, variant3, variant4 }
+enum SuitIconTheme {
+  variant1,
+  variant2,
+  variant3,
+  variant4;
+
+  String label(AppLocalizations s) => switch (this) {
+    .variant1 => s.suitIconVariant1Label,
+    .variant2 => s.suitIconVariant2Label,
+    .variant3 => s.suitIconVariant3Label,
+    .variant4 => s.suitIconVariant4Label,
+  };
+}

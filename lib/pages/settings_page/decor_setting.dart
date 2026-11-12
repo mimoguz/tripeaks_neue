@@ -1,12 +1,14 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tripeaks_neue/l10n/app_localizations.dart';
 import 'package:tripeaks_neue/stores/data/decor.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/setting_tile.dart';
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/show_dialog.dart';
+import 'package:tripeaks_neue/widgets/variant_card.dart';
 
 class const DecorSetting({super.key}) extends StatelessWidget {
   @override
@@ -20,7 +22,7 @@ class const DecorSetting({super.key}) extends StatelessWidget {
           titleText: s.decorControl,
           location: Location.last,
           onTap: () => _showSelection(context, settings),
-          subtitle: settings.decor.name(s),
+          subtitle: settings.decor.label(s),
           showArrow: true,
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
@@ -43,40 +45,32 @@ class const DecorSetting({super.key}) extends StatelessWidget {
 
   Future<void> _showSelection(BuildContext context, Settings settings) async {
     final s = context.strings;
-    final result = await showCommonDialog<int>(
+    final result = await showPlatformPopover<Decor>(
       context,
-      (context) => CommonDialog(
-        title: Text(s.decorControl),
-        content: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: c.dialogPadding),
-          child: ConstrainedBox(
-            constraints: BoxConstraints.loose(Size.fromWidth(_sideLength * 3 + c.itemSpacing * 2)),
-            child: Wrap(
-              spacing: c.itemSpacing,
-              runSpacing: c.itemSpacing,
-              children: [
-                for (final (index, decor) in Decor.values.indexed)
-                  DecorItem(
-                    decor: decor,
-                    isSelected: settings.decor == decor,
-                    onTap: () => Navigator.pop(context, index),
-                    selectedDecorColour: settings.decorColour,
-                  ),
-              ],
-            ),
+      title: Text(s.decorTitle, overflow: .fade, softWrap: false, maxLines: 1),
+      builder: (context) => Padding(
+        padding: c.DialogMetrics.contentPadding,
+        child: Center(
+          child: Wrap(
+            spacing: 2,
+            runSpacing: 8,
+            children: [
+              for (final variant in Decor.values)
+                DecorVariantCard(
+                  variant: variant,
+                  colour: settings.decorColour,
+                  isSelected: settings.decor == variant,
+                  selectedDecorColour: settings.decorColour,
+                  strings: s,
+                  onTap: () => Navigator.pop(context, variant),
+                ),
+            ],
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, -1),
-            style: TextButton.styleFrom(foregroundColor: context.colours.error),
-            child: Text(s.cancelAction),
-          ),
-        ],
       ),
     );
-    if (result != null && result >= 0) {
-      settings.decor = Decor.values[result];
+    if (result != null) {
+      settings.decor = result;
     }
   }
 
@@ -85,83 +79,27 @@ class const DecorSetting({super.key}) extends StatelessWidget {
   static const _iconOffset = Offset((c.cardSize - _boxWidth) / -2.0, (c.cardSize - _boxHeight) / -2.0);
 }
 
-class DecorItem extends StatefulWidget {
-  const DecorItem({
-    super.key,
-    required this.decor,
-    this.onTap,
-    required this.isSelected,
-    required this.selectedDecorColour,
-  });
-
-  final Decor decor;
-  final bool isSelected;
-  final VoidCallback? onTap;
-  final DecorColour selectedDecorColour;
-
+final class const DecorVariantCard({
+  super.key,
+  required final Decor variant,
+  required final DecorColour colour,
+  required final bool isSelected,
+  required final DecorColour selectedDecorColour,
+  required final AppLocalizations strings,
+  required final VoidCallback onTap,
+}) extends StatelessWidget {
   @override
-  State<DecorItem> createState() => _DecorItemState();
+  Widget build(BuildContext context) => VariantCard<Decor>(
+    variant: variant,
+    background: colour.background,
+    foreground: colour.controlForeground,
+    selectedBackground: colour.background,
+    selectedForeground: colour.foreground,
+    frameWidth: 84,
+    frameHeight: 84,
+    isSelected: isSelected,
+    label: variant.label(strings),
+    onTap: onTap,
+    child: Icon(variant.icon, size: 84),
+  );
 }
-
-class _DecorItemState extends State<DecorItem> {
-  final FocusNode _focus = FocusNode();
-  Color? _borderColour;
-
-  @override
-  void initState() {
-    super.initState();
-    _focus.addListener(_onFocusChange);
-  }
-
-  @override
-  void dispose() {
-    _focus.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final colours = context.colours;
-    _borderColour = _focus.hasFocus ? colours.primary : colours.surfaceBright;
-    return SizedBox(
-      width: _sideLength,
-      height: _sideLength,
-      child: Material(
-        color: Colors.transparent,
-        borderRadius: c.commonBorderRadius,
-        clipBehavior: .antiAlias,
-        child: InkWell(
-          onTap: widget.onTap,
-          focusNode: _focus,
-          child: Ink(
-            decoration: BoxDecoration(
-              border: Border.all(width: 2.0, color: _borderColour!),
-              borderRadius: c.commonBorderRadius,
-              color: widget.isSelected
-                  ? widget.selectedDecorColour.background
-                  : colours.surfaceContainerHighest,
-            ),
-
-            child: ClipRRect(
-              borderRadius: c.commonBorderRadius.subtract(BorderRadiusGeometry.circular(2.0)),
-              child: Icon(
-                widget.decor.icon,
-                size: _sideLength - 4,
-                color: widget.isSelected ? widget.selectedDecorColour.controlForeground : colours.secondary,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _onFocusChange() {
-    setState(() {
-      _borderColour = _focus.hasFocus ? context.colours.onSurface : context.colours.surfaceContainer;
-    });
-  }
-}
-
-const _scale = 0.8;
-const _sideLength = c.cardSize * _scale;

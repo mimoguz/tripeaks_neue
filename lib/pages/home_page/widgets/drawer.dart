@@ -3,103 +3,107 @@ import 'package:provider/provider.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
 import 'package:tripeaks_neue/assets/custom_icons.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/stores/settings.dart';
 import 'package:tripeaks_neue/util/platform_utils.dart' show canExit;
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
 
 class const HomePageDrawer({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final colours = context.colours;
+    final theme = context.theme;
+    final colours = theme.colorScheme;
+    final colourExt = theme.extension<MyColourThemeExt>()!;
     final s = context.strings;
+    final div = colourExt.dialogDivider;
     return Drawer(
       backgroundColor: colours.surfaceContainerHighest,
-      // surfaceTintColor: colours.surfaceTint,
+      surfaceTintColor: colours.surfaceContainerHighest,
       elevation: 6.0,
-      shadowColor: colours.shadow,
+      shadowColor: theme.shadowColor,
       width: 340.0,
-      shape: RoundedRectangleBorder(borderRadius: _borderRadius),
+      shape: _shape,
       clipBehavior: Clip.antiAlias,
-      child: ScrollIndicator(
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar.large(
-              pinned: true,
-              backgroundColor: colours.surfaceContainerLow,
-              foregroundColor: colours.onSurfaceVariant,
-              iconTheme: IconThemeData(color: colours.onSurfaceVariant),
-              titleSpacing: 0,
-              centerTitle: true,
-              actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
-              title: AppTitle(),
-              leading: const CloseButton(),
-              shadowColor: colours.shadow,
-              surfaceTintColor: colours.surfaceContainerLow,
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.help),
-                  tooltip: s.infoTooltip,
-                  onPressed: () => Actions.invoke(context, const NavigateToInfoIntent(replace: false)),
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar.large(
+            pinned: true,
+            backgroundColor: colours.surface,
+            surfaceTintColor: colours.surface,
+            foregroundColor: colours.onSurfaceVariant,
+            shadowColor: colours.shadow,
+            iconTheme: IconThemeData(color: colours.onSurfaceVariant),
+            titleSpacing: 0,
+            centerTitle: true,
+            actionsPadding: EdgeInsets.symmetric(horizontal: 8.0),
+            title: AppTitle(),
+            leading: const CloseButton(),
+            scrolledUnderElevation: 2.0,
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.help),
+                tooltip: s.infoTooltip,
+                onPressed: () => Actions.invoke(context, const NavigateToInfoIntent(replace: false)),
+              ),
+              Observer(
+                builder: (context) {
+                  final settings = Provider.of<Settings>(context);
+                  return IconButton(
+                    icon: const Icon(Icons.volume_off),
+                    isSelected: settings.soundOn,
+                    selectedIcon: const Icon(Icons.volume_up),
+                    tooltip: settings.soundOn ? s.soundOnToolTip : s.soundOffToolTip,
+                    onPressed: () => settings.setSoundOn(!settings.soundOn),
+                  );
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.settings),
+                tooltip: s.settingsTooltip,
+                onPressed: () => Actions.invoke(context, const NavigateToSettingsIntent(replace: false)),
+              ),
+            ],
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
+            sliver: SliverList.list(
+              children: <Widget>[
+                DrawerListTile(
+                  icon: CustomIcons.newGame,
+                  title: s.newGameAction,
+                  intent: const NewGameIntent(),
                 ),
-                Observer(
-                  builder: (context) {
-                    final settings = Provider.of<Settings>(context);
-                    return IconButton(
-                      icon: const Icon(Icons.volume_off),
-                      isSelected: settings.soundOn,
-                      selectedIcon: const Icon(Icons.volume_up),
-                      tooltip: settings.soundOn ? s.soundOnToolTip : s.soundOffToolTip,
-                      onPressed: () => settings.setSoundOn(!settings.soundOn),
-                    );
-                  },
+                DrawerListTile(
+                  icon: CustomIcons.pickAndPlay,
+                  title: s.newGameWithLayoutAction,
+                  intent: const NewGameWithLayoutIntent(),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  tooltip: s.settingsTooltip,
-                  onPressed: () => Actions.invoke(context, const NavigateToSettingsIntent(replace: false)),
+                DrawerListTile(
+                  icon: Icons.restart_alt,
+                  title: s.restartGameAction,
+                  intent: const RestartIntent(),
                 ),
+                Divider(indent: 20, endIndent: 20, color: div, thickness: 1),
+                DrawerListTile(
+                  icon: Icons.bar_chart,
+                  title: s.statisticsAction,
+                  intent: const NavigateToStatisticsIntent(),
+                ),
+                if (canExit) Divider(indent: 20, endIndent: 20, color: div, thickness: 1),
+                if (canExit)
+                  DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
               ],
             ),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
-              sliver: SliverList.list(
-                children: <Widget>[
-                  DrawerListTile(
-                    icon: CustomIcons.newGame,
-                    title: s.newGameAction,
-                    intent: const NewGameIntent(),
-                  ),
-                  DrawerListTile(
-                    icon: CustomIcons.pickAndPlay,
-                    title: s.newGameWithLayoutAction,
-                    intent: const NewGameWithLayoutIntent(),
-                  ),
-                  DrawerListTile(
-                    icon: Icons.restart_alt,
-                    title: s.restartGameAction,
-                    intent: const RestartIntent(),
-                  ),
-                  const Divider(indent: 20, endIndent: 20),
-                  DrawerListTile(
-                    icon: CustomIcons.doughnutChart,
-                    title: s.statisticsAction,
-                    intent: const NavigateToStatisticsIntent(),
-                  ),
-                  if (canExit) const Divider(indent: 20, endIndent: 20),
-                  if (canExit)
-                    DrawerListTile(icon: Icons.exit_to_app, title: s.exitAction, intent: const ExitIntent()),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  static final _borderRadius = BorderRadiusDirectional.horizontal(end: Radius.circular(c.commonRadius));
+  static final _shape = RoundedRectangleBorder(
+    borderRadius: BorderRadiusDirectional.horizontal(end: c.commonRadius),
+  );
 }
 
 final class const AppTitle({super.key}) extends StatelessWidget {
@@ -113,7 +117,7 @@ final class const AppTitle({super.key}) extends StatelessWidget {
       fontWeight: .w300,
     );
     final peak = colours.brightness == .dark ? "\ue00c" : "\ue00d";
-    final neue = style.copyWith(color: colours.tertiary);
+    final neue = style.copyWith(color: colours.error);
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints.loose(Size.fromWidth(170.0)),

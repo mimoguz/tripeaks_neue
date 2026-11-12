@@ -74,7 +74,7 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
                 descendantsAreFocusable: true,
                 descendantsAreTraversable: true,
                 child: Container(
-                  color: context.colours.surfaceContainerLow,
+                  color: context.colours.surface,
                   child: SafeArea(
                     child: Padding(
                       padding: EdgeInsets.all((24.0 * scale).floorToDouble()),
@@ -130,8 +130,8 @@ class _PortraitHomePageState extends State<PortraitHomePage> {
   }
 
   double _scale(Size mediaSize) {
-    final sx = (mediaSize.width - 2 * c.pagePadding) / c.requiredHeight;
-    final sy = (mediaSize.height - 2 * c.pagePadding) / c.requiredWidth;
+    final sx = (mediaSize.width - 2 * c.homePadding) / c.requiredHeight;
+    final sy = (mediaSize.height - 2 * c.homePadding) / c.requiredWidth;
     return min(1.0, min(sx, sy));
   }
 }

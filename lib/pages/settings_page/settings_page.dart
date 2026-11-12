@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
+import 'package:tripeaks_neue/my_theme.dart';
 import 'package:tripeaks_neue/pages/settings_page/colour_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/decor_setting.dart';
 import 'package:tripeaks_neue/pages/settings_page/ensure_solvable_setting.dart';
@@ -14,8 +15,9 @@ import 'package:tripeaks_neue/pages/settings_page/theme_mode_setting.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/group_title.dart';
-import 'package:tripeaks_neue/widgets/scroll_indicator.dart';
+import 'package:tripeaks_neue/widgets/dividers.dart';
+import 'package:tripeaks_neue/widgets/group_tile.dart';
+import 'package:tripeaks_neue/widgets/sliver_text.dart';
 
 final class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -57,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage> {
       },
       child: Builder(
         builder: (context) {
-          final colours = context.colours;
+          final theme = context.theme;
           return Shortcuts(
             shortcuts: <ShortcutActivator, Intent>{
               SingleActivator(LogicalKeyboardKey.keyQ, control: true): const ExitIntent(),
@@ -70,9 +72,8 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Scaffold(
                 appBar: AppBar(
                   title: Text(s.settingsTitle),
-                  backgroundColor: colours.surfaceContainerLow,
-                  surfaceTintColor: colours.surfaceContainerLow,
-                  shadowColor: context.colours.shadow,
+                  backgroundColor: theme.colorScheme.surfaceContainer,
+                  surfaceTintColor: theme.colorScheme.surfaceContainer,
                   leading: BackButton(
                     onPressed: () => Actions.invoke(context, const GoBackIntent(saveSettings: true)),
                   ),
@@ -100,41 +101,65 @@ final class SettingsPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = context.strings;
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            color: context.colours.surfaceContainerLow,
-            child: Center(
-              child: Column(
-                children: [
-                  Flexible(
-                    child: ScrollIndicator(
-                      child: ListView(
-                        shrinkWrap: true,
-                        padding: c.utilPageInsets,
-                        children: [
-                          const ShowAllSetting(),
-                          GroupTitle(s.nextGameSettingGroupTitle),
-                          const LayoutSetting(),
-                          const StartEmptySetting(),
-                          const EnsureSolvableSetting(),
-                          GroupTitle(s.interfaceSettingGroupTitle),
-                          const SoundSetting(),
-                          const ThemeModeSetting(),
-                          const SuitIconSetting(),
-                          const ColourSetting(),
-                          const DecorSetting(),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+    final valueExt = context.theme.extension<MyValueExt>()!;
+    final bg = context.colours.surfaceContainer;
+    return Container(
+      color: bg,
+      child: CustomScrollView(
+        slivers: <Widget>[
+          const SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.only(top: c.utilPageMargin, bottom: c.DialogMetrics.sectionSpacing),
+              child: GroupTile(padding: EdgeInsets.zero, children: [ShowAllSetting()]),
             ),
           ),
-        ),
-      ],
+          SliverMainAxisGroup(
+            slivers: <Widget>[
+              H(Text(s.nextGameSettingGroupTitle), background: bg),
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: c.DialogMetrics.sectionSpacing, top: 6),
+                  child: GroupTile(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      LayoutSetting(),
+                      SettingDivider(),
+                      StartEmptySetting(),
+                      SettingDivider(),
+                      EnsureSolvableSetting(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          SliverMainAxisGroup(
+            slivers: <Widget>[
+              H(Text(s.interfaceSettingGroupTitle), background: bg),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: valueExt.utilPageMarginBottom, top: 6),
+                  child: const GroupTile(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      SoundSetting(),
+                      SettingDivider(),
+                      ThemeModeSetting(),
+                      SettingDivider(),
+                      SuitIconSetting(),
+                      SettingDivider(),
+                      ColourSetting(),
+                      SettingDivider(),
+                      DecorSetting(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

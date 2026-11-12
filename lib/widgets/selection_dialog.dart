@@ -1,97 +1,59 @@
-import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
-import 'package:tripeaks_neue/util/platform_utils.dart' show isDesktopOrWeb;
-import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
-import 'package:tripeaks_neue/widgets/common_dialog.dart';
+import 'package:tripeaks_neue/widgets/my_dialog.dart';
+import 'package:tripeaks_neue/widgets/my_selection_tiles.dart';
 
-class const SelectionDialog({
+class const MySelectionDialog<T>({
   super.key,
-  required final List<Widget> options,
-  required final int selected,
-  final String? title,
-}) extends StatefulWidget {
-  @override
-  State<SelectionDialog> createState() => _SelectionDialogState();
-}
-
-class _SelectionDialogState() extends State<SelectionDialog> {
-  var selected = -1;
-  late final FocusNode _focus;
-
-  @override
-  void initState() {
-    super.initState();
-    selected = widget.selected;
-    _focus = FocusNode(descendantsAreFocusable: false);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _focus.dispose();
-  }
-
+  required final List<T> values,
+  required final T selected,
+  required final Widget title,
+  required final Widget Function(T) itemBuilder,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final s = context.strings;
-    final theme = context.theme;
-    return CommonDialog(
-      title: widget.title != null ? Text(widget.title!) : null,
-      content: RadioGroup(
-        onChanged: (value) {
-          if (value != null) {
-            setState(() {
-              selected = value;
-            });
-          }
-        },
-        groupValue: selected,
-        child: ListTileTheme(
-          data: ListTileThemeData(
-            visualDensity: .compact,
-            titleTextStyle: theme.textTheme.bodyMedium,
-            controlAffinity: .leading,
-            horizontalTitleGap: c.itemSpacing - c.radioCorrection + (isDesktopOrWeb ? 1 : 0),
-            contentPadding: EdgeInsets.fromLTRB(c.itemSpacing - c.radioCorrection, 0.0, c.itemSpacing, 0.0),
-          ),
-          child: Column(
-            children: [
-              for (final (index, item) in widget.options.indexed)
-                InkWell(
-                  onTap: () => Navigator.pop(context, index),
-                  child: KeyboardListener(
-                    focusNode: _focus,
-                    onKeyEvent: (e) {
-                      switch (e.logicalKey) {
-                        case LogicalKeyboardKey.accept:
-                        case LogicalKeyboardKey.enter:
-                          setState(() {
-                            selected = index;
-                          });
-                          Navigator.pop(context, index);
-                        default:
-                          return;
-                      }
-                    },
-                    child: IgnorePointer(
-                      child: RadioListTile<int>(value: index, title: item),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+    return MyDialog(
+      title: title,
+      content: Padding(
+        padding: const EdgeInsets.only(bottom: c.DialogMetrics.verticalPadding),
+        child: Column(
+          children: [
+            for (final v in values)
+              MyRadioListTile(
+                value: v,
+                isChecked: v == selected,
+                label: itemBuilder(v),
+                onTap: (v) => Navigator.pop(context, v),
+              ),
+          ],
         ),
       ),
-      actions: [
-        TextButton(
-          autofocus: false,
-          focusNode: _focus,
-          onPressed: () => Navigator.pop(context, -1),
-          style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
-          child: Text(s.cancelAction),
-        ),
-      ],
+    );
+  }
+}
+
+class const MySelectionSheet<T>({
+  super.key,
+  required final List<T> values,
+  required final T selected,
+  required final Widget title,
+  required final Widget Function(T) itemBuilder,
+}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MyBottomSheet(
+      title: title,
+      content: Column(
+        children: [
+          for (final v in values)
+            MyRadioListTile(
+              value: v,
+              isChecked: v == selected,
+              label: itemBuilder(v),
+              onTap: (v) => Navigator.pop(context, v),
+            ),
+        ],
+      ),
     );
   }
 }

@@ -118,7 +118,7 @@ abstract class AppLocalizations {
   /// Tooltip for the longest-chain icons.
   ///
   /// In en, this message translates to:
-  /// **'Longest chain'**
+  /// **'Longest chain length'**
   String get chainTooltip;
 
   /// For the ending cards.
@@ -313,6 +313,12 @@ abstract class AppLocalizations {
   /// **'Theme mode'**
   String get themeModeControl;
 
+  /// Title of a control that selects application theme mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Mode'**
+  String get themeModeTitle;
+
   /// Value label of themeMode control when it is set to system.
   ///
   /// In en, this message translates to:
@@ -336,6 +342,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Board layout'**
   String get layoutControl;
+
+  /// Title of a control that selects game layout theme mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Board Layout'**
+  String get layoutTitle;
 
   /// Value label of layout selection control when it is set to 'threePeaks'.
   ///
@@ -391,6 +403,12 @@ abstract class AppLocalizations {
   /// **'Card back decoration'**
   String get decorControl;
 
+  /// Title of a control that sets the decoration that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Back Decoration'**
+  String get decorTitle;
+
   /// Label of a decoration variant.
   ///
   /// In en, this message translates to:
@@ -438,6 +456,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Card back colour'**
   String get decorColourControl;
+
+  /// Title of a control that sets the colour that is used on the back of the cards.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Back Colour'**
+  String get decorColourTitle;
 
   /// Label of a decoration colour variant.
   ///
@@ -487,6 +511,12 @@ abstract class AppLocalizations {
   /// **'Suit icons'**
   String get suitIconsControl;
 
+  /// Title of a control that sets the suit icon theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Suit Icons'**
+  String get suitIconsTitle;
+
   /// Label of the first icon theme variant.
   ///
   /// In en, this message translates to:
@@ -520,7 +550,7 @@ abstract class AppLocalizations {
   /// Title of the additional options section of the dialog.
   ///
   /// In en, this message translates to:
-  /// **'Additional Options'**
+  /// **'Options'**
   String get additionalOptionsGroupTitle;
 
   /// Label of the checkbox that sets if the discard pile should be empty at the beginning of the game.
@@ -550,7 +580,7 @@ abstract class AppLocalizations {
   /// Title of the welcome dialog.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to TriPeaks NEUE'**
+  /// **'Welcome to\nTriPeaks NEUE'**
   String get welcomeDialogTitle;
 
   /// Welcome dialog body.
@@ -622,13 +652,13 @@ abstract class AppLocalizations {
   /// Label of the total games played statistic.
   ///
   /// In en, this message translates to:
-  /// **'TOTAL PLAYED'**
+  /// **'ROUNDS'**
   String get totalPlayedLabel;
 
   /// Label of the total games cleared statistic.
   ///
   /// In en, this message translates to:
-  /// **'TOTAL CLEARED'**
+  /// **'CLEARED'**
   String get totalClearedLabel;
 
   /// Label of the best score statistic.
@@ -642,6 +672,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'LONGEST CHAIN'**
   String get longestChainLabel;
+
+  /// Title of the 'game' column.
+  ///
+  /// In en, this message translates to:
+  /// **'GAME'**
+  String get gameLabel;
 
   /// Label of the import menu item.
   ///
@@ -682,38 +718,26 @@ abstract class AppLocalizations {
   /// 'How to play' tab title.
   ///
   /// In en, this message translates to:
-  /// **'How to Play'**
+  /// **'Tri Peaks'**
   String get howToPlayTabTitle;
+
+  /// UI tab title.
+  ///
+  /// In en, this message translates to:
+  /// **'Interaction'**
+  String get uiTabTitle;
 
   /// 'About' tab title.
   ///
   /// In en, this message translates to:
-  /// **'About the Game'**
+  /// **'About'**
   String get aboutTabTitle;
 
-  /// Label of a button that displays the license of a dependency.
+  /// No description provided for @howToPlaySectionTitle.
   ///
   /// In en, this message translates to:
-  /// **'Show License'**
-  String get showLicenseAction;
-
-  /// If the dependency is direct.
-  ///
-  /// In en, this message translates to:
-  /// **'Direct'**
-  String get directDependencyLabel;
-
-  /// If the dependency is a dependency of a direct dependency.
-  ///
-  /// In en, this message translates to:
-  /// **'Indirect'**
-  String get indirectDependencyLabel;
-
-  /// Label of a button that closes the license dialog.
-  ///
-  /// In en, this message translates to:
-  /// **'Close'**
-  String get licenseDialogCloseAction;
+  /// **'How to Play Tri Peaks'**
+  String get howToPlaySectionTitle;
 
   /// Alt text for Wikipedia link.
   ///
@@ -730,43 +754,43 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
+  /// **'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.'**
   String get howToP01;
 
   /// How to play text, contains formatting.
   ///
   /// In en, this message translates to:
-  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
+  /// **'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._'**
   String get howToRichP02;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
+  /// **'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.'**
   String get howToRichP03;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
+  /// **'When a face-down card is no longer blocked by other cards, it will be flipped face-up.'**
   String get howToP04;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
+  /// **'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.'**
   String get howToP05;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'The game ends when the board is cleared or no more moves are possible.'**
+  /// **'The game ends when the board is cleared or no more moves are possible.'**
   String get howToP06;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'In addition to the standard game, this app offers:'**
+  /// **'In addition to the standard game, this app offers:'**
   String get howToP07;
 
   /// How to play text.
@@ -778,37 +802,43 @@ abstract class AppLocalizations {
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'An option to show the values of face-down cards,'**
+  /// **'An option to show the values of face-down cards,'**
   String get howToP09;
 
   /// How to play text.
   ///
   /// In en, this message translates to:
-  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
+  /// **'An option to start with an empty discard pile, allowing the player to choose any starting card.'**
   String get howToP10;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Use This Application'**
+  String get usageTitle;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
+  /// **'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.'**
   String get interactionP01;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
+  /// **'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.'**
   String get interactionRichP02;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.'**
+  /// **'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.'**
   String get interactionP03;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
+  /// **'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.'**
   String get interactionP04;
 
   /// UI & interaction text.
@@ -820,19 +850,19 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
+  /// **'From the menu, different game modes can be selected by visiting the settings page,'**
   String get interactionP06;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'or by using \"New Game with Layout...\" option.'**
+  /// **'or by using _\"New Game with Layout...\"_ option.'**
   String get interactionP07;
 
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
+  /// **'When a game ends, you will see an _ending card_. They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.'**
   String get interactionP08;
 
   /// UI & interaction text.
@@ -844,7 +874,7 @@ abstract class AppLocalizations {
   /// UI & interaction text.
   ///
   /// In en, this message translates to:
-  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
+  /// **'You can export, import, or clear your statistics using the top-right menu on the statistics page.'**
   String get interactionP10;
 
   /// UI & interaction text.
@@ -877,35 +907,119 @@ abstract class AppLocalizations {
   /// **'Shortcut: '**
   String get shortcutTitle;
 
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Scoring'**
+  String get scoringTitle;
+
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'Removing cards from the board one after the other creates a _chain_.'**
+  /// **'Removing cards from the board one after the other creates a _chain_.'**
   String get scoringRichP01;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. '**
+  /// **'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.'**
   String get scoringP02;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.'**
+  /// **'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.'**
   String get scoringRichP03;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. '**
+  /// **'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. '**
   String get scoringRichP04;
 
   /// Scoring description.
   ///
   /// In en, this message translates to:
-  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
+  /// **'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.'**
   String get scoringP05;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'About the Game'**
+  String get aboutTheGameTitle;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'Tripeaks NEUE version {version}.\nCopyright © 2026 Oguz Tas.\nSolvable game algorithm was developed by Lykae.'**
+  String aboutText(String version);
+
+  /// Link text.
+  ///
+  /// In en, this message translates to:
+  /// **'Source repository'**
+  String get repoLink;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'License'**
+  String get licenseTitle;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'Available under GNU Affero General Public License (AGPL) Version 3.'**
+  String get licenseText;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'Except fonts/actions.ttf: This file includes symbols derived from Material Icons, and therefore available under Apache License Version 2.0 (same as Material Icons).'**
+  String get licenseExceptionText;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyTitle;
+
+  /// Section text.
+  ///
+  /// In en, this message translates to:
+  /// **'This game is open source and free software. First-party distrubutions of it are compiled unchanged from the source codes available at the repository linked above. It does not collect any user data.'**
+  String get privacyPolicyText;
+
+  /// Section title.
+  ///
+  /// In en, this message translates to:
+  /// **'Dependencies'**
+  String get dependenciesTitle;
+
+  /// No description provided for @indirectDependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Indirect: '**
+  String get indirectDependency;
+
+  /// No description provided for @directDependency.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct: '**
+  String get directDependency;
+
+  /// Label of a button that copies the web page link of a dependency to the clipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Link'**
+  String get copyLinkAction;
+
+  /// Label of a button that displays the license of a dependency.
+  ///
+  /// In en, this message translates to:
+  /// **'License'**
+  String get showLicenseAction;
 
   /// Alert dialog message.
   ///

@@ -31,7 +31,7 @@ extension DecorExt on Decor {
     Decor.solar => CustomIcons.backSolar,
   };
 
-  String name(AppLocalizations s) => switch (this) {
+  String label(AppLocalizations s) => switch (this) {
     Decor.checkered => s.checkeredDecorLabel,
     Decor.dotMatrix => s.dotMatrixDecorLabel,
     Decor.ennui => s.ennuiDecorLabel,
@@ -42,19 +42,60 @@ extension DecorExt on Decor {
 }
 
 enum DecorColour {
-  red(background: Color(0xfff44336), foreground: Color(0x40ffcdd2), controlForeground: Color(0xffffcdd2)),
-  orange(background: Color(0xffff5e00), foreground: Color(0x40fffca0), controlForeground: Color(0xffffe0b2)),
-  amber(background: Color(0xffffa000), foreground: Color(0x40fff9c4), controlForeground: Color(0xffffecb3)),
-  green(background: Color(0xff4caa4f), foreground: Color(0x40bee9bf), controlForeground: Color(0xffc8e6c9)),
-  cyan(background: Color(0xff04c4dd), foreground: Color(0x40d3f4f8), controlForeground: Color(0xffb2ebf2)),
-  blue(background: Color(0xff2087db), foreground: Color(0x40b3e5fc), controlForeground: Color(0xffb3e5fc)),
-  violet(background: Color(0xff8f16cf), foreground: Color(0x40fdd0ff), controlForeground: Color(0xffe1bee7));
+  red(
+    background: Color(0xfff44336),
+    foreground: Color(0x40ffcdd2),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xffe66157),
+  ),
+  orange(
+    background: Color(0xffff5e00),
+    foreground: Color(0x40fffca0),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xffeb722b),
+  ),
+  amber(
+    background: Color(0xffffa000),
+    foreground: Color(0x40fff9c4),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xffeba42b),
+  ),
+  green(
+    background: Color(0xff4caa4f),
+    foreground: Color(0x40bee9bf),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff63aa66),
+  ),
+  cyan(
+    background: Color(0xff04c4dd),
+    foreground: Color(0x40d3f4f8),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff2bbccf),
+  ),
+  blue(
+    background: Color(0xff2087db),
+    foreground: Color(0x40b3e5fc),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff4390d0),
+  ),
+  violet(
+    background: Color(0xff8f16cf),
+    foreground: Color(0x40fdd0ff),
+    controlForeground: Color(0xEEFFFFFF),
+    onSurface: Color(0xff9539c5),
+  );
 
-  const DecorColour({required this.background, required this.foreground, required this.controlForeground});
+  const DecorColour({
+    required this.background,
+    required this.foreground,
+    required this.controlForeground,
+    required this.onSurface,
+  });
 
   final Color background;
   final Color foreground;
   final Color controlForeground;
+  final Color onSurface;
 
   String label(AppLocalizations s) => switch (this) {
     DecorColour.red => s.redColourLabel,

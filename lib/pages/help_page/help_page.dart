@@ -2,21 +2,22 @@ import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:tripeaks_neue/actions/actions.dart';
 import 'package:tripeaks_neue/actions/intents.dart';
-import 'package:tripeaks_neue/pages/info_page/about_tab.dart';
-import 'package:tripeaks_neue/pages/info_page/howto_tab.dart';
+import 'package:tripeaks_neue/pages/help_page/tripeaks_tab.dart';
+import 'package:tripeaks_neue/pages/help_page/ui_tab.dart';
+import 'package:tripeaks_neue/pages/help_page/about_tab.dart';
 import 'package:tripeaks_neue/util/overlay_style.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/my_vertical_tab_view.dart';
 
-class InfoPage extends StatefulWidget {
-  const InfoPage({super.key});
+class HelpPage extends StatefulWidget {
+  const HelpPage({super.key});
 
   @override
-  State<InfoPage> createState() => _InfoPageState();
+  State<HelpPage> createState() => _HelpPageState();
 }
 
-class _InfoPageState extends State<InfoPage> {
+class _HelpPageState extends State<HelpPage> {
   late final FocusNode _focusNode;
 
   @override
@@ -35,6 +36,7 @@ class _InfoPageState extends State<InfoPage> {
   Widget build(BuildContext context) {
     final s = context.strings;
     final useVertical = MediaQuery.sizeOf(context).height < c.verticalTabsThreshold;
+    final background = context.colours.surface;
     setOverlayStyleOf(context);
     return Shortcuts(
       shortcuts: <ShortcutActivator, Intent>{
@@ -49,11 +51,12 @@ class _InfoPageState extends State<InfoPage> {
           bottom: false,
           child: DefaultTabController(
             initialIndex: 0,
-            length: 2,
+            length: 3,
             child: Scaffold(
               appBar: AppBar(
                 title: Text(s.infoPageTitle),
-                backgroundColor: context.colours.surfaceContainerLow,
+                backgroundColor: background,
+                surfaceTintColor: background,
                 bottom: useVertical
                     ? null
                     : TabBar(
@@ -61,6 +64,7 @@ class _InfoPageState extends State<InfoPage> {
                         dividerColor: Colors.transparent,
                         tabs: <Widget>[
                           Tab(text: s.howToPlayTabTitle),
+                          Tab(text: s.uiTabTitle),
                           Tab(text: s.aboutTabTitle),
                         ],
                       ),
@@ -75,12 +79,13 @@ class _InfoPageState extends State<InfoPage> {
                     ? MyVerticalTabView(
                         width: 180,
                         tabs: <Tab>[
-                          Tab(text: s.howToPlayTabTitle),
-                          Tab(text: s.aboutTabTitle),
+                          Tab(text: "Tri Peaks"),
+                          Tab(text: "Interaction"),
+                          Tab(text: "About"),
                         ],
-                        contents: <Widget>[HowtoTab(), AboutTab()],
+                        contents: <Widget>[TriPeaksTab(), UiTab(), AboutTab()],
                       )
-                    : TabBarView(children: <Widget>[HowtoTab(), AboutTab()]),
+                    : TabBarView(children: <Widget>[TriPeaksTab(), UiTab(), AboutTab()]),
               ),
             ),
           ),

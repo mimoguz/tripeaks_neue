@@ -22,7 +22,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get scoreTooltip => 'Score';
 
   @override
-  String get chainTooltip => 'Longest chain';
+  String get chainTooltip => 'Longest chain length';
 
   @override
   String get scoreLabel => 'SCORE';
@@ -121,6 +121,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeModeControl => 'Theme mode';
 
   @override
+  String get themeModeTitle => 'Theme Mode';
+
+  @override
   String get systemThemeModeLabel => 'System';
 
   @override
@@ -131,6 +134,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get layoutControl => 'Board layout';
+
+  @override
+  String get layoutTitle => 'Board Layout';
 
   @override
   String get threePeaksLayoutLabel => 'Three Peaks';
@@ -160,6 +166,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get decorControl => 'Card back decoration';
 
   @override
+  String get decorTitle => 'Card Back Decoration';
+
+  @override
   String get checkeredDecorLabel => 'Checkered';
 
   @override
@@ -182,6 +191,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get decorColourControl => 'Card back colour';
+
+  @override
+  String get decorColourTitle => 'Card Back Colour';
 
   @override
   String get redColourLabel => 'Red';
@@ -208,6 +220,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get suitIconsControl => 'Suit icons';
 
   @override
+  String get suitIconsTitle => 'Suit Icons';
+
+  @override
   String get suitIconVariant1Label => 'First Draft';
 
   @override
@@ -223,7 +238,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLayoutDialogTitle => 'Select Layout';
 
   @override
-  String get additionalOptionsGroupTitle => 'Additional Options';
+  String get additionalOptionsGroupTitle => 'Options';
 
   @override
   String get startsEmptyOptionLabel => 'Start with an empty discard pile';
@@ -238,7 +253,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLayoutDialogNewGameAction => 'New game';
 
   @override
-  String get welcomeDialogTitle => 'Welcome to TriPeaks NEUE';
+  String get welcomeDialogTitle => 'Welcome to\nTriPeaks NEUE';
 
   @override
   String get welcomeDialogMessage => 'Would you like to...';
@@ -274,16 +289,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get statisticsSummary => 'Summary';
 
   @override
-  String get totalPlayedLabel => 'TOTAL PLAYED';
+  String get totalPlayedLabel => 'ROUNDS';
 
   @override
-  String get totalClearedLabel => 'TOTAL CLEARED';
+  String get totalClearedLabel => 'CLEARED';
 
   @override
   String get bestScoreLabel => 'HIGHEST SCORE';
 
   @override
   String get longestChainLabel => 'LONGEST CHAIN';
+
+  @override
+  String get gameLabel => 'GAME';
 
   @override
   String get importAction => 'Import from file…';
@@ -304,22 +322,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get infoPageTitle => 'How to & About';
 
   @override
-  String get howToPlayTabTitle => 'How to Play';
+  String get howToPlayTabTitle => 'Tri Peaks';
 
   @override
-  String get aboutTabTitle => 'About the Game';
+  String get uiTabTitle => 'Interaction';
 
   @override
-  String get showLicenseAction => 'Show License';
+  String get aboutTabTitle => 'About';
 
   @override
-  String get directDependencyLabel => 'Direct';
-
-  @override
-  String get indirectDependencyLabel => 'Indirect';
-
-  @override
-  String get licenseDialogCloseAction => 'Close';
+  String get howToPlaySectionTitle => 'How to Play Tri Peaks';
 
   @override
   String get wikiLinkAlt => 'Tri Peaks on Wikipedia';
@@ -329,76 +341,79 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get howToP01 =>
-      'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
+      'In a standard Tri Peaks patience (solitaire) game, 28 cards are arranged on the board in the shape of three peaks: 18 cards face-down and 10 cards face-up. The remaining  cards form the stock. At the start, the topmost card from the stock is placed on the discard pile.';
 
   @override
   String get howToRichP02 =>
-      'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
+      'The objective is to clear all the peaks by removing cards one by one and placing them on the discard pile. _A card may be removed from the board only if it is face-up and adjacent to the top card of the discard pile, irrespective of its suit._';
 
   @override
   String get howToRichP03 =>
-      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
+      'The player can move in any direction, forming sequences such as _Ace → 2 → 3 → 2 → Ace → King → Queen → King_. As demonstrated in the example, sequences can loop, so movement from Ace to King or from King to Ace is possible.';
 
   @override
   String get howToP04 =>
-      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
+      'When a face-down card is no longer blocked by other cards, it will be flipped face-up.';
 
   @override
   String get howToP05 =>
-      'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
+      'If there are no open cards on the board that are adjacent to the card on top of the discard pile (or at any time), the player can draw a card from the stock.';
 
   @override
-  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
+  String get howToP06 => 'The game ends when the board is cleared or no more moves are possible.';
 
   @override
-  String get howToP07 => 'In addition to the standard game, this app offers:';
+  String get howToP07 => 'In addition to the standard game, this app offers:';
 
   @override
   String get howToP08 => 'Three additional board layouts,';
 
   @override
-  String get howToP09 => 'An option to show the values of face-down cards,';
+  String get howToP09 => 'An option to show the values of face-down cards,';
 
   @override
   String get howToP10 =>
-      'An option to start with an empty discard pile, allowing the player to choose any starting card.';
+      'An option to start with an empty discard pile, allowing the player to choose any starting card.';
+
+  @override
+  String get usageTitle => 'How to Use This Application';
 
   @override
   String get interactionP01 =>
-      'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
+      'To remove a card from the board, just tap on it. If it is a valid move, the card will be moved on top of the discard pile; otherwise, it will wobble momentarily.';
 
   @override
   String get interactionRichP02 =>
-      'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
+      'This is the draw button. Pressing this, _or swiping up on an otherwise non-actionable part (except the very edges) of the game screen_  will draw a card from the stock and place it on top of the discard pile.';
 
   @override
   String get interactionP03 =>
-      'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.';
+      'This is the undo button. Pressing this will roll back the last move. This can go back to the very beginning of the game.';
 
   @override
   String get interactionP04 =>
-      'Between the board and the stock, you will see the card counter. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
+      'Between the board and the stock, you will see _the card counter_. Thick lines on the bottom or left show the remaining cards. The circles show the current chain.';
 
   @override
   String get interactionP05 => 'This is the menu button.';
 
   @override
   String get interactionP06 =>
-      'From the menu, different game modes can be selected by visiting the settings page,';
+      'From the menu, different game modes can be selected by visiting the settings page,';
 
   @override
-  String get interactionP07 => 'or by using \"New Game with Layout...\" option.';
+  String get interactionP07 => 'or by using _\"New Game with Layout...\"_ option.';
 
   @override
   String get interactionP08 =>
-      'When a game ends, you will see an \"ending card\". They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
+      'When a game ends, you will see an _ending card_. They are not modal dialogs, and they don\'t block interaction with the other parts of the interface.';
 
   @override
   String get interactionP09 => 'The game supports both portrait and landscape orientations.';
 
   @override
   String get interactionP10 =>
-      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
+      'You can export, import, or clear your statistics using the top-right menu on the statistics page.';
 
   @override
   String get interactionP11 => 'Other Shortcuts';
@@ -416,23 +431,69 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shortcutTitle => 'Shortcut: ';
 
   @override
-  String get scoringRichP01 => 'Removing cards from the board one after the other creates a _chain_.';
+  String get scoringTitle => 'Scoring';
+
+  @override
+  String get scoringRichP01 => 'Removing cards from the board one after the other creates a _chain_.';
 
   @override
   String get scoringP02 =>
-      'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it. ';
+      'A chain ends when the player draws a card from the stock, or when the game ends. Using undo will only decrease the current chain\'s length, it will not end it.';
 
   @override
   String get scoringRichP03 =>
-      'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.';
+      'When a chain ends, the player gains a score equal to the _square_ of that chain\'s length: 1 point for one card, 4 points for two cards, 9 points for three cards, and so on.';
 
   @override
   String get scoringRichP04 =>
-      'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ';
+      'When the board is cleared, the player gains a bonus score equal to the _number of cards on the board at the start of the game_. ';
 
   @override
   String get scoringP05 =>
-      'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
+      'While clearing the board is the goal, you can easily get a higher score by creating long chains, even if you can\'t clear it. Play any way you want.';
+
+  @override
+  String get aboutTheGameTitle => 'About the Game';
+
+  @override
+  String aboutText(String version) {
+    return 'Tripeaks NEUE version $version.\nCopyright © 2026 Oguz Tas.\nSolvable game algorithm was developed by Lykae.';
+  }
+
+  @override
+  String get repoLink => 'Source repository';
+
+  @override
+  String get licenseTitle => 'License';
+
+  @override
+  String get licenseText => 'Available under GNU Affero General Public License (AGPL) Version 3.';
+
+  @override
+  String get licenseExceptionText =>
+      'Except fonts/actions.ttf: This file includes symbols derived from Material Icons, and therefore available under Apache License Version 2.0 (same as Material Icons).';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyText =>
+      'This game is open source and free software. First-party distrubutions of it are compiled unchanged from the source codes available at the repository linked above. It does not collect any user data.';
+
+  @override
+  String get dependenciesTitle => 'Dependencies';
+
+  @override
+  String get indirectDependency => 'Indirect: ';
+
+  @override
+  String get directDependency => 'Direct: ';
+
+  @override
+  String get copyLinkAction => 'Link';
+
+  @override
+  String get showLicenseAction => 'License';
 
   @override
   String get importFailedPrompt => 'Import failed';

@@ -7,6 +7,7 @@ class const MyVerticalTabView({
   required final List<Widget> tabs,
   required final List<Widget> contents,
   final double width = 150,
+  final Color? background,
 }) extends StatefulWidget {
   @override
   State<MyVerticalTabView> createState() => _MyVerticalTabViewState();
@@ -17,7 +18,7 @@ class _MyVerticalTabViewState extends State<MyVerticalTabView> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColour = context.colours.surfaceContainerLow;
+    final backgroundColour = widget.background ?? context.colours.surface;
     return Column(
       children: [
         Expanded(
@@ -88,8 +89,8 @@ class const TabHeader({
                 child: DefaultTextStyle(
                   textAlign: TextAlign.left,
                   style: isSelected
-                      ? theme.textTheme.bodyMedium!
-                      : theme.textTheme.bodyMedium!.copyWith(color: theme.hintColor),
+                      ? theme.textTheme.bodyMedium!.copyWith(color: theme.colorScheme.primary)
+                      : theme.textTheme.bodyMedium!,
                   child: tab,
                 ),
               ),

@@ -13,7 +13,7 @@ class CardCounter extends StatelessWidget {
     final colours = context.colours;
     final bold = colours.secondary;
     final thin = colours.outlineVariant;
-    final group = colours.tertiary;
+    final group = colours.error;
     return Row(
       children: [
         Expanded(
@@ -67,7 +67,7 @@ class CounterSegment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: _space),
-      child: Container(width: width - 2.0 * _space, height: 3.0, color: context.colours.tertiary),
+      child: Container(width: width - 2.0 * _space, height: 3.0, color: context.colours.error),
     );
   }
 }
