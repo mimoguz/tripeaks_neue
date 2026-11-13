@@ -152,12 +152,18 @@ class _GesturePainter({
   @override
   void paint(Canvas canvas, Size size) {
     _paint
-      ..color = colour
-      ..strokeWidth = 42.0;
+      ..color = Colors.pink
+      ..strokeWidth = 42.0
+      ..shader = LinearGradient(
+        colors: [colour, colour.withAlpha(0)],
+        begin: .bottomCenter,
+        end: .topCenter,
+      ).createShader(Offset(to.dx - 21, to.dy) & Size(42, from.dy - to.dy));
     canvas.drawLine(from, Offset(from.dx, to.dy), _paint);
     if (drawAction) {
       _paint
         ..color = actionColour
+        ..shader = null
         ..strokeWidth = 3.0;
       canvas.drawPath(
         Path()
