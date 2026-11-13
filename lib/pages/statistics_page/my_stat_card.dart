@@ -18,34 +18,32 @@ class const MyStatCard({
     final textExt = theme.extension<MyTextThemeExt>()!;
     return MyCard(
       padding: _padding,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(minHeight: 108),
-        child: Column(
-          mainAxisAlignment: .spaceEvenly,
-          crossAxisAlignment: .center,
-          children: [
-            Icon(icon, size: 32, color: colours.onSurfaceVariant),
-            Text(value.toString(), style: textExt.numericL.copyWith(color: colours.onSecondaryContainer)),
-            Row(
-              mainAxisAlignment: .center,
-              children: [
-                Flexible(
-                  child: Text(
-                    label,
-                    style: textExt.faintLabelM,
-                    softWrap: true,
-                    maxLines: 2,
-                    overflow: .fade,
-                    textAlign: .center,
-                  ),
+      child: Column(
+        mainAxisAlignment: .spaceBetween,
+        crossAxisAlignment: .center,
+        spacing: 8,
+        children: [
+          Icon(icon, size: 32, color: colours.onSurfaceVariant),
+          Text(value.toString(), style: textExt.numericL),
+          Row(
+            mainAxisAlignment: .center,
+            children: [
+              Flexible(
+                child: Text(
+                  label,
+                  style: textExt.faintLabelM,
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: .fade,
+                  textAlign: .center,
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 
-  static const _padding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 4, c.cardPaddingHorizontal, 6);
+  static const _padding = EdgeInsets.symmetric(horizontal: 4, vertical: c.cardPaddingVertical + 6);
 }

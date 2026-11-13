@@ -18,7 +18,7 @@ final class MyValueExt extends ThemeExtension<MyValueExt> {
     : utilPageMarginBottom = 10,
       utilPageMargins = const EdgeInsets.all(10),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 14, 8),
-      cardElevation = 3,
+      cardElevation = 2,
       cardBorder = Border.all(
         color: brightness == .light
             ? const Color.fromRGBO(0, 0, 6, 0.072)
@@ -457,7 +457,7 @@ abstract final class _Colours {
   static const onSecondaryContainerLight = Color(0xFF2D3338); //Color(0xFF505254);
   static const tertiaryLight = Color(0xFF595C85);
   static const onTertiaryLight = Color(0xFFFBF8FF);
-  static const tertiaryContainerLight = Color(0xFFCFC4FF); // Color(0xFFCCCEFE);
+  static const tertiaryContainerLight = Color(0xFFCCCEFE);
   static const onTertiaryContainerLight = Color(0xFF41446C);
   static const surfaceLight = Color(0xFFF9F9FB);
   static const onSurfaceLight = Color(0xFF202226); // Color(0xFF2D3338);
@@ -502,7 +502,7 @@ abstract final class _Colours {
   static const onSecondaryContainerDark = Color(0xFFE1E6EC); // Color(0xFFBEBFC2);
   static const tertiaryDark = Color(0xFFDCDDFF);
   static const onTertiaryDark = Color(0xFF494D75);
-  static const tertiaryContainerDark = Color(0xFFD4BDFF); // Color(0xFFD0CEFE);
+  static const tertiaryContainerDark = Color(0xFFD0CEFE);
   static const onTertiaryContainerDark = Color(0xFF41446C);
   static const surfaceDark = Color(0xFF0D0E10);
   static const onSurfaceDark = Color(0xFFE1E6EC);
@@ -598,6 +598,16 @@ abstract final class _AdwColours {
   static const onRed = Color(0xffffffff);
   static const redLight = Color(0xffc00023);
   static const redDark = Color(0xffff888c);
+
+  // Copied from the mobile colour scheme and adjusted
+  static const tertiaryLight = Color(0xFF595C85);
+  static const onTertiaryLight = Color(0xFFFBF8FF);
+  static const tertiaryContainerLight = Color(0xFFCFC4FF);
+  static const onTertiaryContainerLight = Color(0xFF41446C);
+  static const tertiaryDark = Color(0xFFDCDDFF);
+  static const onTertiaryDark = Color(0xFF494D75);
+  static const tertiaryContainerDark = Color(0xFFD4BDFF);
+  static const onTertiaryContainerDark = Color(0xFF41446C);
 }
 
 const _lightScheme = ColorScheme(
@@ -709,13 +719,13 @@ const _adwLightScheme = ColorScheme(
   onSecondary: _AdwColours.light1,
   secondaryContainer: Color(0xFFEAEAEC),
   onSecondaryContainer: _AdwColours.dark4,
-  tertiary: _Colours.tertiaryLight,
-  onTertiary: _Colours.onTertiaryLight,
-  tertiaryContainer: _Colours.tertiaryContainerLight,
-  onTertiaryContainer: _Colours.onTertiaryContainerLight,
+  tertiary: _AdwColours.tertiaryLight,
+  onTertiary: _AdwColours.onTertiaryLight,
+  tertiaryContainer: _AdwColours.tertiaryContainerLight,
+  onTertiaryContainer: _AdwColours.onTertiaryContainerLight,
   surface: _AdwColours.windowBgLight,
   onSurface: _AdwColours.windowFgLight,
-  onSurfaceVariant: _AdwColours.dark3,
+  onSurfaceVariant: _AdwColours.dark2,
   surfaceTint: _AdwColours.accentLight,
   inverseSurface: _AdwColours.windowBgDark,
   onInverseSurface: _AdwColours.windowFgDark,
@@ -758,13 +768,13 @@ const _adwDarkScheme = ColorScheme(
   onSecondary: _AdwColours.dark3,
   secondaryContainer: _AdwColours.dark3,
   onSecondaryContainer: _AdwColours.light1,
-  tertiary: _Colours.tertiaryDark,
-  onTertiary: _Colours.onTertiaryDark,
-  tertiaryContainer: _Colours.tertiaryContainerDark,
-  onTertiaryContainer: _Colours.onTertiaryContainerDark,
+  tertiary: _AdwColours.tertiaryDark,
+  onTertiary: _AdwColours.onTertiaryDark,
+  tertiaryContainer: _AdwColours.tertiaryContainerDark,
+  onTertiaryContainer: _AdwColours.onTertiaryContainerDark,
   surface: _AdwColours.windowBgDark,
   onSurface: _AdwColours.windowFgDark,
-  onSurfaceVariant: _AdwColours.light3,
+  onSurfaceVariant: _AdwColours.light4,
   surfaceTint: _AdwColours.accentDark,
   inverseSurface: _AdwColours.windowBgLight,
   onInverseSurface: _AdwColours.windowFgLight,

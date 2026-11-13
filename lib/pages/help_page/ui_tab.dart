@@ -27,6 +27,7 @@ class UiTab extends StatelessWidget {
           SliverMainAxisGroup(
             slivers: [
               H(Text("How to Use This Application")),
+              SliverPadding(padding: EdgeInsetsGeometry.only(top: 2)),
               UiHelpTile(
                 description: FastRichText(text: s.interactionP01, textStyle: normal, italicTextStyle: italic),
                 image: Icon(Icons.touch_app, color: theme.colorScheme.onSurfaceVariant),

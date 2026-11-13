@@ -28,30 +28,29 @@ class AboutTab extends StatelessWidget {
           SliverMainAxisGroup(
             slivers: [
               H(Text(s.aboutTheGameTitle)),
-              P(Text(s.aboutText(_version), style: normal), spaceAfter: false),
+              P(Text(s.aboutText(_version), style: normal), spaceAfter: 0, spaceBefore: 2),
               P(
                 ExternalLink(
                   uri: Uri.https("github.com", "mimoguz/tripeaks_neue"),
                   alt: s.repoLink,
                   label: s.repoLink,
                 ),
-                spaceAfter: true,
               ),
             ],
           ),
           SliverMainAxisGroup(
             slivers: [
               H(Text(s.licenseTitle)),
-              P(Text(s.licenseText, style: normal), spaceAfter: false),
-              P(ExternalLink(uri: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt")), spaceAfter: true),
-              P(Text(s.licenseExceptionText, style: normal), spaceAfter: false),
+              P(Text(s.licenseText, style: normal), spaceAfter: 0, spaceBefore: 2),
+              P(ExternalLink(uri: Uri.https("www.gnu.org", "/licenses/agpl-3.0.txt")), spaceAfter: 0),
+              P(Text(s.licenseExceptionText, style: normal), spaceAfter: 0),
               P(ExternalLink(uri: Uri.https("www.apache.org", "/licenses/LICENSE-2.0.txt"))),
             ],
           ),
           SliverMainAxisGroup(
             slivers: [
               H(Text(s.privacyPolicyTitle)),
-              P(Text(s.privacyPolicyText, style: normal)),
+              P(Text(s.privacyPolicyText, style: normal), spaceBefore: 2),
             ],
           ),
           SliverMainAxisGroup(

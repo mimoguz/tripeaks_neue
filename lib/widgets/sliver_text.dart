@@ -69,11 +69,16 @@ final class const HDelegate(
   static const _minHeight = 24.0;
 }
 
-final class const P(final Widget child, {super.key, final bool spaceAfter = true}) extends StatelessWidget {
+final class const P(
+  final Widget child, {
+  super.key,
+  final double spaceBefore = 0,
+  final double spaceAfter = c.itemSpacing,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedSliver(
-      padding: EdgeInsets.fromLTRB(c.utilPageMargin, 0, c.utilPageMargin, spaceAfter ? c.itemSpacing : 0),
+      padding: EdgeInsets.fromLTRB(c.utilPageMargin, spaceBefore, c.utilPageMargin, spaceAfter),
       child: Row(children: [Flexible(child: child)]),
     );
   }

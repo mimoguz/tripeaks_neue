@@ -9,6 +9,7 @@ final class const MyCard({
   final EdgeInsets padding = c.cardPadding,
   final BorderRadius borderRadius = c.commonBorderRadius,
   final Color? background,
+  final Color? shadow,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ final class const MyCard({
       borderRadius: borderRadius,
       color: background ?? colourExt.cardBackground,
       elevation: valueExt.cardElevation,
-      shadowColor: Colors.black54,
+      shadowColor: shadow ?? Colors.black87,
       type: .card,
       clipBehavior: .antiAlias,
       child: Ink(

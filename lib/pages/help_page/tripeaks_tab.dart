@@ -23,14 +23,17 @@ class TriPeaksTab extends StatelessWidget {
             slivers: [
               H(Text("How to Play Tri Peaks")),
               P(
-                ExternalLink(
-                  uri: Uri.https("en.wikipedia.org", "wiki/Tri_Peaks_(game)"),
-                  alt: s.wikiLinkAlt,
-                  label: s.wikiLinkText,
+                Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                  child: ExternalLink(
+                    uri: Uri.https("en.wikipedia.org", "wiki/Tri_Peaks_(game)"),
+                    alt: s.wikiLinkAlt,
+                    label: s.wikiLinkText,
+                  ),
                 ),
-                spaceAfter: false,
+                spaceAfter: 0,
               ),
-              P(FastRichText(text: s.howToP01, textStyle: normal, italicTextStyle: italic)),
+              P(FastRichText(text: s.howToP01, textStyle: normal, italicTextStyle: italic), spaceBefore: 2),
               P(FastRichText(text: s.howToRichP02, textStyle: normal, italicTextStyle: italic)),
               P(FastRichText(text: s.howToRichP03, textStyle: normal, italicTextStyle: italic)),
               P(FastRichText(text: s.howToP04, textStyle: normal, italicTextStyle: italic)),
@@ -49,7 +52,10 @@ class TriPeaksTab extends StatelessWidget {
           SliverMainAxisGroup(
             slivers: [
               H(Text("Scoring")),
-              P(FastRichText(text: s.scoringRichP01, textStyle: normal, italicTextStyle: italic)),
+              P(
+                FastRichText(text: s.scoringRichP01, textStyle: normal, italicTextStyle: italic),
+                spaceBefore: 2,
+              ),
               P(FastRichText(text: s.scoringP02, textStyle: normal, italicTextStyle: italic)),
               P(FastRichText(text: s.scoringRichP03, textStyle: normal, italicTextStyle: italic)),
               P(FastRichText(text: s.scoringRichP04, textStyle: normal, italicTextStyle: italic)),

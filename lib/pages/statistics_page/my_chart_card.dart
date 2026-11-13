@@ -21,6 +21,7 @@ final class const MyChartCard({super.key, required final int played, required fi
     final ratio = played > 0 ? (cleared == played ? 1.0 : cleared.toDouble() / played) : 0.0;
     return MyCard(
       background: colours.tertiaryContainer,
+      shadow: colours.shadow,
       padding: _padding,
       child: ConstrainedBox(
         constraints: BoxConstraints(minHeight: 216),
