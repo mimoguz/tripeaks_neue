@@ -27,7 +27,7 @@ dependencies:
   handy_window: 
     git: 
       url: https://github.com/mimoguz/handy_window.dart
-      ref: 7f8cceb6c1946c7a965712d18d7aefe126408f02
+      ref: 814606a674fa7bd7aae97e58bb5e6c43c220abdb
 dev_dependencies:
   build_runner: ^2.16.1
   build_version: ^2.1.3
