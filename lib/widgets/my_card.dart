@@ -22,10 +22,12 @@ final class const MyCard({
       elevation: valueExt.cardElevation,
       shadowColor: shadow ?? Colors.black87,
       type: .card,
-      clipBehavior: .antiAlias,
       child: Ink(
         decoration: BoxDecoration(borderRadius: borderRadius, border: valueExt.cardBorder),
-        child: Padding(padding: padding, child: child),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(c.commonRadiusValue - valueExt.cardBorder.top.width),
+          child: Padding(padding: padding, child: child),
+        ),
       ),
     );
   }

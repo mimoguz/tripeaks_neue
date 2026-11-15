@@ -233,4 +233,4 @@ const _col4Width = 44.0;
 const _cellSpacing = 8.0;
 const _rowPadding = EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal, vertical: 2);
 const _extraRowPadding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 2, c.cardPaddingHorizontal, 5);
-const _extraLabelPadding = EdgeInsets.only(bottom: 3);
+const _extraLabelPadding = EdgeInsets.only(bottom: 2);
