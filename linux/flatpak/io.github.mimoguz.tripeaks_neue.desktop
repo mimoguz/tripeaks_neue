@@ -6,6 +6,6 @@ Exec=tripeaks_neue
 Icon=icon.svg
 Terminal=false
 Type=Application
-Categories=Game,CardGame;
+Categories=Game;
 Keywords=cards,card-game,casual,solitaire,patience;
 StartupNotify=false
