@@ -100,7 +100,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
       mainAxisSize: .min,
       children: [
         Column(
-          spacing: 1.0,
+          spacing: 2.0,
           crossAxisAlignment: .start,
           children: [
             Text(s.scoreLabel, style: labelStyle),
@@ -108,7 +108,7 @@ final class const HighlightsLine({super.key, required final SingleGameStatistics
           ],
         ),
         Column(
-          spacing: 1.0,
+          spacing: 2.0,
           crossAxisAlignment: .start,
           children: [
             Text(s.chainLabel, style: labelStyle),

@@ -74,14 +74,14 @@
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_menu.png</image>
         </screenshot>
         <screenshot>
-            <caption>Layout selection dialog</caption>
-            <image>
-                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_layout_dialog.png</image>
-        </screenshot>
-        <screenshot>
             <caption>Statistics page</caption>
             <image>
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_statistics.png</image>
+        </screenshot>
+                <screenshot>
+            <caption>Layout selection dialog</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_layout_dialog.png</image>
         </screenshot>
         <screenshot>
             <caption>Portrait layout</caption>
@@ -91,6 +91,13 @@
     </screenshots>
 
     <releases>
+        <release version="0.9.66" date="2026-11-14">
+            <description>
+                <ul>
+                    <li>UI updates</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.9.65" date="2026-10-25">
             <description>
                 <ul>

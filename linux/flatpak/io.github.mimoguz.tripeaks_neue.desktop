@@ -1,10 +1,11 @@
 [Desktop Entry]
 Name=TriPeaks NEUE
+GenericName=Tri Peaks
 Comment=A simple Tri Peaks game
 Exec=tripeaks_neue
 Icon=icon.svg
 Terminal=false
 Type=Application
-Categories=Game;
+Categories=Game,CardGame;
 Keywords=cards,card-game,casual,solitaire,patience;
 StartupNotify=false

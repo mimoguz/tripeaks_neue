@@ -12,11 +12,11 @@ final class const SettingDivider({super.key}) extends StatelessWidget {
   }
 }
 
-final class const CardDivider({super.key}) extends StatelessWidget {
+final class const CardDivider({super.key, final double insets = 0}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colourExt = context.theme.extension<MyColourThemeExt>()!;
-    return Divider(height: 1.0, color: colourExt.cardDivider);
+    return Divider(height: 1.0, color: colourExt.cardDivider, indent: insets, endIndent: insets);
   }
 }
 

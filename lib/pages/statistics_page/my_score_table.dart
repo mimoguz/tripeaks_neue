@@ -8,7 +8,6 @@ import 'package:tripeaks_neue/util/format_ext.dart';
 import 'package:tripeaks_neue/util/theme_ext.dart';
 import 'package:tripeaks_neue/widgets/constants.dart' as c;
 import 'package:tripeaks_neue/widgets/constrained.dart';
-import 'package:tripeaks_neue/widgets/dividers.dart';
 import 'package:tripeaks_neue/widgets/my_card.dart';
 
 class const MyScoreTable({
@@ -19,16 +18,22 @@ class const MyScoreTable({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final lastIndex = games.length - 1;
     return ConstrainedItem(
       child: MyCard(
-        padding: _tablePadding,
+        padding: EdgeInsets.zero,
         child: Column(
           children: [
             _Th(key: _headingKey, game: games.last, showRank: showRank, showLayout: showLayout),
-            for (final (i, game) in games.indexed) ...[
-              CardDivider(),
-              _Td(key: ValueKey(i), game: game, rank: i + 1, showRank: showRank, showLayout: showLayout),
-            ],
+            for (final (i, game) in games.indexed)
+              _Td(
+                key: ValueKey(i),
+                game: game,
+                rank: i + 1,
+                showRank: showRank,
+                showLayout: showLayout,
+                last: i == lastIndex,
+              ),
           ],
         ),
       ),
@@ -113,11 +118,12 @@ final class const _Th({
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final style = theme.textTheme.titleSmall;
+    final style = theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant);
     final s = context.strings;
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: showLayout ? _rowHeight : _rowHeightSansLayout),
-      child: Padding(
+      child: Container(
+        color: theme.extension<MyColourThemeExt>()!.translucentHighlight,
         padding: _rowPadding,
         child: Row(
           spacing: _cellSpacing,
@@ -151,20 +157,20 @@ final class const _Td({
   required final int rank,
   final bool showRank = true,
   final bool showLayout = true,
+  final bool last = false,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
     final textExt = theme.extension<MyTextThemeExt>()!;
-    final titleStyle = theme.textTheme.bodyMedium;
-    final subtitleStyle = textExt.faintLabelM;
     final numberStyle = textExt.numericBody;
     final rankStyle = textExt.numericBody;
     final s = context.strings;
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: showLayout ? _rowHeight : _rowHeightSansLayout),
-      child: Padding(
-        padding: _rowPadding,
+      child: Container(
+        padding: last ? _extraRowPadding : _rowPadding,
+        color: showRank && (rank & 1) == 0 ? theme.extension<MyColourThemeExt>()!.translucentHighlight : null,
         child: Row(
           spacing: _cellSpacing,
           children: <Widget>[
@@ -174,28 +180,7 @@ final class const _Td({
                 child: Text(rank.toString(), style: rankStyle),
               ),
             ],
-            Expanded(
-              child: Column(
-                crossAxisAlignment: .start,
-                mainAxisAlignment: .center,
-                spacing: 3,
-                children: [
-                  if (showLayout)
-                    Text(
-                      game.layout.label(context.strings),
-                      overflow: .fade,
-                      softWrap: false,
-                      style: titleStyle,
-                    ),
-                  Text(
-                    game.ended.formatted,
-                    overflow: .fade,
-                    softWrap: false,
-                    style: showLayout ? subtitleStyle : titleStyle,
-                  ),
-                ],
-              ),
-            ),
+            Expanded(child: showLayout ? _LabelWithLayout(game) : _LabelSansLayout(game)),
             _ResultIcon(game.isCleared, s, key: ValueKey(rank)),
             SizedBox(
               width: _col3Width,
@@ -212,11 +197,40 @@ final class const _Td({
   }
 }
 
+class const _LabelWithLayout(final SingleGameStatistics game, {super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final textExt = theme.extension<MyTextThemeExt>()!;
+    final titleStyle = theme.textTheme.bodyMedium;
+    final subtitleStyle = textExt.faintLabelM;
+    return Padding(
+      padding: _extraLabelPadding,
+      child: Column(
+        crossAxisAlignment: .start,
+        mainAxisAlignment: .center,
+        spacing: 3,
+        children: [
+          Text(game.layout.label(context.strings), overflow: .fade, softWrap: false, style: titleStyle),
+          Text(game.ended.formatted, overflow: .fade, softWrap: false, style: subtitleStyle),
+        ],
+      ),
+    );
+  }
+}
+
+class const _LabelSansLayout(final SingleGameStatistics game, {super.key}) extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) =>
+      Text(game.ended.formatted, overflow: .fade, softWrap: false, style: context.theme.textTheme.bodyMedium);
+}
+
 const _rowHeight = 54.0;
-const _rowHeightSansLayout = 46.0;
+const _rowHeightSansLayout = 50.0;
 const _col1Width = 24.0;
-const _col3Width = 44.0;
-const _col4Width = 40.0;
+const _col3Width = 48.0;
+const _col4Width = 44.0;
 const _cellSpacing = 8.0;
-const _rowPadding = EdgeInsets.symmetric(vertical: 2);
-const _tablePadding = EdgeInsets.symmetric(horizontal: c.DialogMetrics.horizontalPadding, vertical: 2);
+const _rowPadding = EdgeInsets.symmetric(horizontal: c.cardPaddingHorizontal, vertical: 2);
+const _extraRowPadding = EdgeInsets.fromLTRB(c.cardPaddingHorizontal, 2, c.cardPaddingHorizontal, 5);
+const _extraLabelPadding = EdgeInsets.only(bottom: 3);

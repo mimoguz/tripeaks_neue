@@ -18,13 +18,8 @@ final class MyValueExt extends ThemeExtension<MyValueExt> {
     : utilPageMarginBottom = 10,
       utilPageMargins = const EdgeInsets.all(10),
       dialogTitlePadding = const EdgeInsets.fromLTRB(16, 8, 14, 8),
-      cardElevation = 2,
-      cardBorder = Border.all(
-        color: brightness == .light
-            ? const Color.fromRGBO(0, 0, 6, 0.072)
-            : const Color.fromRGBO(255, 255, 255, 0.025),
-        width: 1,
-      ),
+      cardElevation = 1,
+      cardBorder = brightness == .light ? Border.all(color: Color.fromRGBO(0, 0, 6, 0.072)) : Border(),
       sheetShadow = brightness == .light
           ? const [
               BoxShadow(color: Color(0x0A000006), blurRadius: 3.0, spreadRadius: 0.0),
@@ -307,7 +302,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetHeaderDivider = const Color.fromRGBO(32, 34, 38, 0.07),
       // onSurface with alpha
       settingItemDivider = const Color.fromRGBO(32, 34, 38, 0.14),
-      translucentHighlight = const Color.fromRGBO(32, 34, 38, 0.1),
+      translucentHighlight = const Color.fromRGBO(32, 34, 38, 0.036),
       scrollShadow = Colors.black38,
       // primary with alpha
       scrollGlow = const Color.fromRGBO(0, 104, 164, 0.14),
@@ -329,7 +324,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       dialogHeaderDivider = const Color.fromRGBO(225, 230, 236, 0.052),
       sheetHeaderDivider = const Color.fromRGBO(225, 230, 236, 0.05),
       settingItemDivider = _Colours.surfaceDark,
-      translucentHighlight = Colors.white12,
+      translucentHighlight = const Color.fromRGBO(64, 66, 72, 0.25),
       scrollShadow = const Color.fromRGBO(0, 104, 164, 0.32),
       scrollGlow = const Color.fromRGBO(0, 104, 164, 0.32),
       headerShadow = Colors.blue,
@@ -355,7 +350,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetHeaderDivider = const Color.fromRGBO(0, 0, 6, 0.06),
       // onSurface with alpha
       settingItemDivider = const Color.fromRGBO(0, 0, 6, 0.10),
-      translucentHighlight = const Color.fromRGBO(61, 56, 70, 0.1),
+      translucentHighlight = const Color.fromRGBO(61, 56, 70, 0.05),
       scrollShadow = Colors.black38,
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
@@ -382,7 +377,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       sheetHeaderDivider = const Color.fromRGBO(255, 255, 255, 0.06),
       // onSurface with alpha
       settingItemDivider = const Color.fromRGBO(0, 0, 6, 0.20),
-      translucentHighlight = Colors.white24,
+      translucentHighlight = const Color.fromRGBO(61, 56, 70, 0.6),
       scrollShadow = const Color.fromRGBO(0, 0, 6, 0.25),
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
