@@ -456,10 +456,11 @@ packages:
   handy_window:
     dependency: "direct main"
     description:
-      name: handy_window
-      sha256: "06cc2747607022dbcea54b9b863db0962d34d606f998831a9b05a551c5184462"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "7f8cceb6c1946c7a965712d18d7aefe126408f02"
+      resolved-ref: "7f8cceb6c1946c7a965712d18d7aefe126408f02"
+      url: "https://github.com/mimoguz/handy_window.dart"
+    source: git
     version: "0.4.2"
   hooks:
     dependency: transitive

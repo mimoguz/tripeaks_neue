@@ -25,8 +25,9 @@ dependencies:
   material_ui: any
   flex_seed_scheme: ^5.0.1
   handy_window: 
-    git: https://github.com/mimoguz/handy_window.dart
-    ref: 827e017bed6a12382f72b383a5b596a67ba136a1
+    git: 
+      url: https://github.com/mimoguz/handy_window.dart
+      ref: 7f8cceb6c1946c7a965712d18d7aefe126408f02
 dev_dependencies:
   build_runner: ^2.16.1
   build_version: ^2.1.3
