@@ -7,6 +7,8 @@
 
 #include "flutter/generated_plugin_registrant.h"
 
+#include <cstring>
+
 struct _MyApplication {
   GtkApplication parent_instance;
   char** dart_entrypoint_arguments;
@@ -47,6 +49,15 @@ static void my_application_activate(GApplication* application) {
     gtk_window_set_title(window, "TriPeaks NEUE");
   }
 
+  // Check if running under KDE
+  const gchar *desktop = g_getenv("XDG_CURRENT_DESKTOP");
+  GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(window));
+  if (desktop && (g_ascii_strcasecmp(desktop, "KDE") == 0 || g_ascii_strcasecmp(desktop, "Plasma") == 0 || !use_header_bar)) {
+    gtk_style_context_add_class(context, "env-kde");
+  } else {
+    gtk_style_context_add_class(context, "env-gnome");
+  }
+
   gtk_window_set_default_size(window, 1280, 720);
   // Comment below when using handy_window
   // gtk_widget_show(GTK_WIDGET(window));
@@ -58,13 +69,13 @@ static void my_application_activate(GApplication* application) {
 
   FlView* view = fl_view_new(project);
   // Comment below when using handy_window
-  /// gtk_widget_show(GTK_WIDGET(view));
+  // gtk_widget_show(GTK_WIDGET(view));
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
 
   // Comment below when using handy_window
-  gtk_widget_grab_focus(GTK_WIDGET(view));
+  // gtk_widget_grab_focus(GTK_WIDGET(view));
 
   // Uncomment below three lines when using handy_window
   gtk_widget_show(GTK_WIDGET(window));
