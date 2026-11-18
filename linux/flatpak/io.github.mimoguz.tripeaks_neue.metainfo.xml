@@ -68,20 +68,20 @@
             <image>
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen.png</image>
         </screenshot>
-        <screenshot type="default">
+        <screenshot>
             <caption>Game menu</caption>
             <image>
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_menu.png</image>
         </screenshot>
         <screenshot>
-            <caption>Statistics page</caption>
-            <image>
-                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_statistics.png</image>
-        </screenshot>
-                <screenshot>
             <caption>Layout selection dialog</caption>
             <image>
                 https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_layout_dialog.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>Statistics page</caption>
+            <image>
+                https://raw.githubusercontent.com/mimoguz/tripeaks_neue/main/linux/flatpak/images/screen_statistics.png</image>
         </screenshot>
         <screenshot>
             <caption>Portrait layout</caption>
@@ -94,7 +94,7 @@
         <release version="0.9.66-c" date="2026-11-16">
             <description>
                 <ul>
-                    <li>This release reverts KDE-specific checks for theming, introduced in the previous release.</li>
+                    <li>Regression: The library I've been using to get better windows proved to be too diffucult for me to make it work reliably across different desktop environments. This release returns back to default Flutter/GTK-3 windows.</li>
                 </ul>
             </description>
         </release>
