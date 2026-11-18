@@ -457,8 +457,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: f2bc8eb45dae4008b344c4a4b5c1bb4bb950081b
-      resolved-ref: f2bc8eb45dae4008b344c4a4b5c1bb4bb950081b
+      ref: c3a9c53ac21cf24fb2976d83a276d037ec3ec3e7
+      resolved-ref: c3a9c53ac21cf24fb2976d83a276d037ec3ec3e7
       url: "https://github.com/mimoguz/handy_window.dart"
     source: git
     version: "0.4.2"
