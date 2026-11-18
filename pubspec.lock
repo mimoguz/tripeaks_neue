@@ -456,9 +456,11 @@ packages:
   handy_window:
     dependency: "direct main"
     description:
-      path: "../../handy_window.dart"
-      relative: true
-    source: path
+      path: "."
+      ref: "381ff2496d47966b194b551602ac801d1d4021ab"
+      resolved-ref: "381ff2496d47966b194b551602ac801d1d4021ab"
+      url: "https://github.com/mimoguz/handy_window.dart"
+    source: git
     version: "0.4.2"
   hooks:
     dependency: transitive
