@@ -7,11 +7,10 @@
 
 #include "flutter/generated_plugin_registrant.h"
 
-#include <cstring>
-
 struct _MyApplication {
   GtkApplication parent_instance;
   char** dart_entrypoint_arguments;
+  FlMethodChannel* theme_channel;
 };
 
 G_DEFINE_TYPE(MyApplication, my_application, GTK_TYPE_APPLICATION)
@@ -47,15 +46,6 @@ static void my_application_activate(GApplication* application) {
     gtk_window_set_titlebar(window, GTK_WIDGET(header_bar));
   } else {
     gtk_window_set_title(window, "TriPeaks NEUE");
-  }
-
-  // Check if running under KDE
-  const gchar *desktop = g_getenv("XDG_CURRENT_DESKTOP");
-  GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(window));
-  if (desktop && (g_ascii_strcasecmp(desktop, "KDE") == 0 || g_ascii_strcasecmp(desktop, "Plasma") == 0 || !use_header_bar)) {
-    gtk_style_context_add_class(context, "env-kde");
-  } else {
-    gtk_style_context_add_class(context, "env-gnome");
   }
 
   gtk_window_set_default_size(window, 1280, 720);
