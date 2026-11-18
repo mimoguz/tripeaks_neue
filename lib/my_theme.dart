@@ -355,7 +355,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
       headerShadow = Colors.black87,
-      barrier = const Color(0x70000006);
+      barrier = const Color.fromRGBO(36, 31, 49, 0.3);
 
   const new adwDark()
     : brightness = .light,
@@ -382,7 +382,7 @@ final class MyColourThemeExt extends ThemeExtension<MyColourThemeExt> {
       // primary with alpha
       scrollGlow = const Color.fromRGBO(4, 97, 190, 0.3),
       headerShadow = const Color.fromRGBO(0, 0, 6, 1),
-      barrier = const Color.fromRGBO(13, 14, 16, 0.51);
+      barrier = const Color.fromRGBO(13, 14, 16, 0.4);
 }
 
 final ThemeData _light = ThemeData(
