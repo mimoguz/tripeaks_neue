@@ -91,7 +91,14 @@
     </screenshots>
 
     <releases>
-    <release version="0.9.66-b" date="2026-11-16">
+        <release version="0.9.66-c" date="2026-11-16">
+            <description>
+                <ul>
+                    <li>This release reverts KDE-specific checks for theming, introduced in the previous release.</li>
+                </ul>
+            </description>
+        </release>
+        <release version="0.9.66-b" date="2026-11-16">
             <description>
                 <ul>
                     <li>Fixed KDE window titlebar buttons</li>
