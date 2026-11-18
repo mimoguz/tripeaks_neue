@@ -50,7 +50,7 @@ static void my_application_activate(GApplication* application) {
 
   gtk_window_set_default_size(window, 1280, 720);
   // Comment below when using handy_window
-  // gtk_widget_show(GTK_WIDGET(window));
+  gtk_widget_show(GTK_WIDGET(window));
 
   g_autoptr(FlDartProject) project = fl_dart_project_new();
   // Disable impeller
@@ -59,18 +59,18 @@ static void my_application_activate(GApplication* application) {
 
   FlView* view = fl_view_new(project);
   // Comment below when using handy_window
-  // gtk_widget_show(GTK_WIDGET(view));
+  gtk_widget_show(GTK_WIDGET(view));
   gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(view));
 
   fl_register_plugins(FL_PLUGIN_REGISTRY(view));
 
   // Comment below when using handy_window
-  // gtk_widget_grab_focus(GTK_WIDGET(view));
+  gtk_widget_grab_focus(GTK_WIDGET(view));
 
   // Uncomment below three lines when using handy_window
-  gtk_widget_show(GTK_WIDGET(window));
-  gtk_widget_show(GTK_WIDGET(view));
-  gtk_widget_grab_focus(GTK_WIDGET(view));
+  // gtk_widget_show(GTK_WIDGET(window));
+  // gtk_widget_show(GTK_WIDGET(view));
+  // gtk_widget_grab_focus(GTK_WIDGET(view));
 }
 
 // Implements GApplication::local_command_line.
