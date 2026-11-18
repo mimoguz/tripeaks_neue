@@ -713,7 +713,7 @@ const _adwLightScheme = ColorScheme(
   secondary: _AdwColours.dark1,
   onSecondary: _AdwColours.light1,
   secondaryContainer: Color(0xFFEAEAEC),
-  onSecondaryContainer: _AdwColours.dark4,
+  onSecondaryContainer: Color(0xFF1A1622),
   tertiary: _AdwColours.tertiaryLight,
   onTertiary: _AdwColours.onTertiaryLight,
   tertiaryContainer: _AdwColours.tertiaryContainerLight,
